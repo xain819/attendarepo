@@ -55,9 +55,10 @@
                                       <p><a href="<?= base_url('auth/forgot_password'); ?>">Forgot password?</a></p>
                                   </div>
                               </div>
-                              <!--
+                              
                                 <input type="submit" name="submit" id="submit" class="form-control" value="Login">
-                                <p class="text-center"><a href="<?= base_url('auth/register'); ?>">Don't have an account? Sign Up</a></p>-->
+                                <!--
+                                <p class="text-center"><a href="<?= base_url('auth/register'); ?>">Don't h<!--ave an account? Sign Up</a></p>-->
                             </div>
                         <?php echo form_close(); ?>
                     </div>
