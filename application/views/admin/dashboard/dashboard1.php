@@ -50,18 +50,18 @@
         </div>
         <!-- /.col -->
       </div>
-      <!-- <div class="row">
+      <div class="row">
         <div class="col-md-12"> 
             <div class="box box-primary">
               <div class="box-body no-padding">
-                 THE CALENDAR -->
-                <!-- <div id="calendar"></div>
+                 <!---THE CALENDAR -->
+               <div id="calendar"></div>
               </div>
-              box-body
+              <!-- box-body -->
             </div>
-             box
+             <!-- box -->
         </div>
-      </div> -->
+      </div>
       <div class="row">
         <div class="col-md-12">
           <div class="box box-default">
