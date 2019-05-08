@@ -16,6 +16,58 @@ class Auth extends CI_Controller {
 			redirect('auth/login');
 		}
 	}
+	// terminial UI SETUP 
+	public function login(){
+		if($this->input->post('submit')){
+			$this->form_validation->set_rules('room-number', 'Username', 'trim|required');
+			$this->form_validation->set_rules('pin', 'Password', 'trim|required');
+
+			if ($this->form_validation->run() == FALSE) {
+				$this->load->view('auth/login');
+			}
+			else {
+				$data = array(
+					'username' => $this->input->post('username'),
+					'password' => $this->input->post('password')
+				);
+				$result = $this->auth_model->login($data);
+				if($result){
+					if($result['is_verify'] == 0){
+						$this->session->set_flashdata('error', 'Please verify your email address!');
+						redirect(base_url('auth/login'));
+						exit;
+					}
+					if($result['is_active'] == 0){
+						$this->session->set_flashdata('error', 'Account is disabled by Admin!');
+						redirect(base_url('auth/login'));
+						exit;
+					}
+					if($result['is_admin'] == 1){
+						$admin_data = array(
+							'admin_id' => $result['admin_id'],
+							'username' => $result['username'],
+							'admin_role_id' => $result['admin_role_id'],
+							'admin_role' => $result['admin_role_title'],
+							'is_admin_login' => TRUE
+						);
+						$this->session->set_userdata($admin_data);
+							$this->rbac->set_access_in_session(); // set access in session
+							redirect(base_url('admin/dashboard'), 'refresh');
+						}
+					}
+					else{
+						$this->session->set_flashdata('error', 'Invalid Username or Password!');
+						redirect(base_url('auth/login'));
+					}
+				}
+			}
+			else{
+				$this->load->view('auth/login');
+			}
+		}	
+
+
+
 		//--------------------------------------------------------------
 	public function login(){
 		if($this->input->post('submit')){
