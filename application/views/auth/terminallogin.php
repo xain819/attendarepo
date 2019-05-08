@@ -44,7 +44,7 @@
                     <?php endif; ?>
                     <div class="form-box">
                         <div class="caption">
-                            <h4>Attenda Track User Login</h4>
+                            <h4>Attenda Track Terminal Interface</h4>
                             
                         </div>
                         <?php echo form_open(base_url('auth/login'), 'class="login-form" '); ?>
@@ -58,9 +58,7 @@
                               </div>
                               
                                 <input type="submit" name="submit" id="submit" class="form-control" value="Login">
-                                <p class="text-center"><a href="<?= base_url('auth/register'); ?>">Admin Login</a></p>
-                                <!--
-                                <p class="text-center"><a href="<?= base_url('auth/register'); ?>">Don't h<!--ave an account? Sign Up</a></p>-->
+                                <p class="text-center"><a href="<?= base_url('auth/login'); ?>">User Login</a></p>
                             </div>
                         <?php echo form_close(); ?>
                     </div>

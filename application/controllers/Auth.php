@@ -13,7 +13,7 @@ class Auth extends CI_Controller {
 			redirect('admin/dashboard');
 		}
 		else{
-			redirect('auth/login');
+			redirect('auth/userlogin');
 		}
 	}
 	
@@ -24,7 +24,7 @@ class Auth extends CI_Controller {
 			$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
 			if ($this->form_validation->run() == FALSE) {
-				$this->load->view('auth/login');
+				$this->load->view('auth/userlogin');
 			}
 			else {
 				$data = array(
@@ -58,12 +58,12 @@ class Auth extends CI_Controller {
 					}
 					else{
 						$this->session->set_flashdata('error', 'Invalid Username or Password!');
-						redirect(base_url('auth/login'));
+						redirect(base_url('auth/userlogin'));
 					}
 				}
 			}
 			else{
-				$this->load->view('auth/login');
+				$this->load->view('auth/userlogin');
 			}
 		}	
 
@@ -222,8 +222,12 @@ class Auth extends CI_Controller {
 			$this->session->sess_destroy();
 			redirect(base_url('auth/login'), 'refresh');
 		}
+		public function terminallogin(){
+			$this->load->view('auth/terminallogin');	
+		}
 
 	}  // end class
+	
 
 
 	?>
