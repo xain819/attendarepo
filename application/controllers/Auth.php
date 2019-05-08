@@ -24,7 +24,7 @@ class Auth extends CI_Controller {
 				$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
 				if ($this->form_validation->run() == FALSE) {
-					$this->load->view('auth/userlogin');
+					$this->load->view('auth/user_login');
 				}
 				else {
 					$data = array(
@@ -35,12 +35,12 @@ class Auth extends CI_Controller {
 					if($result){
 						if($result['is_verify'] == 0){
 							$this->session->set_flashdata('error', 'Please verify your email address!');
-							redirect(base_url('auth/login'));
+							redirect(base_url('auth/user_login'));
 							exit;
 						}
 						if($result['is_active'] == 0){
 							$this->session->set_flashdata('error', 'Account is disabled by Admin!');
-							redirect(base_url('auth/login'));
+							redirect(base_url('auth/user_login'));
 							exit;
 						}
 						if($result['is_admin'] == 1){
