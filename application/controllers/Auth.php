@@ -13,7 +13,7 @@ class Auth extends CI_Controller {
 			redirect('admin/dashboard');
 		}
 		else{
-			redirect('auth/userlogin');
+			redirect('auth/user_login');
 		}
 	}
 	
