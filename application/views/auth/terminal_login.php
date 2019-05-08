@@ -44,13 +44,13 @@
                     <?php endif; ?>
                     <div class="form-box">
                         <div class="caption">
-                            <h4>Attenda Track User Interface</h4>
+                            <h4>Attenda Track Terminal Interface</h4>
                             
                         </div>
-                        <?php echo form_open(base_url('auth/login'), 'class="login-form" '); ?>
+                        <?php echo form_open(base_url('auth/terminal_login'), 'class="login-form" '); ?>
                             <div class="input-group">
-                                <input type="text" name="username" id="name" class="form-control" placeholder="Username" >
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Password" >
+                                <input type="number" name="room_no" id="room_no" class="form-control" placeholder="Room No." >
+                                <input type="number" name="pin" id="pin" class="form-control" placeholder="PIN" >
                                 <div class="row">
                                   <div class="col-xs-12 text-right">
                                       <p><a href="<?= base_url('auth/forgot_password'); ?>">Forgot password?</a></p>
@@ -58,7 +58,7 @@
                               </div>
                               
                                 <input type="submit" name="submit" id="submit" class="form-control" value="Login">
-                                <p class="text-center"><a href="<?= base_url('auth/terminallogin'); ?>">Terminal Login</a></p>
+                                <p class="text-center"><a href="<?= base_url('auth/user_login'); ?>">User Login</a></p>
                             </div>
                         <?php echo form_close(); ?>
                     </div>

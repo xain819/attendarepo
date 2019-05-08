@@ -18,52 +18,52 @@ class Auth extends CI_Controller {
 	}
 	
 		//--------------------------------------------------------------
-	public function login(){
-		if($this->input->post('submit')){
-			$this->form_validation->set_rules('username', 'Username', 'trim|required');
-			$this->form_validation->set_rules('password', 'Password', 'trim|required');
+		public function user_login(){
+			if($this->input->post('submit')){
+				$this->form_validation->set_rules('username', 'Username', 'trim|required');
+				$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
-			if ($this->form_validation->run() == FALSE) {
-				$this->load->view('auth/userlogin');
-			}
-			else {
-				$data = array(
-					'username' => $this->input->post('username'),
-					'password' => $this->input->post('password')
-				);
-				$result = $this->auth_model->login($data);
-				if($result){
-					if($result['is_verify'] == 0){
-						$this->session->set_flashdata('error', 'Please verify your email address!');
-						redirect(base_url('auth/login'));
-						exit;
-					}
-					if($result['is_active'] == 0){
-						$this->session->set_flashdata('error', 'Account is disabled by Admin!');
-						redirect(base_url('auth/login'));
-						exit;
-					}
-					if($result['is_admin'] == 1){
-						$admin_data = array(
-							'admin_id' => $result['admin_id'],
-							'username' => $result['username'],
-							'admin_role_id' => $result['admin_role_id'],
-							'admin_role' => $result['admin_role_title'],
-							'is_admin_login' => TRUE
-						);
-						$this->session->set_userdata($admin_data);
-							$this->rbac->set_access_in_session(); // set access in session
-							redirect(base_url('admin/dashboard'), 'refresh');
+				if ($this->form_validation->run() == FALSE) {
+					$this->load->view('auth/userlogin');
+				}
+				else {
+					$data = array(
+						'username' => $this->input->post('username'),
+						'password' => $this->input->post('password')
+					);
+					$result = $this->auth_model->login($data);
+					if($result){
+						if($result['is_verify'] == 0){
+							$this->session->set_flashdata('error', 'Please verify your email address!');
+							redirect(base_url('auth/login'));
+							exit;
+						}
+						if($result['is_active'] == 0){
+							$this->session->set_flashdata('error', 'Account is disabled by Admin!');
+							redirect(base_url('auth/login'));
+							exit;
+						}
+						if($result['is_admin'] == 1){
+							$admin_data = array(
+								'admin_id' => $result['admin_id'],
+								'username' => $result['username'],
+								'admin_role_id' => $result['admin_role_id'],
+								'admin_role' => $result['admin_role_title'],
+								'is_admin_login' => TRUE
+							);
+							$this->session->set_userdata($admin_data);
+								$this->rbac->set_access_in_session(); // set access in session
+								redirect(base_url('admin/dashboard'), 'refresh');
+							}
+						}
+						else{
+							$this->session->set_flashdata('error', 'Invalid Username or Password!');
+							redirect(base_url('auth/user_login'));
 						}
 					}
-					else{
-						$this->session->set_flashdata('error', 'Invalid Username or Password!');
-						redirect(base_url('auth/userlogin'));
-					}
-				}
 			}
 			else{
-				$this->load->view('auth/userlogin');
+				$this->load->view('auth/user_login');
 			}
 		}	
 
@@ -220,10 +220,27 @@ class Auth extends CI_Controller {
 
 		public function logout(){
 			$this->session->sess_destroy();
-			redirect(base_url('auth/login'), 'refresh');
+			redirect(base_url('auth/user_login'), 'refresh');
 		}
-		public function terminallogin(){
-			$this->load->view('auth/terminallogin');	
+		public function terminal_login(){
+			if($this->input->post('submit')==true){
+				$data = array(
+					'room_no' => $this->input->post('room_no'),
+					'pin' => $this->input->post('pin')
+				);
+				if($data['room_no']=='123' && $data['pin']=='123'){
+					//print_r($data);
+					redirect(base_url('admin/Terminal'), 'refresh');
+				}else{
+					$this->session->set_flashdata('error', 'Please verify your Room No. / PIN');
+					redirect(base_url('auth/terminal_login'));
+				}
+				
+			}
+			else{
+				$this->load->view('auth/terminal_login');	
+			}
+			
 		}
 
 	}  // end class
