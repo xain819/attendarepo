@@ -6,7 +6,7 @@
 			parent::__construct();
 			if(!$this->session->has_userdata('is_admin_login'))
 			{
-				redirect('auth/login', 'refresh');
+				redirect('auth/user_login', 'refresh');
 			}
 		}
 	}
@@ -18,7 +18,7 @@
 			parent::__construct();
 			if(!$this->session->has_userdata('is_user_login'))
 			{
-				redirect('auth/login');
+				redirect('auth/user_login');
 			}
 		}
 	}

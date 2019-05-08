@@ -6,7 +6,7 @@
     <section class="content">
       <div class="row">
         <div class="col-md-12">
-            <h1 class="text-center">Welcome To Terminal</h1>
+            <h1 class="text-center">Welcome To Class, Jane Doe</h1>
         </div>
       </div>
       <!-- /.row -->

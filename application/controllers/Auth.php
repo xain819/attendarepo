@@ -230,6 +230,10 @@ class Auth extends CI_Controller {
 				);
 				if($data['room_no']=='123' && $data['pin']=='123'){
 					//print_r($data);
+					$admin_data = array(
+						'is_admin_login' => TRUE
+					);
+					$this->session->set_userdata($admin_data);
 					redirect(base_url('admin/Terminal'), 'refresh');
 				}else{
 					$this->session->set_flashdata('error', 'Please verify your Room No. / PIN');
