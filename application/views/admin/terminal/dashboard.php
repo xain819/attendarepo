@@ -6,7 +6,85 @@
     <section class="content">
       <div class="row">
         <div class="col-md-12">
-            <h1 class="text-center">Welcome To Class, Jane Doe</h1>
+            <h3 class="text-center">Welcome To Class, Jane Doe</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          Terminal Room: <b>10</b>
+        </div>
+        <!-- /.col -->
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="box box-solid ">
+            <div class="box-header with-border">
+              <i class="fa fa-text-width"></i>
+
+              <h3 class="box-title">10th Period</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+          
+                <small>Thursday 01/01/1970  Total No. of Period:-0</small>
+        
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <div class="col-md-8">
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <i class="fa fa-text-width"></i>
+
+              <h3 class="box-title">Class Time</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <blockquote>
+                <p class="text-center">05:30:00 am To 05:30:00 am</p>
+              
+              </blockquote>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- ./col -->
+        <div class="col-md-2">
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <i class="fa fa-text-width"></i>
+
+              <h3 class="box-title">HP LOCK </h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <small>Until 05:35:00 am
+
+(HP Un-Locked)</small>
+        
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- ./col -->
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="callout callout-info">
+            <h4>Appointments/Upcoming Events for Pericular Student:</h4>
+            Instructions for how to use modals are available on the
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="callout callout-info">
+            <h4>School-wide Announcements:</h4>
+            Instructions for how to use modals are available on the
+          </div>
         </div>
       </div>
       <!-- /.row -->
