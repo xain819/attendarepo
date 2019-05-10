@@ -30,6 +30,7 @@ $url = "http://".$_SERVER['HTTP_HOST']. str_replace(basename($_SERVER['SCRIPT_NA
 $config['base_url'] = 'http://localhost/attendarepo';
 
 /*
+
 |--------------------------------------------------------------------------
 | Index File
 |--------------------------------------------------------------------------

@@ -59,6 +59,7 @@
                               
                                 <input type="submit" name="submit" id="submit" class="form-control" value="Login">
                                 <p class="text-center"><a href="<?= base_url('auth/terminal_login'); ?>">Terminal Login</a></p>
+
                             </div>
                         <?php echo form_close(); ?>
                     </div>
