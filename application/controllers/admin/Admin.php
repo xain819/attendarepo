@@ -8,7 +8,7 @@ class Admin extends CI_Controller
         $this->load->library('rbac');
 		$this->load->model('admin/admin_model', 'admin');
 
-		$this->rbac->check_module_access();
+		//$this->rbac->check_module_access();
     }
 
 	//-----------------------------------------------------		
