@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="box box-body with-border">
         <div class="col-md-6">
-          <h4><i class="fa fa-plus"></i> &nbsp; Add New Admin</h4>
+          <h4><i class="fa fa-plus"></i> &nbsp; Add New .Admin</h4>
         </div>
         <div class="col-md-6 text-right">
           <a href="<?= base_url('admin/admin'); ?>" class="btn btn-success"><i class="fa fa-list"></i> Admin List</a>
