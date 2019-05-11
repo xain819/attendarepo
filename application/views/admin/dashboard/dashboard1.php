@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/select2/select2.min.css">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <!-- Main content -->
     <section class="content">
       <!-- Info boxes -->
@@ -32,31 +34,43 @@
         <div class="col-md-12">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Quick Example</h3>
+              <h3 class="box-title">Terminal Control</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <form role="form">
               <div class="box-body">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">On/Off Terminal</label>
-                  <input class="tgl_checkbox tgl-ios" data-id="36" id="cb_36" type="checkbox" checked=""><label for="cb_36"></label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="checkbox">
+                      <input type="checkbox" data-toggle="toggle"> On/Off Terminal
+                    </label>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="checkbox">
+                      <input type="checkbox" data-toggle="toggle"> Hall Pass Master Switch
+                    </label>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputFile">File input</label>
-                  <input type="file" id="exampleInputFile">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="checkbox">
+                      <input type="checkbox" data-toggle="toggle"> Emergency Terminal Shutdown & Notification
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="checkbox">
+                      <input type="checkbox" id="is_drill" data-toggle="toggle"> Is This a Drill
+                    </label>
+                  </div>
+                </div>
+                
 
-                  <p class="help-block">Example block-level help text here.</p>
-                </div>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox"> Check me out
-                  </label>
-                </div>
+               
               </div>
               <!-- /.box-body -->
 
@@ -111,6 +125,12 @@
 <script>
   $("#dashboard1").addClass('active');
 </script>
-
-
-<!-- Page specific script -
+<script>
+  $(document).ready(function(){
+    $(document).on('change','#is_drill',function(){
+      
+      alert( $(this).prop('checked'));
+     
+    })
+  }) 
+</script>
