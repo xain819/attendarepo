@@ -41,7 +41,7 @@ echo $cur_tab;
             </span>
           </a>
           <ul class="treeview-menu">
-            <li id="dashboard"><a href="<?= base_url('admin/dashboard'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+            <li id="dashboard"><a href="<?= base_url('admin/dashboard/generalsetting'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
           </ul>
         </li>
 	  </ul>

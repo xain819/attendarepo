@@ -15,6 +15,11 @@
 			$data['view'] = 'admin/dashboard/dashboard1';
 			$this->load->view('layout', $data);
 		}
+		public function generalsetting(){
+			$data['title'] = 'General Settings';
+			$data['view'] = 'admin/generalsettings/index';
+			$this->load->view('layout', $data);
+		}
 		
 	}
 

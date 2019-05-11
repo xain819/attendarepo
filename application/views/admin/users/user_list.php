@@ -35,6 +35,7 @@
         </thead>
       </table>
     </div>
+  
     <!-- /.box-body -->
   <!-- /.box -->
 </section>  

@@ -1,13 +1,4 @@
-<!-- daterange picker -->
-<link rel="stylesheet" href="<?= base_url() ?>public/plugins/daterangepicker/daterangepicker.css">
-  <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="<?= base_url() ?>public/plugins/datepicker/datepicker3.css">
-  <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="<?= base_url() ?>public/plugins/iCheck/all.css">
-  <!-- Bootstrap Color Picker -->
-  <link rel="stylesheet" href="<?= base_url() ?>public/plugins/colorpicker/bootstrap-colorpicker.min.css">
-  <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="<?= base_url() ?>public/plugins/timepicker/bootstrap-timepicker.min.css">
+
   <!-- Select2 -->
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/select2/select2.min.css">
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
@@ -54,21 +45,71 @@
                     </label>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="form-group">
                     <label class="checkbox">
                       <input type="checkbox" data-toggle="toggle"> Emergency Terminal Shutdown & Notification
                     </label>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="form-group">
                     <label class="checkbox">
                       <input type="checkbox" id="is_drill" data-toggle="toggle"> Is This a Drill
                     </label>
                   </div>
                 </div>
-                
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Select Emergency drill type</label>
+                    <select class="form-control select2" style="width: 100%;">
+                      <option ></option>
+                      <option>Fire</option>
+                      <option>Lockdown</optioan>
+                      <option>Shelter in place</option>
+                      <option>Evacuation</option>
+                      <option>Weather</option>
+                      <option>Tornado</option>
+                      <option >Active Shooter</option>
+                      <option >Bomb Threat</option>
+                      <option >Off Campus</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                <div class="box">
+                  <div class="box-header">
+                      </div>
+                      <!-- /.box-header -->
+                      <div class="box-body table-responsive">
+                        <table id="terminaldt" class="table table-bordered table-striped" width="100%">
+                          <thead>
+                          <tr>
+                          
+                            <th>FullName</th>
+                            <th>Terminal No.</th>
+                            <th>Room No.</th>
+                            <th width="100" class="text-right">Action</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <td>Jane Doe</td>
+                          <td>333</td>
+                          <td>222</td>
+                          <td>
+                            <button class="btn btn-xs btn-warning"><i class="fa fa-fw fa-power-off"></i>tmnl</button>
+                            <button class="btn btn-xs btn-warning"><i class="fa fa-fw fa-lock"></i>hall</button>
+           
+                            
+                          </td> 
+                          </tbody>
+                        </table>
+
+                      </div>
+                      <!-- /.box-body -->
+                    <!-- /.box -->
+                  </div>
+                </div>
 
                
               </div>
@@ -90,47 +131,16 @@
 <!-- Select2 -->
 <script src="<?= base_url() ?>public/plugins/select2/select2.full.min.js"></script>
 <!-- FastClick -->
-<script src="<?= base_url() ?>public/plugins/fastclick/fastclick.js"></script>
-<!-- fullCalendar 2.2.5 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<!-- SlimScroll 1.3.0 -->
-<script src="<?= base_url() ?>public/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- Select2 -->
-<script src="<?= base_url() ?>public/plugins/select2/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="<?= base_url() ?>public/plugins/input-mask/jquery.inputmask.js"></script>
-<script src="<?= base_url() ?>public/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="<?= base_url() ?>public/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="<?= base_url() ?>public/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="<?= base_url() ?>public/plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="<?= base_url() ?>public/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="<?= base_url() ?>public/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- SlimScroll 1.3.0 -->
-<script src="<?= base_url() ?>public/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="<?= base_url() ?>public/plugins/iCheck/icheck.min.js"></script>
-<!-- Page script -->
+<script src="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <script>
-  $(function () {
-    //Initialize Select2 Elements
-    $(".select2").select2();
-  });
-</script>
-
-<script>
+$(document).ready(function(){
+  
+  $(".select2").select2();
   $("#dashboard1").addClass('active');
-</script>
-<script>
-  $(document).ready(function(){
-    $(document).on('change','#is_drill',function(){
-      
-      alert( $(this).prop('checked'));
-     
-    })
-  }) 
+  $(document).on('change','#is_drill',function(){
+    alert( $(this).prop('checked'));
+  })
+  $("#terminaldt").DataTable();
+}) 
 </script>
