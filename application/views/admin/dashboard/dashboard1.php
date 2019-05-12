@@ -4,6 +4,18 @@
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <!-- Main content -->
+<section class="content-header">
+      <h1>
+        Welcome to
+        <small>Daily Control Panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Examples</a></li>
+        <li class="active">Blank page</li>
+      </ol>
+    </section>
+
     <section class="content">
       <!-- Info boxes -->
       <div class="row">
@@ -65,7 +77,7 @@
                     <select class="form-control select2" style="width: 100%;">
                       <option ></option>
                       <option>Fire</option>
-                      <option>Lockdown</optioan>
+                      <option>Lockdown</option>
                       <option>Shelter in place</option>
                       <option>Evacuation</option>
                       <option>Weather</option>

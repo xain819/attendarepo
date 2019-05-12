@@ -20,6 +20,11 @@
 			$data['view'] = 'admin/generalsettings/index';
 			$this->load->view('layout', $data);
 		}
+		public function masterscheduler(){
+			$data['title'] = 'General Settings';
+			$data['view'] = 'admin/masterscheduler/index';
+			$this->load->view('layout', $data);
+		}
 		
 	}
 

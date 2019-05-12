@@ -1,6 +1,5 @@
 <?php 
 $cur_tab = $this->uri->segment(2)==''?'dashboards': $this->uri->segment(2);  
-echo $cur_tab;
 ?>  
 
   <!-- Left side column. contains the logo and sidebar -->
@@ -17,7 +16,7 @@ echo $cur_tab;
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-     
+
 	  <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li id="dashboard" class="treeview">
@@ -33,7 +32,7 @@ echo $cur_tab;
         </li>
 	  </ul>
 	  <ul class="sidebar-menu">
-        <li id="dashboard" class="treeview">
+        <li id="generalsetting" class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>General Settings</span>
             <span class="pull-right-container">
@@ -41,12 +40,12 @@ echo $cur_tab;
             </span>
           </a>
           <ul class="treeview-menu">
-            <li id="dashboard"><a href="<?= base_url('admin/dashboard/generalsetting'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+            <li id="dashboard"><a href="<?= base_url('admin/generalsetting'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
           </ul>
         </li>
 	  </ul>
 	  <ul class="sidebar-menu">
-        <li id="dashboard" class="treeview">
+        <li id="masterscheduler" class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Master Schedule</span>
             <span class="pull-right-container">
@@ -54,12 +53,12 @@ echo $cur_tab;
             </span>
           </a>
           <ul class="treeview-menu">
-            <li id="dashboard"><a href="<?= base_url('admin/dashboard'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+            <li id="dashboard"><a href="<?= base_url('admin/masterscheduler'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
           </ul>
         </li>
 	  </ul>
 	  <ul class="sidebar-menu">
-        <li id="dashboard" class="treeview">
+        <li id="studentinformation" class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Student Information</span>
             <span class="pull-right-container">
@@ -67,12 +66,12 @@ echo $cur_tab;
             </span>
           </a>
           <ul class="treeview-menu">
-            <li id="dashboard"><a href="<?= base_url('admin/dashboard'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+            <li id="dashboard"><a href="<?= base_url('admin/studentinformation'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
           </ul>
         </li>
 	  </ul>
 	  <ul class="sidebar-menu">
-        <li id="dashboard" class="treeview">
+        <li id="teacherinformation" class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Teacher Information</span>
             <span class="pull-right-container">
@@ -80,7 +79,7 @@ echo $cur_tab;
             </span>
           </a>
           <ul class="treeview-menu">
-            <li id="dashboard"><a href="<?= base_url('admin/dashboard'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+            <li id="dashboard"><a href="<?= base_url('admin/teacherinformation'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
           </ul>
         </li>
       </ul>
