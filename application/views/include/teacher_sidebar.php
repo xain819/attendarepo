@@ -31,7 +31,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
           </ul>
         </li>
       </ul>
-
+      
       <?php if($this->rbac->check_module_permission('users')): ?>
       <ul class="sidebar-menu">
         <li id="users" class="treeview">

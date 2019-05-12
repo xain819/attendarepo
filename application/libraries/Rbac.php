@@ -14,6 +14,7 @@ class RBAC
 		$this->obj->db->from('module_access');
 		$this->obj->db->where('admin_role_id',$this->obj->session->userdata('admin_role_id'));
 		$query=$this->obj->db->get();
+
 		$data=array();
 		foreach($query->result_array() as $v)
 		{

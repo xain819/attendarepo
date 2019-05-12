@@ -43,6 +43,7 @@
 				</header>
 				<!--header end-->
 				<!--sidebar start-->
+			
 				<aside>
 					<?php if($this->session->userdata('is_admin_login')): ?>
 						<?php include('include/teacher_sidebar.php'); ?>
