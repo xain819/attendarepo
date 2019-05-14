@@ -17,12 +17,12 @@
 		}
 		public function generalsetting(){
 			$data['title'] = 'General Settings';
-			$data['view'] = 'admin/generalsettings/index';
+			$data['view'] = 'admin/generalsettings';
 			$this->load->view('layout', $data);
 		}
 		public function masterscheduler(){
 			$data['title'] = 'General Settings';
-			$data['view'] = 'admin/masterscheduler/index';
+			$data['view'] = 'admin/masterscheduler';
 			$this->load->view('layout', $data);
 		}
 		

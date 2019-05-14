@@ -17,7 +17,7 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
              <!-- Messages: style can be found in dropdown.less-->
-          <li><a href="https://codecanyon.net/item/admin-lite-powerfull-php-admin-panel/21136710?ref=codeglamour" class="btn-danger"><i class="fa fa-download"></i>&nbsp; Buy Now</a></li>
+          
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -222,7 +222,7 @@
                 <img src="<?= base_url() ?>public/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  CodeGlamour
+                 
                 </p>
               </li>
               <!-- Menu Body -->
