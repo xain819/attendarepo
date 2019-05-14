@@ -40,7 +40,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboards': $this->uri->segment(2);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li id="dashboard"><a href="<?= base_url('admin/generalsetting'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+            <li id="dashboard"><a href="<?= base_url('admin/GeneralSetting'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
           </ul>
         </li>
 	  </ul>
@@ -53,7 +53,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboards': $this->uri->segment(2);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li id="dashboard"><a href="<?= base_url('admin/masterscheduler'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+            <li id="dashboard"><a href="<?= base_url('admin/MasterScheduler'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
           </ul>
         </li>
 	  </ul>
@@ -66,7 +66,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboards': $this->uri->segment(2);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li id="dashboard"><a href="<?= base_url('admin/studentinformation'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+            <li id="dashboard"><a href="<?= base_url('admin/StudentInformation'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
           </ul>
         </li>
 	  </ul>
@@ -79,7 +79,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboards': $this->uri->segment(2);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li id="dashboard"><a href="<?= base_url('admin/teacherinformation'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+            <li id="dashboard"><a href="<?= base_url('admin/TeacherInformation'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
           </ul>
         </li>
       </ul>
