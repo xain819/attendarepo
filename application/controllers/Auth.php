@@ -255,7 +255,7 @@ class Auth extends CI_Controller {
 						'is_admin_login' => TRUE
 					);
 					$this->session->set_userdata($admin_data);
-					redirect(base_url('admin/Terminal'), 'refresh');
+					redirect(base_url('Terminal/Terminal'), 'refresh');
 				}else{
 					$this->session->set_flashdata('error', 'Please verify your Room No. / PIN');
 					redirect(base_url('auth/terminal_login'));

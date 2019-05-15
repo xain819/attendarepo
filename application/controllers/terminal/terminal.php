@@ -6,8 +6,8 @@
 		}
 		public function index(){
 			//$data['title'] = 'General Settings';
-			//$data['view'] = 'terminal';
-			$this->load->view('terminal/terminal');
+			$data['view'] = 'terminal/terminal_modal';
+			$this->load->view('terminal/index',$data);
 		}
 		
 	}
