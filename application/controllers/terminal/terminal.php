@@ -7,7 +7,7 @@
 		public function index(){
 			$data['title'] = 'General Settings';
 			$data['view'] = 'terminal/terminal';
-			$this->load->view('terminal', $data);
+			$this->load->view('layout_terminal', $data);
 		}
 		
 	}

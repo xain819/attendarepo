@@ -12,7 +12,7 @@
 			$data['active_users'] = $this->dashboard_model->get_active_users();
 			$data['deactive_users'] = $this->dashboard_model->get_deactive_users();
 			$data['title'] = 'Dashboard';
-			$data['view'] = 'admin/terminal/dashboard';
+			$data['view'] = 'admin/generalsetting/index';
 			$this->load->view('layout', $data);
 		}
 		

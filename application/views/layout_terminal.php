@@ -37,10 +37,10 @@
 			<?php endif; ?>
 
 			<section id="container">
-				<!--header start-->
+				<!--header start
 				<header class="header white-bg">
 					<?php// include('include/teacher_navbar.php'); ?>
-				</header>
+				</header>-->
 				<!--header end-->
 				<!--sidebar start-->
 			  

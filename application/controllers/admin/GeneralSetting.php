@@ -6,7 +6,7 @@
 		}
 		public function index(){
 			$data['title'] = 'General Settings';
-			$data['view'] = 'admin/generalsettings/';
+			$data['view'] = 'admin/GeneralSettings/';
 			$this->load->view('layout', $data);
 		}
 		
