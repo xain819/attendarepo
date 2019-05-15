@@ -5,9 +5,9 @@
 			parent::__construct();
 		}
 		public function index(){
-			$data['title'] = 'General Settings';
-			$data['view'] = 'terminal/terminal';
-			$this->load->view('layout_terminal', $data);
+			//$data['title'] = 'General Settings';
+			//$data['view'] = 'terminal';
+			$this->load->view('terminal/terminal');
 		}
 		
 	}
