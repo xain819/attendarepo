@@ -1,6 +1,7 @@
 <?php
 	class MY_Controller extends CI_Controller
 	{
+		public $username;
 		function __construct()
 		{
 			parent::__construct();
@@ -8,6 +9,7 @@
 			{
 				redirect('auth/user_login', 'refresh');
 			}
+			$this->username=$this->session->userdata('username');
 		}
 	}
 

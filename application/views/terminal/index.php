@@ -215,6 +215,7 @@
         <div class="col-md-12">
         <div class="col-md-11">
               <input type="text" id="student_id" class="form-control" placeholder="Student ID">
+  
           </div>
           <div class="col-md-1">
             <button id="show_terminal_modal" class="btn btn-primary ">Enter</button>
@@ -239,7 +240,7 @@
               <div class="info-box-content bg-aqua">
                   <br>
                   <span class="info-box-text-sm bg-aqua">Teacher</span>
-                  <span class="info-box-number bg-aqua">Jim Doe</span>
+                  <span class="info-box-number bg-aqua" id="TeacherName">Jim Doe</span>
               </div>
               <!-- /.info-box-content -->
           </div>
@@ -252,7 +253,7 @@
               <div class="info-box-content">
               <br>
                   <span class="info-box-text-sm">Subject</span>
-                  <span class="info-box-number">Physical Education</span>
+                  <span class="info-box-number" id="SubjectName">Physical Education</span>
               </div>
               <!-- /.info-box-content -->
           </div>
@@ -265,7 +266,7 @@
               <div class="info-box-content">
               <br>
                   <span class="info-box-text-sm">Available Until</span>
-                  <span class="info-box-number">12:45:00</span>
+                  <span class="info-box-number" id="AvailableTime">12:45:00</span>
               </div>
               <!-- /.info-box-content -->
           </div>
@@ -277,7 +278,7 @@
               <div class="info-box-content">
               <br>
                   <span class="info-box-text-sm">Hall Pass Locked</span>
-                  <span class="info-box-number">12:39:00</span>
+                  <span class="info-box-number" id="AvailableHPTime">12:39:00</span>
               </div>
               <!-- /.info-box-content -->
           </div>
@@ -295,6 +296,8 @@
  
   
   <?php $this->load->view($view);?>
+  
+  <?php $this->load->view($view1);?>
   <!-- /.center -->
 
   <!-- jQuery 2.2.3 -->
@@ -305,6 +308,18 @@
 </body>
 </html>
 <script>
+var timee;
+<?php if($this->username=='123'){?>
+  timee="11:00:00";
+<?php }
+?>
+
+<?php if($this->username=='1234'){?>
+  timee="14:00:00";
+<?php }
+?>
+
+var base_url="<?php echo base_url();?>";
 $(document).ready(function(){
   $(document).on('click','.options',function(){
     swal({
@@ -320,7 +335,6 @@ $(document).ready(function(){
     swal("Deleted!", "Your imaginary file has been deleted.", "success");
   });
   });
-  
   $(document).on('click','#show_terminal_modal',function(){
     if( $("#student_id").val()){
      $("#terminal_modal").modal("show");
@@ -328,9 +342,27 @@ $(document).ready(function(){
      swal("Please Enter Your Student ID");
     }
   })
+    csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+    csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+  $.ajax({
+    url: base_url+"admin/Terminal/test",
+    type: "POST",
+    dataType: "json",
+    data: ({[csrfName]: csrfHash}),
+  })
+  .done(function (data) {
+    console.log(data.Subject)
 
+      $("#terminal_alert_modal").modal('show');
+      $("#TimeIn").text(timee);
+     $('#TeacherName').html(data.Teacher);
+    $('#SubjectName').html(data.Subject);
+    $('#AvailableTime').html(data.AvailableUntil);
+    $('#AvailableHPTime').html(data.HallPassLock);
+  })
   
-  
+
+
   var Clock = (function(){
 
   var exports = function(element) {

@@ -249,9 +249,10 @@ class Auth extends CI_Controller {
 					'room_no' => $this->input->post('room_no'),
 					'pin' => $this->input->post('pin')
 				);
-				if($data['room_no']=='123' && $data['pin']=='123'){
+				if( ($data['room_no']=='123' && $data['pin']=='123') || ($data['room_no']=='1234' && $data['pin']=='1234') ){
 					//print_r($data);
 					$admin_data = array(
+						'username'=>$data['room_no'],
 						'is_admin_login' => TRUE
 					);
 					$this->session->set_userdata($admin_data);
