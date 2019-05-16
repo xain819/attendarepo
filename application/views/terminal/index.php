@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url() ?>public/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
+  
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -187,8 +189,6 @@
 
 <section >
 <div class="container bg-success bg-aqua" style="padding-top:40px;padding-bottom:50px;  " >
-
-
   <div class="col-md-12 col-sm-6 col-xs-12">
         <div class="pull-left col-md-2" >
           <h3>Room:SGYM</h3>
@@ -196,14 +196,14 @@
         </div>  
 
          <div class="pull-right col-md-2">
-        </br>
+        <br>
         <h4 class="pull-right"> <a href="<?php echo base_url('Auth/logout');?>"><i class="fa fa-power-off bg-white"></i>LogOut</a></h4>
         </div>
  
    </div>
    <div class=col-md-3>
   </div>
-   <div class="pull center col-md-6 col-sm-6 col-xs-12">
+    <div class="pull center col-md-6 col-sm-6 col-xs-12">
         <div class="pull-center" >
         
         <br>  <br> <br>  <br> <br> <br>
@@ -211,27 +211,25 @@
         <br>  <br>
         </div>  
         <form role="form">
-        <div class="input-group style">
-                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="text" class="form-control" placeholder="Student ID">
-              </div>
-        </form>
-
-      
-
-         <div class="pull-right col-md-2">
-        </br>
-       
+        <div class="form-group">
+        <div class="col-md-12">
+        <div class="col-md-11">
+              <input type="text" id="student_id" class="form-control" placeholder="Student ID">
+          </div>
+          <div class="col-md-1">
+            <button id="show_terminal_modal" class="btn btn-primary ">Enter</button>
+          </div>
         </div>
-        
- 
-   </div>
-   <div class=col-md-3>
-   </div>
-
-
+          
+        </div>
+        </form>
+         <div class="pull-right col-md-2">
+        <br>
+        </div>
+    </div>
+    <div class=col-md-3>
+    </div>
 </section>
-
 <section>
 <div class="container bg-success bg-aqua" style="padding-bottom:50px;" >
   <div class="row">
@@ -239,7 +237,7 @@
           <div class="info-box bg-aqua">
               <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
               <div class="info-box-content bg-aqua">
-                  </br>
+                  <br>
                   <span class="info-box-text-sm bg-aqua">Teacher</span>
                   <span class="info-box-number bg-aqua">Jim Doe</span>
               </div>
@@ -252,7 +250,7 @@
           <div class="info-box bg-aqua">
               <span class="info-box-icon bg-aqua"><i class="fa fa-calendar-minus-o"></i></span>
               <div class="info-box-content">
-              </br>
+              <br>
                   <span class="info-box-text-sm">Subject</span>
                   <span class="info-box-number">Physical Education</span>
               </div>
@@ -265,7 +263,7 @@
           <div class="info-box bg-aqua">
               <span class="info-box-icon bg-aqua"><i class="fa fa-unlock-alt"></i></span>
               <div class="info-box-content">
-              </br>
+              <br>
                   <span class="info-box-text-sm">Available Until</span>
                   <span class="info-box-number">12:45:00</span>
               </div>
@@ -277,7 +275,7 @@
           <div class="info-box bg-aqua">
               <span class="info-box-icon bg-aqua"><i class="fa fa-lock"></i></span>
               <div class="info-box-content">
-              </br>
+              <br>
                   <span class="info-box-text-sm">Hall Pass Locked</span>
                   <span class="info-box-number">12:39:00</span>
               </div>
@@ -291,7 +289,7 @@
 </section>
 
   
-  <d
+  
 
   <!-- Automatic element centering -->
  
@@ -303,11 +301,38 @@
   <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
   <!-- Bootstrap 3.3.6 -->
   <script src="<?= base_url() ?>public/bootstrap/js/bootstrap.min.js"></script>
+  <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
 </body>
 </html>
 <script>
 $(document).ready(function(){
-  $("#terminal_modal").modal("show");
+  $(document).on('click','.options',function(){
+    swal({
+    title: "Are you sure?",
+    text: "Your will not be able to recover this imaginary file!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonClass: "btn-danger",
+    confirmButtonText: "Yes, delete it!",
+    closeOnConfirm: false
+  },
+  function(){
+    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+  });
+  });
+  
+  $(document).on('click','#show_terminal_modal',function(){
+    if(  $("#student_id").val()){
+      $("#terminal_modal").modal("show");
+    }else{
+      swal("Please Enter Your Student ID");
+    }
+  
+    
+  })
+
+  
+  
   var Clock = (function(){
 
   var exports = function(element) {
