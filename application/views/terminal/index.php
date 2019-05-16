@@ -28,8 +28,9 @@
       html,body {
         padding:0;
         margin:0;
-        background:#fafafa;
+        background:#fffff;
         text-align:center;
+       
       }
 
       body {
@@ -182,43 +183,119 @@
       }
 
 </style>
-<body class="hold-transition lockscreen">
+<body class="hold-transition lockscreen" style="margin-top:20px; padding-top:100px;">
 
-  
-  <div class="container bg-success" >
-  <br>
-     <div class="pull-right">
-     <h4 class="pull-right">FullName:Jane Doe <a href="<?php echo base_url('Auth/logout');?>">LogOut</a></h4>
-     </div>
-   
-    <div class="col-md-12">
-      <div class="col-md-12">
-        <h3>Room:SGYM</h3>
-        <h4>Period: <span class="text-success">3rd</span> </h4>
-      </div>
-      <div class="col-md-6">
-        <h4>Subject:<b>Physical Education</b></h4>
-      </div>
-      <div class="col-md-6">
-        <h4>Teacher:<b>Jim Teacher</b></h4>
-      </div>
-      <div class="col-md-3">
-        <h4>On Time:12:45:00</h4>
-      </div>
-      <div class="col-md-6">  
+<section >
+<div class="container bg-success bg-aqua" style="padding-top:40px;padding-bottom:50px;  " >
+
+
+  <div class="col-md-12 col-sm-6 col-xs-12">
+        <div class="pull-left col-md-2" >
+          <h3>Room:SGYM</h3>
+          <h4>Period: <span class="text-success">3rd</span> </h4>
+        </div>  
+
+         <div class="pull-right col-md-2">
+        </br>
+        <h4 class="pull-right"> <a href="<?php echo base_url('Auth/logout');?>"><i class="fa fa-power-off bg-white"></i>LogOut</a></h4>
+        </div>
+ 
+   </div>
+   <div class=col-md-3>
+  </div>
+   <div class="pull center col-md-6 col-sm-6 col-xs-12">
+        <div class="pull-center" >
+        
+        <br>  <br> <br>  <br>
         <span class="clock"></span>
         <br>  <br>
+        </div>  
+        <form role="form">
+        <div class="input-group style">
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                <input type="email" class="form-control" placeholder="Email">
+              </div>
+        </form>
+
+      
+
+         <div class="pull-right col-md-2">
+        </br>
+       
+        </div>
+        
+ 
+   </div>
+   <div class=col-md-3>
+   </div>
+
+
+</section>
+
+<section>
+<div class="container bg-success bg-aqua" style="padding-bottom:50px;" >
+  <div class="row">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box bg-aqua">
+              <span class="info-box-icon bg-aqua"><i class="fa fa-files-o"></i></span>
+              <div class="info-box-content bg-aqua">
+                  </br>
+                  <span class="info-box-text-sm bg-aqua">Teacher</span>
+                  <span class="info-box-number bg-aqua">Jim Doe</span>
+              </div>
+              <!-- /.info-box-content -->
+          </div>
+        <!-- /.info-box -->
       </div>
-      <div class="col-md-3">
-        <h4>Hall Pass Until:12:39:00</h4>
+
+      <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box bg-aqua">
+              <span class="info-box-icon bg-aqua"><i class="fa fa-files-o"></i></span>
+              <div class="info-box-content">
+              </br>
+                  <span class="info-box-text-sm">Subject</span>
+                  <span class="info-box-number">Physical Education</span>
+              </div>
+              <!-- /.info-box-content -->
+          </div>
+        <!-- /.info-box -->
       </div>
-    </div>
     
+      <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box bg-aqua">
+              <span class="info-box-icon bg-aqua"><i class="fa fa-files-o"></i></span>
+              <div class="info-box-content">
+              </br>
+                  <span class="info-box-text-sm">On Time</span>
+                  <span class="info-box-number">12:45:00</span>
+              </div>
+              <!-- /.info-box-content -->
+          </div>
+        <!-- /.info-box -->
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box bg-aqua">
+              <span class="info-box-icon bg-aqua"><i class="fa fa-files-o"></i></span>
+              <div class="info-box-content">
+              </br>
+                  <span class="info-box-text-sm">Hall Pass Untill</span>
+                  <span class="info-box-number">12:39:00</span>
+              </div>
+              <!-- /.info-box-content -->
+          </div>
+        <!-- /.info-box -->
+      </div>
 
   </div>
+</div>
+</section>
 
+  
+  <d
 
   <!-- Automatic element centering -->
+ 
+  
   <?php $this->load->view($view);?>
   <!-- /.center -->
 
