@@ -206,14 +206,14 @@
    <div class="pull center col-md-6 col-sm-6 col-xs-12">
         <div class="pull-center" >
         
-        <br>  <br> <br>  <br>
+        <br>  <br> <br>  <br> <br> <br>
         <span class="clock"></span>
         <br>  <br>
         </div>  
         <form role="form">
         <div class="input-group style">
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="email" class="form-control" placeholder="Email">
+                <input type="text" class="form-control" placeholder="Student ID">
               </div>
         </form>
 
@@ -237,7 +237,7 @@
   <div class="row">
   <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i class="fa fa-files-o"></i></span>
+              <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
               <div class="info-box-content bg-aqua">
                   </br>
                   <span class="info-box-text-sm bg-aqua">Teacher</span>
@@ -250,7 +250,7 @@
 
       <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i class="fa fa-files-o"></i></span>
+              <span class="info-box-icon bg-aqua"><i class="fa fa-calendar-minus-o"></i></span>
               <div class="info-box-content">
               </br>
                   <span class="info-box-text-sm">Subject</span>
@@ -263,10 +263,10 @@
     
       <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i class="fa fa-files-o"></i></span>
+              <span class="info-box-icon bg-aqua"><i class="fa fa-unlock-alt"></i></span>
               <div class="info-box-content">
               </br>
-                  <span class="info-box-text-sm">On Time</span>
+                  <span class="info-box-text-sm">Available Until</span>
                   <span class="info-box-number">12:45:00</span>
               </div>
               <!-- /.info-box-content -->
@@ -275,10 +275,10 @@
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i class="fa fa-files-o"></i></span>
+              <span class="info-box-icon bg-aqua"><i class="fa fa-lock"></i></span>
               <div class="info-box-content">
               </br>
-                  <span class="info-box-text-sm">Hall Pass Untill</span>
+                  <span class="info-box-text-sm">Hall Pass Locked</span>
                   <span class="info-box-number">12:39:00</span>
               </div>
               <!-- /.info-box-content -->
