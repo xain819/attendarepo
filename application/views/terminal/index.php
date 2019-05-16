@@ -210,7 +210,7 @@
         <span class="clock"></span>
         <br>  <br>
         </div>  
-        <form role="form">
+        
         <div class="form-group">
         <div class="col-md-12">
         <div class="col-md-11">
@@ -222,7 +222,7 @@
         </div>
           
         </div>
-        </form>
+        
          <div class="pull-right col-md-2">
         <br>
         </div>
@@ -322,13 +322,11 @@ $(document).ready(function(){
   });
   
   $(document).on('click','#show_terminal_modal',function(){
-    if(  $("#student_id").val()){
-      $("#terminal_modal").modal("show");
-    }else{
-      swal("Please Enter Your Student ID");
+    if( $("#student_id").val()){
+     $("#terminal_modal").modal("show");
+     }else{
+     swal("Please Enter Your Student ID");
     }
-  
-    
   })
 
   
