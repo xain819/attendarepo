@@ -48,6 +48,7 @@
                                 <!-- /.info-box -->
                             </div>
                                         <!-- /.col -->
+                            <a href="#">
                             <div class="col-md-3 col-sm-6 col-xs-12">
                                 <div class="info-box">
                                     <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
@@ -59,6 +60,7 @@
                                 </div>
                                 <!-- /.info-box -->
                             </div>
+                            </a>
                                         <!-- /.col -->
                             <div class="col-md-3 col-sm-6 col-xs-12">
                                 <div class="info-box">

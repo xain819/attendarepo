@@ -214,7 +214,9 @@
         <div class="form-group">
         <div class="col-md-12">
         <div class="col-md-11">
-              <input type="text" id="student_id" class="form-control" placeholder="Student ID">
+
+              <input type="text" id="student_id" class="form-control" placeholder="Student ID"  value="">
+              
   
           </div>
           <div class="col-md-1">
@@ -324,15 +326,15 @@ $(document).ready(function(){
   $(document).on('click','.options',function(){
     swal({
     title: "Are you sure?",
-    text: "Your will not be able to recover this imaginary file!",
+    text: "The administration will be notified!",
     type: "warning",
     showCancelButton: true,
     confirmButtonClass: "btn-danger",
-    confirmButtonText: "Yes, delete it!",
+    confirmButtonText: "Yes!",
     closeOnConfirm: false
   },
   function(){
-    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+    swal("Thank You", "Hall Pass for Admin Notification", "success");
   });
   });
   $(document).on('click','#show_terminal_modal',function(){
