@@ -21,8 +21,9 @@
                                 <!-- /.info-box -->
                             </div>
                                 <!---------------------- /.end ---------------------------->
-                            <a href="#">
+                            
                             <div class="col-md-3 col-sm-6 col-xs-12">
+                            <a href="#" class="options">
                                 <div class="info-box">
                                     <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
                                     <div class="info-box-content">
@@ -32,9 +33,9 @@
                                         </a>
                                     </div>
                                     <!-- /.info-box-content -->
-                                </div>
+                                </div></a>
                                 <!-- /.info-box -->
-                            </div></a>
+                            </div>
                              
                                 <!---------------------- /.end ---------------------------->
                             <div class="col-md-3 col-sm-6 col-xs-12">
