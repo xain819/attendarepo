@@ -45,7 +45,7 @@
 				<!--sidebar start-->
 				<aside>
 					<?php if($this->session->userdata('is_admin_login')): ?>
-						<?php include('include/new_admin_sidebar.php'); ?>
+						<?php include('include/admin_sidebar.php'); ?>
 					<?php else: ?>
 						<?php include('include/sidebar.php'); ?>
 					<?php endif; ?>

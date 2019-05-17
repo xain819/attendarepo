@@ -50,6 +50,24 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
         </li>
       </ul>
       <?php endif; ?>
+
+      <?php if($this->rbac->check_module_permission('GeneralSetting')): ?>  
+       <ul class="sidebar-menu">
+        <li id="admin" class="treeview">
+          <a href="#">
+            <i class="fa fa-user"></i> <span>General Settings</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li id="admin"><a href="<?= base_url('admin/admin'); ?>"><i class="fa fa-circle-o"></i> Admin List</a></li>
+            <li id=""><a href="<?= base_url('admin/profile'); ?>"><i class="fa fa-circle-o"></i>Admin Profile</a></li>
+            <li id=""><a href="<?= base_url('admin/profile/change_pwd'); ?>"><i class="fa fa-circle-o"></i>Change Password</a></li>
+          </ul>
+        </li>
+      </ul>
+      <?php endif; ?>
         
       <?php if($this->rbac->check_module_permission('admin_roles')): ?>  
        <ul class="sidebar-menu">
