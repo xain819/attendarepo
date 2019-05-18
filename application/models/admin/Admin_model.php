@@ -95,12 +95,20 @@ function change_status()
 	$this->db->update('admin');
 } 
 
+
+public function add_terminal($data){
+	$this->db->insert('hallpass', $data);
+	return true;
+}
+
+
 	//-----------------------------------------------------
 function delete($id)
 {		
 	$this->db->where('admin_id',$id);
 	$this->db->delete('admin');
 } 
+
 
 }
 
