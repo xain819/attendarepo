@@ -9,7 +9,7 @@ class Admin_roles_model extends CI_Model{
 	//-----------------------------------------------------
 	function get_role_by_id($id)
     {
-		$this->db->from('ci_admin_roles');
+		$this->db->from('admin_roles');
 		$this->db->where('admin_role_id',$id);
 		$query=$this->db->get();
 		return $query->row_array();
@@ -18,7 +18,7 @@ class Admin_roles_model extends CI_Model{
 	//-----------------------------------------------------
 	function get_all()
     {
-		$this->db->from('ci_admin_roles');
+		$this->db->from('admin_roles');
 		$query = $this->db->get();
         return $query->result_array();
     }
@@ -29,7 +29,7 @@ class Admin_roles_model extends CI_Model{
 		$this->db->set('admin_role_title',$this->input->post('admin_role_title'));
 		$this->db->set('admin_role_status',$this->input->post('admin_role_status'));
 		$this->db->set('admin_role_created_on',date('Y-m-d h:i:sa'));
-		$this->db->insert('ci_admin_roles');
+		$this->db->insert('admin_roles');
 	}
 	 
 	//-----------------------------------------------------
@@ -39,7 +39,7 @@ class Admin_roles_model extends CI_Model{
 		$this->db->set('admin_role_status',$this->input->post('admin_role_status'));
 		$this->db->set('admin_role_modified_on',date('Y-m-d h:i:sa'));
 		$this->db->where('admin_role_id',$this->input->post('admin_role_id'));
-		$this->db->update('ci_admin_roles');
+		$this->db->update('admin_roles');
 	} 
 	
 	//-----------------------------------------------------
@@ -47,14 +47,14 @@ class Admin_roles_model extends CI_Model{
 	{		
 		$this->db->set('admin_role_status',$this->input->post('status'));
 		$this->db->where('admin_role_id',$this->input->post('id'));
-		$this->db->update('ci_admin_roles');
+		$this->db->update('admin_roles');
 	} 
 	
 	//-----------------------------------------------------
 	function delete($id)
 	{		
 		$this->db->where('admin_role_id',$id);
-		$this->db->delete('ci_admin_roles');
+		$this->db->delete('admin_roles');
 	} 
 	
 	//-----------------------------------------------------
