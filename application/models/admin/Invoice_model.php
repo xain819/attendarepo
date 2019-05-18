@@ -4,7 +4,7 @@
 		//---------------------------------------------------
 		// Get Customer detial by ID
 		public function customer_detail($id){
-			$query = $this->db->get_where('ci_users', array('id' => $id));
+			$query = $this->db->get_where('users', array('id' => $id));
 			return $result = $query->row_array();
 		}
 
@@ -27,7 +27,7 @@
 			$this->db->select('
 					ci_payments.id,
 	    			ci_payments.invoice_no,
-	    			ci_users.username as client_name,
+	    			users.username as client_name,
 	    			ci_payments.payment_status,
 					ci_payments.grand_total,
 					ci_payments.currency,
@@ -35,7 +35,7 @@
 					'
 	    	);
 	    	$this->db->from('ci_payments');
-	    	$this->db->join('ci_users', 'ci_users.id = ci_payments.user_id ', 'Left');
+	    	$this->db->join('users', 'users.id = ci_payments.user_id ', 'Left');
 	    	$query = $this->db->get();					 
 			return $query->result_array();
 		}
@@ -44,7 +44,7 @@
 		// Get Customers List for Invoice
 		public function get_customer_list(){
 			$this->db->select('id, UPPER(CONCAT(firstname, ' . ' ,lastname)) as username');
-			$this->db->from('ci_users');
+			$this->db->from('users');
 			return $this->db->get()->result_array();
 		}
 
@@ -68,12 +68,12 @@
 					ci_payments.termsncondition,
 					ci_payments.due_date,
 					ci_payments.created_date,
-					ci_users.username as client_name,
-					ci_users.firstname,
-					ci_users.lastname,
-					ci_users.email as client_email,
-					ci_users.mobile_no as client_mobile_no,
-					ci_users.address as client_address,
+					users.username as client_name,
+					users.firstname,
+					users.lastname,
+					users.email as client_email,
+					users.mobile_no as client_mobile_no,
+					users.address as client_address,
 					ci_companies.id as company_id,
 					ci_companies.name as company_name,
 					ci_companies.email as company_email,
@@ -83,7 +83,7 @@
 					'
 	    	);
 	    	$this->db->from('ci_payments');
-	    	$this->db->join('ci_users', 'ci_users.id = ci_payments.user_id ', 'Left');
+	    	$this->db->join('users', 'users.id = ci_payments.user_id ', 'Left');
 	    	$this->db->join('ci_companies', 'ci_companies.id = ci_payments.company_id ', 'Left');
 	    	$this->db->where('ci_payments.id' , $id);
 	    	$query = $this->db->get();					 

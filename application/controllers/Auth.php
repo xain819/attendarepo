@@ -56,6 +56,8 @@ class Auth extends CI_Controller {
 								$this->rbac->set_access_in_session(); // set access in session
 								redirect(base_url('admin/terminal'), 'refresh');
 							 }
+
+							 
 						
 						$this->session->set_userdata($admin_data);
 							$this->rbac->set_access_in_session(); // set access in session

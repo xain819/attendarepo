@@ -11,13 +11,13 @@
 					ci_payments.grand_total,
 					ci_payments.currency,
 					ci_payments.created_date,
-					ci_users.username as client_name,
-					ci_users.email as client_email,
-					ci_users.mobile_no as client_mobile_no
+					users.username as client_name,
+					users.email as client_email,
+					users.mobile_no as client_mobile_no
 
 				    FROM ci_payments 
 
-				    left JOIN ci_users ON ci_payments.user_id = ci_users.id';
+				    left JOIN users ON ci_payments.user_id = users.id';
 		  
 			if(count($wh)>0)
 			{
@@ -40,15 +40,15 @@
 					ci_payments.currency,
 					ci_payments.due_date,
 					ci_payments.created_date,
-					ci_users.username as client_name,
-					ci_users.firstname,
-					ci_users.lastname,
-					ci_users.email as client_email,
-					ci_users.mobile_no as client_mobile_no,
-					ci_users.address as client_address,'
+					users.username as client_name,
+					users.firstname,
+					users.lastname,
+					users.email as client_email,
+					users.mobile_no as client_mobile_no,
+					users.address as client_address,'
 	    	);
 	    	$this->db->from('ci_payments');
-	    	$this->db->join('ci_users', 'ci_users.id = ci_payments.user_id ', 'Left');
+	    	$this->db->join('users', 'users.id = ci_payments.user_id ', 'Left');
 	    	$query = $this->db->get();					 
 			return $query->result_array();
 	    }

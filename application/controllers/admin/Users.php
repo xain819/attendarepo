@@ -139,7 +139,7 @@ class Users extends MY_Controller {
 		{
 			$this->rbac->check_operation_access(); // check opration permission
 			
-			$this->db->delete('ci_users', array('id' => $id));
+			$this->db->delete('users', array('id' => $id));
 			$this->session->set_flashdata('msg', 'Use has been deleted successfully!');
 			redirect(base_url('admin/users'));
 		}

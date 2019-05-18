@@ -5,7 +5,7 @@
 		// get all users for server-side datatable processing (ajax based)
 		public function get_all_users(){
 			$wh =array();
-			$SQL ='SELECT * FROM ci_users';
+			$SQL ='SELECT * FROM users';
 			$wh[] = " is_admin = 0";
 			if(count($wh)>0)
 			{
@@ -24,7 +24,7 @@
 
 			$this->db->where('is_admin', 0);
 			$this->db->order_by('created_at', 'desc');
-			$query = $this->db->get('ci_users');
+			$query = $this->db->get('users');
 			return $result = $query->result_array();
 		}
 
@@ -33,7 +33,7 @@
 		public function get_users_for_csv(){
 			$this->db->where('is_admin', 0);
 			$this->db->select('id, username, firstname, lastname, email, mobile_no, created_at');
-			$this->db->from('ci_users');
+			$this->db->from('users');
 			$query = $this->db->get();
 			return $result = $query->result_array();
 		}
@@ -42,7 +42,7 @@
 		// Count total users
 		public function count_all_users(){
 			$this->db->where('is_admin', 0);
-			return $this->db->count_all('ci_users');
+			return $this->db->count_all('users');
 		}
 
 		//---------------------------------------------------
@@ -55,10 +55,10 @@
 
 			if(count($wh)>0){
 				$WHERE = implode(' and ',$wh);
-				$query = $this->db->get_where('ci_users', $WHERE);
+				$query = $this->db->get_where('users', $WHERE);
 			}
 			else{
-				$query = $this->db->get('ci_users');
+				$query = $this->db->get('users');
 			}
 			return $query->result_array();
 			//echo $this->db->last_query();
@@ -69,7 +69,7 @@
 		// get all users for server-side datatable with advanced search
 		public function get_all_users_by_advance_search(){
 			$wh =array();
-			$SQL ='SELECT * FROM ci_users';
+			$SQL ='SELECT * FROM users';
 			if($this->session->userdata('user_search_type')!='')
 			$wh[]="is_active = '".$this->session->userdata('user_search_type')."'";
 			if($this->session->userdata('user_search_from')!='')
@@ -96,7 +96,7 @@
 		//---------------------------------------------------
 		// Get user detial by ID
 		public function get_user_by_id($id){
-			return $this->db->get_where('ci_users', array(
+			return $this->db->get_where('users', array(
 			'id' => $id))->row_array();
 		}
 
@@ -104,7 +104,7 @@
 		// Edit user Record
 		public function edit_user($data, $id){
 			$this->db->where('id', $id);
-			$this->db->update('ci_users', $data);
+			$this->db->update('users', $data);
 			return true;
 		}
 
