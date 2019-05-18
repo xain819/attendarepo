@@ -33,14 +33,14 @@
                 <td><input class='tgl tgl-ios tgl_checkbox' 
                     data-id="<?=$row['HallPassID']?>" 
                     id='cb_<?=$row['HallPassID']?>' 
-                    type='checkbox' <?php echo ($row['IsEnabled'] == 1)? "checked" : ""; ?> />
+                    type='checkbox' <?php echo ($row['is_active'] == 1)? "checked" : ""; ?> />
                     <label class='tgl-btn' for='cb_<?=$row['HallPassID']?>'></label>
                 </td>
                 <td>
-                    <a href="<?php echo site_url("admin/terminal/edit/".$row['IsEnabled']); ?>" class="btn btn-warning btn-xs mr5" >
+                    <a href="<?php echo site_url("admin/terminalpannel/edit/".$row['HallPassID']); ?>" class="btn btn-warning btn-xs mr5" >
                     <i class="fa fa-edit"></i>
                     </a>
-                    <a href="<?php echo site_url("admin/terminal/delete/".$row['IsEnabled']); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                    <a href="<?php echo site_url("admin/terminalpannel/delete/".$row['HallPassID']); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
                 </td>
             </tr>
             <?php endforeach;?>

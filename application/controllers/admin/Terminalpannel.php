@@ -30,7 +30,7 @@
 
 		function change_status()
 		{   
-			$this->rbac->check_operation_access(); // check opration permission
+			//$this->rbac->check_operation_access(); // check opration permission
 	
 			$this->terminal->change_status();
 		}

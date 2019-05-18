@@ -45,6 +45,13 @@ class Admin extends CI_Controller
 
 		$this->admin->change_status();
 	}
+
+	function change_terminal_status()	
+	{   
+		//$this->rbac->check_operation_access(); // check opration permission
+
+		$this->admin->change_terminal_status();
+	}
 	
 	//--------------------------------------------------
 	function add()

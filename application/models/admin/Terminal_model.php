@@ -55,7 +55,7 @@
 		//-----------------------------------------------------
 		function change_status()
 			{		
-				$this->db->set('IsEnabled',$this->input->post('IsEnabled'));
+				$this->db->set('is_active',$this->input->post('status'));
 				$this->db->where('HallPassID',$this->input->post('id'));
 				$this->db->update('hallpass');
 			} 

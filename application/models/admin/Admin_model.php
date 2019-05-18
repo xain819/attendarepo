@@ -94,7 +94,12 @@ function change_status()
 	$this->db->where('admin_id',$this->input->post('id'));
 	$this->db->update('admin');
 } 
-
+function change_terminal_status()
+{		
+	$this->db->set('IsEnabled',$this->input->post('status'));
+	$this->db->where('HallPassID',$this->input->post('id'));
+	$this->db->update('hallpass');
+} 
 
 public function add_terminal($data){
 	$this->db->insert('hallpass', $data);
