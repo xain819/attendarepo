@@ -321,6 +321,11 @@ var timee;
 <?php }
 ?>
 
+function Studentid(){
+var x = document.getElementById("myText").value;
+  document.getElementById("student_id").innerHTML = x;}
+
+
 var base_url="<?php echo base_url();?>";
 $(document).ready(function(){
   $(document).on('click','.options',function(){

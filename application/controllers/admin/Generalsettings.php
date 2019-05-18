@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class GeneralSetting extends MY_Controller {
+	class Generalsettings extends MY_Controller {
 		public function __construct(){
 			parent::__construct();
 			$this->load->library('rbac');
@@ -10,12 +10,14 @@
 		}
 		public function index(){
 
-			$this->rbac->check_operation_access();
+			//$this->rbac->check_operation_access();
 			$data['title'] = 'General Settings';
-			$data['view'] = 'admin/generalgettings/index';
+			$data['view'] = 'admin/generalsettings/index';
 			$this->load->view('layout', $data);
 			
 		}
+	
+	
 		
 	}
 

@@ -51,24 +51,148 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
       </ul>
       <?php endif; ?>
 
-      <?php if($this->rbac->check_module_permission('GeneralSetting')): ?>  
+      <?php if($this->rbac->check_module_permission('generalsettings')): ?>  
        <ul class="sidebar-menu">
         <li id="admin" class="treeview">
-          <a href="#">
+        <a href="<?= base_url('admin/generalsettings'); ?>">
             <i class="fa fa-user"></i> <span>General Settings</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li id="admin"><a href="<?= base_url('admin/admin'); ?>"><i class="fa fa-circle-o"></i> Admin List</a></li>
-            <li id=""><a href="<?= base_url('admin/profile'); ?>"><i class="fa fa-circle-o"></i>Admin Profile</a></li>
-            <li id=""><a href="<?= base_url('admin/profile/change_pwd'); ?>"><i class="fa fa-circle-o"></i>Change Password</a></li>
-          </ul>
+         
+        </li>
+      </ul>
+      <?php endif; ?>
+
+      <?php if($this->rbac->check_module_permission('masterscheduler')): ?>  
+       <ul class="sidebar-menu">
+        <li id="admin" class="treeview">
+        <a href="<?= base_url('admin/masterscheduler'); ?>">
+            <i class="fa fa-user"></i> <span>Master Scheduler</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+      </ul>
+      <?php endif; ?>
+
+      <?php if($this->rbac->check_module_permission('terminalpannel')): ?>  
+       <ul class="sidebar-menu">
+        <li id="admin" class="treeview">
+        <a href="<?= base_url('admin/terminalpannel'); ?>">
+            <i class="fa fa-user"></i> <span>Terminal Pannel</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+      </ul>
+      <?php endif; ?>
+
+      <?php if($this->rbac->check_module_permission('teacherinformation')): ?>  
+       <ul class="sidebar-menu">
+        <li id="admin" class="treeview">
+        <a href="<?= base_url('admin/teacherinformation'); ?>">
+            <i class="fa fa-user"></i> <span>Teacher Information</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+      </ul>
+      <?php endif; ?>
+
+      <?php if($this->rbac->check_module_permission('studentinformation')): ?>  
+       <ul class="sidebar-menu">
+        <li id="admin" class="treeview">
+        <a href="<?= base_url('admin/studentinformation'); ?>">
+            <i class="fa fa-user"></i> <span>Student Information</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+      </ul>
+      <?php endif; ?>
+
+      <?php if($this->rbac->check_module_permission('controlpannel')): ?>  
+       <ul class="sidebar-menu">
+        <li id="admin" class="treeview">
+        <a href="<?= base_url('admin/controlpannel'); ?>">
+            <i class="fa fa-user"></i> <span>Control Pannel</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+      </ul>
+      <?php endif; ?>
+
+      <?php if($this->rbac->check_module_permission('attendancelog')): ?>  
+       <ul class="sidebar-menu">
+        <li id="admin" class="treeview">
+        <a href="<?= base_url('admin/attendancelog'); ?>">
+            <i class="fa fa-user"></i> <span>Attendance Log</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+      </ul>
+      <?php endif; ?>
+
+      <?php if($this->rbac->check_module_permission('studentrosters')): ?>  
+       <ul class="sidebar-menu">
+        <li id="admin" class="treeview">
+        <a href="<?= base_url('admin/studentrosters'); ?>">
+            <i class="fa fa-user"></i> <span>Student Rosters</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+      </ul>
+      <?php endif; ?>
+
+      <?php if($this->rbac->check_module_permission('reports')): ?>  
+       <ul class="sidebar-menu">
+        <li id="admin" class="treeview">
+        <a href="<?= base_url('admin/reports'); ?>">
+            <i class="fa fa-user"></i> <span>Reports</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+      </ul>
+      <?php endif; ?>
+
+
+      <?php if($this->rbac->check_module_permission('faq')): ?>  
+       <ul class="sidebar-menu">
+        <li id="admin" class="treeview">
+        <a href="<?= base_url('admin/faq'); ?>">
+            <i class="fa fa-user"></i> <span>Help & FAQ</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
         </li>
       </ul>
       <?php endif; ?>
         
+      
       <?php if($this->rbac->check_module_permission('admin_roles')): ?>  
        <ul class="sidebar-menu">
         <li id="admin_roles" class="treeview">
@@ -101,6 +225,8 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
       </ul>
       <?php endif; ?>
 
+
+      <!--
       <?php if($this->rbac->check_module_permission('example')): ?>
       <ul class="sidebar-menu">
         <li id="example" class="treeview">
@@ -281,42 +407,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
         </li>
       </ul>
 
-      <ul class="sidebar-menu">
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
-      </ul>
-
+      -->
 
     </section>
     <!-- /.sidebar -->

@@ -17,7 +17,8 @@ class Auth_model extends CI_Model{
 			$result = $query->row_array();
 		    $validPassword = password_verify($data['password'], $result['password']);
 		    if($validPassword){
-		        return $result = $query->row_array();
+				return $result = $query->row_array();
+				
 		    }
 
 		}

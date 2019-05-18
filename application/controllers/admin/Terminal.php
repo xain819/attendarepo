@@ -3,8 +3,10 @@
 	class Terminal extends MY_Controller {
 		public function __construct(){
 			parent::__construct();
-			$this->load->model('admin/dashboard_model', 'dashboard_model');
-			$this->load->model('dashboard_model');
+			$this->load->library('rbac');
+			$this->load->model('admin/admin_model', 'admin');
+		    $this->rbac->check_module_access();
+			
 		}
 
 		public function index(){
