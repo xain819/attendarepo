@@ -31,6 +31,12 @@
 		$this->load->view('admin/masterscheduler/list',$data);
 		
 		}
+		public function edit()
+		{
+		$data['info'] = $this->Masterscheduler->get_all();
+		$this->load->view('admin/masterscheduler/list',$data);
+		
+		}
 
 		
 
