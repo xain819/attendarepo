@@ -7,10 +7,10 @@
 <div class="col-md-12">
 	      <div class="box box-body">
 	        <div class="col-md-6">
-	          <h4><i class="fa fa-list"></i> &nbsp; Terminal List</h4>
+	          <h4><i class="fa fa-list"></i> &nbsp; Period List</h4>
 	        </div>
 	        <div class="col-md-6 text-right">
-	          <a href="<?= base_url('admin/terminalpannel/add_terminal'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Add New Terminal</a>
+	          <a href="<?= base_url('admin/terminalpannel/add_terminal'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Add New Period</a>
 	        </div>
 	        
 	      </div>
