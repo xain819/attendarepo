@@ -79,11 +79,11 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
       </ul>
       <?php endif; ?>
 
-      <?php if($this->rbac->check_module_permission('terminalpannel')): ?>  
+      <?php if($this->rbac->check_module_permission('hallpass')): ?>  
        <ul class="sidebar-menu">
         <li id="admin" class="treeview">
-        <a href="<?= base_url('admin/terminalpannel'); ?>">
-            <i class="fa fa-user"></i> <span>Terminal Pannel</span>
+        <a href="<?= base_url('admin/hallpass'); ?>">
+            <i class="fa fa-user"></i> <span>Hall Pass Control</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

@@ -1,21 +1,19 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class Terminalpannel extends MY_Controller {
+	class Hallpass extends MY_Controller {
 		public function __construct(){
 			parent::__construct();
 			$this->load->library('rbac');
-			$this->load->model('admin/Terminal_model', 'terminal');
+			$this->load->model('admin/Hallpass_model', 'hallpass');
 
 		    $this->rbac->check_module_access();
 		}
 
 		public function index(){
 
-			
-			
-			
-			$data['title'] = 'Terminal Pannel';
-			$data['view'] = 'admin/terminalpannel/index';
+			$data['PassType']=$this->hallpass->get_pass_type();
+			$data['title'] = 'Hall Pass Pannel';
+			$data['view'] = 'admin/hallpass/index';
 			$this->load->view('layout', $data);
 
 			
@@ -23,8 +21,8 @@
 
 		public function list_data()
 		{
-		$data['info'] = $this->terminal->get_all();
-		$this->load->view('admin/terminalpannel/list',$data);
+		$data['info'] = $this->hallpass->get_all();
+		$this->load->view('admin/hallpass/list',$data);
 		
 		}
 
@@ -32,24 +30,23 @@
 		{   
 			//$this->rbac->check_operation_access(); // check opration permission
 	
-			$this->terminal->change_status();
+			$this->hallpass->change_status();
 		}
 
-		function add_terminal()
+		function add()
 	   {	
 		//$this->rbac->check_operation_access(); // check opration permission
 
-		//$data['admin_roles']=$this->admin->get_admin_roles();
+		$data['PassType']=$this->hallpass->get_pass_type();
 
 		if($this->input->post('submit')){
 				$this->form_validation->set_rules('HallPass', 'Hall Pass', 'trim|required');
 				$this->form_validation->set_rules('PassTypeID', 'Hall Pass Type', 'trim|required');
 				$this->form_validation->set_rules('TimeAllocated', 'Time Allocated', 'trim|required');
-		
-	
+				
 
 				if ($this->form_validation->run() == FALSE) {
-					$data['view'] = 'admin/terminalpannel/add';
+					$data['view'] = 'admin/hallpass/add';
 					$this->load->view('layout', $data);
 				}
 
@@ -59,20 +56,20 @@
 						'HallPass' => $this->input->post('HallPass'),
 						'PassTypeID' => $this->input->post('PassTypeID'),
 						'TimeAllocated' => $this->input->post('TimeAllocated'),
-						'IsEnabled' => 1,
+						'is_active' => 1,
 					
 					);
 					$data = $this->security->xss_clean($data);
-					$result = $this->admin->add_terminal($data);
+					$result = $this->hallpass->add($data);
 					if($result){
 						$this->session->set_flashdata('msg', 'Admin has been added successfully!');
-						redirect(base_url('admin/terminalpannel'));
+						redirect(base_url('admin/hallpass'));
 					}
 				}
 			}
 			else
 			{
-				$data['view']='admin/terminalpannel/add';
+				$data['view']='admin/hallpass/add';
 				$this->load->view('layout',$data);	
 			}
 	}

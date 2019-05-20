@@ -17,6 +17,17 @@
 		  <link rel="stylesheet" href="<?= base_url() ?>public/dist/css/AdminLTE.min.css">
 		  <!-- Datatable style -->
 		  <link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.css">
+			<link rel="stylesheet" href="<?= base_url() ?>public/plugins/daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+			<link rel="stylesheet" href="<?= base_url() ?>public/plugins/datepicker/datepicker3.css">
+			<!-- iCheck for checkboxes and radio inputs -->
+			<link rel="stylesheet" href="<?= base_url() ?>public/plugins/iCheck/all.css">
+			<!-- Bootstrap Color Picker -->
+			<link rel="stylesheet" href="<?= base_url() ?>public/plugins/colorpicker/bootstrap-colorpicker.min.css">
+			<!-- Bootstrap time Picker -->
+			<link rel="stylesheet" href="<?= base_url() ?>public/plugins/timepicker/bootstrap-timepicker.min.css">
+			<!-- Select2 -->
+			<link rel="stylesheet" href="<?= base_url() ?>public/plugins/select2/select2.min.css">
 		  <!-- Custom CSS -->
 		  <link rel="stylesheet" href="<?= base_url() ?>public/dist/css/style.css">		
 		  <!-- AdminLTE Skins. Choose a skin from the css/skins

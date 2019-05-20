@@ -37,16 +37,17 @@
                     <label class='tgl-btn' for='cb_<?=$row['HallPassID']?>'></label>
                 </td>
                 <td>
-                    <a href="<?php echo site_url("admin/terminalpannel/edit/".$row['HallPassID']); ?>" class="btn btn-warning btn-xs mr5" >
+                    <a href="<?php echo site_url("admin/hallpass/edit/".$row['HallPassID']); ?>" class="btn btn-warning btn-xs mr5" >
                     <i class="fa fa-edit"></i>
                     </a>
-                    <a href="<?php echo site_url("admin/terminalpannel/delete/".$row['HallPassID']); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                    <a href="<?php echo site_url("admin/hallpass/delete/".$row['HallPassID']); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
                 </td>
             </tr>
             <?php endforeach;?>
         </tbody>
     </table>
 </div>
+
 
 
 <!-- DataTables -->

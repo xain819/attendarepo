@@ -3,10 +3,10 @@
     <div class="col-md-12">
       <div class="box box-body with-border">
         <div class="col-md-6">
-          <h4><i class="fa fa-plus"></i> &nbsp; Add New Terminal</h4>
+          <h4><i class="fa fa-plus"></i> &nbsp; Add New Period</h4>
         </div>
         <div class="col-md-6 text-right">
-          <a href="<?= base_url('admin/terminalpannel'); ?>" class="btn btn-success"><i class="fa fa-list"></i> Terminal List</a>
+          <a href="<?= base_url('admin/masterscheduler'); ?>" class="btn btn-success"><i class="fa fa-list"></i> Period List</a>
         </div>
       </div>
     </div>

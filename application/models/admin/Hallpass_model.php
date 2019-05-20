@@ -1,5 +1,5 @@
 <?php
-	class Terminal_model extends CI_Model{
+	class Hallpass_model extends CI_Model{
 
 		public function get_all(){
 
@@ -16,7 +16,7 @@
 
 
 
-		public function add_hallpass($data){
+		public function add($data){
 			$this->db->insert('hallpass', $data);
 			return true;
 		}
@@ -63,6 +63,14 @@
 				$this->db->where('HallPassID',$this->input->post('id'));
 				$this->db->update('hallpass');
 			} 
+
+		function get_pass_type()
+		{
+			$this->db->from('passtype');
+			$query=$this->db->get();
+			return $query->result_array();
+		}
+
 
 	}
 

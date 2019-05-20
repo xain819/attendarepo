@@ -15,6 +15,8 @@
 
 	<div class="box">
         <div class="box-header">
+
+
         </div>
         <div class="box-body table-responsive">  
             <?php echo form_open("/",'class="filterdata"') ?>    
@@ -47,6 +49,19 @@
             <?php echo form_close(); ?> 
       	</div>
     </div> 
+
+    <div class="bootstrap-timepicker">
+        <div class="form-group">
+            <label>Time picker:</label>
+            <div class="input-group">
+                <input type="text" class="form-control timepicker">
+                <div class="input-group-addon">
+                <i class="fa fa-clock-o"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+
 </section>
 <!-- Main content -->
 <section class="content mt10">
@@ -72,20 +87,20 @@ function filter_data()
 {
 	$('.data_container').html('<div class="text-center"><img src="<?=base_url('theme/common')?>/preloader.gif"/></div>');
 	$.post('<?=base_url('admin/admin/filterdata')?>',$('.filterdata').serialize(),function(){
-		$('.data_container').load('<?=base_url('admin/terminalpannel/list_data')?>');
+		$('.data_container').load('<?=base_url('admin/masterscheduler/list_data')?>');
 	});
 }
 //------------------------------------------------------------------
 function load_records()
 {
 	$('.data_container').html('<div class="text-center"><img src="<?=base_url('theme/common')?>/preloader.gif"/></div>');
-	$('.data_container').load('<?=base_url('admin/terminalpannel/list_data')?>');
+	$('.data_container').load('<?=base_url('admin/masterscheduler/list_data')?>');
 }
 load_records();
 
 //---------------------------------------------------------------------
 $("body").on("change",".tgl_checkbox",function(){
-	$.post('<?=base_url("admin/terminalpannel/change_status")?>',
+	$.post('<?=base_url("admin/masterscheduler/change_status")?>',
 	{
         '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
 		id : $(this).data('id'),
