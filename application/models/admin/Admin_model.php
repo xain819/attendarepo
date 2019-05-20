@@ -101,6 +101,15 @@ function change_terminal_status()
 	$this->db->update('hallpass');
 } 
 
+public function get_all_hallpass(){
+
+	//$this->db->where('is_admin', 0);
+	//$this->db->order_by('created_at', 'desc');
+	
+	$query = $this->db->get('hallpass');
+	return $result = $query->result_array();
+}
+
 public function add_terminal($data){
 	$this->db->insert('hallpass', $data);
 	return true;

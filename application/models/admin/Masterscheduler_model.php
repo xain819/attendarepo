@@ -1,11 +1,11 @@
 <?php
-	class Terminal_model extends CI_Model{
+	class Masterscheduler_model extends CI_Model{
 
 		public function get_all(){
 
 			//$this->db->where('is_admin', 0);
 			//$this->db->order_by('created_at', 'desc');
-			$query = $this->db->get('hallpass');
+			$query = $this->db->get('period');
 			return $result = $query->result_array();
 		}
 
