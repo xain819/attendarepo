@@ -10,6 +10,8 @@
 		}
 		public function index(){
 
+	
+
 			//$this->rbac->check_operation_access();
 			$data['title'] = 'General Settings';
 			$data['view'] = 'admin/masterscheduler/index';
@@ -23,6 +25,14 @@
 		$this->load->view('admin/masterscheduler/list',$data);
 		
 		}
+		public function add()
+		{
+		$data['info'] = $this->Masterscheduler->get_all();
+		$this->load->view('admin/masterscheduler/list',$data);
+		
+		}
+
+		
 
 	
 	
