@@ -4,7 +4,7 @@
 		public function __construct(){
 			parent::__construct();
 			$this->load->library('rbac');
-			$this->load->model('admin/Masterscheduler_model', 'MasterScheduler');
+			$this->load->model('admin/Masterscheduler_model', 'Masterscheduler');
 
 		    $this->rbac->check_module_access();
 		}
@@ -19,7 +19,7 @@
 
 		public function list_data()
 		{
-		$data['info'] = $this->MasterScheduler->get_all();
+		$data['info'] = $this->Masterscheduler->get_all();
 		$this->load->view('admin/masterscheduler/list',$data);
 		
 		}
