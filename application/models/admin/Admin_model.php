@@ -122,6 +122,16 @@ function delete($id)
 	$this->db->where('admin_id',$id);
 	$this->db->delete('admin');
 } 
+	public function get_all_teacher(){
+		$sql='SELECT * FROM `teacher`';
+		$query=$this->db->query($sql);
+		return $query->result_array();
+	}
+	public function get_department(){
+		$sql='SELECT * FROM `department`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
 
 
 }

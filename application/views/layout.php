@@ -1,3 +1,4 @@
+<script> var base_url="<?php echo base_url();?>";</script>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -102,6 +103,7 @@
 			$('.hr_datepicker').datepicker({ dateFormat: 'YY-mm-dd'});
 	</script>
 	<!-- Notify JS -->
+	
 	<script src="<?= base_url() ?>public/plugins/notify/notify.min.js"></script>
 	<script type="text/javascript">
 	  $(".flash-msg").fadeTo(2000, 500).slideUp(500, function(){

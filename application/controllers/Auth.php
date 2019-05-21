@@ -51,14 +51,11 @@ class Auth extends CI_Controller {
 							'is_admin_login' => TRUE
 						);
 						if($admin_data['admin_role_id']== 9)
-							{
-								$this->session->set_userdata($admin_data);
-								$this->rbac->set_access_in_session(); // set access in session
-								redirect(base_url('admin/terminal'), 'refresh');
-							 }
-
-							 
-						
+						{
+							$this->session->set_userdata($admin_data);
+							$this->rbac->set_access_in_session(); // set access in session
+							redirect(base_url('admin/terminal'), 'refresh');
+						}
 						$this->session->set_userdata($admin_data);
 							$this->rbac->set_access_in_session(); // set access in session
 							redirect(base_url('admin/dashboard'), 'refresh');

@@ -13,21 +13,32 @@
 
     <!-- Main content -->
     <section class="content">
-
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">Title</h3>
 
           <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
+              <button class="btn btn-sm btn-success" id="showaddteachermodal"> add Teacher</button>
           </div>
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+          <table id="Teacher_DataTable" class="table table-bordered table-striped" width="100%">
+            <thead>
+            <tr>
+              <th>TeacherID</th>
+              <th>NumberID</th>
+              <th>FirstName</th>
+              <th>LastName</th>
+              <th>Gender</th>
+              <th>BirthDate</th>
+              <th>ContactNumber</th>
+              <th>DepartmentID</th>
+              <th>Password</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+          </table>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -36,9 +47,14 @@
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-
     </section>
     <!-- /.content -->
+    <script src="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script>
+      var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+          csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+    </script>
+    <script src="<?php echo base_url('public/dist/js/teacherinformation.js');?>"></script>
 
-
-
+<?php $this->load->view('admin/teacherinformation/add');?>
