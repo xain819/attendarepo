@@ -24,7 +24,7 @@
 	    
 	      
 	        <div class="col-md-6 text-left">
-	          <a href="<?= base_url('admin/hallpass/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Add New Hallpass</a>
+	          <a href="<?= base_url('admin/hallpass'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Add New Hallpass</a>
 	        </div>
 	       
 	    

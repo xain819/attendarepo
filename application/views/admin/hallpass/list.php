@@ -24,7 +24,10 @@
                    
                 </td>
                 <td>
-                    <?=$row['PassTypeID']?>
+             
+                <?= $row['PassTypeID']; ?>
+           
+               
                 </td> 
                 <td>
 					<?=$row['TimeAllocated']?>

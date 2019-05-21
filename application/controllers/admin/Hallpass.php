@@ -21,6 +21,7 @@
 
 		public function list_data()
 		{
+				$data['PassType']=$this->hallpass->get_pass_type();
 		$data['info'] = $this->hallpass->get_all();
 		$this->load->view('admin/hallpass/list',$data);
 		
@@ -46,7 +47,7 @@
 				
 
 				if ($this->form_validation->run() == FALSE) {
-					$data['view'] = 'admin/hallpass/add';
+					$data['view'] = 'admin/hallpass/index';
 					$this->load->view('layout', $data);
 				}
 
@@ -69,7 +70,7 @@
 			}
 			else
 			{
-				$data['view']='admin/hallpass/add';
+				$data['view']='admin/hallpass/';
 				$this->load->view('layout',$data);	
 			}
 	}
