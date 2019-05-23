@@ -15,9 +15,11 @@
 	
 
 			//$this->rbac->check_operation_access();
+		
 			$data['info']=$this->Masterscheduler->get_data_array();
 			$data['title'] = 'General Settings';
 			$data['view'] = 'admin/masterscheduler/index';
+	   
 			$this->load->view('layout', $data);
 		
 		
@@ -30,11 +32,26 @@
 		$this->load->view('admin/masterscheduler/list',$data);
 		
 		}
-		public function add()
+		public function add_scheduledate()
 		{
-		$data['info'] = $this->Masterscheduler->get_all();
-		$this->load->view('admin/masterscheduler/list',$data);
+
+		//$data['info'] = $this->Masterscheduler->add_scheduledate($data);
 		
+		$data=$this->input->post('test');
+		$out=json_encode($data);
+		echo $out;
+		print_r($out);
+		print("hi");
+		//$this->masterscheduler->add_scheduledate($data);
+		$this->load->view('admin/masterscheduler/index',$data);
+		
+	
+	
+
+		
+	
+	
+			
 		}
 		public function edit()
 		{
@@ -49,8 +66,7 @@
 				$out = array_values($data['info']);
 				$out=json_encode($out);
 				$this->load->view('admin/masterscheduler/index',$data);
-				print_r($out);
-				echo gettype($out);
+		
 			}	
 
 		

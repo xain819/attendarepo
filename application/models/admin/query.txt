@@ -1,0 +1,28 @@
+CREATE VIEW vGetStudent_all AS
+
+SELECT s.*, sc.ScheduleID, sc.HPLimit,  p.*, l.Location, t.TerminalID, t.Terminal FROM Student AS s 
+INNER JOIN Schedule AS sc ON sc.StudentID = s.StudentID
+INNER JOIN Period AS p ON p.PeriodID = sc.PeriodID
+INNER JOIN Location AS l ON l.LocationID = p.LocationID
+INNER JOIN Terminal AS t ON t.TerminalID = l.TerminalID
+
+
+INSERT INTO Attendance (ScheduleID, AttendanceDate, AttendanceTime, PeriodID, PeriodStatusID, StatusTime)
+SELECT sc.ScheduleID, '2019-05-20', '14:04:01', p.PeriodID, 1, '14:04:01' FROM vGetStudent as v
+WHERE v.StudentID = 1 AND v.IsEnabled = 1 AND v.PeriodID = 1 AND v.TerminalID = 1
+
+INSERT INTO Attendance (StudentScheduleID, AttendanceDate, AttendanceTime, PeriodID, PeriodStatusID, StatusTime)
+SELECT sc.ScheduleID, '2019-05-20', '14:04:01', p.PeriodID, 1, '14:04:01' FROM Student AS s 
+INNER JOIN Schedule AS sc ON sc.StudentID = s.StudentID
+INNER JOIN Period AS p ON p.PeriodID = sc.PeriodID
+INNER JOIN Location AS l ON l.LocationID = p.LocationID
+INNER JOIN Terminal AS t ON t.TerminalID = l.TerminalID
+WHERE s.StudentID = 1 AND s.IsEnabled = 1 AND p.PeriodID = 1 AND t.TerminalID = 1
+
+SELECT * FROM Student AS s 
+INNER JOIN Schedule AS sc ON sc.StudentID = s.StudentID
+INNER JOIN Period AS p ON p.PeriodID = sc.PeriodID
+INNER JOIN Location AS l ON l.LocationID = p.LocationID
+INNER JOIN Terminal AS t ON t.TerminalID = l.TerminalID
+WHERE s.StudentID = 1 AND s.IsEnabled = 1 AND p.PeriodID = 1 AND t.TerminalID = 1
+

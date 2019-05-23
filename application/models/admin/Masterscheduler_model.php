@@ -14,13 +14,12 @@
 			return $result = $query->result_array();
 		}
 
-
-
-		public function add_hallpass($data){
-			$this->db->insert('hallpass', $data);
+		public function add_scheduledate($data){
+			$this->db->insert('scheduledate', $data);
 			return true;
 		}
 
+		
 		//---------------------------------------------------
 		// get all users for server-side datatable processing (ajax based)
 		public function get_all_users(){
@@ -59,13 +58,7 @@
 			$query = $this->db->get('scheduledate');
 			return $result = $query->result_array();
 		}
-		public function get_json_scheduledate(){
-			$wh =array();
-			$SQL ='SELECT * FROM scheduledate';
-			return $this->datatable->LoadJson($SQL);
-		
-		
-		}
+
 
 		//---------------------------------------------------
 		// Change user status

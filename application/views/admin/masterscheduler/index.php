@@ -104,11 +104,7 @@
     </section>
     <section>
       <div>
-      <?= print_r($info);
-          $out=json_encode($info);
-          print_r($out);
-
-                    print_r('hi'); ?>
+ 
         </ul>
      </div>
 
@@ -134,9 +130,7 @@
 var test = '<?php echo json_encode($info); ?>';
 var test_2= JSON.parse(test);
 var test_3=test_2[0]['ScheduleDateID']
-  console.log(test_2[0]['ScheduleDateID']);
-
-  console.log(typeof test_3);
+  
 
 
 
@@ -153,7 +147,7 @@ var test_3=test_2[0]['ScheduleDateID']
         var eventObject = {
           title: $.trim($(this).text()) // use the element's text as the event title
         };
-
+      
         // store the Event Object in the DOM element so we can get to it later
         $(this).data('eventObject', eventObject);
 
@@ -195,14 +189,12 @@ var test_3=test_2[0]['ScheduleDateID']
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
       },
-
       eventLimit: true, // for all non-TimeGrid views
         views: {
           dayGridMonth: {
             eventLimit: 1 // adjust to 6 only for timeGridWeek/timeGridDay
           }
         },
-
       plugins: [ 'dayGrid' ],
       buttonText: {
         today: 'today',
@@ -210,23 +202,10 @@ var test_3=test_2[0]['ScheduleDateID']
         week: 'week',
         day: 'day'
       },
-      events: [
-        {
-     
-        'schedule':'n',
-        start: new Date(y, m, d, 10, 30),
-        
-        }
-  
-      ],
+      events:test_2,
       //Random default events
-     
-     
       editable: true,
-      //defaultView: 'dayGridMonth',
-      
-    
-      
+      //defaultView: 'dayGridMonth',      
       droppable: true, // this allows things to be dropped onto the calendar !!!
       drop: function (date, allDay) { // this function is called when something is dropped
         console.log(new Date(y, m, d))
@@ -243,6 +222,35 @@ var test_3=test_2[0]['ScheduleDateID']
         copiedEventObject.allDay = allDay;
         copiedEventObject.backgroundColor = $(this).css("background-color");
         copiedEventObject.borderColor = $(this).css("border-color");
+        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+          csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+      
+        var data_events=[
+          {
+             
+            'start':new Date(y, m, d),
+             title: $.trim($(this).text()),
+             
+            }
+
+        ];
+     
+        $.ajax({
+        url:base_url+"admin/masterscheduler/add_scheduledate ",
+        type:"POST",
+        data:({[csrfName]: csrfHash,data:data_events,test:'test'}),
+        dataType:'JSON',
+        success:function(){
+          alert('added');
+        }
+       
+        });
+
+        console.log(data_events);
+       
+   
+       
+        
        
 
         // render the event on the calendar
