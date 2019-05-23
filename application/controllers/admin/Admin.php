@@ -38,6 +38,7 @@ class Admin extends CI_Controller
 		$this->load->view('admin/admin/list',$data);
 	}
 
+
 	//-----------------------------------------------------------
 	function change_status()
 	{   

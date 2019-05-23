@@ -5,6 +5,8 @@
 			parent::__construct();
 			$this->load->library('rbac');
 			$this->load->model('admin/Masterscheduler_model', 'Masterscheduler');
+			$this->load->model('admin/Admin_model', 'admin');
+
 
 		    $this->rbac->check_module_access();
 		}
@@ -13,9 +15,12 @@
 	
 
 			//$this->rbac->check_operation_access();
+			$data['info']=$this->admin->get_data_array();
 			$data['title'] = 'General Settings';
 			$data['view'] = 'admin/masterscheduler/index';
 			$this->load->view('layout', $data);
+		
+		
 			
 		}
 
@@ -37,6 +42,16 @@
 		$this->load->view('admin/masterscheduler/list',$data);
 		
 		}
+		public function get_all_data()
+			{
+				
+				$data['info']=$this->admin->get_data_array();
+				//$out = array_values($data['info']);
+				//$out=json_encode($out);
+				$this->load->view('admin/masterscheduler/index',$data);
+				print_r($out);
+				echo gettype($out);
+			}	
 
 		
 

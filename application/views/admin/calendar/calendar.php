@@ -21,14 +21,14 @@
         <div class="col-md-3">
           <div class="box box-solid">
             <div class="box-header with-border">
-              <h4 class="box-title">Draggable Events</h4>
+              <h4 class="box-title">Schedule TYpe</h4>
             </div>
             <div class="box-body">
               <!-- the events -->
               <div id="external-events">
-                <div class="external-event bg-green">Lunch</div>
-                <div class="external-event bg-yellow">Go home</div>
-                <div class="external-event bg-aqua">Do homework</div>
+                <div class="external-event bg-green">A Day</div>
+                <div class="external-event bg-yellow">B Day</div>
+                <div class="external-event bg-aqua">C Dayk</div>
                 <div class="external-event bg-light-blue">Work on UI design</div>
                 <div class="external-event bg-red">Sleep tight</div>
                 <div class="checkbox">
@@ -132,6 +132,7 @@
     }
 
     ini_events($('#external-events div.external-event'));
+  
 
     /* initialize the calendar
      -----------------------------------------------------------------*/
@@ -140,7 +141,12 @@
     var d = date.getDate(),
         m = date.getMonth(),
         y = date.getFullYear();
+        var test=json_decode($out);
+     document.write(test);
+     console.log('tets');
+  console.log(test);
     $('#calendar').fullCalendar({
+      
       header: {
         left: 'prev,next today',
         center: 'title',
@@ -154,19 +160,7 @@
       },
       //Random default events
       events: [
-        {
-          title: 'All Day Event',
-          start: new Date(y, m, 1),
-          backgroundColor: "#f56954", //red
-          borderColor: "#f56954" //red
-        },
-        {
-          title: 'Long Event',
-          start: new Date(y, m, d - 5),
-          end: new Date(y, m, d - 2),
-          backgroundColor: "#f39c12", //yellow
-          borderColor: "#f39c12" //yellow
-        },
+         
         {
           title: 'Meeting',
           start: new Date(y, m, d, 10, 30),
@@ -263,6 +257,9 @@
 </script>
 
 <script>
+  var test=json_decode($out);
+  document.write(test);
+  console.log(test);
   $("#calender").addClass('active');
 </script>  
 

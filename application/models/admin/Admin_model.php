@@ -110,6 +110,15 @@ public function get_all_hallpass(){
 	return $result = $query->result_array();
 }
 
+public function get_data_array(){
+
+	//$this->db->where('is_admin', 0);
+	//$this->db->order_by('created_at', 'desc');
+	
+	$query = $this->db->get('scheduledate');
+	return $result = $query->result_array();
+	
+}
 public function add_terminal($data){
 	$this->db->insert('hallpass', $data);
 	return true;
@@ -135,5 +144,6 @@ function delete($id)
 
 
 }
+
 
 ?>
