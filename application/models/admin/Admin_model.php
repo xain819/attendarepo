@@ -110,26 +110,10 @@ class Admin_model extends CI_Model{
 		return $result = $query->result_array();
 	}
 
-<<<<<<< HEAD
-public function get_data_array(){
-
-	//$this->db->where('is_admin', 0);
-	//$this->db->order_by('created_at', 'desc');
-	
-	$query = $this->db->get('scheduledate');
-	return $result = $query->result_array();
-	
-}
-public function add_terminal($data){
-	$this->db->insert('hallpass', $data);
-	return true;
-}
-=======
 	public function add_terminal($data){
 		$this->db->insert('hallpass', $data);
 		return true;
 	}
->>>>>>> 1c9e600e91a049372569af48bad689695c5a6a7e
 
 
 		//-----------------------------------------------------

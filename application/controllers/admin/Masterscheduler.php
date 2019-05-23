@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class MasterScheduler extends MY_Controller {
+	class Masterscheduler extends MY_Controller {
 		public function __construct(){
 			parent::__construct();
 			$this->load->library('rbac');
@@ -15,7 +15,7 @@
 	
 
 			//$this->rbac->check_operation_access();
-			$data['info']=$this->admin->get_data_array();
+			$data['info']=$this->Masterscheduler->get_data_array();
 			$data['title'] = 'General Settings';
 			$data['view'] = 'admin/masterscheduler/index';
 			$this->load->view('layout', $data);
@@ -45,9 +45,9 @@
 		public function get_all_data()
 			{
 				
-				$data['info']=$this->admin->get_data_array();
-				//$out = array_values($data['info']);
-				//$out=json_encode($out);
+				$data['info']=$this->Masterscheduler->get_data_array();
+				$out = array_values($data['info']);
+				$out=json_encode($out);
 				$this->load->view('admin/masterscheduler/index',$data);
 				print_r($out);
 				echo gettype($out);

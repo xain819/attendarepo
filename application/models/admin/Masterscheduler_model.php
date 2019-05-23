@@ -54,6 +54,19 @@
 			return true;
 		}
 
+		public function get_data_array()
+		{
+			$query = $this->db->get('scheduledate');
+			return $result = $query->result_array();
+		}
+		public function get_json_scheduledate(){
+			$wh =array();
+			$SQL ='SELECT * FROM scheduledate';
+			return $this->datatable->LoadJson($SQL);
+		
+		
+		}
+
 		//---------------------------------------------------
 		// Change user status
 		//-----------------------------------------------------
