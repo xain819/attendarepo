@@ -1,8 +1,8 @@
    <!-- fullCalendar 2.2.5-->
    <link rel="stylesheet" href="<?= base_url() ?>public/plugins/fullcalendar/fullcalendar.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/fullcalendar/fullcalendar.print.css" media="print">
-
-
+  <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
+ 
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -125,6 +125,8 @@
 <!-- fullCalendar 2.2.5 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="<?= base_url() ?>public/plugins/fullcalendar/fullcalendar.min.js"></script>
+<script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
+
 <!-- Page specific script -->
 <script type="text/javascript">
 var test = '<?php echo json_encode($info); ?>';
@@ -166,22 +168,20 @@ var test_3=test_2[0]['ScheduleDateID']
     /* initialize the calendar
      -----------------------------------------------------------------*/
     //Date for the calendar events (dummy data)
-    var date = new Date();
-    var d = date.getDate(),
-        m = date.getMonth(),
-        y = date.getFullYear();
-        console.log(d,m,y)
-        console.log(new Date(y, m, d, 10, 30))
-        console.log(typeof date);
+    var datess = new Date();
+    // var d = datess.getDate(),
+    //     m = datess.getMonth(),
+    //     y = datess.getFullYear();
+        // console.log(new Date(y+"-"+d+"-"+m))
+        // console.log(new Date(y, m, d, 10, 30))
+        // console.log(typeof date);
 
-    
+        var day = datess.getDate();
+        var month = datess.getMonth(); //Be careful! January is 0 not 1
+        var year = datess.getFullYear();
 
-
-
- 
-    
-    
-        
+        var dateString =year  + "-" +(month + 1) + "-" + day;
+      
     $('#calendar').fullCalendar({
       
       header: {
@@ -204,12 +204,12 @@ var test_3=test_2[0]['ScheduleDateID']
       },
       events:test_2,
       //Random default events
-      editable: true,
+      editable: false,
       //defaultView: 'dayGridMonth',      
       droppable: true, // this allows things to be dropped onto the calendar !!!
       drop: function (date, allDay) { // this function is called when something is dropped
-        console.log(new Date(y, m, d))
-        console.log(typeof new Date(y, m, d))
+        // console.log(new Date(y, m, d))
+        // console.log(typeof new Date(y, m, d))
        
         // retrieve the dropped element's stored Event Object
         var originalEventObject = $(this).data('eventObject');
@@ -223,36 +223,49 @@ var test_3=test_2[0]['ScheduleDateID']
         copiedEventObject.backgroundColor = $(this).css("background-color");
         copiedEventObject.borderColor = $(this).css("border-color");
         var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
-          csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
-      
+        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+        console.log(copiedEventObject.start._d);
+
+        var datess = new Date(copiedEventObject.start._d);
+      // var d = datess.getDate(),
+      //     m = datess.getMonth(),
+      //     y = datess.getFullYear();
+        // console.log(new Date(y+"-"+d+"-"+m))
+        // console.log(new Date(y, m, d, 10, 30))
+        // console.log(typeof date);
+
+        var day = datess.getDate();
+        var month = datess.getMonth(); //Be careful! January is 0 not 1
+        var year = datess.getFullYear();
+
+        var dateString =year  + "-" +(month + 1) + "-" + day;
+ 
+        ///ito ngay sir ano output alert ( 2019-5-14) ok na -ngudpate na sa db then available na sa calendar gmana na
+        
+        
         var data_events=[
           {
              
-            'start':new Date(y, m, d),
-             title: $.trim($(this).text()),
-             
+            // 'start':new Date(y, m, d),
+            //  title: $.trim($(this).text()),
+             //2019-05-01
             }
 
         ];
-     
+      
+
+
         $.ajax({
-        url:base_url+"admin/masterscheduler/add_scheduledate ",
-        type:"POST",
-        data:({[csrfName]: csrfHash,data:data_events,test:'test'}),
-        dataType:'JSON',
-        success:function(){
-          alert('added');
-        }
+           url:base_url+"admin/masterscheduler/add_scheduledate",
+           type:"POST",
+           data:({[csrfName]: csrfHash,'start':dateString,'title':$.trim($(this).text())}),
+           dataType:'JSON',
+       })
+       .done(function(data){
+            //oo sir ayusin ko lang saglit yung oppo up hehe
+       })
        
-        });
-
         console.log(data_events);
-       
-   
-       
-        
-       
-
         // render the event on the calendar
         // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
         $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
@@ -262,7 +275,6 @@ var test_3=test_2[0]['ScheduleDateID']
           // if so, remove the element from the "Draggable Events" list
           $(this).remove();
         }
-
       }
     });
 

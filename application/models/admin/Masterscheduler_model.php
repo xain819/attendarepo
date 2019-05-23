@@ -15,8 +15,10 @@
 		}
 
 		public function add_scheduledate($data){
+		//	print_r($data);
 			$this->db->insert('scheduledate', $data);
-			return true;
+
+			return ($this->db->affected_rows() != 1) ? false : true;
 		}
 
 		
