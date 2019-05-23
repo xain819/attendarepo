@@ -30,7 +30,17 @@
 			$response['department']=$departmentoption;
 			echo json_encode($response);
 		}
-		
+		public function manage_teacher(){
+			$data=$this->input->post('data');
+			if($this->input->post('type')=='add-new-teacher'){
+				$status=$this->admin_model->insert_teacher($data);
+			}
+			if($this->input->post('type')=='delete-teacher'){
+				$status=$this->admin_model->delete_teacher($data);
+			}
+			
+			echo json_encode($status);
+		}
 		
 	}
 

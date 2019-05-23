@@ -71,45 +71,46 @@ class Admin_model extends CI_Model{
 		$module = $query->result_array();
 	}
 	return $module;
-}
+	}
 
-	//-----------------------------------------------------
-public function add_admin($data){
-	$this->db->insert('admin', $data);
-	return true;
-}
+		//-----------------------------------------------------
+	public function add_admin($data){
+		$this->db->insert('admin', $data);
+		return true;
+	}
 
-	//---------------------------------------------------
-	// Edit Admin Record
-public function edit_admin($data, $id){
-	$this->db->where('admin_id', $id);
-	$this->db->update('admin', $data);
-	return true;
-}
+		//---------------------------------------------------
+		// Edit Admin Record
+	public function edit_admin($data, $id){
+		$this->db->where('admin_id', $id);
+		$this->db->update('admin', $data);
+		return true;
+	}
 
-	//-----------------------------------------------------
-function change_status()
-{		
-	$this->db->set('is_active',$this->input->post('status'));
-	$this->db->where('admin_id',$this->input->post('id'));
-	$this->db->update('admin');
-} 
-function change_terminal_status()
-{		
-	$this->db->set('IsEnabled',$this->input->post('status'));
-	$this->db->where('HallPassID',$this->input->post('id'));
-	$this->db->update('hallpass');
-} 
+		//-----------------------------------------------------
+	function change_status()
+	{		
+		$this->db->set('is_active',$this->input->post('status'));
+		$this->db->where('admin_id',$this->input->post('id'));
+		$this->db->update('admin');
+	} 
+	function change_terminal_status()
+	{		
+		$this->db->set('IsEnabled',$this->input->post('status'));
+		$this->db->where('HallPassID',$this->input->post('id'));
+		$this->db->update('hallpass');
+	} 
 
-public function get_all_hallpass(){
+	public function get_all_hallpass(){
 
-	//$this->db->where('is_admin', 0);
-	//$this->db->order_by('created_at', 'desc');
-	
-	$query = $this->db->get('hallpass');
-	return $result = $query->result_array();
-}
+		//$this->db->where('is_admin', 0);
+		//$this->db->order_by('created_at', 'desc');
+		
+		$query = $this->db->get('hallpass');
+		return $result = $query->result_array();
+	}
 
+<<<<<<< HEAD
 public function get_data_array(){
 
 	//$this->db->where('is_admin', 0);
@@ -123,14 +124,20 @@ public function add_terminal($data){
 	$this->db->insert('hallpass', $data);
 	return true;
 }
+=======
+	public function add_terminal($data){
+		$this->db->insert('hallpass', $data);
+		return true;
+	}
+>>>>>>> 1c9e600e91a049372569af48bad689695c5a6a7e
 
 
-	//-----------------------------------------------------
-function delete($id)
-{		
-	$this->db->where('admin_id',$id);
-	$this->db->delete('admin');
-} 
+		//-----------------------------------------------------
+	function delete($id)
+	{		
+		$this->db->where('admin_id',$id);
+		$this->db->delete('admin');
+	} 
 	public function get_all_teacher(){
 		$sql='SELECT * FROM `teacher`';
 		$query=$this->db->query($sql);
@@ -140,6 +147,24 @@ function delete($id)
 		$sql='SELECT * FROM `department`';
 		$query=$this->db->query($sql);
 		return $query->result();
+	}
+	public function insert_teacher($data){
+		$data=array(
+			'IDNumber'=>$data[0],
+			'FirstName'=>$data[1],
+			'LastName'=>$data[2],
+			'Gender'=>$data[3],
+			'BirthDate'=>$data[4],
+			'ContactNumber'=>$data[5],
+			'DepartmentID'=>$data[6]
+		);
+		$this->db->insert('teacher',$data);
+		return ($this->db->affected_rows() != 1) ? false : true;
+	}
+	public function delete_teacher($data){
+		$this->db->where('TeacherID',$data);
+		$this->db->delete('teacher');
+		return ($this->db->affected_rows() != 1) ? false : true;
 	}
 
 
