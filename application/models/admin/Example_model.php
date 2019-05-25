@@ -6,7 +6,8 @@
 		public function get_all_users(){
 			$wh =array();
 			$SQL ='SELECT * FROM users';
-			$wh[] = " is_admin = 0";
+			$wh[] = " id == 0";
+			return $this->datatable->LoadJson($SQL);
 			if(count($wh)>0)
 			{
 				$WHERE = implode(' and ',$wh);

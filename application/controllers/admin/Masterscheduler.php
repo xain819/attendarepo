@@ -10,6 +10,84 @@
 
 		    $this->rbac->check_module_access();
 		}
+
+		public function access(){				   					   
+		
+			$data['scheduletypes']= $this->Masterscheduler->get_scheduletype();
+			$data['period_access']= $this->Masterscheduler->get_period_access();
+			$data['period_list']= $this->Masterscheduler->get_all_periods();
+			$data['view'] = 'admin/masterscheduler/schedule_access';
+			
+	
+			
+			$this->load->view('layout', $data);
+
+	   
+		}
+
+		function set_access()
+		{
+			if($this->input->post('status')==1)
+			{
+				$ScheduleType=$this->input->post('module');
+				$data= $this->Masterscheduler->get_period_access_by_type($ScheduleType);
+				echo $data['PeriodAccess'];
+				$new_data=$data['PeriodAccess'].'|'.$this->input->post('period');
+				echo $data['PeriodAccess'];
+				print_r($new_data);
+
+				
+				$this->db->set('PeriodAccess',$new_data);
+				$this->db->where('ScheduleType',$ScheduleType);
+				$this->db->update('scheduletype');
+
+				//print_r ($this->input->post('module'));
+				//print_r ($this->input->post('period'));
+				//print_r ($this->input->post('new'));
+
+				
+			}
+			else
+			{
+				$ScheduleType=$this->input->post('module');
+				$data= $this->Masterscheduler->get_period_access_by_type($ScheduleType);
+				$new_data=$data['PeriodAccess'];
+				$period_remove=$this->input->post('period');
+				$exploded=explode($period_remove.'|',$new_data);
+				print_r($exploded[0]);
+				echo gettype($exploded[0]);
+				$text='';
+
+				//$new_period=$exploded[0].$exploded[1];
+				foreach($exploded as $ex){
+				
+					$text=$text.$ex;
+					
+					
+				}
+
+				if ($exploded[0]==$text){
+					echo 'hi';
+					$this->db->set('PeriodAccess','');
+					$this->db->where('ScheduleType',$ScheduleType);
+					$this->db->update('scheduletype');
+				}
+				else{
+					
+				$this->db->set('PeriodAccess',$text);
+				$this->db->where('ScheduleType',$ScheduleType);
+				$this->db->update('scheduletype');
+
+				}
+				
+				
+			
+					
+			    
+		
+			}
+		} 
+
 		public function index(){
 
 	
@@ -32,19 +110,12 @@
 		$this->load->view('admin/masterscheduler/list',$data);
 		
 		}
-		public function add_schedule4date()
+		public function add_period()
 		{
 
 		//$data['info'] = $this->Masterscheduler->add_scheduledate($data);
 		
-		$data=$this->input->post('data');
-		$out=json_encode($data);
-		print($data);
-		echo $out;
-		print_r($out);
-		print("hi");
-		//$this->masterscheduler->add_scheduledate($data);
-		$this->load->view('admin/masterscheduler/index',$data);
+		
 
 		}
 
@@ -103,17 +174,21 @@
 			 * pero ung delete and update dag dag natin next time
 			 * 
 			 *sige.. bukas try ko.  and need lang natin edit ngaun sa master is ung pag update din ng colors based dun sa legend matic na blue laht
+			 *  paranag nakuha ko na din style ng callendar kunti haha. oo hehe. maganda nga kung mamaster.. hehe
+			 * dpaat expert sa javascript sir haha. kkaiba din kasi mga  pag access ng mga data 
 			 * 
+			 * oo.. pero ok dn object lang.. tska maaus.hehe. complicated lang 
+			 * napush ko na sa github
+			 * 
+			 * sige nasend ko na sau close ko na to sir
+			 * 
+			 * 
+			 * sige sir pupull muna ako . pasend pala ng full database na gamit mo jan sir. yung laman nung nasend mo kanina sir is yung scheduled date lang
 			 */
 			
 		}
 	
 
-		
-	
-	
-			
-		
 		public function edit()
 		{
 		$data['info'] = $this->Masterscheduler->get_all();
@@ -130,7 +205,7 @@
 		
 			}	
 
-		
+		   
 
 	
 	
