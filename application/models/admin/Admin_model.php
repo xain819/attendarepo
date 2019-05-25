@@ -123,33 +123,55 @@ class Admin_model extends CI_Model{
 		$this->db->delete('admin');
 	} 
 	public function get_all_teacher(){
-		$sql='SELECT * FROM `teacher`';
+		$sql='SELECT * FROM `teacher` as t INNER JOIN department as d ON t.DepartmentID=d.DepartmentID ';
 		$query=$this->db->query($sql);
 		return $query->result_array();
+	}
+	public function get_teacher_byteacherid($teacherid){
+		$sql='SELECT * FROM teacher where TeacherID=?';
+		$query=$this->db->query($sql,array($teacherid));
+		return $query->result();
 	}
 	public function get_department(){
 		$sql='SELECT * FROM `department`';
 		$query=$this->db->query($sql);
 		return $query->result();
 	}
-	public function insert_teacher($data){
-		$data=array(
-			'IDNumber'=>$data[1],
-			'FirstName'=>$data[2],
-			'LastName'=>$data[3],
-			'Gender'=>$data[4],
-			'BirthDate'=>$data[5],
-			'ContactNumber'=>$data[6],
-			'DepartmentID'=>$data[7]
-		);
-		$this->db->insert('teacher',$data);
-		return ($this->db->affected_rows() != 1) ? false : true;
+	public function insert_teacher($type,$data){
+	
+		if($type=='delete-teacher'){
+			$this->db->where('TeacherID',$data);
+			$this->db->delete('teacher');
+			return ($this->db->affected_rows() != 1) ? false : true;
+		}else{
+			$values=array(
+				'IDNumber'=>$data[1],
+				'FirstName'=>$data[2],
+				'LastName'=>$data[3],
+				'Gender'=>$data[4],
+				'BirthDate'=>$data[5],
+				'ContactNumber'=>$data[6],
+				'DepartmentID'=>$data[7],
+				'Password'=>$data[8]
+			);
+			if($type=='edit-teacher'){
+				$this->db->where('teacherid', $data[9]);
+				$this->db->update('teacher', $values);
+				return ($this->db->affected_rows() != 1) ? false : true;
+			}else{
+				$this->db->insert('teacher',$values);
+				return ($this->db->affected_rows() != 1) ? false : true;
+			}
+			
+		}
+		
 	}
-	public function delete_teacher($data){
-		$this->db->where('TeacherID',$data);
-		$this->db->delete('teacher');
-		return ($this->db->affected_rows() != 1) ? false : true;
-	}
+	// public function delete_teacher($teacherid){
+	// 	$this->db->where('TeacherID',$teacherid);
+	// 	$this->db->delete('teacher');
+	// 	return ($this->db->affected_rows() != 1) ? false : true;
+	// }
+
 
 
 }

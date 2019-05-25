@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-
+	
 	class TeacherInformation extends MY_Controller {
 		public function __construct(){
 			parent::__construct();
@@ -27,19 +27,37 @@
 				$departmentoption.='<option></option>';
 				$departmentoption.='<option value="'.$value->DepartmentID.'">'.$value->Department.'</option>';
 			}
-			$response['department']=$departmentoption;
+			return $departmentoption;
+		}
+		public function teacher_settings(){
+			$response['department']=$this->get_department_option();
 			echo json_encode($response);
 		}
 		public function manage_teacher(){
 			$data=$this->input->post('data');
 			if($this->input->post('type')=='add-new-teacher'){
-				$status=$this->admin_model->insert_teacher($data);
+				$type='add-new-teacher';
+				$status=$this->admin_model->insert_teacher($type,$data);
 			}
 			if($this->input->post('type')=='delete-teacher'){
-				$status=$this->admin_model->delete_teacher($data);
+				$type='delete-teacher';
+				$status=$this->admin_model->insert_teacher($type,$data);
 			}
-			
+			if($this->input->post('type')=='edit-teacher'){
+				$type='edit-teacher';
+				$status=$this->admin_model->insert_teacher($type,$data);
+			}
 			echo json_encode($status);
+		}
+		
+		public function get_teacher_byteacherid(){
+			$teacherid=$this->input->post('data');
+			$department=$this->get_department_option(); 
+			$teacher_info=$this->admin_model->get_teacher_byteacherid($teacherid);
+			$response['department']=$department;
+			$response['teacher_info']=$teacher_info;
+			echo json_encode($response);
+		//	echo json_encode($response['teacher_info'][]=$result);
 		}
 		
 	}
