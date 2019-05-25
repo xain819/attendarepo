@@ -41,38 +41,77 @@ $(document).ready(function(){
         
     });
     $(document).on('click','#addteacher',function(){ 
-       $.ajax({
-        url:base_url+"admin/teacherinformation/manage_teacher ",
-        type:"POST",
-        data:({[csrfName]: csrfHash,type:'add-new-teacher',data:get_form_values("#add-teacher-form-id")}),
-        dataType:'JSON',
-        })
-        .done(function(data){
-            if(data===true){
-                alert("Successfully Added");
-                Teacher_DataTable.ajax.reload();
-            }else{
-                alert("Error Adding Please Contact your system Administrator");
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+          },
+          function(isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    url:base_url+"admin/teacherinformation/manage_teacher ",
+                    type:"POST",
+                    data:({[csrfName]: csrfHash,type:'add-new-teacher',data:get_form_values("#add-teacher-form-id")}),
+                    dataType:'JSON',
+                })
+                .done(function(data){
+                    if(data===true){
+                        swal("Success!", "Successfully Added", "success");
+                        Teacher_DataTable.ajax.reload();
+                    }else{
+                        swal("Failed","Error Adding Please Contact your system Administrator",'error');
+                    }
+                })
+             
+            } else {
+              swal("Cancelled", "Your imaginary file is safe :)", "error");
             }
-        })
+          });
+       
 
     })
     $(document).on('click','.delete_teacher',function(){
-       
-        $.ajax({
-            url:base_url+"admin/teacherinformation/manage_teacher ",
-            type:"POST",
-            data:({[csrfName]: csrfHash,type:'delete-teacher',data:$(this).val()}),
-            dataType:'JSON',
-            })
-            .done(function(data){
-                if(data===true){
-                    alert("Successfully Deleted");
-                    Teacher_DataTable.ajax.reload();
-                }else{
-                    alert("Error Adding Please Contact your system Administrator");
-                }
-            })
+        id=$(this).val();
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+          },
+          function(isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    url:base_url+"admin/teacherinformation/manage_teacher ",
+                    type:"POST",
+                    data:({[csrfName]: csrfHash,type:'delete-teacher',data:id}),
+                    dataType:'JSON',
+                })
+                .done(function(data){
+                    if(data===true){
+                        swal("Success!", "Successfully Deleted", "success");
+                        Teacher_DataTable.ajax.reload();
+                    }else{
+                        swal("Failed","Error Adding Please Contact your system Administrator","error");
+                    }
+                })
+              
+            } else {
+              swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+          });
     
     })
     function get_form_values(formid){

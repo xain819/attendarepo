@@ -59,18 +59,18 @@ class Admin_model extends CI_Model{
 		admin.email like '%$filterData%' OR
 		admin.mobile_no like '%$filterData%' OR
 		admin.username like '%$filterData%'
-	)";
-	$this->db->where($where);
+		)";
+		$this->db->where($where);
 
-	$this->db->order_by('admin.admin_id','desc');
-		//$this->db->limit($limit, $offset);
-	$query = $this->db->get();
-	$module = array();
-	if ($query->num_rows() > 0) 
-	{
-		$module = $query->result_array();
-	}
-	return $module;
+		$this->db->order_by('admin.admin_id','desc');
+			//$this->db->limit($limit, $offset);
+		$query = $this->db->get();
+		$module = array();
+		if ($query->num_rows() > 0) 
+		{
+			$module = $query->result_array();
+		}
+		return $module;
 	}
 
 		//-----------------------------------------------------
@@ -134,13 +134,13 @@ class Admin_model extends CI_Model{
 	}
 	public function insert_teacher($data){
 		$data=array(
-			'IDNumber'=>$data[0],
-			'FirstName'=>$data[1],
-			'LastName'=>$data[2],
-			'Gender'=>$data[3],
-			'BirthDate'=>$data[4],
-			'ContactNumber'=>$data[5],
-			'DepartmentID'=>$data[6]
+			'IDNumber'=>$data[1],
+			'FirstName'=>$data[2],
+			'LastName'=>$data[3],
+			'Gender'=>$data[4],
+			'BirthDate'=>$data[5],
+			'ContactNumber'=>$data[6],
+			'DepartmentID'=>$data[7]
 		);
 		$this->db->insert('teacher',$data);
 		return ($this->db->affected_rows() != 1) ? false : true;
