@@ -95,6 +95,7 @@ class Admin_roles_model extends CI_Model{
 			$data[]=$v['module'].'/'.$v['operation'];
 		}
 		return $data;
+
 	} 	
 
 }

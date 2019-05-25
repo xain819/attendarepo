@@ -122,9 +122,6 @@ function load_records()
 {
 	$('.data_container').html('<div class="text-center"><img src="<?=base_url('theme/common')?>/preloader.gif"/></div>');
 	$('.data_container').load('<?=base_url('admin/hallpass/list_data')?>');
-
-
-
 }
 load_records();
 

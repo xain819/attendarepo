@@ -75,7 +75,9 @@ class Admin_roles extends CI_Controller
 		$data['access']= $this->admin_roles->get_access($id);
 		$data['modules']= $this->admin_roles->get_modules();
 		$data['view']='admin/admin_roles/access';
+	
 		$this->load->view('layout',$data);	
+	
 	}
 
 	//-----------------------------------------------------------

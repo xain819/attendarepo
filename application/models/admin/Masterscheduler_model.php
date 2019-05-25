@@ -22,21 +22,34 @@
 		}
 
 		
+			
 		//---------------------------------------------------
 		// get all users for server-side datatable processing (ajax based)
-		public function get_all_users(){
-			$wh =array();
-			$SQL ='SELECT * FROM users';
-			$wh[] = " is_admin = 0";
-			if(count($wh)>0)
+		public function get_scheduletype(){
+			$sql='SELECT * FROM `scheduletype`';
+			$query=$this->db->query($sql);
+			return $query->result_array();
+		}
+		public function get_all_periods(){
+			$sql='SELECT * FROM `period`';
+			$query=$this->db->query($sql);
+			return $query->result_array();
+		}
+		function get_period_access()
+		{
+			$this->db->from('scheduletype');
+			$query=$this->db->get();
+			$data=array();
+			foreach($query->result_array() as $v)
 			{
-				$WHERE = implode(' and ',$wh);
-				return $this->datatable->LoadJson($SQL,$WHERE);
+				$data[]=$v['ScheduleType'].'/'.$v['PeriodAccess'];
 			}
-			else
-			{
-				return $this->datatable->LoadJson($SQL);
-			}
+			return $data;
+		} 	
+
+		public function get_period_access_by_type($type){
+			$query = $this->db->get_where('scheduletype', array('ScheduleType' => $type));
+			return $result = $query->row_array();
 		}
 
 
@@ -60,6 +73,11 @@
 			$query = $this->db->get('scheduledate');
 			return $result = $query->result_array();
 		}
+		public function get_all_scheduletype()
+		{
+			$query = $this->db->get('scheduletype');
+			return $result = $query->result_array();
+		}
 
 
 		//---------------------------------------------------
@@ -71,6 +89,25 @@
 				$this->db->where('HallPassID',$this->input->post('id'));
 				$this->db->update('hallpass');
 			} 
+
+
+		function set_access()
+		{
+			if($this->input->post('status')==1)
+			{
+				$this->db->set('admin_role_id',$this->input->post('admin_role_id'));
+				$this->db->set('module',$this->input->post('module'));
+				$this->db->set('operation',$this->input->post('operation'));
+				$this->db->insert('module_access');
+			}
+			else
+			{
+				$this->db->where('admin_role_id',$this->input->post('admin_role_id'));
+				$this->db->where('module',$this->input->post('module'));
+				$this->db->where('operation',$this->input->post('operation'));
+				$this->db->delete('module_access');
+			}
+		} 
 
 	}
 

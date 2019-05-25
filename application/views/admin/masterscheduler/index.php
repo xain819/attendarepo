@@ -49,43 +49,7 @@
             </div>
             <!-- /.box-body -->
           </div>
-          <!-- /. box -->
-          <div class="box box-solid">
-            <div class="box-header with-border">
-              <h3 class="box-title">Create Event</h3>
-            </div>
-            <div class="box-body">
-              <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
-                <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
-                <ul class="fc-color-picker" id="color-chooser">
-                  <li><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
-                  
-               
-              </div>
-              <!-- /btn-group -->
-              <div class="input-group">
-                <input id="new-event" type="text" class="form-control" placeholder="Event Title">
-
-                <div class="input-group-btn">
-                  <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
-                </div>
-                <!-- /btn-group -->
-              </div>
-              <!-- /input-group -->
-            </div>
-          </div>
+        
         </div>
         <!-- /.col -->
         <div class="col-md-9">
@@ -208,11 +172,14 @@ var test_3=test_2[0]['ScheduleDateID']
       //defaultView: 'dayGridMonth',      
       droppable: true, // this allows things to be dropped onto the calendar !!!
       drop: function (date, allDay) { // this function is called when something is dropped
-        // console.log(new Date(y, m, d))
+       // console.log(new Date(y, m, d))
         // console.log(typeof new Date(y, m, d))
+    
        
         // retrieve the dropped element's stored Event Object
         var originalEventObject = $(this).data('eventObject');
+        console.log(originalEventObject);
+       
 
         // we need to copy it, so that multiple events don't have a reference to the same object
         var copiedEventObject = $.extend({}, originalEventObject);
@@ -225,7 +192,7 @@ var test_3=test_2[0]['ScheduleDateID']
         var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
         csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
         console.log(copiedEventObject.start._d);
-
+         
         var datess = new Date(copiedEventObject.start._d);
       // var d = datess.getDate(),
       //     m = datess.getMonth(),

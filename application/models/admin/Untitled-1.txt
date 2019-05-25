@@ -1,0 +1,20 @@
+  <div class="col-sm-9">
+								<?php foreach($period_list as $k => $operation):?>
+                                    <div class="col-sm-3 pb-15">	
+                                        <span class="pull-left">
+                                            <input type='checkbox'
+                                            class='tgl tgl-ios tgl_checkbox'
+                                            data-module='<?= $module['scheduletypes'] ?>'
+                                            data-operation='<?= $operation; ?>'
+                                            id='cb_<?=$kk.$k?>' 
+                                            <?php if (in_array($module['scheduletypes'].'/'.$operation, $access)) echo 'checked="checked"';?>
+
+                                            />
+                                            <label class='tgl-btn' for='cb_<?=$kk.$k?>'></label> 
+                                        </span>
+                                        <span class="mt-15 pl-10">
+											<?=ucwords($operation)?>
+                                        </span>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
