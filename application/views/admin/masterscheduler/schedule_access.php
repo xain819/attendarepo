@@ -3,7 +3,7 @@
 	    <div class="col-md-12">
 	      <div class="box box-body">
 	        <div class="col-md-6">
-	          <h4><i class="fa fa-list"></i> &nbsp; Admin Permission</h4>
+	          <h4><i class="fa fa-list"></i> &nbsp; Manage Schedule Type</h4>
 	        </div>
 	        <div class="col-md-6 text-right">
 	        	<a href="#" onclick="window.history.go(-1); return false;" class="btn btn-primary pull-right"><i class="fa fa-reply mr5"></i> Back</a>
@@ -11,6 +11,11 @@
 	      </div>
 	    </div>
 	</div> 
+
+
+
+
+
 	<div class="box">
 		<div class="box-header">
 			<div class="row">
@@ -24,11 +29,14 @@
 		</div>
 		<div class="box-body">
 			<div class="row">
-				<div class="col-md-12">
-					<?php foreach($scheduletypes as $kk => $module): ?>
+
+			
+
+				<div class="col-md-12 col-sm-6 col-xs-12 ">
+				<?php foreach($scheduletypes as $kk => $module): ?>
 					<div class="col-md-12">
 						<div class="row">
-                        	<div class="col-sm-3">
+                        	<div class="col-sm-2">
                         		<h5 class="m-0">
                                 	<strong class="f-16"><?=$module['ScheduleType']?></strong>
                                 </h5>
@@ -41,9 +49,6 @@
                                             <input type='checkbox'
                                             class='tgl tgl-ios tgl_checkbox'
                                             data-module='<?= $module['ScheduleType'] ?>'
-																					
-																						
-                                            
                                             id='cb_<?=$kk.$k?>'		
 																				
 									               							<?php foreach(explode("|",$module['PeriodAccess']) as $l => $period_access_list):?>
@@ -56,8 +61,7 @@
 																								
 																								
 																							}
-																							
-																				
+	
 																							?> 
 																					
 																						<?php endforeach; ?>
@@ -80,6 +84,28 @@
 					</div>  
 					<?php endforeach; ?>
 				</div>
+
+
+				
+
+
+
+
+
+
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+
 			</div>
 		</div>
 	</div>

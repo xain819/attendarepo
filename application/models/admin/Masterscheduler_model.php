@@ -91,22 +91,25 @@
 			} 
 
 
-		function set_access()
-		{
-			if($this->input->post('status')==1)
+			function set_access()
 			{
-				$this->db->set('admin_role_id',$this->input->post('admin_role_id'));
-				$this->db->set('module',$this->input->post('module'));
-				$this->db->set('operation',$this->input->post('operation'));
-				$this->db->insert('module_access');
-			}
-			else
-			{
-				$this->db->where('admin_role_id',$this->input->post('admin_role_id'));
-				$this->db->where('module',$this->input->post('module'));
-				$this->db->where('operation',$this->input->post('operation'));
-				$this->db->delete('module_access');
-			}
+				if($this->input->post('status')==1)
+				{
+					$this->db->set('admin_role_id',$this->input->post('admin_role_id'));
+					$this->db->set('module',$this->input->post('module'));
+					$this->db->set('operation',$this->input->post('operation'));
+					$this->db->insert('module_access');
+				}
+				else
+				{
+					$this->db->where('admin_role_id',$this->input->post('admin_role_id'));
+					$this->db->where('module',$this->input->post('module'));
+					$this->db->where('operation',$this->input->post('operation'));
+					$this->db->delete('module_access');
+				}
+		
+
+
 		} 
 		public function delete_scheduledate($scheduledateid){
 			$this->db->where('ScheduleDateID',$scheduledateid);

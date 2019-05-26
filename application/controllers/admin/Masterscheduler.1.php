@@ -6,29 +6,21 @@
 			$this->load->library('rbac');
 			$this->load->model('admin/Masterscheduler_model', 'Masterscheduler');
 			$this->load->model('admin/Admin_model', 'admin');
+
+
 		    $this->rbac->check_module_access();
 		}
 
-		//  get all the data for schedule dates  can delte this
-		public function get_all_data()
-		{
-			
-			$data['info']=$this->Masterscheduler->get_data_array();
-			$out = array_values($data['info']);
-			$out=json_encode($out);
-			$this->load->view('admin/masterscheduler/index',$data);
-	
-		}	
-
-			//roles and permision style for period allocation 
 		public function access(){				   					   
 		
 			$data['scheduletypes']= $this->Masterscheduler->get_scheduletype();
+			
 			$data['period_access']= $this->Masterscheduler->get_period_access();
 			$data['period_list']= $this->Masterscheduler->get_all_periods();
 			$data['view'] = 'admin/masterscheduler/schedule_access';
 			$this->load->view('layout', $data);
 		}
+
 		function set_access()
 		{
 			if($this->input->post('status')==1)
@@ -54,37 +46,72 @@
 				print_r($exploded[0]);
 				echo gettype($exploded[0]);
 				$text='';
+
+				//$new_period=$exploded[0].$exploded[1];
 				foreach($exploded as $ex){
+				
 					$text=$text.$ex;
+					
+					
 				}
+
 				if ($exploded[0]==$text){
+					echo 'hi';
 					$this->db->set('PeriodAccess','');
 					$this->db->where('ScheduleType',$ScheduleType);
 					$this->db->update('scheduletype');
 				}
 				else{
+					
 				$this->db->set('PeriodAccess',$text);
 				$this->db->where('ScheduleType',$ScheduleType);
 				$this->db->update('scheduletype');
 
 				}
+				
+				
+			
+					
+			    
 		
 			}
 		} 
 
 		public function index(){
+
+	
+
 			//$this->rbac->check_operation_access();
+		
 			$data['info']=$this->Masterscheduler->get_data_array();
+			
+
+			
 			$data['title'] = 'General Settings';
 			$data['view'] = 'admin/masterscheduler/index';
 			$this->load->view('layout', $data);
+		
+		
+			
 		}
 
-		public function period_access()
+		public function list_data()
 		{
-			$data['view'] = 'admin/masterscheduler/period_access';
-			$this->load->view('layout', $data);
+		$data['info'] = $this->Masterscheduler->get_all();
+		$this->load->view('admin/masterscheduler/list',$data);
+		
 		}
+		public function add_period()
+		{
+
+		//$data['info'] = $this->Masterscheduler->add_scheduledate($data);
+		
+		
+
+		}
+
+
+		
 		public function add_scheduledate()
 		{
 
@@ -98,13 +125,12 @@
 			);
 			echo(gettype($backgroundcolor));
 			$status=$this->Masterscheduler->add_scheduledate($data);
-			print_r($data);				
+
+			print_r($data);
+				
 		}
-		public function delete_scheduledate(){
-			$scheduledateid=$this->input->post('data');
-			$status=$this->Masterscheduler->delete_scheduledate($scheduledateid);
-			echo json_encode($status);
-		}
+	
+
 	
 
 		public function edit()
@@ -112,8 +138,16 @@
 		$data['info'] = $this->Masterscheduler->get_all();
 		$this->load->view('admin/masterscheduler/list',$data);
 		
-		
 		}
+		public function get_all_data()
+			{
+				
+				$data['info']=$this->Masterscheduler->get_data_array();
+				$out = array_values($data['info']);
+				$out=json_encode($out);
+				$this->load->view('admin/masterscheduler/index',$data);
+		
+			}	
 
 		   
 

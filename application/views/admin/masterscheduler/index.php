@@ -49,8 +49,44 @@
             </div>
             <!-- /.box-body -->
           </div>
-        
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Create New Schedule Type</h3>
+            </div>
+            <div class="box-body">
+              <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
+                <ul class="fc-color-picker" id="color-chooser">
+                  <li><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
+                </ul>
+              </div>
+              <!-- /btn-group -->
+              <div class="input-group">
+                <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+
+                <div class="input-group-btn">
+                  <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
+                </div>
+                <!-- /btn-group -->
+              </div>
+              <!-- /input-group -->
+            </div>
+          </div>
         </div>
+
         <!-- /.col -->
         <div class="col-md-9">
           <div class="box box-primary">
@@ -99,8 +135,14 @@
 var test = '<?php echo json_encode($info); ?>';
 var test_2= JSON.parse(test);
 var test_3=test_2[0]['ScheduleDateID']
+<<<<<<< HEAD
+console.log(test_2);
+  
+
+=======
   console.log(test_2);
 console.log(test_2);
+>>>>>>> 7267c6813705b0e52fbb68e2f275fd29597f7ae2
 
 
 
@@ -216,12 +258,18 @@ console.log(test_2);
         $.ajax({
            url:base_url+"admin/masterscheduler/add_scheduledate",
            type:"POST",
-           data:({[csrfName]: csrfHash,'start':dateString,'title':$.trim($(this).text())}),
+           data:({[csrfName]: csrfHash,backgroundColor:$(this).css("background-color"),'start':dateString,'title':$.trim($(this).text())}),
            dataType:'JSON',
        })
        .done(function(data){
-            //oo sir ayusin ko lang saglit yung oppo up hehe
+   
        })
+<<<<<<< HEAD
+
+        console.log($(this).css("background-color"));
+        console.log(data_events);
+=======
+>>>>>>> 7267c6813705b0e52fbb68e2f275fd29597f7ae2
         // render the event on the calendar
         // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
         $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);

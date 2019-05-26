@@ -78,6 +78,7 @@
             </div>
           </div>
         </div>
+        
         <!-- /.col -->
         <div class="col-md-9">
           <div class="box box-primary">
@@ -145,6 +146,8 @@
      document.write(test);
      console.log('tets');
   console.log(test);
+
+  
     $('#calendar').fullCalendar({
       
       header: {
@@ -257,9 +260,7 @@
 </script>
 
 <script>
-  var test=json_decode($out);
-  document.write(test);
-  console.log(test);
+
   $("#calender").addClass('active');
 </script>  
 
