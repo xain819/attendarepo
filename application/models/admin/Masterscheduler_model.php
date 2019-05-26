@@ -108,6 +108,11 @@
 				$this->db->delete('module_access');
 			}
 		} 
+		public function delete_scheduledate($scheduledateid){
+			$this->db->where('ScheduleDateID',$scheduledateid);
+			$this->db->delete('ScheduleDate');
+			return ($this->db->affected_rows() != 1) ? false : true;
+		}
 
 	}
 

@@ -103,7 +103,10 @@
 		
 			
 		}
-
+		public function get_events(){
+			$data['info']=$this->Masterscheduler->get_data_array();
+			echo json_encode($data['info']);
+		}
 		public function list_data()
 		{
 		$data['info'] = $this->Masterscheduler->get_all();
@@ -187,12 +190,18 @@
 			 */
 			
 		}
+		public function delete_scheduledate(){
+			$scheduledateid=$this->input->post('data');
+			$status=$this->Masterscheduler->delete_scheduledate($scheduledateid);
+			echo json_encode($status);
+		}
 	
 
 		public function edit()
 		{
 		$data['info'] = $this->Masterscheduler->get_all();
 		$this->load->view('admin/masterscheduler/list',$data);
+		
 		
 		}
 		public function get_all_data()
