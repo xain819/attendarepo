@@ -73,6 +73,7 @@
 			return $result = $query->result_array();
 			
 		}
+	
 		public function get_all_scheduletype()
 		{
 			$query = $this->db->get('scheduletype');
@@ -116,6 +117,8 @@
 			$this->db->delete('ScheduleDate');
 			return ($this->db->affected_rows() != 1) ? false : true;
 		}
+
+
 
 	}
 

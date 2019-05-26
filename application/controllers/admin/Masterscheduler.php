@@ -111,6 +111,14 @@
 			echo json_encode($info);
 
 		}
+		public function scheduletype(){
+			$scheduletypee='';
+				$result=$this->Masterscheduler->get_all_scheduletype();
+				foreach($result as $value){
+					$scheduletypee.= '<div class="external-event '.$value['backgroundColor'].'">'.$value['ScheduleType'].'</div>';
+				}
+			echo json_encode($scheduletypee);
+		}
 
 		public function edit()
 		{
@@ -118,6 +126,15 @@
 		$this->load->view('admin/masterscheduler/list',$data);
 		
 		
+		}
+
+		public function get_all_periods(){
+
+	
+			$data=$this->admin_model->get_all_teacher();
+			$this->load->viwe('admin/masterscheduler/period_access',$data);
+			
+
 		}
 
 		   
