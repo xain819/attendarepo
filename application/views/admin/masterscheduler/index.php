@@ -206,8 +206,8 @@ console.log(test_2);
         day: 'day'
       },
       
-      // events:test_2,
-      events:base_url+"admin/masterscheduler/get_events",
+       events:test_2,
+      //events:base_url+"admin/masterscheduler/get_events",
       //Random default events
       editable: true,
       //defaultView: 'dayGridMonth',      
