@@ -122,6 +122,7 @@ class Admin_model extends CI_Model{
 		$this->db->where('admin_id',$id);
 		$this->db->delete('admin');
 	} 
+	//Teacher Start
 	public function get_all_teacher(){
 		$sql='SELECT * FROM `teacher` as t INNER JOIN department as d ON t.DepartmentID=d.DepartmentID ';
 		$query=$this->db->query($sql);
@@ -137,7 +138,7 @@ class Admin_model extends CI_Model{
 		$query=$this->db->query($sql);
 		return $query->result();
 	}
-	public function insert_teacher($type,$data){
+	public function manage_teacher($type,$data){
 	
 		if($type=='delete-teacher'){
 			$this->db->where('TeacherID',$data);
@@ -166,14 +167,76 @@ class Admin_model extends CI_Model{
 		}
 		
 	}
-	// public function delete_teacher($teacherid){
-	// 	$this->db->where('TeacherID',$teacherid);
-	// 	$this->db->delete('teacher');
-	// 	return ($this->db->affected_rows() != 1) ? false : true;
-	// }
-
-
-
+	//Teacher End
+	//Student Start
+	public function get_all_student(){
+		$sql='SELECT * FROM `student` as s 
+				INNER JOIN race as r ON s.RaceID=r.RaceID 
+				INNER JOIN Section as sec ON s.SectionID=sec.SectionID
+				INNER JOIN gradelevel as gl ON s.GradeLevelID =gl.GradeLevelID
+				INNER JOIN Distinction as d on s.DistinctionID=d.DistinctionID ';
+		$query=$this->db->query($sql);
+		return $query->result_array();
+	}
+	public function get_student_bystudentid($studentid){
+		$sql='SELECT * FROM student where StudentID=?';
+		$query=$this->db->query($sql,array($studentid));
+		return $query->result();
+	}
+	public function get_race(){
+		$sql='SELECT * FROM `race`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	public function get_section(){
+		$sql='SELECT * FROM `section`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	public function get_grade_level(){
+		$sql='SELECT * FROM `gradelevel`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	public function get_distinction(){
+		$sql='SELECT * FROM `distinction`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	public function manage_student($type,$data){
+		
+		if($type=='delete-student'){
+			$this->db->where('StudentID',$data);
+			$this->db->delete('student');
+			return ($this->db->affected_rows() != 1) ? false : true;
+		}else{
+			$values=array(
+				'IDNumber'=>$data[1],
+				'FirstName'=>$data[2],
+				'LastName'=>$data[3],
+				'Gender'=>$data[4],
+				'BirthDate'=>$data[5],
+				'ContactNumber'=>$data[6],
+				'RaceID'=>$data[7],
+				'SectionID'=>$data[8],
+				'GradeLevelID'=>$data[9],
+				'DistinctionID'=>$data[10],
+				'Password'=>$data[11],
+				'IsEnabled'=>1
+			);
+			if($type=='edit-student'){
+				$this->db->where('studentid', $data[13]);
+				$this->db->update('student', $values);
+				return ($this->db->affected_rows() != 1) ? false : true;
+			}else{
+				$this->db->insert('student',$values);
+				return ($this->db->affected_rows() != 1) ? false : true;
+			}
+			
+		}
+		
+	}
+	//Stuent End
 }
 
 

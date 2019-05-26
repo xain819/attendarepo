@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label >TeacherID</label>
-                        <input type="email" class="form-control" id="edit-TeacherID"  name=teacher[TeacherID]  placeholder="TeacherID">
+                        <input type="email"  readonly class="form-control" id="edit-TeacherID"  name=teacher[TeacherID]  placeholder="TeacherID">
                     </div>
                 </form>
               </div>

@@ -16,6 +16,7 @@
 			$this->load->view('layout', $data);
 			
 		}
+		//teacher start
 		public function get_all_teacher(){
 			$data=$this->admin_model->get_all_teacher();
 			echo json_encode($data);
@@ -37,15 +38,16 @@
 			$data=$this->input->post('data');
 			if($this->input->post('type')=='add-new-teacher'){
 				$type='add-new-teacher';
-				$status=$this->admin_model->insert_teacher($type,$data);
+				$status=$this->admin_model->manage_teacher($type,$data);
 			}
 			if($this->input->post('type')=='delete-teacher'){
 				$type='delete-teacher';
-				$status=$this->admin_model->insert_teacher($type,$data);
+				$status=$this->admin_model->manage_teacher($type,$data);
 			}
 			if($this->input->post('type')=='edit-teacher'){
+			
 				$type='edit-teacher';
-				$status=$this->admin_model->insert_teacher($type,$data);
+				$status=$this->admin_model->manage_teacher($type,$data);
 			}
 			echo json_encode($status);
 		}
@@ -57,8 +59,10 @@
 			$response['department']=$department;
 			$response['teacher_info']=$teacher_info;
 			echo json_encode($response);
-		//	echo json_encode($response['teacher_info'][]=$result);
 		}
+		//teacher end
+
+		
 		
 	}
 
