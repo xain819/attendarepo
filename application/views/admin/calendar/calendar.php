@@ -146,6 +146,8 @@
      document.write(test);
      console.log('tets');
   console.log(test);
+
+  
     $('#calendar').fullCalendar({
       
       header: {

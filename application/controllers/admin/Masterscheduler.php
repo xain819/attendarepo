@@ -100,10 +100,19 @@
 			$status=$this->Masterscheduler->add_scheduledate($data);
 			print_r($data);				
 		}
+		public function delete_scheduledate(){
+			$scheduledateid=$this->input->post('data');
+			$status=$this->Masterscheduler->delete_scheduledate($scheduledateid);
+			echo json_encode($status);
+		}
+	
+
 		public function edit()
 		{
 		$data['info'] = $this->Masterscheduler->get_all();
 		$this->load->view('admin/masterscheduler/list',$data);
+		
+		
 		}
 
 		   

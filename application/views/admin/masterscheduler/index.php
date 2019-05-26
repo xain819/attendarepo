@@ -126,15 +126,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="<?= base_url() ?>public/plugins/fullcalendar/fullcalendar.min.js"></script>
 <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
-
+<script>
+ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+</script>
 <!-- Page specific script -->
 <script type="text/javascript">
 var test = '<?php echo json_encode($info); ?>';
 var test_2= JSON.parse(test);
 var test_3=test_2[0]['ScheduleDateID']
+<<<<<<< HEAD
 console.log(test_2);
   
 
+=======
+  console.log(test_2);
+console.log(test_2);
+>>>>>>> 7267c6813705b0e52fbb68e2f275fd29597f7ae2
 
 
 
@@ -203,21 +211,16 @@ console.log(test_2);
         week: 'week',
         day: 'day'
       },
-      events:test_2,
+      
+
+      events:base_url+"admin/masterscheduler/get_events",
       //Random default events
-      editable: false,
+      editable: true,
       //defaultView: 'dayGridMonth',      
       droppable: true, // this allows things to be dropped onto the calendar !!!
       drop: function (date, allDay) { // this function is called when something is dropped
-       // console.log(new Date(y, m, d))
-        // console.log(typeof new Date(y, m, d))
-    
-       
         // retrieve the dropped element's stored Event Object
         var originalEventObject = $(this).data('eventObject');
-        console.log(originalEventObject);
-       
-
         // we need to copy it, so that multiple events don't have a reference to the same object
         var copiedEventObject = $.extend({}, originalEventObject);
 
@@ -226,17 +229,10 @@ console.log(test_2);
         copiedEventObject.allDay = allDay;
         copiedEventObject.backgroundColor = $(this).css("background-color");
         copiedEventObject.borderColor = $(this).css("border-color");
-        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
-        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+       
         console.log(copiedEventObject.start._d);
          
         var datess = new Date(copiedEventObject.start._d);
-      // var d = datess.getDate(),
-      //     m = datess.getMonth(),
-      //     y = datess.getFullYear();
-        // console.log(new Date(y+"-"+d+"-"+m))
-        // console.log(new Date(y, m, d, 10, 30))
-        // console.log(typeof date);
 
         var day = datess.getDate();
         var month = datess.getMonth(); //Be careful! January is 0 not 1
@@ -268,9 +264,12 @@ console.log(test_2);
        .done(function(data){
    
        })
+<<<<<<< HEAD
 
         console.log($(this).css("background-color"));
         console.log(data_events);
+=======
+>>>>>>> 7267c6813705b0e52fbb68e2f275fd29597f7ae2
         // render the event on the calendar
         // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
         $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
@@ -280,7 +279,44 @@ console.log(test_2);
           // if so, remove the element from the "Draggable Events" list
           $(this).remove();
         }
-      }
+      },
+      eventClick: function(calEvent, jsEvent, view) {
+        var scheduledateid=calEvent.ScheduleDateID
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+          },
+          function(isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    url:base_url+"admin/masterscheduler/delete_scheduledate ",
+                    type:"POST",
+                    data:({[csrfName]: csrfHash,data:scheduledateid}),
+                    dataType:'JSON',
+                })
+                .done(function(data){
+                    if(data===true){
+                        swal("Success!", "Successfully Added", "success");
+                        $('#calendar').fullCalendar( 'refetchEvents' );
+                    }else{
+                        swal("Failed","Error Adding Please Contact your system Administrator",'error');
+                    }
+                })
+             
+            } else {
+              swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+          });
+			},
+
     });
 
     /* ADDING EVENTS */

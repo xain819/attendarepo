@@ -1,4 +1,8 @@
  <!-- Content Header (Page header) -->
+ <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+ <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+ 
+  
  <section class="content-header">
       <h1>
         Welcome to
@@ -23,22 +27,26 @@
           </div>
         </div>
         <div class="box-body">
-          <table id="Teacher_DataTable" class="table table-bordered table-striped" width="100%">
-            <thead>
-            <tr>
-              <th>TeacherID</th>
-              <th>NumberID</th>
-              <th>FirstName</th>
-              <th>LastName</th>
-              <th>Gender</th>
-              <th>BirthDate</th>
-              <th>ContactNumber</th>
-              <th>DepartmentID</th>
-              <th>Password</th>
-              <th>Action</th>
-            </tr>
-            </thead>
-          </table>
+          <div style="width: 100%;">
+            <div class="table-responsive">
+              <table id="Teacher_DataTable" class="display" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                  <th>TeacherID</th>
+                  <th>NumberID</th>
+                  <th>FirstName</th>
+                  <th>LastName</th>
+                  <th>Gender</th>
+                  <th>BirthDate</th>
+                  <th>ContactNumber</th>
+                  <th>DepartmentID</th>
+                  <th>Password</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+              </table>
+            </div>      
+          </div>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -49,8 +57,16 @@
       <!-- /.box -->
     </section>
     <!-- /.content -->
-    <script src="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    
+
+
+    
+    
+    <!-- <script src="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script> -->
     <script>
       var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
           csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -58,3 +74,4 @@
     <script src="<?php echo base_url('public/dist/js/teacherinformation.js');?>"></script>
 
 <?php $this->load->view('admin/teacherinformation/add');?>
+<?php $this->load->view('admin/teacherinformation/edit');?>
