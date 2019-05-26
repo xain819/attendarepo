@@ -135,14 +135,8 @@
 var test = '<?php echo json_encode($info); ?>';
 var test_2= JSON.parse(test);
 var test_3=test_2[0]['ScheduleDateID']
-<<<<<<< HEAD
-console.log(test_2);
-  
-
-=======
   console.log(test_2);
 console.log(test_2);
->>>>>>> 7267c6813705b0e52fbb68e2f275fd29597f7ae2
 
 
 
@@ -264,12 +258,9 @@ console.log(test_2);
        .done(function(data){
    
        })
-<<<<<<< HEAD
 
         console.log($(this).css("background-color"));
         console.log(data_events);
-=======
->>>>>>> 7267c6813705b0e52fbb68e2f275fd29597f7ae2
         // render the event on the calendar
         // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
         $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
