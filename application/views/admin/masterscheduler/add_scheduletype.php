@@ -1,65 +1,84 @@
-<div class="modal modal-default fade" id="teacher-modal-primary">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Add Teacher</h4>
-              </div>
-              <div class="modal-body">
-                <form role="form" id="add-teacher-form-id">
-                    <div class="form-group">
-                        <label >IDNumber</label>
-                        <input type="email" class="form-control" name=teacher[IDNumber]  placeholder="IDNumber">
-                    </div>
-                    <div class="form-group">
-                        <label >FirstName</label>
-                        <input type="text" class="form-control" name=teacher[FirstName]  placeholder="FirstName">
-                    </div>
-                    <div class="form-group">
-                        <label >LastName</label>
-                        <input type="text" class="form-control"  name=teacher[LastName] placeholder="LastName">
-                    </div>
-                    <div class="form-group">
-                        <label >Gender</label>
-                        <select class="form-control select2"  name=teacher[Gender] style="width: 100%;">
-                            <option value=""></option>
-                            <option value="1">Female</option>
-                            <option value="0">Male</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label >BirthDate</label>
-                        <input type="date" class="form-control" name=teacher[BirthDate] placeholder="BirthDate">
-                    </div>
-                    <div class="form-group">
-                        <label >Contact Number</label>
-                        <input type="text" class="form-control"name=teacher[ContactNumber]  placeholder="Contact Number">
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="form-group">
-                        <label>Department</label>
-                        <select class="form-control select2" name=teacher[DepartmentID] id="tdepartmentid" style="width: 100%;">
-                            
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label >Password</label>
-                        <input type="password" class="form-control" name=teacher[Password]  placeholder="Password">
-                    </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-default " id="addteacher">Save changes</button>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
+<section class="content-header">
+	<div class="row">
+	    <div class="col-md-12">
+	      <div class="box box-body">
+	        <div class="col-md-6">
+	          <h4><i class="fa fa-list"></i> &nbsp; Hall Pass List</h4>
+	        </div>
+	        <div class="col-md-6 text-right">
+	          <a href="<?= base_url('admin/hallpass/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Add New Hallpass</a>
+	        </div>
+	        
+	      </div>
+	    </div>
+	</div> 
+
+	<div class="box">
+        
+
+        <div class="box">
+        <div class="box-header">
         </div>
-        <script src="<?= base_url() ?>public/plugins/select2/select2.full.min.js"></script>
-        <script>
-             $(".select2").select2();
-        </script>
-   
+        
+        <div class="col-md-12">
+	    
+	      
+	        <div class="col-md-6 text-left">
+	          <a href="<?= base_url('admin/hallpass'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Add New Hallpass</a>
+	        </div>
+	       
+	    
+	    </div>
+        <div class="box-body table-responsive">  
+        <?php if(isset($msg) || validation_errors() !== ''): ?>
+                                <div class="alert alert-warning alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+                                    <?= validation_errors();?>
+                                    <?= isset($msg)? $msg: ''; ?>
+                                </div>
+                                <?php endif; ?>
+        <?php echo form_open(base_url('admin/hallpass/add'), 'class="form-vertical"');  ?>  
+
+
+                             <div class="form-group">
+                                
+                                    
+                                    <div class="col-sm-4">
+                                    <label for="HallPass" class="control-label">Hall Pass</label>
+                                    <input type="text" name="HallPass" class="form-control" id="HallPass" placeholder="">
+                                    </div>
+                                </div>
+          
+                   <div class="form-group">
+                              
+                                    <div class="col-sm-4">
+                                    <label for="PassTypeID" class="control-label">Select Type*</label>
+                                    <select name="PassTypeID" class="form-control">
+                                        <option value="">Select Type</option>
+                                        <?php foreach($PassType as $role): ?>
+                                        <option value="<?= $role['PassTypeID']; ?>"><?= $role['PassType']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    </div>
+                                </div>
+                   <div class="form-group">
+                   <div class="col-sm-4">
+                                    <label for="TimeAllocated" class="control-label">TimeAllocated In Minutes</label>
+                                   
+                                    <input type="number" name="TimeAllocated" class="form-control" id="TimeAllocated" placeholder="5" value="5">
+                                    </div>
+                                </div>
+
+                   <div class="form-group">
+                 
+                                    <div class="col-md-12">
+                                    </br>
+                                    <input type="submit" name="submit" value="Add New Hall Pass" class="btn btn-info pull-right">
+                                    </div>
+                                </div>
+                </div>
+            <?php echo form_close(); ?> 
+      	</div>
+    </div> 
+</section>

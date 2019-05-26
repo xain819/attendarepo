@@ -54,6 +54,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboards': $this->uri->segment(2);
           </a>
           <ul class="treeview-menu">
             <li id="dashboard"><a href="<?= base_url('admin/MasterScheduler'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+            <li id="dashboard"><a href="<?= base_url('admin/MasterScheduler'); ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
           </ul>
         </li>
 	  </ul>
