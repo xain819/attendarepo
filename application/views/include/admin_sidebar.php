@@ -75,6 +75,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
             </span>
           </a>
           <ul class="treeview-menu">
+          <li id="admin"><a href="<?= base_url('admin/masterscheduler/'); ?>"><i class="fa fa-circle-o"></i>Manage Calendar</a></li>
             <li id="admin"><a href="<?= base_url('admin/masterscheduler/access'); ?>"><i class="fa fa-circle-o"></i>Manage Schedule</a></li>
             <li id="admin"><a href="<?= base_url('admin/masterscheduler/period_access'); ?>"><i class="fa fa-circle-o"></i>Manage Period</a></li>
    

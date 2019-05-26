@@ -131,12 +131,14 @@
         csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
 <!-- Page specific script -->
+
+
 <script type="text/javascript">
-var test = '<?php echo json_encode($info); ?>';
-var test_2= JSON.parse(test);
-var test_3=test_2[0]['ScheduleDateID']
-  console.log(test_2);
-console.log(test_2);
+// var test = '<?php echo json_encode($info); ?>';
+// var test_2= JSON.parse(test);
+// var test_3=test_2[0]['ScheduleDateID']
+//   console.log(test_2);
+// console.log(test_2);
 
 
 
@@ -206,8 +208,8 @@ console.log(test_2);
         day: 'day'
       },
       
-       events:test_2,
-      //events:base_url+"admin/masterscheduler/get_events",
+       //events:test_2,
+      events:base_url+"admin/masterscheduler/get_events",
       //Random default events
       editable: true,
       //defaultView: 'dayGridMonth',      

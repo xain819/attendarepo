@@ -105,7 +105,12 @@
 			$status=$this->Masterscheduler->delete_scheduledate($scheduledateid);
 			echo json_encode($status);
 		}
-	
+		public function get_events(){
+			
+			$info=$this->Masterscheduler->get_data_array();
+			echo json_encode($info);
+
+		}
 
 		public function edit()
 		{
@@ -117,6 +122,7 @@
 
 		   
 
+		
 	
 	
 		

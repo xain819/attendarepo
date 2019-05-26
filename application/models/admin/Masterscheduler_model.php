@@ -15,9 +15,8 @@
 		}
 
 		public function add_scheduledate($data){
-		//	print_r($data);
+		//	print_r($data);gt 
 			$this->db->insert('scheduledate', $data);
-
 			return ($this->db->affected_rows() != 1) ? false : true;
 		}
 
@@ -72,6 +71,7 @@
 		{
 			$query = $this->db->get('scheduledate');
 			return $result = $query->result_array();
+			
 		}
 		public function get_all_scheduletype()
 		{
