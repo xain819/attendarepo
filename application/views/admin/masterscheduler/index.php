@@ -23,9 +23,10 @@
             <div class="box-header with-border">
               <h4 class="box-title">Schedule Type</h4>
             </div>
-            <div class="box-body">
+            <div class="box-body" id="scheduletype">
               <!-- the events -->
-              <div id="external-events">
+                <?php echo $scheduletype;?>
+              <!-- <div id="external-events">
                 <div class="external-event bg-green">A Day</div>
                 <div class="external-event bg-yellow">B Day</div>
                 <div class="external-event bg-aqua">C Day</div>
@@ -45,7 +46,7 @@
 
 
                 
-              </div>
+              </div> -->
             </div>
             <!-- /.box-body -->
           </div>
@@ -67,7 +68,7 @@
                   <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-purple" href="#"><i class="fa fa-square">aa</i></a></li>
                   <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
@@ -116,7 +117,62 @@
 
 </script>
 
+  <!-- <div id="external-events">  
+				<div class="external-event bg-green">A DAY</div>
+        <div class="external-event bg-blue">B DAY</div>
+        <div class="external-event bg-blue">C DAY</div>
+  </div> -->
+
+​
+
+<script>
+  //scheduletype
+  $(document).ready(function(){
+    $(document).on('click','.scheduletypeclass',function(){
+      var scheduletypeid =$(this).data('sti');
+          swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+          },
+          function(isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    url:base_url+"admin/masterscheduler/managescheduletype",
+                    type:"POST",
+                    data:({[csrfName]: csrfHash,type:'delete',data:scheduletypeid}),
+                    dataType:'JSON',
+                })
+                .done(function(data){
+                    if(data===true){
+                        swal("Success!", "Successfully Added", "success");
+                        location.reload(); 
+                      
+
+                    }else{
+                        swal("Failed","Error Adding Please Contact your system Administrator",'error');
+                    }
+                })
+             
+            } else {
+              swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+          });
+    })
+   
+    // $(document).on('click','#add-new-event',function(){
+   
+    // })
     
+  });
+</script>
 
 <!-- Slimscroll -->
 <script src="<?= base_url() ?>public/plugins/slimScroll/jquery.slimscroll.min.js"></script>
@@ -330,21 +386,61 @@
       if (val.length == 0) {
         return;
       }
+      swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+          },
+          function(isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    url:base_url+"admin/masterscheduler/managescheduletype",
+                    type:"POST",
+                    data:({[csrfName]: csrfHash,type:'add',data:new_event,color:currColor}),
+                    dataType:'JSON',
+                })
+                .done(function(data){
+                    if(data===true){
+                        swal("Success!", "Successfully Added", "success");
+                        location.reload(); 
+                      
+
+                    }else{
+                        swal("Failed","Error Adding Please Contact your system Administrator",'error');
+                    }
+                })
+             
+            } else {
+              swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+          });
 
       //Create events
       var event = $("<div />");
       event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
       event.html(val);
+      //console.log(currColor);
+         var new_event =$("#new-event").val();
+         
+       
       $('#external-events').prepend(event);
 
       //Add draggable funtionality
       ini_events(event);
-
+      
       //Remove event from text input
       $("#new-event").val("");
     });
   });
 </script>
+
 
 
 
