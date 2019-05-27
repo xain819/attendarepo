@@ -26,7 +26,7 @@
             <div class="box-body">
               <!-- the events -->
               <div id="external-events">
-                <!-- <div class="external-event bg-green">A Day</div>
+                <div class="external-event bg-green">A Day</div>
                 <div class="external-event bg-yellow">B Day</div>
                 <div class="external-event bg-aqua">C Day</div>
                 <div class="external-event bg-light-blue">Regular Day</div>
@@ -41,7 +41,7 @@
                 <div class="external-event bg-lime">90 Min Delay</div>
                 <div class="external-event bg-orange">2 Hour Delay</div>
                 <div class="external-event bg-pink">Prof. Development</div>
-               -->
+              
 
 
                 
@@ -350,18 +350,18 @@
 
 <script>
   //scheduletype
-  $(document).ready(function(){
-    $.ajax({
-           url:base_url+"admin/masterscheduler/scheduletype",
-           type:"POST",
-           data:({[csrfName]: csrfHash}),
-           dataType:'JSON',
-       })
-       .done(function(data){
-        $('#external-events').html(data);
-       })
+  // $(document).ready(function(){
+  //   $.ajax({
+  //          url:base_url+"admin/masterscheduler/scheduletype",
+  //          type:"POST",
+  //          data:({[csrfName]: csrfHash}),
+  //          dataType:'JSON',
+  //      })
+  //      .done(function(data){
+  //       $('#external-events').html(data);
+  //      })
     
-  });
+  // });
   
 </script>
 <script>
