@@ -32,8 +32,7 @@
               <table id="Peiod_DataTable" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                  <th>Period ID</th>
-                  <th>Period </th>
+                  <th style='width:150px;'>Period Name </th>
                   <th>Start Time</th>
                   <th>End Time</th>
 
@@ -42,8 +41,8 @@
 
                   <th>HP Lock Start</th>
                   <th>HP Lock End</th>
-                  <th>LocationID</th>
-                  <th>Update</th>
+         
+                  <th>Action</th>
                 </tr>
                 </thead>
               </table>
@@ -88,7 +87,7 @@ $(document).ready(function(){
        },
 
        columns: [
-            { data:'PeriodID'},
+          
             { data:'Period'},
             { data:'PeriodStartTime'},
             { data:'PeriodEndTime'},
@@ -99,7 +98,7 @@ $(document).ready(function(){
 
             { data:'HPLockStart'},
             { data:'HPLockEnd'},
-            { data:'LocationID'},
+     
             { 
                 data: null,
                 render:function(data){
@@ -116,9 +115,7 @@ $(document).ready(function(){
 
 
     $(document).on('click','#showaddperiod',function(){
-      $("#period-modal-primary").modal("show");
-
-       $.ajax({
+         $.ajax({
            url:base_url+"admin/masterscheduler/add_period ",
            type:"POST",
            data:({[csrfName]: csrfHash}),
@@ -128,8 +125,10 @@ $(document).ready(function(){
         $("#add-Period").html(data.Period);
         $("#add-PeriodStartTime").html(data.PeriodStartTime);
         $("#add-PeriodEndTIme").html(data.PeriodEndTime);
-       })
+        $("#period-modal-primary").modal("hide");
        
+       })
+       $("#period-modal-primary").modal("show");
     });
 
 
@@ -137,7 +136,6 @@ $(document).ready(function(){
         PeriodID=$(this).val();
         console.log(PeriodID);
         
-        $("#edit-period-modal-primary").modal("show");
         $.ajax({
             url:base_url+"admin/masterscheduler/get_period_by_id",
             type:"POST",
@@ -145,7 +143,7 @@ $(document).ready(function(){
             dataType:'JSON',
         })
         .done(function(data){
-        
+          $("#edit-period-modal-primary").modal("show");
             $("#edit-Period").val(data.period_info[0].Period);
             $('#edit-PeriodStartTime').val(data.period_info[0].PeriodStartTime);
             $('#edit-PeriodEndTime').val(data.period_info[0].PeriodEndTime);
@@ -170,10 +168,10 @@ $(document).ready(function(){
             type: "warning",
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel!",
-            closeOnConfirm: false,
-            closeOnCancel: false,
+            confirmButtonText: "Yes",
+            cancelButtonText: "Cancel",
+            closeOnConfirm: true,
+            closeOnCancel: true,
             showLoaderOnConfirm: true
           },
           function(isConfirm) {
@@ -187,7 +185,7 @@ $(document).ready(function(){
                 .done(function(data){
                   Period_DataTable.ajax.reload();
                 
-                    if(data===false){
+                    if(data===true){
                         swal("Success!", "Successfully Deleted", "success");
                         Period_DataTable.ajax.reload();
                     }else{
@@ -196,7 +194,7 @@ $(document).ready(function(){
                 })
               
             } else {
-              swal("Cancelled", "Your imaginary file is safe :)", "error");
+              swal("Cancelled");
             }
           });
     
@@ -218,13 +216,16 @@ $(document).ready(function(){
 
 
     function manage_period(type,values){
+      console.log(values);
+      var title_period=values[1];
+      console.log(title_period);
         swal({
-            title: "Are you sure to delte it.?",
-            text: "You will not be able to recover this imaginary file!",
+            title: `Want to Update ${title_period}`,
+            text: "Please click yes",
             type: "warning",
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Yes, edit it!",
             cancelButtonText: "No, cancel plx!",
             closeOnConfirm: false,
             closeOnCancel: false,

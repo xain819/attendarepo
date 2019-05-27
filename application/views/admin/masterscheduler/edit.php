@@ -23,8 +23,8 @@
                         <input type="time" id='edit-PeriodEndTime' class="form-control"  name=period[PeriodEndTime] placeholder="PeriodEndTime">
                     </div>
                     <div class="form-group">
-                        <label >PeriodID</label>
-                        <input type="text"  readonly class="form-control" id="edit-PeriodID"  name=period[PeriodID]  placeholder="PeriodID">
+                        <label > </label>
+                        <input type="hidden"  readonly class="form-control" id="edit-PeriodID"  name=period[PeriodID]  placeholder="PeriodID">
                     </div>
             
                     <!-- /.box-body -->
