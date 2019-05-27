@@ -23,24 +23,26 @@
           <h3 class="box-title">Title</h3>
 
           <div class="box-tools pull-right">
-              <button class="btn btn-sm btn-success" id="showaddteachermodal"> add Teacher</button>
+              <button class="btn btn-sm btn-success" id="showaddperiod"> Add New Period</button>
           </div>
         </div>
         <div class="box-body">
           <div style="width: 100%;">
             <div class="table-responsive">
-              <table id="Teacher_DataTable" class="display" cellspacing="0" width="100%">
+              <table id="Peiod_DataTable" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                  <th>PeriodID</th>
-                  <th>Period</th>
+                  <th style='width:150px;'>Period Name </th>
                   <th>Start Time</th>
                   <th>End Time</th>
+
                   <th>Grace Period</th>
                   <th>Transition Time</th>
+
                   <th>HP Lock Start</th>
                   <th>HP Lock End</th>
-                  <th>LocationID</th>
+         
+                  <th>Action</th>
                 </tr>
                 </thead>
               </table>
@@ -74,10 +76,10 @@
 
 $(document).ready(function(){
     console.log(base_url);
-    var Teacher_DataTable = $('#Teacher_DataTable').DataTable({
+    var Period_DataTable = $('#Peiod_DataTable').DataTable({
         responsive: true,
         ajax: {
-            url: base_url+"admin/teacherinformation/get_all_teacher ",
+            url: base_url+"admin/masterscheduler/get_all_periods ",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
@@ -85,100 +87,123 @@ $(document).ready(function(){
        },
 
        columns: [
+          
             { data:'Period'},
             { data:'PeriodStartTime'},
             { data:'PeriodEndTime'},
+
+
             { data:'GracePeriod'},
             { data:'TransitionTime'},
+
             { data:'HPLockStart'},
             { data:'HPLockEnd'},
-            { data:'LocationID'},
+     
             { 
                 data: null,
                 render:function(data){
-                    return '<button value='+data.TeacherID+' class="btn btn-xs btn-warning showeditteachermodal"><i class="fa fa-fw fa-pencil"></i></button> <button value='+data.TeacherID+' class="btn btn-xs btn-danger delete_teacher"><i class="fa fa-fw fa-trash"></i></button>';
+                    return '<button value='+data.PeriodID+' class="btn btn-xs btn-warning showeditperiodmodal"><i class="fa fa-fw fa-pencil"></i></button> <button value='+data.PeriodID+' class="btn btn-xs btn-danger delete_period"><i class="fa fa-fw fa-trash"></i></button>';
                 }
             }
         ],
         select: true
     });
-    $(document).on('click','#showaddteachermodal',function(){
-       $.ajax({
-           url:base_url+"admin/teacherinformation/teacher_settings ",
+
+    $(document).on('click','#addperiod',function(){ 
+        manage_period('add-new-period',get_form_values("#add-period-form-id"));
+    });
+
+
+    $(document).on('click','#showaddperiod',function(){
+         $.ajax({
+           url:base_url+"admin/masterscheduler/add_period ",
            type:"POST",
            data:({[csrfName]: csrfHash}),
            dataType:'JSON',
        })
        .done(function(data){
-            $("#tdepartmentid").html(data.department);
-            $("#teacher-modal-primary").modal("show");
+        $("#add-Period").html(data.Period);
+        $("#add-PeriodStartTime").html(data.PeriodStartTime);
+        $("#add-PeriodEndTIme").html(data.PeriodEndTime);
+        $("#period-modal-primary").modal("hide");
+       
        })
+       $("#period-modal-primary").modal("show");
     });
-    $(document).on('click','.showeditteachermodal',function(){
-        teacherid=$(this).val();
+
+
+    $(document).on('click','.showeditperiodmodal',function(){
+        PeriodID=$(this).val();
+        console.log(PeriodID);
+        
         $.ajax({
-            url:base_url+"admin/teacherinformation/get_teacher_byteacherid ",
+            url:base_url+"admin/masterscheduler/get_period_by_id",
             type:"POST",
-            data:({[csrfName]: csrfHash,data:teacherid}),
+            data:({[csrfName]: csrfHash,data:PeriodID}),
             dataType:'JSON',
         })
         .done(function(data){
-            $("#edit-DepartmentID").html(data.department);
-            $('#edit-IDNumber').val(data.teacher_info[0].IDNumber);
-            $('#edit-FirstName').val(data.teacher_info[0].FirstName);
-            $('#edit-LastName').val(data.teacher_info[0].LastName);
-            $('#edit-Gender').val(data.teacher_info[0].Gender).trigger('change');
-            $('#edit-BirthDate').val(data.teacher_info[0].BirthDate);
-            $('#edit-ContactNumber').val(data.teacher_info[0].ContactNumber);
-            $('#edit-DepartmentID').val(data.teacher_info[0].DepartmentID).trigger('change');
-            $('#edit-Password').val(data.teacher_info[0].Password);
-            $('#edit-TeacherID').val(data.teacher_info[0].TeacherID);
+          $("#edit-period-modal-primary").modal("show");
+            $("#edit-Period").val(data.period_info[0].Period);
+            $('#edit-PeriodStartTime').val(data.period_info[0].PeriodStartTime);
+            $('#edit-PeriodEndTime').val(data.period_info[0].PeriodEndTime);
+            $('#edit-PeriodID').val(data.period_info[0].PeriodID);
+
         })
-        $('#edit-teacher-modal-primary').modal('show');
+    
+      
     })
-    $(document).on('click','#addteacher',function(){ 
-        manage_teacher('add-new-teacher',get_form_values("#add-teacher-form-id"));
+
+    $(document).on('click','#addperiod',function(){ 
+        manage_period('add-new-period',get_form_values("#add-period-form-id"));
+
+
     });
-    $(document).on('click','.delete_teacher',function(){
+
+    $(document).on('click','.delete_period',function(){
         id=$(this).val();
         swal({
             title: "Are you sure?",
-            text: "You will not be able to recover this imaginary file!",
+            text: "You will not be able to undo this!",
             type: "warning",
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel plx!",
-            closeOnConfirm: false,
-            closeOnCancel: false,
+            confirmButtonText: "Yes",
+            cancelButtonText: "Cancel",
+            closeOnConfirm: true,
+            closeOnCancel: true,
             showLoaderOnConfirm: true
           },
           function(isConfirm) {
             if (isConfirm) {
                 $.ajax({
-                    url:base_url+"admin/teacherinformation/manage_teacher ",
+                    url:base_url+"admin/masterscheduler/manage_period ",
                     type:"POST",
-                    data:({[csrfName]: csrfHash,type:'delete-teacher',data:id}),
+                    data:({[csrfName]: csrfHash,type:'delete-period',data:id}),
                     dataType:'JSON',
                 })
                 .done(function(data){
+                  Period_DataTable.ajax.reload();
+                
                     if(data===true){
                         swal("Success!", "Successfully Deleted", "success");
-                        Teacher_DataTable.ajax.reload();
+                        Period_DataTable.ajax.reload();
                     }else{
                         swal("Failed","Error Adding Please Contact your system Administrator","error");
                     }
                 })
               
             } else {
-              swal("Cancelled", "Your imaginary file is safe :)", "error");
+              swal("Cancelled");
             }
           });
     
     });
-    $(document).on('click','#editteacher',function(){ 
-        manage_teacher('edit-teacher',get_form_values("#edit-teacher-form-id"));
+    $(document).on('click','#editperiod',function(){ 
+        manage_period('edit-period',get_form_values("#edit-period-form-id"));
     });
+
+
     function get_form_values(formid){
         var result = [];
         count=1;
@@ -188,14 +213,19 @@ $(document).ready(function(){
         });
         return result;
     }
-    function manage_teacher(type,values){
+
+
+    function manage_period(type,values){
+      console.log(values);
+      var title_period=values[1];
+      console.log(title_period);
         swal({
-            title: "Are you sure?",
-            text: "You will not be able to recover this imaginary file!",
+            title: `Want to Update ${title_period}`,
+            text: "Please click yes",
             type: "warning",
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Yes, edit it!",
             cancelButtonText: "No, cancel plx!",
             closeOnConfirm: false,
             closeOnCancel: false,
@@ -204,15 +234,16 @@ $(document).ready(function(){
           function(isConfirm) {
             if (isConfirm) {
                 $.ajax({
-                    url:base_url+"admin/teacherinformation/manage_teacher ",
+                    url:base_url+"admin/masterscheduler/manage_period ",
                     type:"POST",
                     data:({[csrfName]: csrfHash,type:type,data:values}),
                     dataType:'JSON',
                 })
                 .done(function(data){
+               
                     if(data===true){
                         swal("Success!", "Successfully Added", "success");
-                        Teacher_DataTable.ajax.reload();
+                        Period_DataTable.ajax.reload();
                     }else{
                         swal("Failed","Error Adding Please Contact your system Administrator",'error');
                     }
@@ -229,5 +260,5 @@ $(document).ready(function(){
     
     </script>
 
-<?php $this->load->view('admin/teacherinformation/add');?>
-<?php $this->load->view('admin/teacherinformation/edit');?>
+<?php $this->load->view('admin/masterscheduler/add');?>
+<?php $this->load->view('admin/masterscheduler/edit');?>

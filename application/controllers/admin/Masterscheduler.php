@@ -147,11 +147,40 @@
 		public function get_all_periods(){
 
 	
-			$data=$this->admin_model->get_all_teacher();
-			$this->load->viwe('admin/masterscheduler/period_access',$data);
-			
-
+			$data=$this->Masterscheduler->get_all_periods();
+			echo json_encode($data);
 		}
+		public function manage_period(){
+
+			$data=$this->input->post('data');
+			$period_id=$this->input->post('period-id');
+
+	
+			if($this->input->post('type')=='add-new-period'){
+				$type='add-new-period';
+				$status=$this->Masterscheduler->manage_period($type,$data);
+			}
+			if($this->input->post('type')=='delete-period'){
+				$type='delete-period';
+				$status=$this->Masterscheduler->manage_period($type,$data);
+			}
+			if($this->input->post('type')=='edit-period'){
+			
+			
+				$type='edit-period';
+				$status=$this->Masterscheduler->manage_period($type,$data);
+			}
+			echo json_encode($status);
+		}
+
+			
+		public function get_period_by_id(){
+			$PeriodID=$this->input->post('data');
+			$period_info=$this->Masterscheduler->get_period_by_id($PeriodID);
+			$response['period_info']=$period_info;
+		    echo json_encode($response);
+		}
+		
 
 		public function managescheduletype(){
 			if($this->input->post('type')=='delete'){
