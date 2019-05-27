@@ -137,7 +137,8 @@
 		public function manage_period(){
 
 			$data=$this->input->post('data');
-			print_r($data);
+			$period_id=$this->input->post('period-id');
+
 	
 			if($this->input->post('type')=='add-new-period'){
 				$type='add-new-period';
@@ -148,6 +149,7 @@
 				$status=$this->Masterscheduler->manage_period($type,$data);
 			}
 			if($this->input->post('type')=='edit-period'){
+			
 			
 				$type='edit-period';
 				$status=$this->Masterscheduler->manage_period($type,$data);
@@ -160,7 +162,7 @@
 			$PeriodID=$this->input->post('data');
 			$period_info=$this->Masterscheduler->get_period_by_id($PeriodID);
 			$response['period_info']=$period_info;
-			echo json_encode($response);
+		    echo json_encode($response);
 		}
 		
 

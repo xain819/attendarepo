@@ -119,9 +119,6 @@
 		}
 
 		public function manage_period($type,$data){
-	
-			print_r($data);
-	
 			if($type=='delete-period'){
 				$this->db->where('PeriodID',$data);
 				$this->db->delete('period');
@@ -135,10 +132,11 @@
 					'PeriodEndTime'=>$data[3],
 				
 				);
-				print_r($values);
-				if($type=='edit-teacher'){
-					$this->db->where('teacherid', $data[9]);
-					$this->db->update('teacher', $values);
+	
+				if($type=='edit-period'){
+	
+					$this->db->where('PeriodID', $data[4]);
+					$this->db->update('period', $values);
 					return ($this->db->affected_rows() != 1) ? false : true;
 				}else{
 					$this->db->insert('period',$values);
@@ -150,6 +148,7 @@
 		}
 
 		public function get_period_by_id($PeriodID){
+	
 			$sql='SELECT * FROM period where PeriodID=?';
 			$query=$this->db->query($sql,array($PeriodID));
 			return $query->result();

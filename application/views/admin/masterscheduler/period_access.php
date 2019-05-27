@@ -135,7 +135,9 @@ $(document).ready(function(){
 
     $(document).on('click','.showeditperiodmodal',function(){
         PeriodID=$(this).val();
-        $("#period-modal-primary").modal("show");
+        console.log(PeriodID);
+        
+        $("#edit-period-modal-primary").modal("show");
         $.ajax({
             url:base_url+"admin/masterscheduler/get_period_by_id",
             type:"POST",
@@ -145,13 +147,12 @@ $(document).ready(function(){
         .done(function(data){
         
             $("#edit-Period").val(data.period_info[0].Period);
-            $('#edit-PeriodEndTime').val(data.period_info[0].PeriodStartTime);
+            $('#edit-PeriodStartTime').val(data.period_info[0].PeriodStartTime);
             $('#edit-PeriodEndTime').val(data.period_info[0].PeriodEndTime);
-
-
+            $('#edit-PeriodID').val(data.period_info[0].PeriodID);
 
         })
-        console.log(data);
+    
       
     })
 
@@ -184,8 +185,9 @@ $(document).ready(function(){
                     dataType:'JSON',
                 })
                 .done(function(data){
+                  Period_DataTable.ajax.reload();
                 
-                    if(data===true){
+                    if(data===false){
                         swal("Success!", "Successfully Deleted", "success");
                         Period_DataTable.ajax.reload();
                     }else{
@@ -200,7 +202,7 @@ $(document).ready(function(){
     
     });
     $(document).on('click','#editperiod',function(){ 
-        manage_teacher('edit-period',get_form_values("#edit-period-form-id"));
+        manage_period('edit-period',get_form_values("#edit-period-form-id"));
     });
 
 
@@ -224,8 +226,8 @@ $(document).ready(function(){
             confirmButtonClass: "btn-danger",
             confirmButtonText: "Yes, delete it!",
             cancelButtonText: "No, cancel plx!",
-            closeOnConfirm: true,
-            closeOnCancel: true,
+            closeOnConfirm: false,
+            closeOnCancel: false,
             showLoaderOnConfirm: true
           },
           function(isConfirm) {
@@ -237,6 +239,7 @@ $(document).ready(function(){
                     dataType:'JSON',
                 })
                 .done(function(data){
+               
                     if(data===true){
                         swal("Success!", "Successfully Added", "success");
                         Period_DataTable.ajax.reload();
