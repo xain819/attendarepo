@@ -84,6 +84,7 @@
 		{
 			$data['view'] = 'admin/masterscheduler/period_access';
 			$this->load->view('layout', $data);
+			echo json_encode($data);
 		}
 		public function add_scheduledate()
 		{

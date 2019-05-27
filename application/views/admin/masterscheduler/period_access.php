@@ -46,6 +46,12 @@
                 </tr>
                 </thead>
               </table>
+
+              <div id='test_events'>
+
+              'test'
+              </div>
+
             </div>      
           </div>
         </div>
@@ -259,6 +265,20 @@ $(document).ready(function(){
     
     
     </script>
+    <script>
+  $(document).ready(function(){
+    $.ajax({
+           url:base_url+"admin/masterscheduler/get_all_periods",
+           type:"POST",
+           data:({[csrfName]: csrfHash}),
+           dataType:'JSON',
+       })
+       .done(function(data){
+        $('#test_events').html(data);
+       })
+    
+  });
+  </script>
 
 <?php $this->load->view('admin/masterscheduler/add');?>
 <?php $this->load->view('admin/masterscheduler/edit');?>
