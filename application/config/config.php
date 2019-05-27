@@ -26,8 +26,9 @@ ob_start();
 */
 
 $url = "http://".$_SERVER['HTTP_HOST']. str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
-$config['base_url'] = 'http://35.193.161.159/';
-//$config['base_url'] = 'http://localhost:9993/';
+//config['base_url'] = 'http://35.193.161.159/';
+
+$config['base_url'] = 'http://localhost:9993/';
 //$config['base_url'] = 'http://localhost/attendarepo';
 
 
@@ -49,8 +50,6 @@ $config['index_page'] = '';
 |--------------------------------------------------------------------------
 | URI PROTOCOL
 |--------------------------------------------------------------------------
-|
-| This item determines which server global should be used to retrieve the
 | URI string.  The default setting of 'REQUEST_URI' works for most servers.
 | If your links do not seem to work, try one of the other delicious flavors:
 |
