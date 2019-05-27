@@ -1,4 +1,4 @@
-$(document).ready(function(){
+WBLIPI$(document).ready(function(){
     console.log(base_url);
     var student_DataTable = $('#Student_DataTable').DataTable({
         responsive: true,

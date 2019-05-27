@@ -1,109 +1,43 @@
-<section class="content">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box box-body">
-        <div class="col-md-6">
-          <h4><i class="fa fa-pencil"></i> &nbsp; Edit Admin</h4>
-        </div>
-        <div class="col-md-6 text-right">
-          <a href="<?= base_url('admin/admin'); ?>" class="btn btn-success"><i class="fa fa-list"></i> Admin List</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">Edit Admin</h3>
-        </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <div class="box-body my-form-body">
-          <?php if(isset($msg) || validation_errors() !== ''): ?>
-              <div class="alert alert-warning alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                  <h4><i class="icon fa fa-warning"></i> Alert!</h4>
-                  <?= validation_errors();?>
-                  <?= isset($msg)? $msg: ''; ?>
-              </div>
-            <?php endif; ?>
-           
-            <?php echo form_open(base_url('admin/admin/edit/'.$admin['admin_id']), 'class="form-horizontal"' )?> 
-              <div class="form-group">
-                <label for="username" class="col-sm-2 control-label">User Name</label>
+<div class="modal modal-default fade" id="edit-period-modal-primary">
 
-                <div class="col-sm-9">
-                  <input type="text" name="username" value="<?= $admin['username']; ?>" class="form-control" id="username" placeholder="">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="firstname" class="col-sm-2 control-label">First Name</label>
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-                <div class="col-sm-9">
-                  <input type="text" name="firstname" value="<?= $admin['firstname']; ?>" class="form-control" id="firstname" placeholder="">
-                </div>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add Period</h4>
               </div>
-
-              <div class="form-group">
-                <label for="lastname" class="col-sm-2 control-label">Last Name</label>
-
-                <div class="col-sm-9">
-                  <input type="text" name="lastname" value="<?= $admin['lastname']; ?>" class="form-control" id="lastname" placeholder="">
-                </div>
+              <div class="modal-body">
+                <form role="form" id="add-period-form-id">
+                    <div class="form-group">
+                        <label >Period Number</label>
+                        <input type="text" id='edit-Period' class="form-control" name=period[Period]  placeholder="Period">
+                    </div>
+                    <div class="form-group">
+                        <label >Start Time</label>
+                        <input type="time" id='edit-PeriodStartTime' class="form-control" name=period[PeriodStartTime]  placeholder="PeriodStartTime">
+                    </div>
+                    <div class="form-group">
+                        <label >End Time</label>
+                        <input type="time" id='edit-PeriodEndTime' class="form-control"  name=period[PeriodEndTime] placeholder="PeriodEndTime">
+                    </div>
+            
+                    <!-- /.box-body -->
+                
+                </form>
               </div>
-
-              <div class="form-group">
-                <label for="email" class="col-sm-2 control-label">Email</label>
-
-                <div class="col-sm-9">
-                  <input type="email" name="email" value="<?= $admin['email']; ?>" class="form-control" id="email" placeholder="">
-                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default " id="addperiod">Save changes</button>
               </div>
-              <div class="form-group">
-                <label for="mobile_no" class="col-sm-2 control-label">Mobile No</label>
-
-                <div class="col-sm-9">
-                  <input type="number" name="mobile_no" value="<?= $admin['mobile_no']; ?>" class="form-control" id="mobile_no" placeholder="">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="role" class="col-sm-2 control-label">Select Status</label>
-
-                <div class="col-sm-9">
-                  <select name="status" class="form-control">
-                    <option value="">Select Status</option>
-                    <option value="1" <?= ($admin['is_active'] == 1)?'selected': '' ?> >Active</option>
-                    <option value="0" <?= ($admin['is_active'] == 0)?'selected': '' ?>>Deactive</option>
-                  </select>
-                </div>
-              </div>
-             <div class="form-group">
-                <label for="role" class="col-sm-2 control-label">Select Admin Role*</label>
-
-                <div class="col-sm-9">
-                  <select name="role" class="form-control">
-                    <option value="">Select Role</option>
-                    <?php foreach($admin_roles as $role): ?>
-                      <?php if($role['admin_role_id'] == $admin['admin_role_id']): ?>
-                      <option value="<?= $role['admin_role_id']; ?>" selected><?= $role['admin_role_title']; ?></option>
-                      <?php else: ?>
-                      <option value="<?= $role['admin_role_id']; ?>"><?= $role['admin_role_title']; ?></option>
-                      <?php endif; ?>
-                    <?php endforeach; ?>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-md-11">
-                  <input type="submit" name="submit" value="Update Admin" class="btn btn-info pull-right">
-                </div>
-              </div>
-            <?php echo form_close(); ?>
+            </div>
+            <!-- /.modal-content -->
           </div>
-          <!-- /.box-body -->
-      </div>
-    </div>
-  </div>  
-
-</section> 
+          <!-- /.modal-dialog -->
+        </div>
+        <script src="<?= base_url() ?>public/plugins/select2/select2.full.min.js"></script>
+        <script>
+             $(".select2").select2();
+        </script>
+   

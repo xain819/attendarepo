@@ -1,101 +1,43 @@
-<section class="content">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box box-body with-border">
-        <div class="col-md-6">
-          <h4><i class="fa fa-plus"></i> &nbsp; Add New Period</h4>
-        </div>
-        <div class="col-md-6 text-right">
-          <a href="<?= base_url('admin/masterscheduler'); ?>" class="btn btn-success"><i class="fa fa-list"></i> Period List</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box">
-        <div class="box-header with-border">
-        </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <div class="box-body my-form-body">
-          <?php if(isset($msg) || validation_errors() !== ''): ?>
-              <div class="alert alert-warning alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                  <h4><i class="icon fa fa-warning"></i> Alert!</h4>
-                  <?= validation_errors();?>
-                  <?= isset($msg)? $msg: ''; ?>
-              </div>
-            <?php endif; ?>
-           
-            <?php echo form_open(base_url('admin/terminalpannel/add'), 'class="form-horizontal"');  ?> 
-              <div class="form-group">
-                <label for="HallPass" class="col-sm-2 control-label">Hall Pass</label>
+<div class="modal modal-default fade" id="period-modal-primary">
 
-                <div class="col-sm-9">
-                  <input type="text" name="HallPass" class="form-control" id="HallPass" placeholder="">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="firstname" class="col-sm-2 control-label">First Name</label>
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-                <div class="col-sm-9">
-                  <input type="text" name="firstname" class="form-control" id="firstname" placeholder="">
-                </div>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add Period</h4>
               </div>
-              
-              <div class="form-group">
-                <label for="lastname" class="col-sm-2 control-label">Last Name</label>
-
-                <div class="col-sm-9">
-                  <input type="text" name="lastname" class="form-control" id="lastname" placeholder="">
-                </div>
+              <div class="modal-body">
+                <form role="form" id="add-period-form-id">
+                    <div class="form-group">
+                        <label >Period Number</label>
+                        <input type="text" id='add-Period' class="form-control" name=period[Period]  placeholder="Period">
+                    </div>
+                    <div class="form-group">
+                        <label >Start Time</label>
+                        <input type="time" id='add-PeriodStartTime' class="form-control" name=period[PeriodStartTime]  placeholder="PeriodStartTime">
+                    </div>
+                    <div class="form-group">
+                        <label >End Time</label>
+                        <input type="time" id='add-PeriodEndTime' class="form-control"  name=period[PeriodEndTime] placeholder="PeriodEndTime">
+                    </div>
+            
+                    <!-- /.box-body -->
+                
+                </form>
               </div>
-
-              <div class="form-group">
-                <label for="email" class="col-sm-2 control-label">Email</label>
-
-                <div class="col-sm-9">
-                  <input type="email" name="email" class="form-control" id="email" placeholder="">
-                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default " id="addperiod">Save changes</button>
               </div>
-              <div class="form-group">
-                <label for="mobile_no" class="col-sm-2 control-label">Mobile No</label>
-
-                <div class="col-sm-9">
-                  <input type="number" name="mobile_no" class="form-control" id="mobile_no" placeholder="">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="password" class="col-sm-2 control-label">Password</label>
-
-                <div class="col-sm-9">
-                  <input type="password" name="password" class="form-control" id="password" placeholder="">
-                </div>
-              </div>
-        
-              <div class="form-group">
-                <label for="role" class="col-sm-2 control-label">Select Admin Role*</label>
-
-                <div class="col-sm-9">
-                  <select name="role" class="form-control">
-                    <option value="">Select Role</option>
-                    <?php foreach($admin_roles as $role): ?>
-                      <option value="<?= $role['admin_role_id']; ?>"><?= $role['admin_role_title']; ?></option>
-                    <?php endforeach; ?>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-md-11">
-                  <input type="submit" name="submit" value="Add New Admin" class="btn btn-info pull-right">
-                </div>
-              </div>
-            <?php echo form_close(); ?>
+            </div>
+            <!-- /.modal-content -->
           </div>
-          <!-- /.box-body -->
-      </div>
-    </div>
-  </div>  
-
-</section> 
+          <!-- /.modal-dialog -->
+        </div>
+        <script src="<?= base_url() ?>public/plugins/select2/select2.full.min.js"></script>
+        <script>
+             $(".select2").select2();
+        </script>
+   

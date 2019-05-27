@@ -118,6 +118,43 @@
 			return ($this->db->affected_rows() != 1) ? false : true;
 		}
 
+		public function manage_period($type,$data){
+	
+			print_r($data);
+	
+			if($type=='delete-period'){
+				$this->db->where('PeriodID',$data);
+				$this->db->delete('period');
+				return ($this->db->affected_rows() != 1) ? false : true;
+
+			}else{
+				$values=array(
+				
+					'Period'=>$data[1],
+					'PeriodStartTime'=>$data[2],
+					'PeriodEndTime'=>$data[3],
+				
+				);
+				print_r($values);
+				if($type=='edit-teacher'){
+					$this->db->where('teacherid', $data[9]);
+					$this->db->update('teacher', $values);
+					return ($this->db->affected_rows() != 1) ? false : true;
+				}else{
+					$this->db->insert('period',$values);
+					return ($this->db->affected_rows() != 1) ? false : true;
+				}
+				
+			}
+			
+		}
+
+		public function get_period_by_id($PeriodID){
+			$sql='SELECT * FROM period where PeriodID=?';
+			$query=$this->db->query($sql,array($PeriodID));
+			return $query->result();
+		}
+
 
 
 	}

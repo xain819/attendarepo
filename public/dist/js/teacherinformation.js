@@ -40,6 +40,8 @@ $(document).ready(function(){
             $("#teacher-modal-primary").modal("show");
        })
     });
+
+    
     $(document).on('click','.showeditteachermodal',function(){
         teacherid=$(this).val();
         $.ajax({
@@ -64,7 +66,10 @@ $(document).ready(function(){
     })
     $(document).on('click','#addteacher',function(){ 
         manage_teacher('add-new-teacher',get_form_values("#add-teacher-form-id"));
+        console.log(get_form_values("#add-teacher-form-id"));
     });
+
+
     $(document).on('click','.delete_teacher',function(){
         id=$(this).val();
         swal({

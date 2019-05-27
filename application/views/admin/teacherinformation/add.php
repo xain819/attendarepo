@@ -1,6 +1,9 @@
 <div class="modal modal-default fade" id="teacher-modal-primary">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
+            <!-- daterange picker -->
+
+
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
