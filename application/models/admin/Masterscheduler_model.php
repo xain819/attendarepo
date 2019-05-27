@@ -117,6 +117,20 @@
 			$this->db->delete('ScheduleDate');
 			return ($this->db->affected_rows() != 1) ? false : true;
 		}
+		public function delete_schedule_type($scheduletypeid){
+			$this->db->where('ScheduleTypeID',$scheduletypeid);
+			$this->db->delete('ScheduleType');
+			return ($this->db->affected_rows() != 1) ? false : true;
+		}
+		public function add_schedule_type($data){
+			//print_r($data);
+			$values=array(
+				'ScheduleType'=>$data[0],
+				'backgroundColor'=>$data[1]
+			);
+			$this->db->insert('ScheduleType',$values);
+			return ($this->db->affected_rows() != 1) ? false : true;
+		}
 
 
 
