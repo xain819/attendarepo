@@ -38,7 +38,7 @@
 				echo $data['PeriodAccess'];
 				$new_data=$data['PeriodAccess'].'|'.$this->input->post('period');
 				echo $data['PeriodAccess'];
-			
+				print_r($new_data);
 				$this->db->set('PeriodAccess',$new_data);
 				$this->db->where('ScheduleType',$ScheduleType);
 				$this->db->update('scheduletype');
@@ -51,6 +51,8 @@
 				$new_data=$data['PeriodAccess'];
 				$period_remove=$this->input->post('period');
 				$exploded=explode($period_remove.'|',$new_data);
+				print_r($exploded[0]);
+				echo gettype($exploded[0]);
 				$text='';
 				foreach($exploded as $ex){
 					$text=$text.$ex;
@@ -82,7 +84,6 @@
 		{
 			$data['view'] = 'admin/masterscheduler/period_access';
 			$this->load->view('layout', $data);
-	
 		}
 		public function add_scheduledate()
 		{
@@ -95,8 +96,9 @@
 				'title'=>$title,
 				'backgroundColor'=>$backgroundcolor
 			);
+			echo(gettype($backgroundcolor));
 			$status=$this->Masterscheduler->add_scheduledate($data);
-				
+			print_r($data);				
 		}
 		public function delete_scheduledate(){
 			$scheduledateid=$this->input->post('data');

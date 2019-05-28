@@ -25,28 +25,19 @@
             </div>
             <div class="box-body" id="scheduletype">
               <!-- the events -->
-                <?php echo $scheduletype;?>
-              <!-- <div id="external-events">
+          
+              <div id="external-events">
                 <div class="external-event bg-green">A Day</div>
                 <div class="external-event bg-yellow">B Day</div>
                 <div class="external-event bg-aqua">C Day</div>
                 <div class="external-event bg-light-blue">Regular Day</div>
                 <div class="external-event bg-red">Late Start</div>
                 <div class="external-event bg-teal">Exam Day</div>
-                <div class="external-event bg-navy">Prep Rally</div>
-                <div class="external-event bg-teal">No School</div>
-
-                <div class="external-event bg-muted">Half Day</div>
-                <div class="external-event bg-fuchsia">Early Release</div>
-                <div class="external-event bg-purple">Late Start</div>
-                <div class="external-event bg-lime">90 Min Delay</div>
-                <div class="external-event bg-orange">2 Hour Delay</div>
-                <div class="external-event bg-pink">Prof. Development</div>
-              
+           
 
 
                 
-              </div> -->
+              </div> 
             </div>
             <!-- /.box-body -->
           </div>
@@ -68,7 +59,7 @@
                   <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-purple" href="#"><i class="fa fa-square">aa</i></a></li>
+                  <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
