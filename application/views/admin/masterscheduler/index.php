@@ -68,7 +68,7 @@
                   <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
-                  <li><a class="text-purple" href="#"><i class="fa fa-square">aa</i></a></li>
+                  <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
@@ -388,12 +388,12 @@
       }
       swal({
             title: "Are you sure?",
-            text: "You will not be able to recover this imaginary file!",
+            text: "You want to add new schedule type!",
             type: "warning",
             showCancelButton: true,
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel plx!",
+            confirmButtonClass: "btn-success",
+            confirmButtonText: "Yes!",
+            cancelButtonText: "No",
             closeOnConfirm: false,
             closeOnCancel: false,
             showLoaderOnConfirm: true
