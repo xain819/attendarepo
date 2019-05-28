@@ -51,8 +51,6 @@
 				$new_data=$data['PeriodAccess'];
 				$period_remove=$this->input->post('period');
 				$exploded=explode($period_remove.'|',$new_data);
-				print_r($exploded[0]);
-				echo gettype($exploded[0]);
 				$text='';
 				foreach($exploded as $ex){
 					$text=$text.$ex;
@@ -97,7 +95,6 @@
 				'title'=>$title,
 				'backgroundColor'=>$backgroundcolor
 			);
-			echo(gettype($backgroundcolor));
 			$status=$this->Masterscheduler->add_scheduledate($data);
 				
 		}
