@@ -109,6 +109,11 @@ class Admin_model extends CI_Model{
 		$query = $this->db->get('hallpass');
 		return $result = $query->result_array();
 	}
+	public function get_import_csv(){
+		$sql='SELECT * FROM `import_csv`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
 
 	public function add_terminal($data){
 		$this->db->insert('hallpass', $data);

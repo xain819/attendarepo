@@ -15,6 +15,8 @@
       </ol>
     </section>
 
+    
+
     <!-- Main content -->
     <section class="content">
       <!-- Default box -->
@@ -22,10 +24,27 @@
         <div class="box-header with-border">
           <h3 class="box-title">Title</h3>
 
-          <div class="box-tools pull-right">
-              <button class="btn btn-sm btn-success" id="showaddstudentmodal"> add Student</button>
-          </div>
+         
         </div>
+
+        <div class="row">
+	    <div class="col-md-12">
+	      <div class="box box-body">
+	        <div class="col-md-6">
+	          <h4><i class="fa fa-list"></i> &nbsp; Student List</h4>
+	        </div>
+	        <div class="col-md-6 text-right">
+          	
+<input type="file" id="csv-file" name="files"/>
+
+          <button class="btn btn-success" id="showaddstudentmodal"><i class="fa fa-plus"></i> Add New Student</button>
+       
+	        
+	        </div>
+	        
+	      </div>
+	    </div>
+	</div> 
         <div class="box-body">
           <div style="width: 100%;">
             <div class="table-responsive">
@@ -63,6 +82,7 @@
     <!-- /.content -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+     <script src="<?= base_url() ?>public/plugins/papaparse/papaparse.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     
 
@@ -74,7 +94,28 @@
     <script>
       var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
           csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
-    </script>
+  var data;
+ 
+  function handleFileSelect(evt) {
+    var file = evt.target.files[0];
+ 
+    Papa.parse(file, {
+      header: true,
+      dynamicTyping: true,
+      complete: function(results) {
+        data = results;
+        
+      }
+    });
+    console.log(data);
+  }
+ 
+  $(document).ready(function(){
+    $("#csv-file").change(handleFileSelect);
+  });
+</script>
+
+    
     <script src="<?php echo base_url('public/dist/js/studentinformation.js');?>"></script>
 
 <?php $this->load->view('admin/studentinformation/add');?>

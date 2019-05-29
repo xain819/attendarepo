@@ -96,6 +96,7 @@
 		{
 			$data['view'] = 'admin/masterscheduler/period_access';
 			$this->load->view('layout', $data);
+			echo json_encode($data);
 		}
 		public function add_scheduledate()
 		{
@@ -133,6 +134,7 @@
 					$scheduletypee.= '<div class="external-event '.$value['backgroundColor'].'">'.$value['ScheduleType'].'</div>';
 				}
 				$scheduletypee.=' </div>';
+				
 			echo json_encode($scheduletypee);
 		}
 

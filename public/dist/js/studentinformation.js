@@ -32,6 +32,8 @@ $(document).ready(function(){
         ],
         select: true
     });
+
+    
     $(document).on('click','#showaddstudentmodal',function(){
        $.ajax({
            url:base_url+"admin/studentinformation/student_setting ",

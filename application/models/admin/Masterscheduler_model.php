@@ -15,7 +15,7 @@
 		}
 
 		public function add_scheduledate($data){
-		//	print_r($data);gt 
+
 			$this->db->insert('scheduledate', $data);
 			return ($this->db->affected_rows() != 1) ? false : true;
 		}
@@ -123,7 +123,6 @@
 			return ($this->db->affected_rows() != 1) ? false : true;
 		}
 		public function add_schedule_type($data){
-			//print_r($data);
 			$values=array(
 				'ScheduleType'=>$data[0],
 				'backgroundColor'=>$data[1]
