@@ -74,6 +74,18 @@
 
 		public function index(){
 			//$this->rbac->check_operation_access();
+			$scheduletypee='';
+			$result=$this->Masterscheduler->get_all_scheduletype();
+
+			$scheduletypee='
+			<div id="external-events">
+			';
+			foreach($result as $value){
+				$scheduletypee.= '<div data-sti="'.$value['ScheduleTypeID'].'" style="background-color: '.$value['backgroundColor'].'"  class="scheduletypeclass external-event">'.$value['ScheduleType'].'</div>';
+			}
+			$scheduletypee.=' </div>';
+			$data['scheduletype']=$scheduletypee;
+
 			$data['info']=$this->Masterscheduler->get_data_array();
 			$data['title'] = 'General Settings';
 			$data['view'] = 'admin/masterscheduler/index';
@@ -84,6 +96,7 @@
 		{
 			$data['view'] = 'admin/masterscheduler/period_access';
 			$this->load->view('layout', $data);
+			echo json_encode($data);
 		}
 		public function add_scheduledate()
 		{
@@ -114,9 +127,14 @@
 		public function scheduletype(){
 			$scheduletypee='';
 				$result=$this->Masterscheduler->get_all_scheduletype();
+				$scheduletypee.='
+				<div id="external-events">
+				';
 				foreach($result as $value){
 					$scheduletypee.= '<div class="external-event '.$value['backgroundColor'].'">'.$value['ScheduleType'].'</div>';
 				}
+				$scheduletypee.=' </div>';
+				
 			echo json_encode($scheduletypee);
 		}
 
@@ -166,6 +184,20 @@
 		}
 		
 
+		public function managescheduletype(){
+			if($this->input->post('type')=='delete'){
+				$scheduletypeid=$this->input->post('data');
+				$status=$this->Masterscheduler->delete_schedule_type($scheduletypeid);
+				echo json_encode($status);
+			}
+			if($this->input->post('type')=='add'){
+				$scheduletype[0]=$this->input->post('data');
+				$scheduletype[1]=$this->input->post('color');
+				//print_r($scheduletype);
+				$status=$this->Masterscheduler->add_schedule_type($scheduletype);
+				echo json_encode($status);
+			}
+		}
 		   
 
 		

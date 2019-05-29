@@ -80,6 +80,26 @@
     </script>
     <script>
 
+var data;
+ 
+      function handleFileSelect(evt) {
+        var file = evt.target.files[0];
+
+        Papa.parse(file, {
+          header: true,
+          dynamicTyping: true,
+          complete: function(results) {
+            data = results;
+            
+          }
+        });
+        console.log(data);
+      }
+
+      $(document).ready(function(){
+        $("#csv-file").change(handleFileSelect);
+      });
+
 $(document).ready(function(){
     console.log(base_url);
     var Period_DataTable = $('#Peiod_DataTable').DataTable({
@@ -97,14 +117,10 @@ $(document).ready(function(){
             { data:'Period'},
             { data:'PeriodStartTime'},
             { data:'PeriodEndTime'},
-
-
             { data:'GracePeriod'},
             { data:'TransitionTime'},
-
             { data:'HPLockStart'},
             { data:'HPLockEnd'},
-     
             { 
                 data: null,
                 render:function(data){

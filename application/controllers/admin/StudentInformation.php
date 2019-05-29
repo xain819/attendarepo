@@ -8,6 +8,9 @@
 
 		    $this->rbac->check_module_access();
 		}
+	
+
+
 		public function index(){
 			$data['title'] = 'Student Information';
 			$data['view'] = 'admin/studentinformation/index';
@@ -85,6 +88,30 @@
 			$response['gradelevel'][]=$this->get_grade_level();
 			$response['student_info']=$student_info;
 			echo json_encode($response);
+		}
+
+		public function import(){
+			$data['title'] = 'Import CSV';
+			$data['view'] = 'admin/studentinformation/import';
+			$data['import']=$this->admin->get_import_csv();
+		
+			
+			$this->load->view('layout', $data);
+		
+
+		}
+		
+		public function import_check(){
+			$data['title'] = 'Import CSV';
+			$data['view'] = 'admin/studentinformation/import_check';
+			$data['import']=$this->admin->get_import_csv();
+			$data_student=$this->input->post('data');
+			print_r($data_student);
+
+			echo json_encode($data['import']);
+
+	
+
 		}
 		
 	}
