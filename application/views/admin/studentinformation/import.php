@@ -107,15 +107,49 @@ $(document).ready(function() {
             dataSrc: '',
             dataType:'JSON'
        },
-        table: "#example",
-        fields: [ {
-                label: "First name:",
-                name: "first_name"
-            }, {
-                label: "Last name:",
-                name: "last_name"
-            }
+       $('#example').DataTable( {
+        dom: 'Bfrtip',
+        ajax: {
+            url: base_url+"admin/studentinformation/get_import_csv",
+            data:({ [csrfName]: csrfHash}),
+            type:"POST",
+            dataSrc: '',
+            dataType:'JSON'
+       },
+        columns: [
+            { data: 'first_name' },
+            { data: 'last_name' },
+          
+        ],
+        select: true,
+        buttons: [
+            { extend: 'create', editor: editor },
+            { extend: 'edit',   editor: editor },
+            { extend: 'remove', editor: editor },
+            {
+                extend: 'csv',
+                text: 'Export CSV',
+                className: 'btn-space',
+                exportOptions: {
+                    orthogonal: null
+                }
+            },
+            {
+                text: 'Import CSV',
+                action: function () {
+                    uploadEditor.create( {
+                        title: 'CSV file import'
+                    } );
+                }
+            },
+            {
+                extend: 'selectAll',
+                className: 'btn-space'
+            },
+            'selectNone',
         ]
+    } );
+    });
     } );
 
     //lumalabas nman na kaso may error na 403
@@ -150,7 +184,7 @@ $(document).ready(function() {
         } ]
     } );
  
-    $('#example').DataTable( {
+  $('#example').DataTable( {
         dom: 'Bfrtip',
         ajax: {
             url: base_url+"admin/studentinformation/get_import_csv",
