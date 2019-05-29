@@ -104,16 +104,23 @@
 		public function import_check(){
 			$data['title'] = 'Import CSV';
 			$data['view'] = 'admin/studentinformation/import_check';
-			$data['import']=$this->admin->get_import_csv();
+			//$data['import']=$this->admin->get_import_csv();
 			$data_student=$this->input->post('data');
-			print_r($data_student);
+			$status=$this->admin->import_csv($data_student);
+			echo json_encode('true');
 
+		//	echo json_encode($data['import']);
+
+		}
+		public function get_import_csv(){
+			$data['import']=$this->admin->get_import_csv();
 			echo json_encode($data['import']);
 
 	
 
 		}
+		// public function get_import_csv(){
+		// 	$data['import']=$this->admin->get_import_csv();
+		// 	echo json_encode($data['import']);
+		// }
 		
-	}
-
-?>	

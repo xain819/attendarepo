@@ -241,6 +241,14 @@ class Admin_model extends CI_Model{
 		}
 		
 	}
+	public function import_csv($data){
+		
+		foreach ($data as $value) {
+				$this->db->insert('import_csv',$value);
+				return ($this->db->affected_rows() != 1) ? false : true;
+		}
+	
+	}
 	//Stuent End
 }
 

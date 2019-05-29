@@ -55,9 +55,11 @@ var editor;
 function selectColumns ( editor, csv, header ) {
     var selectEditor = new $.fn.dataTable.Editor();
     var fields = editor.order();
+    console.log(selectEditor);
  
     for ( var i=0 ; i<fields.length ; i++ ) {
         var field = editor.field( fields[i] );
+        
  
         selectEditor.add( {
             label: field.label(),
@@ -66,6 +68,7 @@ function selectColumns ( editor, csv, header ) {
             options: header,
             def: header[i]
         } );
+    
     }
  
     selectEditor.create({
@@ -104,15 +107,19 @@ $(document).ready(function() {
             dataSrc: '',
             dataType:'JSON'
        },
-       columns: [
-       { data:'first_name'},
-       { data:'last_name'}]
-      
-    
-    
+        table: "#example",
+        fields: [ {
+                label: "First name:",
+                name: "first_name"
+            }, {
+                label: "Last name:",
+                name: "last_name"
+            }
+        ]
     } );
 
-    
+    //lumalabas nman na kaso may error na 403
+    //not allowed daw try ko sir.mag import felling ko sa 
  
     // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
     var uploadEditor = new $.fn.dataTable.Editor( {
@@ -134,7 +141,8 @@ $(document).ready(function() {
                         else {
                             uploadEditor.close();
                             selectColumns( editor, results.data, results.meta.fields );
-                            console.log( results );
+                            
+
                         }
                     }
                 });
@@ -145,7 +153,7 @@ $(document).ready(function() {
     $('#example').DataTable( {
         dom: 'Bfrtip',
         ajax: {
-            url: base_url+"admin/studentinformation/import_check",
+            url: base_url+"admin/studentinformation/get_import_csv",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
