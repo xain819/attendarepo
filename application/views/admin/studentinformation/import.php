@@ -186,6 +186,7 @@ $(document).ready(function() {
                         else {
                             uploadEditor.close();
                             selectColumns( editor, results.data, results.meta.fields );
+                            console.log( results.data[0].Firstname );
                             
                           
                         }
