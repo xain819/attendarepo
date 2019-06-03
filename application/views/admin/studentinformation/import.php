@@ -195,9 +195,12 @@ $(document).ready(function() {
         } ]
     } );
     editor.on('postSubmit', function(event, data, action) {
-        alert('a');
+        
      a.ajax.reload();
     })
+    editor.on( 'create', function ( e, json, data ) {
+    alert( 'New row added' );
+} );
     
 });
 </script>
