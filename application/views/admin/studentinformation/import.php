@@ -93,7 +93,6 @@ function selectColumns ( editor, csv, header ) {
                 field.multiSet( j, csv[j][mapped] );
             }
         }
-        
      //   a.ajax.reload();
     } );
 }
@@ -120,7 +119,6 @@ $(document).ready(function() {
         ]
         
     } );
-    
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
@@ -185,6 +183,7 @@ $(document).ready(function() {
                         }
                         else {
                             uploadEditor.close();
+                          
                             selectColumns( editor, results.data, results.meta.fields );
                             console.log( results.data[0].Firstname );
                             
@@ -195,7 +194,10 @@ $(document).ready(function() {
             }
         } ]
     } );
- 
+    editor.on('postSubmit', function(event, data, action) {
+        alert('a');
+     a.ajax.reload();
+    })
     
 });
 </script>
