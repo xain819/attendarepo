@@ -93,6 +93,8 @@ function selectColumns ( editor, csv, header ) {
                 field.multiSet( j, csv[j][mapped] );
             }
         }
+        
+     //   a.ajax.reload();
     } );
 }
 
@@ -107,7 +109,22 @@ $(document).ready(function() {
             dataSrc: '',
             dataType:'JSON'
        },
-       $('#example').DataTable( {
+        table: "#example",
+        fields: [ {
+                label: "First name:",
+                name: "first_name"
+            }, {
+                label: "Last name:",
+                name: "last_name"
+            }
+        ]
+        
+    } );
+    
+ 
+    //lumalabas nman na kaso may error na 403
+    //not allowed daw try ko sir.mag import felling ko sa 
+    var a= $('#example').DataTable( {
         dom: 'Bfrtip',
         ajax: {
             url: base_url+"admin/studentinformation/get_import_csv",
@@ -148,13 +165,7 @@ $(document).ready(function() {
             },
             'selectNone',
         ]
-    } );
     });
-    } );
-
-    //lumalabas nman na kaso may error na 403
-    //not allowed daw try ko sir.mag import felling ko sa 
- 
     // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
     var uploadEditor = new $.fn.dataTable.Editor( {
         fields: [ {
@@ -176,7 +187,7 @@ $(document).ready(function() {
                             uploadEditor.close();
                             selectColumns( editor, results.data, results.meta.fields );
                             
-
+                          
                         }
                     }
                 });
@@ -184,47 +195,6 @@ $(document).ready(function() {
         } ]
     } );
  
-  $('#example').DataTable( {
-        dom: 'Bfrtip',
-        ajax: {
-            url: base_url+"admin/studentinformation/get_import_csv",
-            data:({ [csrfName]: csrfHash}),
-            type:"POST",
-            dataSrc: '',
-            dataType:'JSON'
-       },
-        columns: [
-            { data: 'first_name' },
-            { data: 'last_name' },
-          
-        ],
-        select: true,
-        buttons: [
-            { extend: 'create', editor: editor },
-            { extend: 'edit',   editor: editor },
-            { extend: 'remove', editor: editor },
-            {
-                extend: 'csv',
-                text: 'Export CSV',
-                className: 'btn-space',
-                exportOptions: {
-                    orthogonal: null
-                }
-            },
-            {
-                text: 'Import CSV',
-                action: function () {
-                    uploadEditor.create( {
-                        title: 'CSV file import'
-                    } );
-                }
-            },
-            {
-                extend: 'selectAll',
-                className: 'btn-space'
-            },
-            'selectNone',
-        ]
-    } );
-} );
+    
+});
 </script>
