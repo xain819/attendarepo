@@ -55,9 +55,11 @@ var editor;
 function selectColumns ( editor, csv, header ) {
     var selectEditor = new $.fn.dataTable.Editor();
     var fields = editor.order();
+    console.log(selectEditor);
  
     for ( var i=0 ; i<fields.length ; i++ ) {
         var field = editor.field( fields[i] );
+        
  
         selectEditor.add( {
             label: field.label(),
@@ -66,6 +68,7 @@ function selectColumns ( editor, csv, header ) {
             options: header,
             def: header[i]
         } );
+    
     }
  
     selectEditor.create({
@@ -104,15 +107,53 @@ $(document).ready(function() {
             dataSrc: '',
             dataType:'JSON'
        },
-       columns: [
-       { data:'first_name'},
-       { data:'last_name'}]
-      
-    
-    
+       $('#example').DataTable( {
+        dom: 'Bfrtip',
+        ajax: {
+            url: base_url+"admin/studentinformation/get_import_csv",
+            data:({ [csrfName]: csrfHash}),
+            type:"POST",
+            dataSrc: '',
+            dataType:'JSON'
+       },
+        columns: [
+            { data: 'first_name' },
+            { data: 'last_name' },
+          
+        ],
+        select: true,
+        buttons: [
+            { extend: 'create', editor: editor },
+            { extend: 'edit',   editor: editor },
+            { extend: 'remove', editor: editor },
+            {
+                extend: 'csv',
+                text: 'Export CSV',
+                className: 'btn-space',
+                exportOptions: {
+                    orthogonal: null
+                }
+            },
+            {
+                text: 'Import CSV',
+                action: function () {
+                    uploadEditor.create( {
+                        title: 'CSV file import'
+                    } );
+                }
+            },
+            {
+                extend: 'selectAll',
+                className: 'btn-space'
+            },
+            'selectNone',
+        ]
+    } );
+    });
     } );
 
-    
+    //lumalabas nman na kaso may error na 403
+    //not allowed daw try ko sir.mag import felling ko sa 
  
     // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
     var uploadEditor = new $.fn.dataTable.Editor( {
@@ -135,6 +176,8 @@ $(document).ready(function() {
                             uploadEditor.close();
                             selectColumns( editor, results.data, results.meta.fields );
                             console.log( results.data[0].Firstname );
+                            
+
                         }
                     }
                 });
@@ -142,10 +185,10 @@ $(document).ready(function() {
         } ]
     } );
  
-    $('#example').DataTable( {
+  $('#example').DataTable( {
         dom: 'Bfrtip',
         ajax: {
-            url: base_url+"admin/studentinformation/import_check",
+            url: base_url+"admin/studentinformation/get_import_csv",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
