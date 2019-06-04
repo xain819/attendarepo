@@ -241,6 +241,8 @@ class Admin_model extends CI_Model{
 		}
 		
 	}
+
+
 	public function import_csv($data){
 		//print_r($data);
 		foreach ($data as $value) {
@@ -251,6 +253,25 @@ class Admin_model extends CI_Model{
 		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
 	//	
 	}
+
+
+	public function get_import_courses(){
+		$sql='SELECT * FROM `courses`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	
+	public function import_courses($data){
+		//print_r($data);
+		foreach ($data as $value) {
+			//echo($value);
+				$this->db->insert('courses',$value);
+				
+		}//ako muna sir. may tetest lang ako
+		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
+	//	
+	}
+
 	//Stuent End
 }
 

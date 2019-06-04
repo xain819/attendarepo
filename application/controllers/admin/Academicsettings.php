@@ -14,51 +14,49 @@ class Academicsettings extends CI_Controller
 	//-----------------------------------------------------		
 	function index()
 	{
-		$data['title'] = 'Student Information';
+		
 		$data['view'] = 'admin/academicsettings/index';
+		$data['page'] = 'admin/academicsettings/courses';
 		$this->load->view('layout', $data);
 	
 	
 	}
 	public function courses()
 	{
-		$data['title'] = 'Student Information';
-		$data['view'] = 'admin/academicsettings/courses';
+		$data['title'] = 'Courses';
+		$data['view'] = 'admin/academicsettings/index';
+		$data['page'] = 'admin/academicsettings/courses';
 		$this->load->view('layout', $data);
-	
-	
+
 	}
+	public function check_courses()
+	{
+	
+		$data['title'] = 'Courses';
+		$data['view'] = 'admin/academicsettings/index';
+		$data['page'] = 'admin/academicsettings/courses';
+		$courses=$this->input->post('data');
+		$this->admin->import_courses($courses);
+		$data['import']=$this->admin->get_import_courses();
+		echo json_encode($data['import']);
+
+	}
+	public function get_import_courses(){
+		$data['import']=$this->admin->get_import_courses();
+		echo json_encode($data['import']);
+
+	}
+
+
+	
 
 	//---------------------------------------------------------
-	function filterdata()
-	{
-		$this->session->set_userdata('filter_type',$this->input->post('type'));
-		$this->session->set_userdata('filter_status',$this->input->post('status'));
-		$this->session->set_userdata('filter_keyword',$this->input->post('keyword'));
-	}
-
+	
 	//--------------------------------------------------		
-	function list_data()
-	{
-		$data['info'] = $this->admin->get_all();
-		$this->load->view('admin/admin/list',$data);
-	}
 
 
 	//-----------------------------------------------------------
-	function change_status()
-	{   
-		$this->rbac->check_operation_access(); // check opration permission
 
-		$this->admin->change_status();
-	}
-
-	function change_terminal_status()	
-	{   
-		//$this->rbac->check_operation_access(); // check opration permission
-
-		$this->admin->change_terminal_status();
-	}
 	
 	//--------------------------------------------------
 	function add()

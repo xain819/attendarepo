@@ -94,8 +94,6 @@
 			$data['title'] = 'Import CSV';
 			$data['view'] = 'admin/studentinformation/import';
 			$data['import']=$this->admin->get_import_csv();
-		
-			
 			$this->load->view('layout', $data);
 		
 

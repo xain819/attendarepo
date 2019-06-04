@@ -34,20 +34,11 @@ button.btn-space {
 
 <div>
 
-<table id="example" class="display" style="width:100%">
+<table id="example1" class="display" style="width:100%">
         <thead>
             <tr>
-    
-                <th>Description</th>
-                <th>Course Group</th>
-                <th>Course Number</th>
-
-                <th>Period number:</th>
-                <th>Teacher Name</th>
-                <th>Section Name</th>
-                <th>Grade Level</th>
-                <th>Schedule Type</th>
-       
+                <th>Section</th>
+                <th>Last name</th>
             
             </tr>
         </thead>
@@ -111,75 +102,38 @@ $(document).ready(function() {
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
         ajax: {
-            url: base_url+"admin/academicsettings/check_courses",
+            url: base_url+"admin/studentinformation/import_check",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
-      
         table: "#example",
         fields: [ {
-                label: "Description:",
-                name: "course_description"
-            }, 
-            {
-                label: "Course Group:",
-                name: "course_group"
-            },
-            {
-                label: "Course Code:",
-                name: "course_code"
-            },
-            {
-                label: "Period:",
-                name: "period_number"
-            },
-            {
-                label: "Teacher Name:",
-                name: "teacher_name"
-            },
-            {
-                label: "Section:",
-                name: "section_name"
-            },
-            {
-                label: "Grade Level:",
-                name: "grade_level"
-            },
-            {
-                label: "Day Type:",
-                name: "schedule_type"
-            },
-        
-
+                label: "First name:",
+                name: "first_name"
+            }, {
+                label: "Last name:",
+                name: "last_name"
+            }
         ]
         
     } );
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
-    var a= $('#example').DataTable( {
+    var a= $('#example1').DataTable( {
         dom: 'Bfrtip',
         ajax: {
-            url: base_url+"admin/academicsettings/get_import_courses",
+            url: base_url+"admin/studentinformation/get_import_csv",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
         columns: [
-            { data: 'course_description' },
-            { data: 'course_group' },
-            { data: 'course_code' },
-
-            { data: 'period_number' },
-            { data: 'teacher_name' },
-            { data: 'section_name' },
-            
-            { data: 'grade_level' },
-            { data: 'schedule_type' }
-
+            { data: 'first_name' },
+            { data: 'last_name' },
           
         ],
         select: true,
