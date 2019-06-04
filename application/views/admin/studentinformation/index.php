@@ -1,7 +1,11 @@
  <!-- Content Header (Page header) -->
  <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
- 
+<!-- for datatable  -->
+<link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="<?php echo base_url('public/plugins/editor/css/editor.dataTables.min.css');?>">
+
   
  <section class="content-header">
       <h1>
@@ -34,8 +38,6 @@
 	          <h4><i class="fa fa-list"></i> &nbsp; Student List</h4>
 	        </div>
 	        <div class="col-md-6 text-right">
-          	
-<input type="file" id="csv-file" name="files"/>
 
           <button class="btn btn-success" id="showaddstudentmodal"><i class="fa fa-plus"></i> Add New Student</button>
        
@@ -84,36 +86,22 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
      <script src="<?= base_url() ?>public/plugins/papaparse/papaparse.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    
-
-
-    
+    <!-- for datables -->
+    <script src="<?php echo base_url('public/plugins/editor/js/dataTables.editor.min.js');?>"></script>
+    <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
     
     <!-- <script src="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script> -->
     <script>
       var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
           csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
-  var data;
- 
-  function handleFileSelect(evt) {
-    var file = evt.target.files[0];
- 
-    Papa.parse(file, {
-      header: true,
-      dynamicTyping: true,
-      complete: function(results) {
-        data = results;
-        
-      }
-    });
-    console.log(data);
-  }
- 
-  $(document).ready(function(){
-    $("#csv-file").change(handleFileSelect);
-  });
-</script>
+    </script>
 
     
     <script src="<?php echo base_url('public/dist/js/studentinformation.js');?>"></script>

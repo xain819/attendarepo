@@ -90,6 +90,13 @@
 			echo json_encode($response);
 		}
 
+		public function insert_student(){
+			$data_student=$this->input->post('data');
+			$this->admin->import_csv_student($data_student);
+			$data=$this->admin->get_all_student();
+			echo json_encode($data);
+		}
+
 		public function import(){
 			$data['title'] = 'Import CSV';
 			$data['view'] = 'admin/studentinformation/import';
