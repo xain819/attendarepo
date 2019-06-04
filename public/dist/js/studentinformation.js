@@ -1,6 +1,110 @@
 $(document).ready(function(){
     console.log(base_url);
+    function selectColumns ( editor, csv, header ) {
+        var selectEditor = new $.fn.dataTable.Editor();
+        var fields = editor.order();
+        console.log(selectEditor);
+     
+        for ( var i=0 ; i<fields.length ; i++ ) {
+            var field = editor.field( fields[i] );
+            
+     
+            selectEditor.add( {
+                label: field.label(),
+                name: field.name(),
+                type: 'select',
+                options: header,
+                def: header[i]
+            } );
+        
+        }
+     
+        selectEditor.create({
+            title: 'Map CSV fields',
+            buttons: 'Import '+csv.length+' records',
+            message: 'Select the CSV column you want to use the data from for each field.'
+        });
+     
+        selectEditor.on('submitComplete', function (e, json, data, action) {
+            // Use the host Editor instance to show a multi-row create form allowing the user to submit the data.
+            editor.create( csv.length, {
+                title: 'Confirm import',
+                buttons: 'Submit',
+                message: 'Click the <i>Submit</i> button to confirm the import of '+csv.length+' rows of data. Optionally, override the value for a field to set a common value by clicking on the field below.'
+            } );
+     
+            for ( var i=0 ; i<fields.length ; i++ ) {
+                var field = editor.field( fields[i] );
+                var mapped = data[ field.name() ];
+     
+                for ( var j=0 ; j<csv.length ; j++ ) {
+                    field.multiSet( j, csv[j][mapped] );
+                }
+            }
+         //   a.ajax.reload();
+        } );
+    }
+    
+    editor = new $.fn.dataTable.Editor({
+        ajax: {
+            url: base_url+"admin/studentinformation/insert_student",
+            data:({ [csrfName]: csrfHash}),
+            type:"POST",
+            dataSrc: '',
+            dataType:'JSON'
+       },
+       table: "#Student_DataTable",
+       fields: [ 
+           {
+               label: "ID Number:",
+               name: "IDNumber"
+           }, 
+           {
+               label: "FirstName:",
+               name: "FirstName"
+           },
+           {
+            label: "LastName:",
+            name: "LastName"
+           },
+           {
+            label: "Gender:",
+            name: "Gender"
+        },
+        {
+            label: "BirthDate:",
+            name: "BirthDate"
+        },{
+            label: "ContactNumber:",
+            name: "ContactNumber"
+        }
+        ,{
+            label: "RaceID:",
+            name: "RaceID"
+        },{
+            label: "SectionID:",
+            name: "SectionID"
+        },{
+            label: "GradeLevelID:",
+            name: "GradeLevelID"
+        },{
+            label: "DistinctionID:",
+            name: "DistinctionID"
+        },{
+            label: "Password:",
+            name: "Password"
+        },{
+            label: "IsEnabled:",
+            name: "IsEnabled"
+        }
+       ]
+    });
+
+
+
+
     var student_DataTable = $('#Student_DataTable').DataTable({
+        dom: 'Bfrtip',
         responsive: true,
         ajax: {
             url: base_url+"admin/studentinformation/get_all_student ",
@@ -30,10 +134,67 @@ $(document).ready(function(){
                 }
             }
         ],
-        select: true
+        select: true, 
+        buttons: [
+            {
+                extend: 'csv',
+                text: 'Export CSV',
+                className: 'btn-space',
+                exportOptions: {
+                    orthogonal: null
+                }
+            },
+            {
+                text: 'Import CSV',
+                action: function () {
+                    uploadEditor.create( {
+                        title: 'CSV file import'
+                    } );
+                }
+            },
+            {
+                extend: 'selectAll',
+                className: 'btn-space'
+            },
+            'selectNone',
+        ]
     });
 
-    
+    var uploadEditor = new $.fn.dataTable.Editor( {
+        fields: [ {
+            label: 'CSV file:',
+            name: 'csv',
+            type: 'upload',
+            ajax: function ( files ) {
+                // Ajax override of the upload so we can handle the file locally. Here we use Papa
+                // to parse the CSV.
+                Papa.parse(files[0], {
+                    header: true,
+                    skipEmptyLines: true,
+                    complete: function (results) {
+                        if ( results.errors.length ) {
+                            console.log( results );
+                            uploadEditor.field('csv').error( 'CSV parsing error: '+ results.errors[0].message );
+                        }
+                        else {
+                            uploadEditor.close();
+                          
+                            selectColumns( editor, results.data, results.meta.fields );
+                            console.log( results.data[0].Firstname );
+                            
+                          
+                        }
+                    }
+                });
+            }
+        } ]
+    } );
+    editor.on('postSubmit', function(event, data, action) {
+        
+        student_DataTable.ajax.reload();
+       })
+
+
     $(document).on('click','#showaddstudentmodal',function(){
        $.ajax({
            url:base_url+"admin/studentinformation/student_setting ",

@@ -251,6 +251,16 @@ class Admin_model extends CI_Model{
 		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
 	//	
 	}
+	public function import_csv_student($data){
+	
+		foreach ($data as $value) {
+			//echo($value);
+				$this->db->insert('student',$value);
+				
+		}//ako muna sir. may tetest lang ako
+		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
+	//	
+	}
 	//Stuent End
 }
 

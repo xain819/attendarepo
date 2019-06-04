@@ -120,6 +120,7 @@ $(document).ready(function() {
         
     } );
  
+ 
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
     var a= $('#example').DataTable( {
