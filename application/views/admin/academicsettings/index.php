@@ -17,7 +17,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Title</h3>
+          <h3 class="box-title">Academic Settings</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -31,22 +31,11 @@
           <!-- Custom Tabs (Pulled to the right) -->
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs pull-right">
-              <li class="active"><a href="#tab_1-1" data-toggle="tab">Tab 1</a></li>
-              <li><a href="#tab_2-2" data-toggle="tab">Tab 2</a></li>
-              <li><a href="#tab_3-2" data-toggle="tab">Tab 3</a></li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  Dropdown <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                  <li role="presentation" class="divider"></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                </ul>
-              </li>
-              <li class="pull-left header"><i class="fa fa-th"></i> Custom Tabs</li>
+              <li class="active"><a href="#tab_1-1" data-toggle="tab">Courses</a></li>
+              <li><a href="#tab_2-2" data-toggle="tab">Section</a></li>
+              <li><a href="#tab_3-2" data-toggle="tab">Class</a></li>
+           
+              <li class="pull-left header"><i class="fa fa-th"></i> Assign Courses</li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="tab_1-1">
