@@ -13,7 +13,7 @@
 			$data['deactive_users'] = $this->dashboard_model->get_deactive_users();
 			$data['title'] = 'Dashboard';
 			$data['view'] = 'admin/dashboard/dashboard1';
-			$this->load->view('layout', $data);
+			$this->load->view('layoutv2', $data);
 		}
 		
 		public function masterscheduler(){

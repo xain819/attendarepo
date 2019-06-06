@@ -1,10 +1,19 @@
    <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
+
+                
               
 
                     
                     <li class="nav-label">Administration</li>
+
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-page-layout-body"></i><span class="nav-text">Dashboard</span><span class="badge badge-success nav-badge">11</span></a>
+                        <ul aria-expanded="false">
+                         
+                        </ul>
+                    </li>
+
                     <?php if($this->rbac->check_module_permission('admin')): ?>  
                     <li class="mega-menu mega-menu-lg">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -17,39 +26,22 @@
                             <li id=""><a href="<?= base_url('admin/profile/change_pwd'); ?>">Change Password</a></li>
                         </ul>
                     </li>
+                    
                     <?php endif; ?>
 
                 
 
-
-
-                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-page-layout-body"></i><span class="nav-text">Layouts</span><span class="badge badge-success nav-badge">11</span></a>
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-page-layout-body"></i><span class="nav-text">General Setting</span><span class="badge badge-success nav-badge">11</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./layout-blank.html">Blank</a>
-                            </li>
-                            <li><a href="./layout-boxed.html">Boxed</a>
-                            </li>
-                            <li><a href="./layout-wide-boxed.html">Wide Boxed</a>
-                            </li>
-                            <li><a href="./layout-width.html">Width</a>
-                            </li>
-                            <li><a href="./layout-dark.html">Dark</a>
-                            </li>
-                            <li><a href="./layout-light.html">Light</a>
-                            </li>
-                            <li><a href="./layout-fixed-header.html">Fixed Header</a>
-                            </li>
-                            <li><a href="./layout-fixed-nav.html">Fixed Sidebar</a>
-                            </li>
-                            <li><a href="./layout-one-column.html">One Column</a>
-                            </li>
-                            <li><a href="./layout-two-column.html">Two column</a>
-                            </li>
+                         
                         </ul>
                     </li>
 
+                   
 
-                    <li class="nav-label">Apps</li>
+
+
+                    <li class="nav-label">Master Scheduler</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-email-outline"></i> <span class="nav-text">Email</span><span class="badge bg-lgreen text-white nav-badge">০3</span></a>
                         <ul aria-expanded="false">
                             <li><a href="email-inbox.html">Inbox</a>

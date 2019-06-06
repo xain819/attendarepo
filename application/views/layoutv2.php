@@ -8,18 +8,22 @@
     <title>Gleek - Bootstrap Admin Dashboard HTML Template</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>public/assets/images/favicon.png">
+    <link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
+    <script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
+    <script src="<?=base_url() ?>public/js/settings.js"></script>
+    <script src="<?=base_url() ?>public/js/gleek.js"></script>
+    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+
     <!-- Custom Stylesheet -->
 
     <link href="<?= base_url() ?>public/css/style.css" rel="stylesheet">
   
 		  <!-- Font Awesome -->
-		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		  <!-- Ionicons -->
-		  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-		  <!-- Theme style -->
+	
 	
 		  <!-- Datatable style -->
-		  <link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.css">
+	
 
   <!-- bootstrap datepicker -->
 		
@@ -28,8 +32,7 @@
 
 		  <!-- jQuery 2.2.3 -->
 		  <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
-			<link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>" >
-    
+
 </head>
 
 <body>
