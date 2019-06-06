@@ -13,7 +13,7 @@
 			//$this->rbac->check_operation_access();
 			$data['title'] = 'General Settings';
 			$data['view'] = 'admin/generalsettings/index';
-			$this->load->view('layout', $data);
+			$this->load->view('layoutv2', $data);
 			
 		}
 	

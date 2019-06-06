@@ -20,7 +20,7 @@ class Admin extends CI_Controller
 		
 		$data['admin_roles'] = $this->admin->get_admin_roles();
 		$data['view']='admin/admin/index';
-		$this->load->view('layout',$data);
+		$this->load->view('layoutv2',$data);
 	}
 
 	//---------------------------------------------------------

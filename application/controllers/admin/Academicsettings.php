@@ -21,6 +21,15 @@ class Academicsettings extends CI_Controller
 	
 	
 	}
+	function gleek()
+	{
+		
+		$data['view'] = 'gleek/main/template/index-school';
+		$data['page'] = 'admin/academicsettings/courses';
+		$this->load->view('layoutv2');
+	
+	
+	}
 	public function courses()
 	{
 		$data['title'] = 'Courses';
