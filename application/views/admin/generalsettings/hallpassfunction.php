@@ -12,6 +12,7 @@
                     <table class="table trading-activity table-padded table-responsive-fix">
                         <thead>
                             <tr>
+                            
                                 <th>AHP Type</th>
                                 <th>Time Allocated</th>
                                 <th>Status</th>
@@ -19,8 +20,14 @@
                         </thead>
                         <tbody>
 
+                           
+
                             <tr>
-                                <td><span class="text-muted font-weight-semi-bold">Main Office</span></td>
+                                
+                                <td>
+                                <a href="javascript:void()" data-toggle="tooltip" data-placement="top" title="" data-original-title="Close">
+                                <i class="fa fa-close color-danger"></i></a>
+                               <span class="text-muted font-weight-semi-bold">  Main Office</span></td>
                                 <td><span class="text-muted font-weight-semi-bold">None</span></td>
                                 <td><span class="label label-sm label-rounded label-danger">OFF</span>
                                 </td>

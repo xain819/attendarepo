@@ -1,5 +1,6 @@
 <link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
 <link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/select2/css/select2.min.css">
 <div class="content-body">
 
         <div class="container-fluid">
@@ -81,15 +82,14 @@
                                                                                                             <div class="form-group">
                                             
                                                                                                                             <select id="single-select">
-                                                                                                                                    <option value="AL">Alabama</option>
-                                                                                                                                    <option value="WY">Wyoming</option>
+                                                                                                                                    <option value="AL">Administrative</option>
+                                                                                                                                    <option value="WY">None Administrative</option>
                                                                                                                         </select>
                                                                                                                     
                                                                                                                 </div>       
                                                                                                         
                                                                                                     
-                                                                                                        <button type="submit" class="btn btn-primary btn-form mr-2">Submit</button>
-                                                                                                        <button type="button" class="btn btn-light text-dark btn-form">Cancel</button>
+                                                                                                       
                                                                                                     </form>
 
                                                                                                     
