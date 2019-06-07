@@ -247,7 +247,7 @@
       //Create events
       var event = $("<div />");
       event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
-      event.html(val);
+      event.html('hi');
       $('#external-events').prepend(event);
 
       //Add draggable funtionality

@@ -25,21 +25,29 @@
                             <tr>
                                 
                                 <td>
-                                <a href="javascript:void()" data-toggle="tooltip" data-placement="top" title="" data-original-title="Close">
+                                <a href="javascript:void()" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
                                 <i class="fa fa-close color-danger"></i></a>
-                               <span class="text-muted font-weight-semi-bold">  Main Office</span></td>
+                                <span class="text-muted font-weight-semi-bold" style='padding-left:5px;'>  Main Office</span></td>
                                 <td><span class="text-muted font-weight-semi-bold">None</span></td>
                                 <td><span class="label label-sm label-rounded label-danger">OFF</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td><span class="text-muted font-weight-semi-bold">Main Office</span></td>
+                                
+                                <td>
+                                <a href="javascript:void()" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                <i class="fa fa-close color-danger"></i></a>
+                                <span class="text-muted font-weight-semi-bold" style='padding-left:5px;'>  Nurse</span></td>
                                 <td><span class="text-muted font-weight-semi-bold">None</span></td>
                                 <td><span class="label label-sm label-rounded label-danger">OFF</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td><span class="text-muted font-weight-semi-bold">Main Office</span></td>
+                                
+                                <td>
+                                <a href="javascript:void()" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                <i class="fa fa-close color-danger"></i></a>
+                                <span class="text-muted font-weight-semi-bold" style='padding-left:5px;'>  Counselor</span></td>
                                 <td><span class="text-muted font-weight-semi-bold">None</span></td>
                                 <td><span class="label label-sm label-rounded label-danger">OFF</span>
                                 </td>
@@ -61,7 +69,7 @@
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table class="table trading-activity table-padded table-responsive-fix">
+                    <table id='tablelist' class="table trading-activity table-padded table-responsive-fix">
                         <thead>
                             <tr>
                                 <th>NHP Type</th>
@@ -69,15 +77,10 @@
                                 <th>Status </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class='hallpass'>
+
                             
 
-                            <tr>
-                            <td><span class="text-muted font-weight-semi-bold">Rest Room</span></td>
-                                <td><span class="text-muted font-weight-semi-bold">5:00</span></td>
-                                <td><span class="label label-sm label-rounded label-danger">OFF</span>
-                                </td>
-                            </tr>
 
                             
                           
@@ -90,6 +93,8 @@
 
  
 </div>
+
+
 
 
 

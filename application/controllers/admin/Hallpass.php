@@ -21,7 +21,7 @@
 
 		public function list_data()
 		{
-				$data['PassType']=$this->hallpass->get_pass_type();
+		$data['PassType']=$this->hallpass->get_pass_type();
 		$data['info'] = $this->hallpass->get_all();
 		$this->load->view('admin/hallpass/list',$data);
 		
