@@ -109,6 +109,14 @@ class Admin_model extends CI_Model{
 		$query = $this->db->get('hallpass');
 		return $result = $query->result_array();
 	}
+	public function get_master(){
+
+		//$this->db->where('is_admin', 0);
+		//$this->db->order_by('created_at', 'desc');
+		
+		$query = $this->db->get('master_control');
+		return $result = $query->result_array();
+	}
 	public function get_import_csv(){
 		$sql='SELECT * FROM `import_csv`';
 		$query=$this->db->query($sql);
@@ -271,7 +279,37 @@ class Admin_model extends CI_Model{
 		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
 	//	
 	}
+
+	public function delete_hallpass($id){
+	$this->db->where('HallPassID',$id);
+	$this->db->delete('hallpass');
+	return ($this->db->affected_rows() != 1) ? false : true;}
+
+	public function add_gracetime($data){
+		$this->db->update('period', $data);
+		return true;
+	
+		
+	
+	}public function change_data_status($data){
+	  
+		if ($data=='hallpass'){
+		$this->db->set('is_active',$this->input->post('status'));
+		$this->db->where('HallPassID',$this->input->post('id'));
+		$this->db->update('hallpass');
+		return true;}
+		else{
+		$this->db->set('is_active',$this->input->post('status'));
+		$this->db->where('id',$this->input->post('id'));
+		$this->db->update('master_control');
+		}
+	
+	}
+
+
+
 	//Stuent End
+
 }
 
 

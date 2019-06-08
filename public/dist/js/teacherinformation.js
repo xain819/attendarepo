@@ -119,6 +119,7 @@ $(document).ready(function(){
         });
         return result;
     }
+
     function manage_teacher(type,values){
         swal({
             title: "Are you sure?",

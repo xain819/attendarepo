@@ -25,25 +25,51 @@
 		echo json_encode($data);
 		
 		}
-		<div class="col-xl-6 col-sm-6">
+		public function delete_hallpass()
+		{
+		$id=$this->input->post('data');
+		$data=$this->input->post('type');
+		$status=$this->admin->delete_hallpass($id);
+		echo json_encode($status);
 
-		<div class="card">
-				<div class="card-body">
-					<div class="stat-widget-two">
-						<div class="media">
-							<div class="media-body">
-						
-								<h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
-								Universal E.O.D Clock-Ou<span class="pull-right"> <input id="chk_3" type="checkbox" checked='checked' class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
-								<p>descrition goes here</p>
-							</div>
-						
-						
-						</div>
-					</div>
-				</div>
-		</div>
-		</div>
+		}
+		public function add_hallpass()
+		{
+		$data['HallPass']=$this->input->post('name');
+		$data['TimeAllocated']=$this->input->post('time');
+		$data['PassTypeID']=$this->input->post('type');
+		$data['is_active']='1';
+		$result=$this->admin->add_terminal($data);
+	
+		echo ($result);
+
+		}
+		public function edit_pgt()
+		{
+		$data['master_period_time']=$this->input->post('gracetime');
+		$result=$this->admin->add_gracetime($data);
+
+
+		}
+
+		public function change_status(){
+
+		$data['id']=$this->input->post('data');
+		$this->admin->change_data_status($data['id']);
+		$data['info']=$this->admin->get_master();
+
+		echo json_encode($data['info']);
+		
+	
+	}
+
+	
+	public function get_master_list(){
+		$data['info']=$this->admin->get_master();
+		echo json_encode($data);
+		
+	
+	}
 
 	
 	
