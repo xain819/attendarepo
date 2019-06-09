@@ -2,7 +2,8 @@
 <link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
 
 <link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/select2/css/select2.min.css">
- 
+<link href="<?= base_url('public/assets/plugins/datatables/css/jquery.dataTables.min.css')?>" rel="stylesheet">
+<link href="<?= base_url('public/css/style.css')?>" rel="stylesheet">
 <div class="content-body">
 
         <div class="container-fluid">
@@ -43,9 +44,99 @@
     <script src="<?=base_url() ?>public/js/settings.js"></script>
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+    <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="<?=base_url()?>public/js/plugins-init/datatables.init.js"></script> -->
+
+<script>
+
+var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+       csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+ 
+
+var ahp = $('#nhp').DataTable({
+    "searching": false,
+    "bPaginate": false,
+    "bLengthChange": false,
+    "bFilter": true,
+    "bInfo": false,
+    "bAutoWidth": false,
+    
+    ajax: {
+            url:'<?php echo base_url(); ?>admin/generalsettings/get_all_hallpass',
+            dataType: 'json',
+            type: 'POST',
+            data: ({[csrfName]: csrfHash,type:2}),
+            dataSrc:"info"
+        },
+        columns: [ 
+            { "data": null,
+				render: function ( data, type, row ) {
+                    if(data.PassTypeID==="2"){
+                        return `  <button value='${data.HallPassID}'  class="delete_row btn btn-xs btn-danger  " type="button" >
+                                <i class="fa fa-times" aria-hidden="true"></i> 
+                        </button>`;
+                    }else{
+                        return null;
+                    }
+				} 
+			},
+            { "data": "HallPass"},
+            {"data":"TimeAllocated"},
+            { "data":null,
+                render:function(data, type,row){
+                    return `
+                    <input data-id="${data.HallPassID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${data.is_checked} 
+                    class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                    `;
+                }
+            }
+			
+        ]
+});
+var nhp = $('#ahp').DataTable({
+    "searching": false,
+    "bPaginate": false,
+    "bLengthChange": false,
+    "bFilter": true,
+    "bInfo": false,
+    "bAutoWidth": false,
+    
+    ajax: {
+            url:'<?php echo base_url(); ?>admin/generalsettings/get_all_hallpass',
+            dataType: 'json',
+            type: 'POST',
+            data: ({[csrfName]: csrfHash,type:1}),
+            dataSrc:"info"
+        },
+        columns: [ 
+            { "data": null,
+				render: function ( data, type, row ) {
+                    if(data.PassTypeID==="1"){
+                        return `  <button value='${data.HallPassID}'  class="delete_row btn btn-xs btn-danger  " type="button" >
+                                <i class="fa fa-times" aria-hidden="true"></i> 
+                        </button>`;
+                    }else{
+                        return null;
+                    }
+				} 
+			},
+            { "data": "HallPass"},
+            {"data":"TimeAllocated"},
+            { "data":null,
+                render:function(data, type,row){
+                    return `
+                    <input data-id="${data.HallPassID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${data.is_checked} 
+                    class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                    `;
+                }
+            }
+			
+        ]
+});
+</script>
     <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url() ?>public/assets/images/favicon.png">
     <!-- Custom Stylesheet -->
-    <link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
+    <!-- <link href="<?=base_url() ?>public/css/style.css" rel="stylesheet"> -->
 
 
    
@@ -60,12 +151,13 @@
     <script src="<?=base_url() ?>public/js/dashboard/dashboard-2.js"></script>
     <script src="<?=base_url() ?>public/assets/plugins/select2/js/select2.full.min.js"></script>
     <script src="<?=base_url() ?>public/js/plugins-init/select2-init.js"></script>
-    
+   
 
    
 
 <script>
    
+
 
    var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -91,8 +183,7 @@
 
 
 $(document).ready(function(){
-
- const a =$.ajax({
+    const a =$.ajax({
         url:'<?php echo base_url(); ?>admin/generalsettings/get_master_list',
         type:"POST",
         data:({[csrfName]: csrfHash}),
@@ -130,15 +221,7 @@ $(document).ready(function(){
 
     master_element.html(mhl);
     $("#master_list").append(mhl); 
-});
-
-      
-
-    
-
-
-
-		
+    });	
 	});
 });
 $("body").on("change",".js-switch",function(){
@@ -166,7 +249,8 @@ $("body").on("change",".js-switch",function(){
         data:({[csrfName]: csrfHash,type:'delete-row',data:id}),
         dataType:'JSON',
     }).done(function(data){
-
+        ahp.ajax.reload();
+        nhp.ajax.reload();
     })
 
 });
@@ -183,6 +267,8 @@ $(document).on('click','.add_hallpass',function(){
         data:({[csrfName]: csrfHash,name:name,time:time,type:type}),
         dataType:'JSON',
     }).done(function(data){        
+        ahp.ajax.reload();
+        nhp.ajax.reload();
     })
 
 });
@@ -203,8 +289,9 @@ $(document).on('click','.btn-pgt',function(){
 });
 
 
-$(document).ready(function(){
- $.ajax({
+
+function hallpass(){
+    $.ajax({
         url:'<?php echo base_url(); ?>admin/generalsettings/get_all_hallpass',
         type:"POST",
         data:({[csrfName]: csrfHash}),
@@ -247,11 +334,12 @@ $(document).ready(function(){
                         </td>
                     </tr>`
 
-         var hallpass_element = $("<div />");
-         hallpass_element.html(nhp_list);
-         $("#table_nhp tbody").append(nhp_list);
+        //  var hallpass_element = $("<div />");
+        //  hallpass_element.html(nhp_list);
+       // $("#table_nhp1").remove();
+         $("#table_nhp1").append(nhp_list);
          });
-
+         var ahp_list='';
          ahp.forEach(function(element){
          const HallPass=element.HallPass;
          const HallPassID=element.HallPassID;
@@ -260,29 +348,32 @@ $(document).ready(function(){
          var is_checked='';
          if (is_active==1){ var is_checked='checked=""';}
 
-         const ahp_list =`<tr><td>
-                     
-         <button value='${HallPassID}'  class="delete_row" type="button" class="btn btn-circle btn-danger btn-circle">
-                        <i class="fa fa-times" aria-hidden="true"></i> </button>
-                        <span class="text-muted font-weight-semi-bold" style='padding-left:5px;'>${HallPass}</span></td>
-                        <td><span class="text-muted font-weight-semi-bold">${TimeAllocated}</span></td>
-                        <td>
-                        <span class="pull-right"> <input data-id="${HallPassID}" id="${HallPassID}" id="hp_${HallPassID}" type="checkbox" ${is_checked} 
-                        class="tgl tgl-ios tgl_checkbox" data-size="small" /></span>
+          ahp_list =`
+         <tr>
+                <td>      
+                        <button value='${HallPassID}'  class="delete_row" type="button" class="btn btn-circle btn-danger btn-circle">
+                                <i class="fa fa-times" aria-hidden="true"></i> 
+                        </button>
+                        <span class="text-muted font-weight-semi-bold" style='padding-left:5px;'>${HallPass}</span>
+                </td>
+                <td>
+                    <span class="text-muted font-weight-semi-bold">${TimeAllocated}</span></td>
+                <td>
+                <span class="pull-right">
+                 <input data-id="${HallPassID}" id="${HallPassID}" id="hp_${HallPassID}" type="checkbox" ${is_checked} 
+                class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                </span>
                       
                         </td>
-                    </tr>`
+        </tr>`
     
-         var hallpass_element = $("<div />");
-         hallpass_element.html(ahp_list);
-         $("#table_ahp tbody").append(ahp_list);
+        //  var hallpass_element = $("<div />");
+       
          });
 
+         $("#table_ahp1").append(ahp_list);
 
     })
     
-
- 
- 
-});
+}
 </script>

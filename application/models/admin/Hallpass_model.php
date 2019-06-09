@@ -1,10 +1,11 @@
 <?php
 	class Hallpass_model extends CI_Model{
 
-		public function get_all(){
+		public function get_all($type){
 
 			//$this->db->where('is_admin', 0);
 			//$this->db->order_by('created_at', 'desc');
+			$this->db->where('PassTypeID', $type);
 			$query = $this->db->get('hallpass');
 			return $result = $query->result_array();
 		}

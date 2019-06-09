@@ -11,60 +11,82 @@
 
                 
                 <div class='row' id="hallpass_list_item">
-                <div class="col-xl-6">
-        <div class="card transparent-card ">
-            <div class="card-header pb-0">
-                <h5 class="card-title mb-3">Administrative Hall Pass</h5>
-            
-            </div>
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table id="table_ahp" class="table trading-activity table-padded table-responsive-fix">
-                        <thead>
-                            <tr>
-                            
-                                <th>AHP Type</th>
-                                <th>Time Allocated</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div class="col-xl-6">
+                                <div class="card transparent-card ">
+                                    <div class="card-header pb-0">
+                                        <h5 class="card-title mb-3">Administrative Hall Pass</h5>
+                                    
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table id="ahp" class="table trading-activity table-padded table-responsive-fix">
+                                                <thead>
+                                                    <tr>
+                                                        <th>action</th>
+                                                        <th>AHP Type</th>
+                                                        <th>Time Allocated</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="table_ahp1">
 
-                              
-                          
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-</div>
-<div class="col-xl-6">
-        <div class="card transparent-card ">
-            <div class="card-header pb-0">
-                <h5 class="card-title mb-3">Non Administrative Hall Pass</h5>
-            
-            </div>
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table id='table_nhp' class="table trading-activity table-padded table-responsive-fix">
-                        <thead>
-                            <tr>
-                                <th>NHP Type</th>
-                                <th>Time Allocated</th>
-                                <th>Status </th>
-                            </tr>
-                        </thead>
-                        <tbody class='hallpass'>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-</div>
-
- 
-</div>
-
+                                                    
+                                                
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div> 
+                            <div class="col-xl-6">
+                                    <div class="card transparent-card ">
+                                        <div class="card-header pb-0">
+                                            <h5 class="card-title mb-3">Non Administrative Hall Pass</h5>
+                                        
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <div class="table-responsive">
+                                                <table id='nhp' class="table trading-activity table-padded table-responsive-fix">
+                                                    <thead>
+                                                        <tr>
+                                                        <th>action</th>
+                                                        <th>AHP Type</th>
+                                                        <th>Time Allocated</th>
+                                                        <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id='table_nhp1'>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                <!-- <div class="col-6">
+                        <div class="card">
+                            <div class="card-header pb-0">
+                                <h5 class="card-title mb-3">Administrative Hall Pass</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div id="example_wrapper" class="dataTables_wrapper">
+                                        <table id="example" class="display dataTable" style="min-width: 845px" role="grid" aria-describedby="example_info">
+                                            <thead>
+                                                <tr role="row">
+                                                        <th>AHP Type</th>
+                                                        <th>Time Allocated</th>
+                                                        <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>---!>
 
 
                 </div>
@@ -84,25 +106,20 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-
                                         <form role="form" id="add_hallpass_form_id">
                                             <div class="form-group">
-                                        
                                                 <input type="text" id='hallpassname' name="hallpassname" class="form-control" placeholder="hall pass name" required>
                                             </div>
                                             <div class="form-group">
-                                            
                                                 <input type="text" id='hallpasstime' name="hallpasstime" class="form-control" placeholder="minutes" required>
                                             </div>
-
-                                                <div class="form-group">
-
+                                        <div class="form-group">
                                             <select id="hallpasstype">
-                                                    <option value="1">Administrative</option>
+                                                <option value="1">Administrative</option>
                                                 <option value="2">None Administrative</option>
                                             </select>
                                                         
-                                                    </div>       
+                                        </div>       
         
                                         </form>
 
