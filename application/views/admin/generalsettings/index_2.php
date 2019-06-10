@@ -189,6 +189,41 @@ $(document).ready(function(){
         data:({[csrfName]: csrfHash}),
         dataType:'JSON',
     }).done(function(data){
+<<<<<<< HEAD
+        var result=data;
+        masterlist=result.info;
+        masterlist.forEach(function(element){
+        
+            const master_name=element.master_name;
+            const is_active=element.is_active;
+            const id=element.id;
+            const id_name=element.id_name;
+        
+            var is_checked='';
+            if (is_active==1){ var is_checked='checked=""';}
+        
+            
+            const mhl=`<div class="col-xl-6 col-sm-6">
+            <div class="card">
+            <div class="card-body">
+            <div class="stat-widget-two">
+            <div class="media">
+            <div class="media-body">
+            <h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
+            <button data-toggle="modal"  data-target="#${id_name}" style='background-color:
+            inherit;;border:none;' class="mt-0 mb- text-info">${master_name}</button>
+            <span class="pull-right">  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
+            class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
+            <p>descrition goes here</p
+            </div></div></div></div></div></div>`
+            
+            console.log(mhl);
+            var master_element = $("<div />");
+
+            master_element.html(mhl);
+            $("#master_list").append(mhl); 
+        });
+=======
     var result=data;
     masterlist=result.info;
     masterlist.forEach(function(element){
@@ -222,6 +257,7 @@ $(document).ready(function(){
     master_element.html(mhl);
     $("#master_list").append(mhl); 
     });	
+>>>>>>> 51e11ee4571968f9a5d8b26a859413faf14b371c
 	});
 });
 $("body").on("change",".js-switch",function(){
@@ -270,9 +306,15 @@ $(document).on('click','.add_hallpass',function(){
         type:"POST",
         data:({[csrfName]: csrfHash,name:name,time:time,type:type}),
         dataType:'JSON',
+<<<<<<< HEAD
+    }).done(function(data){  
+        $("#table_ahp tbody").clear();
+        hallpass();
+=======
     }).done(function(data){        
         ahp.ajax.reload();
         nhp.ajax.reload();
+>>>>>>> 51e11ee4571968f9a5d8b26a859413faf14b371c
     })
 
 });
@@ -293,9 +335,21 @@ $(document).on('click','.btn-pgt',function(){
 });
 
 
+<<<<<<< HEAD
+$(document).ready(function(){
+    hallpass();
+
+});
+
+
+function hallpass(){
+  
+        $.ajax({
+=======
 
 function hallpass(){
     $.ajax({
+>>>>>>> 51e11ee4571968f9a5d8b26a859413faf14b371c
         url:'<?php echo base_url(); ?>admin/generalsettings/get_all_hallpass',
         type:"POST",
         data:({[csrfName]: csrfHash}),
@@ -344,10 +398,16 @@ function hallpass(){
                         </td>
                     </tr>`
 
+<<<<<<< HEAD
+        // var hallpass_element = $("<div />");
+        // hallpass_element.html(nhp_list);
+         $("#table_nhp tbody").append(nhp_list);
+=======
         //  var hallpass_element = $("<div />");
         //  hallpass_element.html(nhp_list);
        // $("#table_nhp1").remove();
          $("#table_nhp1").append(nhp_list);
+>>>>>>> 51e11ee4571968f9a5d8b26a859413faf14b371c
          });
          var ahp_list='';
          ahp.forEach(function(element){
@@ -357,6 +417,23 @@ function hallpass(){
          const is_active=element.is_active;
          var is_checked='';
          if (is_active==1){ var is_checked='checked=""';}
+<<<<<<< HEAD
+         const ahp_list =`
+                    <tr>
+                        <td>
+                            <button value='${HallPassID}'  class="delete_row" type="button" class="btn btn-circle btn-danger btn-circle">
+                            <i class="fa fa-times" aria-hidden="true"></i> 
+                            </button>
+                            <span class="text-muted font-weight-semi-bold" style='padding-left:5px;'>${HallPass}</span>
+                        </td>
+                        <td>
+                            <span class="text-muted font-weight-semi-bold">${TimeAllocated}</span>
+                        </td>
+                        <td>
+                            <span class="pull-right"></span>
+                            <input data-id="${HallPassID}" id="${HallPassID}" id="hp_${HallPassID}" type="checkbox" ${is_checked}class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                            
+=======
 
           ahp_list =`
          <tr>
@@ -374,16 +451,28 @@ function hallpass(){
                 class="tgl tgl-ios tgl_checkbox" data-size="small" />
                 </span>
                       
+>>>>>>> 51e11ee4571968f9a5d8b26a859413faf14b371c
                         </td>
         </tr>`
     
+<<<<<<< HEAD
+        // var hallpass_element = $("<div />");
+        // hallpass_element.html(ahp_list);
+     
+         $("#table_ahp tbody").append(ahp_list);
+=======
         //  var hallpass_element = $("<div />");
        
+>>>>>>> 51e11ee4571968f9a5d8b26a859413faf14b371c
          });
 
          $("#table_ahp1").append(ahp_list);
 
     })
+<<<<<<< HEAD
+    }
+=======
     
 }
+>>>>>>> 51e11ee4571968f9a5d8b26a859413faf14b371c
 </script>

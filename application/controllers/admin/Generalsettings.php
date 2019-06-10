@@ -19,8 +19,9 @@
 		}
 		public function get_all_hallpass()
 		{
+			$type=$this->input->post('type');
 		$data['PassType']=$this->hallpass->get_pass_type();
-		$data['info'] = $this->hallpass->get_all();
+		$data['info'] = $this->hallpass->get_all($type);
 
 		echo json_encode($data);
 		
