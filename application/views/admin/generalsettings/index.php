@@ -51,7 +51,7 @@
 
 var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
- 
+
 
 var ahp = $('#nhp').DataTable({
     "searching": false,
@@ -71,6 +71,7 @@ var ahp = $('#nhp').DataTable({
         columns: [ 
             { "data": null,
 				render: function ( data, type, row ) {
+                  
                     if(data.PassTypeID==="2"){
                         return `  <button value='${data.HallPassID}'  class="delete_row btn btn-xs btn-danger  " type="button" >
                                 <i class="fa fa-times" aria-hidden="true"></i> 
@@ -84,8 +85,10 @@ var ahp = $('#nhp').DataTable({
             {"data":"TimeAllocated"},
             { "data":null,
                 render:function(data, type,row){
+                    var is_checked='';
+                    if (data.is_active==1){var is_checked="checked=''";}
                     return `
-                    <input data-id="${data.HallPassID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${data.is_checked} 
+                    <input data-id="${data.HallPassID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${is_checked} 
                     class="tgl tgl-ios tgl_checkbox" data-size="small" />
                     `;
                 }
@@ -93,6 +96,7 @@ var ahp = $('#nhp').DataTable({
 			
         ]
 });
+
 var nhp = $('#ahp').DataTable({
     "searching": false,
     "bPaginate": false,
@@ -124,8 +128,11 @@ var nhp = $('#ahp').DataTable({
             {"data":"TimeAllocated"},
             { "data":null,
                 render:function(data, type,row){
+                    var is_checked='';
+                    if (data.is_active==1){var is_checked="checked=''";}
+                    console.log(is_checked);
                     return `
-                    <input data-id="${data.HallPassID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${data.is_checked} 
+                    <input data-id="${data.HallPassID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${is_checked} 
                     class="tgl tgl-ios tgl_checkbox" data-size="small" />
                     `;
                 }
@@ -175,7 +182,7 @@ var nhp = $('#ahp').DataTable({
         
 	},
 	function(data){
-        console.log(data);
+    
        
 		
 	});
@@ -216,7 +223,7 @@ $(document).ready(function(){
      <p>descrition goes here</p
     </div></div></div></div></div></div>`
     
-    console.log(mhl);
+ 
     var master_element = $("<div />");
 
     master_element.html(mhl);
@@ -232,7 +239,6 @@ $("body").on("change",".js-switch",function(){
 		id : $(this).data('id'),
         status : $(this).is(':checked')==true?1:0,
         data:'master'
-        
 	},
 	function(data){
 		
@@ -249,12 +255,8 @@ $("body").on("change",".js-switch",function(){
         data:({[csrfName]: csrfHash,type:'delete-row',data:id}),
         dataType:'JSON',
     }).done(function(data){
-<<<<<<< HEAD
-        hallpass();
-=======
         ahp.ajax.reload();
         nhp.ajax.reload();
->>>>>>> 51e11ee4571968f9a5d8b26a859413faf14b371c
     })
 
 });
@@ -321,8 +323,10 @@ function hallpass(){
          const HallPassID=element.HallPassID;
          const TimeAllocated=element.TimeAllocated;
          const is_active=element.is_active;
+         console.log(is_active);
          var is_checked='';
          if (is_active==1){ var is_checked='checked=""';}
+         console.log(is_checked);
 
         
          
@@ -339,7 +343,7 @@ function hallpass(){
                         </td>
                         <td>
                             <span class="pull-right"></span>
-                            <input data-id="${HallPassID}" id="${HallPassID}" id="hp_${HallPassID}" type="checkbox" ${is_checked}class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                            <input data-id="${HallPassID}" id="${HallPassID}" id="hp_${HallPassID}" type="checkbox"  class="tgl tgl-ios tgl_checkbox" data-size="small" />
                             
                         </td>
                     </tr>`

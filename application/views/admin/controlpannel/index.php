@@ -1,44 +1,270 @@
- <!-- Content Header (Page header) -->
- <section class="content-header">
-      <h1>
-        Welcome to
-        <small>Master Scheduler</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
-      </ol>
-    </section>
+<link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/owl.carousel/dist/css/owl.carousel.min.css">
+<link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
+<link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
+<div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles">
+                    <div class="col p-md-0">
+                        <h4>Weather Report</h4>
+                    </div>
+                    <div class="col p-md-0">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active">Weather</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    
 
-    <!-- Main content -->
-    <section class="content">
+              
+                </div>
+                <div class="row">
+                    <div class="col-xl-9  col-xxl-12">
+                        <div class="card">
+                            <div class="card-body monthly-weather-report">
+                                <div class="d-sm-flex d-block justify-content-between mb-4">
+                                    <h4 class="card-title">Harvard School</h4>
+                                    
+                                </div>
+                                <div class="row weather-report-container justify-content-between">
+                                    <div class="col-xl-4 col-md-5">
+                                        <div class="tempareture-box-2 d-flex justify-content-sm-center justify-content-between mb-4 mb-sm-0">
+                                            <div class="tempareture-box-icon">
+                                                <i class="pe-is-w-partly-cloudy-1-f"></i>
+                                            </div>
+                                            <div class="tempareture-box-content text-center ml-4">
+                                                <div class="temp-top">
+                                                    <span>C-DAY</span>
+                                                </div>
+                                                <div class="temp-bottom">
+                                                <button type="button" class="btn btn-warning btn-ft">Change Type</button>
+                                                 
 
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">Title</h3>
+                                             
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="row monthly-weather-report-inner">
+                                            <div class="col-sm-4 col-6">
+                                                <div class="media pt-3 align-items-center pb-3">
+                                                    <span class="mr-3 text-warning"><i class="pe-is-w-eclipse-4-f"></i></span>
+                                                    <div class="media-body">
+                                                        <h4>2</h4>
+                                                        <p>Period</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-6">
+                                                <div class="media pt-3 align-items-center pb-3">
+                                                    <span class="mr-3 text-info"><i class="pe-is-w-moon-waning-crescent-f"></i></span>
+                                                    <div class="media-body">
+                                                        <h4>112</h4>
+                                                        <p>Day</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-6">
+                                                <div class="media pt-3 align-items-center pb-3">
+                                                    <span class="mr-3 text-info"><i class="pe-is-w-rain-1-f"></i></span>
+                                                    <div class="media-body">
+                                                        <h4>4th</h4>
+                                                        <p>6th Week MP</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-6">
+                                                <div class="media pt-3 align-items-center pb-3">
+                                                    <span class="mr-3 text-info"><i class="pe-is-w-compass-n"></i></span>
+                                                    <div class="media-body">
+                                                        <h4>11:00 AM</h4>
+                                                        <p>Time</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-6">
+                                                <div class="media pt-3 align-items-center pb-3">
+                                                    <span class="mr-3 text-dpink"><i class="pe-is-w-drizzle-f"></i></span>
+                                                    <div class="media-body">
+                                                    <h4>Tuesday</h4>
+                                                      <p>Day of Week</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-6">
+                                                <div class="media pt-3 align-items-center pb-3">
+                                                    <span class="mr-3 text-warning"><i class="pe-is-w-moon-sea-f"></i></span>
+                                                    <div class="media-body">
+                                                        <h5>11/12/19</h5>
+                                                        <p>Date</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
 
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
-          </div>
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between">
+                            <div class="col-xl-6 col-sm-6">
+  
+    <div class="card-body">
+    <div class="stat-widget-two">
+    <div class="media">
+    <div class="media-body">
+    <h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
+     <button data-toggle="modal" data-target="#${id_name}" style='background-color:
+    inherit;;border:none;' class="mt-0 mb- text-info">Terminal Master Switch</button>
+     <span class="pull-right">  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
+     class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
+ 
+    </div></div></div></div></div>
+    <div class="col-xl-6 col-sm-6">
+
+    <div class="card-body">
+    <div class="stat-widget-two">
+    <div class="media">
+    <div class="media-body">
+    <h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
+     <button data-toggle="modal" data-target="#${id_name}" style='background-color:
+    inherit;;border:none;' class="mt-0 mb- text-info">Hall Pass Master Switch</button>
+     <span class="pull-right">  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
+     class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
+
+    </div></div></div></div></div>
+                             
+                            </div>
+                           
+
+                            <div class="card-body">
+
+                            <div class='row' id="hallpass_list_item">
+                           <div class="col-xl-6">
+                                <div class="card transparent-card ">
+                                <div class="card-header pb-0">
+                                            <h5 class="card-title mb-3">Lock Hall Passes</h5>
+                                        
+                                        </div>
+                                   
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table id="ahp" class="table trading-activity table-padded table-responsive-fix">
+                                                <thead>
+                                                    <tr>
+                                                        
+                                                        <th>Name</th>
+                                                        <th>Terminal Number</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="table_ahp1">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div> 
+                            <div class="col-xl-6">
+                                    <div class="card transparent-card ">
+                                        <div class="card-header pb-0">
+                                            <h5 class="card-title mb-3">Lock Hall Passes</h5>
+                                        
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <div class="table-responsive">
+                                                <table id='nhp' class="table trading-activity table-padded table-responsive-fix">
+                                                    <thead>
+                                                        <tr>
+                                                    
+                                                        <th>name</th>
+                                                        <th>Terminal Number</th>
+                                                        <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id='table_nhp1'>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            </div>
+                        </div></div>
+                    
+                    </div>
+                    <div class="col-xl-3  col-xxl-12">
+                        <div class="row">
+                          <div class="col-xl-12 col-xxl-12">
+                         
+                              <div class="card">
+                              <div class="card-body">
+                              <div class="stat-widget-two">
+                              <div class="media">
+                              <div class="media-body">
+                              <h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
+                              <button data-toggle="modal" data-target="#${id_name}" style='background-color:
+                              inherit;;border:none;' class="mt-0 mb- text-info"><h4>Emergency Terminal</h4></button>
+                              <span class="pull-right">  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
+                              class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
+                              <p>Shutdown and Notification</p>
+                              </div></div></div></div></div>
+                              
+
+
+                        
+                        </div>
+                            <div class="col-xl-12 col-xxl-12">
+                                <div class="card transparent-card">
+                                    <div class="card-body p-0 location-table">
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <div class="card mb-4">
+                                                    <div class="card-body d-flex justify-content-between align-items-center p-3">
+                                                        <h6 class="item">Select Emergency Type</h6><br>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-12 col-xxl-6 col-sm-6">
+                                                <div class="card mb-2">
+                                                    <div class="card-body p-3 d-flex justify-content-between align-items-center">
+                                                        <h5 class="item">Lockdown</h5>
+                                                        <div class="item">
+                                                       
+                                                            <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}  class="js-switch js-switch-1 js-switch-md" data-size="small" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
         </div>
-        <div class="box-body">
-          Start creating your amazing application!
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-          Footer
-        </div>
-        <!-- /.box-footer-->
-      </div>
-      <!-- /.box -->
+        <script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+    <script src="<?=base_url() ?>publicjs/custom.min.js"></script>
+    <script src="<?=base_url() ?>public/js/settings.js"></script>
+    <script src="<?=base_url() ?>public/js/gleek.js"></script>
+    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+    
+    <script src="<?=base_url() ?>public/assets/plugins/d3v3/index.js"></script>
+    <script src="<?=base_url() ?>public/assets/plugins/topojson/topojson.min.js"></script>
+    <script src="<?=base_url() ?>public/assets/plugins/datamaps/datamaps.usa.min.js"></script>
+    <script src="<?=base_url() ?>public/assets/plugins/owl.carousel/dist/js/owl.carousel.min.js"></script>
 
-    </section>
-    <!-- /.content -->
-
-
-
+    <script src="<?=base_url() ?>public/assets/plugins/chart.js/Chart.bundle.min.js"></script>
+    <script src="<?=base_url() ?>public/js/dashboard/dashboard-20.js"></script>

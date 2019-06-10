@@ -11,7 +11,7 @@
 		public function index(){
 			$data['title'] = 'Control Pannel';
 			$data['view'] = 'admin/controlpannel/index';
-			$this->load->view('layout', $data);
+			$this->load->view('layoutv2', $data);
 		}
 		
 	}

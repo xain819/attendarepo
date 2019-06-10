@@ -131,16 +131,11 @@
                                             <button type="button" class='add_hallpass' id='add_hallpass' class="btn btn-primary">Save changes</button>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <select id="hallpasstype">
-                                            <option value="1">Administrative</option>
-                                            <option value="2">None Administrative</option>
-                                        </select>
-                                    </div>       
+                                        
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class='add_hallpass' id='add_hallpass' class="btn btn-primary">Save changes</button>
+                                  
                                 </div>
                             </div>
                         </div>
