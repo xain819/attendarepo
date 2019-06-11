@@ -47,7 +47,9 @@ class Academicsettings extends CI_Controller
 		$courses=$this->input->post('data');
 		$this->admin->import_courses($courses);
 		$data['import']=$this->admin->get_import_courses();
+		$this->load->view('layout', $data);
 		echo json_encode($data['import']);
+
 
 	}
 	public function get_import_courses(){

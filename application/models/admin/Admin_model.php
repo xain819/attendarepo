@@ -117,6 +117,14 @@ class Admin_model extends CI_Model{
 		$query = $this->db->get('master_control');
 		return $result = $query->result_array();
 	}
+	public function get_emergency_list(){
+
+		//$this->db->where('is_admin', 0);
+		//$this->db->order_by('created_at', 'desc');
+		
+		$query = $this->db->get('emergency');
+		return $result = $query->result_array();
+	}
 	public function get_import_csv(){
 		$sql='SELECT * FROM `import_csv`';
 		$query=$this->db->query($sql);

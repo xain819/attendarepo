@@ -32,7 +32,7 @@
                                     <div class="col-xl-4 col-md-5">
                                         <div class="tempareture-box-2 d-flex justify-content-sm-center justify-content-between mb-4 mb-sm-0">
                                             <div class="tempareture-box-icon">
-                                                <i class="pe-is-w-partly-cloudy-1-f"></i>
+                                            <i class="fa fa-calendar"></i>
                                             </div>
                                             <div class="tempareture-box-content text-center ml-4">
                                                 <div class="temp-top">
@@ -79,9 +79,9 @@
                                             </div>
                                             <div class="col-sm-4 col-6">
                                                 <div class="media pt-3 align-items-center pb-3">
-                                                    <span class="mr-3 text-info"><i class="pe-is-w-compass-n"></i></span>
-                                                    <div class="media-body">
-                                                        <h4>11:00 AM</h4>
+                                                    <span class="mr-3 text-info"><i class="fa fa-clock-o"></i></span>
+                                                    <div id='time' class="media-body">
+                                                        <h4 id='time'>${time} 11:00 AM</h4>
                                                         <p>Time</p>
                                                     </div>
                                                 </div>
@@ -150,7 +150,7 @@
                            <div class="col-xl-6">
                                 <div class="card transparent-card ">
                                 <div class="card-header pb-0">
-                                            <h5 class="card-title mb-3">Lock Hall Passes</h5>
+                                            <h5 class="card-title mb-3">Lock Terminal</h5>
                                         
                                         </div>
                                    
@@ -191,12 +191,15 @@
                                                     </thead>
                                                     <tbody id='table_nhp1'>
                                                     </tbody>
+                                                   
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
+                                  
                             </div>
                             </div>
+                        
                         </div></div>
                     
                     </div>
@@ -224,7 +227,7 @@
                             <div class="col-xl-12 col-xxl-12">
                                 <div class="card transparent-card">
                                     <div class="card-body p-0 location-table">
-                                        <div class="row">
+                                        <div id='emergencylist' class="row">
                                             <div class="col-xl-12">
                                                 <div class="card mb-4">
                                                     <div class="card-body d-flex justify-content-between align-items-center p-3">
@@ -233,6 +236,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                          
                                             <div class="col-xl-12 col-xxl-6 col-sm-6">
                                                 <div class="card mb-2">
                                                     <div class="card-body p-3 d-flex justify-content-between align-items-center">
@@ -244,8 +248,31 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                           
-                                        </div>
+                                            <div class="col-xl-12 col-xxl-6 col-sm-6">
+                                                <div class="card mb-2">
+                                                    <div class="card-body p-3 d-flex justify-content-between align-items-center">
+                                                        <h5 class="item">Active Shoter</h5>
+                                                        <div class="item">
+                                                       
+                                                            <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}  class="js-switch js-switch-1 js-switch-md" data-size="small" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                            <div class="col-xl-12 col-xxl-6 col-sm-6">
+                                                <div class="card mb-2">
+                                                    <div class="card-body p-3 d-flex justify-content-between align-items-center">
+                                                        <h5 class="item">Tornado</h5>
+                                                        <div class="item">
+                                                       
+                                                            <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}  class="js-switch js-switch-1 js-switch-md" data-size="small" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>      
+
+                                          </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -267,4 +294,226 @@
     <script src="<?=base_url() ?>public/assets/plugins/owl.carousel/dist/js/owl.carousel.min.js"></script>
 
     <script src="<?=base_url() ?>public/assets/plugins/chart.js/Chart.bundle.min.js"></script>
+    <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
     <script src="<?=base_url() ?>public/js/dashboard/dashboard-20.js"></script>
+    <script type="text/javascript" src="http://www.datejs.com/build/date.js"></script>
+
+    <script>
+      var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+       csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+      
+var ahp = $('#nhp').DataTable({
+    "searching": false,
+    "bPaginate": false,
+    "bLengthChange": false,
+    "bFilter": true,
+    "bInfo": false,
+    "bAutoWidth": false,
+    
+    ajax: {
+            url:'<?php echo base_url(); ?>admin/generalsettings/get_all_hallpass',
+            dataType: 'json',
+            type: 'POST',
+            data: ({[csrfName]: csrfHash,type:2}),
+            dataSrc:"info"
+        },
+        columns: [ 
+    
+            { "data": "HallPass"},
+            {"data":"TimeAllocated"},
+            { "data":null,
+                render:function(data, type,row){
+                    var is_checked='';
+                    if (data.is_active==1){var is_checked="checked=''";}
+                    return `
+                    <input data-id="${data.HallPassID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${is_checked} 
+                    class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                    `;
+                }
+            }
+			
+        ]
+});
+
+var nhp = $('#ahp').DataTable({
+    "searching": false,
+    "bPaginate": false,
+    "bLengthChange": false,
+    "bFilter": true,
+    "bInfo": false,
+    "bAutoWidth": false,
+    
+    ajax: {
+            url:'<?php echo base_url(); ?>admin/generalsettings/get_all_hallpass',
+            dataType: 'json',
+            type: 'POST',
+            data: ({[csrfName]: csrfHash,type:1}),
+            dataSrc:"info"
+        },
+        columns: [ 
+         
+            { "data": "HallPass"},
+            {"data":"TimeAllocated"},
+            { "data":null,
+                render:function(data, type,row){
+                    var is_checked='';
+                    if (data.is_active==1){var is_checked="checked=''";}
+                    console.log(is_checked);
+                    return `
+                    <input data-id="${data.HallPassID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${is_checked} 
+                    class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                    `;
+                }
+            }
+			
+        ]
+});
+      
+$(document).ready(function(){
+
+  var time= new Date().toString("hh:mm tt");
+
+ 
+  console.log(time_test);
+const htmltime=`<h4 id='time'>${time}</h4><p>Time</p>`
+$("#time").html(htmltime);
+
+});
+
+$(document).ready(function(){
+    const a =$.ajax({
+        url:'<?php echo base_url(); ?>admin/controlpanel/get_emergency_list',
+        type:"POST",
+        data:({[csrfName]: csrfHash}),
+        dataType:'JSON',
+    }).done(function(data){
+    var result=data;
+    masterlist=result.info;
+    masterlist.forEach(function(element){
+    
+    const emergency_name=element.emergency_name;
+    const notification=element.notification;
+    const id=element.id;
+    const is_active=element.is_active;
+
+    var is_checked='';
+    if (is_active==1){ var is_checked='checked=""';}
+   
+    
+    const mhl=`
+          <div class="col-xl-12 col-xxl-6 col-sm-6">
+              <div class="card mb-2">
+                  <div class="card-body p-3 d-flex justify-content-between align-items-center">
+                      <h5 class="item">${emergency_name}</h5>
+                      <div class="item">
+                      
+                          <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}  class="js-switch js-switch-1 js-switch-md" data-size="small" />
+                      </div>
+                  </div>
+              </div>
+          </div>  `
+    
+ 
+    var master_element = $("<div />");
+
+    master_element.html(mhl);
+    $("#emergencylist").append(mhl); 
+    });	
+	});
+});
+
+function hallpass(){
+    $.ajax({
+        url:'<?php echo base_url(); ?>admin/generalsettings/get_all_hallpass',
+        type:"POST",
+        data:({[csrfName]: csrfHash}),
+        dataType:'JSON',
+    })
+    .done(function(data){
+     $('#hallpass').html(data);
+     var result=data;
+     var hallpass=result.info;    
+
+     const ahp = hallpass.filter(function(test){
+         return test.PassTypeID==='1';
+       });
+     const nhp = hallpass.filter(function(test){
+         return test.PassTypeID==='2';
+       });
+
+
+
+
+     nhp.forEach(function(element){
+         const HallPass=element.HallPass;
+         const HallPassID=element.HallPassID;
+         const TimeAllocated=element.TimeAllocated;
+         const is_active=element.is_active;
+         console.log(is_active);
+         var is_checked='';
+         if (is_active==1){ var is_checked='checked=""';}
+         console.log(is_checked);
+
+        
+         
+         let nhp_list =`
+                    <tr>
+                        <td>
+                            <button value='${HallPassID}'  class="delete_row" type="button" class="btn btn-circle btn-danger btn-circle">
+                            <i class="fa fa-times" aria-hidden="true"></i> 
+                            </button>
+                            <span class="text-muted font-weight-semi-bold" style='padding-left:5px;'>${HallPass}</span>
+                        </td>
+                        <td>
+                            <span class="text-muted font-weight-semi-bold">${TimeAllocated}</span>
+                        </td>
+                        <td>
+                            <span class="pull-right"></span>
+                            <input data-id="${HallPassID}" id="${HallPassID}" id="hp_${HallPassID}" type="checkbox"  class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                            
+                        </td>
+                    </tr>`
+
+        //  var hallpass_element = $("<div />");
+        //  hallpass_element.html(nhp_list);
+       // $("#table_nhp1").remove();
+         $("#table_nhp1").append(nhp_list);
+         });
+         var ahp_list='';
+         ahp.forEach(function(element){
+         const HallPass=element.HallPass;
+         const HallPassID=element.HallPassID;
+         const TimeAllocated=element.TimeAllocated;
+         const is_active=element.is_active;
+         var is_checked='';
+         if (is_active==1){ var is_checked='checked=""';}
+
+          ahp_list =`
+         <tr>
+                <td>      
+                        <button value='${HallPassID}'  class="delete_row" type="button" class="btn btn-circle btn-danger btn-circle">
+                                <i class="fa fa-times" aria-hidden="true"></i> 
+                        </button>
+                        <span class="text-muted font-weight-semi-bold" style='padding-left:5px;'>${HallPass}</span>
+                </td>
+                <td>
+                    <span class="text-muted font-weight-semi-bold">${TimeAllocated}</span></td>
+                <td>
+                <span class="pull-right">
+                 <input data-id="${HallPassID}" id="${HallPassID}" id="hp_${HallPassID}" type="checkbox" ${is_checked} 
+                class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                </span>
+                      
+                        </td>
+        </tr>`
+    
+        //  var hallpass_element = $("<div />");
+       
+         });
+
+         $("#table_ahp1").append(ahp_list);
+
+    })
+    
+}
+    </script>

@@ -12,7 +12,15 @@
 			$data['title'] = 'Control Pannel';
 			$data['view'] = 'admin/controlpannel/index';
 			$this->load->view('layoutv2', $data);
+
+		}public function get_emergency_list(){
+		
+			$data['info']=$this->admin->get_emergency_list();
+			echo json_encode($data);
 		}
+	
+		
+
 		
 	}
 
