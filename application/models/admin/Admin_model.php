@@ -105,9 +105,9 @@ class Admin_model extends CI_Model{
 
 		//$this->db->where('is_admin', 0);
 		//$this->db->order_by('created_at', 'desc');
-		
 		$query = $this->db->get('hallpass');
 		return $result = $query->result_array();
+		
 	}
 	public function get_master(){
 
@@ -132,7 +132,11 @@ class Admin_model extends CI_Model{
 	}
 
 	public function add_terminal($data){
+		$this->db->set('hallpass',$data);
+				
 		$this->db->insert('hallpass', $data);
+		$this->db->update('hallpass');
+	
 		return true;
 	}
 
