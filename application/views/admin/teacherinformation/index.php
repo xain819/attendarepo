@@ -1,31 +1,32 @@
  <!-- Content Header (Page header) -->
  <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+ <script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
+    <script src="<?=base_url() ?>public/js/settings.js"></script>
+    <script src="<?=base_url() ?>public/js/gleek.js"></script>
+    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
  
-  
- <section class="content-header">
-      <h1>
-        Welcome to
-        <small>Teacher Information</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
-      </ol>
-    </section>
+    <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles">
+                    <div class="col p-0">
+                        <h4>Hello, <span>Welcome here</span></h4>
+                    </div>
+                    <div class="col p-0">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Layout</a>
+                            </li>
+                            <li class="breadcrumb-item active">Blank</li>
+                        </ol>
+                    </div>
+                </div>
+
 
     <!-- Main content -->
     <section class="content">
       <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">Title</h3>
-
-          <div class="box-tools pull-right">
-              <button class="btn btn-sm btn-success" id="showaddteachermodal"> add Teacher</button>
-          </div>
-        </div>
+      
         <div class="box-body">
           <div style="width: 100%;">
             <div class="table-responsive">
@@ -55,7 +56,7 @@
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-    </section>
+    </section></div></div>
     <!-- /.content -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -70,10 +71,20 @@
     <script src="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script> -->
     <script>
       var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
-          csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+          csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
+          base_url='<?php echo base_url(); ?>';
 
     </script>
     <script src="<?php echo base_url('public/dist/js/teacherinformation.js');?>"></script>
+
+    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
+    <script src="<?=base_url() ?>public/js/settings.js"></script>
+    <script src="<?=base_url() ?>public/js/gleek.js"></script>
+    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+  
+    
+    
+
 
 <?php $this->load->view('admin/teacherinformation/add');?>
 <?php $this->load->view('admin/teacherinformation/edit');?>

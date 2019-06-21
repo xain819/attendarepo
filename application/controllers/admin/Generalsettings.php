@@ -31,6 +31,20 @@
 		$id=$this->input->post('data');
 		$data=$this->input->post('type');
 		$status=$this->admin->delete_hallpass($id);
+
+		$teacher['addtoteacher']=$this->admin->get_all_hallpass();
+
+	
+
+
+		
+        $teacher_access='';
+		foreach ($teacher['addtoteacher'] as $value) {
+			$teacher_access.=$value['HallPass'].'|';
+		}
+
+		$this->admin->teacher_hallpass($teacher_access);
+
 		echo json_encode($status);
 
 		}
@@ -43,23 +57,23 @@
 		$result=$this->admin->add_terminal($data);
 
 		$data['addtoteacher']=$this->admin->get_all_hallpass();
-		$
-        $teacher_access='';
+		
+		
+	
+		$teacher_access='';
 		foreach ($data['addtoteacher'] as $value) {
 			$teacher_access.=$value['HallPass'].'|';
+
 		}
 	
-		print_r($teacher_access);
 		$this->admin->teacher_hallpass($teacher_access);
-
-		
+		$this->admin->teacher_access($data['addtoteacher']);
 		// $period_remove=$this->input->post('period');
 		// 		$exploded=explode($period_remove.'|',$new_data);
 		// 		print_r($exploded[0]);
 		// 		echo gettype($exploded[0]);
 		
-		
-		//echo ($result);
+	     echo ($result);
 
 		}
 		public function edit_pgt()

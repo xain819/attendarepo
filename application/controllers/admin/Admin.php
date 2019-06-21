@@ -72,7 +72,7 @@ class Admin extends CI_Controller
 
 				if ($this->form_validation->run() == FALSE) {
 					$data['view'] = 'admin/admin/add';
-					$this->load->view('layout', $data);
+					$this->load->view('layoutv2', $data);
 				}
 				else{
 					$data = array(
@@ -98,7 +98,7 @@ class Admin extends CI_Controller
 			else
 			{
 				$data['view']='admin/admin/add';
-				$this->load->view('layout',$data);	
+				$this->load->view('layoutv2',$data);	
 			}
 	}
 

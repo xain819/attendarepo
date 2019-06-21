@@ -13,7 +13,7 @@
 		public function index(){
 			$data['title'] = 'Teacher Information';
 			$data['view'] = 'admin/teacherinformation/index';
-			$this->load->view('layout', $data);
+			$this->load->view('layoutv2', $data);
 			
 		}
 		//teacher start

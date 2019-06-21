@@ -51,18 +51,10 @@
 
 			<section id="container">
 				<!--header start-->
-				<header class="header white-bg">
-					<?php include('include/navbar.php'); ?>
-				</header>
+			
 				<!--header end-->
 				<!--sidebar start-->
-				<aside>
-					<?php if($this->session->userdata('is_admin_login')): ?>
-						<?php include('include/admin_sidebar.php'); ?>
-					<?php else: ?>
-						<?php include('include/sidebar.php'); ?>
-					<?php endif; ?>
-				</aside>
+			
 				<!--sidebar end-->
 				<!--main content start-->
 				<section id="main-content">

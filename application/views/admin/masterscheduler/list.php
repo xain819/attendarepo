@@ -1,6 +1,7 @@
  <!-- Datatable style -->
 <link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.css">  
 
+
 <div class="row">
 
 <div class="datalist col-md-6">

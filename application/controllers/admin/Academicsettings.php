@@ -17,7 +17,7 @@ class Academicsettings extends CI_Controller
 		
 		$data['view'] = 'admin/academicsettings/index';
 		$data['page'] = 'admin/academicsettings/courses';
-		$this->load->view('layout', $data);
+		$this->load->view('layoutv2', $data);
 	
 	
 	}

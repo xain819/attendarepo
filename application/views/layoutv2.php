@@ -9,33 +9,14 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>public/assets/images/favicon.png">
     <link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
-    <script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
-    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
-    <script src="<?=base_url() ?>public/js/settings.js"></script>
-    <script src="<?=base_url() ?>public/js/gleek.js"></script>
-    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
-    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
-    <script src="<?=base_url() ?>public/js/settings.js"></script>
-    <script src="<?=base_url() ?>public/js/gleek.js"></script>
-    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+
+ 
 
     <!-- Custom Stylesheet -->
 
     <link href="<?= base_url() ?>public/css/style.css" rel="stylesheet">
-  
-		  <!-- Font Awesome -->
-	
-	
-		  <!-- Datatable style -->
-	
 
-  <!-- bootstrap datepicker -->
-		
-		  <!-- AdminLTE Skins. Choose a skin from the css/skins
-			   folder instead of downloading all of them to reduce the load. -->
 
-		  <!-- jQuery 2.2.3 -->
-		  <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
 
 </head>
 
@@ -815,11 +796,8 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="<?= base_url() ?>public/assets/plugins/common/common.min.js"></script>
-    <script src="<?= base_url() ?>public/js/custom.min.js"></script>
-    <script src="<?= base_url() ?>public/js/settings.js"></script>
-    <script src="<?= base_url() ?>public/js/gleek.js"></script>
-    <script src="<?= base_url() ?>public/js/styleSwitcher.js"></script>
+
+
 
 </body>
 

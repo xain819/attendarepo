@@ -132,10 +132,10 @@ class Admin_model extends CI_Model{
 	}
 
 	public function add_terminal($data){
-		$this->db->set('hallpass',$data);
-				
+		
 		$this->db->insert('hallpass', $data);
-		$this->db->update('hallpass');
+	
+
 	
 		return true;
 	}
@@ -316,6 +316,64 @@ class Admin_model extends CI_Model{
 		$this->db->update('master_control');
 		}
 	
+	}
+	public function teacher_hallpass($data){
+		$this->db->set('hallpassAccess',$data);
+		$this->db->update('teacher');
+	}
+
+	public function teacher_access($data){
+		
+		$sql='SELECT teacherID,hallpassAccess FROM `teacher`';
+		$query=$this->db->query($sql);
+		$result=$query->result_array();
+		
+
+		foreach ($result as $v){
+	
+			$access=explode('|',$v['hallpassAccess']);
+		
+			foreach($access as $a){
+				$data_array=array(
+					'access'=>$a,
+					'teacherID'=>$v['teacherID'],
+					'is_active'=>'1',
+					'time_limit'=>'5');
+			
+			$this->db->select('teacherID,access');
+			$this->db->where('teacherID',$v['teacherID']);
+			$this->db->where('access',$a);
+			$query=$this->db->get('teacher_access');
+			$result=$query->result_array();
+		
+
+			if ( $query->num_rows() > 0 ) 
+			{
+				$var='';
+			}
+			else
+			{
+				$this->db->insert('teacher_access',$data_array);
+				
+			}
+	
+			
+		
+			
+
+			
+			
+			
+
+			}
+		
+
+		
+			
+		
+
+		}
+		
 	}
 
 

@@ -1,6 +1,11 @@
 <link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/owl.carousel/dist/css/owl.carousel.min.css">
 <link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
 <link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
+<script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
+    <script src="<?=base_url() ?>public/js/settings.js"></script>
+    <script src="<?=base_url() ?>public/js/gleek.js"></script>
+    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
 <div class="content-body">
             <div class="container-fluid">
                 <div class="row page-titles">
@@ -273,7 +278,7 @@
        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
       
 var ahp = $('#nhp').DataTable({
-    "searching": false,
+    "searching": true,
     "bPaginate": false,
     "bLengthChange": false,
     "bFilter": true,
@@ -306,12 +311,12 @@ var ahp = $('#nhp').DataTable({
 });
 
 var nhp = $('#ahp').DataTable({
-    "searching": false,
+    "searching": true,
     "bPaginate": false,
     "bLengthChange": false,
     "bFilter": true,
     "bInfo": false,
-    "bAutoWidth": false,
+    "bAutoWidth": true,
     
     ajax: {
             url:'<?php echo base_url(); ?>admin/generalsettings/get_all_hallpass',

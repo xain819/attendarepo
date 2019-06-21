@@ -1,11 +1,30 @@
+<link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/owl.carousel/dist/css/owl.carousel.min.css">
+<link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
+<link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
+<div class="content-body">
+  <div class="container-fluid">
+                <div class="row page-titles">
+                    <div class="col p-md-0">
+                        <h4>Weather Report</h4>
+                    </div>
+                    <div class="col p-md-0">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active">Weather</li>
+                        </ol>
+                    </div>
+                </div>
+
 <section class="content">
+
   <div class="row">
     <div class="col-md-12">
       <div class="box box-body with-border">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <h4><i class="fa fa-plus"></i> &nbsp; Add New .Admin</h4>
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-md-12 text-right">
           <a href="<?= base_url('admin/admin'); ?>" class="btn btn-success"><i class="fa fa-list"></i> Admin List</a>
         </div>
       </div>
@@ -99,3 +118,6 @@
   </div>  
 
 </section> 
+</div>
+
+</div>

@@ -31,13 +31,20 @@
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/generalsettings'); ?>">
                         <i class="mdi mdi-page-layout-body"></i><span class="nav-text">General Setting</span>
                        </a>
-                       
 
-                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/controlpannel'); ?>" >
-                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Control Pannel</span>
+                    <li class="mega-menu mega-menu-lg">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="mdi mdi-view-dashboard"></i><span class="nav-text">System Controller</span><span class="badge bg-dpink text-white nav-badge"></span>
                         </a>
-                      
+                        <ul aria-expanded="false">
+
+                            <li id="admin"><a href="<?= base_url('admin/controlpannel'); ?>">Control Pannel</a></li>
+        
+                            <li id=""><a href="<?= base_url('admin/controlpannel/manage_terminal'); ?>">Manage Terminal</a></li>
+                        </ul>
                     </li>
+
+                  
 
                    
 
@@ -54,6 +61,21 @@
                             </li>
                         </ul>
                     </li>
+                  
+
+                    <li class="nav-label">Teacher Dashboard</li>
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation'); ?>" >
+                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Teacher Information</span>
+                        </a>
+                      
+                    </li>
+                 
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/studentinformation'); ?>" >
+                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Student Information</span>
+                        </a>
+                      
+                    </li>
+                 
                    
                     
 

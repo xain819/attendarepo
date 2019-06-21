@@ -1,3 +1,26 @@
+<link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/owl.carousel/dist/css/owl.carousel.min.css">
+<link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
+<link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
+<script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
+    <script src="<?=base_url() ?>public/js/settings.js"></script>
+    <script src="<?=base_url() ?>public/js/gleek.js"></script>
+    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+<div class="content-body">
+  <div class="container-fluid">
+                <div class="row page-titles">
+                    <div class="col p-md-0">
+                        <h4>Weather Report</h4>
+                    </div>
+                    <div class="col p-md-0">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active">Weather</li>
+                        </ol>
+                    </div>
+                </div>
+
 <section class="content-header">
 	<div class="row">
 	    <div class="col-md-12">
@@ -61,6 +84,8 @@
 		</div>
 	</div>
 </section>
+</div>
+</div>
 <!-- /.content -->
 
 

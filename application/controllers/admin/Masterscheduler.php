@@ -71,6 +71,13 @@
 		
 			}
 		} 
+        public function index1(){
+			$data['info']=$this->Masterscheduler->get_data_array();
+			$data['title'] = 'General Settings';
+			$data['view'] = 'admin/masterscheduler/index1';
+			$this->load->view('layout', $data);
+
+		}
 
 		public function index(){
 			//$this->rbac->check_operation_access();

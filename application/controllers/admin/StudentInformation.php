@@ -14,7 +14,7 @@
 		public function index(){
 			$data['title'] = 'Student Information';
 			$data['view'] = 'admin/studentinformation/index';
-			$this->load->view('layout', $data);
+			$this->load->view('layoutv2', $data);
 		}
 		public function get_all_student(){
 			$data=$this->admin->get_all_student();

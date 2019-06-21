@@ -166,7 +166,6 @@
             }
           });
     })
-   
     // $(document).on('click','#add-new-event',function(){
    
     // })

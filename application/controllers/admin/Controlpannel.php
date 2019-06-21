@@ -19,6 +19,13 @@
 			echo json_encode($data);
 		}
 	
+		public function manage_terminal()
+	
+		{
+			$data['view'] = 'admin/academicsettings/index';
+			$data['page'] = 'admin/academicsettings/courses';
+			$this->load->view('layoutv2', $data);
+		}
 		
 
 		
