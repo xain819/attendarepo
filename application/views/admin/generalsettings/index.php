@@ -45,7 +45,7 @@
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
     <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
-    <!-- <script src="<?=base_url()?>public/js/plugins-init/datatables.init.js"></script> -->
+ <script src="<?=base_url()?>public/js/plugins-init/datatables.init.js"></script>
 
 <script>
 

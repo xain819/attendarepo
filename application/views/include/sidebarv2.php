@@ -61,6 +61,16 @@
                             </li>
                         </ul>
                     </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-email-outline"></i> <span class="nav-text">Academic Settings</span><span class="badge bg-lgreen text-white nav-badge"></span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="<?= base_url('admin/masterscheduler'); ?>">Manage Section and Classes</a>
+                            </li>
+                            <li><a href="<?= base_url('admin/masterscheduler/access'); ?>">Manage Department</a>
+                            </li>
+                            <li><a href="<?= base_url('admin/masterscheduler/period_access'); ?>">Manage Subjects</a>
+                            </li>
+                        </ul>
+                    </li>
                   
 
                     <li class="nav-label">Teacher Dashboard</li>

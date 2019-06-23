@@ -1,31 +1,48 @@
  <!-- Content Header (Page header) -->
  <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+ <script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
+    <script src="<?=base_url() ?>public/js/settings.js"></script>
+    <script src="<?=base_url() ?>public/js/gleek.js"></script>
+    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+    <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
+    <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>" >
+ <script src="<?=base_url()?>public/js/plugins-init/datatables.init.js"></script>
+ 
+ <div class="content-body">
+
+        <div class="container-fluid">
+
+            <div class="row page-titles">
+                <div class="col p-md-0">
+                    <h5>General Settings</h5>
+                </div>
+                <div class="col p-md-0">
+
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">General Settings</li>
+                    </ol>
+                </div>
+            </div>
  
   
- <section class="content-header">
-      <h1>
-        Welcome to
-        <small>Teacher Information</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
-      </ol>
-    </section>
+
 
     <!-- Main content -->
     <section class="content">
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Title</h3>
+         
+          <button class="btn btn-sm btn-success  pull-right" id="showaddperiod"> Add New Period</button>
+          
 
-          <div class="box-tools pull-right">
-              <button class="btn btn-sm btn-success" id="showaddperiod"> Add New Period</button>
-          </div>
-        </div>
+        
+        </div><br><br>
         <div class="box-body">
           <div style="width: 100%;">
             <div class="table-responsive">
@@ -62,7 +79,7 @@
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-    </section>
+    </section></div></div>
     <!-- /.content -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -76,7 +93,8 @@
     <script src="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script> -->
     <script>
       var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
-          csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+          csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
+          base_url='<?php echo base_url(); ?>';
     </script>
     <script>
 

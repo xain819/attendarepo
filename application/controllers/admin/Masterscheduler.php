@@ -27,7 +27,7 @@
 			$data['period_access']= $this->Masterscheduler->get_period_access();
 			$data['period_list']= $this->Masterscheduler->get_all_periods();
 			$data['view'] = 'admin/masterscheduler/schedule_access';
-			$this->load->view('layout', $data);
+			$this->load->view('layoutv2', $data);
 		}
 		function set_access()
 		{
@@ -75,7 +75,7 @@
 			$data['info']=$this->Masterscheduler->get_data_array();
 			$data['title'] = 'General Settings';
 			$data['view'] = 'admin/masterscheduler/index1';
-			$this->load->view('layout', $data);
+			$this->load->view('layoutv2', $data);
 
 		}
 
@@ -96,13 +96,13 @@
 			$data['info']=$this->Masterscheduler->get_data_array();
 			$data['title'] = 'General Settings';
 			$data['view'] = 'admin/masterscheduler/index';
-			$this->load->view('layout', $data);
+			$this->load->view('layoutv2', $data);
 		}
 
 		public function period_access()
 		{
 			$data['view'] = 'admin/masterscheduler/period_access';
-			$this->load->view('layout', $data);
+			$this->load->view('layoutv2', $data);
 			echo json_encode($data);
 		}
 		public function add_scheduledate()

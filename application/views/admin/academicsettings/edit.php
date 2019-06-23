@@ -1,3 +1,8 @@
+<script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
+    <script src="<?=base_url() ?>public/js/settings.js"></script>
+    <script src="<?=base_url() ?>public/js/gleek.js"></script>
+    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
 <div class="modal modal-default fade" id="edit-student-modal-primary">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -85,6 +90,11 @@
           <!-- /.modal-dialog -->
         </div>
         <script src="<?= base_url() ?>public/plugins/select2/select2.full.min.js"></script>
+        <script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
+    <script src="<?=base_url() ?>public/js/settings.js"></script>
+    <script src="<?=base_url() ?>public/js/gleek.js"></script>
+    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
         <script>
              $(".select2").select2();
         </script>

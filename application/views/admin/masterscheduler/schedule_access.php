@@ -1,3 +1,33 @@
+<script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
+    <script src="<?=base_url() ?>public/js/settings.js"></script>
+    <script src="<?=base_url() ?>public/js/gleek.js"></script>
+    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+	<link rel="stylesheet" href="<?= base_url() ?>public/plugins/colorpicker/bootstrap-colorpicker.min.css">
+    <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
+	<link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>" >
+	<link href="<?=base_url()?>public/assets/plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
+ <script src="<?=base_url()?>public/js/plugins-init/datatables.init.js"></script>
+ <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  
+ <div class="content-body">
+
+        <div class="container-fluid">
+
+            <div class="row page-titles">
+                <div class="col p-md-0">
+                    <h5>General Settings</h5>
+                </div>
+                <div class="col p-md-0">
+
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">General Settings</li>
+                    </ol>
+                </div>
+            </div>
 <section class="content-header">
 	<div class="row">
 	    <div class="col-md-12">
@@ -6,8 +36,7 @@
 	          <h4><i class="fa fa-list"></i> &nbsp; Manage Schedule Type</h4>
 	        </div>
 	        <div class="col-md-6 text-right">
-	        	<a href="#" onclick="window.history.go(-1); return false;" class="btn btn-primary pull-right"><i class="fa fa-reply mr5"></i> Back</a>
-	        </div>
+	     </div>
 	      </div>
 	    </div>
 	</div> 
@@ -17,16 +46,7 @@
 
 
 	<div class="box">
-		<div class="box-header">
-			<div class="row">
-            	<div class="col-sm-12">
-                    <h3 class="box-title">
-                        <span class="mr5">Permission Access : </span> 
-					
-                    </h3>
-                </div>
-            </div>
-		</div>
+		
 		<div class="box-body">
 			<div class="row">
 
@@ -42,7 +62,7 @@
                                 </h5>
                             </div>
                             
-                            <div class="col-sm-9">
+                            <div class="row col-sm-9">
 															<?php foreach($period_list as $k => $period):?>
                                     <div class="col-sm-3 pb-15">	
                                     <span class="pull-left">
@@ -109,7 +129,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section></div></div>
 
 <script>
 $("body").on("change",".tgl_checkbox",function(){

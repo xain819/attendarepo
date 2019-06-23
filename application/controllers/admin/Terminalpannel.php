@@ -4,7 +4,7 @@
 		public function __construct(){
 			parent::__construct();
 			$this->load->library('rbac');
-			$this->load->model('admin/Terminal_model', 'terminal');
+			$this->load->model('admin/admin_model', 'terminal');
 
 		    $this->rbac->check_module_access();
 		}
@@ -13,7 +13,7 @@
 
 			$data['title'] = 'Terminal Pannel';
 			$data['view'] = 'admin/terminalpannel/index';
-			$this->load->view('layout', $data);	
+			$this->load->view('layoutv2', $data);	
 		}
 
 	
@@ -24,7 +24,7 @@
 			$this->form_validation->set_rules('StudentID', 'Student ID', 'trim|required');
 			if ($this->form_validation->run() == FALSE) {
 				$data['view'] = 'admin/terminalpannel/';
-				$this->load->view('layout', $data);
+				$this->load->view('layoutv2', $data);
 			}
 			else{
 				$data = array(
@@ -32,9 +32,7 @@
 				);
 				$data = $this->security->xss_clean($data);
 				$result = $this->terminal->check_student_id($data);
-				if ($result['IsEnabled'==1 && ]){
-
-				}
+				
 			}
 
 			
@@ -102,7 +100,7 @@
 			else
 			{
 				$data['view']='admin/terminalpannel/add';
-				$this->load->view('layout',$data);	
+				$this->load->view('layoutv2',$data);	
 			}
 	}
 
