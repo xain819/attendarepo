@@ -34,10 +34,107 @@ class Academicsettings extends CI_Controller
 	{
 		$data['title'] = 'Courses';
 		$data['view'] = 'admin/academicsettings/index';
-		$data['page'] = 'admin/academicsettings/courses';
-		$this->load->view('layout', $data);
+	
+		$this->load->view('layoutv2', $data);
 
 	}
+	public function department()
+	{
+		$data['title'] = 'Courses';
+		$data['view'] = 'admin/academicsettings/department';
+		$this->load->view('layoutv2', $data);
+
+	}
+	public function section()
+	{
+		$data['title'] = 'Courses';
+		$data['view'] = 'admin/academicsettings/section';
+		$this->load->view('layoutv2', $data);
+
+	}
+
+	///////////////////////////////////////race//////////////////	
+		public function race()
+	{
+		$data['title'] = 'Courses';
+		$data['view'] = 'admin/academicsettings/race';
+		$this->load->view('layoutv2', $data);
+
+	}
+	public function check_race()
+	{
+		$data['title'] = 'Courses';
+		$data['view'] = 'admin/academicsettings/race';
+		$race=$this->input->post('data');
+		$this->admin->import_race($race);
+		$data['import']=$this->admin->get_import_race();
+		echo json_encode($data['import']);
+
+	}
+	public function get_import_race(){
+		$data['import']=$this->admin->get_import_race();
+		echo json_encode($data['import']);
+
+	}
+
+
+	
+
+	//////////////////////////
+	
+		public function subjects()
+	{
+		$data['title'] = 'Courses';
+		$data['view'] = 'admin/academicsettings/subjects';
+		$this->load->view('layoutv2', $data);
+
+	}
+	public function check_subjects()
+	{
+		$data['title'] = 'Courses';
+		$data['view'] = 'admin/academicsettings/subjects';
+		$subjects=$this->input->post('data');
+		$this->admin->import_subjects($subjects);
+		$data['import']=$this->admin->get_import_subjects();
+		echo json_encode($data['import']);
+
+	}
+	public function get_import_subjects(){
+		$data['import']=$this->admin->get_import_subjects();
+		echo json_encode($data['import']);
+
+	}
+	public function check_section()
+	{
+		$data['title'] = 'Courses';
+		$data['view'] = 'admin/academicsettings/section';
+		$section=$this->input->post('data');
+		$this->admin->import_section($section);
+		$data['import']=$this->admin->get_import_section();
+		echo json_encode($data['import']);
+
+	}
+	public function get_import_section(){
+		$data['import']=$this->admin->get_import_section();
+		echo json_encode($data['import']);
+
+	}
+	public function check_department()
+	{
+		$data['title'] = 'Courses';
+		$data['view'] = 'admin/academicsettings/department';
+		$department=$this->input->post('data');
+		$this->admin->import_department($department);
+		$data['import']=$this->admin->get_import_department();
+		echo json_encode($data['import']);
+
+	}
+	public function get_import_department(){
+		$data['import']=$this->admin->get_import_department();
+		echo json_encode($data['import']);
+
+	}
+
 	public function check_courses()
 	{
 	

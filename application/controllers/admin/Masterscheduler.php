@@ -205,6 +205,30 @@
 				echo json_encode($status);
 			}
 		}
+		public function students_schedule()
+		{
+			$data['title'] = 'Courses';
+			$data['view'] = 'admin/masterscheduler/student_schedule';
+			$this->load->view('layoutv2', $data);
+	
+		}
+		public function check_schedule()
+		{
+			$data['title'] = 'Courses';
+			$data['view'] = 'admin/masterscheduler/students_schedule';
+			$schedule=$this->input->post('data');
+			$this->admin->import_student_schedule($schedule);
+			$data['import']=$this->admin->get_import_student_schedule();
+			echo json_encode($data['import']);
+	
+		}
+		public function get_import_students(){
+			$data['import']=$this->admin->get_import_student_schedule();
+			echo json_encode($data['import']);
+	
+		}
+
+
 		   
 
 		

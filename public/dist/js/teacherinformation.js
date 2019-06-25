@@ -1,3 +1,80 @@
+
+function teacher_hallpass(teacherid){
+    var nhp = $('#ahp').DataTable({
+        "destroy": true,
+        "searching": false,
+        "bPaginate": false,
+        "bLengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+        "bAutoWidth": false,
+        
+        ajax: {
+            url:base_url+'admin/teacherinformation/get_terminal_access',
+                dataType: 'json',
+                type: 'POST',
+                data: ({[csrfName]: csrfHash,data:teacherid}),
+                dataSrc:"ahp"
+            },
+            columns: [ 
+            
+                { "data": "access"},
+               
+                {"data":"time_limit"},
+                { "data":null,
+                    render:function(data, type,row){
+                        var is_checked='';
+                        if (data.is_active==1){var is_checked="checked=''";}
+                        console.log(data);
+                        return `
+                        <input data-id="${data.id}" data-teacher="${data.TeacherID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${is_checked} 
+                        class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                        `;
+                    }
+                }
+                
+            ]
+    });
+    var ahp = $('#nhp').DataTable({
+        "destroy": true,
+        "searching": false,
+        "bPaginate": false,
+        "bLengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+        "bAutoWidth": false,
+        
+        ajax: {
+            url:base_url+'admin/teacherinformation/get_terminal_access',
+                dataType: 'json',
+                type: 'POST',
+                data: ({[csrfName]: csrfHash,data:teacherid}),
+                dataSrc:"nhp"
+            },
+            columns: [ 
+              
+                { "data": "access"},
+                {"data":"time_limit"},
+                { "data":null,
+                    render:function(data, type,row){
+                        var is_checked='';
+                        console.log(data.IDNumber);
+                        if (data.is_active==1){var is_checked="checked=''";
+                    }
+                        return `
+                        <input data-id="${data.teacherid}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${is_checked} 
+                        class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                        `;
+                    }
+                }
+                
+            ]
+    });
+
+}
+
+
+
 $(document).ready(function(){
     console.log(base_url);
     var Teacher_DataTable = $('#Teacher_DataTable').DataTable({
@@ -22,7 +99,7 @@ $(document).ready(function(){
             { 
                 data: null,
                 render:function(data){
-                    return '<button value='+data.TeacherID+' class="btn btn-xs btn-warning showeditteachermodal"><i class="fa fa-fw fa-pencil"></i></button> <button value='+data.TeacherID+' class="btn btn-xs btn-danger delete_teacher"><i class="fa fa-fw fa-trash"></i></button>';
+                    return '<button value='+data.TeacherID+' class="btn btn-xs btn-success teachermodal"><i class="fa fa-television"></i></button><button value='+data.TeacherID+' class="btn btn-xs btn-warning showeditteachermodal"><i class="fa fa-fw fa-pencil"></i></button> <button value='+data.TeacherID+' class="btn btn-xs btn-danger delete_teacher"><i class="fa fa-fw fa-trash"></i></button>';
                 }
             }
         ],
@@ -39,6 +116,43 @@ $(document).ready(function(){
             $("#tdepartmentid").html(data.department);
             $("#teacher-modal-primary").modal("show");
        })
+    });
+    $(document).on('click','.showaddteachermodal',function(){
+        $.ajax({
+            url:base_url+"admin/teacherinformation/teacher_settings ",
+            type:"POST",
+            data:({[csrfName]: csrfHash}),
+            dataType:'JSON',
+        })
+        .done(function(data){
+             $("#tdepartmentid").html(data.department);
+             $("#teacher-modal-primary").modal("show");
+        })
+     });
+  
+     $(document).on('click','.teachermodal',function(){
+        teacherid=$(this).val();
+        teacher_hallpass(teacherid);
+        $("#ahpf").modal("show");
+     });
+
+     
+  
+     $("body").on("change",".tgl_checkbox",function(){
+        console.log($(this).data('id'));
+        console.log($(this).data('teacher'));
+        $.ajax({
+            url:base_url+"admin/teacherinformation/change_access_status ",
+            type:"POST",
+            data:({[csrfName]: csrfHash,id:$(this).data('id'),status:$(this).is(':checked')==true?1:0}),
+            dataType:'JSON',
+        })
+        .done(function(data){
+            console.log(data);
+        })
+
+    
+     
     });
 
     

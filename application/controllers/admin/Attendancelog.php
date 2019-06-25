@@ -11,7 +11,7 @@
 		public function index(){
 			$data['title'] = 'Student Log';
 			$data['view'] = 'admin/attendancelog/index';
-			$this->load->view('layout', $data);
+			$this->load->view('layoutv2', $data);
 		}
 		
 	}

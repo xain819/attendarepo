@@ -22,10 +22,26 @@
 		public function manage_terminal()
 	
 		{
-			$data['view'] = 'admin/academicsettings/index';
-			$data['page'] = 'admin/academicsettings/courses';
+			$data['view'] = 'admin/controlpannel/manage_terminal';
+
 			$this->load->view('layoutv2', $data);
 		}
+		public function check_terminal()
+		{
+			$data['title'] = 'Courses';
+			$data['view'] = 'admin/masterscheduler/students_schedule';
+			$terminal=$this->input->post('data');
+			$this->admin->import_terminal($terminal);
+			$data['import']=$this->admin->get_import_terminal();
+			echo json_encode($data['import']);
+	
+		}
+		public function get_import_terminal(){
+			$data['import']=$this->admin->get_import_terminal();
+			echo json_encode($data['import']);
+	
+		}
+
 		
 
 		

@@ -51,18 +51,26 @@ button.btn-space {
 
 
 <div>
-<div class=' col-xl-6 '>
-<table id="Section" class="display" style="width:100%">
+
+<table id="example" class="display" style="width:100%">
         <thead>
             <tr>
     
-                <th>Section</th>
-                   
+                <th>Description</th>
+                <th>Course Group</th>
+                <th>Course Number</th>
+
+                <th>Period number:</th>
+                <th>Teacher Name</th>
+                <th>Section Name</th>
+                <th>Grade Level</th>
+                <th>Schedule Type</th>
+       
             
             </tr>
         </thead>
   
-    </table></div>
+    </table>
 </div></div></div>
 
 
@@ -123,18 +131,47 @@ $(document).ready(function() {
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
         ajax: {
-            url: base_url+"admin/academicsettings/check_Section",
+            url: base_url+"admin/academicsettings/check_courses",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
       
-        table: "#Section",
+        table: "#example",
         fields: [ {
+                label: "Description:",
+                name: "course_description"
+            }, 
+            {
+                label: "Course Group:",
+                name: "course_group"
+            },
+            {
+                label: "Course Code:",
+                name: "course_code"
+            },
+            {
+                label: "Period:",
+                name: "period_number"
+            },
+            {
+                label: "Teacher Name:",
+                name: "teacher_name"
+            },
+            {
                 label: "Section:",
-                name: "Section"
-            }
+                name: "section_name"
+            },
+            {
+                label: "Grade Level:",
+                name: "grade_level"
+            },
+            {
+                label: "Day Type:",
+                name: "schedule_type"
+            },
+        
 
         ]
         
@@ -142,18 +179,26 @@ $(document).ready(function() {
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
-    var a= $('#Section').DataTable( {
+    var a= $('#example').DataTable( {
         dom: 'Bfrtip',
         ajax: {
-            url: base_url+"admin/academicsettings/get_import_Section",
+            url: base_url+"admin/academicsettings/get_import_courses",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
         columns: [
-            { data: 'Section' },
-        
+            { data: 'course_description' },
+            { data: 'course_group' },
+            { data: 'course_code' },
+
+            { data: 'period_number' },
+            { data: 'teacher_name' },
+            { data: 'section_name' },
+            
+            { data: 'grade_level' },
+            { data: 'schedule_type' }
 
           
         ],

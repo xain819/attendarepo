@@ -16,6 +16,36 @@
 			$this->load->view('layoutv2', $data);
 			
 		}
+		public function change_access_status(){
+		$data['id']=$this->input->post('id');
+		$this->admin->change_access_status($data['id']);
+	
+			
+		}
+		public function get_terminal_access(){
+	
+			$teacherid=$this->input->post('data');
+			$data['teacher_id']=$teacherid;
+		
+			$data['ahp']=$this->admin->get_terminal_access($teacherid,1);
+			$data['nhp']=$this->admin->get_terminal_access($teacherid,2);
+			
+			echo json_encode($data);
+			
+			
+		}
+		public function teacher_hallpass(){
+	
+			$teacherid=$this->input->post('data');
+			$data['teacher_id']=$teacherid;
+		
+			$data['ahp']=$this->admin->get_teacher_hallpass($teacherid,1);
+			$data['nhp']=$this->admin->get_teacher_hallpass($teacherid,2);
+			print_r($data);
+			echo json_encode($data);
+			
+			
+		}
 		//teacher start
 		public function get_all_teacher(){
 			$data=$this->admin_model->get_all_teacher();

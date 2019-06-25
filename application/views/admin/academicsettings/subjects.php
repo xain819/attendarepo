@@ -51,12 +51,15 @@ button.btn-space {
 
 
 <div>
-<div class=' col-xl-6 '>
-<table id="Section" class="display" style="width:100%">
+<div class=' col-xl-12 '>
+<table id="Subjects" class="display" style="width:100%">
         <thead>
             <tr>
     
-                <th>Section</th>
+                <th>Courses Name</th>
+                <th>Course Number</th>
+                <th>Course Group</th>
+                <th>Grade Level</th>
                    
             
             </tr>
@@ -118,41 +121,56 @@ function selectColumns ( editor, csv, header ) {
     } );
 }
 
+
  
 $(document).ready(function() {
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
         ajax: {
-            url: base_url+"admin/academicsettings/check_Section",
+            url: base_url+"admin/academicsettings/check_Subjects",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
       
-        table: "#Section",
+        table: "#Subjects",
         fields: [ {
-                label: "Section:",
-                name: "Section"
+                label: "Subject",
+                name: "Subject"
+            },
+            {
+                label: "SubjectCode:",
+                name: "SubjectCode"
+            },
+            {
+                label: "SubjectGroup:",
+                name: "SubjectGroup"
+            },
+            {
+                label: "GradeLevelID:",
+                name: "GradeLevelID"
             }
-
         ]
         
     } );
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
-    var a= $('#Section').DataTable( {
+    var a= $('#Subjects').DataTable( {
         dom: 'Bfrtip',
         ajax: {
-            url: base_url+"admin/academicsettings/get_import_Section",
+            url: base_url+"admin/academicsettings/get_import_Subjects",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
         columns: [
-            { data: 'Section' },
+            { data: 'Subject' },
+            { data: 'SubjectCode' },
+            { data: 'SubjectGroup' },
+            { data: 'GradeLevelID' }
         
 
           

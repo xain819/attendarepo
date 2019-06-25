@@ -1,0 +1,4 @@
+CREATE or replace view vterminal_access AS SELECT 
+ta.id,a.username,t.TeacherID,t.IDNumber,t.is_terminal_active,t.is_hallpass_active,ta.access,
+ t.FirstName, t.LastName from teacher_access ta join teacher t on ta.teacherID=t.TeacherID join admin
+  a on t.IDNumber=a.id_number where access!=''

@@ -295,10 +295,10 @@
         <div class="form-group">
         <div class="col-md-12">
         <div class="col-md-11">
-
+         <form>
               <input type="text" id="student_id" class="form-control" placeholder="Student ID"  value="">
               
-  
+</form>
           </div>
           <div class="col-md-1">
             <button id="show_terminal_modal" class="btn btn-primary ">Enter</button>
@@ -370,7 +370,8 @@
 
   </div>
 </div>
-</section></div></div>
+</section>
+</div></div>
 
   
   
@@ -392,6 +393,15 @@ var timee;
   timee="11:00:00";
 <?php }
 ?>
+
+<?php 
+
+echo $name;
+
+?>
+
+
+
 
 <?php if($this->username=='1234'){?>
   timee="14:00:00";

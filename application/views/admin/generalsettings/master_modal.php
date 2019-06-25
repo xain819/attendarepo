@@ -3,7 +3,7 @@
 <!-- Modal for period grace period -->
 
 <!-- Modal -->
-<div class="modal fade" id="pgt">
+<div class="modal" id="pgt">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -34,7 +34,7 @@
 <!-- Modal for -->
 
 <!-- Modal -->
-<div class="modal fade" id="Hall">
+<div class="modal" id="Hall">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -64,7 +64,7 @@
 <!-- Modal for -->
 
 <!-- Modal -->
-<div class="modal fade" id="nql">
+<div class="modal" id="nql">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -89,7 +89,7 @@
     </div>
 </div>
 </div>
-<div class="modal fade" id="hplt">
+<div class="modal" id="hplt">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -117,7 +117,7 @@
     </div>
 </div>
 </div>
-<div class="modal fade" id="slac">
+<div class="modal" id="slac">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -155,7 +155,7 @@
     </div>
 </div>
 </div>
-<div class="modal fade" id="ano">
+<div class="modal" id="ano">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -181,7 +181,7 @@
     </div>
 </div>
 </div>
-<div class="modal fade" id="oc">
+<div class="modal" id="oc">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

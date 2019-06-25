@@ -3,7 +3,7 @@
                                                                 <!-- Button trigger modal -->
                                                                
                                                                 <!-- Modal -->
-                                                                <div class="modal fade" id="period_grace_time">
+                                                                <div class="modal de" id="period_grace_time">
                                                                     <div class="modal-dialog" role="document">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">

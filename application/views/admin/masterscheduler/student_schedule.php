@@ -51,12 +51,26 @@ button.btn-space {
 
 
 <div>
-<div class=' col-xl-6 '>
-<table id="Section" class="display" style="width:100%">
+<div class=' col-xl-12 '>
+<table id="StudentS" class="display" style="width:100%">
         <thead>
             <tr>
     
-                <th>Section</th>
+                <th>StudentID</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>IDNumber</th>
+
+         
+                <th>Period</th>
+                <th>ScheduleTypeID</th>
+                <th>SubjectID</th>
+
+                <th>TeacherID</th>
+                <th>Location</th>
+                <th>TerminalID</th>
+                
+
                    
             
             </tr>
@@ -123,18 +137,50 @@ $(document).ready(function() {
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
         ajax: {
-            url: base_url+"admin/academicsettings/check_Section",
+            url: base_url+"admin/masterscheduler/check_schedule",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
-      
-        table: "#Section",
+    
+        table: "#StudentS",
         fields: [ {
-                label: "Section:",
-                name: "Section"
+                label: "StudentID:",
+                name: "StudentID"
+            },{
+                label: "FirstName:",
+                name: "FirstName"
+            },{
+                label: "LastName:",
+                name: "LastName"
+            },{
+                label: "IDNumber:",
+                name: "IDNumber"
+            },{
+                label: "Period:",
+                name: "Period"
+            },{
+                label: "ScheduleTypeID:",
+                name: "ScheduleTypeID"
+            },{
+                label: "SubjectID:",
+                name: "SubjectID"
+            },{
+                label: "TeacherID:",
+                name: "TeacherID"
+            },{
+                label: "Location:",
+                name: "Location"
+            },{
+                label: "TerminalID:",
+                name: "TerminalID"
             }
+    
+
+            
+    
+    
 
         ]
         
@@ -142,17 +188,28 @@ $(document).ready(function() {
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
-    var a= $('#Section').DataTable( {
+    var a= $('#StudentS').DataTable( {
         dom: 'Bfrtip',
         ajax: {
-            url: base_url+"admin/academicsettings/get_import_Section",
+            url: base_url+"admin/masterscheduler/get_import_students",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
         columns: [
-            { data: 'Section' },
+            { data: 'StudentID' },
+            { data: 'FirstName' },
+            { data: 'LastName' },
+            { data: 'IDNumber' },
+            { data: 'Period' },
+            { data: 'ScheduleTypeID' },
+            { data: 'SubjectID' },
+            { data: 'TeacherID' },
+            { data: 'Location' },
+            { data: 'TerminalID' }
+    
+                
         
 
           

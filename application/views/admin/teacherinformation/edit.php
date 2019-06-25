@@ -1,4 +1,4 @@
-<div class="modal modal-default fade" id="edit-teacher-modal-primary">
+<div class="modal modal-default" id="edit-teacher-modal-primary">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">

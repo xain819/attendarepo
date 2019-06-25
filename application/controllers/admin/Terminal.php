@@ -5,7 +5,8 @@
 			parent::__construct();
 			$this->load->library('rbac');
 			$this->load->model('admin/admin_model', 'admin');
-		    $this->rbac->check_module_access();
+			$this->rbac->check_module_access();
+			
 			
 		}
 
@@ -13,7 +14,17 @@
 			//$data['title'] = 'General Settings';
 			$data['view'] = 'terminal/terminal_modal';
 			$data['view1'] = 'terminal/alertmodal';
+			$data['username']=$_SESSION['username'];
+			$result=$this->admin->get_terminal_hallpass($data['username']);
+		
 			$this->load->view('terminal/index',$data);
+
+		}
+		public function get_info()
+		{
+			$data['username']=$_SESSION['username'];
+			$result=$this->admin->get_terminal_hallpass($data['username']);
+			echo json_encode($result);
 		}
 		public function test(){
 			// $response	=array(

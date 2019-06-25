@@ -22,7 +22,7 @@
                                             <table id="ahp" class="table trading-activity table-padded table-responsive-fix">
                                                 <thead>
                                                     <tr>
-                                                        <th>action</th>
+                                                   
                                                         <th>AHP Type</th>
                                                         <th>Time Allocated</th>
                                                         <th>Status</th>
@@ -49,7 +49,7 @@
                                                 <table id='nhp' class="table trading-activity table-padded table-responsive-fix">
                                                     <thead>
                                                         <tr>
-                                                        <th>action</th>
+                                         
                                                         <th>AHP Type</th>
                                                         <th>Time Allocated</th>
                                                         <th>Status</th>

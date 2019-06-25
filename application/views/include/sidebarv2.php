@@ -59,15 +59,21 @@
                             </li>
                             <li><a href="<?= base_url('admin/masterscheduler/period_access'); ?>">Manage Period</a>
                             </li>
+                            <li><a href="<?= base_url('admin/masterscheduler/students_schedule'); ?>">Student Class Schedule</a>
+                            </li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-email-outline"></i> <span class="nav-text">Academic Settings</span><span class="badge bg-lgreen text-white nav-badge"></span></a>
                         <ul aria-expanded="false">
-                            <li><a href="<?= base_url('admin/masterscheduler'); ?>">Manage Section and Classes</a>
+                            <li><a href="<?= base_url('admin/academicsettings/section'); ?>">Manage Section</a>
                             </li>
-                            <li><a href="<?= base_url('admin/masterscheduler/access'); ?>">Manage Department</a>
+                            <li><a href="<?= base_url('admin/academicsettings/courses'); ?>">Manage Classes</a>
                             </li>
-                            <li><a href="<?= base_url('admin/masterscheduler/period_access'); ?>">Manage Subjects</a>
+                            <li><a href="<?= base_url('admin/academicsettings/subjects'); ?>">Manage Courses</a>
+                            </li>
+                            <li><a href="<?= base_url('admin/academicsettings/department'); ?>">Manage Departments</a>
+                            </li>
+                            <li><a href="<?= base_url('admin/academicsettings/race'); ?>">Manage Race</a>
                             </li>
                         </ul>
                     </li>

@@ -329,6 +329,105 @@ var x = document.getElementById("myText").value;
 
 
 var base_url="<?php echo base_url();?>";
+var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+    csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+
+
+$(document).ready(function(){
+    const a =$.ajax({
+        url:'<?php echo base_url(); ?>admin/terminal/get_info',
+        type:"POST",
+        data:({[csrfName]: csrfHash}),
+        dataType:'JSON',
+    }).done(function(data){
+     const teacher_name=`${data[0].FirstName} ${data[0].LastName}`;
+     $('#TeacherName').html(teacher_name);
+
+   
+     var result=data;
+     var hallpass=result; 
+
+     const ahp = hallpass.filter(function(test){
+         return test.PassTypeID==='1';
+       });
+     const nhp = hallpass.filter(function(test){
+         return test.PassTypeID==='2';
+       });
+
+       nhp.forEach(function(element){
+       
+      const HallPass=element.access;
+      const status=element.is_active;
+      console.log(status);
+      if (status==='0'){
+        var bg='bg-gray',a='',a2='';
+      }
+      else{
+        var a=`<a href="#">`,
+            a2='</a>',bg='bg-aqua';
+      }
+
+      
+      console.log(element);
+   
+       let tnhp=`<div class="col-md-6 col-sm-6 col-xs-12">
+
+                                ${a}<div class="info-box">
+                                
+                                <span class="info-box-icon ${bg}"><i class="fa fa-hand-grab-o"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text-sm">${HallPass}</span>
+                                    <span class="info-box-number">${element.time_limit} Minutes</span>
+                                </div>
+                                <!-- /.info-box-content -->
+                                </div>${a2}
+                                <!-- /.info-box -->
+                            </div>`;
+
+
+       var master_element = $("<div />");
+
+        master_element.html(tnhp);
+        $("#tnhp").append(tnhp); 
+       });
+      
+      ahp.forEach(function(element){
+      const HallPass=element.access;
+      const status=element.is_active;
+      console.log(status);
+      if (status==='0'){
+        var bg='bg-gray',a='',a2='';
+      }
+      else{
+        var a=`<a href="#">`,
+            a2='</a>',bg='bg-aqua';
+      }
+        
+        
+
+       let tahp=`<div class="col-md-6 col-sm-6 col-xs-12">
+
+                  ${a}<div class="info-box">
+
+                  <span class="info-box-icon ${bg}"><i class="fa fa-hand-grab-o"></i></span>
+                  <div class="info-box-content">
+                      <span class="info-box-text-sm">${HallPass}</span>
+                      <span class="info-box-number">${element.time_limit} Minutes</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                  </div>${a2}
+                  <!-- /.info-box -->
+                  </div>`;
+
+
+       var master_element = $("<div />");
+
+        master_element.html(tahp);
+        $("#tahp").append(tahp); 
+       });
+	});
+});
+
 $(document).ready(function(){
   $(document).on('click','.options',function(){
     swal({

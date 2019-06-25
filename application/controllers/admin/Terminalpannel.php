@@ -13,6 +13,8 @@
 
 			$data['title'] = 'Terminal Pannel';
 			$data['view'] = 'admin/terminalpannel/index';
+			
+		
 			$this->load->view('layoutv2', $data);	
 		}
 

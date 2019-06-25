@@ -52,11 +52,11 @@ button.btn-space {
 
 <div>
 <div class=' col-xl-6 '>
-<table id="Section" class="display" style="width:100%">
+<table id="Race" class="display" style="width:100%">
         <thead>
             <tr>
     
-                <th>Section</th>
+                <th>Race</th>
                    
             
             </tr>
@@ -123,17 +123,17 @@ $(document).ready(function() {
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
         ajax: {
-            url: base_url+"admin/academicsettings/check_Section",
+            url: base_url+"admin/academicsettings/check_race",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
       
-        table: "#Section",
+        table: "#Race",
         fields: [ {
-                label: "Section:",
-                name: "Section"
+                label: "Race:",
+                name: "Race"
             }
 
         ]
@@ -142,17 +142,17 @@ $(document).ready(function() {
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
-    var a= $('#Section').DataTable( {
+    var a= $('#Race').DataTable( {
         dom: 'Bfrtip',
         ajax: {
-            url: base_url+"admin/academicsettings/get_import_Section",
+            url: base_url+"admin/academicsettings/get_import_race",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
         columns: [
-            { data: 'Section' },
+            { data: 'Race' },
         
 
           

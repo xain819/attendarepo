@@ -94,6 +94,12 @@ class Admin_model extends CI_Model{
 		$this->db->where('admin_id',$this->input->post('id'));
 		$this->db->update('admin');
 	} 
+	function change_access_status()
+	{		
+		$this->db->set('is_active',$this->input->post('status'));
+		$this->db->where('id',$this->input->post('id'));
+		$this->db->update('vterminal_access');
+	} 
 	function change_terminal_status()
 	{		
 		$this->db->set('IsEnabled',$this->input->post('status'));
@@ -109,6 +115,7 @@ class Admin_model extends CI_Model{
 		return $result = $query->result_array();
 		
 	}
+
 	public function get_master(){
 
 		//$this->db->where('is_admin', 0);
@@ -134,6 +141,7 @@ class Admin_model extends CI_Model{
 	public function add_terminal($data){
 		
 		$this->db->insert('hallpass', $data);
+
 	
 
 	
@@ -151,6 +159,24 @@ class Admin_model extends CI_Model{
 	public function get_all_teacher(){
 		$sql='SELECT * FROM `teacher` as t INNER JOIN department as d ON t.DepartmentID=d.DepartmentID ';
 		$query=$this->db->query($sql);
+		return $query->result_array();
+	}
+	public function get_teacher_hallpass($data,$id){
+		$this->db->where('TeacherID',$data);
+		$this->db->where('PassTypeID',$id);
+		$query=$this->db->get('teacher_hallpass_access');
+		return $query->result_array();
+	}
+	public function get_terminal_hallpass($data){
+		$this->db->where('username',$data);
+		$query=$this->db->get('vterminal_access');
+	
+		return $query->result_array();
+	}
+	public function get_terminal_access($data,$id){
+		$this->db->where('TeacherID',$data);
+		$this->db->where('PassTypeID',$id);
+		$query=$this->db->get('vterminal_access');
 		return $query->result_array();
 	}
 	public function get_teacher_byteacherid($teacherid){
@@ -280,6 +306,97 @@ class Admin_model extends CI_Model{
 		$query=$this->db->query($sql);
 		return $query->result();
 	}
+	public function get_import_department(){
+		$sql='SELECT * FROM `department`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	public function get_import_section(){
+		$sql='SELECT * FROM `section`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	public function get_import_race(){
+		$sql='SELECT * FROM `race`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	public function import_race($data){
+		
+		foreach ($data as $value) {
+			//echo($value);
+				$this->db->insert('race',$value);
+				
+		}//ako muna sir. may tetest lang ako
+		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
+	//	
+	}
+	public function get_import_student_schedule(){
+		$sql='SELECT * FROM `vgetstudent_schedule`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	public function import_student_schedule($data){
+		foreach ($data as $value) {
+			//echo($value);
+				$this->db->insert('vgetstudent_schedule',$value);
+				
+		}//ako muna sir. may tetest lang ako
+		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
+	//	
+	}
+	public function get_import_subjects(){
+		$sql='SELECT * FROM `subject`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+
+	public function get_import_terminal(){
+		$sql='SELECT * FROM `location`';
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	public function import_subjects($data){
+		
+		foreach ($data as $value) {
+			//echo($value);
+				$this->db->insert('subject',$value);
+				
+		}//ako muna sir. may tetest lang ako
+		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
+	//	
+	}
+	public function import_terminal($data){
+		
+		foreach ($data as $value) {
+			//echo($value);
+				$this->db->insert('location',$value);
+				
+		}//ako muna sir. may tetest lang ako
+		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
+	//	
+	}
+	public function import_section($data){
+		
+		foreach ($data as $value) {
+			//echo($value);
+				$this->db->insert('section',$value);
+				
+		}//ako muna sir. may tetest lang ako
+		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
+	//	
+	}
+	public function import_department($data){
+		
+		foreach ($data as $value) {
+			//echo($value);
+				$this->db->insert('department',$value);
+				
+		}//ako muna sir. may tetest lang ako
+		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
+	//	
+	}
+	
 	
 	public function import_courses($data){
 		//print_r($data);
@@ -332,6 +449,7 @@ class Admin_model extends CI_Model{
 		foreach ($result as $v){
 	
 			$access=explode('|',$v['hallpassAccess']);
+
 		
 			foreach($access as $a){
 				$data_array=array(
