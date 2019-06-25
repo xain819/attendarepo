@@ -1,4 +1,4 @@
-<div class="modal modal-default fade" id="period-modal-primary">
+<div class="modal modal-default " id="period-modal-primary">
 
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
