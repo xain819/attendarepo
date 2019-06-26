@@ -38,15 +38,16 @@ button.btn-space {
         <thead>
             <tr>
     
-                <th>Description</th>
-                <th>Course Group</th>
-                <th>Course Number</th>
+                <th>ID</th>
+                <th>COURSE GROUP</th>
+                <th>COURSE CODE</th>
 
-                <th>Period number:</th>
-                <th>Teacher Name</th>
-                <th>Section Name</th>
-                <th>Grade Level</th>
-                <th>Schedule Type</th>
+                <th>SHORT DESCRIPTION</th>
+                <th>COURSE DESCRIPTION</th>
+                <th>GRADE LEVEL</th>
+                <th>CREDITS</th>
+                <th>CREDITS</th>
+             
        
             
             </tr>
@@ -57,8 +58,10 @@ button.btn-space {
 
 
 <script type='text/javascript'>
+
  var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
-        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
+        base_url='<?php echo base_url(); ?>';
 var editor;
 
 function selectColumns ( editor, csv, header ) {
@@ -109,6 +112,7 @@ function selectColumns ( editor, csv, header ) {
  
 $(document).ready(function() {
     // Regular editor for the table
+    base_url='<?php echo base_url(); ?>';
     editor = new $.fn.dataTable.Editor( {
         ajax: {
             url: base_url+"admin/academicsettings/check_courses",
@@ -119,10 +123,11 @@ $(document).ready(function() {
        },
       
         table: "#example",
-        fields: [ {
-                label: "Description:",
-                name: "course_description"
-            }, 
+        fields: [ 
+            {
+                label: "ID:",
+                name: "id"
+            },
             {
                 label: "Course Group:",
                 name: "course_group"
@@ -132,25 +137,25 @@ $(document).ready(function() {
                 name: "course_code"
             },
             {
-                label: "Period:",
-                name: "period_number"
+                label: "Short Description:",
+                name: "short_desc"
             },
             {
-                label: "Teacher Name:",
+                label: "Course Description:",
+                name: "course_description"
+            },
+            {
+                label: "Grade Leve:",
                 name: "teacher_name"
-            },
-            {
-                label: "Section:",
-                name: "section_name"
             },
             {
                 label: "Grade Level:",
                 name: "grade_level"
             },
             {
-                label: "Day Type:",
-                name: "schedule_type"
-            },
+                label: "Credits:",
+                name: "credits"
+            }
         
 
         ]
@@ -169,16 +174,18 @@ $(document).ready(function() {
             dataType:'JSON'
        },
         columns: [
-            { data: 'course_description' },
+            { data: 'id' },
             { data: 'course_group' },
             { data: 'course_code' },
+            { data: 'short_desc' },
 
-            { data: 'period_number' },
-            { data: 'teacher_name' },
-            { data: 'section_name' },
-            
+            { data: 'course_description' },
             { data: 'grade_level' },
-            { data: 'schedule_type' }
+            { data: 'credits' },
+            { data:null},
+            
+            
+         
 
           
         ],

@@ -44,7 +44,7 @@
               <table id="Student_DataTable" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                  <th>StudentID </th>
+             
                   <th>IDNumber </th>
                   <th>FirstName </th>
                   <th>LastName </th>
@@ -55,6 +55,8 @@
                   <th>SectionID </th>
                   <th>GradeLevelID </th> 
                   <th>DistinctionID </th>
+                  <th>Class </th>
+               
                   <th>Password </th>
                   <th>IsEnabled </th>
                   <th>Action</th>

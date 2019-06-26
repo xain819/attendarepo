@@ -67,9 +67,9 @@
                         <ul aria-expanded="false">
                             <li><a href="<?= base_url('admin/academicsettings/section'); ?>">Manage Section</a>
                             </li>
-                            <li><a href="<?= base_url('admin/academicsettings/courses'); ?>">Manage Classes</a>
+                            <li><a href="<?= base_url('admin/academicsettings/classes'); ?>">Manage Classes</a>
                             </li>
-                            <li><a href="<?= base_url('admin/academicsettings/subjects'); ?>">Manage Courses</a>
+                            <li><a href="<?= base_url('admin/academicsettings/courses'); ?>">Manage Courses</a>
                             </li>
                             <li><a href="<?= base_url('admin/academicsettings/department'); ?>">Manage Departments</a>
                             </li>

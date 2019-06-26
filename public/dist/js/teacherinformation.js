@@ -62,7 +62,7 @@ function teacher_hallpass(teacherid){
                         if (data.is_active==1){var is_checked="checked=''";
                     }
                         return `
-                        <input data-id="${data.teacherid}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${is_checked} 
+                        <input data-id="${data.id}" data-teacher="${data.TeacherID}"  id="hp_${data.HallPassID}" type="checkbox" ${is_checked} 
                         class="tgl tgl-ios tgl_checkbox" data-size="small" />
                         `;
                     }
@@ -79,6 +79,8 @@ $(document).ready(function(){
     console.log(base_url);
     var Teacher_DataTable = $('#Teacher_DataTable').DataTable({
         responsive: true,
+        "bAutoWidth": true,
+        "autoWidth": false,
         ajax: {
             url: base_url+"admin/teacherinformation/get_all_teacher ",
             data:({ [csrfName]: csrfHash}),
@@ -86,8 +88,12 @@ $(document).ready(function(){
             dataSrc: '',
             dataType:'JSON'
        },
-       columns: [
-            { data:'TeacherID'},
+           columns: [
+            { 
+                data: null,"width": "100px",
+                render:function(data){
+                    return `action`;}
+            },
             { data:'IDNumber'},
             { data:'FirstName'},
             { data:'LastName'},
@@ -96,12 +102,36 @@ $(document).ready(function(){
             { data:'ContactNumber'},
             { data:'Department'},
             { data:'Password',visible:'false'},
+          
+           
+            { 
+                data: null,"width": "100px",
+                render:function(data){
+                    return `${data.course_description_list}`;}
+            },
+            
+            { 
+                data: null,"width": "100px",
+                render:function(data){
+                    return `${data.teacher_course_list}`;}
+            },
+             { 
+                data: null,"width": "100px",
+                render:function(data){
+                    return `${data.period_list}`;}
+            },
+            { 
+                data: null,"width": "100px",
+                render:function(data){
+                    return `${data.location_list}`;}
+            },
             { 
                 data: null,
                 render:function(data){
                     return '<button value='+data.TeacherID+' class="btn btn-xs btn-success teachermodal"><i class="fa fa-television"></i></button><button value='+data.TeacherID+' class="btn btn-xs btn-warning showeditteachermodal"><i class="fa fa-fw fa-pencil"></i></button> <button value='+data.TeacherID+' class="btn btn-xs btn-danger delete_teacher"><i class="fa fa-fw fa-trash"></i></button>';
                 }
             }
+           
         ],
         select: true
     });
@@ -139,6 +169,7 @@ $(document).ready(function(){
      
   
      $("body").on("change",".tgl_checkbox",function(){
+         
         console.log($(this).data('id'));
         console.log($(this).data('teacher'));
         $.ajax({

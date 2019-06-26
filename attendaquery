@@ -2,3 +2,18 @@ CREATE or replace view vterminal_access AS SELECT
 ta.id,a.username,t.TeacherID,t.IDNumber,t.is_terminal_active,t.is_hallpass_active,ta.access,
  t.FirstName, t.LastName from teacher_access ta join teacher t on ta.teacherID=t.TeacherID join admin
   a on t.IDNumber=a.id_number where access!=''
+  
+CREATE or replace view vclasses AS 
+SELECT co.course_group,co.course_description,co.course_code,co.grade_level,co.short_desc,co.credits,p.Period,t.IDNumber,t.FirstName,t.LastName,g.GradeLevel,s.ScheduleType
+from courses co
+join classes cl on cl.classes_id=co.id
+join period p on p.PeriodID=cl.period_id
+join teacher t on t.TeacherID=cl.teacher_id
+join gradelevel g on g.GradeLevelID=cl.gradeleve_id
+join scheduletype s on s.ScheduleTypeID=cl.schedule_id
+
+CREATE or replace view vterminal_info AS 
+SELECT cl.teacher_id_number,t.FirstName,t.LastName,cl.course_description,cl.period_number,cl.section,cl.section,cl.grade_level
+cl.location,cl.class_code from class_list cl 
+join teacher t on cl.teacher_id_number=t.IDNumber
+

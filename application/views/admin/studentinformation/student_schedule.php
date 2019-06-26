@@ -51,33 +51,33 @@ button.btn-space {
 
 
 <div>
-
-<table id="example" class="display" style="width:100%">
+<div class=' col-xl-12 '>
+<table id="classes" class="display" style="width:100%">
         <thead>
             <tr>
-    
-           
-                <th>COURSE GROUP</th>
-                <th>COURSE CODE</th>
-
-                <th>SHORT DESCRIPTION</th>
-                <th>COURSE DESCRIPTION</th>
-                <th>GRADE LEVEL</th>
-                <th>CREDITS</th>
-                
-       
+            <th>Description</th>
+                <th>Course Group</th>
+                <th>Course Code</th>
+                <th>Period</th>
+                <th>Teacher ID</th>
+                <th>Section</th>
+                <th>Grade Level</th>
+                <th>Schedule Type</th>
+                <th>Location</th>
+               
+         
+                   
             
             </tr>
         </thead>
   
-    </table>
+    </table></div>
 </div></div></div>
 
 
 <script type='text/javascript'>
  var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
         csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
-        base_url='<?php echo base_url(); ?>';
         base_url='<?php echo base_url(); ?>';
         
 var editor;
@@ -127,20 +127,25 @@ function selectColumns ( editor, csv, header ) {
     } );
 }
 
+
  
 $(document).ready(function() {
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
         ajax: {
-            url: base_url+"admin/academicsettings/check_courses",
+            url: base_url+"admin/academicsettings/check_classes",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
-      
-        table: "#example",
-        fields: [   
+       
+        table: "#classes",
+        fields: [ 
+            {
+                label: "Course Description:",
+                name: "course_description"
+            },
             {
                 label: "Course Group:",
                 name: "course_group"
@@ -150,23 +155,29 @@ $(document).ready(function() {
                 name: "course_code"
             },
             {
-                label: "Short Description:",
-                name: "short_desc"
+                label: "Period Number:",
+                name: "period_number"
             },
             {
-                label: "Course Description:",
-                name: "course_description"
+                label: "Teacher ID:",
+                name: "teacher_id_number"
             },
-          
+            {
+                label: "Section:",
+                name: "section"
+            },
             {
                 label: "Grade Level:",
                 name: "grade_level"
             },
             {
-                label: "Credits:",
-                name: "credits"
+                label: "Schedule:",
+                name: "schedule_type"
+            },
+            {
+                label: "location:",
+                name: "location"
             }
-        
 
         ]
         
@@ -174,25 +185,28 @@ $(document).ready(function() {
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
-    var a= $('#example').DataTable( {
+    var a= $('#classes').DataTable( {
         dom: 'Bfrtip',
         ajax: {
-            url: base_url+"admin/academicsettings/get_import_courses",
+            url: base_url+"admin/academicsettings/get_import_classes",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
         columns: [
-           
+            { data: 'course_description' },
             { data: 'course_group' },
             { data: 'course_code' },
-            { data: 'short_desc' },
-
-            { data: 'course_description' },
+            { data: 'period_number' },
+            { data: 'teacher_id_number' },
+            { data: 'section' },
             { data: 'grade_level' },
-            { data: 'credits' }
-            
+            { data: 'schedule_type' },
+            { data: 'location' },
+           
+        
+
           
         ],
         select: true,

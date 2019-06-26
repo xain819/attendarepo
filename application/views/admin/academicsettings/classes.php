@@ -52,14 +52,22 @@ button.btn-space {
 
 <div>
 <div class=' col-xl-12 '>
-<table id="Subjects" class="display" style="width:100%">
+<table id="classes" class="display" style="width:100%">
         <thead>
             <tr>
-    
-                <th>Courses Name</th>
-                <th>Course Number</th>
+           
+            <th>Description</th>
                 <th>Course Group</th>
+                <th>Course Code</th>
+                <th>Period</th>
+                <th>Teacher ID</th>
+                <th>Section</th>
                 <th>Grade Level</th>
+                <th>Schedule Type</th>
+                <th>Location</th>
+                <th>Class Code</th>
+               
+         
                    
             
             </tr>
@@ -127,50 +135,84 @@ $(document).ready(function() {
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
         ajax: {
-            url: base_url+"admin/academicsettings/check_Subjects",
+            url: base_url+"admin/academicsettings/check_classes",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
-      
-        table: "#Subjects",
-        fields: [ {
-                label: "Subject",
-                name: "Subject"
+       
+        table: "#classes",
+        fields: [ 
+          
+            {
+                label: "Course Description:",
+                name: "course_description"
             },
             {
-                label: "SubjectCode:",
-                name: "SubjectCode"
+                label: "Course Group:",
+                name: "course_group"
             },
             {
-                label: "SubjectGroup:",
-                name: "SubjectGroup"
+                label: "Course Code:",
+                name: "course_code"
             },
             {
-                label: "GradeLevelID:",
-                name: "GradeLevelID"
+                label: "Period Number:",
+                name: "period_number"
+            },
+            {
+                label: "Teacher ID:",
+                name: "teacher_id_number"
+            },
+            {
+                label: "Section:",
+                name: "section"
+            },
+            {
+                label: "Grade Level:",
+                name: "grade_level"
+            },
+            {
+                label: "Schedule:",
+                name: "schedule_type"
+            },
+            {
+                label: "location:",
+                name: "location"
+            },  {
+                label: "Class Code:",
+                name: "class_code"
             }
+
         ]
         
     } );
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
-    var a= $('#Subjects').DataTable( {
+    var a= $('#classes').DataTable( {
         dom: 'Bfrtip',
         ajax: {
-            url: base_url+"admin/academicsettings/get_import_Subjects",
+            url: base_url+"admin/academicsettings/get_import_classes",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
         columns: [
-            { data: 'Subject' },
-            { data: 'SubjectCode' },
-            { data: 'SubjectGroup' },
-            { data: 'GradeLevelID' }
+           
+            { data: 'course_description' },
+            { data: 'course_group' },
+            { data: 'course_code' },
+            { data: 'period_number' },
+            { data: 'teacher_id_number' },
+            { data: 'section' },
+            { data: 'grade_level' },
+            { data: 'schedule_type' },
+            { data: 'location' },
+            { data: 'class_code' },
+           
         
 
           

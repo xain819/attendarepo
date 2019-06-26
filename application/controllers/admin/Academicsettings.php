@@ -81,6 +81,29 @@ class Academicsettings extends CI_Controller
 	
 
 	//////////////////////////
+	public function classes()
+	{
+		$data['title'] = 'Courses';
+		$data['view'] = 'admin/academicsettings/classes';
+		$this->load->view('layoutv2', $data);
+
+	}
+	public function check_classes()
+	{
+		$data['title'] = 'Courses';
+		$data['view'] = 'admin/academicsettings/classes';
+		$classes=$this->input->post('data');
+		$this->admin->import_classes($classes);
+		$data['import']=$this->admin->get_import_classes();
+		echo json_encode($data['import']);
+
+	}
+	public function get_import_classes(){
+		$data['import']=$this->admin->get_import_classes();
+		echo json_encode($data['import']);
+
+	}
+	
 	
 		public function subjects()
 	{

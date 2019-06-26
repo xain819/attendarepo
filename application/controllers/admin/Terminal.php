@@ -26,6 +26,16 @@
 			$result=$this->admin->get_terminal_hallpass($data['username']);
 			echo json_encode($result);
 		}
+
+		public function get_student_schedule(){
+			$data['id']=$this->input->post('data');
+			$data['class_code']=$this->input->post('data');
+			//$result=$this->admin->get_student_class_access($data['id'],$data['class_code']);
+			$result=$this->admin->get_student_class_access('S000000','ABC1234');
+			$this->admin->record_attendace($result['id']);
+			echo json_encode($result['id']);
+			
+		}
 		public function test(){
 			// $response	=array(
 			// 	'csrfName' => $this->security->get_csrf_token_name(),

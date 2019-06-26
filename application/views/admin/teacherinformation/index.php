@@ -35,19 +35,26 @@
         <div class="box-body">
           <div style="width: 100%;">
             <div class="table-responsive">
-              <table id="Teacher_DataTable" class="display" cellspacing="0" width="100%">
+              <table id="Teacher_DataTable" style='table-layout: fixed !important; word-wrap:break-word;'class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                  <th>TeacherID</th>
-                  <th>NumberID</th>
+                <th>Action</th>
+                  <th>ID Number</th>
                   <th>FirstName</th>
                   <th>LastName</th>
                   <th>Gender</th>
                   <th>BirthDate</th>
                   <th>ContactNumber</th>
-                  <th>DepartmentID</th>
+                  <th>Department</th>
                   <th>Password</th>
+            
+
+                  <th>Description</th>
+                  <th>Course</th>
+                  <th>Period</th>
+                  <th>Location</th>
                   <th>Action</th>
+                
                 </tr>
                 </thead>
               </table>

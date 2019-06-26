@@ -69,6 +69,17 @@ var ahp = $('#nhp').DataTable({
             dataSrc:"info"
         },
         columns: [ 
+            { "data": null,
+				render: function ( data, type, row ) {
+                    if(data.PassTypeID==="2"){
+                        return `  <button value='${data.HallPassID}'  class="delete_row btn btn-xs btn-danger  " type="button" >
+                                <i class="fa fa-times" aria-hidden="true"></i> 
+                        </button>`;
+                    }else{
+                        return null;
+                    }
+				} 
+			},
           
             { "data": "HallPass"},
             {"data":"TimeAllocated"},

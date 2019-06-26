@@ -222,6 +222,16 @@
 			echo json_encode($data['import']);
 	
 		}
+		public function student_enrollment()
+		{
+			$data['title'] = 'Courses';
+			$data['view'] = 'admin/masterscheduler/student_enrollment';
+			$schedule=$this->input->post('data');
+			$this->admin->import_student_schedule($schedule);
+			$data['import']=$this->admin->get_import_student_schedule();
+			echo json_encode($data['import']);
+	
+		}
 		public function get_import_students(){
 			$data['import']=$this->admin->get_import_student_schedule();
 			echo json_encode($data['import']);

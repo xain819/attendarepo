@@ -138,6 +138,16 @@ class Admin_model extends CI_Model{
 		return $query->result();
 	}
 
+		public function import_csv_student($data){
+			foreach ($data as $value) {
+					$this->db->insert('student',$value);
+					
+					
+			}
+		print_r($data);
+		}
+	
+
 	public function add_terminal($data){
 		
 		$this->db->insert('hallpass', $data);
@@ -221,11 +231,7 @@ class Admin_model extends CI_Model{
 	//Teacher End
 	//Student Start
 	public function get_all_student(){
-		$sql='SELECT * FROM `student` as s 
-				INNER JOIN race as r ON s.RaceID=r.RaceID 
-				INNER JOIN Section as sec ON s.SectionID=sec.SectionID
-				INNER JOIN gradelevel as gl ON s.GradeLevelID =gl.GradeLevelID
-				INNER JOIN Distinction as d on s.DistinctionID=d.DistinctionID ';
+		$sql='SELECT * FROM `student`';
 		$query=$this->db->query($sql);
 		return $query->result_array();
 	}
@@ -332,23 +338,38 @@ class Admin_model extends CI_Model{
 	//	
 	}
 	public function get_import_student_schedule(){
-		$sql='SELECT * FROM `vgetstudent_schedule`';
+		$sql='SELECT * FROM `student_schedule`';
 		$query=$this->db->query($sql);
 		return $query->result();
 	}
 	public function import_student_schedule($data){
 		foreach ($data as $value) {
 			//echo($value);
-				$this->db->insert('vgetstudent_schedule',$value);
+				$this->db->insert('student_schedule',$value);
 				
 		}//ako muna sir. may tetest lang ako
 		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
 	//	
 	}
-	public function get_import_subjects(){
-		$sql='SELECT * FROM `subject`';
+	public function get_import_classes(){
+		$sql='SELECT * FROM `class_list`';
+
 		$query=$this->db->query($sql);
-		return $query->result();
+		return $query->result_array();
+	}
+	public function get_teacher_course($data){
+		//$this->db->select('course_code','period_number','teacher_id_number');
+		$this->db->where('teacher_id_number',$data);
+		$query=$this->db->get('class_list');
+
+		return $query->result_array();
+	}
+	public function get_student_class($data){
+		//$this->db->select('course_code','period_number','teacher_id_number');
+		$this->db->where('student_id_number',$data);
+		$query=$this->db->get('student_schedule');
+
+		return $query->result_array();
 	}
 
 	public function get_import_terminal(){
@@ -356,15 +377,14 @@ class Admin_model extends CI_Model{
 		$query=$this->db->query($sql);
 		return $query->result();
 	}
-	public function import_subjects($data){
+	public function import_classes($data){
 		
 		foreach ($data as $value) {
 			//echo($value);
-				$this->db->insert('subject',$value);
+				$this->db->insert('class_list',$value);
 				
-		}//ako muna sir. may tetest lang ako
-		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
-	//	
+		}
+
 	}
 	public function import_terminal($data){
 		
@@ -438,6 +458,18 @@ class Admin_model extends CI_Model{
 		$this->db->set('hallpassAccess',$data);
 		$this->db->update('teacher');
 	}
+	public function get_student_class_access($a,$b){
+		
+		$this->db->where('student_id',$a);
+		$this->db->where('class_code',$b);
+		$query=$this->db->get('student_class_access');
+		return $query->row_array();
+	}
+	public function record_attendace($a){
+		$this->db->set('StudentScheduleID',$a);
+		$this->db->insert('attendance');
+	}
+	
 
 	public function teacher_access($data){
 		
@@ -474,14 +506,7 @@ class Admin_model extends CI_Model{
 				$this->db->insert('teacher_access',$data_array);
 				
 			}
-	
-			
-		
-			
 
-			
-			
-			
 
 			}
 		

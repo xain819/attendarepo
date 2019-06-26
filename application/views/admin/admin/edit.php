@@ -61,10 +61,10 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="id_number" class="col-sm-2 control-label">ID No</label>
+                <label for="mobile_no" class="col-sm-2 control-label">Mobile No</label>
 
                 <div class="col-sm-9">
-                  <input type="number" name="id_number" value="<?= $admin['id_number']; ?>" class="form-control" id="id_number" placeholder="">
+                  <input type="number" name="mobile_no" value="<?= $admin['mobile_no']; ?>" class="form-control" id="mobile_no" placeholder="">
                 </div>
               </div>
               <div class="form-group">

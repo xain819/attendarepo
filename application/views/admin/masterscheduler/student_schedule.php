@@ -55,23 +55,10 @@ button.btn-space {
 <table id="StudentS" class="display" style="width:100%">
         <thead>
             <tr>
-    
-                <th>StudentID</th>
-                <th>FirstName</th>
-                <th>LastName</th>
-                <th>IDNumber</th>
-
-         
-                <th>Period</th>
-                <th>ScheduleTypeID</th>
-                <th>SubjectID</th>
-
-                <th>TeacherID</th>
-                <th>Location</th>
-                <th>TerminalID</th>
+            <th>Student ID</th>
+                <th>Class ID</th>
                 
-
-                   
+ 
             
             </tr>
         </thead>
@@ -145,39 +132,15 @@ $(document).ready(function() {
        },
     
         table: "#StudentS",
-        fields: [ {
-                label: "StudentID:",
-                name: "StudentID"
-            },{
-                label: "FirstName:",
-                name: "FirstName"
-            },{
-                label: "LastName:",
-                name: "LastName"
-            },{
-                label: "IDNumber:",
-                name: "IDNumber"
-            },{
-                label: "Period:",
-                name: "Period"
-            },{
-                label: "ScheduleTypeID:",
-                name: "ScheduleTypeID"
-            },{
-                label: "SubjectID:",
-                name: "SubjectID"
-            },{
-                label: "TeacherID:",
-                name: "TeacherID"
-            },{
-                label: "Location:",
-                name: "Location"
-            },{
-                label: "TerminalID:",
-                name: "TerminalID"
+        fields: [
+            {
+                label: "Student ID :",
+                name: "student_id_number"
+            },
+             {
+                label: "Class ID:",
+                name: "class_id"
             }
-    
-
             
     
     
@@ -198,19 +161,9 @@ $(document).ready(function() {
             dataType:'JSON'
        },
         columns: [
-            { data: 'StudentID' },
-            { data: 'FirstName' },
-            { data: 'LastName' },
-            { data: 'IDNumber' },
-            { data: 'Period' },
-            { data: 'ScheduleTypeID' },
-            { data: 'SubjectID' },
-            { data: 'TeacherID' },
-            { data: 'Location' },
-            { data: 'TerminalID' }
-    
-                
-        
+            { data: 'student_id_number' },
+            { data: 'class_id' },
+           
 
           
         ],

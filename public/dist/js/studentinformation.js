@@ -51,10 +51,13 @@ $(document).ready(function(){
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
+            
             dataType:'JSON'
        },
        table: "#Student_DataTable",
+       idSrc:  'StudentID',
        fields: [ 
+       
            {
                label: "ID Number:",
                name: "IDNumber"
@@ -88,16 +91,18 @@ $(document).ready(function(){
             label: "GradeLevelID:",
             name: "GradeLevelID"
         },{
-            label: "DistinctionID:",
-            name: "DistinctionID"
-        },{
             label: "Password:",
             name: "Password"
         },{
             label: "IsEnabled:",
             name: "IsEnabled"
         }
-       ]
+       ],
+       formOptions: {
+        bubble: {
+            title: 'Edit',
+            buttons: false
+        }}
     });
 
 
@@ -106,15 +111,18 @@ $(document).ready(function(){
     var student_DataTable = $('#Student_DataTable').DataTable({
         dom: 'Bfrtip',
         responsive: true,
+        
         ajax: {
             url: base_url+"admin/studentinformation/get_all_student ",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
+           
             dataType:'JSON'
        },
+       idSrc:  'StudentID',
        columns: [
-            { data:'StudentID'},
+     
             { data:'IDNumber'},
             { data:'FirstName'},
             { data:'LastName'},
@@ -125,18 +133,32 @@ $(document).ready(function(){
             { data:'SectionID'},
             { data:'GradeLevelID'}, 
             { data:'DistinctionID'},
+             
+            { 
+                data: null,"width": "100px",
+                render:function(data){
+                    return `${data.class_code_list}`;}
+            },
+          
             { data:'Password'},
             { data:'IsEnabled'},
             { 
                 data: null,
                 render:function(data){
-                    return '<button value='+data.StudentID+' class="btn btn-xs btn-warning showeditstudentmodal"><i class="fa fa-fw fa-pencil"></i></button> <button value='+data.StudentID+' class="btn btn-xs btn-danger delete_student"><i class="fa fa-fw fa-trash"></i></button>';
+                    return `<button value='${data.StudentID}' class="btn btn-xs btn-warning showeditstudentmodal">
+                    <i class="fa fa-television"></i></button>`
                 }
             }
         ],
-        select: true, 
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
         buttons: [
+            { extend: 'create', editor: editor },
+                { extend: 'edit',   editor: editor },
             {
+              
                 extend: 'csv',
                 text: 'Export CSV',
                 className: 'btn-space',
@@ -159,6 +181,8 @@ $(document).ready(function(){
             'selectNone',
         ]
     });
+    
+
 
     var uploadEditor = new $.fn.dataTable.Editor( {
         fields: [ {
@@ -193,6 +217,12 @@ $(document).ready(function(){
         
         student_DataTable.ajax.reload();
        })
+
+
+       $('#Student_DataTable').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this );
+    } );
+    
 
 
     $(document).on('click','#showaddstudentmodal',function(){

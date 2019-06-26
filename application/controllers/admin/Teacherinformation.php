@@ -22,6 +22,33 @@
 	
 			
 		}
+		public function get_teacher_course(){
+			$teacher=$this->admin->get_all_teacher();
+			foreach($teacher as $t){
+				$id=$t['IDNumber'];
+				$data='';
+				$period='';
+				$course='';
+				$location='';
+				$query=$this->admin->get_teacher_course($id);
+				foreach ($query as $value){
+					$data.=$value['course_code'].'<br>';
+					$period.=$value['period_number'].'<br>';
+					$course.=$value['course_description'].'<br>';
+					$location.=$value['location'].'<br>';
+				}
+				$this->db->set('period_list',$period);
+				$this->db->set('course_description_list',$course);
+				$this->db->set('teacher_course_list',$data);
+				$this->db->set('location_list',$location);
+				$this->db->where('IDNumber',$t['IDNumber']);
+				$this->db->update('teacher');
+			}
+			
+
+	
+			json_encode($data);
+		}
 		public function get_terminal_access(){
 	
 			$teacherid=$this->input->post('data');

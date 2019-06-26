@@ -8,8 +8,78 @@
 
 		    $this->rbac->check_module_access();
 		}
-	
 
+		public function get_student_schedule(){
+			$student=$this->admin->get_all_student();
+			foreach($student as $t){
+				$id=$t['IDNumber'];
+				$data='';			
+				$query=$this->admin->get_student_class($id);
+				
+				foreach ($query as $value){
+					$data=$value['class_id'];
+					$s=$value['student_id_number'];
+					$a = str_replace('|', '<br>' ,$data);
+					$data_class =explode("|",$data);
+
+					foreach($data_class as $d){
+						$data_array=array(
+							'class_code'=>$d,
+							'student_id'=>$s,
+							'is_active'=>'1');
+							$this->db->select('class_code,student_id');
+							$this->db->where('student_id',$s);
+							$this->db->where('class_code',$d);
+							$query=$this->db->get('student_class_access');
+							$result=$query->result_array();
+	
+								if ( $query->num_rows() > 0 ) 
+								{
+									$x ='';
+									$this->db->where('student_id',$s);
+									$this->db->where('class_code',$d);
+									$this->db->update('student_class_access',$data_array);
+
+
+								}
+								else
+								{
+									$this->db->insert('student_class_access',$data_array);
+									
+								}
+			
+					}
+				 }
+				
+			
+			
+		
+				$this->db->set('class_code_list',$a);
+				$this->db->where('IDNumber',$t['IDNumber']);
+				$this->db->update('student');
+
+			}
+		}
+
+		public function check_classes()
+		{
+			$data['title'] = 'Courses';
+			$data['view'] = 'admin/academicsettings/classes';
+			$classes=$this->input->post('data');
+			$this->admin->import_classes($classes);
+			$data['import']=$this->admin->get_import_classes();
+			echo json_encode($data['import']);
+	
+		}
+		public function get_import_classes(){
+			$data['import']=$this->admin->get_import_classes();
+			echo json_encode($data['import']);
+	
+		}
+	
+		
+		
+	
 
 		public function index(){
 			$data['title'] = 'Student Information';
@@ -92,6 +162,7 @@
 
 		public function insert_student(){
 			$data_student=$this->input->post('data');
+			print_r($data_student);
 			$this->admin->import_csv_student($data_student);
 			$data=$this->admin->get_all_student();
 			echo json_encode($data);
