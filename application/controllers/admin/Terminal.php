@@ -26,15 +26,38 @@
 			$result=$this->admin->get_terminal_hallpass($data['username']);
 			echo json_encode($result);
 		}
+		public function get_terminal_info()
+		{
+			$data['date']=$this->input->post('data');
+			$now= new Datetime('now');
+			$data['username']=$_SESSION['username'];
+			$q=$this->db->get('period')->result_array();
+			foreach($q as $v){
+				$start=new Datetime($v['PeriodStartTime']);
+				$end=new Datetime($v['PeriodEndTime']);
+
+				if($now >= $start && $now <= $end){
+					$data['period']=$v['Period'];
+				} 
+				
+			}
+		
+			$result=$this->admin->get_terminal_info($data['username'],$data['date'],$data['period']);
+	
+			echo json_encode($result);
+
+		
+		}
+		
 
 		public function get_student_schedule(){
-			$data['id']=$this->input->post('data');
-			$data['class_code']=$this->input->post('data');
+			$data['date']=$this->input->post('date');
+			$data['id']=$this->input->post('id');
+			$data['class_code']=$this->input->post('class_code');
 			//$result=$this->admin->get_student_class_access($data['id'],$data['class_code']);
 			$result=$this->admin->get_student_class_access('S000000','ABC1234');
 			$this->admin->record_attendace($result['id']);
 			echo json_encode($result['id']);
-			
 		}
 		public function test(){
 			// $response	=array(

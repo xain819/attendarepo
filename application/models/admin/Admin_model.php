@@ -177,6 +177,16 @@ class Admin_model extends CI_Model{
 		$query=$this->db->get('teacher_hallpass_access');
 		return $query->result_array();
 	}
+
+	public function get_terminal_info($a,$b,$c){
+
+		$this->db->distinct();
+		$this->db->where('location',$a);
+		$this->db->where('start',$b);
+		$this->db->where('period_number',$c);
+		$query=$this->db->get('vschedule_date');
+		return $query->result_array();
+	}
 	public function get_terminal_hallpass($data){
 		$this->db->where('username',$data);
 		$query=$this->db->get('vterminal_access');

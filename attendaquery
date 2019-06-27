@@ -17,3 +17,10 @@ SELECT cl.teacher_id_number,t.FirstName,t.LastName,cl.course_description,cl.peri
 cl.location,cl.class_code from class_list cl 
 join teacher t on cl.teacher_id_number=t.IDNumber
 
+CREATE or replace view vschedule_date AS 
+SELECT s.start,cl.course_group,co.course_description,cl.period_number,p.PeriodStartTime,p.PeriodEndTime,cl.course_code,cl.section,cl.location,cl.schedule_type, cl.class_code,cl.teacher_id_number,t.FirstName,t.LastName,sc.student_id FROM class_list cl JOIN
+student_class_access sc on cl.class_code=sc.class_code JOIN
+scheduledate s on s.title=cl.schedule_type JOIN 
+period p on p.Period=cl.period_number JOIN
+teacher t on t.IDNumber=cl.teacher_id_number JOIN
+courses co on co.course_code=cl.course_code

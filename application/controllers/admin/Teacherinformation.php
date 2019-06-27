@@ -10,12 +10,7 @@
 
 		    $this->rbac->check_module_access();
 		}
-		public function index(){
-			$data['title'] = 'Teacher Information';
-			$data['view'] = 'admin/teacherinformation/index';
-			$this->load->view('layoutv2', $data);
-			
-		}
+	
 		public function change_access_status(){
 		$data['id']=$this->input->post('id');
 		$this->admin->change_access_status($data['id']);
@@ -44,10 +39,15 @@
 				$this->db->where('IDNumber',$t['IDNumber']);
 				$this->db->update('teacher');
 			}
-			
-
-	
 			json_encode($data);
+		}
+		public function index(){
+			$data['title'] = 'Teacher Information';
+			$data['view'] = 'admin/teacherinformation/index';
+			$this->get_teacher_course();
+			$this->load->view('layoutv2', $data);
+			
+			
 		}
 		public function get_terminal_access(){
 	

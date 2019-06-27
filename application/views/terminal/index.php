@@ -193,8 +193,8 @@
 <div class="container bg-success bg-aqua" style="padding-top:40px;padding-bottom:50px;  " >
   <div class="col-md-12 col-sm-6 col-xs-12">
         <div class="pull-left col-md-2" >
-          <h3>Room:SGYM</h3>
-          <h4>Period: <span class="text-success">3rd</span> </h4>
+        <h3>Room: <span id='location'></span> </h4>
+          <h4>Period: <span id='period_number'></span> </h4>
         </div>  
 
          <div class="pull-right col-md-2">
@@ -244,7 +244,7 @@
               <div class="info-box-content bg-aqua">
                   <br>
                   <span class="info-box-text-sm bg-aqua">Teacher</span>
-                  <span class="info-box-number bg-aqua" id="TeacherName">Jim Doe</span>
+                  <span class="info-box-number bg-aqua" id="TeacherName"></span>
               </div>
               <!-- /.info-box-content -->
           </div>
@@ -257,7 +257,7 @@
               <div class="info-box-content">
               <br>
                   <span class="info-box-text-sm">Subject</span>
-                  <span class="info-box-number" id="SubjectName">Physical Education</span>
+                  <span class="info-box-number" id="SubjectName"></span>
               </div>
               <!-- /.info-box-content -->
           </div>
@@ -332,6 +332,35 @@ var base_url="<?php echo base_url();?>";
 var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
     csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
+$(document).ready(function(){
+  var datess = new Date();
+  var day = datess.getDate();
+  var month = datess.getMonth(); //Be careful! January is 0 not 1
+  var year = datess.getFullYear();
+
+
+  var dateString =year  + "-" +(month + 1) + "-" + day;
+
+  const a =$.ajax({
+        url:'<?php echo base_url(); ?>admin/terminal/get_terminal_info',
+        type:"POST",
+        data:({[csrfName]: csrfHash,data:dateString}),
+        dataType:'JSON',
+    }).done(function(data){
+       const teacher_name=`${data[0].FirstName} ${data[0].LastName}`;
+       console.log(data[0].PeriodEndTime);
+      $('#TeacherName').html(teacher_name);
+      $('#period_number').html(data[0].period_number);
+      $('#location').html(data[0].location);
+      $('#SubjectName').html(data[0].course_description);
+    $('#AvailableTime').html(data.AvailableUntil);
+    $('#AvailableHPTime').html(data.HallPassLock);
+
+
+    })
+  
+});
+
 
 $(document).ready(function(){
     const a =$.ajax({
@@ -340,9 +369,7 @@ $(document).ready(function(){
         data:({[csrfName]: csrfHash}),
         dataType:'JSON',
     }).done(function(data){
-     const teacher_name=`${data[0].FirstName} ${data[0].LastName}`;
-     $('#TeacherName').html(teacher_name);
-
+    
    
      var result=data;
      var hallpass=result; 
@@ -443,6 +470,8 @@ $(document).ready(function(){
     swal("Thank You", "Hall Pass for Admin Notification", "success");
   });
   });
+
+
   $(document).on('click','#show_terminal_modal',function(){
     if( $("#student_id").val()){
      $("#terminal_modal").modal("show");
