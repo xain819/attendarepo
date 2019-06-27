@@ -68,7 +68,7 @@
 		
 			$data['ahp']=$this->admin->get_teacher_hallpass($teacherid,1);
 			$data['nhp']=$this->admin->get_teacher_hallpass($teacherid,2);
-			print_r($data);
+		
 			echo json_encode($data);
 			
 			

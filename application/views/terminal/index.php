@@ -217,7 +217,9 @@
         <div class="col-md-12">
         <div class="col-md-11">
 
+              <FORM>
               <input type="text" id="student_id" class="form-control" placeholder="Student ID"  value="">
+              </FORM>
               
   
           </div>
@@ -387,10 +389,10 @@ $(document).ready(function(){
       const status=element.is_active;
       console.log(status);
       if (status==='0'){
-        var bg='bg-gray',a='',a2='';
+        var bg='bg-gray',a='<div class="info-box">',a2='';
       }
       else{
-        var a=`<a href="#">`,
+        var a=`<a href="#"><div class="info-box btn-hallpass" data-id="${HallPass}" id="${HallPass}">`,
             a2='</a>',bg='bg-aqua';
       }
 
@@ -399,11 +401,10 @@ $(document).ready(function(){
    
        let tnhp=`<div class="col-md-6 col-sm-6 col-xs-12">
 
-                                ${a}<div class="info-box">
-                                
+                                ${a}
                                 <span class="info-box-icon ${bg}"><i class="fa fa-hand-grab-o"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text-sm">${HallPass}</span>
+                                    <span class="info-box-text-sm hallpass_type">${HallPass}</span>
                                     <span class="info-box-number">${element.time_limit} Minutes</span>
                                 </div>
                                 <!-- /.info-box-content -->
@@ -423,10 +424,10 @@ $(document).ready(function(){
       const status=element.is_active;
       console.log(status);
       if (status==='0'){
-        var bg='bg-gray',a='',a2='';
+        var bg='bg-gray',a='<div class="info-box">',a2='';
       }
       else{
-        var a=`<a href="#">`,
+        var a=`<a href="#"><div class="info-box btn-hallpass" data-id="${HallPass}" id="${HallPass}">`,
             a2='</a>',bg='bg-aqua';
       }
         
@@ -434,11 +435,10 @@ $(document).ready(function(){
 
        let tahp=`<div class="col-md-6 col-sm-6 col-xs-12">
 
-                  ${a}<div class="info-box">
-
+                  ${a}
                   <span class="info-box-icon ${bg}"><i class="fa fa-hand-grab-o"></i></span>
                   <div class="info-box-content">
-                      <span class="info-box-text-sm">${HallPass}</span>
+                      <span class="info-box-text-sm hallpass_type">${HallPass}</span>
                       <span class="info-box-number">${element.time_limit} Minutes</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -471,14 +471,37 @@ $(document).ready(function(){
   });
   });
 
-
+//student and hall pass swipe
   $(document).on('click','#show_terminal_modal',function(){
     if( $("#student_id").val()){
-     $("#terminal_modal").modal("show");
-     }else{
-     swal("Please Enter Your Student ID");
+      var id=$("#student_id").val();
+      $.ajax({
+      url: base_url+"admin/terminal/get_student_schedule",
+      type: "POST",
+      dataType: "json",
+      data: ({[csrfName]: csrfHash,id:id}),
+      }).done(function (data){
+        if(data==null){
+          swal("Not Enrolled in this Class");
+        }else{
+          $("#terminal_modal").modal("show");
+          $("body").on("click",".btn-hallpass",function(){
+            console.log($(this).data('id'));
+            $.ajax({
+            url: base_url+"admin/terminal/get_student_student_hallpass",
+            type: "POST",
+            dataType: "json",
+            data: ({[csrfName]: csrfHash,id:id,hallpass:$(this).data('id')}),}).done(function(data){
+            })
+          })
+        }
+      })
+    }else{
+      swal("Please Enter Your Student ID");
     }
   })
+
+
     csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
     csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
   $.ajax({

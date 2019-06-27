@@ -188,8 +188,10 @@ class Admin_model extends CI_Model{
 		return $query->result_array();
 	}
 	public function get_terminal_hallpass($data){
-		$this->db->where('username',$data);
+	
+		$this->db->where('IDNumber',$data);
 		$query=$this->db->get('vterminal_access');
+
 	
 		return $query->result_array();
 	}
@@ -476,8 +478,26 @@ class Admin_model extends CI_Model{
 		return $query->row_array();
 	}
 	public function record_attendace($a){
+		
+		$now = new Datetime('now');
+		$date=$now->format('y-m-d');
+		$time=$now->format('H:i:s');
+		$this->db->where('StudentScheduleID',$a);
+		$this->db->where('AttendanceDate',$date);
+		$this->db->where('PeriodID',$_SESSION['period_number']);
+		$q=$this->db->get('attendance')->result_array();
+
+		if($q==null){
 		$this->db->set('StudentScheduleID',$a);
+		$this->db->set('AttendanceDate',$date);
+		$this->db->set('AttendanceTime',$time);
+		$this->db->set('PeriodID',$_SESSION['period_number']);
 		$this->db->insert('attendance');
+		    return true;
+		}else{
+			return true;
+		}
+
 	}
 	
 
