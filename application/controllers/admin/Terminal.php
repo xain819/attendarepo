@@ -56,10 +56,11 @@
 		
 		}
 		public function get_student_student_hallpass(){
-		$a=$this->input->post('id');
-		$b=$this->input->post('hallpass');
-		echo $a;
-		echo $b;
+		$data['student_id_number']=$this->input->post('id');
+		$data['hallpass']=$this->input->post('hallpass');
+		$data['StudentScheduleID']=$_SESSION['StudentScheduleID'];                                                                                       
+		$result=$this->admin->record_student_hallpass($data);
+		echo json_encode($result);
 		}
 
 		public function get_student_schedule(){
@@ -72,9 +73,9 @@
 	
 			if($result==null){
 				echo json_encode($result);
-				
 			}else{
 				$result=$this->admin->record_attendace($result['id']);
+				
 				echo json_encode($result);
 			}
 		}

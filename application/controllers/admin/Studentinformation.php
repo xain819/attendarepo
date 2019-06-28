@@ -9,6 +9,23 @@
 		    $this->rbac->check_module_access();
 		}
 
+		function update_student_hallpass(){
+
+			$teacher['addtoteacher']=$this->admin->get_all_hallpass();
+			$student['addtostudents']=$this->admin->get_all_hallpass();
+			$teacher_access='';
+			
+			$student_access='';
+			foreach ($teacher['addtoteacher'] as $value) {
+				$teacher_access.=$value['HallPass'].'|';
+			}
+			foreach ($student['addtostudents'] as $v) {
+				$student_access.=$v['HallPass'].'|';
+			}
+	
+			$this->admin->teacher_hallpass($teacher_access);
+			$this->admin->student_hallpass($student_access);
+		}
 		public function get_student_schedule(){
 			$student=$this->admin->get_all_student();
 			foreach($student as $t){
@@ -84,6 +101,7 @@
 		public function index(){
 			$data['title'] = 'Student Information';
 			$data['view'] = 'admin/studentinformation/index';
+			$this->update_student_hallpass();
 			$this->load->view('layoutv2', $data);
 		}
 		public function get_all_student(){

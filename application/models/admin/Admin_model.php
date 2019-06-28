@@ -141,8 +141,6 @@ class Admin_model extends CI_Model{
 		public function import_csv_student($data){
 			foreach ($data as $value) {
 					$this->db->insert('student',$value);
-					
-					
 			}
 		print_r($data);
 		}
@@ -167,6 +165,7 @@ class Admin_model extends CI_Model{
 	} 
 	//Teacher Start
 	public function get_all_teacher(){
+		//$sql='SELECT * FROM `teacher` as t INNER JOIN department as d ON t.DepartmentID=d.DepartmentID ';
 		$sql='SELECT * FROM `teacher` as t INNER JOIN department as d ON t.DepartmentID=d.DepartmentID ';
 		$query=$this->db->query($sql);
 		return $query->result_array();
@@ -398,6 +397,64 @@ class Admin_model extends CI_Model{
 		}
 
 	}
+	
+	public function create_terminal_users(){
+	
+		$result=$this->db->get('class_list')->result_array();
+		foreach($result as $r){
+
+			$this->db->where('username',$r['location']);
+			$q=$this->db->get('admin')->result_array();
+
+			if($q==null){
+				$data_array=array(
+					'username'=>$r['location'],
+					'password'=>password_hash($r['location'], PASSWORD_BCRYPT),
+					'is_verify'=>1,
+					'is_admin'=>1,
+					'is_active'=>1,
+					'admin_role_id'=>9,
+					'token' => md5(rand(0,1000)),    
+						'last_ip' => '',
+						'created_at' => date('Y-m-d : h:m:s'),
+						'updated_at' => date('Y-m-d : h:m:s'),
+				);
+				$this->db->insert('admin',$data_array);
+			}
+
+			$this->db->where('section',$r['section']);
+			$s=$this->db->get('section')->result_array();
+			if($s==null){
+				$this->db->insert('section',array('section'=>$r['section']));
+			}
+
+			$this->db->where('username',$r['teacher_id_number']);
+			$t=$this->db->get('admin')->result_array();
+			if($t==null){
+				$data_array=array(
+					'username'=>$r['teacher_id_number'],
+					'password'=>password_hash($r['teacher_id_number'], PASSWORD_BCRYPT),
+					'is_verify'=>1,
+					'is_admin'=>1,
+					'is_active'=>1,
+					'admin_role_id'=>10,
+					'token' => md5(rand(0,1000)),    
+						'last_ip' => '',
+						'created_at' => date('Y-m-d : h:m:s'),
+						'updated_at' => date('Y-m-d : h:m:s'),
+				);
+				$this->db->insert('admin',$data_array);
+				$this->db->insert('teacher',array('IDNumber'=>$r['teacher_id_number']));
+				
+			}
+			
+		}
+		
+	
+		
+		
+
+	}
 	public function import_terminal($data){
 		
 		foreach ($data as $value) {
@@ -470,34 +527,142 @@ class Admin_model extends CI_Model{
 		$this->db->set('hallpassAccess',$data);
 		$this->db->update('teacher');
 	}
+	public function student_hallpass($data){
+		$this->db->set('hall_pass_access',$data);
+		$this->db->update('student');
+	}
 	public function get_student_class_access($a,$b){
+
+
 		
 		$this->db->where('student_id',$a);
 		$this->db->where('class_code',$b);
 		$query=$this->db->get('student_class_access');
 		return $query->row_array();
 	}
+	public function record_student_hallpass($a){
+		$this->db->where('attendance_id',$_SESSION['AttendanceID']);
+		$this->db->where('hallpass',$a['hallpass']);
+		$this->db->where('is_active',1);
+		$q=$this->db->get('attendance_hallpass')->result_array();
+		if($q==null){
+		$data_array=array(
+			'attendance_id'=>$_SESSION['AttendanceID'],
+			'is_active'=>1,
+			'date_time_ended'=>'',
+			'hallpass'=>$a['hallpass']);
+			$this->db->insert('attendance_hallpass',$data_array);}
+		else{
+			
+			print_r("i");
+
+		}
+		
+	}
+	
 	public function record_attendace($a){
+
 		
 		$now = new Datetime('now');
 		$date=$now->format('y-m-d');
 		$time=$now->format('H:i:s');
+
 		$this->db->where('StudentScheduleID',$a);
 		$this->db->where('AttendanceDate',$date);
 		$this->db->where('PeriodID',$_SESSION['period_number']);
 		$q=$this->db->get('attendance')->result_array();
-
+		//check if attendance is already available 
 		if($q==null){
+		
 		$this->db->set('StudentScheduleID',$a);
 		$this->db->set('AttendanceDate',$date);
 		$this->db->set('AttendanceTime',$time);
 		$this->db->set('PeriodID',$_SESSION['period_number']);
 		$this->db->insert('attendance');
-		    return true;
+
+		$this->db->where('StudentScheduleID',$a);
+		$this->db->where('AttendanceDate',$date);
+		$this->db->where('PeriodID',$_SESSION['period_number']);
+		$q=$this->db->get('attendance')->result_array();
+		$this->session->set_userdata('AttendanceID',$q[0]['AttendanceID']);
+
+
+		return true;
 		}else{
-			return true;
+			//attendance available then check attendance hallpass
+			//print('<pre>');
+			//print_r($q);
+			$this->session->set_userdata('AttendanceID',$q[0]['AttendanceID']);
+			$this->db->where('attendance_id',$q[0]['AttendanceID']);
+			$this->db->where('is_active',1);
+			$result=$this->db->get('attendance_hallpass')->result_array();
+			if($result==null){
+				return true;
+			}else{
+				$now =new DateTime('now');
+				$time_end=$now->format("Y-m-d H:i:s");
+				//print_r($now->date);
+				$this->db->set('is_active',0);
+				$this->db->set('date_time_ended',$time_end);
+				$this->db->where('attendance_id',$q[0]['AttendanceID']);
+				$this->db->where('is_active',1);
+				$this->db->update('attendance_hallpass');
+				return 'updated';
+				//$this->db->set('date_time_ended',$result[0])
+			}
+			
+			//return 'check if there is an active hall pass ';
 		}
 
+	}
+
+	public function student_access($data){
+		
+		$sql='SELECT StudentID,hall_pass_access FROM `student`';
+		$query=$this->db->query($sql);
+		$result=$query->result_array();
+		
+
+		foreach ($result as $v){
+	
+			$access=explode('|',$v['hall_pass_access']);
+		
+
+		
+			foreach($access as $a){
+				$data_array=array(
+					'access'=>$a,
+					'student_id_number'=>$v['StudentID'],
+					'is_active'=>'1',
+					'time_limit'=>'5');
+			
+			$this->db->select('student_id_number,access');
+			$this->db->where('student_id_number',$v['StudentID']);
+			$this->db->where('access',$a);
+			$query=$this->db->get('student_access');
+			$result=$query->result_array();
+		
+
+			if ( $query->num_rows() > 0 ) 
+			{
+				$var='';
+			}
+			else
+			{
+				$this->db->insert('student_access',$data_array);
+				
+			}
+
+
+			}
+		
+
+		
+			
+		
+
+		}
+		
 	}
 	
 

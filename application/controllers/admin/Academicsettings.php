@@ -98,10 +98,11 @@ class Academicsettings extends CI_Controller
 		echo json_encode($data['import']);
 
 	}
+	//import classes and create terminal users 
 	public function get_import_classes(){
 		$data['import']=$this->admin->get_import_classes();
+		$data['location']=$this->admin->create_terminal_users();
 		echo json_encode($data['import']);
-
 	}
 	
 	

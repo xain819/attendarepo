@@ -335,9 +335,9 @@
               <!-- the events -->
           
               <div id="external-events">
-                <div class="external-event bg-green">A Day</div>
-                <div class="external-event bg-yellow">B Day</div>
-                <div class="external-event bg-aqua">C Day</div>
+                <div class="external-event bg-green">A</div>
+                <div class="external-event bg-yellow">B</div>
+                <div class="external-event bg-aqua">C</div>
                 <div class="external-event bg-light-blue">Regular Day</div>
                 <div class="external-event bg-red">Late Start</div>
                 <div class="external-event bg-teal">Exam Day</div>

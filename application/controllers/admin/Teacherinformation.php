@@ -41,9 +41,29 @@
 			}
 			json_encode($data);
 		}
+
+		function update_teacher_hallpass(){
+
+			$teacher['addtoteacher']=$this->admin->get_all_hallpass();
+			$student['addtostudents']=$this->admin->get_all_hallpass();
+			$teacher_access='';
+			
+			$student_access='';
+			foreach ($teacher['addtoteacher'] as $value) {
+				$teacher_access.=$value['HallPass'].'|';
+			}
+			foreach ($student['addtostudents'] as $v) {
+				$student_access.=$v['HallPass'].'|';
+			}
+	
+			$this->admin->teacher_hallpass($teacher_access);
+			$this->admin->student_hallpass($student_access);
+		}
 		public function index(){
+
 			$data['title'] = 'Teacher Information';
 			$data['view'] = 'admin/teacherinformation/index';
+			$this->update_teacher_hallpass();
 			$this->get_teacher_course();
 			$this->load->view('layoutv2', $data);
 			

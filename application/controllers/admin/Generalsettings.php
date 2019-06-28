@@ -19,13 +19,14 @@
 		}
 		public function get_all_hallpass()
 		{
-			$type=$this->input->post('type');
+		$type=$this->input->post('type');
 		$data['PassType']=$this->hallpass->get_pass_type();
 		$data['info'] = $this->hallpass->get_all($type);
 
 		echo json_encode($data);
 		
 		}
+
 		public function delete_hallpass()
 		{
 		$id=$this->input->post('data');
@@ -33,47 +34,58 @@
 		$status=$this->admin->delete_hallpass($id);
 
 		$teacher['addtoteacher']=$this->admin->get_all_hallpass();
-
-	
-
-
+		$student['addtostudents']=$this->admin->get_all_hallpass();
+		$teacher_access='';
 		
-        $teacher_access='';
+		$student_access='';
 		foreach ($teacher['addtoteacher'] as $value) {
 			$teacher_access.=$value['HallPass'].'|';
 		}
+		foreach ($student['addtostudents'] as $v) {
+			$student_access.=$v['HallPass'].'|';
+		}
 
 		$this->admin->teacher_hallpass($teacher_access);
-
+		$this->admin->student_hallpass($student_access);
 		echo json_encode($status);
 
 		}
+
 		public function add_hallpass()
 		{
 		$data['HallPass']=$this->input->post('name');
 		$data['TimeAllocated']=$this->input->post('time');
 		$data['PassTypeID']=$this->input->post('type');
 		$data['is_active']='1';
-		$result=$this->admin->add_terminal($data);
 
-		$data['addtoteacher']=$this->admin->get_all_hallpass();
-		
-		
+		$result=$this->admin->add_terminal($data);
+		$teacher['addtoteacher']=$this->admin->get_all_hallpass();
+		$student['addtostudents']=$this->admin->get_all_hallpass();
+		$student_access='';
+
+		foreach ($student['addtostudents'] as $v) {
+			$student_access.=$v['HallPass'].'|';
+		}
 	
 		$teacher_access='';
-		foreach ($data['addtoteacher'] as $value) {
+		foreach ($teacher['addtoteacher'] as $value) {
 			$teacher_access.=$value['HallPass'].'|';
 
 		}
-	
+		$this->admin->student_hallpass($student_access);
 		$this->admin->teacher_hallpass($teacher_access);
-		$this->admin->teacher_access($data['addtoteacher']);
+
+		$this->admin->teacher_access($teacher);
+		$this->admin->student_access($teacher);
+
+		
+
 		// $period_remove=$this->input->post('period');
 		// 		$exploded=explode($period_remove.'|',$new_data);
 		// 		print_r($exploded[0]);
 		// 		echo gettype($exploded[0]);
 		
-	     echo ($result);
+	     echo json_encode ($result);
 
 		}
 		public function edit_pgt()

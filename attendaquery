@@ -24,3 +24,6 @@ scheduledate s on s.title=cl.schedule_type JOIN
 period p on p.Period=cl.period_number JOIN
 teacher t on t.IDNumber=cl.teacher_id_number JOIN
 courses co on co.course_code=cl.course_code
+
+CREATE or replace view vstudent_terminal_access AS SELECT sa.id,sa.student_id_number,s.IDNumber,s.FirstName,s.LastName,sa.is_active,sa.time_limit,sa.access, h.PassTypeID 
+FROM student_access sa join student s on sa.student_id_number=s.StudentID JOIN hallpass h on h.HallPass=sa.access where sa.access!=''

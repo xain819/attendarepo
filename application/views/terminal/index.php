@@ -392,7 +392,7 @@ $(document).ready(function(){
         var bg='bg-gray',a='<div class="info-box">',a2='';
       }
       else{
-        var a=`<a href="#"><div class="info-box btn-hallpass" data-id="${HallPass}" id="${HallPass}">`,
+        var a=`<a href=""><div class="info-box btn-hallpass" data-id="${HallPass}" id="${HallPass}">`,
             a2='</a>',bg='bg-aqua';
       }
 
@@ -427,7 +427,7 @@ $(document).ready(function(){
         var bg='bg-gray',a='<div class="info-box">',a2='';
       }
       else{
-        var a=`<a href="#"><div class="info-box btn-hallpass" data-id="${HallPass}" id="${HallPass}">`,
+        var a=`<a href=""><div class="info-box btn-hallpass" data-id="${HallPass}" id="${HallPass}">`,
             a2='</a>',bg='bg-aqua';
       }
         
@@ -483,7 +483,15 @@ $(document).ready(function(){
       }).done(function (data){
         if(data==null){
           swal("Not Enrolled in this Class");
-        }else{
+        }else if(data=='updated'){
+          swal({
+            title:'Thank you',
+            timer: 1000,
+            text:'',
+           });
+        }
+        else{
+          console.log(data);
           $("#terminal_modal").modal("show");
           $("body").on("click",".btn-hallpass",function(){
             console.log($(this).data('id'));
@@ -492,6 +500,7 @@ $(document).ready(function(){
             type: "POST",
             dataType: "json",
             data: ({[csrfName]: csrfHash,id:id,hallpass:$(this).data('id')}),}).done(function(data){
+              $("#terminal_modal").modal("hide");
             })
           })
         }
