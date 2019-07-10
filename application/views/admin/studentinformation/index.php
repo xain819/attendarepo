@@ -10,20 +10,7 @@
     <script src="<?=base_url() ?>public/js/settings.js"></script>
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
-        <div class="content-body">
-            <div class="container-fluid">
-                <div class="row page-titles">
-                    <div class="col p-0">
-                        <h4>Hello, <span>Welcome here</span></h4>
-                    </div>
-                    <div class="col p-0">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Layout</a>
-                            </li>
-                            <li class="breadcrumb-item active">Blank</li>
-                        </ol>
-                    </div>
-                </div>
+
 
   
 
@@ -37,28 +24,34 @@
 
         <div class="row">
 	    
-	</div> 
-        <div class="box-body">
+	      </div> 
+
+        <div class=" card box-body" style='padding:20px;'>
           <div style="width: 100%;">
             <div class="table-responsive">
               <table id="Student_DataTable" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
              
-                  <th>IDNumber </th>
-                  <th>FirstName </th>
-                  <th>LastName </th>
-                  <th>Gender </th> 
-                  <th>BirthDate </th>
-                  <th>ContactNumber </th>
-                  <th>RaceID </th>
-                  <th>SectionID </th>
-                  <th>GradeLevelID </th> 
-                  <th>DistinctionID </th>
-                  <th>Class </th>
-               
-                  <th>Password </th>
-                  <th>IsEnabled </th>
+                  <th>ID Number </th>
+                  <th>Student Type</th>
+                  <th>Last Name </th>
+                  <th>First Name </th>
+      
+                  <th>graduation_cohort </th> 
+                  <th>birthdate </th>
+                  <th>gender </th>
+                  
+                  <th>Parent Last Name </th>
+                  <th>Parent First Name </th>
+                  <th>parent_address </th> 
+                  <th>parent_city </th>
+
+                  <th>parent_state </th> 
+                  <th>parent_zip </th>
+                  <th>parent_email </th>
+                  <th>student_email </th>
+       
                   <th>Action</th>
                 </tr>
                 </thead>

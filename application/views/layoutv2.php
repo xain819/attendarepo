@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>public/assets/images/favicon.png">
     <link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="<?= base_url() ?>public/bootstrap/css/bootstrap.min.css">
+    <script src="<?=base_url() ?>public/plugins/moment/moment.js"></script>
 
  
 
@@ -211,6 +212,26 @@
             Content body start
         ***********************************-->
         <div class="content-wrapper" style="min-height: 394px; padding:15px;">
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles">
+                    <div class="col p-0">
+                        <h4>Hello, <span>Welcome here</span></h4>
+                    </div>
+                    <div class="col p-0">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Layout</a>
+                            </li>
+                            <li class="breadcrumb-item active">Blank</li>
+                        </ol>
+                    </div>
+                </div>
+                <?php $this->load->view('header');?>
+
+
+
+<div>
+       
         <?php $this->load->view($view); ?>
         </div>
         <!--**********************************
@@ -803,3 +824,57 @@
 </body>
 
 </html>
+
+<script>
+ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
+        base_url='<?php echo base_url(); ?>';
+var a=  null;
+var datetime = null,
+        date = null,
+        d=null,
+        datenow=null;
+
+var update = function () {
+    date = moment(new Date())
+    datetime.html(date.format(' h:mm:ss a'));
+    d.html(date.format('dddd'));
+    datenow.html(date.format('MMMM Do YYYY'));
+    // $.ajax({
+    //     url:'<?php echo base_url(); ?>admin/controlpannel/get_master_data',
+    //     type:"POST",
+    //     data:({[csrfName]: csrfHash}),
+    //     dataType:'JSON',
+    // }).done(function(data){
+  
+    //     a=data['type'][0]['title'];
+    //     b=data['period'];
+    //     $('#type').html(`${a}-Day`);
+    //     $('#period').html(`${b}`);
+        
+    // });
+
+   
+};
+
+$(document).ready(function(){
+    datetime = $('#datetime');
+    d = $('#day');
+    datenow=$('#datenow');
+    update();
+    $.ajax({
+        url:'<?php echo base_url(); ?>admin/controlpannel/get_master_data',
+        type:"POST",
+        data:({[csrfName]: csrfHash}),
+        dataType:'JSON',
+    }).done(function(data){
+  
+        a=data['type'][0]['title'];
+        b=data['period'];
+        $('#type').html(`${a}-Day`);
+        $('#period').html(`${b}`);
+        
+    });
+    setInterval(update, 1000);
+});
+</script>

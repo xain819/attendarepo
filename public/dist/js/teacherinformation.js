@@ -80,7 +80,7 @@ $(document).ready(function(){
     var Teacher_DataTable = $('#Teacher_DataTable').DataTable({
         responsive: true,
         "bAutoWidth": true,
-        "autoWidth": false,
+        "autoWidth": true,
         ajax: {
             url: base_url+"admin/teacherinformation/get_all_teacher ",
             data:({ [csrfName]: csrfHash}),
@@ -90,7 +90,7 @@ $(document).ready(function(){
        },
            columns: [
             { 
-                data: null,"width": "100px",
+                data: null,
                 render:function(data){
                     return `action`;}
             },
@@ -105,18 +105,18 @@ $(document).ready(function(){
           
            
             { 
-                data: null,"width": "100px",
+                data: null,
                 render:function(data){
                     return `${data.course_description_list}`;}
             },
             
             { 
-                data: null,"width": "100px",
+                data: null,
                 render:function(data){
                     return `${data.teacher_course_list}`;}
             },
              { 
-                data: null,"width": "100px",
+                data: null,
                 render:function(data){
                     return `${data.period_list}`;}
             },

@@ -9,6 +9,15 @@
 		    $this->rbac->check_module_access();
 		}
 
+		public function get_student_roster_attendance($a){
+
+			$data['teacher_id_number']='E7817169060';
+			$data['class_code']='teacher_id_number';
+			$result=$this->admin->check_student_if_enrolled($data['teacher_id_number'],$data['class_code']);
+			echo json_encode($result);
+
+		}
+
 		function update_student_hallpass(){
 
 			$teacher['addtoteacher']=$this->admin->get_all_hallpass();

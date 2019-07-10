@@ -33,24 +33,7 @@ button.btn-space {
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 
-<div class="content-body">
-            <div class="container-fluid">
-                <div class="row page-titles">
-                    <div class="col p-0">
-                        <h4>Hello, <span>Welcome here</span></h4>
-                    </div>
-                    <div class="col p-0">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Layout</a>
-                            </li>
-                            <li class="breadcrumb-item active">Blank</li>
-                        </ol>
-                    </div>
-                </div>
-
-
-
-<div>
+<div class=" card box-body" style='padding:20px;'>
 <div class=' col-xl-6 '>
 <table id="Race" class="display" style="width:100%">
         <thead>
@@ -63,7 +46,7 @@ button.btn-space {
         </thead>
   
     </table></div>
-</div></div></div>
+</div></div></div></div>
 
 
 <script type='text/javascript'>

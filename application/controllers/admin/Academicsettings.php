@@ -96,12 +96,13 @@ class Academicsettings extends CI_Controller
 		$this->admin->import_classes($classes);
 		$data['import']=$this->admin->get_import_classes();
 		echo json_encode($data['import']);
-
 	}
-	//import classes and create terminal users 
+	//import classes and create terminal users  and students schedule tag as absent
 	public function get_import_classes(){
+
 		$data['import']=$this->admin->get_import_classes();
 		$data['location']=$this->admin->create_terminal_users();
+		//$this->admin->ac_create_student_schedule();
 		echo json_encode($data['import']);
 	}
 	
@@ -121,6 +122,8 @@ class Academicsettings extends CI_Controller
 		$this->admin->import_subjects($subjects);
 		$data['import']=$this->admin->get_import_subjects();
 		echo json_encode($data['import']);
+
+		
 
 	}
 	public function get_import_subjects(){

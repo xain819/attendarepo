@@ -481,7 +481,7 @@ $(document).ready(function(){
       dataType: "json",
       data: ({[csrfName]: csrfHash,id:id}),
       }).done(function (data){
-        if(data==null){
+        if(data=='not_enrolled'){
           swal("Not Enrolled in this Class");
         }else if(data=='updated'){
           swal({

@@ -2,6 +2,33 @@
 
 class Admin_model extends CI_Model{
 
+
+	public function get_period(){
+		$today = date("Y-m-d");  
+			$now= new Datetime('now');
+			$data['username']=$_SESSION['username'];
+			$q=$this->db->get('period')->result_array();
+			foreach($q as $v){
+				$start=new Datetime($v['PeriodStartTime']);
+				$end=new Datetime($v['PeriodEndTime']);
+				//$a=$start->format('H:i:s');
+				
+				if($now >= $start && $now <= $end){
+					$data['period']=$v['Period'];
+				}
+			}
+			return $data['period'];
+			
+	}
+	public function get_day_type(){
+		$today=date("Y-m-d");
+		$this->db->where('start',$today);
+		$q=$this->db->get('scheduledate')->result_array();
+		
+		return $q;
+		
+	}
+
 	public function get_user_detail(){
 		$id = $this->session->userdata('admin_id');
 		$query = $this->db->get_where('admin', array('admin_id' => $id));
@@ -138,9 +165,39 @@ class Admin_model extends CI_Model{
 		return $query->result();
 	}
 
+
+
+
 		public function import_csv_student($data){
 			foreach ($data as $value) {
-					$this->db->insert('student',$value);
+
+					$student_array=array(
+						'student_local_id' => $value['student_local_id'],
+						'student_type' => $value['student_type'],
+						'last_name' => $value['last_name'],
+						'first_name' => $value['first_name'],
+						'graduation_cohort' => $value['graduation_cohort'],
+						'birthdate' => $value['birthdate'],
+						'gender' => $value['gender'],
+						'student_email' => $value['student_email'],
+					
+					);
+					$parent_array=array(
+			
+						'parent_last_name' => $value['parent_last_name'],
+						'student_local_id' => $value['student_local_id'],
+						'parent_last_name' => $value['parent_last_name'],
+						'parent_first_name' => $value['parent_first_name'],
+						'parent_address' => $value['parent_address'],
+						'parent_city' => $value['parent_city'],
+						'parent_state' => $value['parent_state'],
+						'parent_zip' => $value['parent_zip'],
+						'parent_email' => $value['parent_email'],
+					);
+
+					
+					$this->db->insert('student_table',$student_array);
+					$this->db->insert('parent_table',$parent_array);
 			}
 		print_r($data);
 		}
@@ -149,9 +206,6 @@ class Admin_model extends CI_Model{
 	public function add_terminal($data){
 		
 		$this->db->insert('hallpass', $data);
-
-	
-
 	
 		return true;
 	}
@@ -242,7 +296,7 @@ class Admin_model extends CI_Model{
 	//Teacher End
 	//Student Start
 	public function get_all_student(){
-		$sql='SELECT * FROM `student`';
+		$sql='SELECT * FROM `vstudent_parent`';
 		$query=$this->db->query($sql);
 		return $query->result_array();
 	}
@@ -370,10 +424,10 @@ class Admin_model extends CI_Model{
 	}
 	public function get_teacher_course($data){
 		//$this->db->select('course_code','period_number','teacher_id_number');
-		$this->db->where('teacher_id_number',$data);
-		$query=$this->db->get('class_list');
-
+		$sql='SELECT DISTINCT `teacher_id_number`,`period_number`,`course_code`,`class_type`,`short_desc`,`location`FROM `vteacher_classes`';
+		$query=$this->db->query($sql);
 		return $query->result_array();
+
 	}
 	public function get_student_class($data){
 		//$this->db->select('course_code','period_number','teacher_id_number');
@@ -433,6 +487,7 @@ class Admin_model extends CI_Model{
 			if($t==null){
 				$data_array=array(
 					'username'=>$r['teacher_id_number'],
+					'id_number'=>$r['teacher_id_number'],
 					'password'=>password_hash($r['teacher_id_number'], PASSWORD_BCRYPT),
 					'is_verify'=>1,
 					'is_admin'=>1,
@@ -531,19 +586,105 @@ class Admin_model extends CI_Model{
 		$this->db->set('hall_pass_access',$data);
 		$this->db->update('student');
 	}
-	public function get_student_class_access($a,$b){
-
-
+	public function check_student_if_enrolled($a,$b){
 		
-		$this->db->where('student_id',$a);
-		$this->db->where('class_code',$b);
-		$query=$this->db->get('student_class_access');
-		return $query->row_array();
+		$this->db->distinct();
+		$this->db->where('term','S1');
+		$this->db->where('start',date("Y-m-d"));
+		$this->db->where('teacher_id_number',$a);
+		$this->db->where('period_number',$b);
+	
+		$q=$this->db->get('vstudent_roster')->result_array();
+		return $q;
+		
 	}
+	public function check_student_rosters($a,$b){
+		
+		$this->db->distinct();
+		//$this->db->where('term','S1');
+		$this->db->where('start',date("Y-m-d"));
+		$this->db->where('teacher_id_number',$a);
+	    $this->db->where('period_number',$b);
+		$q=$this->db->get('vstudent_roster')->result_array();
+		return $q;
+	}
+	public function check_student_rosters_data($a){
+		
+		$this->db->distinct();
+		//$this->db->where('term','S1');
+		//$this->db->where('start',date("Y-m-d"));
+		$this->db->where('teacher_id_number',$a);
+	    //$this->db->where('period_number',$b);
+		$q=$this->db->get('vstudent_roster_list')->result_array();
+		return $q;
+	}
+
+	public function get_student_class_access($a,$b){
+		
+		$this->db->distinct();
+		$this->db->where('term','S1');
+		$this->db->where('start',date("Y-m-d"));
+		$this->db->where('student_local_id',$a);
+		$this->db->where('period_number',$b);
+		$query=$this->db->get('vstudent_roster')->result_array();
+
+		return $query;
+		
+	}
+	public function check_hallpass_logs($a,$b)
+	{
+		$this->db->distinct();
+		$this->db->where('AttendanceDate',date("Y-m-d"));
+		$this->db->where('teacher_id_number',$a);
+		$this->db->where('period_number',$b);
+		$this->db->where('date_time_ended','0000-00-00 00:00:00');
+		$result['active']=$this->db->get('vstudent_hallpass_logs')->result_array();
+
+		$this->db->distinct();
+		$this->db->where('AttendanceDate',date("Y-m-d"));
+		$this->db->where('teacher_id_number',$a);
+		$this->db->where('period_number',$b);
+		$this->db->where('date_time_ended !=','0000-00-00 00:00:00');
+		$result['expired']=$this->db->get('vstudent_hallpass_logs')->result_array();
+		
+		//print_r($query);
+	
+		return $result;
+
+	}
+
+	public function ac_create_student_schedule(){
+		
+		$this->db->select('class_id');
+		$this->db->where('student_id_number');
+		$this->db->where('course_code');
+		$this->db->where('teacher_id_number');
+		$this->db->where('section');
+		$this->db->where('grade_level');
+		$this->db->where('period');
+		$this->db->where('schedule_type');
+		$this->db->where('location');
+		$this->db->where('distiction');
+		$this->db->where('school_year');
+		$this->db->where('semester');
+		$q=$this->db->get('class_master');
+		if($q=null){
+			foreach($q as $v){
+
+			}
+		}
+		
+
+	//this create schedule of all students for all the calendar Year:
+		
+
+	}
+
 	public function record_student_hallpass($a){
 		$this->db->where('attendance_id',$_SESSION['AttendanceID']);
 		$this->db->where('hallpass',$a['hallpass']);
 		$this->db->where('is_active',1);
+		//check if ther is an active hallpass if 
 		$q=$this->db->get('attendance_hallpass')->result_array();
 		if($q==null){
 		$data_array=array(
@@ -560,6 +701,7 @@ class Admin_model extends CI_Model{
 		
 	}
 	
+	
 	public function record_attendace($a){
 
 		
@@ -567,27 +709,25 @@ class Admin_model extends CI_Model{
 		$date=$now->format('y-m-d');
 		$time=$now->format('H:i:s');
 
-		$this->db->where('StudentScheduleID',$a);
+		$this->db->where('class_id',$a);
 		$this->db->where('AttendanceDate',$date);
 		$this->db->where('PeriodID',$_SESSION['period_number']);
 		$q=$this->db->get('attendance')->result_array();
 		//check if attendance is already available 
 		if($q==null){
 		
-		$this->db->set('StudentScheduleID',$a);
-		$this->db->set('AttendanceDate',$date);
-		$this->db->set('AttendanceTime',$time);
-		$this->db->set('PeriodID',$_SESSION['period_number']);
-		$this->db->insert('attendance');
+				$this->db->set('class_id',$a);
+				$this->db->set('AttendanceDate',$date);
+				$this->db->set('AttendanceTime',$time);
+				$this->db->set('PeriodID',$_SESSION['period_number']);
+				$this->db->insert('attendance');
 
-		$this->db->where('StudentScheduleID',$a);
-		$this->db->where('AttendanceDate',$date);
-		$this->db->where('PeriodID',$_SESSION['period_number']);
-		$q=$this->db->get('attendance')->result_array();
-		$this->session->set_userdata('AttendanceID',$q[0]['AttendanceID']);
-
-
-		return true;
+				$this->db->where('class_id',$a);
+				$this->db->where('AttendanceDate',$date);
+				$this->db->where('PeriodID',$_SESSION['period_number']);
+				$q=$this->db->get('attendance')->result_array();
+				$this->session->set_userdata('AttendanceID',$q[0]['AttendanceID']);
+		return 'recorded';
 		}else{
 			//attendance available then check attendance hallpass
 			//print('<pre>');

@@ -4,23 +4,9 @@
 <link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/select2/css/select2.min.css">
 <link href="<?= base_url('public/assets/plugins/datatables/css/jquery.dataTables.min.css')?>" rel="stylesheet">
 <link href="<?= base_url('public/css/style.css')?>" rel="stylesheet">
-<div class="content-body">
 
-        <div class="container-fluid">
-
-            <div class="row page-titles">
-                <div class="col p-md-0">
-                    <h5>General Settings</h5>
-                </div>
-                <div class="col p-md-0">
-
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active">General Settings</li>
-                    </ol>
-                </div>
-            </div>
+            <?php $this->load->view('admin/generalsettings/hallpassfunction');?>
+            
          
 
          
@@ -211,17 +197,26 @@ $(document).ready(function(){
     
     const mhl=`<div class="col-xl-6 col-sm-6">
     <div class="card">
-    <div class="card-body">
-    <div class="stat-widget-two">
-    <div class="media">
-    <div class="media-body">
-    <h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
-     <button data-toggle="modal" data-target="#${id_name}" style='background-color:
-    inherit;;border:none;' class="mt-0 mb- text-info">${master_name}</button>
-     <span class="pull-right">  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
-     class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
-     <p>descrition goes here</p
-    </div></div></div></div></div></div>`
+            
+            <div class="card-body">
+                <div class="stat-widget-two">
+                    <div class="media">
+                            <div class="media-body">
+                          
+
+                                    <h5 class="mt-0 mb- text-info"><i class="fa fa-camera-retro fa-2x" style='padding-right:20px;'></i>
+                                  
+                                    <button data-toggle="modal" data-target="#${id_name}" style='background-color:
+                                    inherit;;border:none;' class="mt-0 mb- text-info">${master_name}</button>
+                                    <span class="pull-right">  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
+                                    class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
+                        
+                            </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`
     
  
     var master_element = $("<div />");

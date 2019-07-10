@@ -11,13 +11,27 @@
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
 
+ 
+    <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles">
+                    <div class="col p-0">
+                        <h4>Hello, <span>Welcome here</span></h4>
+                    </div>
+                    <div class="col p-0">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Layout</a>
+                            </li>
+                            <li class="breadcrumb-item active">Blank</li>
+                        </ol>
+                    </div>
+                </div>
 
 
     <!-- Main content -->
     <section class="content">
       <!-- Default box -->
-
-      <div class=" card box-body" style='padding:20px;'>
+      
         <div class="box-body">
           <div style="width: 100%;">
             <div class="table-responsive">
@@ -46,7 +60,7 @@
               </table>
             </div>      
           </div>
-        </div></div>
+        </div>
         <!-- /.box-body -->
         <div class="box-footer">
           Footer

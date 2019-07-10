@@ -2,7 +2,18 @@ CREATE or replace view vterminal_access AS SELECT
 ta.id,a.username,t.TeacherID,t.IDNumber,t.is_terminal_active,t.is_hallpass_active,ta.access,
  t.FirstName, t.LastName from teacher_access ta join teacher t on ta.teacherID=t.TeacherID join admin
   a on t.IDNumber=a.id_number where access!=''
-  
+
+CREATE or replace view vstudent_roster as 
+SELECT p.GracePeriod,p.PeriodID,s.first_name,s.last_name,cl.grade_level,cl.class_id,cl.period_number,sc.ScheduleDateID,sc.start,cl.teacher_id_number,cl.student_local_id,a.AttendanceID,a.AttendanceDate,a.AttendanceTime,cl.term From scheduledate sc join class_list cl on sc.title=cl.schedule_type  join 
+student_table s on s.student_local_id=cl.student_local_id LEFT JOIN 
+attendance a on a.class_id=cl.class_id and a.AttendanceDate=sc.start and cl.period_number=a.PeriodID JOIN
+period p on p.Period=cl.period_number
+
+CREATE or replace view vstudent_hallpass_logs as 
+Select h.TimeAllocated,ah.ID,cl.period_number,ah.attendance_id,ah.hallpass,ah.DateCreated,ah.date_time_ended,h.PassTypeID,st.student_local_id,st.last_name,st.first_name,cl.grade_level FROM attendance_hallpass ah JOIN
+attendance a on ah.attendance_id=a.AttendanceID JOIN class_list cl on cl.class_id=a.AttendanceID join 
+student_table st on cl.student_local_id=st.student_local_id join hallpass h on h.HallPass=ah.hallpass
+
 CREATE or replace view vclasses AS 
 SELECT co.course_group,co.course_description,co.course_code,co.grade_level,co.short_desc,co.credits,p.Period,t.IDNumber,t.FirstName,t.LastName,g.GradeLevel,s.ScheduleType
 from courses co
@@ -18,12 +29,20 @@ cl.location,cl.class_code from class_list cl
 join teacher t on cl.teacher_id_number=t.IDNumber
 
 CREATE or replace view vschedule_date AS 
-SELECT s.start,cl.course_group,co.course_description,cl.period_number,p.PeriodStartTime,p.PeriodEndTime,cl.course_code,cl.section,cl.location,cl.schedule_type, cl.class_code,cl.teacher_id_number,t.FirstName,t.LastName,sc.student_id FROM class_list cl JOIN
+SELECT s.start,co.course_description,cl.period_number,p.PeriodStartTime,p.PeriodEndTime,cl.course_code,cl.section,cl.location,cl.schedule_type, cl.class_code,cl.teacher_id_number,t.FirstName,t.LastName,sc.student_id FROM class_list cl JOIN
 student_class_access sc on cl.class_code=sc.class_code JOIN
 scheduledate s on s.title=cl.schedule_type JOIN 
 period p on p.Period=cl.period_number JOIN
 teacher t on t.IDNumber=cl.teacher_id_number JOIN
-courses co on co.course_code=cl.course_code
+courses co on co.course_code=cl.course_code and cl.class_type=co.course_type
+
 
 CREATE or replace view vstudent_terminal_access AS SELECT sa.id,sa.student_id_number,s.IDNumber,s.FirstName,s.LastName,sa.is_active,sa.time_limit,sa.access, h.PassTypeID 
 FROM student_access sa join student s on sa.student_id_number=s.StudentID JOIN hallpass h on h.HallPass=sa.access where sa.access!=''
+CREATE or replace view vstudent_parent as
+SELECT DISTINCT st.student_local_id, st.student_type,st.last_name,st.first_name,st.graduation_cohort,st.birthdate,st.gender,pt.parent_last_name,pt.parent_first_name,pt.parent_address,pt.parent_state,pt.parent_zip,pt.parent_city,pt.parent_email,st.student_email FROM student_table st JOIN
+parent_table pt on st.student_local_id = pt.student_local_id
+
+create or replace view vstudent_roster_list as
+SELECT DISTINCT c.period_number,co.course_description,c.student_local_id,c.teacher_id_number,c.grade_level,vs.last_name,vs.first_name,vs.birthdate,vs.student_type,vs.parent_last_name,vs.parent_first_name,vs.parent_email FROM class_list c join courses co on co.course_type=c.class_type and co.course_code=c.course_code and c.grade_level=co.grade_level join vstudent_parent vs on vs.student_local_id=c.student_local_id  
+ORDER BY `vs`.`first_name` ASC

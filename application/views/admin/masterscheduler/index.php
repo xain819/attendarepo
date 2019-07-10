@@ -307,34 +307,21 @@
 
 
 
-<div class="content-body">
-  <div class="container-fluid">
-  
- 
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Calendar
-        <small>Control panel</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Calendar</li>
-      </ol>
-    </section>
+
 
     <!-- Main content -->
+    <div class=" card box-body" style='padding:20px;'>
     <section class="content">
       <div class="row">
         <div class="col-md-3">
-          <div class="box box-solid">
+          <div class="box box-solid" style='padding-top:100px;'>
             <div class="box-header with-border">
               <h4 class="box-title">Schedule Type</h4>
             </div>
             <div class="box-body" id="scheduletype">
               <!-- the events -->
           
-              <div id="external-events">
+              <div id="external-events" >
                 <div class="external-event bg-green">A</div>
                 <div class="external-event bg-yellow">B</div>
                 <div class="external-event bg-aqua">C</div>
@@ -375,13 +362,16 @@
               </div>
               <!-- /btn-group -->
               <div class="input-group">
-                <input id="new-event" type="text" class="form-control" placeholder="Event Title">
-
-                <div class="input-group-btn">
+                <input id="new-event" type="text" class="form-control" placeholder="Event Title"><br>
+                
+                <!-- <div class="input-group-btn">
                   <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
-                </div>
+                </div> -->
                 <!-- /btn-group -->
               </div>
+              <div class="input-group-btn ">
+                  <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
+                </div>
               <!-- /input-group -->
             </div>
           </div>
@@ -411,7 +401,7 @@
 
     
   </section>
-  </div></div>
+  </div></div></div>
 <script type="text/javascript">
  
 

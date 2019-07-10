@@ -44,6 +44,16 @@
                         </ul>
                     </li>
 
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/studentinformation'); ?>" >
+                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Student Information</span>
+                        </a>
+                      
+                    </li>
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation'); ?>" >
+                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Teacher Information</span>
+                        </a>
+                      
+                    </li>
                   
 
                    
@@ -65,33 +75,52 @@
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-email-outline"></i> <span class="nav-text">Academic Settings</span><span class="badge bg-lgreen text-white nav-badge"></span></a>
                         <ul aria-expanded="false">
-                            <li><a href="<?= base_url('admin/academicsettings/section'); ?>">Manage Section</a>
+                            <li><a href="<?= base_url('admin/academicsettings/section'); ?>">Section</a>
                             </li>
-                            <li><a href="<?= base_url('admin/academicsettings/classes'); ?>">Manage Classes</a>
+                            <li><a href="<?= base_url('admin/academicsettings/classes'); ?>">Classes</a>
                             </li>
-                            <li><a href="<?= base_url('admin/academicsettings/courses'); ?>">Manage Courses</a>
+                            <li><a href="<?= base_url('admin/academicsettings/courses'); ?>">Courses</a>
                             </li>
-                            <li><a href="<?= base_url('admin/academicsettings/department'); ?>">Manage Departments</a>
+                            <li><a href="<?= base_url('admin/academicsettings/department'); ?>">Departments</a>
                             </li>
-                            <li><a href="<?= base_url('admin/academicsettings/race'); ?>">Manage Race</a>
+                            <li><a href="<?= base_url('admin/academicsettings/race'); ?>">Race</a>
                             </li>
                         </ul>
                     </li>
+                 
+                  
                   
 
                     <li class="nav-label">Teacher Dashboard</li>
-                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation'); ?>" >
-                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Teacher Information</span>
+
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/attendance_log'); ?>" >
+                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Attendance Log</span>
+                        </a>
+                    </li>
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/daily_pass_log'); ?>" >
+                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Daily Pass Log</span>
                         </a>
                       
                     </li>
-                 
-                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/studentinformation'); ?>" >
-                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Student Information</span>
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/student_roster'); ?>" >
+                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Student Rosters</span>
                         </a>
-                      
                     </li>
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/teacher_settings'); ?>" >
+                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Teacher Setttings</span>
+                        </a>
+                    </li>
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/reports'); ?>" >
+                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Reports</span>
+                        </a>
+                    </li>
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/help'); ?>" >
+                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Help and FAQ Setttings</span>
+                        </a>
+                    </li>
+               
                  
+            
                    
                     
 

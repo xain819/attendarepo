@@ -30,9 +30,7 @@ button.btn-space {
 
 
 
-
-
-<div>
+<div class="card box-body" style='padding:20px;'>
 
 <table id="example" class="display" style="width:100%">
         <thead>
@@ -54,7 +52,7 @@ button.btn-space {
         </thead>
   
     </table>
-</div>
+</div> 
 
 
 <script type='text/javascript'>

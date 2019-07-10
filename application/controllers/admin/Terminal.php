@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+   <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 	class Terminal extends MY_Controller {
 		public function __construct(){
@@ -33,7 +33,7 @@
 		{
 			$data['date']=$this->input->post('data');
 			$now= new Datetime('now');
-		
+			
 			$data['username']=$_SESSION['username'];
 			$q=$this->db->get('period')->result_array();
 			foreach($q as $v){
@@ -42,16 +42,20 @@
 
 				if($now >= $start && $now <= $end){
 					$data['period']=$v['Period'];
+			
 					
 				}
 			}
 		
 			$result=$this->admin->get_terminal_info($data['username'],$data['date'],$data['period']);
-			
-			$this->session->set_userdata('teacher_id_number', $result[0]['teacher_id_number']);
-			$this->session->set_userdata('class_code', $result[0]['class_code']);
-			$this->session->set_userdata('period_number', $result[0]['period_number']);
+	
+			  $this->session->set_userdata('teacher_id_number', $result[0]['teacher_id_number']);
+			  $this->session->set_userdata('class_code', $result[0]['class_code']);
+			  $this->session->set_userdata('period_number', $result[0]['period_number']);
+
 			echo json_encode($result);
+		
+
 
 		
 		}
@@ -62,23 +66,43 @@
 		$result=$this->admin->record_student_hallpass($data);
 		echo json_encode($result);
 		}
+		function get_period(){
+			
+		
+			$now= new Datetime('now');
+			
+			$data['username']=$_SESSION['username'];
+			$q=$this->db->get('period')->result_array();
+			foreach($q as $v){
+				$start=new Datetime($v['PeriodStartTime']);
+				$end=new Datetime($v['PeriodEndTime']);
+
+				if($now >= $start && $now <= $end){
+					$data['period']=$v['Period'];
+					return $data['period'];
+				}
+			}
+			
+		}
 
 		public function get_student_schedule(){
 
 			$data['id']=$this->input->post('id');
+			$data['period']=$this->get_period();
+			//print_r($data);
+			
+			$result=$this->admin->get_student_class_access($data['id'],$data['period']);
+		    
 		
-			$data['class_code']=$_SESSION['class_code'];
-			//$data['class_code']=$this->input->post('class_code');
-			$result=$this->admin->get_student_class_access($data['id'],$data['class_code']);
-	
 			if($result==null){
-				echo json_encode($result);
+				echo json_encode('not_enrolled');
 			}else{
-				$result=$this->admin->record_attendace($result['id']);
-				
-				echo json_encode($result);
+				$b=$this->admin->record_attendace($result[0]['class_id']);
+				echo json_encode($b);
 			}
 		}
+		//set student as absent by default
+	
 		public function test(){
 			// $response	=array(
 			// 	'csrfName' => $this->security->get_csrf_token_name(),

@@ -57,46 +57,24 @@ $(document).ready(function(){
        table: "#Student_DataTable",
        idSrc:  'StudentID',
        fields: [ 
-       
-           {
-               label: "ID Number:",
-               name: "IDNumber"
-           }, 
-           {
-               label: "FirstName:",
-               name: "FirstName"
-           },
-           {
-            label: "LastName:",
-            name: "LastName"
-           },
-           {
-            label: "Gender:",
-            name: "Gender"
-        },
-        {
-            label: "BirthDate:",
-            name: "BirthDate"
-        },{
-            label: "ContactNumber:",
-            name: "ContactNumber"
-        }
-        ,{
-            label: "RaceID:",
-            name: "RaceID"
-        },{
-            label: "SectionID:",
-            name: "SectionID"
-        },{
-            label: "GradeLevelID:",
-            name: "GradeLevelID"
-        },{
-            label: "Password:",
-            name: "Password"
-        },{
-            label: "IsEnabled:",
-            name: "IsEnabled"
-        }
+           {label: "Student Local ID:", name: "student_local_id"},
+           {label: "Student Type:", name: "student_type"},
+           {label: "Last Name:", name: "last_name"},
+           {label: "First Name:", name: "first_name"},
+
+           {label: "Graduation Cohort:", name: "graduation_cohort"},
+           {label: "Birthdate:", name: "birthdate"},
+           {label: "Gender:", name: "gender"},
+
+           {label: "Parent Last Name:", name: "parent_last_name"},
+           {label: "Parent Fist Name:", name: "parent_first_name"},
+           {label: "Parent Street Address:", name: "parent_address"},
+           {label: "Parent City:", name: "parent_city"},
+           {label: "Parent State:", name: "parent_state"},
+           {label: "Parent ZIP:", name: "parent_zip"},
+           {label: "Parent Email:", name: "parent_email"},
+           {label: "Student Email:", name: "student_email"},
+           
        ],
        formOptions: {
         bubble: {
@@ -120,28 +98,27 @@ $(document).ready(function(){
            
             dataType:'JSON'
        },
-       idSrc:  'StudentID',
+       idSrc:  'student_table_id',
        columns: [
-     
-            { data:'IDNumber'},
-            { data:'FirstName'},
-            { data:'LastName'},
-            { data:'Gender'}, 
-            { data:'BirthDate'},
-            { data:'ContactNumber'},
-            { data:'RaceID'},
-            { data:'SectionID'},
-            { data:'GradeLevelID'}, 
-            { data:'DistinctionID'},
-             
-            { 
-                data: null,"width": "100px",
-                render:function(data){
-                    return `${data.class_code_list}`;}
-            },
-          
-            { data:'Password'},
-            { data:'IsEnabled'},
+
+            {data:'student_local_id'},
+            { data:'student_type'},
+            { data:'last_name'},
+            { data:'first_name'},
+
+            { data:'graduation_cohort'},
+            { data:'birthdate'},
+            { data:'gender'}, 
+            {data: "parent_last_name"},
+            {data: "parent_first_name"},
+  
+            {data: "parent_address"},
+            {data: "parent_city"},
+            {data: "parent_state"},
+            {data: "parent_zip"},
+            {data: "parent_email"},
+            {data: "student_email"},
+
             { 
                 data: null,
                 render:function(data){

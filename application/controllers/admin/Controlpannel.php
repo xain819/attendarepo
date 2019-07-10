@@ -8,12 +8,22 @@
 
 		    $this->rbac->check_module_access();
 		}
+
 		public function index(){
 			$data['title'] = 'Control Pannel';
 			$data['view'] = 'admin/controlpannel/index';
+			$data['period']=$this->admin->get_period();
+			$data['type']=$this->admin->get_day_type();
 			$this->load->view('layoutv2', $data);
+		}
 
-		}public function get_emergency_list(){
+		public function get_master_data(){
+			$data['period']=$this->admin->get_period();
+			$data['type']=$this->admin->get_day_type();
+			echo json_encode($data);
+		}
+		
+		public function get_emergency_list(){
 		
 			$data['info']=$this->admin->get_emergency_list();
 			echo json_encode($data);
