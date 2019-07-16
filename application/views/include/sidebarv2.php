@@ -5,14 +5,13 @@
                 
               
 
-                    
+                <?php if($this->rbac->check_module_permission('admin')): ?>  
                     <li class="nav-label">Administration</li>
 
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/dashboard'); ?>"><i class="mdi mdi-page-layout-body"></i><span class="nav-text">Dashboard</span><span class="badge badge-success nav-badge"></span></a>
                      
                     </li>
 
-                    <?php if($this->rbac->check_module_permission('admin')): ?>  
                     <li class="mega-menu mega-menu-lg">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="mdi mdi-view-dashboard"></i><span class="nav-text">Administration</span><span class="badge bg-dpink text-white nav-badge"></span>
@@ -28,6 +27,9 @@
                     <?php endif; ?>
 
         
+        
+                    <?php if($this->rbac->check_module_permission('admin')): ?>  
+
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/generalsettings'); ?>">
                         <i class="mdi mdi-page-layout-body"></i><span class="nav-text">General Setting</span>
                        </a>
@@ -54,11 +56,12 @@
                         </a>
                       
                     </li>
+                    <?php endif; ?>
                   
 
                    
 
-
+                    <?php if($this->rbac->check_module_permission('admin')): ?>  
 
                     <li class="nav-label">Master Scheduler</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-email-outline"></i> <span class="nav-text">Manage Schedule</span><span class="badge bg-lgreen text-white nav-badge"></span></a>
@@ -69,8 +72,8 @@
                             </li>
                             <li><a href="<?= base_url('admin/masterscheduler/period_access'); ?>">Manage Period</a>
                             </li>
-                            <li><a href="<?= base_url('admin/masterscheduler/students_schedule'); ?>">Student Class Schedule</a>
-                            </li>
+                            <!-- <li><a href="<?= base_url('admin/masterscheduler/students_schedule'); ?>">Student Class Schedule</a>
+                            </li> -->
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-email-outline"></i> <span class="nav-text">Academic Settings</span><span class="badge bg-lgreen text-white nav-badge"></span></a>
@@ -87,9 +90,10 @@
                             </li>
                         </ul>
                     </li>
+                    <?php endif; ?>
                  
                   
-                  
+                    <?php if($this->rbac->check_module_permission('teacherinformation')): ?>  
 
                     <li class="nav-label">Teacher Dashboard</li>
 
@@ -118,7 +122,7 @@
                         <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Help and FAQ Setttings</span>
                         </a>
                     </li>
-               
+                <?php endif; ?>
                  
             
                    

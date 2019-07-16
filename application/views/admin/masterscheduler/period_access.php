@@ -1,47 +1,29 @@
- <!-- Content Header (Page header) -->
- <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
- <script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+<script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
     <script src="<?=base_url() ?>public/js/custom.min.js"></script>
     <script src="<?=base_url() ?>public/js/settings.js"></script>
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+	<link rel="stylesheet" href="<?= base_url() ?>public/plugins/colorpicker/bootstrap-colorpicker.min.css">
     <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
-    <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>" >
+	<link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>" >
+	<link href="<?=base_url()?>public/assets/plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
  <script src="<?=base_url()?>public/js/plugins-init/datatables.init.js"></script>
- 
- <div class="content-body">
-
-        <div class="container-fluid">
-
-            <div class="row page-titles">
-                <div class="col p-md-0">
-                    <h5>General Settings</h5>
-                </div>
-                <div class="col p-md-0">
-
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active">General Settings</li>
-                    </ol>
-                </div>
-            </div>
- 
+ <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
   
 
 
     <!-- Main content -->
     <section class="content">
       <!-- Default box -->
+      
+<div class=" card box-body" style='padding:20px;'>
       <div class="box">
         <div class="box-header with-border">
          
           <button class="btn btn-sm btn-success  pull-right" id="showaddperiod"> Add New Period</button>
           
-
-        
+          
         </div><br><br>
         <div class="box-body">
           <div style="width: 100%;">
@@ -78,7 +60,7 @@
         </div>
         <!-- /.box-footer-->
       </div>
-      <!-- /.box -->
+      <!-- /.box --></div>
     </section></div></div>
     <!-- /.content -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->

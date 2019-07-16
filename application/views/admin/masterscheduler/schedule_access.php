@@ -11,23 +11,10 @@
  <script src="<?=base_url()?>public/js/plugins-init/datatables.init.js"></script>
  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
   
- <div class="content-body">
+ 
+ 
 
-        <div class="container-fluid">
-
-            <div class="row page-titles">
-                <div class="col p-md-0">
-                    <h5>General Settings</h5>
-                </div>
-                <div class="col p-md-0">
-
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active">General Settings</li>
-                    </ol>
-                </div>
-            </div>
+ <div class=" card box-body" style='padding:20px;'>
 <section class="content-header">
 	<div class="row">
 	    <div class="col-md-12">
@@ -128,7 +115,7 @@
 
 			</div>
 		</div>
-	</div>
+	</div></div>
 </section></div></div>
 
 <script>

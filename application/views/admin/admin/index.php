@@ -9,30 +9,16 @@
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
 
-<div class="content-body">
-  <div class="container-fluid">
-                <div class="row page-titles">
-                    <div class="col p-md-0">
-                        <h4>Weather Report</h4>
-                    </div>
-                    <div class="col p-md-0">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active">Weather</li>
-                        </ol>
-                    </div>
-                
-</div>
 
 
-	
+
+    <div class=" card box-body" style='padding:20px;'>
 		<div class="box-body">
         	
         	<!-- Load Admin list (json request)-->
             <div class="data_container"></div>
 
-		</div>
+		</div></div>
 
 </div>
 </div>

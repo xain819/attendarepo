@@ -239,22 +239,23 @@ var ahp = $('#nhp').DataTable({
     "bAutoWidth": false,
     
     ajax: {
-            url:'<?php echo base_url(); ?>admin/generalsettings/get_all_hallpass',
+            url:'<?php echo base_url(); ?>admin/controlpannel/get_terminal_status',
             dataType: 'json',
             type: 'POST',
             data: ({[csrfName]: csrfHash,type:2}),
-            dataSrc:"info"
+            dataSrc:""
         },
         columns: [ 
     
-            { "data": "HallPass"},
-            {"data":"TimeAllocated"},
+            { "data": "teacher_id_number"},
+            {"data":"location"},
+         
             { "data":null,
                 render:function(data, type,row){
                     var is_checked='';
-                    if (data.is_active==1){var is_checked="checked=''";}
+                    if (data.is_terminal_active==1){var is_checked="checked=''";}
                     return `
-                    <input data-id="${data.HallPassID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${is_checked} 
+                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}" type="checkbox" ${is_checked} 
                     class="tgl tgl-ios tgl_checkbox" data-size="small" />
                     `;
                 }
@@ -272,29 +273,29 @@ var nhp = $('#ahp').DataTable({
     "bAutoWidth": true,
     
     ajax: {
-            url:'<?php echo base_url(); ?>admin/generalsettings/get_all_hallpass',
+            url:'<?php echo base_url(); ?>admin/controlpannel/get_terminal_status',
             dataType: 'json',
             type: 'POST',
             data: ({[csrfName]: csrfHash,type:1}),
-            dataSrc:"info"
+            dataSrc:""
         },
         columns: [ 
-         
-            { "data": "HallPass"},
-            {"data":"TimeAllocated"},
+    
+            { "data": "teacher_id_number"},
+            {"data":"location"},
+        
             { "data":null,
                 render:function(data, type,row){
                     var is_checked='';
-                    if (data.is_active==1){var is_checked="checked=''";}
-                    console.log(is_checked);
+                    if (data.is_hallpass_active==1){var is_checked="checked=''";}
                     return `
-                    <input data-id="${data.HallPassID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${is_checked} 
+                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}" type="checkbox" ${is_checked} 
                     class="tgl tgl-ios tgl_checkbox" data-size="small" />
                     `;
                 }
             }
-			
-        ]
+    
+]
 });
       
 // $(document).ready(function(){

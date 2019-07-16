@@ -54,6 +54,7 @@ button.btn-space {
                 <th>Last Name</th>
                 <th>First Name</th>
                 <th>Status</th>
+                <th>Tardy</th>
                 <th>Swipe Type</th>
                 <th>Period</th>
                
@@ -143,8 +144,8 @@ $(document).ready(function() {
             def:function(){
                 return new Date();
             },
-            format:    'h:mm:ss A',
-            fieldInfo: 'US style m-d-y date input with 12 hour clock',
+            format: 'HH:mm:ss',
+            fieldInfo: '24 hour clock format with seconds'
             
             },
             { label: "Time In:",name: "student_local_id"},
@@ -164,17 +165,17 @@ $(document).ready(function() {
         ]
         
     } );
-    $('#classes').on( 'click', 'tbody td:not(:first-child)', function (e) {
-        editor.inline( this );
-        console.log( editor.inline( this ));
+    // $('#classes').on( 'click', 'tbody td:not(:first-child)', function (e) {
+    //     editor.inline( this );
+    //     console.log( editor.inline( this ));
 
-    } );
+    // } );
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
     var a= $('#classes').DataTable( {
         dom: 'Bfrtip',
-        "pageLength": 50,
+        "pageLength": 20,
         "colReorder": true,
         ajax: {
             url: base_url+"admin/teacherinformation/attendance_logs",
@@ -186,17 +187,50 @@ $(document).ready(function() {
        colReorder: true,
         columns: [
         
-
+        
+      
+ 
             { data: 'AttendanceTime' },
             { data: null,
-                render:function(data){
-                    console.log(data['GracePeriod']);
-                    return `${data['GracePeriod']}`
-                } },
+                 render:function(data){
+                
+                    var start=new Date(`${data['AttendanceDate']} ${data['PeriodStartTime']}`).getTime();
+                    var swipe=new Date(`${data['AttendanceDate']} ${data['AttendanceTime']}`).getTime();
+
+                    var grace=start + parseInt('1')*60*1000;
+                    var f=(grace-swipe)/(1000*60);
+                    if (swipe<=start){
+                        return 'On Time'
+                    }else if(swipe>=start && swipe<=grace)
+                    {
+                        return 'Grace'
+                    }
+                    else if (f<0){
+                        
+                        var a=Math.trunc(f);
+                        
+                        var b=Math.abs(Math.trunc((f-a)*60));
+                        console.log (typeof(a));
+                        console.log(a);
+                        if(b<=9){
+                            return `(${Math.abs(a)}:0${b})`
+                        }else{
+                            return `(${Math.abs(a)}:${b})`
+                        }
+                         
+                    }
+                    else{
+                        return '--:--';
+                    }
+
+                
+             
+            }},
             { data: 'student_local_id' },
             { data: 'grade_level' },
             { data: 'last_name' },
             { data: 'first_name' },
+           
             { 
                 data: null,"width": "100px",
                 render:function(data){
@@ -205,15 +239,35 @@ $(document).ready(function() {
                     }
                     return `P`;}
             },
+            { data: null, 
+                render:function(data){
+                    var start=new Date(`${data['AttendanceDate']} ${data['PeriodStartTime']}`).getTime();
+                    var swipe=new Date(`${data['AttendanceDate']} ${data['AttendanceTime']}`).getTime();
+
+                    var grace=start + parseInt('1')*60*1000;
+                    var f=(grace-swipe)/(1000*60);
+
+                    if (f<0){
+                        return 'Unexcused Tardy';
+                    }
+                    else{
+                        return `-----`;}
+                    }
+                  
+
+            
+            },
             { 
                 data: null,
                 render:function(data){
-                    console.log(data['swipe_type']);
+                
                     if (data['swipe_type']=='1'){
                         return `Manual`;
                     }
-                    else{
-                        return `Card`;
+                    else if(data['swipe_type']==null){
+                        return `----`;
+                    }else{
+                        return 'Card'
                     }
             }
             },
@@ -266,14 +320,14 @@ $(document).ready(function() {
                     skipEmptyLines: true,
                     complete: function (results) {
                         if ( results.errors.length ) {
-                            console.log( results );
+                    
                             uploadEditor.field('csv').error( 'CSV parsing error: '+ results.errors[0].message );
                         }
                         else {
                             uploadEditor.close();
                           
                             selectColumns( editor, results.data, results.meta.fields );
-                            console.log( results.data[0].Firstname );
+                    
                             
                           
                         }

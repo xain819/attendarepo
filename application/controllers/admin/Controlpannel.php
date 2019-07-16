@@ -9,17 +9,27 @@
 		    $this->rbac->check_module_access();
 		}
 
+		public function get_terminal_status(){
+			$q=$this->db->get('vterminal_master')->result_array();
+			echo json_encode($q);
+
+		}
+
 		public function index(){
 			$data['title'] = 'Control Pannel';
 			$data['view'] = 'admin/controlpannel/index';
 			$data['period']=$this->admin->get_period();
 			$data['type']=$this->admin->get_day_type();
+		
 			$this->load->view('layoutv2', $data);
 		}
 
 		public function get_master_data(){
 			$data['period']=$this->admin->get_period();
 			$data['type']=$this->admin->get_day_type();
+			$data['count']=$this->admin->get_day_count();
+		
+		
 			echo json_encode($data);
 		}
 		

@@ -67,7 +67,7 @@ class Auth extends CI_Controller {
 							$data['info']=$admin_data;
 
 							echo json_encode('hi');
-							redirect(base_url('admin/terminal'), 'refresh');
+							redirect(base_url('admin/teacherinformation/attendance_log'), 'refresh');
 						
 
 

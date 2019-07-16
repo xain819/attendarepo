@@ -42,8 +42,7 @@
 
 				if($now >= $start && $now <= $end){
 					$data['period']=$v['Period'];
-			
-					
+
 				}
 			}
 		
@@ -93,7 +92,6 @@
 			
 			$result=$this->admin->get_student_class_access($data['id'],$data['period']);
 		    
-		
 			if($result==null){
 				echo json_encode('not_enrolled');
 			}else{

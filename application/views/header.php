@@ -15,7 +15,7 @@
                                                     <span id='type'>C-DAY</span>
                                                 </div>
                                                 <div class="temp-bottom">
-                                                <button type="button" class="btn btn-warning btn-ft">Change Type</button>
+                                               <!-- <button type="button" class="btn btn-warning btn-ft">Change Type</button> -->
                                                  
 
                                              
@@ -30,7 +30,7 @@
                                                 <div class="media pt-3 align-items-center pb-3">
                                                     <span class="mr-3 text-warning"><i class="pe-is-w-eclipse-4-f"></i></span>
                                                     <div class="media-body">
-                                                        <h4 id='period'>2</h4>
+                                                        <h4 id='period'></h4>
                                                         <p>Period</p>
                                                     </div>
                                                 </div>
@@ -39,7 +39,7 @@
                                                 <div class="media pt-3 align-items-center pb-3">
                                                     <span class="mr-3 text-info"><i class="pe-is-w-moon-waning-crescent-f"></i></span>
                                                     <div class="media-body">
-                                                        <h4>112</h4>
+                                                        <h4 id='count'></h4>
                                                         <p>Day</p>
                                                     </div>
                                                 </div>

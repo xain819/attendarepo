@@ -541,9 +541,9 @@
     $('#calendar').fullCalendar({
       
       header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
+        left: 'prev',
+        center: 'title,',
+        right: 'next'
       },
       eventLimit: true, // for all non-TimeGrid views
         views: {

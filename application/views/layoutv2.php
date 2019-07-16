@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Gleek - Bootstrap Admin Dashboard HTML Template</title>
+    <title>Attenda Track</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>public/assets/images/favicon.png">
     <link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
@@ -184,9 +184,9 @@
                                         </li>
                                         <li><a href="javascript:void()"><i class="fa fa-cog"></i> <span>Setting</span></a>
                                         </li>
-                                        <li><a href="javascript:void()"><i class="icon-lock"></i> <span>Lock Screen</span></a>
+                                        <li><a href="<?= base_url("auth/logout") ?>"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                         </li>
-                                        <li><a href="javascript:void()"><i class="icon-power"></i> <span>Logout</span></a>
+                                        <li><a href="<?= base_url("auth/logout") ?>"><i class="icon-power"></i> <span>Logout</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -216,13 +216,13 @@
             <div class="container-fluid">
                 <div class="row page-titles">
                     <div class="col p-0">
-                        <h4>Hello, <span>Welcome here</span></h4>
+                        <h4><span></span></h4>
                     </div>
                     <div class="col p-0">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Layout</a>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)"></a>
                             </li>
-                            <li class="breadcrumb-item active">Blank</li>
+                            <li class="breadcrumb-item active"></li>
                         </ol>
                     </div>
                 </div>
@@ -871,8 +871,11 @@ $(document).ready(function(){
   
         a=data['type'][0]['title'];
         b=data['period'];
+        c=data['count']['0']['count'];
+        console.log(c);
         $('#type').html(`${a}-Day`);
         $('#period').html(`${b}`);
+        $('#count').html(`${c}`);
         
     });
     setInterval(update, 1000);

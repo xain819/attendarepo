@@ -392,7 +392,7 @@ $(document).ready(function(){
         var bg='bg-gray',a='<div class="info-box">',a2='';
       }
       else{
-        var a=`<a href=""><div class="info-box btn-hallpass" data-id="${HallPass}" id="${HallPass}">`,
+        var a=`<a href=""><div class="info-box btn-hallpass" data-type${PassTYpeID}"=data-id="${HallPass}" id="${HallPass}">`,
             a2='</a>',bg='bg-aqua';
       }
 

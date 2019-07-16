@@ -28,6 +28,13 @@ class Admin_model extends CI_Model{
 		return $q;
 		
 	}
+	public function get_day_count(){
+		
+		$sql = "SELECT  count(DISTINCT  `start`) as 'count' FROM `vschedule_date` where `start` between '2019-07-01' AND '2019-07-16'";
+		$q=$this->db->query($sql)->result_array();
+		return $q;
+		
+	}
 
 	public function get_user_detail(){
 		$id = $this->session->userdata('admin_id');
