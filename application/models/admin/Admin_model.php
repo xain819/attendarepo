@@ -239,12 +239,16 @@ class Admin_model extends CI_Model{
 	}
 
 	public function get_terminal_info($a,$b,$c){
+		
 
 		$this->db->distinct();
 		$this->db->where('location',$a);
 		$this->db->where('start',$b);
 		$this->db->where('period_number',$c);
+		
 		$query=$this->db->get('vschedule_date');
+		
+		
 		return $query->result_array();
 	}
 	public function get_terminal_hallpass($data){
@@ -605,6 +609,19 @@ class Admin_model extends CI_Model{
 		return $q;
 		
 	}
+	public function check_student_mot($a){
+		
+		
+		$this->db->distinct();
+		
+		$this->db->where('AttendanceDate',date("Y-m-d"));
+	
+		//$this->db->where('attendance_time_mot','');
+		$q=$this->db->get('vmot')->result_array();
+		return $q;
+
+		
+	}
 	public function check_student_rosters($a,$b){
 		
 		$this->db->distinct();
@@ -633,6 +650,17 @@ class Admin_model extends CI_Model{
 		$this->db->where('start',date("Y-m-d"));
 		$this->db->where('student_local_id',$a);
 		$this->db->where('period_number',$b);
+		$query=$this->db->get('vstudent_roster')->result_array();
+
+		return $query;
+		
+	}
+	public function get_student_secretary_access($a){
+		
+		$this->db->distinct();
+		$this->db->where('term','S1');
+		$this->db->where('start',date("Y-m-d"));
+		$this->db->where('student_local_id',$a);
 		$query=$this->db->get('vstudent_roster')->result_array();
 
 		return $query;
@@ -708,6 +736,37 @@ class Admin_model extends CI_Model{
 		
 	}
 	
+	public function record_attendace_mot($a,$b){
+	
+		
+		$now = new Datetime('now');
+		$date=$now->format('y-m-d');
+		$time=$now->format('H:i:s');
+
+		$this->db->where('class_id',$a);
+		$this->db->where('AttendanceDate',$date);
+		$this->db->where('PeriodID',$b);
+		$q=$this->db->get('attendance')->result_array();
+		//check if attendance is already available 
+		if($q==null){
+		
+				$this->db->set('class_id',$a);
+				$this->db->set('AttendanceDate',$date);
+				$this->db->set('attendance_time_mot',$time);
+				$this->db->set('PeriodID',$b);
+				$this->db->insert('attendance');
+
+				// $this->db->where('class_id',$a);
+				// $this->db->where('AttendanceDate',$date);
+				// $this->db->where('PeriodID',$b);
+				// $q=$this->db->get('attendance')->result_array();
+				// $this->session->set_userdata('AttendanceID',$q[0]['AttendanceID']);
+				return true;
+		}
+		else{return false;}
+	
+	
+	}
 	
 	public function record_attendace($a){
 
@@ -720,6 +779,8 @@ class Admin_model extends CI_Model{
 		$this->db->where('AttendanceDate',$date);
 		$this->db->where('PeriodID',$_SESSION['period_number']);
 		$q=$this->db->get('attendance')->result_array();
+	
+		
 		//check if attendance is already available 
 		if($q==null){
 		
@@ -735,7 +796,15 @@ class Admin_model extends CI_Model{
 				$q=$this->db->get('attendance')->result_array();
 				$this->session->set_userdata('AttendanceID',$q[0]['AttendanceID']);
 		return 'recorded';
-		}else{
+		}
+		elseif ($q[0]['class_id']!=null && $q[0]['attendance_time_mot']!=null) {
+			 $this->db->set('AttendanceTime',$time);
+			 $this->db->where('AttendanceID',$q[0]['AttendanceID']);
+			 $this->db->update('attendance');
+			 return 'welcome to class';
+		}
+		else{
+
 			//attendance available then check attendance hallpass
 			//print('<pre>');
 			//print_r($q);

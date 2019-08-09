@@ -3,9 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
   <title>AdminLTE 2 | Lockscreen</title>
-  kjkl;
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -247,7 +245,7 @@
               <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
               <div class="info-box-content bg-aqua">
                   <br>
-                  <span class="info-box-text-sm bg-aqua">Teacher</span>
+                  <span class="info-box-text-sm bg-aqua">MOT</span>
                   <span class="info-box-number bg-aqua" id="TeacherName"></span>
               </div>
               <!-- /.info-box-content -->
@@ -268,30 +266,7 @@
         <!-- /.info-box -->
       </div>
     
-      <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i class="fa fa-unlock-alt"></i></span>
-              <div class="info-box-content">
-              <br>
-                  <span class="info-box-text-sm">Available Until</span>
-                  <span class="info-box-number" id="AvailableTime">12:45:00</span>
-              </div>
-              <!-- /.info-box-content -->
-          </div>
-        <!-- /.info-box -->
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i class="fa fa-lock"></i></span>
-              <div class="info-box-content">
-              <br>
-                  <span class="info-box-text-sm">Hall Pass Locked</span>
-                  <span class="info-box-number" id="AvailableHPTime">12:39:00</span>
-              </div>
-              <!-- /.info-box-content -->
-          </div>
-        <!-- /.info-box -->
-      </div>
+     
 
   </div>
 </div>
@@ -344,6 +319,8 @@ $(document).ready(function(){
 
 
   var dateString =year  + "-" +(month + 1) + "-" + day;
+ 
+  $('#TeacherName').html("ROB");
 
   const a =$.ajax({
         url:'<?php echo base_url(); ?>admin/terminal/get_terminal_info',
@@ -351,9 +328,11 @@ $(document).ready(function(){
         data:({[csrfName]: csrfHash,data:dateString}),
         dataType:'JSON',
     }).done(function(data){
+     
+      console.log(data);
+      console.log('hi');
        const teacher_name=`${data[0].FirstName} ${data[0].LastName}`;
-       console.log(teacher_name);
-       console.log('hi');
+  
       $('#TeacherName').html(teacher_name);
       $('#period_number').html(data[0].period_number);
       $('#location').html(data[0].location);
@@ -374,7 +353,7 @@ $(document).ready(function(){
         data:({[csrfName]: csrfHash}),
         dataType:'JSON',
     }).done(function(data){
-    
+    console.log('hi');
    
      var result=data;
      var hallpass=result; 
@@ -390,17 +369,18 @@ $(document).ready(function(){
        
       const HallPass=element.access;
       const status=element.is_active;
-      console.log(status);
+      const PassTypeID=element.PassTypeID;
+
       if (status==='0'){
         var bg='bg-gray',a='<div class="info-box">',a2='';
       }
       else{
-        var a=`<a href=""><div class="info-box btn-hallpass" data-id="${HallPass}" id="${HallPass}">`,
+        var a=`<a href=""><div class="info-box btn-hallpass" data-type="${PassTypeID}" data-id="${HallPass}" id="${HallPass}">`,
             a2='</a>',bg='bg-aqua';
       }
 
       
-      console.log(element);
+
    
        let tnhp=`<div class="col-md-6 col-sm-6 col-xs-12">
 
@@ -425,7 +405,7 @@ $(document).ready(function(){
       ahp.forEach(function(element){
       const HallPass=element.access;
       const status=element.is_active;
-      console.log(status);
+    
       if (status==='0'){
         var bg='bg-gray',a='<div class="info-box">',a2='';
       }
@@ -479,12 +459,12 @@ $(document).ready(function(){
     if( $("#student_id").val()){
       var id=$("#student_id").val();
       $.ajax({
-      url: base_url+"admin/terminal/get_student_schedule",
+      url: base_url+"admin/secretary/get_student_schedule",
       type: "POST",
       dataType: "json",
       data: ({[csrfName]: csrfHash,id:id}),
       }).done(function (data){
-        if(data==null){
+        if(data=='not_enrolled'){
           swal("Not Enrolled in this Class");
         }else if(data=='updated'){
           swal({
@@ -523,7 +503,7 @@ $(document).ready(function(){
     data: ({[csrfName]: csrfHash}),
   })
   .done(function (data) {
-    console.log(data.Subject)
+ 
 
       $("#terminal_alert_modal").modal('show');
       $("#TimeIn").text(timee);

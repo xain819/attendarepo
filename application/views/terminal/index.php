@@ -342,6 +342,8 @@ $(document).ready(function(){
 
 
   var dateString =year  + "-" +(month + 1) + "-" + day;
+ 
+  $('#TeacherName').html("ROB");
 
   const a =$.ajax({
         url:'<?php echo base_url(); ?>admin/terminal/get_terminal_info',
@@ -349,8 +351,11 @@ $(document).ready(function(){
         data:({[csrfName]: csrfHash,data:dateString}),
         dataType:'JSON',
     }).done(function(data){
+     
+      console.log(data);
+      console.log('hi');
        const teacher_name=`${data[0].FirstName} ${data[0].LastName}`;
-       console.log(data[0].PeriodEndTime);
+  
       $('#TeacherName').html(teacher_name);
       $('#period_number').html(data[0].period_number);
       $('#location').html(data[0].location);
@@ -371,7 +376,7 @@ $(document).ready(function(){
         data:({[csrfName]: csrfHash}),
         dataType:'JSON',
     }).done(function(data){
-    
+    console.log('hi');
    
      var result=data;
      var hallpass=result; 
@@ -387,17 +392,18 @@ $(document).ready(function(){
        
       const HallPass=element.access;
       const status=element.is_active;
-      console.log(status);
+      const PassTypeID=element.PassTypeID;
+
       if (status==='0'){
         var bg='bg-gray',a='<div class="info-box">',a2='';
       }
       else{
-        var a=`<a href=""><div class="info-box btn-hallpass" data-type${PassTYpeID}"=data-id="${HallPass}" id="${HallPass}">`,
+        var a=`<a href=""><div class="info-box btn-hallpass" data-type="${PassTypeID}" data-id="${HallPass}" id="${HallPass}">`,
             a2='</a>',bg='bg-aqua';
       }
 
       
-      console.log(element);
+
    
        let tnhp=`<div class="col-md-6 col-sm-6 col-xs-12">
 
@@ -422,7 +428,7 @@ $(document).ready(function(){
       ahp.forEach(function(element){
       const HallPass=element.access;
       const status=element.is_active;
-      console.log(status);
+    
       if (status==='0'){
         var bg='bg-gray',a='<div class="info-box">',a2='';
       }
@@ -490,6 +496,13 @@ $(document).ready(function(){
             text:'',
            });
         }
+        else if(data=='late'){
+          swal({
+            title:'Please Proceed Inside',
+            timer: 2000,
+            text:'',
+           });
+        }
         else{
           console.log(data);
           $("#terminal_modal").modal("show");
@@ -520,7 +533,7 @@ $(document).ready(function(){
     data: ({[csrfName]: csrfHash}),
   })
   .done(function (data) {
-    console.log(data.Subject)
+ 
 
       $("#terminal_alert_modal").modal('show');
       $("#TimeIn").text(timee);

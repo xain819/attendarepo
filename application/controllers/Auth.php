@@ -53,9 +53,12 @@ class Auth extends CI_Controller {
 						if($admin_data['admin_role_id']== 9)
 						{
 							$this->session->set_userdata($admin_data);
-							
-							$this->rbac->set_access_in_session(); // set access in session
-							redirect(base_url('admin/terminal'), 'refresh');
+						$this->rbac->set_access_in_session(); // set access in session
+							if ($result['username'=='R-101']){
+								redirect(base_url('admin/terminal/mot'), 'refresh');
+						}
+							else{	redirect(base_url('admin/terminal'), 'refresh');}
+						
 						}
 						elseif($admin_data['admin_role_id']==10){
 							
@@ -66,12 +69,10 @@ class Auth extends CI_Controller {
 							
 							$data['info']=$admin_data;
 
-							echo json_encode('hi');
+					
 							redirect(base_url('admin/teacherinformation/attendance_log'), 'refresh');
-						
-
-
 						}
+					
 						else{
 
 							$this->session->set_userdata($admin_data);

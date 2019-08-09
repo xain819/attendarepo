@@ -20,6 +20,16 @@
 			$this->load->view('terminal/index',$data);
 
 		}
+		public function mot(){
+			//$data['title'] = 'General Settings';
+			$data['view'] = 'terminal/terminal_modal';
+			$data['view1'] = 'terminal/alertmodal';
+			$data['username']=$_SESSION['username'];
+			//$result=$this->admin->get_terminal_hallpass($data['username']);
+		
+			$this->load->view('terminal/mot',$data);
+
+		}
 		public function get_info()
 		{
 			$data['teacher_id_number']=$_SESSION['teacher_id_number'];
@@ -45,8 +55,9 @@
 
 				}
 			}
-		
+	
 			$result=$this->admin->get_terminal_info($data['username'],$data['date'],$data['period']);
+		
 	
 			  $this->session->set_userdata('teacher_id_number', $result[0]['teacher_id_number']);
 			  $this->session->set_userdata('class_code', $result[0]['class_code']);
@@ -88,16 +99,33 @@
 
 			$data['id']=$this->input->post('id');
 			$data['period']=$this->get_period();
-			//print_r($data);
-			
-			$result=$this->admin->get_student_class_access($data['id'],$data['period']);
-		    
-			if($result==null){
-				echo json_encode('not_enrolled');
-			}else{
-				$b=$this->admin->record_attendace($result[0]['class_id']);
-				echo json_encode($b);
+			$data['username']=$_SESSION['username'];
+		
+			if($data['username']=='R-101'){
+				$result=$this->admin->get_student_secretary_access($data['id']);
+				if($result==null){
+					echo json_encode('not_enrolled');
+				}else{
+					$b=$this->admin->record_attendace_mot($result[0]['class_id'],$data['period']);
+					echo json_encode('late');
+				}
+				
+
 			}
+			else
+			{
+
+				$result=$this->admin->get_student_class_access($data['id'],$data['period']);
+		    
+				if($result==null){
+					echo json_encode('not_enrolled');
+				}else{
+					$b=$this->admin->record_attendace($result[0]['class_id']);
+					echo json_encode($b);
+				}
+			}
+
+		
 		}
 		//set student as absent by default
 	

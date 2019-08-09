@@ -11,17 +11,12 @@ button.btn-space {
     <script src="<?=base_url() ?>public/js/settings.js"></script>
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
-    <script src="<?=base_url() ?>public/dist/js/filterDropDown.min.js"></script>
-    <script src="<?=base_url() ?>public/plugins/yadcf/jquery.dataTables.yadcf.js"></script>
-
+    <script src="<?=base_url() ?>public/dist/js/moment.js"></script>
 
 
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
 <link rel="stylesheet" href="<?php echo base_url('public/plugins/editor/css/editor.dataTables.min.css');?>">
-<link rel="stylesheet" href="<?php echo base_url('public/plugins/yadcf/jquery.dataTables.yadcf.css');?>">
-
-
 
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url('public/plugins/editor/js/dataTables.editor.min.js');?>"></script>
@@ -30,7 +25,6 @@ button.btn-space {
 
 <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
 <!-- <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
@@ -40,40 +34,58 @@ button.btn-space {
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script> -->
 
-
 <div class=" card box-body" style='padding:20px;'>
-<div class=' col-xl-12 table-responsive' style="padding:20px;">
-<table id="classes" class="display" style="width:100%;">
+<div class=' col-xl-12 '>
+<h4><span>Active Hall Pass</span></h4>
+<br>
+<table id="active" class="display" style="width:100%">
         <thead>
             <tr>
-           
-           
 
+                <th>Active Passes</th>
+                <th>Period</th>
+                <th>Type</th>
+                <th>Origin</th>
+
+                <th>HP Time</th>
+                <th>HP Activated</th>
+                <th>HP Complete</th>
+                <th>HP Remaining</th>
                 <th>Last Name</th>
                 <th>First Name</th>
                 <th>Student ID</th>
-
-             
                 <th>Grade</th>
-                <th>Time-In</th>
-
-                <th>Current Period</th>
-                <th>Class Swipe</th>
-                <th>MOP Pass</th>
-                <th>Period Excused Tardy</th>
-                <th>Period Excused Tardy</th>
-                <th>Period Negative Seat Time</th>
-                <th>Appointment</th>
-                <th>Emergency</th>
-                <th>Other</th>
-                <th>Period Excused</th>
-                <th>Period Unexcused</th>
-                <th>Comments</th>
-             
 
             </tr>
         </thead>
-   
+  
+    </table></div></div>
+
+ 
+    <br>
+    <div class=" card box-body" style='padding:20px;'>
+    <div class=' col-xl-12 '>
+    <h4><span>Expired Hallpass</span></h4>
+    <table id="expired" class="display" style="width:100%">
+        <thead>
+            <tr>
+
+                <th>Active Passes</th>
+                <th>Period</th>
+                <th>Type</th>
+                <th>Origin</th>
+
+                <th>HP Time</th>
+                <th>HP Activated</th>
+                <th>HP Complete</th>
+                <th>HP Remaining</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Student ID</th>
+                <th>Grade</th>
+
+            </tr>
+        </thead>
   
     </table></div>
 </div></div></div></div>
@@ -136,7 +148,6 @@ function selectColumns ( editor, csv, header ) {
 $(document).ready(function() {
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
-        
         ajax: {
             url: base_url+"admin/academicsettings/check_classes",
             data:({ [csrfName]: csrfHash}),
@@ -148,9 +159,18 @@ $(document).ready(function() {
         table: "#classes",
         fields: [ 
           
-            { label: "Documentation:",name: "class_code" },
-            { label: "Comments:",name: "schedule_type" },
-    
+            { label: "Class Code:",name: "class_code" },
+            { label: "Course Code:",name: "course_code" },
+            { label: "Class Type:",name: "class_type" },
+            { label: "Term:",name: "term" },
+            { label: "Schedule Type:",name: "schedule_type" },
+            { label: "Period:",name: "period_number" },
+            { label: "Grade Level:",name: "grade_level" },
+            { label: "Section:",name: "section" },
+            { label: "Location:",name: "location" },
+            { label: "Teacher ID:",name: "teacher_id_number" },
+            { label: "State ID:",name: "state_uid" },
+            { label: "Student Local ID:",name: "student_local_id" },
 
             
         ]
@@ -159,79 +179,75 @@ $(document).ready(function() {
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
-    var a= $('#classes').DataTable( {
+    var a= $('#active').DataTable( {
         dom: 'Bfrtip',
-        responsive: true,
-        "pageLength": 20,
-        "colReorder": true,
-      
-     
+        "pageLength": 5,
         ajax: {
-            url: base_url+"admin/secretary/attendance_logs",
-            data:({ [csrfName]: csrfHash}),
+            url: base_url+"admin/teacherinformation/check_logs",
+            data:({ [csrfName]: csrfHash,id:1}),
             type:"POST",
-            dataSrc: '',
+            dataSrc: 'active',
             dataType:'JSON'
        },
        
-    
         columns: [
-            
+        
+       
+            { data: null,
+            render:function(data){
+                console.log(data)
+                return 'Admin'
+            } },
+            { data: 'period_number' },
+            { data: 'hallpass' },
+            { data: 'location' },
+            { data: 'TimeAllocated' },
+            { data: null,
+                render:function(data){
+                    const t=new Date(data['DateCreated']);     
+                    return `${t.getHours()}:${t.getMinutes()}:${t.getSeconds()}`
+                }},
+                { data: null,
+                render:function(data){
+                    if(data['date_time_ended']==='0000-00-00 00:00:00'){
+                        var r= `--:--:--`;
+                    }else{
+                        const t=new Date(data['date_time_ended']);
+                        var r=`${t.getHours()}:${t.getMinutes()}:${t.getSeconds()}`;
+                    }
+                    return r
+                }},
+         
+            { data: null,
+                 render:function(data){
+
+                    if(data['date_time_ended']==='0000-00-00 00:00:00')
+                    {
+                        var a=new Date().getTime();
+                        var start = new Date(data['DateCreated']).getTime();
+                        //var end=new Date(data['date_time_ended']).getTime();
+
+                        var b =parseInt(data['TimeAllocated'])*60*1000;
+                        var s=((start+b)-a)/(1000*60);
+
+                    }
+                return `${s}`
+            }},
             { data: 'last_name' },
             { data: 'first_name' },
             { data: 'student_local_id' },
             { data: 'grade_level' },
-            { data: 'attendance_time_mot' },
-            { data: 'period_number' },
-            { data: 'AttendanceTime' },
-            { data: null,
-            render:function(data){
-                console.log(data)
-                return '5min'
-            } },
 
-            
-            { data: null,
-            render:function(data){
-                console.log(data)
-                return 'e'
-            } },
-            { data: null,
-            render:function(data){
-                console.log(data)
-                return 'ue'
-            } },
-            { data: null,
-            render:function(data){
-                console.log(data)
-                return 'ns'
-            } },
-   
-            { data: 'appointment' },
-            { data: 'emergency' },
-            { data: 'other' },
-         
-            
-            { data: null,
-            render:function(data){
-                console.log(data)
-                return 'period_excused'
-            } },
-            { data: null,
-            render:function(data){
-                console.log(data)
-                return 'period_unexcused'
-            } },
+      
+           
+        
 
-            { data: 'comments' }
           
         ],
-    							
-	
         select: true,
         // buttons: [
-        //     { extend: 'create', editor: editor },
-        //     { extend: 'edit',   editor: editor },
+        //    // { extend: 'create', editor: editor },
+        //   //  { extend: 'edit',   editor: editor },
         //     { extend: 'remove', editor: editor },
         //     {
         //         extend: 'csv',
@@ -257,17 +273,80 @@ $(document).ready(function() {
         // ]
     });
 
- 
- 
-        yadcf.init(a , [
-         
-           /// {column_number : 2, filter_type: "text"},
-           
-        ]
-            
-            );
+    var a= $('#expired').DataTable( {
+        dom: 'Bfrtip',
+        "pageLength": 5,
+        ajax: {
+            url: base_url+"admin/teacherinformation/check_logs",
+            data:({ [csrfName]: csrfHash,id:2}),
+            type:"POST",
+            dataSrc: 'expired',
+            dataType:'JSON'
+       },
+       
+        columns: [
+        
+       
+            { data: null,
+            render:function(data){
+                return 'Non Admin'
+            } },
+            { data: 'period_number' },
+            { data: 'hallpass' },
+            { data: 'location' },
+            { data: 'TimeAllocated' },
+            { data: 'DateCreated' },
+            { data: 'date_time_ended' },
+            { data: null,
+                 render:function(data){
+                var start = new Date(data['DateCreated']).getTime();
+                var end=new Date(data['date_time_ended']).getTime();
+     
+                var s=((start+5*60*1000-end)/(1000*60));
+              
 
-    
+                
+                return `${s}`
+            }},
+            { data: 'last_name' },
+            { data: 'first_name' },
+            { data: 'student_local_id' },
+            { data: 'grade_level' },
+
+      
+           
+        
+
+          
+        ],
+        select: true,
+        // buttons: [
+        //    // { extend: 'create', editor: editor },
+        //   //  { extend: 'edit',   editor: editor },
+        //     { extend: 'remove', editor: editor },
+        //     {
+        //         extend: 'csv',
+        //         text: 'Export CSV',
+        //         className: 'btn-space',
+        //         exportOptions: {
+        //             orthogonal: null
+        //         }
+        //     },
+        //     {
+        //         text: 'Import CSV',
+        //         action: function () {
+        //             uploadEditor.create( {
+        //                 title: 'CSV file import'
+        //             } );
+        //         }
+        //     },
+        //     {
+        //         extend: 'selectAll',
+        //         className: 'btn-space'
+        //     },
+        //     'selectNone',
+        // ]
+    });
     // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
     var uploadEditor = new $.fn.dataTable.Editor( {
         fields: [ {
@@ -307,5 +386,4 @@ $(document).ready(function() {
 } );
     
 });
-
 </script>

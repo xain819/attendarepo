@@ -12,7 +12,7 @@
                                             </div>
                                             <div class="tempareture-box-content text-center ml-4">
                                                 <div class="temp-top">
-                                                    <span id='type'>C-DAY</span>
+                                                    <span id='type'>None</span>
                                                 </div>
                                                 <div class="temp-bottom">
                                                <!-- <button type="button" class="btn btn-warning btn-ft">Change Type</button> -->
@@ -30,16 +30,17 @@
                                                 <div class="media pt-3 align-items-center pb-3">
                                                     <span class="mr-3 text-warning"><i class="pe-is-w-eclipse-4-f"></i></span>
                                                     <div class="media-body">
-                                                        <h4 id='period'></h4>
+                                                        <h4 id='period'>No Period</h4>
                                                         <p>Period</p>
                                                     </div>
                                                 </div>
+                                                
                                             </div>
                                             <div class="col-sm-4 col-6">
                                                 <div class="media pt-3 align-items-center pb-3">
                                                     <span class="mr-3 text-info"><i class="pe-is-w-moon-waning-crescent-f"></i></span>
                                                     <div class="media-body">
-                                                        <h4 id='count'></h4>
+                                                        <h4 id='count'>None</h4>
                                                         <p>Day</p>
                                                     </div>
                                                 </div>

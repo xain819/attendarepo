@@ -75,7 +75,7 @@
 				}
 			}		
 			$data['teacher_id_number']=$data['username'];
-			$result=$this->admin->check_student_if_enrolled($data['teacher_id_number'],$data['period'],$today);
+			$result=$this->admin->check_student_mot($today);
 			echo json_encode($result);
 
 		}
@@ -164,6 +164,22 @@
 	
 			$this->admin->teacher_hallpass($teacher_access);
 			$this->admin->student_hallpass($student_access);
+		}
+
+		public function get_student_schedule(){
+
+			$data['id']=$this->input->post('id');
+			$data['period']=$this->get_period();
+			print_r($data);
+			
+			// $result=$this->admin->get_student_class_access($data['id'],$data['period']);
+		    
+			// if($result==null){
+			// 	echo json_encode('not_enrolled');
+			// }else{
+			// 	$b=$this->admin->record_attendace($result[0]['class_id']);
+			// 	echo json_encode($b);
+			// }
 		}
 		public function index(){
 
