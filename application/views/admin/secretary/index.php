@@ -32,9 +32,9 @@ button.btn-space {
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
-<!-- <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
@@ -136,27 +136,36 @@ function selectColumns ( editor, csv, header ) {
 $(document).ready(function() {
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
+        dom: 'Bfrtip',
+        "pageLength": 20,
+        "colReorder": true,
         
         ajax: {
-            url: base_url+"admin/academicsettings/check_classes",
+            url: base_url+"admin/secretery/attendance_logs",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
-       
+       idSrc:  'AttendanceID',
+        table: "#classes",
         table: "#classes",
         fields: [ 
           
-            { label: "Documentation:",name: "class_code" },
-            { label: "Comments:",name: "schedule_type" },
+            { label: "Documentation:",name: "appointment" },
+            { label: "Comments:",name: "comments" },
+    
     
 
             
         ]
         
     } );
- 
+    $('#classes').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this );
+        console.log( editor.inline( this ));
+
+    } );
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
     var a= $('#classes').DataTable( {
@@ -173,6 +182,7 @@ $(document).ready(function() {
             dataSrc: '',
             dataType:'JSON'
        },
+      
        
     
         columns: [
@@ -186,40 +196,89 @@ $(document).ready(function() {
             { data: 'AttendanceTime' },
             { data: null,
             render:function(data){
-                console.log(data)
+            
                 return '5min'
             } },
 
             
             { data: null,
             render:function(data){
-                console.log(data)
+              
                 return 'e'
             } },
             { data: null,
             render:function(data){
-                console.log(data)
+             
                 return 'ue'
             } },
-            { data: null,
-            render:function(data){
-                console.log(data)
-                return 'ns'
-            } },
+            {data: null,
+                 render:function(data){
+
+                        var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
+                    
+                        var class_swipe=new Date(st).getTime();
+
+                        var mot_time = new Date(data.DateCreated).getTime();
+                        
+
+                        var allowed_time =parseInt('5')*60*1000;
+                        var s=((mot_time+allowed_time)-class_swipe)/(1000*60);
+                        if (s >=0){
+                            var result='--';}
+                        else if(s<=0 && s>=-90){
+                            var result=s;
+                        } 
+                        else{var result='- 01:30:00' }  
+                        console.log(mot_time);
+
+
+                return `${result}`
+            }},
+
+            
+            { "data":null,
+                render:function(data, type,row){
+                    var is_checked='';
+                    if (data.appointment==1){var is_checked="checked=''";}
+                    return `
+                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}" type="checkbox" ${is_checked} 
+                    class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                    `;
+                }
+            },
+            { "data":null,
+                render:function(data, type,row){
+                    var is_checked='';
+                    if (data.emergency==1){var is_checked="checked=''";}
+                    return `
+                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}" type="checkbox" ${is_checked} 
+                    class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                    `;
+                }
+            },
+            { "data":null,
+                render:function(data, type,row){
+                    var is_checked='';
+                    if (data.other==1){var is_checked="checked=''";}
+                    return `
+                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}" type="checkbox" ${is_checked} 
+                    class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                    `;
+                }
+            },
    
-            { data: 'appointment' },
-            { data: 'emergency' },
-            { data: 'other' },
          
             
             { data: null,
             render:function(data){
-                console.log(data)
+              
+              
                 return 'period_excused'
             } },
             { data: null,
             render:function(data){
-                console.log(data)
+              
+              
                 return 'period_unexcused'
             } },
 
@@ -229,43 +288,43 @@ $(document).ready(function() {
     							
 	
         select: true,
-        // buttons: [
-        //     { extend: 'create', editor: editor },
-        //     { extend: 'edit',   editor: editor },
-        //     { extend: 'remove', editor: editor },
-        //     {
-        //         extend: 'csv',
-        //         text: 'Export CSV',
-        //         className: 'btn-space',
-        //         exportOptions: {
-        //             orthogonal: null
-        //         }
-        //     },
-        //     {
-        //         text: 'Import CSV',
-        //         action: function () {
-        //             uploadEditor.create( {
-        //                 title: 'CSV file import'
-        //             } );
-        //         }
-        //     },
-        //     {
-        //         extend: 'selectAll',
-        //         className: 'btn-space'
-        //     },
-        //     'selectNone',
-        // ]
+        buttons: [
+            // { extend: 'create', editor: editor },
+           { extend: 'edit',   editor: editor },
+            // { extend: 'remove', editor: editor },
+            // {
+            //     extend: 'csv',
+            //     text: 'Export CSV',
+            //     className: 'btn-space',
+            //     exportOptions: {
+            //         orthogonal: null
+            //     }
+            // },
+            // {
+            //     text: 'Import CSV',
+            //     action: function () {
+            //         uploadEditor.create( {
+            //             title: 'CSV file import'
+            //         } );
+            //     }
+            // },
+            // {
+            //     extend: 'selectAll',
+            //     className: 'btn-space'
+            // },
+            // 'selectNone',
+        ]
     });
 
  
  
-        yadcf.init(a , [
+        // yadcf.init(a , [
          
-           /// {column_number : 2, filter_type: "text"},
+        //    /// {column_number : 2, filter_type: "text"},
            
-        ]
+        // ]
             
-            );
+         //   );//
 
     
     // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
