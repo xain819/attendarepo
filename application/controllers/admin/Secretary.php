@@ -124,6 +124,16 @@
 	
 			
 		}
+		public function change_status(){
+			$data['id']=$this->input->post('id');
+			$data['type']=$this->input->post('type');
+			$data['status']=$this->input->post('status');
+	
+			$this->admin->change_tardy_status($data['id'],$data['type'],$data['status']);
+			//$this->admin->change_access_status($data['id']);
+		
+				
+			}
 		public function get_teacher_course(){
 			$teacher=$this->admin->get_all_teacher();
 			$data="";

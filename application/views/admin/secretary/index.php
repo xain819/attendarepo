@@ -83,7 +83,8 @@ button.btn-space {
  var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
         csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
         base_url='<?php echo base_url(); ?>';
-        
+
+    
 var editor;
 
 function selectColumns ( editor, csv, header ) {
@@ -134,6 +135,28 @@ function selectColumns ( editor, csv, header ) {
 
  
 $(document).ready(function() {
+
+    $("body").on("change",".tgl_checkbox",function(){
+    console.log($(this).data('id'));
+    console.log($(this).data('type'));
+
+	$.post('<?=base_url("admin/secretary/change_status")?>',
+	{
+        '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
+		id : $(this).data('id'),
+        status : $(this).is(':checked')==true?1:0,
+        type: $(this).data('type')
+       
+        
+	},
+	function(data){a.ajax.reload();
+    
+    
+       
+		
+	});
+        });
+      
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
         dom: 'Bfrtip',
@@ -149,7 +172,7 @@ $(document).ready(function() {
        },
        idSrc:  'AttendanceID',
         table: "#classes",
-        table: "#classes",
+        
         fields: [ 
           
             { label: "Documentation:",name: "appointment" },
@@ -182,7 +205,8 @@ $(document).ready(function() {
             dataSrc: '',
             dataType:'JSON'
        },
-      
+        idSrc:  'AttendanceID',
+        table: "#classes",
        
     
         columns: [
@@ -244,25 +268,56 @@ $(document).ready(function() {
 
             
             { data: null,
+
             render:function(data){
-              
-                return 'e'
+                const allowed_time=new Date(`${data.DateCreated}`).getTime()+(5*60000);
+                const swipe_time=new Date(`${data.AttendanceDate} ${data.AttendanceTime}`).getTime();
+                const is_late=allowed_time-swipe_time;
+                const letter_number=parseInt(data.appointment)+parseInt(data.emergency)+parseInt(data.other);
+                const now=new Date().getTime();
+                const period_end=new Date(`${data.AttendanceDate} ${data.PeriodEndTime}`).getTime();
+                let eop=0;
+                if (now>period_end && data.attendance_time_mot!=''){
+                   eop = 1;
+                }
+ 
+                if(letter_number>=1 && is_late>=0 && eop==0) {
+                           
+                        return data.period_number;
+    
+                       }
+               else{ return '--';}
             } },
             { data: null,
             render:function(data){
+                
+               
+                const allowed_time=new Date(`${data.DateCreated}`).getTime()+5*60000;
+                const swipe_time=new Date(`${data.AttendanceDate} ${data.AttendanceTime}`).getTime();
+                const is_late=swipe_time-allowed_time;
+     
+                if(data.appointment==='0' || data.emergency==='0'|| data.other==='0' || is_late<=0) {
+                    
+                           
+                        
+                           return data.period_number;
+    
+                       }
+                       else{ return '--';}
              
-                return 'ue'
+                
             } },
             {data: null,
                  render:function(data){
+               
 
                         var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
                         var p_end=`${data.AttendanceDate} ${data.PeriodEndTime}`;
                         var p_start=`${data.AttendanceDate} ${data.PeriodStartTime}`;
                   
-                var now= new Date();
+                        var now= new Date();
 
-                var period_end=new Date(st);
+                        var period_end=new Date(st);
               
                     
                         var class_swipe=new Date(st).getTime();
@@ -272,11 +327,21 @@ $(document).ready(function() {
                         var start_time= new Date(p_start).getTime();
                         var seat_time=(end_time-start_time)/(1000*60);
                       
-
-                        
+                        var missed_period=(class_swipe-start_time);
+                     
 
                         var allowed_time =parseInt('5')*60*1000;
-                        var s=((mot_time+allowed_time)-class_swipe)/(1000*60);
+                        if(data.appointment==='1' || data.emergency==='1'|| data.other==='1' ) {
+                           
+                            missed_period=0;
+                         
+                           
+                        }
+             
+
+
+                        var s=((mot_time+allowed_time)-class_swipe-missed_period)/(1000*60);
+
                         if (s >=0 && data.AttendanceTime!='' ){
                             var result='--';}
                         else if(s<0 && s>=-1*seat_time){
@@ -289,9 +354,9 @@ $(document).ready(function() {
                             }
                             else{   
                           
-                            var result=seat_time;
+                            var result=-seat_time;
                              }  
-                        console.log(seat_time);}
+                        }
 
 
                 return `${result}`
@@ -303,7 +368,7 @@ $(document).ready(function() {
                     var is_checked='';
                     if (data.appointment==1){var is_checked="checked=''";}
                     return `
-                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}" type="checkbox" ${is_checked} 
+                    <input data-id="${data.AttendanceID}" data-type="appointment" id="${data.AttendanceID}" id="hp_${data.AttendanceID}" type="checkbox" ${is_checked} 
                     class="tgl tgl-ios tgl_checkbox" data-size="small" />
                     `;
                 }
@@ -313,7 +378,7 @@ $(document).ready(function() {
                     var is_checked='';
                     if (data.emergency==1){var is_checked="checked=''";}
                     return `
-                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}" type="checkbox" ${is_checked} 
+                    <input data-id="${data.AttendanceID}" data-type="emergency" id="${data.AttendanceID}" id="hp_${data.AttendanceID}" type="checkbox" ${is_checked} 
                     class="tgl tgl-ios tgl_checkbox" data-size="small" />
                     `;
                 }
@@ -323,7 +388,7 @@ $(document).ready(function() {
                     var is_checked='';
                     if (data.other==1){var is_checked="checked=''";}
                     return `
-                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}" type="checkbox" ${is_checked} 
+                    <input data-id="${data.AttendanceID}" data-type="other" id="${data.AttendanceID}" id="hp_${data.AttendanceID}" type="checkbox" ${is_checked} 
                     class="tgl tgl-ios tgl_checkbox" data-size="small" />
                     `;
                 }

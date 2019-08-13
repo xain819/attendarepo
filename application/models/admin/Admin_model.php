@@ -125,9 +125,17 @@ class Admin_model extends CI_Model{
 		//-----------------------------------------------------
 	function change_status()
 	{		
+
 		$this->db->set('is_active',$this->input->post('status'));
 		$this->db->where('admin_id',$this->input->post('id'));
 		$this->db->update('admin');
+	} 
+	function change_tardy_status($a,$b,$c)
+	{		
+		$this->db->set($b,$c);
+		$this->db->where('AttendanceId',$a);
+		$this->db->update('attendance');
+		return true;
 	} 
 	function change_access_status()
 	{		
