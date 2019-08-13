@@ -20,6 +20,7 @@ class Admin_model extends CI_Model{
 			return $data['period'];
 			
 	}
+
 	public function get_day_type(){
 		$today=date("Y-m-d");
 		$this->db->where('start',$today);
@@ -610,16 +611,19 @@ class Admin_model extends CI_Model{
 		
 	}
 	public function check_student_mot($a){
-		
-		
-		$this->db->distinct();
-		
-		$this->db->where('AttendanceDate',date("Y-m-d"));
 	
-		//$this->db->where('attendance_time_mot','');
-		$q=$this->db->get('vmot')->result_array();
-		return $q;
+	
 
+		$this->db->distinct();
+		$this->db->where('AttendanceDate',date("Y-m-d"));
+		$this->db->where('attendance_time_mot !=','');
+		$result=$this->db->get('vmot')->result_array();
+
+
+
+
+		return $result;
+	
 		
 	}
 	public function check_student_rosters($a,$b){
@@ -661,6 +665,7 @@ class Admin_model extends CI_Model{
 		$this->db->where('term','S1');
 		$this->db->where('start',date("Y-m-d"));
 		$this->db->where('student_local_id',$a);
+		//$this->db->where('attendance_time')
 		$query=$this->db->get('vstudent_roster')->result_array();
 
 		return $query;

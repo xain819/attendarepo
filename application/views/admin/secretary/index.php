@@ -193,11 +193,53 @@ $(document).ready(function() {
             { data: 'grade_level' },
             { data: 'attendance_time_mot' },
             { data: 'period_number' },
-            { data: 'AttendanceTime' },
+     
             { data: null,
             render:function(data){
+                var st=`${data.AttendanceDate} ${data.PeriodEndTime}`;
+                var now= new Date();
+
+                var period_end=new Date(st);
+                if (now>period_end && data.AttendanceTime==''){
+                    return 'EOP';
+                }
+                else{     return data.AttendanceTime}
+
             
-                return '5min'
+            } },
+            { data: null,
+            render:function(data){
+                var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
+               // const ti=new Date(data.DateCreated).getTime();
+                
+                var class_swipe=new Date(st).getTime();
+                
+                const mot_time = (new Date(data.DateCreated).getTime()+5*60*1000)- class_swipe;
+               
+                function secondsToHms(d) {
+                    d = Number(d);
+
+                    var h = Math.floor(d / 3600);
+                    var m = Math.floor(d % 3600 / 60);
+                    var s = Math.floor(d % 3600 % 60);
+
+                    return ('0' + h).slice(-2) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
+                 }
+
+                 if (mot_time<0){
+                   
+                    const mot_pass=secondsToHms(Math.abs(mot_time)/(1000));
+                    return  `-${mot_pass}`;
+                    
+                }
+
+                else{
+                    const mot_pass=secondsToHms(mot_time/(1000));
+                    return mot_pass;
+                }
+
+                    
+             
             } },
 
             
@@ -215,21 +257,41 @@ $(document).ready(function() {
                  render:function(data){
 
                         var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
+                        var p_end=`${data.AttendanceDate} ${data.PeriodEndTime}`;
+                        var p_start=`${data.AttendanceDate} ${data.PeriodStartTime}`;
+                  
+                var now= new Date();
+
+                var period_end=new Date(st);
+              
                     
                         var class_swipe=new Date(st).getTime();
 
                         var mot_time = new Date(data.DateCreated).getTime();
+                        var end_time= new Date(p_end).getTime();
+                        var start_time= new Date(p_start).getTime();
+                        var seat_time=(end_time-start_time)/(1000*60);
+                      
+
                         
 
                         var allowed_time =parseInt('5')*60*1000;
                         var s=((mot_time+allowed_time)-class_swipe)/(1000*60);
-                        if (s >=0){
+                        if (s >=0 && data.AttendanceTime!='' ){
                             var result='--';}
-                        else if(s<=0 && s>=-90){
+                        else if(s<0 && s>=-1*seat_time){
                             var result=s;
                         } 
-                        else{var result='- 01:30:00' }  
-                        console.log(mot_time);
+                        else{
+                    
+                            if (now>period_end && data.AttendanceTime==''){
+                                var result=-seat_time;
+                            }
+                            else{   
+                          
+                            var result=seat_time;
+                             }  
+                        console.log(seat_time);}
 
 
                 return `${result}`

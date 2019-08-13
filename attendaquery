@@ -44,9 +44,35 @@ SELECT DISTINCT st.student_local_id, st.student_type,st.last_name,st.first_name,
 parent_table pt on st.student_local_id = pt.student_local_id
 
 CREATE or replace view vmot AS 
-SELECT vs.last_name, vs.first_name, vs.student_local_id, vs.grade_level,a.attendance_time_mot,vs.period_number, a.AttendanceTime,a.appointment,a.emergency,a.other,a.comments fROM vstudent_roster_list vs join 
-attendance a on a.class_id=vs.class_id
+SELECT vs.last_name, vs.first_name, vs.student_local_id, vs.grade_level,a.attendance_time_mot,vs.period_number,p.PeriodStartTime,p.PeriodEndTime, a.AttendanceTime,a.appointment,a.emergency,a.other,a.comments fROM vstudent_roster_list vs join 
+attendance a on a.class_id=vs.class_id join 
+period p p.period=a.PeriodID
 
 create or replace view vstudent_roster_list as
 SELECT DISTINCT c.period_number,co.course_description,c.student_local_id,c.teacher_id_number,c.grade_level,vs.last_name,vs.first_name,vs.birthdate,vs.student_type,vs.parent_last_name,vs.parent_first_name,vs.parent_email FROM class_list c join courses co on co.course_type=c.class_type and co.course_code=c.course_code and c.grade_level=co.grade_level join vstudent_parent vs on vs.student_local_id=c.student_local_id  
 ORDER BY `vs`.`first_name` ASC
+
+
+SELECT
+    `vs`.`last_name` AS `last_name`,
+    `a`.`AttendanceDate` AS `AttendanceDate`,
+    `vs`.`first_name` AS `first_name`,
+    `vs`.`student_local_id` AS `student_local_id`,
+    `vs`.`grade_level` AS `grade_level`,
+    `a`.`attendance_time_mot` AS `attendance_time_mot`,
+    `vs`.`period_number` AS `period_number`,
+    `a`.`AttendanceTime` AS `AttendanceTime`,
+    `a`.`appointment` AS `appointment`,
+    `a`.`AttendanceID` AS `AttendanceID`,
+    `a`.`emergency` AS `emergency`,
+    `a`.`other` AS `other`,
+    `a`.`DateCreated` AS `DateCreated`,
+    `a`.`PeriodID` AS `PeriodID`,
+    `a`.`comments` AS `comments`
+FROM
+    (
+        `attendatrack`.`vstudent_roster_list` `vs`
+    JOIN `attendatrack`.`attendance` `a`
+    ON
+        ((`a`.`class_id` = `vs`.`class_id`))
+    )

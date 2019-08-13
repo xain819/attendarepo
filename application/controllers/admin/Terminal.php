@@ -114,7 +114,7 @@
 			}
 			else
 			{
-
+			
 				$result=$this->admin->get_student_class_access($data['id'],$data['period']);
 		    
 				if($result==null){
