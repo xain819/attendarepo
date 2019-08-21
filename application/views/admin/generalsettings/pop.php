@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Attenda Track</title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>public/assets/images/favicon.png">
-    <link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="<?= base_url() ?>public/bootstrap/css/bootstrap.min.css">
-    <script src="<?=base_url() ?>public/plugins/moment/moment.js"></script>
-    <script src="https://kit.fontawesome.com/ba69dea6e4.js"></script>
 
- 
-
-    <!-- Custom Stylesheet -->
-
-    <link href="<?= base_url() ?>public/css/style.css" rel="stylesheet">
-
-
-
-</head>
 
 <body>
     
@@ -48,7 +28,14 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-    	<?php include('include/navbarv2.php'); ?>
+        <div class="nav-header">
+            <div class="brand-logo"><a href="index.html"><b><img src="../../assets/images/logo.png" alt=""> </b><span class="brand-title"><img src="../../assets/images/logo-text.png" alt=""></span></a>
+            </div>
+            <div class="nav-control">
+                <div class="hamburger"><span class="line"></span>  <span class="line"></span>  <span class="line"></span>
+                </div>
+            </div>
+        </div>
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -94,7 +81,7 @@
                                     <ul>
                                         <li class="notification-unread">
                                             <a href="javascript:void()">
-                                                <img class="pull-left mr-3 avatar-img" src="../../public/assets/images/avatar/1.jpg" alt="">
+                                                <img class="pull-left mr-3 avatar-img" src="../../assets/images/avatar/1.jpg" alt="">
                                                 <div class="notification-content">
                                                     <div class="notification-heading">Druid Wensleydale</div>
                                                     <div class="notification-text">A wonderful serenit has take possession</div><small class="notification-timestamp">08 Hours ago</small>
@@ -103,7 +90,7 @@
                                         </li>
                                         <li class="notification-unread">
                                             <a href="javascript:void()">
-                                                <img class="pull-left mr-3 avatar-img" src="../../public/assets/images/avatar/2.jpg" alt="">
+                                                <img class="pull-left mr-3 avatar-img" src="../../assets/images/avatar/2.jpg" alt="">
                                                 <div class="notification-content">
                                                     <div class="notification-heading">Fig Nelson</div>
                                                     <div class="notification-text">A wonderful serenit has take possession</div><small class="notification-timestamp">08 Hours ago</small>
@@ -112,7 +99,7 @@
                                         </li>
                                         <li>
                                             <a href="javascript:void()">
-                                                <img class="pull-left mr-3 avatar-img" src="../../public/assets/images/avatar/3.jpg" alt="">
+                                                <img class="pull-left mr-3 avatar-img" src="../../assets/images/avatar/3.jpg" alt="">
                                                 <div class="notification-content">
                                                     <div class="notification-heading">Bailey Wonger</div>
                                                     <div class="notification-text">A wonderful serenit has take possession</div><small class="notification-timestamp">08 Hours ago</small>
@@ -121,7 +108,7 @@
                                         </li>
                                         <li>
                                             <a href="javascript:void()">
-                                                <img class="pull-left mr-3 avatar-img" src="../../public/assets/images/avatar/4.jpg" alt="">
+                                                <img class="pull-left mr-3 avatar-img" src="../../assets/images/avatar/4.jpg" alt="">
                                                 <div class="notification-content">
                                                     <div class="notification-heading">Bodrum Salvador</div>
                                                     <div class="notification-text">A wonderful serenit has take possession</div><small class="notification-timestamp">08 Hours ago</small>
@@ -172,7 +159,7 @@
                         </li>
                         <li class="icons">
                             <a href="javascript:void(0)" class="log-user">
-                                <img src="../../public/assets/images/avatar/1.jpg" alt=""> <span>George Martin</span>  <i class="fa fa-caret-down f-s-14" aria-hidden="true"></i>
+                                <img src="../../assets/images/avatar/1.jpg" alt=""> <span>George Martin</span>  <i class="fa fa-caret-down f-s-14" aria-hidden="true"></i>
                             </a>
                             <div class="drop-down dropdown-profile animated bounceInDown">
                                 <div class="dropdown-content-body">
@@ -185,9 +172,9 @@
                                         </li>
                                         <li><a href="javascript:void()"><i class="fa fa-cog"></i> <span>Setting</span></a>
                                         </li>
-                                        <li><a href="<?= base_url("auth/logout") ?>"><i class="icon-lock"></i> <span>Lock Screen</span></a>
+                                        <li><a href="javascript:void()"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                         </li>
-                                        <li><a href="<?= base_url("auth/logout") ?>"><i class="icon-power"></i> <span>Logout</span></a>
+                                        <li><a href="javascript:void()"><i class="icon-power"></i> <span>Logout</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -204,7 +191,545 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <?php include('include/sidebarv2.php'); ?>
+        <div class="nk-sidebar">           
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label">Dashboard</li>
+                    <li class="mega-menu mega-menu-lg">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="mdi mdi-view-dashboard"></i><span class="nav-text">Dashboard</span><span class="badge bg-dpink text-white nav-badge">21</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="index-restaurent.html">Restaurant</a></li>
+                            <li><a href="index-crypto.html">Crypto</a>
+                            </li>
+                            <li><a href="index-invoice.html">Invoice</a>
+                            </li>
+                            <li><a href="index-hospital.html">Hospital</a>
+                            </li>
+                            <li><a href="index-real-estate.html">Real Estate</a>
+                            </li>
+                            <li><a href="index-ticket.html">Ticket</a>
+                            </li>
+                            <li><a href="index-blog.html">Blog</a>
+                            </li>
+                            <li><a href="index-fitness.html">Fitness</a>
+                            </li>
+                            <li><a href="index-campaign.html">Campaign</a>
+                            </li>
+                            <li><a href="index-download.html">Download</a>
+                            </li>
+                            <li><a href="index-call-center.html">Call Center</a>
+                            </li>
+                            <li><a href="index-events.html">Events</a>
+                            </li>
+                            <li><a href="index-payments.html">Payments</a>
+                            </li>
+                            <li><a href="index-product.html">Products</a>
+                            </li>
+                            <li><a href="index-electronics.html">Electronics</a>
+                            </li>
+                            <li><a href="index-photo.html">Photo</a>
+                            </li>
+                            <li><a href="index-music.html">Music</a>
+                            </li>
+                            <li><a href="index-school.html">School</a>
+                            </li>
+                            <li><a href="index-video.html">Video</a>
+                            </li>
+                            <li><a href="index-weather.html">Weather</a>
+                            </li>
+                            <li><a href="index-job.html">Job</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-page-layout-body"></i><span class="nav-text">Layouts</span><span class="badge badge-success nav-badge">11</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./layout-blank.html">Blank</a>
+                            </li>
+                            <li><a href="./layout-boxed.html">Boxed</a>
+                            </li>
+                            <li><a href="./layout-wide-boxed.html">Wide Boxed</a>
+                            </li>
+                            <li><a href="./layout-width.html">Width</a>
+                            </li>
+                            <li><a href="./layout-dark.html">Dark</a>
+                            </li>
+                            <li><a href="./layout-light.html">Light</a>
+                            </li>
+                            <li><a href="./layout-fixed-header.html">Fixed Header</a>
+                            </li>
+                            <li><a href="./layout-fixed-nav.html">Fixed Sidebar</a>
+                            </li>
+                            <li><a href="./layout-one-column.html">One Column</a>
+                            </li>
+                            <li><a href="./layout-two-column.html">Two column</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-label">Apps</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-email-outline"></i> <span class="nav-text">Email</span><span class="badge bg-lgreen text-white nav-badge">০3</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="email-inbox.html">Inbox</a>
+                            </li>
+                            <li><a href="email-read.html">Read</a>
+                            </li>
+                            <li><a href="email-compose.html">Compose</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-application"></i><span class="nav-text">Apps</span> <span class="badge badge-info nav-badge">05</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="app-profile.html">Profile</a>
+                            </li>
+                            <li><a href="app-chat.html">Chat</a>
+                            </li>
+                            <li><a href="app-calender-event.html">Calendar</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-ticket"></i><span class="nav-text">Ticket</span> <span class="badge bg-lgreen text-white nav-badge">02</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./support-ticket.html">Support Ticket</a>
+                            </li>
+                            <li><a href="./support-tickets-single.html">Single Ticket</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu mega-menu-lg"><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Charts</span> <span class="badge badge-primary nav-badge">19</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="chart-amchart.html">AmChart</a>
+                            </li>
+                            <li><a href="chart-c3.html">C3 Chart</a>
+                            </li>
+                            <li><a href="chart-flot.html">Flot</a>
+                            </li>
+                            <li><a href="chart-morris.html">Morris</a>
+                            </li>
+                            <li><a href="chart-highchart.html">Highchart</a>
+                            </li>
+                            <li><a href="chart-chartjs.html">Chartjs</a>
+                            </li>
+                            <li><a href="chart-chartjs-candlestick.html">Candlestick</a>
+                            </li>
+                            <li><a href="chart-chartjs-data-labels.html">Datalabels</a>
+                            </li>
+                            <li><a href="chart-chartjs-stream.html">Live Stream</a>
+                            </li>
+                            <li><a href="chart-chartist.html">Chartist</a>
+                            </li>
+                            <li><a href="chart-sparkline.html">Sparkline</a>
+                            </li>
+                            <li><a href="chart-echart.html">Echart</a>
+                            </li>
+                            <li><a href="chart-google.html">Google</a>
+                            </li>
+                            <li><a href="chart-rickshaw.html">Rickshaw</a>
+                            </li>
+                            <li><a href="chart-peity.html">Peity</a>
+                            </li>
+                            <li><a href="chart-justgage.html">Justgage</a>
+                            </li>
+                            <li><a href="chart-knob.html">Knob</a>
+                            </li>
+                            <li><a href="./chart-circle-progress.html">Circle Progress</a>
+                            </li>
+                            <!-- <li><a href="./chart-easy-pichart.html">Easy Piechart</a>
+                            </li> -->
+                            <!-- <li><a href="./chart-gauge.html">Gauge</a>
+                            </li> -->
+                        </ul>
+                    </li>
+                    <li class="nav-label">UI Components</li>
+                    <li class="mega-menu mega-menu-md"><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-television-guide"></i><span class="nav-text">UI </span> <span class="badge badge-danger nav-badge">19</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="ui-accordion.html">Accordion</a>
+                            </li>
+                            <li><a href="ui-alert.html">Alert</a>
+                            </li>
+                            <li><a href="ui-badge.html">Badge</a>
+                            </li>
+                            <li><a href="ui-button.html">Button</a>
+                            </li>
+                            <li><a href="ui-modal.html">Modal</a>
+                            </li>
+                            <li><a href="ui-button-group.html">Button Group</a>
+                            </li>
+                            <li><a href="ui-list-group.html">List Group</a>
+                            </li>
+                            <li><a href="ui-media-object.html">Media Object</a>
+                            </li>
+                            <li><a href="ui-cards.html">Cards</a>
+                            </li>
+                            <li><a href="ui-carousel.html">Carousel</a>
+                            </li>
+                            <li><a href="ui-dropdown.html">Dropdown</a>
+                            </li>
+                            <li><a href="ui-popover.html">Popover</a>
+                            </li>
+                            <li><a href="ui-progressbar.html">Progressbar</a>
+                            </li>
+                            <li><a href="ui-tab.html">Tab</a>
+                            </li>
+                            <li><a href="ui-typography.html">Typography</a>
+                            </li>
+                            <li><a href="ui-pagination.html">Pagination</a>
+                            </li>
+                            <li><a href="./ui-user-card.html">User Cards</a>
+                            </li>
+                            <li><a href="./ui-ribbon.html">Ribbon</a>
+                            </li>
+                            <li><a href="./ui-grid.html">Grid</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu mega-menu-xl"><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-collage"></i><span class="nav-text">Components</span> <span class="badge bg-lgreen text-white nav-badge">39</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./uc-block-ui.html">BlockUI</a>
+                            </li>
+                            <li><a href="./uc-bs-notify.html">BS Notify</a>
+                            </li>
+                            <li><a href="./uc-clipboard.html">Clipboard</a>
+                            </li>
+                            <!-- <li><a href="./uc-counterup.html">Counter Up</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-dragula.html">Dragula</a>
+                            </li> -->
+                            <li><a href="uc-calender-date.html">Date</a>
+                            </li>
+                            <li><a href="uc-map-datamap.html">Data Map</a>
+                            </li>
+                            <li><a href="uc-map-jvectormap.html">Vector Map</a>
+                            </li>
+                            <!-- <li><a href="./uc-map-gmap.html">Gmap</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-duallist-box.html">Duallist Box</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-filterizer.html">Filterizer</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-idle-timer.html">Idle Timer</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-ion-range.html">Ion Range</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-jstree.html">JS Tree</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-ladda.html">Ladda</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-multiselect-splitter.html">Multiselect Splitter</a>
+                            </li> -->
+                            <li><a href="./uc-bs-multiselect.html">BS Multiselect</a>
+                            </li>
+                            <li><a href="./uc-bootstrap-select.html">Bootstrap select</a>
+                            </li>
+                            <!-- <li><a href="./uc-vegas.html">Vegas</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-weather.html">Weather</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-listjs.html">ListJS</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-lobbybox.html">Lobby Box</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-lobbylist.html">Lobby List</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-magnific-popup.html">Magnific Popup</a>
+                            </li> -->
+                            <li><a href="./uc-nestedable.html">Nestedable</a>
+                            </li>
+                            <li><a href="./uc-noui-slider.html">Noui Slider</a>
+                            </li>
+                            <!-- <li><a href="./uc-numeral.html">Numeral</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-parallax.html">Parallax</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-pnotify.html">Pnotify</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-prism.html">Prism</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-progressbar.html">Progressbar</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-pwstrange.html">Pwstrange</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-raty.html">Raty</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-repeater.html">Repeater</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-scrollbar.html">Scrollbar</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-spinkit.html">Spinkit</a>
+                            </li> -->
+                            <li><a href="./uc-sweetalert.html">Sweet Alert</a>
+                            </li>
+                            <!-- <li><a href="./uc-taggingjs.html">TaggingJS</a>
+                            </li> -->
+                            <li><a href="./uc-ticker.html">Ticker</a>
+                            </li>
+                            <li><a href="./uc-toastr.html">Toastr</a>
+                            </li>
+                            <!-- <li><a href="./uc-tour.html">Tour</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-typedjs.html">TypedJS</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-alertifyjs.html">Alertify</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-autosize.html">Autosize</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-ti-ta-toggle.html">Ti-Ta Toggle</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-datepaginator.html">Datepaginator</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-datepaginator.html">Datepaginator</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-cleavejs.html">CleaveJS</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-jquery-multiselect.html">JQ Multiselect</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-datedropper.html">Date Dropper</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-tagglejs.html">TaggleJS</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-fancy-input.html">Fancy Input</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-fortjs.html">FortJS</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-staribility.html">Staribility</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-chosen.html">Chosen</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-noty.html">Noty</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-notie.html">Notie</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-spectrum.html">Spectrum</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-tooltipstar.html">Tooltipstart</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-izimodal.html">Izi Modal</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-atjs.html">AtJS</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-tipyjs.html">TipyJS</a>
+                            </li> -->
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="nav-text">Widget</span> <span class="badge bg-dpink text-white nav-badge">03</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="widget-basic-card.html">Stats Widget</a>
+                            </li>
+                            <li><a href="widget-advanced-chartjs.html">Chart Widget</a>
+                            </li>
+                            <li><a href="widget-advanced-media.html">Advanced Widget</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-label">Forms</li>
+                    <li class="mega-menu mega-menu-lg"><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-gradient"></i><span class="nav-text">Forms</span> <span class="badge badge-info nav-badge">28</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./form-layout.html">Form Layout</a>
+                            </li>
+                            <li><a href="./form-element.html">Form Elements</a>
+                            </li>
+                            <li><a href="./form-wizard.html">Smart Wizard</a>
+                            </li>
+                            <li><a href="./form-step.html">Form Step</a>
+                            </li>
+                            <li><a href="./form-editor-summernote.html">Summernote</a>
+                            </li>
+                            <!-- <li><a href="./form-editor-medium.html">Medium</a>
+                            </li> -->
+                            <!-- <li><a href="./uc-markdown-editor.html">Markdown Editor</a>
+                            </li> -->
+                            <!-- <li><a href="./form-editor-Wysihtml5.html">Wysihtml5</a>
+                            </li> -->
+                            <li><a href="./form-editor-ck.html">CK Editor</a>
+                            </li>
+                            <li><a href="./form-editor-quill.html">Quill Editor</a>
+                            </li>
+                            <li><a href="./form-editor-tinymice.html">Tinymice Editor</a>
+                            </li>
+                            <li><a href="./form-picker-date.html">Date</a>
+                            </li>
+                            <li><a href="./form-picker-clock.html">Clock</a>
+                            </li>
+                            <li><a href="./form-picker-color.html">Color</a>
+                            </li>
+                            <li><a href="./form-picker-material.html">Material</a>
+                            </li>
+                            <li><a href="./form-picker-pickdate.html">Pick Date</a>
+                            </li>
+                            <li><a href="form-addons-dropzone.html">Dropzone</a>
+                            </li>
+                            <li><a href="./form-addons-touchspinner.html">Touch Spinner</a>
+                            </li>
+                            <li><a href="./form-addons-select2.html">Select 2</a>
+                            </li>
+                            <li><a href="./form-addons-mask.html">Mask</a>
+                            </li>
+                            <li><a href="./form-addons-switch.html">Switch</a>
+                            </li>
+                            <li><a href="./form-addons-tag-input.html">Tag Input</a>
+                            </li>
+                            <li><a href="./form-addons-typehead.html">Type Head</a>
+                            </li>
+                            <!-- <li><a href="./form-addons-icheck.html">iCheck</a>
+                            </li> -->
+                            <li><a href="./form-addons-xeditable.html">xEditable</a>
+                            </li>
+                            <li><a href="./form-addons-dropify.html">Dropify</a>
+                            </li>
+                            <li><a href="./form-addons-cropper.html">Cropper</a>
+                            </li>
+                            <!-- <li><a href="./form-addons-croppie.html">Croppie</a>
+                            </li> -->
+                            <li><a href="form-validation-bootstrap.html">Bootstrap Validate</a>
+                            </li>
+                            <li><a href="form-validation-jquery.html">Jquery Validate</a>
+                            </li>
+                            <!-- <li><a href="./form-validation-jq-bs.html">JQBS Validation</a>
+                            </li> -->
+                        </ul>
+                    </li>
+                    <li class="nav-label">Table</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-table"></i><span class="nav-text">Table</span> <span class="badge badge-primary nav-badge">13</span></a>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Bootstrap Table</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="table-bootstrap-basic.html">Basic</a>
+                                    </li>
+                                    <li><a href="table-bootstrap-layout.html">Layout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="table-jsgrid.html" aria-expanded="false">JSgrid Table</a>
+                            </li>
+                            <li><a href="table-footable.html" aria-expanded="false">Foo Table</a>
+                            </li>
+                            <li><a href="./table-bootgrid.html">Boot Grid</a>
+                            </li>
+                            <!-- <li><a href="./table-jtable.html">Jtable</a>
+                            </li> -->
+                            <!-- <li><a href="./table-handsonetable.html">Handsonetable</a>
+                            </li> -->
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Data Table</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="table-datatable-basic.html">Basic</a>
+                                    </li>
+                                    <li><a href="table-datatable-advance.html">Advance</a>
+                                    </li>
+                                    <!-- <li><a href="table-datatable-ajax.html">Ajax</a>
+                                    </li> -->
+                                    <li><a href="table-datatable-api.html">API</a>
+                                    </li>
+                                    <li><a href="table-datatable-datasource.html">Datasource</a>
+                                    </li>
+                                    <li><a href="table-datatable-plugins.html">Plugins</a>
+                                    </li>
+                                    <!-- <li><a href="table-datatable-serverside.html">Serverside</a>
+                                    </li> -->
+                                    <li><a href="table-datatable-styling.html">Styling</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-label">Extra</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-message-draw"></i>                        <span class="nav-text">Invoice</span><span class="badge badge-success nav-badge">03</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./invoices.html">Invoice</a>
+                            </li>
+                            <li><a href="./invoice-info.html">Invoice Approval</a>
+                            </li>
+                            <li><a href="./invoice-create.html">Create Invoice</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-book-open-page-variant"></i><span class="nav-text">Pages</span> <span class="badge badge-info nav-badge">28</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="page-pricing.html">Pricing</a>
+                            </li>
+                            <!-- <li><a href="page-gallery.html">Gallery</a>
+                            </li> -->
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Timeline</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="page-timeline-horizontal.html">Horizontal</a>
+                                    </li>
+                                    <!-- <li><a href="page-timeline-vertical.html">Vertical</a>
+                                    </li> -->
+                                </ul>
+                            </li>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Login</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="page-login.html">Login</a>
+                                    </li>
+                                    <li><a href="page-login2.html">Login 2</a>
+                                    </li>
+                                    <li><a href="page-recover.html">Recover</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Register</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="page-register.html">Register</a>
+                                    </li>
+                                    <li><a href="page-register2.html">Register 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="page-error-400.html">Error 400</a>
+                                    </li>
+                                    <li><a href="page-error-403.html">Error 403</a>
+                                    </li>
+                                    <li><a href="page-error-404.html">Error 404</a>
+                                    </li>
+                                    <li><a href="page-error-500.html">Error 500</a>
+                                    </li>
+                                    <li><a href="page-error-503.html">Error 503</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Crypto</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="./ico-market-cap.html">Market Cap</a>
+                                    </li>
+                                    <li><a href="./ico-transaction.html">Transaction</a>
+                                    </li>
+                                    <li><a href="./ico-gainers-loosers.html">Gainer and Loosers</a>
+                                    </li>
+                                    <li><a href="./ico-exchange.html">Exchange</a>
+                                    </li>
+                                    <li><a href="./ico-single-transaction.html">Single Transaction</a>
+                                    </li>
+                                    <li><a href="./ico-trading-view.html">Trading View</a>
+                                    </li>
+                                    <li><a href="./ico-payment-gateway.html">Payment Gateway</a>
+                                    </li>
+                                    <li><a href="./ico-wallet.html">Wallet</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Contact</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="./page-contact-grid.html">Grid</a>
+                                    </li>
+                                    <li><a href="./page-contact-details.html">Details</a>
+                                    </li>
+                                    <li><a href="./page-contact-employee.html">Employee</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="page-lock-screen.html">Lock Screen</a>
+                            </li>
+                            <!-- <li><a href="./page-comming-soon.html">Comming Soon</a>
+                            </li> -->
+                            <li><a href="./page-faq.html">FAQ</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -212,28 +737,146 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-wrapper" style="min-height: 394px; padding:15px;">
         <div class="content-body">
             <div class="container-fluid">
                 <div class="row page-titles">
-                    <div class="col p-0">
-                        <h4><span></span></h4>
+                    <div class="col p-md-0">
+                        <h4>Popover</h4>
                     </div>
-                    <div class="col p-0">
+                    <div class="col p-md-0">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)"></a>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Interface</a>
                             </li>
-                            <li class="breadcrumb-item active"></li>
+                            <li class="breadcrumb-item active">Popover</li>
                         </ol>
                     </div>
                 </div>
-                <?php $this->load->view('header');?>
+                <!-- row -->
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Popover</h4>
+                                <div class="bootstrap-popover">
+                                    <button type="button" class="btn btn-primary" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Dismiss on next click</h4>
+                                <div class="bootstrap-popover"><a tabindex="0" class="btn btn-primary" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Disable</h4>
+                                <div class="bootstrap-popover"><span class="d-inline-block" data-toggle="popover" data-content="Disabled popover"><button class="btn btn-secondary" style="pointer-events: none;" type="button" disabled="disabled">Disabled button</button></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Popover Top</h4>
+                                <div class="bootstrap-popover">
+                                    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Popover on top</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Popover Right</h4>
+                                <div class="bootstrap-popover">
+                                    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Popover on right</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Popover Bottom</h4>
+                                <div class="bootstrap-popover">
+                                    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
 
-
-
-<div>
-       
-        <?php $this->load->view($view); ?>
+                                                  sagittis lacus vel augue laoreet rutrum faucibus.">Popover on bottom</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Popover Left</h4>
+                                <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Popover on left</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Tooltip Top</h4>
+                                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Tooltip Right</h4>
+                                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Tooltip Bottom</h4>
+                                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Tooltip Left</h4>
+                                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Custom Tooltip HTML</h4>
+                                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-intro-title mb-4">Disable Tooltip</h4><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip"><button class="btn btn-secondary" style="pointer-events: none;" type="button" disabled="disabled">Disabled button</button></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
         </div>
         <!--**********************************
             Content body end
@@ -245,7 +888,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; Designed by <a href="https://themeforest.net/user/digitalheaps">AttendaTrack</a>
+                <p>Copyright &copy; Designed by <a href="https://themeforest.net/user/digitalheaps">Digitalheaps</a>, Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
             </div>
         </div>
         <!--**********************************
@@ -581,7 +1224,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity active"></span>
-                                            <img src="../../public/assets/images/user/1.png" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/1.png" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -596,7 +1239,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity inactive"></span>
-                                            <img src="../../public/assets/images/user/2.png" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/2.png" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -611,7 +1254,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity active"></span>
-                                            <img src="../../public/assets/images/user/3.png" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/3.png" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -626,7 +1269,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity active"></span>
-                                            <img src="../../public/assets/images/user/4.png" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/4.png" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -641,7 +1284,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity inactive"></span>
-                                            <img src="../../public/assets/images/user/4.jpg" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/4.jpg" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -656,7 +1299,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity active"></span>
-                                            <img src="../../public/assets/images/user/6.jpg" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/6.jpg" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -671,7 +1314,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity active"></span>
-                                            <img src="../../public/assets/images/user/7.jpg" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/7.jpg" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -686,7 +1329,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity active"></span>
-                                            <img src="../../public/assets/images/user/8.png" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/8.png" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -701,7 +1344,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity active"></span>
-                                            <img src="../../public/assets/images/user/1.png" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/1.png" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -716,7 +1359,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity active"></span>
-                                            <img src="../../public/assets/images/user/4.png" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/4.png" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -731,7 +1374,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity inactive"></span>
-                                            <img src="../../public/assets/images/user/2.png" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/2.png" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -746,7 +1389,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity inactive"></span>
-                                            <img src="../../public/assets/images/user/2.png" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/2.png" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -761,7 +1404,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity active"></span>
-                                            <img src="../../public/assets/images/user/6.jpg" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/6.jpg" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -776,7 +1419,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity active"></span>
-                                            <img src="../../public/assets/images/user/3.png" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/3.png" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -791,7 +1434,7 @@
                                     <div class="media align-items-center">
                                         <div class="user-img mr-3">
                                             <span class="activity inactive"></span>
-                                            <img src="../../public/assets/images/user/8.png" height="40" width="40" alt="">
+                                            <img src="../../assets/images/user/8.png" height="40" width="40" alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="mb-0">Lurch Schpel</h6>
@@ -819,66 +1462,12 @@
     <!--**********************************
         Scripts
     ***********************************-->
-
-
-
+    <script src="../../public/assets/plugins/common/common.min.js"></script>
+    <script src="../../public/js/custom.min.js"></script>
+    <script src="../../public/js/settings.js"></script>
+    <script src="../../public/js/gleek.js"></script>
+    <script src="../../public/js/styleSwitcher.js"></script>
+    <script src="../../public/plugins/moment/moment.js"></script>
 </body>
 
 </html>
-
-<script>
- var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
-        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
-        base_url='<?php echo base_url(); ?>';
-var a=  null;
-var datetime = null,
-        date = null,
-        d=null,
-        datenow=null;
-
-var update = function () {
-    date = moment(new Date())
-    datetime.html(date.format(' h:mm:ss a'));
-    d.html(date.format('dddd'));
-    datenow.html(date.format('MMMM Do YYYY'));
-    // $.ajax({
-    //     url:'<?php echo base_url(); ?>admin/controlpannel/get_master_data',
-    //     type:"POST",
-    //     data:({[csrfName]: csrfHash}),
-    //     dataType:'JSON',
-    // }).done(function(data){
-  
-    //     a=data['type'][0]['title'];
-    //     b=data['period'];
-    //     $('#type').html(`${a}-Day`);
-    //     $('#period').html(`${b}`);
-        
-    // });
-
-   
-};
-
-$(document).ready(function(){
-    datetime = $('#datetime');
-    d = $('#day');
-    datenow=$('#datenow');
-    update();
-    $.ajax({
-        url:'<?php echo base_url(); ?>admin/controlpannel/get_master_data',
-        type:"POST",
-        data:({[csrfName]: csrfHash}),
-        dataType:'JSON',
-    }).done(function(data){
-  
-        a=data['type'][0]['title'];
-        b=data['period'];
-        c=data['count']['0']['count'];
-        console.log(c);
-        $('#type').html(`${a}-Day`);
-        $('#period').html(`${b}`);
-        $('#count').html(`${c}`);
-        
-    });
-    setInterval(update, 1000);
-});
-</script>

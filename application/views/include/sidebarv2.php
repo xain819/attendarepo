@@ -8,13 +8,13 @@
                 <?php if($this->rbac->check_module_permission('admin')): ?>  
                     <li class="nav-label">Administration</li>
 
-                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/dashboard'); ?>"><i class="mdi mdi-page-layout-body"></i><span class="nav-text">Dashboard</span><span class="badge badge-success nav-badge"></span></a>
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/dashboard'); ?>"><i class="fas fa-tachometer-alt"></i><span class="nav-text">Dashboard</span><span class="badge badge-success nav-badge"></span></a>
                      
                     </li>
 
                     <li class="mega-menu mega-menu-lg">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="mdi mdi-view-dashboard"></i><span class="nav-text">Administration</span><span class="badge bg-dpink text-white nav-badge"></span>
+                        <i class="fas fa-users-cog"></i><span class="nav-text">Administration</span><span class="badge bg-dpink text-white nav-badge"></span>
                         </a>
                         <ul aria-expanded="false">
 
@@ -31,12 +31,12 @@
                     <?php if($this->rbac->check_module_permission('admin')): ?>  
 
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/generalsettings'); ?>">
-                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">General Setting</span>
+                    <i class="fas fa-cog"></i><span class="nav-text">General Setting</span>
                        </a>
 
                     <li class="mega-menu mega-menu-lg">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="mdi mdi-view-dashboard"></i><span class="nav-text">System Controller</span><span class="badge bg-dpink text-white nav-badge"></span>
+                        <i class="fas fa-toolbox"></i><span class="nav-text">System Controller</span><span class="badge bg-dpink text-white nav-badge"></span>
                         </a>
                         <ul aria-expanded="false">
 
@@ -47,12 +47,12 @@
                     </li>
 
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/studentinformation'); ?>" >
-                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Student Information</span>
+                    <i class="fas fa-user-cog"></i><span class="nav-text">Student Information</span>
                         </a>
                       
                     </li>
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation'); ?>" >
-                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Teacher Information</span>
+                    <i class="fas fa-chalkboard-teacher"></i><span class="nav-text">Teacher Information</span>
                         </a>
                       
                     </li>
@@ -64,7 +64,7 @@
                     <?php if($this->rbac->check_module_permission('admin')): ?>  
 
                     <li class="nav-label">Master Scheduler</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-email-outline"></i> <span class="nav-text">Manage Schedule</span><span class="badge bg-lgreen text-white nav-badge"></span></a>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="fas fa-calendar-alt"></i> <span class="nav-text">Manage Schedule</span><span class="badge bg-lgreen text-white nav-badge"></span></a>
                         <ul aria-expanded="false">
                             <li><a href="<?= base_url('admin/masterscheduler'); ?>">Manage Calendar</a>
                             </li>
@@ -76,7 +76,7 @@
                             </li> -->
                         </ul>
                     </li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-email-outline"></i> <span class="nav-text">Academic Settings</span><span class="badge bg-lgreen text-white nav-badge"></span></a>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="fas fa-school"></i><span class="nav-text">Academic Settings</span><span class="badge bg-lgreen text-white nav-badge"></span></a>
                         <ul aria-expanded="false">
                             <li><a href="<?= base_url('admin/academicsettings/section'); ?>">Section</a>
                             </li>
@@ -98,28 +98,28 @@
                     <li class="nav-label">Teacher Dashboard</li>
 
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/attendance_log'); ?>" >
-                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Attendance Log</span>
+                    <i class="fas fa-clipboard-list"></i><span class="nav-text">Attendance Log</span>
                         </a>
                     </li>
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/daily_pass_log'); ?>" >
-                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Daily Pass Log</span>
+                    <i class="fas fa-sign-out-alt"></i><span class="nav-text">Daily Pass Log</span>
                         </a>
                       
                     </li>
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/student_roster'); ?>" >
-                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Student Rosters</span>
+                    <i class="fas fa-users"></i><span class="nav-text">Student Rosters</span>
                         </a>
                     </li>
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/teacher_settings'); ?>" >
-                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Teacher Setttings</span>
+                    <i class="fas fa-chalkboard-teacher"></i><span class="nav-text">Teacher Setttings</span>
                         </a>
                     </li>
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/reports'); ?>" >
-                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Reports</span>
+                    <i class="fas fa-scroll"></i><span class="nav-text">Reports</span>
                         </a>
                     </li>
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/help'); ?>" >
-                        <i class="mdi mdi-page-layout-body"></i><span class="nav-text">Help and FAQ Setttings</span>
+                    <i class="fas fa-question-circle"></i><span class="nav-text">Help and FAQ Setttings</span>
                         </a>
                     </li>
                 <?php endif; ?>

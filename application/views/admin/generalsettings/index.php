@@ -1,12 +1,12 @@
 <link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
-<link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
+
 
 <link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/select2/css/select2.min.css">
 <link href="<?= base_url('public/assets/plugins/datatables/css/jquery.dataTables.min.css')?>" rel="stylesheet">
 <link href="<?= base_url('public/css/style.css')?>" rel="stylesheet">
 
             <?php $this->load->view('admin/generalsettings/hallpassfunction');?>
-            
+       
          
 
          
@@ -31,9 +31,11 @@
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
     <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+ 
  <script src="<?=base_url()?>public/js/plugins-init/datatables.init.js"></script>
 
 <script>
+
 
 var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -141,7 +143,7 @@ var nhp = $('#ahp').DataTable({
     <!-- Custom dashboard script -->
 
 
-    <script src="<?=base_url() ?>public/js/dashboard/dashboard-2.js"></script>
+    
     <script src="<?=base_url() ?>public/assets/plugins/select2/js/select2.full.min.js"></script>
     <script src="<?=base_url() ?>public/js/plugins-init/select2-init.js"></script>
    
@@ -190,26 +192,38 @@ $(document).ready(function(){
     const is_active=element.is_active;
     const id=element.id;
     const id_name=element.id_name;
+    const icon=element.icon;
   
     var is_checked='';
     if (is_active==1){ var is_checked='checked=""';}
    
     
-    const mhl=`<div class="col-xl-6 col-sm-6">
+    const mhl=`<div class="col-xl-4 col-sm-4">
     <div class="card">
+    
             
-            <div class="card-body">
+            <div class="card-body" >
+            <i class="far fa-question-circle pull-right data-toggle="popover" "  style='position:relative;padding:none;background-color:inherit;'=class="text-info" 
+            style='paddin:0px;background-color:white;' 
+            title="If ON, all student attendance is finalized and all Hall Passes will expire at the end of the
+school day (E.O.D). If OFF, attendance  can be updated and Hall Passes issued until 11:59:59 PM of same day"
+                    data-content="And here's
+              some amazing content. It's very engaging. Right? "></i>
+            
+           
+        
                 <div class="stat-widget-two">
                     <div class="media">
                             <div class="media-body">
+                       
                           
 
-                                    <h5 class="mt-0 mb- text-info"><i class="fa fa-camera-retro fa-2x" style='padding-right:20px;'></i>
+                                    <h6 class="mt-0 mb- text-info"><i class="${icon} fa-2x" style='padding-right:20px;'></i>
                                   
                                     <button data-toggle="modal" data-target="#${id_name}" style='background-color:
                                     inherit;;border:none;' class="mt-0 mb- text-info">${master_name}</button>
-                                    <span class="pull-right">  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
-                                    class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
+                                    <span class="pull-right" >  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
+                                    class="js-switch js-switch-1 js-switch-md" data-size="small" style="margin:10px;"/></span></h6 >
                         
                             </div>    
                     </div>
@@ -386,3 +400,10 @@ function hallpass(){
     
 }
 </script>
+ <script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
+    <script src="<?=base_url() ?>public/js/settings.js"></script>
+    <script src="<?=base_url() ?>public/js/gleek.js"></script>
+    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+    <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+ 

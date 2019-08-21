@@ -95,6 +95,13 @@
 
 
 		}
+		public function pop()
+		{
+			$data['title'] = 'General Settings';
+			$data['view'] = 'admin/generalsettings/pop';
+			$this->load->view('layoutv2', $data);
+
+		}
 
 		public function change_status(){
 

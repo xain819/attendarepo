@@ -217,15 +217,14 @@
         <div class="col-md-12">
         <div class="col-md-11">
 
-              <FORM>
+              <FORM id='myform'>
               <input type="text" id="student_id" class="form-control" placeholder="Student ID"  value="">
+            
               </FORM>
               
   
           </div>
-          <div class="col-md-1">
-            <button id="show_terminal_modal" class="btn btn-primary ">Enter</button>
-          </div>
+      
         </div>
           
         </div>
@@ -325,9 +324,15 @@ var timee;
 <?php }
 ?>
 
-function Studentid(){
-var x = document.getElementById("myText").value;
-  document.getElementById("student_id").innerHTML = x;}
+document.querySelector('#myform').onsubmit = function(e){
+  e.preventDefault();
+  function Studentid(){
+  var x = document.getElementById("myText").value;
+  const a=document.getElementById("student_id").innerHTML = x;}
+  
+  console.log(a);
+}
+
 
 
 var base_url="<?php echo base_url();?>";
@@ -478,7 +483,7 @@ $(document).ready(function(){
   });
 
 //student and hall pass swipe
-  $(document).on('click','#show_terminal_modal',function(){
+  $(document).on('submit','#myform',function(){
     if( $("#student_id").val()){
       var id=$("#student_id").val();
       $.ajax({

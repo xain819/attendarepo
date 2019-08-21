@@ -28,7 +28,7 @@
                                         <div class="row monthly-weather-report-inner">
                                             <div class="col-sm-4 col-6">
                                                 <div class="media pt-3 align-items-center pb-3">
-                                                    <span class="mr-3 text-warning"><i class="pe-is-w-eclipse-4-f"></i></span>
+                                                    <span class="mr-3 text-info"><i class="fas fa-chalkboard-teacher"></i></span>
                                                     <div class="media-body">
                                                         <h4 id='period'>No Period</h4>
                                                         <p>Period</p>
@@ -38,7 +38,7 @@
                                             </div>
                                             <div class="col-sm-4 col-6">
                                                 <div class="media pt-3 align-items-center pb-3">
-                                                    <span class="mr-3 text-info"><i class="pe-is-w-moon-waning-crescent-f"></i></span>
+                                                    <span class="mr-3 text-info"><i class="fas fa-sort-amount-up"></i></span>
                                                     <div class="media-body">
                                                         <h4 id='count'>None</h4>
                                                         <p>Day</p>
@@ -47,7 +47,7 @@
                                             </div>
                                             <div class="col-sm-4 col-6">
                                                 <div class="media pt-3 align-items-center pb-3">
-                                                    <span class="mr-3 text-info"><i class="pe-is-w-rain-1-f"></i></span>
+                                                    <span class="mr-3 text-info"><i class="fas fa-calendar-week"></i></span>
                                                     <div class="media-body">
                                                         <h4>4th</h4>
                                                         <p>6th Week MP</p>
@@ -66,7 +66,7 @@
                                             </div>
                                             <div class="col-sm-4 col-6">
                                                 <div class="media pt-3 align-items-center pb-3">
-                                                    <span class="mr-3 text-dpink"><i class="pe-is-w-drizzle-f"></i></span>
+                                                    <span class="mr-3 text-info"><i class="fas fa-calendar-day"></i></span>
                                                     <div class="media-body">
                                                     <h4 id='day'>Tuesday</h4>
                                                       <p>Day of Week</p>
@@ -75,7 +75,7 @@
                                             </div>
                                             <div class="col-sm-4 col-6">
                                                 <div class="media pt-3 align-items-center pb-3">
-                                                    <span class="mr-3 text-warning"><i class="pe-is-w-moon-sea-f"></i></span>
+                                                    <span class="mr-3 text-info"><i class="far fa-sun"></i></span>
                                                     <div class="media-body">
                                                         <h4 id='datenow'></h4>
                                                         <p>Date</p>

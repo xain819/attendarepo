@@ -227,7 +227,7 @@ $(document).ready(function() {
                 if (now>period_end && data.AttendanceTime==''){
                     return 'EOP';
                 }
-                else{     return data.AttendanceTime}
+                else{return data.AttendanceTime}
 
             
             } },
@@ -235,6 +235,12 @@ $(document).ready(function() {
             render:function(data){
                 var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
                // const ti=new Date(data.DateCreated).getTime();
+               const now=new Date().getTime();
+                const period_end=new Date(`${data.AttendanceDate} ${data.PeriodEndTime}`).getTime();
+                let eop=0;
+                if (now>period_end && data.AttendanceTime==''){
+                   eop = 1;
+                }
                 
                 var class_swipe=new Date(st).getTime();
                 
@@ -249,14 +255,15 @@ $(document).ready(function() {
 
                     return ('0' + h).slice(-2) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
                  }
-
-                 if (mot_time<0){
+                 if(eop==1){
+                    return '--:--';
+                 }   
+                 else if (mot_time<0 & eop==0){
                    
                     const mot_pass=secondsToHms(Math.abs(mot_time)/(1000));
                     return  `-${mot_pass}`;
                     
                 }
-
                 else{
                     const mot_pass=secondsToHms(mot_time/(1000));
                     return mot_pass;
@@ -277,7 +284,7 @@ $(document).ready(function() {
                 const now=new Date().getTime();
                 const period_end=new Date(`${data.AttendanceDate} ${data.PeriodEndTime}`).getTime();
                 let eop=0;
-                if (now>period_end && data.attendance_time_mot!=''){
+                if (now>period_end && data.AttendanceTime==''){
                    eop = 1;
                 }
  
@@ -294,15 +301,29 @@ $(document).ready(function() {
                
                 const allowed_time=new Date(`${data.DateCreated}`).getTime()+5*60000;
                 const swipe_time=new Date(`${data.AttendanceDate} ${data.AttendanceTime}`).getTime();
+                const letter_number=parseInt(data.appointment)+parseInt(data.emergency)+parseInt(data.other);
                 const is_late=swipe_time-allowed_time;
-     
-                if(data.appointment==='0' || data.emergency==='0'|| data.other==='0' || is_late<=0) {
-                    
-                           
+                    const now=new Date().getTime();
+                 const period_end=new Date(`${data.AttendanceDate} ${data.PeriodEndTime}`).getTime();
+                var eop=0;
+               
+                if (now>period_end && data.AttendanceTime==''){
+                   eop = 1;
+                }
+               
+                if(letter_number<=0 && eop!=1) {
+
                         
                            return data.period_number;
     
                        }
+                else if(eop==1){
+                    return '--';
+
+                }
+            
+
+         
                        else{ return '--';}
              
                 
@@ -327,15 +348,14 @@ $(document).ready(function() {
                         var start_time= new Date(p_start).getTime();
                         var seat_time=(end_time-start_time)/(1000*60);
                       
-                        var missed_period=(class_swipe-start_time);
+                        var missed_period=(class_swipe-start_time)-5*60*1000;
                      
 
                         var allowed_time =parseInt('5')*60*1000;
                         if(data.appointment==='1' || data.emergency==='1'|| data.other==='1' ) {
                            
                             missed_period=0;
-                         
-                           
+                 
                         }
              
 

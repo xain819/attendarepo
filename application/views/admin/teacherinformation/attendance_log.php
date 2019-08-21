@@ -45,8 +45,8 @@ button.btn-space {
                    
      
            
-           
-                <th>Time IN
+            <th>Action</th>
+                <th>Time IN</th>
                 <th>Time Tardy</th>
                 <th>Student ID</th>
                 <th>Grade</th>
@@ -189,17 +189,18 @@ $(document).ready(function() {
         
         
       
- 
+            { data: null, },
             { data: 'AttendanceTime' },
             { data: null,
                  render:function(data){
                 
                     var start=new Date(`${data['AttendanceDate']} ${data['PeriodStartTime']}`).getTime();
                     var swipe=new Date(`${data['AttendanceDate']} ${data['AttendanceTime']}`).getTime();
+                
 
                     var grace=start + parseInt('1')*60*1000;
                     var f=(grace-swipe)/(1000*60);
-                    if (swipe<=start){
+                    if (swipe<=start && data.AttendanceTime!=''){
                         return 'On Time'
                     }else if(swipe>=start && swipe<=grace)
                     {
@@ -234,21 +235,44 @@ $(document).ready(function() {
             { 
                 data: null,"width": "100px",
                 render:function(data){
-                    if (data['AttendanceID']==null){
+                    if (data['AttendanceTime']==null || data['AttendanceTime']==''){
                         return `A`;
                     }
+                 
                     return `P`;}
             },
             { data: null, 
                 render:function(data){
                     var start=new Date(`${data['AttendanceDate']} ${data['PeriodStartTime']}`).getTime();
                     var swipe=new Date(`${data['AttendanceDate']} ${data['AttendanceTime']}`).getTime();
+                    const letter_number=parseInt(data.appointment)+parseInt(data.emergency)+parseInt(data.other);
+                    // var data_array=[
+                    //        {name:'appointment',`${data.appointment}`}, 
+                    //        {name:'emergency',`${data.emergency}`}, 
+                    //        {name:'other',`${data.other}}`, 
 
+                    // ];
+                    data_array=[];
+                    data_array['appointment']=data.appointment;
+                     data_array['emergency']=data.emergency;
+                    data_array['other']=data.other;
+
+             
+                  
+                  
+             
+
+                  
+                
                     var grace=start + parseInt('1')*60*1000;
                     var f=(grace-swipe)/(1000*60);
 
-                    if (f<0){
+                    if (f<0 && letter_number==0){
+                        
                         return 'Unexcused Tardy';
+                    }
+                    else if( f<0 &&letter_number!=0){
+                        return 'Excused Tardy';
                     }
                     else{
                         return `-----`;}

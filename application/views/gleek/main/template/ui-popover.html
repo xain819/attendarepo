@@ -9,8 +9,20 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
     <!-- Custom Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet">
+     <script src="https://kit.fontawesome.com/ba69dea6e4.js"></script>
+     <script >
+     $(function () {
+$('[data-toggle="popover"]').popover()
+})
+     </script>
+
+  
     
+       <script src="../../assets/plugins/common/common.min.js"></script>
+    <script src="../js/custom.min.js"></script>
+    <script src="../js/settings.js"></script>
+    <script src="../js/gleek.js"></script>
+    <script src="../js/styleSwitcher.js"></script>
 </head>
 
 <body>
@@ -764,11 +776,13 @@
                 <!-- row -->
                 <div class="row">
                     <div class="col-lg-4">
-                        <div class="card">
+                        <div class="card" ><i class="fas fa-question-circle"></i>
                             <div class="card-body">
                                 <h4 class="card-intro-title mb-4">Popover</h4>
                                 <div class="bootstrap-popover">
-                                    <button type="button" class="btn btn-primary" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+                                    <button type="button" class="btn btn-primary" data-toggle="popover" 
+                                    title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i class="fas fa-question-circle"></i>
+                                     to toggle popover</button>
                                 </div>
                             </div>
                         </div>
@@ -1472,11 +1486,7 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="../../assets/plugins/common/common.min.js"></script>
-    <script src="../js/custom.min.js"></script>
-    <script src="../js/settings.js"></script>
-    <script src="../js/gleek.js"></script>
-    <script src="../js/styleSwitcher.js"></script>
+ 
 </body>
 
 </html>
