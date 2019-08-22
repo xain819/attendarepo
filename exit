@@ -1,0 +1,586 @@
+[33mcommit 70b8ba9850f5bfb91a5f1764074a7d1743d9f912[m[33m ([m[1;36mHEAD -> [m[1;32mattenda_v2[m[33m)[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu Aug 22 09:36:00 2019 +0800
+
+    test
+
+[33mcommit 5c3b3addc5e3fbe35f548a6a9ce687dacb30d15b[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu Aug 22 09:35:20 2019 +0800
+
+    test
+
+[33mcommit 7839ecdade32f3f127c3199ca90673b87449b3ba[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu Aug 22 09:33:53 2019 +0800
+
+    test
+
+[33mcommit 81cb98ad24c883357e33c4ee04540c1c18d491b3[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu Aug 22 12:53:06 2019 +0800
+
+    fix period error and cross validate with schedule type
+
+[33mcommit e07c7f98cc52306561f89744f2b41b4371ceea1c[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu Aug 22 11:27:43 2019 +0800
+
+    fix period error and cross validate with schedule type
+
+[33mcommit f3b27ae5335965640ab8436307899a82f4d63574[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Wed Aug 21 10:34:00 2019 +0800
+
+    remove submit button and disable default form
+
+[33mcommit bb825773c671cbfbee25bd2358e47e5794f42bf3[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Aug 13 20:56:04 2019 +0800
+
+    d
+
+[33mcommit 974f6ed2492732b4ad0a1297fff4ee19714b9d1d[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Aug 13 23:02:16 2019 +0800
+
+    add secretary option
+
+[33mcommit 2049cd76450742b6701619a7537da030f7bfc9e4[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Sat Aug 10 20:38:34 2019 +0800
+
+    fix the error in config file
+
+[33mcommit b7e42119ed7c0e82d13addac34ad4566032c6579[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Fri Aug 9 20:03:25 2019 +0800
+
+    added the mot functionality
+
+[33mcommit d520200a0087f0995235cac9b3accae58aff5533[m[33m ([m[1;31mattenda_origin/attenda_v2[m[33m)[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jul 16 22:56:04 2019 +0800
+
+    first_commit_version_2
+
+[33mcommit 227f75adc216d81fd06c6a7ed5871773f6f3a6ca[m[33m ([m[1;31mattenda_origin/gleek[m[33m, [m[1;32mgleek[m[33m)[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Wed Jul 10 22:05:01 2019 +0800
+
+    fix attendatrack ui
+
+[33mcommit c1cc18338261497e04d4ee5ce6c5ee4b66e920b9[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Sat Jun 29 00:59:31 2019 +0800
+
+    added attendatrack terminal and classes
+
+[33mcommit a9d3e53ef5a39ef4cd8c38cf7450bd1a5f6e2dae[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Fri Jun 28 03:28:23 2019 +0800
+
+    student and hallpass selection
+
+[33mcommit 002e01baeace350c8834d96cfdafd2420bf186c4[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu Jun 27 23:24:28 2019 +0800
+
+    added terminal schedule capability
+
+[33mcommit 0409aac3319e067a10e3401ee787e196f2302b69[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu Jun 27 02:35:31 2019 +0800
+
+    added schedule
+
+[33mcommit beeb29efb80ce541630714a8e05ef9a7f628414d[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 25 09:36:38 2019 +0800
+
+    added academic settings
+
+[33mcommit 0b44a82604956c8bd53864bf83625797f1ba1e50[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 25 09:35:36 2019 +0800
+
+    added academic settings
+
+[33mcommit d412528dd06679ce571df22cc160530a579f33b2[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 25 09:34:02 2019 +0800
+
+    added academic settings
+
+[33mcommit 878cdb77d2cf417f38fe97ea7fcd94889d2e9fd2[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 25 09:27:31 2019 +0800
+
+    added academic settings
+
+[33mcommit 42e7f7738f0e5306428c7707d2dcf7bd2154c358[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 25 09:26:56 2019 +0800
+
+    added academic settings
+
+[33mcommit 2fcda9fbe84e5f77a7ae322e8d164ace6c6354e7[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 25 09:13:56 2019 +0800
+
+    added academic settings
+
+[33mcommit c76e43a83e075fab8fd4ac8e36c502a946ad1558[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 25 09:12:19 2019 +0800
+
+    added academic settings
+
+[33mcommit 304564c17151df5b5c347eadc2001cc9ff944542[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 25 09:09:15 2019 +0800
+
+    added academic settings
+
+[33mcommit 47b9b2bcfccc615cf7d3ad8484ae06d749b8750b[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 25 09:08:40 2019 +0800
+
+    added academic settings
+
+[33mcommit a0245454c402205c83538c8e009a656c0435e05f[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Sun Jun 23 18:00:28 2019 +0800
+
+    terminal to new ui
+
+[33mcommit 9640574b38f857fbbf330cdcb3d1c982e64b4e2a[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Sat Jun 22 01:58:52 2019 +0800
+
+    move to new ui
+
+[33mcommit 32ed9e9fc8fe831d418f36d07c5d1027f7ad4bfc[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu Jun 13 20:21:26 2019 +0800
+
+    error on add termina
+
+[33mcommit 6b098ed679e4b7e327561f8c4f52755a64e43b2c[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 11 08:41:10 2019 +0800
+
+    remove ignore
+
+[33mcommit 0c61a38bfac481ea1760ef14e49d5babd69f3853[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 11 08:36:55 2019 +0800
+
+    remove ignore
+
+[33mcommit af54f97f0c03b76d8b978a7d0619298b5ae36e37[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 11 08:35:53 2019 +0800
+
+    remove ignore
+
+[33mcommit 738f93e7d805e1c3daa39c970e26c57111e50e91[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 11 08:33:13 2019 +0800
+
+    remove ignore
+
+[33mcommit 7a617b2402a7669738b4b652f2f24a193c723e19[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 11 08:29:24 2019 +0800
+
+    added controlpannel
+
+[33mcommit d0cda12e4938f8fc5f8361a3ca1e57f387548888[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 11 02:13:07 2019 +0800
+
+    added daily control pannel
+
+[33mcommit 4204d8bf0e07628ca250758d469f2bc85d8dec7c[m
+Merge: a22004a 51e11ee
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Mon Jun 10 14:39:04 2019 +0800
+
+    fix conflict
+
+[33mcommit a22004af82b206856dad7bb14ae22d44d6add496[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Mon Jun 10 14:36:31 2019 +0800
+
+    fix
+
+[33mcommit 51e11ee4571968f9a5d8b26a859413faf14b371c[m
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Sun Jun 9 22:36:23 2019 +0800
+
+    update active hall pass
+    
+    update active hall pass
+
+[33mcommit cec042de4395e17a87353ab45b56016b55c906e4[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Sun Jun 9 00:36:11 2019 +0800
+
+    dyanmic master controller
+
+[33mcommit 831a1d9efddf12cd8a77fc0740f673ca112fa97c[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Fri Jun 7 21:09:27 2019 +0800
+
+    fix dynamic list for hallpass
+
+[33mcommit c047169f409a453394249325e5ba9da945bdd97a[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu Jun 6 23:52:13 2019 +0800
+
+    general settings
+
+[33mcommit b10ebf4dc6ba1293e3778cbddc90d5ef3d19bfa4[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu Jun 6 23:38:02 2019 +0800
+
+    general settings
+
+[33mcommit 343ed7ef423972409890d4af63f72693972ad0a5[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu Jun 6 13:08:34 2019 +0800
+
+    initial commit for new ui gleek
+
+[33mcommit c15c8bd4ed5b1612bacf3d7d985529a603e44c8c[m[33m ([m[1;31mattenda_origin/pom[m[33m, [m[1;32mpom[m[33m)[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Wed Jun 5 02:30:06 2019 +0800
+
+    removed config error
+
+[33mcommit 89461e3f18d86383ef326f999d6872f3f2667e9e[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Wed Jun 5 02:22:14 2019 +0800
+
+    removed config error
+
+[33mcommit 60c363daf2d3af039bb4bf28f0d85a948a31f5e0[m
+Merge: ca9ffee df5603d
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Wed Jun 5 02:20:17 2019 +0800
+
+    add
+
+[33mcommit ca9ffee432c4c239f139878f762dc4cb1f5ebb74[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Wed Jun 5 02:17:01 2019 +0800
+
+    added import
+
+[33mcommit df5603d0576cdaa3411dabcb5e56f5244b55f893[m
+Merge: 3d7f1b2 7999881
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Wed Jun 5 02:14:39 2019 +0800
+
+    Merge branch 'pom' of https://github.com/metadevph/attendarepo into pom
+
+[33mcommit 3d7f1b2b0e943428f43bb90e33d6bdfb8b9a9135[m
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Wed Jun 5 02:14:32 2019 +0800
+
+    updated import in student
+    
+    updated import in student
+
+[33mcommit 7999881c6797bd4ae18722485b6a4da85f463a87[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 4 19:44:00 2019 +0800
+
+    added courses
+
+[33mcommit 8c7129c55b0b311a23e4c3cb5c2d510bed1f5509[m
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Tue Jun 4 02:18:16 2019 +0800
+
+    Update Import.php
+    
+    updated remove the alert message
+
+[33mcommit 8077b9ae2e5fc0bd4663e550dd31115d699a2144[m
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Tue Jun 4 02:15:49 2019 +0800
+
+    update student information /import
+    
+    auto refresh after datasubmitted
+
+[33mcommit c72625727f793364cc607fee12bfcebf2f14663e[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 4 00:03:58 2019 +0800
+
+    fix merge error
+
+[33mcommit c4a8dce095296765bf62a0d7868eb7a67d626a08[m
+Merge: 898305b a786b42
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue Jun 4 00:02:05 2019 +0800
+
+    pull and push
+
+[33mcommit 898305b854159abf1e9a30db9aa2a5a379b40de8[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Mon Jun 3 23:59:03 2019 +0800
+
+    added import
+
+[33mcommit a786b42700fd9a1c7a007f7844b609a452c88dec[m
+Merge: 0f1c3c5 989028d
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Mon Jun 3 23:36:36 2019 +0800
+
+    a
+    
+    a
+
+[33mcommit 0f1c3c5363c6f31b70c1424deea606a49f21e50e[m
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Mon Jun 3 23:35:35 2019 +0800
+
+    aa
+    
+    d
+
+[33mcommit 989028d986e93c99405006bfdf5c4669e1b16d84[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu May 30 01:56:26 2019 +0800
+
+    added import csv
+
+[33mcommit 80a9cafcb41888e0bd163507d43f8610b4ed4248[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu May 30 01:47:52 2019 +0800
+
+    Co-authored-by: Jacob Denis <jacoblinodenis@gmail.com>
+
+[33mcommit bd2076f38241a213519d071d2af7d478d37e5ea7[m
+Merge: 2acd729 4dd94f5
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Thu May 30 00:37:08 2019 +0800
+
+    Merge branch 'pom' of https://github.com/metadevph/attendarepo into pom
+
+[33mcommit 2acd729dbd1a620bef654ed34754bbbad22dabbe[m
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Thu May 30 00:36:35 2019 +0800
+
+    update
+    
+    update
+
+[33mcommit 4dd94f5899f75874cec37cff5ab932f7c9c151af[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Thu May 30 00:30:05 2019 +0800
+
+    added datatable editor
+
+[33mcommit c12a02b23d6ff8f0844971321b00858ab5326365[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue May 28 09:01:41 2019 +0800
+
+    aded
+
+[33mcommit 40518df9f0448cf1530384c2b0d224f740852c83[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue May 28 08:43:24 2019 +0800
+
+    Revert "add ability to add and delete schdule type"
+    
+    This reverts commit fac6cc7dff2245857937331b7994747d39d8742e.
+
+[33mcommit 1143669f407c37e9929a5a8453c73bc1d9478ea3[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue May 28 08:34:31 2019 +0800
+
+    remove print_r data from view aaces
+
+[33mcommit 86fcf47448933b896e27c4c27ebd465b36f9a906[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue May 28 08:30:37 2019 +0800
+
+    remove print_r data from view aaces
+
+[33mcommit fac6cc7dff2245857937331b7994747d39d8742e[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue May 28 08:05:54 2019 +0800
+
+    add ability to add and delete schdule type
+
+[33mcommit f9a5e8870b25a01e49cff02cec9befdda9080a38[m
+Merge: 13a7e33 78cb158
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue May 28 07:54:04 2019 +0800
+
+    Merge branch 'pom' of https://github.com/metadevph/attendarepo into pom
+
+[33mcommit 13a7e33b7dc0bece3ae556913276cd3be10b2aac[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue May 28 07:53:54 2019 +0800
+
+    fix masterscheduler
+
+[33mcommit 78cb15874f54f72d8daf9e28cb872131de0bb983[m
+Merge: eccad37 932b32f
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Tue May 28 01:38:03 2019 +0800
+
+    Merge branch 'pom' of https://github.com/metadevph/attendarepo into pom
+
+[33mcommit eccad37895de8c8607a066f77349a597a764b8b2[m
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Tue May 28 01:34:07 2019 +0800
+
+    Updated Calendar
+    
+    Added DELETE AND ADD SCHEDULE TYP
+
+[33mcommit 932b32f633092644475e9cbd73a4c5421a7e6a1a[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue May 28 00:16:42 2019 +0800
+
+    fix conflict from previous pull, added manage period
+
+[33mcommit 29641efd2da7b71768b36627205778e99d0ca3b3[m
+Merge: 5435916 a74a036
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue May 28 00:05:24 2019 +0800
+
+    Merge branch 'pom' of https://github.com/metadevph/attendarepo into pom
+
+[33mcommit 54359169805b0c78c6d4de0c4bbda32e9db7a90f[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Tue May 28 00:04:18 2019 +0800
+
+    added manage schedule
+
+[33mcommit a74a036bad6a31ce7cb7c66abca2ea59dd81078a[m
+Author: jacobdenis <jacoblinodenis@gmail.com>
+Date:   Mon May 27 20:28:18 2019 +0800
+
+    updated
+
+[33mcommit 4cd0d7fa8889260aecde370324b499ff234c7541[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Mon May 27 19:48:36 2019 +0800
+
+    fix masterscheduler
+
+[33mcommit 15d43bf4bf0bc8cd546e02d77fb55a8710675055[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Mon May 27 17:29:12 2019 +0800
+
+    added period management
+
+[33mcommit 83f8fad1d2c735dfa70c101e3bff35e05cb95c91[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Mon May 27 01:20:07 2019 +0800
+
+    add calendar list
+
+[33mcommit de40e664c1cd30269e3bdbe0fe4e90c244b8e882[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Mon May 27 00:42:08 2019 +0800
+
+    added calendar
+
+[33mcommit df421012b69dff2a0631e743a365b69073cfb749[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Mon May 27 00:10:22 2019 +0800
+
+    update schedule system
+
+[33mcommit 87bb5fe1264201c7b9499a41ac71339726b08519[m
+Merge: 3c528a8 e88795a
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Sun May 26 23:59:37 2019 +0800
+
+    Merge branch 'pom' of https://github.com/metadevph/attendarepo into pom
+
+[33mcommit 3c528a80fa72d4bb44f381b5572c5ba41c0b745a[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Sun May 26 23:59:31 2019 +0800
+
+    test
+
+[33mcommit e88795a052d99c1e4e8280f6ab7ab8d798973a39[m
+Merge: 6be18ed a8caa84
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Sun May 26 23:54:52 2019 +0800
+
+    Merge branch 'pom' of https://github.com/metadevph/attendarepo into pom
+
+[33mcommit 6be18ed6ff801b30444db1961391921cbea79caf[m
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Sun May 26 23:54:37 2019 +0800
+
+    updated event
+    
+    updated event
+
+[33mcommit a8caa843a03d05ed41950437d84c4f797fa85657[m
+Merge: 0484e02 7267c68
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Sun May 26 23:44:40 2019 +0800
+
+    fix conflict
+
+[33mcommit 0484e022bca3008b3ec265e81513e238b0fff063[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Sun May 26 23:29:41 2019 +0800
+
+    added schedule background
+
+[33mcommit 7267c6813705b0e52fbb68e2f275fd29597f7ae2[m
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Sun May 26 23:16:37 2019 +0800
+
+    Updated Calendare Delete and auto refresh event
+    
+    Updated Calendare Delete and auto refresh event
+
+[33mcommit 9eafe331b68c07f96217c9cb88a96413de909fa5[m
+Author: HEART <raymundnilo1115@gmail.com>
+Date:   Sun May 26 22:21:34 2019 +0800
+
+    added masterscheduler
+
+[33mcommit 0f3a696b338988986a67d32d74778acfab9647d8[m
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Sun May 26 14:16:14 2019 +0800
+
+    updated Student information page
+    
+    Change title from teacher informatio to student information
+
+[33mcommit ac922a59ef75f64cc0dc98f5ea49c2fcc8cf9902[m
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Sun May 26 13:28:12 2019 +0800
+
+    Student CRUD
+    
+    Created UPdate , Delete <InSERT in student information
+
+[33mcommit 8884ecfc19261b83e33ad426a55fde44c29d70de[m
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Sun May 26 01:46:35 2019 +0800
+
+    Update Teacher page
+    
+    CRUD now working in teachers information page
+
+[33mcommit 67630d7c669591618527dc83ac126ef14242b096[m
+Merge: 3edaca2 2c44ce5
+Author: Jacob Denis <jacoblinodenis@gmail.com>
+Date:   Sat May 25 22:23:05 2019 +0800
+
+    Merge branch 'pom' of https://github.com/metadevph/attendarepo into pom
