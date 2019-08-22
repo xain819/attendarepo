@@ -676,7 +676,7 @@ class Admin_model extends CI_Model{
 	public function check_student_rosters($a,$b){
 		
 		$this->db->distinct();
-		//$this->db->where('term','S1');
+		$this->db->where('term','S1');
 		$this->db->where('start',date("Y-m-d"));
 		$this->db->where('teacher_id_number',$a);
 	    $this->db->where('period_number',$b);

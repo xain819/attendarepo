@@ -194,7 +194,7 @@ $(document).ready(function() {
             { data: null,
                  render:function(data){
                 
-                    var start=new Date(`${data['AttendanceDate']} ${data['PeriodStartTime']}`).getTime();
+                    var start=new Date(`${data['AttendanceDate']} ${data['PeriodStartTime']}`).getTime()+5*1000*60;
                     var swipe=new Date(`${data['AttendanceDate']} ${data['AttendanceTime']}`).getTime();
                 
 
@@ -264,7 +264,7 @@ $(document).ready(function() {
 
                   
                 
-                    var grace=start + parseInt('1')*60*1000;
+                    var grace=start + parseInt('6')*60*1000;
                     var f=(grace-swipe)/(1000*60);
 
                     if (f<0 && letter_number==0){

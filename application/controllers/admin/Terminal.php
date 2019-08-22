@@ -41,20 +41,23 @@
 		
 		public function get_terminal_info()
 		{
-			$data['date']=$this->input->post('data');
-			$now= new Datetime('now');
+			// $data['date']=$this->input->post('data');
+			// $now= new Datetime('now');
 			
+			// $data['username']=$_SESSION['username'];
+			// $q=$this->db->get('period')->result_array();
+			// foreach($q as $v){
+			// 	$start=new Datetime($v['PeriodStartTime']);
+			// 	$end=new Datetime($v['PeriodEndTime']);
+
+			// 	if($now >= $start && $now <= $end){
+			// 		$data['period']=$v['Period'];
+
+			// 	}
+			$data['date']=$this->input->post('data');
+			// }
+			$data['period']=$this->admin->get_period();
 			$data['username']=$_SESSION['username'];
-			$q=$this->db->get('period')->result_array();
-			foreach($q as $v){
-				$start=new Datetime($v['PeriodStartTime']);
-				$end=new Datetime($v['PeriodEndTime']);
-
-				if($now >= $start && $now <= $end){
-					$data['period']=$v['Period'];
-
-				}
-			}
 	
 			$result=$this->admin->get_terminal_info($data['username'],$data['date'],$data['period']);
 		
@@ -98,7 +101,7 @@
 		public function get_student_schedule(){
 
 			$data['id']=$this->input->post('id');
-			$data['period']=$this->get_period();
+			$data['period']=$this->admin->get_period();
 			$data['username']=$_SESSION['username'];
 		
 			if($data['username']=='R-101'){
