@@ -6,6 +6,7 @@
     <script src="<?=base_url() ?>public/js/settings.js"></script>
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+    
 
                 <div class="row">
                     

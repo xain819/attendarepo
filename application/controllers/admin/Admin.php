@@ -22,7 +22,13 @@ class Admin extends CI_Controller
 		$data['view']='admin/admin/index';
 		$this->load->view('layoutv2',$data);
 	}
-
+	
+	public function settings()
+	{
+		
+		$data['view']='admin/admin/settings';
+		$this->load->view('layoutv2',$data);
+	}
 	//---------------------------------------------------------
 	function filterdata()
 	{

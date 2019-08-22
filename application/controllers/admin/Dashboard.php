@@ -21,6 +21,17 @@
 			$data['view'] = 'admin/masterscheduler/index';
 			$this->load->view('layout', $data);
 		}
+		public function info(){
+	
+			$data['student'] =$this->dashboard_model->get_all_student();
+			$data['teacher'] = $this->dashboard_model->get_all_teacher();
+			$data['attendance'] = $this->dashboard_model->get_all_attendance();
+			$data['hallpass'] = $this->dashboard_model->get_all_hallpass();
+			$data['class'] = $this->dashboard_model->get_all_class();
+			
+
+			echo  json_encode($data);
+		}
 		
 	}
 

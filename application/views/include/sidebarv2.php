@@ -6,6 +6,8 @@
               
 
                 <?php if($this->rbac->check_module_permission('admin')): ?>  
+
+                
                     <li class="nav-label">Administration</li>
 
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/dashboard'); ?>"><i class="fas fa-tachometer-alt"></i><span class="nav-text">Dashboard</span><span class="badge badge-success nav-badge"></span></a>
@@ -123,7 +125,54 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                 
+
+                <?php if($this->rbac->check_module_permission('secretary')): ?>  
+
+                <li class="nav-label">Secretary Dashboard</li>
+
+
+              
+                <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/secretary'); ?>" >
+                    <i class="fas fa-sign-out-alt"></i><span class="nav-text">Daily Pass Log</span>
+                        </a>
+                      
+                    </li>
+
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/reports'); ?>" >
+                    <i class="fas fa-scroll"></i><span class="nav-text">Reports</span>
+                        </a>
+                    </li>
+
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/help'); ?>" >
+                    <i class="fas fa-question-circle"></i><span class="nav-text">Help and FAQ </span>
+                        </a>
+                    </li>
+
+
+
+
+
+                <?php endif; ?>
+                <?php if($this->rbac->check_module_permission('admin')): ?>  
+
+                <li class="nav-label">System Settings</li>
+
+
+              
+                <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/settings'); ?>" >
+                <i class="fas fa-cog"></i><span class="nav-text">School Settings</span>
+                        </a>
+                       
+                    </li>
+
+
+
+
+
+
+                <?php endif; ?>
+
+
             
                    
                     
