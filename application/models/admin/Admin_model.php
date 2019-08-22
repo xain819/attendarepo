@@ -71,8 +71,9 @@ class Admin_model extends CI_Model{
 		
 	}
 	public function get_day_count(){
+		$today=date("Y-m-d");
 		
-		$sql = "SELECT  count(DISTINCT  `start`) as 'count' FROM `vschedule_date` where `start` between '2019-07-01' AND '2019-07-16'";
+		$sql = "SELECT  count(DISTINCT  `start`) as 'count' FROM `vschedule_date` where `start` between '2019-07-01' AND '$today'";
 		$q=$this->db->query($sql)->result_array();
 		return $q;
 		
