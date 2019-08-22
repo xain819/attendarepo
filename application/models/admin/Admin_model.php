@@ -25,8 +25,10 @@ class Admin_model extends CI_Model{
 	
 			$start=new Datetime($result['PeriodStartTime']);
 			$end=new Datetime($result['PeriodEndTime']);
+			echo "<pre>";
 			print_r($now);
 		print_r($start);
+		print_r($end);
 		
 			if($now >= $start && $now <= $end){
 					$data['period']=$v;
