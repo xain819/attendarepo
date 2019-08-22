@@ -413,7 +413,7 @@ $(document).ready(function(){
        let tnhp=`<div class="col-md-6 col-sm-6 col-xs-12">
 
                                 ${a}
-                                <span class="info-box-icon ${bg}"><i class="fa fa-hand-grab-o"></i></span>
+                                <span class="info-box-icon ${bg}"><i class="${element.icon}"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text-sm hallpass_type">${HallPass}</span>
                                     <span class="info-box-number">${element.time_limit} Minutes</span>
@@ -447,7 +447,7 @@ $(document).ready(function(){
        let tahp=`<div class="col-md-6 col-sm-6 col-xs-12">
 
                   ${a}
-                  <span class="info-box-icon ${bg}"><i class="fa fa-hand-grab-o"></i></span>
+                  <span class="info-box-icon ${bg}"><i class="${element.icon}"></i></span>
                   <div class="info-box-content">
                       <span class="info-box-text-sm hallpass_type">${HallPass}</span>
                       <span class="info-box-number">${element.time_limit} Minutes</span>
