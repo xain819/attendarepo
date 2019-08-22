@@ -16,6 +16,7 @@ class Admin_model extends CI_Model{
 	
 		$now= new Datetime('now');
 		$data['username']=$_SESSION['username'];
+	
 
 		foreach($period_list as $v){
 
@@ -24,6 +25,8 @@ class Admin_model extends CI_Model{
 	
 			$start=new Datetime($result['PeriodStartTime']);
 			$end=new Datetime($result['PeriodEndTime']);
+			print_r($now);
+		print_r($start);
 		
 			if($now >= $start && $now <= $end){
 					$data['period']=$v;
