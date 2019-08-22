@@ -218,7 +218,7 @@
         <div class="col-md-11">
 
               <FORM id='myform'>
-              <input type="text" id="student_id" class="form-control" placeholder="Student ID"  value="">
+              <input type="text" id="student_id" class="form-control" placeholder="Student ID"  value="" autofocus>
             
               </FORM>
               

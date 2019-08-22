@@ -4,20 +4,59 @@ class Admin_model extends CI_Model{
 
 
 	public function get_period(){
+
 		$today = date("Y-m-d");  
-			$now= new Datetime('now');
-			$data['username']=$_SESSION['username'];
-			$q=$this->db->get('period')->result_array();
-			foreach($q as $v){
-				$start=new Datetime($v['PeriodStartTime']);
-				$end=new Datetime($v['PeriodEndTime']);
-				//$a=$start->format('H:i:s');
-				
-				if($now >= $start && $now <= $end){
-					$data['period']=$v['Period'];
+		$today=date("Y-m-d");
+		$this->db->where('start',$today);
+		$q=$this->db->get('scheduledate')->row_array();
+	
+		$this->db->where('ScheduleType',$q['title']);
+		$p=$this->db->get('scheduletype')->row_array();
+		$period_list=explode("|",$p['PeriodAccess']);
+	
+		$now= new Datetime('now');
+		$data['username']=$_SESSION['username'];
+
+		foreach($period_list as $v){
+		
+	
+			$sql= "SELECT * FROM `period` WHERE `Period`='$v'";
+			$result=$this->db->query($sql)->row_array();
+			$start=new Datetime($result['PeriodStartTime']);
+			$end=new Datetime($result['PeriodEndTime']);
+
+			
+			if($now >= $start && $now <= $end){
+					$data['period']=$v;
 				}
-			}
-			return $data['period'];
+		
+			
+			
+			
+		}
+		return $data['period'];
+	
+	
+		// echo "<pre>";
+	
+
+		// $sql= "SELECT * FROM `period` WHERE `Period` IN(1,2,4,5)";
+		// $result=$this->db->query($sql)->row_array();
+		// print_r($result);
+
+		// 	// $now= new Datetime('now');
+		// 	// $data['username']=$_SESSION['username'];
+		// 	// $q=$this->db->get('period')->result_array();
+		// 	// foreach($q as $v){
+		// 	// 	$start=new Datetime($v['PeriodStartTime']);
+		// 	// 	$end=new Datetime($v['PeriodEndTime']);
+		// 	// 	//$a=$start->format('H:i:s');
+				
+		// 	// 	if($now >= $start && $now <= $end){
+		// 	// 		$data['period']=$v['Period'];
+		// 	// 	}
+		// 	// }
+		// 	// return $data['period'];
 			
 	}
 
@@ -644,10 +683,11 @@ class Admin_model extends CI_Model{
 		$q=$this->db->get('vstudent_roster')->result_array();
 		return $q;
 	}
+	// roster list with data on the hallpass
 	public function check_student_rosters_data($a){
 		
 		$this->db->distinct();
-		//$this->db->where('term','S1');
+		$this->db->where('term','S1');
 		//$this->db->where('start',date("Y-m-d"));
 		$this->db->where('teacher_id_number',$a);
 	    //$this->db->where('period_number',$b);
