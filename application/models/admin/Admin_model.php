@@ -18,16 +18,16 @@ class Admin_model extends CI_Model{
 		$data['username']=$_SESSION['username'];
 
 		foreach($period_list as $v){
-		
-	
+
 			$sql= "SELECT * FROM `period` WHERE `Period`='$v'";
 			$result=$this->db->query($sql)->row_array();
+	
 			$start=new Datetime($result['PeriodStartTime']);
 			$end=new Datetime($result['PeriodEndTime']);
-
-			
+		
 			if($now >= $start && $now <= $end){
 					$data['period']=$v;
+					
 				}
 		
 			

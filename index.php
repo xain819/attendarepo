@@ -312,5 +312,5 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
-date_default_timezone_set('Asia/Singapore');
+date_default_timezone_set('America/Chicago');
 require_once BASEPATH.'core/CodeIgniter.php';
