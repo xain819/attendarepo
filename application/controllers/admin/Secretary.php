@@ -78,6 +78,7 @@
 			$data['teacher_id_number']=$data['username'];
 			$result=$this->admin->check_student_mot($today);
 			
+			
 		
 			echo json_encode($result);
 

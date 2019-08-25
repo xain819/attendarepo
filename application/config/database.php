@@ -76,12 +76,11 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	 'username' => 'attenda',
-	 'password' => 'VEEpr1aKcv7Xp2Wu',
-	// 'username' => 'root',
-	// 'password' => '',
-	'database' => 'attendatrack_v2',
-	//database' => 'attendatrack',
+	 //'username' => 'attenda',
+	 //'password' => 'VEEpr1aKcv7Xp2Wu',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'attendatrack',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -96,6 +95,4 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-	//testghjkl
-
 );

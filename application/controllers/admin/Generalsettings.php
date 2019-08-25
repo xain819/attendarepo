@@ -26,6 +26,23 @@
 		echo json_encode($data);
 		
 		}
+		
+		public function edit_hallpass()
+		{
+		$response=$this->input->post('data');
+		 $id=array_key_first($response);
+		 $time=$response[$id]['TimeAllocated'];
+		 $this->admin->edit_hallpass($id,$time);
+		 $type=$this->input->post('type');
+		$data['PassType']=$this->hallpass->get_pass_type();
+		$data['info'] = $this->hallpass->get_all($type);
+
+		echo json_encode($data);
+		 
+		 
+
+		}
+		
 
 		public function delete_hallpass()
 		{

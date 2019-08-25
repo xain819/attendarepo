@@ -165,14 +165,7 @@ $(document).ready(function() {
         ]
         
     } );
-    // $('#classes').on( 'click', 'tbody td:not(:first-child)', function (e) {
-    //     editor.inline( this );
-    //     console.log( editor.inline( this ));
 
-    // } );
- 
-    //lumalabas nman na kaso may error na 403
-    //not allowed daw try ko sir.mag import felling ko sa 
     var a= $('#classes').DataTable( {
         dom: 'Bfrtip',
         "pageLength": 20,
@@ -330,7 +323,7 @@ $(document).ready(function() {
             // 'selectNone',
         ]
     });
-    // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
+
     var uploadEditor = new $.fn.dataTable.Editor( {
         fields: [ {
             label: 'CSV file:',

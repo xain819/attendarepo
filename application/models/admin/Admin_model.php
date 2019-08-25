@@ -626,7 +626,18 @@ class Admin_model extends CI_Model{
 	
 		
 	
-	}public function change_data_status($data){
+	}
+	public function edit_hallpass($a,$b){
+		$this->db->set('TimeAllocated',$b);
+		$this->db->where('HallPassID',$a);
+		$this->db->update('hallpass');
+		return true;
+	
+		
+	
+	}
+	
+	public function change_data_status($data){
 	  
 		if ($data=='hallpass'){
 		$this->db->set('is_active',$this->input->post('status'));

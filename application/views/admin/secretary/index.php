@@ -140,22 +140,22 @@ $(document).ready(function() {
     console.log($(this).data('id'));
     console.log($(this).data('type'));
 
-	$.post('<?=base_url("admin/secretary/change_status")?>',
-	{
-        '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
-		id : $(this).data('id'),
-        status : $(this).is(':checked')==true?1:0,
-        type: $(this).data('type')
-       
-        
-	},
-	function(data){a.ajax.reload();
-    
-    
-       
-		
-	});
-        });
+                    $.post('<?=base_url("admin/secretary/change_status")?>',
+                    {
+                        '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
+                        id : $(this).data('id'),
+                        status : $(this).is(':checked')==true?1:0,
+                        type: $(this).data('type')
+                    
+                        
+                    },
+                    function(data){a.ajax.reload();
+                    
+                    
+                    
+                        
+                    });
+     });
       
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
