@@ -1,1 +1,1 @@
-'If ON staff can override and edit any student Hall Pass swipes. For example, staff can change a TARDY Hall Pass swipe to ON TIME. Default is OFF (suggested setting); teachers can still mark Hall Pass tardies as excused and accrued tardy minutes will not be counted against in-class seat time'
+'If 'ON', all student attendance is finalized and all Hall Passes will expire at the end of the school day (E.O.D). If 'OFF', attendance can be updated and Hall Passes issued until 11:59:59 PM of same day'

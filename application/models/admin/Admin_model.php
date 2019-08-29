@@ -2,11 +2,32 @@
 
 class Admin_model extends CI_Model{
 
+	public function general_master($a){
+		$this->db->select('is_active');
+		$this->db->where('master_name',$a);
+		$result=$this->db->get('master_control')->row_array();
+		return $result;
+	}
 
+	public function student_arrival_check_in()
+	{
+		// this check the first period of array
+		$today = date("Y-m-d");  
+		$now= new Datetime('now');
+		$sql ="SELECT DISTINCT PeriodStartTime, period_number FROM `vschedule_date` where start='2019-08-26' and term='S1' ORDER BY `period_number`  ASC";
+		$result=$this->db->query($sql)->row_array();
+		$first_period=new Datetime($result['PeriodStartTime']);
+
+		$sql ="SELECT DISTINCT master_value  FROM `master_control` where master_name='Student Later-Arrival Check-in'";
+		$result=$this->db->query($sql)->row_array();
+		
+		return ($now > new Datetime($result['master_value'])) ? 'true':'false';
+
+	}
 	public function get_period(){
 
 		$today = date("Y-m-d");  
-		$today=date("Y-m-d");
+
 		$this->db->where('start',$today);
 		$q=$this->db->get('scheduledate')->row_array();
 	
@@ -17,6 +38,7 @@ class Admin_model extends CI_Model{
 		$now= new Datetime('now');
 		$data['username']=$_SESSION['username'];
 	
+		$data['period']='no period';
 
 		foreach($period_list as $v){
 
@@ -621,6 +643,8 @@ class Admin_model extends CI_Model{
 	return ($this->db->affected_rows() != 1) ? false : true;}
 
 	public function add_gracetime($data){
+		print_r($data);
+		$this->db->set('GracePeriod',$data['master_period_time']);
 		$this->db->update('period', $data);
 		return true;
 	
@@ -631,6 +655,7 @@ class Admin_model extends CI_Model{
 		$this->db->set('TimeAllocated',$b);
 		$this->db->where('HallPassID',$a);
 		$this->db->update('hallpass');
+		
 		return true;
 	
 		
@@ -668,6 +693,7 @@ class Admin_model extends CI_Model{
 		$this->db->where('period_number',$b);
 	
 		$q=$this->db->get('vstudent_roster')->result_array();
+	
 		return $q;
 		
 	}
@@ -834,6 +860,19 @@ class Admin_model extends CI_Model{
 	
 	
 	}
+	public function check_if_attendance_exist($a){
+		$now = new Datetime('now');
+		$date=$now->format('y-m-d');
+		$time=$now->format('H:i:s');
+
+		$this->db->where('class_id',$a);
+		$this->db->where('AttendanceDate',$date);
+		$this->db->where('PeriodID',$_SESSION['period_number']);
+		$q=$this->db->get('attendance')->result_array();
+		return $q;
+
+
+	}
 	
 	public function record_attendace($a){
 
@@ -850,6 +889,8 @@ class Admin_model extends CI_Model{
 		
 		//check if attendance is already available 
 		if($q==null){
+		//check if late
+		
 		
 				$this->db->set('class_id',$a);
 				$this->db->set('AttendanceDate',$date);

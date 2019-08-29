@@ -17,6 +17,7 @@
 			$data['view1'] = 'terminal/alertmodal';
 			$data['username']=$_SESSION['username'];
 			//$result=$this->admin->get_terminal_hallpass($data['username']);
+			
 		
 			$this->load->view('terminal/index',$data);
 
@@ -68,23 +69,32 @@
 		$result=$this->admin->record_student_hallpass($data);
 		echo json_encode($result);
 		}
-		function get_period(){
+		// function get_period(){
 			
 		
-			$now= new Datetime('now');
+		// 	$now= new Datetime('now');
 			
-			$data['username']=$_SESSION['username'];
-			$q=$this->db->get('period')->result_array();
-			foreach($q as $v){
-				$start=new Datetime($v['PeriodStartTime']);
-				$end=new Datetime($v['PeriodEndTime']);
+		// 	$data['username']=$_SESSION['username'];
+		// 	$q=$this->db->get('period')->result_array();
+		// 	foreach($q as $v){
+		// 		$start=new Datetime($v['PeriodStartTime']);
+		// 		$end=new Datetime($v['PeriodEndTime']);
 
-				if($now >= $start && $now <= $end){
-					$data['period']=$v['Period'];
-					return $data['period'];
-				}
-			}
+		// 		if($now >= $start && $now <= $end){
+		// 			$data['period']=$v['Period'];
+		// 			return $data['period'];
+		// 		}
+		// 	}
 			
+		// }
+
+
+		 function student_arrival_check_in(){
+			$result=$this->admin->student_arrival_check_in();
+			//false if not late
+			
+
+
 		}
 
 		public function get_student_schedule(){
@@ -93,6 +103,7 @@
 			$data['period']=$this->admin->get_period();
 			$data['username']=$_SESSION['username'];
 		
+		     
 
 			 
 			if($data['username']=='R-101'){
@@ -109,12 +120,25 @@
 			{
 			
 				$result=$this->admin->get_student_class_access($data['id'],$data['period']);
-		    
 				if($result==null){
 					echo json_encode('not_enrolled');
 				}else{
+					//validate of the student is late and need to go to admin and first scan
+					$is_first=count($this->admin->check_if_attendance_exist($result[0]['class_id']));
+					$is_late=$this->admin->student_arrival_check_in();
+					$is_student_arrival_checkin=$this->admin->general_master('Student Later-Arrival Check-in');
+				
+			
+					if($is_late=='true' && $is_first==0 && $is_student_arrival_checkin['is_active']==1) {
+						echo json_encode('late');
+						
+					}
+					else{
 					$b=$this->admin->record_attendace($result[0]['class_id']);
 					echo json_encode($b);
+					}
+					
+				
 				}
 			}
 

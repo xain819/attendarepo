@@ -359,7 +359,7 @@ $(document).ready(function() {
     })
     editor.on( 'create', function ( e, json, data ) {
     alert( 'New row added' );
-} );
+    } );
     
 });
 </script>

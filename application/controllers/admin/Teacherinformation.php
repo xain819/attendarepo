@@ -65,15 +65,8 @@
 			$now= new Datetime('now');
 			
 			$data['username']=$_SESSION['username'];
-			$q=$this->db->get('period')->result_array();
-			foreach($q as $v){
-				$start=new Datetime($v['PeriodStartTime']);
-				$end=new Datetime($v['PeriodEndTime']);
-
-				if($now >= $start && $now <= $end){
-					$data['period']=$v['Period'];
-				}
-			}		
+			$data['period']=$this->admin->get_period();
+			
 			$data['teacher_id_number']=$data['username'];
 			$result=$this->admin->check_student_if_enrolled($data['teacher_id_number'],$data['period'],$today);
 			echo json_encode($result);

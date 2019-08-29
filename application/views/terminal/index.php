@@ -503,9 +503,9 @@ $(document).ready(function(){
         }
         else if(data=='late'){
           swal({
-            title:'Please Proceed Inside',
-            timer: 2000,
-            text:'',
+            title:'You are Late',
+            timer: 3000,
+            text:'Please Go to Admin Office',
            });
         }
         else{

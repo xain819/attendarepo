@@ -18,8 +18,8 @@
 		public function index(){
 			$data['title'] = 'Control Pannel';
 			$data['view'] = 'admin/controlpannel/index';
-			$data['period']=$this->admin->get_period();
-			$data['type']=$this->admin->get_day_type();
+			//$data['period']=$this->admin->get_period();
+			//$data['type']=$this->admin->get_day_type();
 		
 			$this->load->view('layoutv2', $data);
 		}
