@@ -193,7 +193,7 @@
 <section >
 
 
-<div class="container bg-success bg-aqua" style="padding-top:10px;padding-bottom:10px;  " >
+<div class="container bg-success bg-aqua"  >
   <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="pull-left col-md-2" >
         <h3>Room: <span id='location'></span> </h4>
@@ -240,7 +240,7 @@
     </div>
 </section>
 <section>
-<div class="container bg-success bg-aqua" style="padding-bottom:0px;" >
+<div class="container bg-success bg-aqua"  style="padding-bottom:0px;" >
   <div class="row">
   <div class="col-md-3 col-sm-3 col-xs-12">
           <div class="info-box bg-aqua">
