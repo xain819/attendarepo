@@ -359,14 +359,56 @@ $(document).ready(function(){
      
       console.log(data);
       console.log('hi');
+      const aa=data[0].HPLockStart.split(':');
+      const bb=data[0].HPLockEnd.split(':');
+
+
+
+
+
        const teacher_name=`${data[0].FirstName} ${data[0].LastName}`;
   
+       var dt=new Date(`${data[0]['start']} ${data[0]['PeriodStartTime']}`);
+       var dt1=new Date(`${data[0]['start']} ${data[0]['PeriodEndTime']}`);
+  
+       var a=dt.setMinutes(dt.getMinutes() + parseInt(aa[1]));
+       var a=dt.setSeconds(dt.getSeconds() + parseInt(aa[2]));
+       var b=dt1.setMinutes(dt1.getMinutes() - parseInt(bb[1]));
+       var b=dt1.setSeconds(dt1.getSeconds() - parseInt(bb[2]));
+
+       a= new Date(a);
+       b= new Date(b);
+       console.log(a);
+
+console.log(b);
+       const hh=a.getHours();
+       const mm=a.getMinutes();
+       const ss=a.getSeconds();
+       const h=b.getHours();
+       const m=b.getMinutes();
+       const s=b.getSeconds();
+      
+
+       var a=Math.trunc(f);
+        
+        var b=Math.abs(Math.trunc((f-a)*60));
+        console.log (typeof(a));
+        console.log(a);
+        if(b<=9){
+            return `(${Math.abs(a)}:0${b})`
+        }else{
+            return `(${Math.abs(a)}:${b})`
+        }
+
+
+     
+         
       $('#TeacherName').html(teacher_name);
       $('#period_number').html(data[0].period_number);
       $('#location').html(data[0].location);
       $('#SubjectName').html(data[0].course_description);
-    $('#AvailableTime').html(data.AvailableUntil);
-    $('#AvailableHPTime').html(data.HallPassLock);
+    $('#AvailableTime').html(`${hh}:${mm}`);
+    $('#AvailableHPTime').html(`${h}:${m}`);
 
 
     })

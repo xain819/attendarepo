@@ -69,7 +69,22 @@
 			
 			$data['teacher_id_number']=$data['username'];
 			$result=$this->admin->check_student_if_enrolled($data['teacher_id_number'],$data['period'],$today);
+			$grace_checked=$this->admin->general_master($id_name='pgt');
+			
+			if($grace_checked['is_active']==1){
+				foreach ($result as $key => $item) {
+				
+					$item['GracePeriod'] = '00:00:00';
+					$result[$key] = $item;
+					
+				 }
 			echo json_encode($result);
+
+			}
+			else{
+			echo json_encode($result);
+			}
+		
 
 		}
 		

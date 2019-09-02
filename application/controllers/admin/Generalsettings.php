@@ -105,10 +105,28 @@
 	     echo json_encode ($result);
 
 		}
+	
+		public function edit_2whp()
+		{
+		$data['limit']=$this->input->post('limit');
+		$data['type']=$this->input->post('type');
+		$this->admin->edit_2whp($data['limit'],$data['type']);
+	
+
+
+		}
 		public function edit_pgt()
 		{
 		$data['master_period_time']=$this->input->post('gracetime');
 		$result=$this->admin->add_gracetime($data);
+
+
+		}
+		public function edit_hplt()
+		{
+		$data['HPLockStart']=$this->input->post('start');
+		$data['HPLockEnd']=$this->input->post('end');
+		$this->admin->add_hplt($data['HPLockStart'],$data['HPLockEnd']);
 
 
 		}
@@ -134,6 +152,11 @@
 	
 	public function get_master_list(){
 		$data['info']=$this->admin->get_master();
+		$lock_time=$this->admin->get_lock_time();
+	
+		$data['info'][2]['hp_lock_start']=$lock_time['HPLockStart'];
+		$data['info'][2]['hp_lock_end']=$lock_time['HPLockEnd'];
+	
 		echo json_encode($data);
 		
 	

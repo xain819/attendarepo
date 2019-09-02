@@ -14,7 +14,7 @@
             <div class="modal-body">
             <form role="form" id="frm_time">
                     <div class="form-group">
-                        <input type="text" id='gracetime' name="gracetime" class="form-control" placeholder="Minutes" required>
+                        <input type="text" id='gracetime' name="gracetime" class="form-control" value='5' placeholder="Minutes" required>
                     </div>
                 </form>
 
@@ -68,22 +68,28 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Enter Hall Pass Limit</h5>
+                <h5 class="modal-title">Enter Passes Per Student</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <form role="form" id="frm_time">
+            <form role="form" id="frm_2whp">
                     <div class="form-group">
-                        <input type="text" id='hallpasslimit' name="hallpasslimit" class="form-control" placeholder="Number" required>
+                        <input type="text" id='nql-limit' name="nql" class="form-control" placeholder="Number" required>
                     </div>
+                    <select class="select2-width-50" id='select-type' style="width: 100%">
+                  
+                             <option value="Day">Day </option>
+                    <option value="Week">Week</option>
+                    <option value="Marking Period">Marking Period</option>
+                    <option value="Semester">Semester</option>
+                      </select>
                 </form>
-
 
 
             </div>
             <div class="modal-footer">
-                    <button type="button" class='btn-nql' id='btn-nql'  class="btn btn-primary">Save changes</button>
+                    <button type="button" class='btn-2whp' id='btn-2whp'  class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -100,10 +106,12 @@
             <div class="modal-body">
             <form role="form" id="frm_time">
                     <div class="form-group">
-                        <input type="text" id='hallpasslimit' name="hallpasslimit" class="form-control" placeholder="Before Period:Minutes" required>
+                    <label for="hp_lock_start">Before Start</label>
+                        <input type="text" id='hp_lock_start' name="hallpasslimit" class="form-control" placeholder="Before Period:Minutes" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" id='hallpasslimit' name="hallpasslimit" class="form-control" placeholder="After Period:Minutes" required>
+                    <label for="hp_lock_end">Before End</label>
+                        <input type="text" id='hp_lock_end' name="hallpasslimit" class="form-control" placeholder="After Period:Minutes" required>
                     </div>
                 </form>
 
@@ -111,7 +119,7 @@
 
             </div>
             <div class="modal-footer">
-                    <button type="button" class='btn-nql' id='btn-nql'  class="btn btn-primary">Save changes</button>
+                    <button type="button" class='btn-hplt' id='btn-hplt' class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

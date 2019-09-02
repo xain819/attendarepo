@@ -2,9 +2,18 @@
 
 class Admin_model extends CI_Model{
 
+
+	public function edit_2whp($a,$b){
+	
+		$this->db->set('value',$a.','.$b);
+		$this->db->where('id_name','nql');
+		$this->db->update('master_control');
+
+	}
+
 	public function general_master($a){
 		$this->db->select('is_active');
-		$this->db->where('master_name',$a);
+		$this->db->where('id_name',$a);
 		$result=$this->db->get('master_control')->row_array();
 		return $result;
 	}
@@ -222,6 +231,14 @@ class Admin_model extends CI_Model{
 		return $result = $query->result_array();
 		
 	}
+	public function get_lock_time(){
+		$sql='SELECT DISTinct HPLockStart,HPLockEnd FROM `period`';
+		$result=$this->db->query($sql)->row_array();
+	
+		return $result;
+		
+	}
+
 
 	public function get_master(){
 
@@ -229,6 +246,7 @@ class Admin_model extends CI_Model{
 		//$this->db->order_by('created_at', 'desc');
 		
 		$query = $this->db->get('master_control');
+
 		return $result = $query->result_array();
 	}
 	public function get_emergency_list(){
@@ -643,9 +661,23 @@ class Admin_model extends CI_Model{
 	return ($this->db->affected_rows() != 1) ? false : true;}
 
 	public function add_gracetime($data){
-		print_r($data);
+	
 		$this->db->set('GracePeriod',$data['master_period_time']);
 		$this->db->update('period', $data);
+		$this->db->set('master_value',$data['master_period_time']);
+		$this->db->where('id_name','pgt');
+		$this->db->update('master_control');
+		return true;
+	
+		
+	
+	}
+	public function add_hplt($a,$b){
+	
+		$this->db->set('HPLockStart',$a);
+		$this->db->set('HPLockEnd',$b);
+		$this->db->update('period');
+	
 		return true;
 	
 		

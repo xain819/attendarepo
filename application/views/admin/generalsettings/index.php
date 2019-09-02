@@ -2,8 +2,22 @@
 
 
 <link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/select2/css/select2.min.css">
-<link href="<?= base_url('public/assets/plugins/datatables/css/jquery.dataTables.min.css')?>" rel="stylesheet">
+<!-- <link href="<?= base_url('public/assets/plugins/datatables/css/jquery.dataTables.min.css')?>" rel="stylesheet"> -->
 <link href="<?= base_url('public/css/style.css')?>" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="<?php echo base_url('public/plugins/editor/css/editor.dataTables.min.css');?>">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url('public/plugins/editor/js/dataTables.editor.min.js');?>"></script>
+
+<script src="<?php echo base_url('public/plugins/papaparse/papaparse.min.js');?>"></script>
+
+<link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
 
             <?php $this->load->view('admin/generalsettings/hallpassfunction');?>
    
@@ -34,9 +48,9 @@
     <!-- <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
  
  <script src="<?=base_url()?>public/js/plugins-init/datatables.init.js"></script>
-  -->
+  <!-- -->
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"> -->
 <link rel="stylesheet" href="<?php echo base_url('public/plugins/editor/css/editor.dataTables.min.css');?>">
 <link rel="stylesheet" href="<?php echo base_url('public/plugins/yadcf/jquery.dataTables.yadcf.css');?>">
 
@@ -53,6 +67,14 @@
 
 <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+
+<script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 
 <script>
 
@@ -321,11 +343,29 @@ $(document).ready(function(){
                 const id=element.id;
                 const id_name=element.id_name;
                 const icon=element.icon;
+                const value=element.value;
             
                 var is_checked='';
                 if (is_active==1){ var is_checked='checked=""';}
                 $('[data-toggle="popover"]').popover();
-            
+                if(master_name=='Period Grace Time'){
+                    $("#gracetime").val(element.master_value);  
+                }
+                if(id_name=='hplt'){
+                    $("#hp_lock_end").val(element.hp_lock_end);  
+                    $("#hp_lock_start").val(element.hp_lock_start);  
+                }
+                if(id_name=='nql'){
+                    $("#nql-limit").val(element.value);
+                    const aa=element.value.split(",");
+                    console.log(aa);
+                    $("#nql-limit").val(aa[0]);
+                    $("#select-type").val(aa[1]);
+                }
+               
+                
+                
+                
                 
                 const mhl=`<div class="col-xl-4 col-sm-4">
                 <div class="card">
@@ -362,8 +402,6 @@ $(document).ready(function(){
                 master_element.html(mhl);
                 $('[data-toggle="popover"]').popover();
                 if(master_name!='no'){
-
-          
                 $("#master_list").append(mhl);   }
             });	
 
@@ -428,13 +466,46 @@ $(document).on('click','.btn-pgt',function(){
         data:({[csrfName]: csrfHash,name:name,gracetime:gracetime}),
         dataType:'JSON',
     }).done(function(data){
-    
-       
+      
         
     })
 
 });
 
+$(document).on('click','.btn-hplt',function(){
+    const start = $("#hp_lock_start").val();
+    const end = $("#hp_lock_end").val();
+  
+
+    console.log(start);
+    console.log(end);
+    $.ajax({
+        url:'<?php echo base_url(); ?>admin/generalsettings/edit_hplt',
+        type:"POST",
+        data:({[csrfName]: csrfHash,name:name,start:start,end:end}),
+        dataType:'JSON',
+    }).done(function(data){
+      
+        
+    })
+
+});
+$(document).on('click','.btn-2whp',function(){
+    const a = $("#nql-limit").val();
+    const b = $("#select-type").val();
+ 
+  
+    $.ajax({
+        url:'<?php echo base_url(); ?>admin/generalsettings/edit_2whp',
+        type:"POST",
+        data:({[csrfName]: csrfHash,limit:a,type:b}),
+        dataType:'JSON',
+    }).done(function(data){
+      
+        
+    })
+
+});
 
 // function hallpass(){
 //     $.ajax({

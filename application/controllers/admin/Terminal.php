@@ -126,7 +126,7 @@
 					//validate of the student is late and need to go to admin and first scan
 					$is_first=count($this->admin->check_if_attendance_exist($result[0]['class_id']));
 					$is_late=$this->admin->student_arrival_check_in();
-					$is_student_arrival_checkin=$this->admin->general_master('Student Later-Arrival Check-in');
+					$is_student_arrival_checkin=$this->admin->general_master('slac');
 				
 			
 					if($is_late=='true' && $is_first==0 && $is_student_arrival_checkin['is_active']==1) {
