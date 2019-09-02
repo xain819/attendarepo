@@ -244,7 +244,7 @@
   <div class="row">
   <div class="col-md-3 col-sm-3 col-xs-12">
           <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
+              <span class="info-box-icon bg-aqua"><i  style='font-size:24px;' class="fa fa-user"></i></span>
               <div class="info-box-content bg-aqua">
                   <br>
                   <span class="info-box-text-sm bg-aqua">Teacher</span>
@@ -257,7 +257,7 @@
 
       <div class="col-md-3 col-sm-3 col-xs-12">
           <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i class="fa fa-calendar-minus-o icon-terminal"></i></span>
+              <span class="info-box-icon bg-aqua"><i style='font-size:24px;' class="fa fa-calendar-minus-o"></i></span>
               <div class="info-box-content">
               <br>
                   <span class="info-box-text-sm">Subject</span>
@@ -270,7 +270,7 @@
     
       <div class="col-md-3 col-sm-3 col-xs-12">
           <div class="info-box bg-aqua fa-xs">
-              <span class="info-box-icon bg-aqua"><i class="fa fa-unlock-alt icon-terminal"></i></span>
+              <span class="info-box-icon bg-aqua"><i style='font-size:24px;'  class="fa fa-unlock-alt icon-terminal"></i></span>
               <div class="info-box-content">
               <br>
                   <span class="info-box-text-sm">Available Until</span>
@@ -282,7 +282,7 @@
       </div>
       <div class="col-md-3 col-sm-3 col-xs-12">
           <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i class="fa fa-lock icon-terminal"></i></span>
+              <span class="info-box-icon bg-aqua"><i  style='font-size:24px;' class="fa fa-lock icon-terminal"></i></span>
               <div class="info-box-content">
               <br>
                   <span class="info-box-text-sm">Hall Pass Locked</span>
