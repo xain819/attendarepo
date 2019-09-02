@@ -47,15 +47,16 @@
 			$data['date']=$this->input->post('data');
 		
 			$data['period']=$this->admin->get_period();
+			$today = date("Y-m-d");  
 			$data['username']=$_SESSION['username'];
 	
 			$result=$this->admin->get_terminal_info($data['username'],$data['date'],$data['period']);
 		
 	
-			  $this->session->set_userdata('teacher_id_number', $result[0]['teacher_id_number']);
-			  $this->session->set_userdata('class_code', $result[0]['class_code']);
-			  $this->session->set_userdata('period_number', $data['period']);
-			print_r(new Date('now'));
+			//   $this->session->set_userdata('teacher_id_number', $result[0]['teacher_id_number']);
+			//   $this->session->set_userdata('class_code', $result[0]['class_code']);
+			//   $this->session->set_userdata('period_number', $data['period']);
+			print_r($today );
 
 			echo json_encode($result);
 		

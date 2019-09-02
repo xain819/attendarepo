@@ -77,37 +77,10 @@ function teacher_hallpass(teacherid){
 
 
 
-
 $(document).ready(function(){
-
-    editor = new $.fn.dataTable.Editor( {
-        ajax: {
-            url: base_url+"admin/teacherinformation/get_all_teacher",
-            data:({ [csrfName]: csrfHash}),
-            type:"POST",
-            dataSrc: 'data',
-           
-            dataType:'JSON'
-       },
-       idSrc:  'AttendanceID',
-        table: "#Teacher_DataTable",
-        fields: [ 
-
-          
-            { label: "Time In:",name: "student_local_id"},
-        
-            
-        ]
-        
-    } );
-
-
-
- 
-            
+    console.log(base_url);
     var Teacher_DataTable = $('#Teacher_DataTable').DataTable({
         responsive: true,
-        dom: 'Bfrtip',
         "bAutoWidth": true,
         "autoWidth": true,
         ajax: {
@@ -165,9 +138,9 @@ $(document).ready(function(){
        
         select: true,
         buttons: [
-            { extend: 'create', editor: editor },
+            //{ extend: 'create', editor: editor },
              { extend: 'edit',   editor: editor },
-             { extend: 'remove', editor: editor },
+            // { extend: 'remove', editor: editor },
             // {
             //     extend: 'csv',
             //     text: 'Export CSV',
@@ -191,7 +164,6 @@ $(document).ready(function(){
             // 'selectNone',
         ]
     });
-
     $(document).on('click','#showaddteachermodal',function(){
        $.ajax({
            url:base_url+"admin/teacherinformation/teacher_settings ",
