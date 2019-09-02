@@ -213,12 +213,12 @@
         
         <br>  
         <span class="clock"></span>
-        <br>  
+        <br>  <br>
         </div>  
         
         <div class="form-group">
         <div class="col-md-12">
-        <div class="col-md-6 pull center ">
+        <div class="col-md-6 pull-center ">
 
               <FORM id='myform'>
               <input type="text" id="student_id" class="form-control" placeholder="Student ID"  value="" autofocus>
