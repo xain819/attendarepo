@@ -54,7 +54,7 @@
 	
 			  $this->session->set_userdata('teacher_id_number', $result[0]['teacher_id_number']);
 			  $this->session->set_userdata('class_code', $result[0]['class_code']);
-			  $this->session->set_userdata('period_number', $result[0]['period_number']);
+			  $this->session->set_userdata('period_number', $data['period']);
 
 			echo json_encode($result);
 		
