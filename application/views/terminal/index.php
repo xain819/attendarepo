@@ -266,7 +266,7 @@
       </div>
     
       <div class="col-md-3 col-sm-3 col-xs-12">
-          <div class="info-box bg-aqua">
+          <div class="info-box bg-aqua fa-xs">
               <span class="info-box-icon bg-aqua"><i class="fa fa-unlock-alt"></i></span>
               <div class="info-box-content">
               <br>
@@ -279,7 +279,7 @@
       </div>
       <div class="col-md-3 col-sm-3 col-xs-12">
           <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i class="fa fa-lock"></i></span>
+              <span class="info-box-icon bg-aqua"><i class="fa fa-lock 1x"></i></span>
               <div class="info-box-content">
               <br>
                   <span class="info-box-text-sm">Hall Pass Locked</span>
