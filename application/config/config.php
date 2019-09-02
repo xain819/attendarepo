@@ -497,8 +497,8 @@ $config['compress_output'] = FALSE;
 | helper' page of the user guide for information regarding date handling.
 |
 */
-$config['time_reference'] = 'Asia/Singapore';
-
+//$config['time_reference'] = 'Asia/Singapore';
+$config['time_reference'] = 'America/Chicago';
 /*
 |--------------------------------------------------------------------------
 | Rewrite PHP Short Tags
