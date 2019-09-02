@@ -191,7 +191,7 @@
 
 
 <div class="container bg-success bg-aqua" style="padding-top:40px;padding-bottom:50px;  " >
-  <div class="col-md-12 col-sm-6 col-xs-12">
+  <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="pull-left col-md-2" >
         <h3>Room: <span id='location'></span> </h4>
           <h4>Period: <span id='period_number'></span> </h4>
