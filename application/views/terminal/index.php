@@ -211,9 +211,9 @@
     <div class="pull center col-md-12 col-sm-12 col-xs-12">
         <div class="pull-center" >
         
-        <br>  <br> 
+        <br>  
         <span class="clock"></span>
-        <br>  <br>
+        <br>  
         </div>  
         
         <div class="form-group">
