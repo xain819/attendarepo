@@ -273,8 +273,8 @@
               <span class="info-box-icon bg-aqua"><i style='font-size:24px;'  class="fa fa-unlock-alt icon-terminal"></i></span>
               <div class="info-box-content">
               <br>
-                  <span class="info-box-text-sm">Available Until</span>
-                  <span class="info-box-number" id="AvailableTime">12:45:00</span>
+                  <span class="info-box-text-sm" style='font-size:14px;' >Available Until</span>
+                  <span class="info-box-number" id="AvailableTime"></span>
               </div>
               <!-- /.info-box-content -->
           </div>
@@ -286,7 +286,7 @@
               <div class="info-box-content">
               <br>
                   <span class="info-box-text-sm">Hall Pass Locked</span>
-                  <span class="info-box-number" id="AvailableHPTime">12:39:00</span>
+                  <span class="info-box-number" id="AvailableHPTime"></span>
               </div>
               <!-- /.info-box-content -->
           </div>
