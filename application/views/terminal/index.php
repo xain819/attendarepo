@@ -26,7 +26,7 @@
 </head>
 <style>
 
-
+    
       html,body {
         padding:0;
         margin:0;
@@ -182,6 +182,9 @@
         -moz-transform:translate3d(0,0,0) rotateX(0);
         -ms-transform:translate3d(0,0,0) rotateX(0);
         transform:translate3d(0,0,0) rotateX(0);
+      }
+      .icon-terminal{
+        font-size:24px;
       }
 
 </style>
