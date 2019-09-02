@@ -538,13 +538,21 @@ $(document).ready(function(){
       data: ({[csrfName]: csrfHash,id:id}),
       }).done(function (data){
         if(data=='not_enrolled'){
-          swal("Not Enrolled in this Class");
-        }else if(data=='updated'){
+  
           swal({
-            title:'Thank you',
+            title:'Not Enrolled in this Class',
             timer: 1000,
             text:'',
            });
+           location.reload();
+          
+        }else if(data=='updated'){
+          swal({
+            title:'Present on-time',
+            timer: 1000,
+            text:'',
+           });
+           location.reload();
         }
         else if(data=='late'){
           swal({
@@ -552,6 +560,7 @@ $(document).ready(function(){
             timer: 3000,
             text:'Please Go to Admin Office',
            });
+           location.reload();
         }
         else{
           console.log(data);
