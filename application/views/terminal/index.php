@@ -188,9 +188,9 @@
       }
 
 </style>
-<body class="hold-transition lockscreen" style="margin:0 auto; padding:0px;">
+<body class="hold-transition lockscreen" style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
 
-<section >
+<section style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
 
 
 <div class="container bg-success bg-aqua"  >
