@@ -6,7 +6,7 @@
             <div class="modal-header">
     
             
-                <button type="button" class="btn btn-outline-primary pull-center" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;Cancel</span></button>
+                <button type="button" class="btn btn-outline-primary-lg pull-center" data-dismiss="modal" aria-label="Cancel"><span aria-hidden="true">Cancel</span></button>
                 <!-- <h4 class="modal-title">Attenda Track</h4> -->
             </div>
             <div class="modal-body">
