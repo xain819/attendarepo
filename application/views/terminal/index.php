@@ -208,7 +208,7 @@
    </div>
    <div class=col-md-3>
   </div>
-    <div class="pull center col-md-6 col-sm-6 col-xs-12">
+    <div class="pull center col-md-12 col-sm-12 col-xs-12">
         <div class="pull-center" >
         
         <br>  <br> 
@@ -218,7 +218,7 @@
         
         <div class="form-group">
         <div class="col-md-12">
-        <div class="col-md-11">
+        <div class="col-md-6">
 
               <FORM id='myform'>
               <input type="text" id="student_id" class="form-control" placeholder="Student ID"  value="" autofocus>
