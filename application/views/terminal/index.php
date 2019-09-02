@@ -579,6 +579,7 @@ $(document).ready(function(){
       })
     }else{
       swal("Please Enter Your Student ID");
+      location.reload();
     }
   })
 
