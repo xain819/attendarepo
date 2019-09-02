@@ -4,9 +4,10 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <button type="button" class=" pull-center" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;Cancel</span></button>
-                <h4 class="modal-title">Attenda Track</h4>
+    
+            
+                <button type="button" class="btn btn-outline-primary pull-center" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;Cancel</span></button>
+                <!-- <h4 class="modal-title">Attenda Track</h4> -->
             </div>
             <div class="modal-body">
                 <div class="container-fluid" style="padding:20px;">
