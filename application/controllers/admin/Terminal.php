@@ -45,6 +45,7 @@
 		{
 		
 			$data['date']=$this->input->post('data');
+			$now= new Datetime('now');
 		
 			$data['period']=$this->admin->get_period();
 			$today = date("Y-m-d");  
@@ -56,7 +57,8 @@
 			//   $this->session->set_userdata('teacher_id_number', $result[0]['teacher_id_number']);
 			//   $this->session->set_userdata('class_code', $result[0]['class_code']);
 			//   $this->session->set_userdata('period_number', $data['period']);
-			print_r($today );
+			print_r($$now );
+	
 
 			echo json_encode($result);
 		
