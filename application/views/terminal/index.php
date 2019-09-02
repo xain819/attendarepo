@@ -185,12 +185,12 @@
       }
 
 </style>
-<body class="hold-transition lockscreen" style="margin-top:20px; padding-top:100px;">
+<body class="hold-transition lockscreen" style="margin-top:10px; padding-top:10px;">
 
 <section >
 
 
-<div class="container bg-success bg-aqua" style="padding-top:40px;padding-bottom:50px;  " >
+<div class="container bg-success bg-aqua" style="padding-top:10px;padding-bottom:10px;  " >
   <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="pull-left col-md-2" >
         <h3>Room: <span id='location'></span> </h4>
@@ -208,7 +208,7 @@
     <div class="pull center col-md-6 col-sm-6 col-xs-12">
         <div class="pull-center" >
         
-        <br>  <br> <br>  <br> <br> <br>
+        <br>  <br> 
         <span class="clock"></span>
         <br>  <br>
         </div>  
