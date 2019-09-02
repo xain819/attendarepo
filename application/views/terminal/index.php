@@ -188,7 +188,7 @@
       }
 
 </style>
-<body class="hold-transition lockscreen" style="margin-top:10px; padding-top:10px;">
+<body class="hold-transition lockscreen" style="margin:0 auto; padding:0px;">
 
 <section >
 
@@ -240,7 +240,7 @@
     </div>
 </section>
 <section>
-<div class="container bg-success bg-aqua" style="padding-bottom:50px;" >
+<div class="container bg-success bg-aqua" style="padding-bottom:0px;" >
   <div class="row">
   <div class="col-md-3 col-sm-3 col-xs-12">
           <div class="info-box bg-aqua">
