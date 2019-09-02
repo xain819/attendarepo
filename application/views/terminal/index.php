@@ -53,7 +53,7 @@
       .clock {
         position:relative;
         font-family:monaco,consolas,"courier new",monospace;
-        font-size:3.5rem;
+        font-size:3.86rem;
         line-height:1.375;
       }
 
@@ -211,7 +211,7 @@
     <div class="pull center col-md-12 col-sm-12 col-xs-12">
         <div class="pull-center" >
         
-        <br>  
+        <br>  <br>
         <span class="clock"></span>
         <br>  <br>
         </div>  
@@ -220,7 +220,7 @@
         <div class="col-md-12">
         <div class="col-md-6 pull-center ">
 
-              <FORM id='myform'>
+              <FORM id='myform' >
               <input type="text" id="student_id" class="form-control" placeholder="Student ID"  value="" autofocus>
             
               </FORM>
