@@ -179,14 +179,11 @@
                                     <ul>
                                         <li><a href="javascript:void()"><i class="icon-user"></i> <span>My Profile</span></a>
                                         </li>
-                                        <li><a href="javascript:void()"><i class="icon-wallet"></i> <span>My Wallet</span></a>
-                                        </li>
+                             
                                         <li><a href="javascript:void()"><i class="icon-envelope"></i> <span>Inbox</span></a>
                                         </li>
-                                        <li><a href="javascript:void()"><i class="fa fa-cog"></i> <span>Setting</span></a>
-                                        </li>
-                                        <li><a href="<?= base_url("auth/logout") ?>"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                        </li>
+                                
+                                 
                                         <li><a href="<?= base_url("auth/logout") ?>"><i class="icon-power"></i> <span>Logout</span></a>
                                         </li>
                                     </ul>
