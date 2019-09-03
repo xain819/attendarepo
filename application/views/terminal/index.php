@@ -201,6 +201,12 @@
 
 
 <div class="container bg-success bg-aqua"  >
+<div class=" clock pull-center" >
+        
+       
+
+
+        </div>  
   <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="pull-left col-md-2" >
         <h3>Room: <span id='location'></span> </h4>
@@ -218,8 +224,14 @@
     <div class="pull center col-md-12 col-sm-12 col-xs-12">
         <div class=" clock pull-center" >
         
-     
-     
+       
+
+
+        </div>  
+           <div class=" clock pull-center" >
+        
+       
+
 
         </div>  
         
