@@ -394,7 +394,7 @@ $(document).ready(function(){
       $('#location').html(data[0].location);
       $('#SubjectName').html(data[0].course_description);
     $('#AvailableTime').html(`${AvailableTime}`);
-    $('#AvailableHPTime').html(`${AvailableTime}`);
+    $('#AvailableHPTime').html(`${AvailableHPTime}`);
 
 
     })
