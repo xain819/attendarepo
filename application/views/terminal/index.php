@@ -603,7 +603,7 @@ $(document).ready(function(){
 var clock;
 			
 			$(document).ready(function() {
-				var date = new Date('now');
+				var date = new Date();
 				clock = $('.clock').FlipClock(date, {
 					clockFace: 'TwelveHourClock'
 				});
