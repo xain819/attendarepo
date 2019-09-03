@@ -525,28 +525,29 @@ $(document).ready(function(){
   
           swal({
             title:'Not Enrolled in this Class',
-            timer: 2000,
-            text:'Please Procced to your class',
-           },function(){$("#student_id").val('');}
-           
-           );
+            timer: 5000,
+            text:'',
+           });
+           $("#student_id").val('');
          
           
         }else if(data=='updated'){
           swal({
             title:'Present on-time',
-            timer: 2000,
+            timer: 5000,
             text:'',
            });
+           $("#student_id").val('');
            
         }
         else if(data=='late'){
           swal({
             title:'You are Late',
-            timer: 2000,
+            timer: 5000,
             text:'Please Go to Admin Office',
            });
-          
+           $("#student_id").val('');
+           
         }
         else{
           console.log(data);
@@ -566,7 +567,7 @@ $(document).ready(function(){
       })
     }else{
       swal("Please Enter Your Student ID");
-      
+      location.reload();
     }
   })
 
