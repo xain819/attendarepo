@@ -362,6 +362,7 @@ $(document).ready(function(){
      
       console.log(data);
       console.log('hi');
+      
       const aa=data[0].HPLockStart.split(':');
       const bb=data[0].HPLockEnd.split(':');
 
@@ -381,6 +382,7 @@ $(document).ready(function(){
 
        a= new Date(a);
        b= new Date(b);
+       console.log(a.toLocaleTimeString());
        console.log(a);
 
 console.log(b);
