@@ -247,7 +247,7 @@
               <span class="info-box-icon bg-aqua"><i  style='font-size:24px;' class="fa fa-user"></i></span>
               <div class="info-box-content bg-aqua">
                   <br>
-                  <span class="info-box-text-sm bg-aqua">Teacher</span>
+                  <span class="info-box-text-sm bg-aqua" style='font-size:10px;'>Teacher</span>
                   <span class="info-box-number bg-aqua" id="TeacherName"></span>
               </div>
               <!-- /.info-box-content -->
@@ -260,7 +260,7 @@
               <span class="info-box-icon bg-aqua"><i style='font-size:24px;' class="fa fa-calendar-minus-o"></i></span>
               <div class="info-box-content">
               <br>
-                  <span class="info-box-text-sm">Subject</span>
+                  <span class="info-box-text-sm" style='font-size:10px;'>Subject</span>
                   <span class="info-box-number" id="SubjectName"></span>
               </div>
               <!-- /.info-box-content -->
