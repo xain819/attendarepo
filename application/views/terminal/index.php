@@ -317,6 +317,8 @@
 
   <!-- jQuery 2.2.3 -->
   <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <link rel="stylesheet" href="<?php echo base_url('public/plugins/flipclock/flipclock.css');?>">
+  <script src="<?php echo base_url('public/plugins/flipclock/flipclock.js');?>"></script>
   <!-- Bootstrap 3.3.6 -->
   <script src="<?= base_url() ?>public/bootstrap/js/bootstrap.min.js"></script>
   <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
