@@ -384,7 +384,7 @@ $(document).ready(function(){
        a= new Date(a);
        b= new Date(b);
        const AvailableTime=a.toLocaleTimeString();
-       const AvailableHPTime=b.toLocaleTimeString()
+       const AvailableHPTime=b.toLocaleTimeString();
 
        console.log(a.toLocaleTimeString());
        console.log(a.toLocaleTimeString());

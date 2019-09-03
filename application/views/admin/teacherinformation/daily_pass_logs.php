@@ -204,7 +204,8 @@ $(document).ready(function() {
             { data: 'TimeAllocated' },
             { data: null,
                 render:function(data){
-                    const t=new Date(data['DateCreated']);     
+                    const t=new Date(data['DateCreated']); 
+
                     return `${t.getHours()}:${t.getMinutes()}:${t.getSeconds()}`
                 }},
                 { data: null,
@@ -213,9 +214,10 @@ $(document).ready(function() {
                         var r= `--:--:--`;
                     }else{
                         const t=new Date(data['date_time_ended']);
+                        const t.toLocaleTimeString();
                         var r=`${t.getHours()}:${t.getMinutes()}:${t.getSeconds()}`;
                     }
-                    return r
+                    return t;
                 }},
          
             { data: null,
@@ -300,10 +302,11 @@ $(document).ready(function() {
             { data: null,
                  render:function(data){
                 var start = new Date(data['DateCreated']).getTime();
+               
                 var end=new Date(data['date_time_ended']).getTime();
      
                 var s=((start+5*60*1000-end)/(1000*60));
-              
+
 
                 
                 return `${s}`
