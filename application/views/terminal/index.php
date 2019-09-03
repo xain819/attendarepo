@@ -334,7 +334,7 @@ document.querySelector('#myform').onsubmit = function(e){
   const a=document.getElementById("student_id").innerHTML = x;}
   e.preventDefault();
   
-  console.log(a);
+ 
 }
 
 
@@ -547,6 +547,7 @@ $(document).ready(function(){
             text:'Please Go to Admin Office',
            });
            $("#student_id").val('');
+           swal.close()
            
         }
         else{
