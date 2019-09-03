@@ -13,20 +13,14 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
   <link rel="stylesheet" href="<?= base_url() ?>public/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
   
-  <link rel="stylesheet" href="<?php echo base_url('public/plugins/flipclock/flipclock.css');?>">
-  <script src="<?php echo base_url('public/plugins/flipclock/flipclock.js');?>"></script>
-  <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <link rel="stylesheet" href="<?php echo base_url('public/plugins/css/sweetalert.css');?>">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  
-  
-
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
@@ -197,11 +191,15 @@
 <body class="hold-transition lockscreen" style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
 
 <section style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
+<div class="clock"></div>
 
-
+<script type="text/javascript">
+	var clock = $('.clock').FlipClock({
+		clockFace: 'TwelveHourClock'
+	});
+</script>
 
 <div class="container bg-success bg-aqua"  >
-
   <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="pull-left col-md-2" >
         <h3>Room: <span id='location'></span> </h4>
@@ -217,12 +215,11 @@
    <div class=col-md-3>
   </div>
     <div class="pull center col-md-12 col-sm-12 col-xs-12">
-    
-           <div class=" clock pull-center" >
+        <div class="pull-center" >
         
-       
-
-
+        <br>  <br>
+        <span class="clock"></span>
+        <br>  <br>
         </div>  
         
         <div class="form-group">
@@ -304,7 +301,6 @@
 
   </div>
 </div>
- 
 </section>
 
   
@@ -320,8 +316,6 @@
 
   <!-- jQuery 2.2.3 -->
   <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
-  <link rel="stylesheet" href="<?php echo base_url('public/plugins/flipclock/flipclock.css');?>">
-  <script src="<?php echo base_url('public/plugins/flipclock/flipclock.js');?>"></script>
   <!-- Bootstrap 3.3.6 -->
   <script src="<?= base_url() ?>public/bootstrap/js/bootstrap.min.js"></script>
   <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
@@ -601,14 +595,78 @@ $(document).ready(function(){
   
 
 
+  var Clock = (function(){
 
+  var exports = function(element) {
+    this._element = element;
+    var html = '';
+    for (var i=0;i<6;i++) {
+      html += '<span>&nbsp;</span>';
+    }
+    this._element.innerHTML = html;
+    this._slots = this._element.getElementsByTagName('span');
+    this._tick();
+  };
+
+  exports.prototype = {
+
+    _tick:function() {
+      var time = new Date();
+      this._update(this._pad(time.getHours()) + this._pad(time.getMinutes()) + this._pad(time.getSeconds()));
+      var self = this;
+      setTimeout(function(){
+        self._tick();
+      },1000);
+    },
+
+    _pad:function(value) {
+      return ('0' + value).slice(-2);
+    },
+
+    _update:function(timeString) {
+
+      var i=0,l=this._slots.length,value,slot,now;
+      for (;i<l;i++) {
+
+        value = timeString.charAt(i);
+        slot = this._slots[i];
+        now = slot.dataset.now;
+
+        if (!now) {
+          slot.dataset.now = value;
+          slot.dataset.old = value;
+          continue;
+        }
+
+        if (now !== value) {
+          this._flip(slot,value);
+        }
+      }
+    },
+
+    _flip:function(slot,value) {
+
+      // setup new state
+      slot.classList.remove('flip');
+      slot.dataset.old = slot.dataset.now;
+      slot.dataset.now = value;
+
+      // force dom reflow
+      slot.offsetLeft;
+
+      // start flippin
+      slot.classList.add('flip');
+
+    }
+
+  };
+
+  return exports;
+  }());
+
+  var i=0,clocks = document.querySelectorAll('.clock'),l=clocks.length;
+  for (;i<l;i++) {
+  new Clock(clocks[i]);
+  }
 })
-var clock;
-			
-			$(document).ready(function() {
-				var date = new Date();
-				clock = $('.clock').FlipClock(date, {
-					clockFace: 'TwelveHourClock'
-				});
-			});
 </script>
