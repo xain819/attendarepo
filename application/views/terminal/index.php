@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url() ?>public/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
