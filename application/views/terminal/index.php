@@ -199,11 +199,6 @@
 <section style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
 <div class="clock"></div>
 
-<script type="text/javascript">
-	var clock = $('.clock').FlipClock({
-		clockFace: 'TwelveHourClock'
-	});
-</script>
 
 <div class="container bg-success bg-aqua"  >
   <div class="col-md-12 col-sm-12 col-xs-12">
