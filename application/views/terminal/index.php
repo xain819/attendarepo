@@ -524,7 +524,7 @@ $(document).ready(function(){
   
           swal({
             title:'Not Enrolled in this Class',
-            timer: 1000,
+            timer: 3000,
             text:'',
            });
            location.reload();
@@ -532,7 +532,7 @@ $(document).ready(function(){
         }else if(data=='updated'){
           swal({
             title:'Present on-time',
-            timer: 1000,
+            timer: 3000,
             text:'',
            });
            location.reload();
