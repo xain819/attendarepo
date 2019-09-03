@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
+  
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url() ?>public/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
@@ -55,15 +55,154 @@
         margin-top:2em;
       }
 
-      
+      .clock {
+        position:relative;
+        font-family:monaco,consolas,"courier new",monospace;
+        font-size:3.86rem;
+        line-height:1.375;
+      }
+
+      .clock:before,
+      .clock:after {
+        position:absolute;
+        top:0;
+        bottom:0;
+        content:':';
+        z-index:2;
+        line-height:1.15;
+        color:#333;
+      }
+
+      .clock:before {
+        left:2.325em;
+      }
+
+      .clock:after {
+        right:2.325em;
+      }
+
+      .clock span {
+        position:relative;
+        display:inline-block;
+        padding:0 .25em;
+        margin:0 .06125em;
+        z-index:1;
+
+        -webkit-transform:perspective(750);
+        -moz-transform:perspective(750);
+        -ms-transform:perspective(750);
+        transform:perspective(750);
+
+        -webkit-transform-style:preserve-3d;
+        -moz-transform-style:preserve-3d;
+        -ms-transform-style:preserve-3d;
+        transform-style:preserve-3d;
+      }
+
+      .clock span:first-child {
+        margin-left:0;
+      }
+
+      .clock span:last-child {
+        margin-right:0;
+      }
+
+      .clock span:nth-child(2),
+      .clock span:nth-child(4) {
+        margin-right:.3em;
+      }
+
+      .clock span:nth-child(3),
+      .clock span:nth-child(5) {
+        margin-left:.3em;
+      }
+
+      .clock span:before,
+      .clock span:after {
+        position:absolute;
+        left:0;
+        top:0;
+        right:0;
+        bottom:0;
+        color:#eee;
+        text-shadow:0 1px 0 #fff;
+        background:#333;
+        border-radius:.125em;
+        outline:1px solid transparent; /* fix jagged edges in ff */
+
+        -webkit-backface-visibility:hidden;
+        -moz-backface-visibility:hidden;
+        -ms-backface-visibility:hidden;
+        backface-visibility:hidden;
+
+        -webkit-transition:-webkit-transform .75s, opacity .75s;
+        -moz-transition:-moz-transform .75s, opacity .75s;
+        -ms-transition:-ms-transform .75s, opacity .75s;
+        transition:transform .75s, opacity .75s;
+      }
+
+      .clock span:before {
+        opacity:1;
+        z-index:1;
+        content:attr(data-old);
+
+        -webkit-transform-origin:0 0;
+        -moz-transform-origin:0 0;
+        -ms-transform-origin:0 0;
+        transform-origin:0 0;
+
+        -webkit-transform:translate3d(0,0,0) rotateX(0);
+        -moz-transform:translate3d(0,0,0) rotateX(0);
+        -ms-transform:translate3d(0,0,0) rotateX(0);
+        transform:translate3d(0,0,0) rotateX(0);
+      }
+
+      .clock span:after {
+        opacity:0;
+        z-index:2;
+        content:attr(data-now);
+
+        -webkit-transform-origin:0 100%;
+        -moz-transform-origin:0 100%;
+        -ms-transform-origin:0 100%;
+        transform-origin:0 100%;
+
+        -webkit-transform:translate3d(0,-102.5%,0) rotateX(90deg);
+        -moz-transform:translate3d(0,-102.5%,0) rotateX(90deg);
+        -ms-transform:translate3d(0,-102.5%,0) rotateX(90deg);
+        transform:translate3d(0,-102.5%,0) rotateX(90deg);
+      }
+
+      .clock .flip:before {
+        opacity:0;
+        -webkit-transform:translate3d(0,102.5%,0) rotateX(-90deg);
+        -moz-transform:translate3d(0,102.5%,0) rotateX(-90deg);
+        -ms-transform:translate3d(0,102.5%,0) rotateX(-90deg);
+        transform:translate3d(0,102.5%,0) rotateX(-90deg);
+      }
+
+      .clock .flip:after {
+        opacity:1;
+        -webkit-transform:translate3d(0,0,0) rotateX(0);
+        -moz-transform:translate3d(0,0,0) rotateX(0);
+        -ms-transform:translate3d(0,0,0) rotateX(0);
+        transform:translate3d(0,0,0) rotateX(0);
+      }
+      .icon-terminal{
+        font-size:24px;
+      }
 
 </style>
 <body class="hold-transition lockscreen" style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
 
 <section style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
+<div class="clock"></div>
 
-
-
+<script type="text/javascript">
+	var clock = $('.clock').FlipClock({
+		clockFace: 'TwelveHourClock'
+	});
+</script>
 
 <div class="container bg-success bg-aqua"  >
   <div class="col-md-12 col-sm-12 col-xs-12">
@@ -81,10 +220,10 @@
    <div class=col-md-3>
   </div>
     <div class="pull center col-md-12 col-sm-12 col-xs-12">
-        <div class="clock pull-center" >
+        <div class="pull-center" >
         
         <br>  <br>
-       
+        <span class="clock"></span>
         <br>  <br>
         </div>  
         
@@ -187,11 +326,6 @@
   <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
 </body>
 </html>
-<script type="text/javascript">
-	var clock = $('.clock').FlipClock({
-		clockFace: 'TwelveHourClock'
-	});
-</script>
 <script>
 var timee;
 <?php if($this->username=='123'){?>
@@ -209,7 +343,8 @@ document.querySelector('#myform').onsubmit = function(e){
   function Studentid(){
   var x = document.getElementById("myText").value;
   const a=document.getElementById("student_id").innerHTML = x;}
-
+  
+  console.log(a);
 }
 
 
@@ -236,8 +371,9 @@ $(document).ready(function(){
         dataType:'JSON',
     }).done(function(data){
      
- 
-
+      console.log(data);
+      console.log('hi');
+      
       const aa=data[0].HPLockStart.split(':');
       const bb=data[0].HPLockEnd.split(':');
 
@@ -260,7 +396,9 @@ $(document).ready(function(){
        const AvailableTime=a.toLocaleTimeString();
        const AvailableHPTime=b.toLocaleTimeString()
 
-
+       console.log(a.toLocaleTimeString());
+       console.log(a.toLocaleTimeString());
+     
          
       $('#TeacherName').html(teacher_name);
       $('#period_number').html(data[0].period_number);
@@ -534,6 +672,6 @@ $(document).ready(function(){
   // var i=0,clocks = document.querySelectorAll('.clock'),l=clocks.length;
   // for (;i<l;i++) {
   // new Clock(clocks[i]);
-  //}
+  }
 })
 </script>
