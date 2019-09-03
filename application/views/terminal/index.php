@@ -390,20 +390,7 @@ console.log(b);
        const h=b.getHours();
        const m=b.getMinutes();
        const s=b.getSeconds();
-      
-
-       var a=Math.trunc(f);
-        
-        var b=Math.abs(Math.trunc((f-a)*60));
-        console.log (typeof(a));
-        console.log(a);
-        if(b<=9){
-            return `(${Math.abs(a)}:0${b})`
-        }else{
-            return `(${Math.abs(a)}:${b})`
-        }
-
-
+     
      
          
       $('#TeacherName').html(teacher_name);
@@ -565,6 +552,7 @@ $(document).ready(function(){
         else{
           console.log(data);
           $("#terminal_modal").modal("show");
+
           $("body").on("click",".btn-hallpass",function(){
             console.log($(this).data('id'));
             $.ajax({
