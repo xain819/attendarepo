@@ -524,7 +524,7 @@ $(document).ready(function(){
   
           swal({
             title:'Not Enrolled in this Class',
-            timer: 3000,
+            timer: 5000,
             text:'',
            });
            location.reload();
@@ -532,7 +532,7 @@ $(document).ready(function(){
         }else if(data=='updated'){
           swal({
             title:'Present on-time',
-            timer: 3000,
+            timer: 5000,
             text:'',
            });
            location.reload();
@@ -540,7 +540,7 @@ $(document).ready(function(){
         else if(data=='late'){
           swal({
             title:'You are Late',
-            timer: 3000,
+            timer: 5000,
             text:'Please Go to Admin Office',
            });
            location.reload();
