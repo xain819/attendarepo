@@ -528,7 +528,7 @@ $(document).ready(function(){
             timer: 5000,
             text:'',
            });
-           location.reload();
+         
           
         }else if(data=='updated'){
           swal({
@@ -536,7 +536,7 @@ $(document).ready(function(){
             timer: 5000,
             text:'',
            });
-           location.reload();
+           
         }
         else if(data=='late'){
           swal({
@@ -544,7 +544,7 @@ $(document).ready(function(){
             timer: 5000,
             text:'Please Go to Admin Office',
            });
-           location.reload();
+          
         }
         else{
           console.log(data);
