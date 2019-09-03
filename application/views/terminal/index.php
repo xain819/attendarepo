@@ -343,8 +343,7 @@ document.querySelector('#myform').onsubmit = function(e){
   function Studentid(){
   var x = document.getElementById("myText").value;
   const a=document.getElementById("student_id").innerHTML = x;}
-  
-  console.log(a);
+
 }
 
 
@@ -371,9 +370,8 @@ $(document).ready(function(){
         dataType:'JSON',
     }).done(function(data){
      
-      console.log(data);
-      console.log('hi');
-      
+ 
+
       const aa=data[0].HPLockStart.split(':');
       const bb=data[0].HPLockEnd.split(':');
 
@@ -672,6 +670,6 @@ $(document).ready(function(){
   // var i=0,clocks = document.querySelectorAll('.clock'),l=clocks.length;
   // for (;i<l;i++) {
   // new Clock(clocks[i]);
-  }
+  //}
 })
 </script>
