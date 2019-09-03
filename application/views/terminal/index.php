@@ -332,6 +332,7 @@ document.querySelector('#myform').onsubmit = function(e){
   function Studentid(){
   var x = document.getElementById("myText").value;
   const a=document.getElementById("student_id").innerHTML = x;}
+  e.preventDefault();
   
   console.log(a);
 }
