@@ -81,10 +81,10 @@
    <div class=col-md-3>
   </div>
     <div class="pull center col-md-12 col-sm-12 col-xs-12">
-        <div class="pull-center" >
+        <div class="clock pull-center" >
         
         <br>  <br>
-        <span class="clock"></span>
+       
         <br>  <br>
         </div>  
         
