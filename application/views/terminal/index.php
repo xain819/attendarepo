@@ -526,7 +526,7 @@ $(document).ready(function(){
           swal({
             title:'Not Enrolled in this Class',
             timer: 2000,
-            text:'',
+            text:'Please Procced to your class',
            },function(){$("#student_id").val('');}
            
            );
