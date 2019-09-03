@@ -52,11 +52,11 @@
 			$result=$this->admin->get_terminal_info($data['username'],$data['date'],$data['period']);
 		
 			
-			//   $this->session->set_userdata('teacher_id_number', $result[0]['teacher_id_number']);
-			//   $this->session->set_userdata('class_code', $result[0]['class_code']);
-			//   $this->session->set_userdata('period_number', $data['period']);
+			  $this->session->set_userdata('teacher_id_number', $result[0]['teacher_id_number']);
+			  $this->session->set_userdata('class_code', $result[0]['class_code']);
+			  $this->session->set_userdata('period_number', $data['period']);
 		
-
+			
 			echo json_encode($result);
 		
 
