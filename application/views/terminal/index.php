@@ -248,7 +248,7 @@
               <div class="info-box-content bg-aqua">
                   <br>
                   <span class="info-box-text-sm bg-aqua" style='font-size:10px;'>Teacher</span>
-                  <span class="info-box-number bg-aqua" id="TeacherName"></span>
+                  <span class="info-box-number bg-aqua" style='font-size:10px;' id="TeacherName"></span>
               </div>
               <!-- /.info-box-content -->
           </div>
@@ -261,7 +261,7 @@
               <div class="info-box-content">
               <br>
                   <span class="info-box-text-sm" style='font-size:10px;'>Subject</span>
-                  <span class="info-box-number" id="SubjectName"></span>
+                  <span class="info-box-number" style='font-size:10px;'  id="SubjectName"></span>
               </div>
               <!-- /.info-box-content -->
           </div>
@@ -273,7 +273,7 @@
               <span class="info-box-icon bg-aqua"><i style='font-size:24px;'  class="fa fa-unlock-alt icon-terminal"></i></span>
               <div class="info-box-content">
               <br>
-                  <span class="info-box-text-sm" style='font-size:10px;' >Available Until</span>
+                  <span class="info-box-text-sm" style='font-size:10px;' >Available</span>
                   <span class="info-box-number"  style='font-size:10px;'  id="AvailableTime"></span>
               </div>
               <!-- /.info-box-content -->
@@ -285,7 +285,7 @@
               <span class="info-box-icon bg-aqua"><i  style='font-size:24px;' class="fa fa-lock icon-terminal"></i></span>
               <div class="info-box-content">
               <br>
-                  <span class="info-box-text-sm"  style='font-size:10px;'  >Hall Pass Locked</span>
+                  <span class="info-box-text-sm"  style='font-size:10px;'  >Locked</span>
                   <span class="info-box-number"  style='font-size:10px;'  id="AvailableHPTime"></span>
               </div>
               <!-- /.info-box-content -->
