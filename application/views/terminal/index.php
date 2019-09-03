@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="<?= base_url() ?>public/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
   
-  <link rel="stylesheet" href="<?php echo base_url('public/plugins/css/sweetalert.css');?>">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -191,13 +191,7 @@
 <body class="hold-transition lockscreen" style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
 
 <section style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
-<div class="clock"></div>
 
-<script type="text/javascript">
-	var clock = $('.clock').FlipClock({
-		clockFace: 'TwelveHourClock'
-	});
-</script>
 
 <div class="container bg-success bg-aqua"  >
   <div class="col-md-12 col-sm-12 col-xs-12">
@@ -267,7 +261,7 @@
               <div class="info-box-content">
               <br>
                   <span class="info-box-text-sm" style='font-size:10px;'>Subject</span>
-                  <span class="info-box-number" style='font-size:10px;'  id="SubjectName"></span>
+                  <span class="info-box-number" style='font-size:10px;' id="SubjectName"></span>
               </div>
               <!-- /.info-box-content -->
           </div>
@@ -279,7 +273,7 @@
               <span class="info-box-icon bg-aqua"><i style='font-size:24px;'  class="fa fa-unlock-alt icon-terminal"></i></span>
               <div class="info-box-content">
               <br>
-                  <span class="info-box-text-sm" style='font-size:10px;' >Available</span>
+                  <span class="info-box-text-sm" style='font-size:10px;' >Available Until</span>
                   <span class="info-box-number"  style='font-size:10px;'  id="AvailableTime"></span>
               </div>
               <!-- /.info-box-content -->
@@ -291,7 +285,7 @@
               <span class="info-box-icon bg-aqua"><i  style='font-size:24px;' class="fa fa-lock icon-terminal"></i></span>
               <div class="info-box-content">
               <br>
-                  <span class="info-box-text-sm"  style='font-size:10px;'  >Locked</span>
+                  <span class="info-box-text-sm"  style='font-size:10px;'  >Hall Pass Locked</span>
                   <span class="info-box-number"  style='font-size:10px;'  id="AvailableHPTime"></span>
               </div>
               <!-- /.info-box-content -->
