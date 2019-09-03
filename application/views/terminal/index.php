@@ -197,7 +197,7 @@
 <body class="hold-transition lockscreen" style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
 
 <section style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
-<div class="clock"></div>
+
 
 
 <div class="container bg-success bg-aqua"  >
@@ -216,11 +216,11 @@
    <div class=col-md-3>
   </div>
     <div class="pull center col-md-12 col-sm-12 col-xs-12">
-        <div class="pull-center" >
+        <div class=" clock pull-center" >
         
-        <br>  <br>
-        <span class="clock"></span>
-        <br>  <br>
+     
+     
+
         </div>  
         
         <div class="form-group">
