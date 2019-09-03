@@ -217,7 +217,7 @@ $(document).ready(function() {
                      
                         var r=`${t.getHours()}:${t.getMinutes()}:${t.getSeconds()}`;
                     }
-                    return t.toLocaleTimeString();;
+                    return t.toLocaleTimeString();
                 }},
          
             { data: null,
