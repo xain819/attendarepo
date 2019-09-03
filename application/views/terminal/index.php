@@ -382,25 +382,19 @@ $(document).ready(function(){
 
        a= new Date(a);
        b= new Date(b);
-       console.log(a.toLocaleTimeString());
-       console.log(a);
+       const AvailableTime=a.toLocaleTimeString();
+       const AvailableHPTime=b.toLocaleTimeString()
 
-console.log(b);
-       const hh=a.getHours();
-       const mm=a.getMinutes();
-       const ss=a.getSeconds();
-       const h=b.getHours();
-       const m=b.getMinutes();
-       const s=b.getSeconds();
-     
+       console.log(a.toLocaleTimeString());
+       console.log(a.toLocaleTimeString());
      
          
       $('#TeacherName').html(teacher_name);
       $('#period_number').html(data[0].period_number);
       $('#location').html(data[0].location);
       $('#SubjectName').html(data[0].course_description);
-    $('#AvailableTime').html(`${hh}:${mm}`);
-    $('#AvailableHPTime').html(`${h}:${m}`);
+    $('#AvailableTime').html(`${AvailableTime}`);
+    $('#AvailableHPTime').html(`${AvailableTime}`);
 
 
     })
