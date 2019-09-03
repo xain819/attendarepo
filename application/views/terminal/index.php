@@ -527,7 +527,9 @@ $(document).ready(function(){
             title:'Not Enrolled in this Class',
             timer: 5000,
             text:'',
-           });
+           },function(){$("#student_id").val('');}
+           
+           );
          
           
         }else if(data=='updated'){
