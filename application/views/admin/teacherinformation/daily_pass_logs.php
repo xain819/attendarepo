@@ -214,10 +214,10 @@ $(document).ready(function() {
                         var r= `--:--:--`;
                     }else{
                         const t=new Date(data['date_time_ended']);
-                        const t.toLocaleTimeString();
+                     
                         var r=`${t.getHours()}:${t.getMinutes()}:${t.getSeconds()}`;
                     }
-                    return t;
+                    return t.toLocaleTimeString();;
                 }},
          
             { data: null,
