@@ -525,7 +525,7 @@ $(document).ready(function(){
   
           swal({
             title:'Not Enrolled in this Class',
-            timer: 5000,
+            timer: 2000,
             text:'',
            },function(){$("#student_id").val('');}
            
@@ -535,7 +535,7 @@ $(document).ready(function(){
         }else if(data=='updated'){
           swal({
             title:'Present on-time',
-            timer: 5000,
+            timer: 2000,
             text:'',
            });
            
@@ -543,7 +543,7 @@ $(document).ready(function(){
         else if(data=='late'){
           swal({
             title:'You are Late',
-            timer: 5000,
+            timer: 2000,
             text:'Please Go to Admin Office',
            });
           
@@ -566,7 +566,7 @@ $(document).ready(function(){
       })
     }else{
       swal("Please Enter Your Student ID");
-      location.reload();
+      
     }
   })
 
