@@ -19,6 +19,7 @@
   
   <link rel="stylesheet" href="<?php echo base_url('public/plugins/flipclock/flipclock.css');?>">
   <script src="<?php echo base_url('public/plugins/flipclock/flipclock.js');?>"></script>
+  <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -672,6 +673,6 @@ $(document).ready(function(){
   // var i=0,clocks = document.querySelectorAll('.clock'),l=clocks.length;
   // for (;i<l;i++) {
   // new Clock(clocks[i]);
-  }
+  //}
 })
 </script>
