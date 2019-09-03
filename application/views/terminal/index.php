@@ -16,11 +16,15 @@
   <link rel="stylesheet" href="<?= base_url() ?>public/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
   
-
+  <link rel="stylesheet" href="<?php echo base_url('public/plugins/flipclock/flipclock.css');?>">
+  <script src="<?php echo base_url('public/plugins/flipclock/flipclock.css');?>"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  
+  
+
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
@@ -191,7 +195,13 @@
 <body class="hold-transition lockscreen" style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
 
 <section style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
+<div class="clock"></div>
 
+<script type="text/javascript">
+	var clock = $('.clock').FlipClock({
+		clockFace: 'TwelveHourClock'
+	});
+</script>
 
 <div class="container bg-success bg-aqua"  >
   <div class="col-md-12 col-sm-12 col-xs-12">
