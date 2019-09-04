@@ -786,7 +786,7 @@ class Admin_model extends CI_Model{
 		$this->db->where('start',date("Y-m-d"));
 		$this->db->where('student_local_id',$a);
 		//$this->db->where('attendance_time')
-		$query=$this->db->get('vstudent_roster')->result_array();
+		$query=$this->db->get('vstudent_roster')->row_array();
 
 		return $query;
 		
@@ -905,6 +905,16 @@ class Admin_model extends CI_Model{
 
 
 	}
+	public function check_if_hallpass_exist($a){
+	
+
+		$this->db->where('attendance_id',$a);
+		$this->db->where('is_active',1);
+		$result=$this->db->get('attendance_hallpass')->row_array();
+		return $result;
+
+
+	}
 	
 	public function record_attendace($a){
 
@@ -948,13 +958,23 @@ class Admin_model extends CI_Model{
 			//attendance available then check attendance hallpass
 			//print('<pre>');
 			//print_r($q);
-			$this->session->set_userdata('AttendanceID',$q[0]['AttendanceID']);
+				$this->session->set_userdata('AttendanceID',$q[0]['AttendanceID']);
 			$this->db->where('attendance_id',$q[0]['AttendanceID']);
 			$this->db->where('is_active',1);
-			$result=$this->db->get('attendance_hallpass')->result_array();
+			$result=$this->db->get('attendance_hallpass')->row_array();
+
+			$this->db->select('location');
+			$this->db->select('HallPass');
+			$this->db->where('hallpass',$result['hallpass']);
+			$location=$this->db->get('hallpass')->row_array();
+		
 			if($result==null){
 				return true;
-			}else{
+			}
+			elseif($location['location']==$_SESSION['username'])
+			{
+			
+					
 				$now =new DateTime('now');
 				$time_end=$now->format("Y-m-d H:i:s");
 				//print_r($now->date);
@@ -965,6 +985,24 @@ class Admin_model extends CI_Model{
 				$this->db->update('attendance_hallpass');
 				return 'updated';
 				//$this->db->set('date_time_ended',$result[0])
+			}elseif($location['location']==''){
+				$now =new DateTime('now');
+				$time_end=$now->format("Y-m-d H:i:s");
+				//print_r($now->date);
+				$this->db->set('is_active',0);
+				$this->db->set('date_time_ended',$time_end);
+				$this->db->where('attendance_id',$q[0]['AttendanceID']);
+				$this->db->where('is_active',1);
+				$this->db->update('attendance_hallpass');
+				return 'updated';
+				//$this->db->set('date_time_ended',$result[0])
+
+			}
+			else{
+				$data['text']='Proceed';
+				$data['title']=$location['HallPass'];
+				$data['room']=$location['location'];
+				return $data;
 			}
 			
 			//return 'check if there is an active hall pass ';

@@ -122,6 +122,9 @@ function selectColumns ( editor, csv, header ) {
     } );
 }
 
+$('#classes').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this );
+    } );
 
  
 $(document).ready(function() {
@@ -148,18 +151,18 @@ $(document).ready(function() {
             fieldInfo: '24 hour clock format with seconds'
             
             },
-            { label: "Time In:",name: "student_local_id"},
-            { label: "Time In:",name: "grade_level"},
-            { label: "Time In:",name: "last_name"},
-            { label: "Time In:",name: "first_name"},
-            { label: "Status:",name: "AttendanceID",
-            type:"select",
-            options: [
-                     { label: "Yes", value: "yes" },
-                     { label: "No",  value: "no" },
-                    ]
+             { label: "Tardy:",name: "student_local_id"},
+            // { label: "Time In:",name: "grade_level"},
+            // { label: "Time In:",name: "last_name"},
+            // { label: "Time In:",name: "first_name"},
+            // { label: "Status:",name: "AttendanceID",
+            // type:"select",
+            // options: [
+            //          { label: "Yes", value: "yes" },
+            //          { label: "No",  value: "no" },
+            //         ]
 
-            },
+            // },
 
             
         ]

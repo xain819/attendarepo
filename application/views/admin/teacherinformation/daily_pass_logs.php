@@ -205,8 +205,7 @@ $(document).ready(function() {
             { data: null,
                 render:function(data){
                     const t=new Date(data['DateCreated']); 
-
-                    return `${t.getHours()}:${t.getMinutes()}:${t.getSeconds()}`
+                    return `${t.toLocaleTimeString()}`;
                 }},
                 { data: null,
                 render:function(data){
@@ -214,10 +213,11 @@ $(document).ready(function() {
                         var r= `--:--:--`;
                     }else{
                         const t=new Date(data['date_time_ended']);
+                        console.log(t);
                      
                         var r=`${t.getHours()}:${t.getMinutes()}:${t.getSeconds()}`;
                     }
-                    return t.toLocaleTimeString();
+                    return r;
                 }},
          
             { data: null,
@@ -297,8 +297,20 @@ $(document).ready(function() {
             { data: 'hallpass' },
             { data: 'location' },
             { data: 'TimeAllocated' },
-            { data: 'DateCreated' },
-            { data: 'date_time_ended' },
+      
+            { data: null,
+                 render:function(data){
+                var time = new Date(data['DateCreated']);
+                         
+                return `${time.toLocaleTimeString()}`
+            }},
+            { data: null,
+                 render:function(data){
+                var time = new Date(data['date_time_ended']);
+                         
+                return `${time.toLocaleTimeString()}`
+            }},
+            
             { data: null,
                  render:function(data){
                 var start = new Date(data['DateCreated']).getTime();

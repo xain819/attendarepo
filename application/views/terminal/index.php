@@ -333,8 +333,10 @@ document.querySelector('#myform').onsubmit = function(e){
   var x = document.getElementById("myText").value;
   const a=document.getElementById("student_id").innerHTML = x;}
   e.preventDefault();
+
+e.returnValue = false;
   
- 
+
 }
 
 
@@ -384,7 +386,7 @@ $(document).ready(function(){
        a= new Date(a);
        b= new Date(b);
        const AvailableTime=a.toLocaleTimeString();
-       const AvailableHPTime=b.toLocaleTimeString();
+       const AvailableHPTime=b.toLocaleTimeString()
 
        console.log(a.toLocaleTimeString());
        console.log(a.toLocaleTimeString());
@@ -525,7 +527,7 @@ $(document).ready(function(){
   
           swal({
             title:'Not Enrolled in this Class',
-            timer: 2000,
+            timer: 5000,
             text:'',
            });
            $("#student_id").val('');
@@ -534,7 +536,7 @@ $(document).ready(function(){
         }else if(data=='updated'){
           swal({
             title:'Present on-time',
-            timer: 2000,
+            timer: 5000,
             text:'',
            });
            $("#student_id").val('');
@@ -543,15 +545,23 @@ $(document).ready(function(){
         else if(data=='late'){
           swal({
             title:'You are Late',
-            timer: 2000,
+            timer: 5000,
             text:'Please Go to Admin Office',
            });
            $("#student_id").val('');
-           swal.close()
+        }
+          else if(data['text']=='Proceed'){
+          swal({
+            title:'Incorrect Room',
+            timer: 5000,
+            text:`Please Proceed to ${data['title']} : ${data['room']}`,
+           });
+           $("#student_id").val('');
+           
            
         }
         else{
-          console.log(data);
+        
           $("#terminal_modal").modal("show");
 
           $("body").on("click",".btn-hallpass",function(){
@@ -560,15 +570,20 @@ $(document).ready(function(){
             url: base_url+"admin/terminal/get_student_student_hallpass",
             type: "POST",
             dataType: "json",
-            data: ({[csrfName]: csrfHash,id:id,hallpass:$(this).data('id')}),}).done(function(data){
-              $("#terminal_modal").modal("hide");
+            data: ({[csrfName]: csrfHash,id:id,hallpass:$(this).data('id')}),}).done(function(data)
+            {
+              console.log('jererwr');
+         
+            $("#student_id").val('');
+
+             // $("#terminal_modal").modal("hide");
             })
           })
         }
       })
     }else{
       swal("Please Enter Your Student ID");
-      location.reload();
+      //location.reload();
     }
   })
 
