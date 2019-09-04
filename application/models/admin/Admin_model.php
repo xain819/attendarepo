@@ -793,12 +793,14 @@ class Admin_model extends CI_Model{
 	}
 	public function check_hallpass_logs($a,$b)
 	{
+
 		$this->db->distinct();
 		$this->db->where('AttendanceDate',date("Y-m-d"));
 		$this->db->where('teacher_id_number',$a);
 		$this->db->where('period_number',$b);
 		$this->db->where('date_time_ended','0000-00-00 00:00:00');
 		$result['active']=$this->db->get('vstudent_hallpass_logs')->result_array();
+
 
 		$this->db->distinct();
 		$this->db->where('AttendanceDate',date("Y-m-d"));
@@ -841,23 +843,58 @@ class Admin_model extends CI_Model{
 	}
 
 	public function record_student_hallpass($a){
+	
 		$this->db->where('attendance_id',$_SESSION['AttendanceID']);
 		$this->db->where('hallpass',$a['hallpass']);
 		$this->db->where('is_active',1);
+		$response['location']=$_SESSION['username'];
+
 		//check if ther is an active hallpass if 
 		$q=$this->db->get('attendance_hallpass')->result_array();
-		if($q==null){
+		if($q==null)
+		{
 		$data_array=array(
 			'attendance_id'=>$_SESSION['AttendanceID'],
 			'is_active'=>1,
 			'date_time_ended'=>'',
 			'hallpass'=>$a['hallpass']);
-			$this->db->insert('attendance_hallpass',$data_array);}
-		else{
-			
-			print_r("i");
+			$this->db->insert('attendance_hallpass',$data_array);
 
+	
+			$this->db->where('attendance_id',$_SESSION['AttendanceID']);
+			$this->db->where('hallpass',$a['hallpass']);
+			$this->db->where('is_active',1);
+			$q=$this->db->get('attendance_hallpass')->row_array();
+
+			$this->db->where('ID',$q['ID']);
+		
+			$response['response']=$this->db->get('vstudent_hallpass_logs')->row_array();
+			$response['status']='hallpass_updated';
+
+			$this->db->select('location');
+			$this->db->where('HallPass',$a['hallpass']);
+			$q=$this->db->get('hallpass')->row_array();
+	
+			$response['location']=$_SESSION['username'];
+			if($q['location']!=''){
+			$response['location']=$q['location'];
+			}
+			else
+			{
+			$response['location']=$_SESSION['username'];	
+			}
+			
+			
+		
+			
+			return $response;
 		}
+		
+		// else{
+		// 	$response['status']='Active HallPass';
+		// 	return $response;
+
+		// }
 		
 	}
 	
@@ -922,7 +959,8 @@ class Admin_model extends CI_Model{
 		$now = new Datetime('now');
 		$date=$now->format('y-m-d');
 		$time=$now->format('H:i:s');
-
+	
+		
 		$this->db->where('class_id',$a);
 		$this->db->where('AttendanceDate',$date);
 		$this->db->where('PeriodID',$_SESSION['period_number']);
@@ -931,8 +969,8 @@ class Admin_model extends CI_Model{
 		
 		//check if attendance is already available 
 		if($q==null){
-		//check if late
 		
+        // record new attendance if it does not exist	
 		
 				$this->db->set('class_id',$a);
 				$this->db->set('AttendanceDate',$date);
@@ -945,7 +983,13 @@ class Admin_model extends CI_Model{
 				$this->db->where('PeriodID',$_SESSION['period_number']);
 				$q=$this->db->get('attendance')->result_array();
 				$this->session->set_userdata('AttendanceID',$q[0]['AttendanceID']);
-		return 'recorded';
+				$this->db->where('AttendanceId',$q[0]['AttendanceID']);
+				$response['response']=$this->db->get('vterminal_response')->row_array();
+				$response['status']='new_attendance';
+				
+				
+
+		return $response;
 		}
 		elseif ($q[0]['class_id']!=null && $q[0]['attendance_time_mot']!=null) {
 			 $this->db->set('AttendanceTime',$time);
@@ -958,7 +1002,7 @@ class Admin_model extends CI_Model{
 			//attendance available then check attendance hallpass
 			//print('<pre>');
 			//print_r($q);
-				$this->session->set_userdata('AttendanceID',$q[0]['AttendanceID']);
+			$this->session->set_userdata('AttendanceID',$q[0]['AttendanceID']);
 			$this->db->where('attendance_id',$q[0]['AttendanceID']);
 			$this->db->where('is_active',1);
 			$result=$this->db->get('attendance_hallpass')->row_array();
@@ -969,7 +1013,11 @@ class Admin_model extends CI_Model{
 			$location=$this->db->get('hallpass')->row_array();
 		
 			if($result==null){
-				return true;
+				$response['response']=true;
+				$response['status']='show_hallpass';
+				//attendance is available and show hallpass
+				
+				return $response  ;
 			}
 			elseif($location['location']==$_SESSION['username'])
 			{
@@ -983,6 +1031,7 @@ class Admin_model extends CI_Model{
 				$this->db->where('attendance_id',$q[0]['AttendanceID']);
 				$this->db->where('is_active',1);
 				$this->db->update('attendance_hallpass');
+
 				return 'updated';
 				//$this->db->set('date_time_ended',$result[0])
 			}elseif($location['location']==''){
@@ -994,6 +1043,7 @@ class Admin_model extends CI_Model{
 				$this->db->where('attendance_id',$q[0]['AttendanceID']);
 				$this->db->where('is_active',1);
 				$this->db->update('attendance_hallpass');
+				
 				return 'updated';
 				//$this->db->set('date_time_ended',$result[0])
 

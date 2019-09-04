@@ -535,9 +535,9 @@ $(document).ready(function(){
           
         }else if(data=='updated'){
           swal({
-            title:'Present on-time',
+            title:'Hallpass Ontime',
             timer: 5000,
-            text:'',
+            text:'You are on time ',
            });
            $("#student_id").val('');
            
@@ -560,23 +560,106 @@ $(document).ready(function(){
            
            
         }
-        else{
+        else if(data['status'] === 'new_attendance'){
+          const response=data['response'];
+          console.log(response);
+          var time='';
         
+          const mm=response['GracePeriod'].split(':');
+          const tt=response['TransitionTime'].split(':');
+          var status='';
+          var type='';
+          var start=new Date(`${response['AttendanceDate']} ${response['PeriodStartTime']}`).getTime()+parseInt(tt[1])*60*1000+parseInt(tt[2])*1000;
+          var swipe=new Date(`${response['AttendanceDate']} ${response['AttendanceTime']}`).getTime();
+          var grace=start + parseInt(mm[1])*60*1000+ parseInt(mm[2])*1000;
+          var f=(grace-swipe)/(1000*60);
+                    if (swipe<=start && response.AttendanceTime!=''){
+                        status= 'On Time';
+                        type='success';
+                    }else if(swipe>=start && swipe<=grace)
+                    {
+                      status= 'Grace';
+                      type='success';
+                    }
+                    else{
+                      status= 'Late';
+                      type='warning'
+                        var a=Math.trunc(f);
+                        
+                        var b=Math.abs(Math.trunc((f-a)*60));
+                        console.log (typeof(a));
+                        console.log(a);
+                        if(b<=9){
+                            time `(${Math.abs(a)}:0${b})`
+                        }else{
+                            time= `(${Math.abs(a)}:${b})`
+                       }}
+                  
+                    swal({
+            title:`${status}`,
+            timer: 5000,
+            text:`You are ${status} : ${time}`,
+            type:`${type}`,
+           });
+           $("#student_id").val('');
+          
+          
+        }
+        else if(data['status'] === 'show_hallpass'){
+          console.log('j');
           $("#terminal_modal").modal("show");
+          
 
-          $("body").on("click",".btn-hallpass",function(){
-            console.log($(this).data('id'));
+          $("body").on("click",".btn-hallpass",function(e){
+            e.preventDefault();
+            $(this).data('id');
+            console.log($(this).data('data'));
+            
+   
+        
+
             $.ajax({
             url: base_url+"admin/terminal/get_student_student_hallpass",
             type: "POST",
             dataType: "json",
             data: ({[csrfName]: csrfHash,id:id,hallpass:$(this).data('id')}),}).done(function(data)
             {
-              console.log('jererwr');
-         
-            $("#student_id").val('');
+            if(data['status']==='hallpass_updated')
+            {
+          const response=data['response'];
+          const time_swipe=new Date(response['DateCreated']);
+          const limit=response['TimeAllocated'].split(':');
+          var time_limit=time_swipe.getTime()+parseInt(limit[1])*60*1000+parseInt(limit[2])*1000;
+          const sec=limit[2].split('.');
 
-             // $("#terminal_modal").modal("hide");
+          const limit_string=new Date(time_limit).toLocaleTimeString();
+ 
+          
+          // const mm=response['GracePeriod'].split(':');
+          // const tt=response['TransitionTime'].split(':');
+          // var status='';
+          // var type='';
+          // var start=new Date(`${response['AttendanceDate']} ${response['PeriodStartTime']}`).getTime()+parseInt(tt[1])*60*1000+parseInt(tt[2])*1000;
+          // var swipe=new Date(`${response['AttendanceDate']} ${response['AttendanceTime']}`).getTime();
+              swal({
+            title:`${data['response']['hallpass']}`,
+            timer: 5000,
+            text:`Activated:${time_swipe.toLocaleTimeString()} 
+            You Have ${limit[1]}:${sec[0]} Minutes
+            Please swipe back on or before ${limit_string}
+            Destination: ${data['location']}` ,
+                    
+          });
+            }
+            
+           
+    
+        
+           $("#student_id").val('');
+          
+
+             $("#terminal_modal").modal("hide");
+             $("#student_id").val('');
             })
           })
         }

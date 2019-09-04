@@ -66,7 +66,7 @@
 		public function get_student_student_hallpass(){
 		$data['student_id_number']=$this->input->post('id');
 		$data['hallpass']=$this->input->post('hallpass');
-		$data['StudentScheduleID']=$_SESSION['StudentScheduleID'];                                                                                       
+		//$data['StudentScheduleID']=$_SESSION['StudentScheduleID'];                                                                                       
 		$result=$this->admin->record_student_hallpass($data);
 		echo json_encode($result);
 		}
@@ -107,7 +107,7 @@
 		     
 
 			 
-			if($data['username']=='R-101' || $data['username']=='R-104')
+			if($data['username']=='R-101' || $data['username']=='R-103')
 			{
 				$result=$this->admin->get_student_secretary_access($data['id']);
 				if($result==null){
@@ -124,6 +124,8 @@
 					{
 						$active_hallpass=$this->admin->check_if_hallpass_exist($attendance[0]['AttendanceID']);
 						$b=$this->admin->record_attendace($result['class_id']);
+
+						
 				
 						echo json_encode($b);
 
@@ -153,8 +155,10 @@
 						
 					}
 					else{
-					$b=$this->admin->record_attendace($result[0]['class_id']);
-					echo json_encode($b);
+					$data=$this->admin->record_attendace($result[0]['class_id']);
+				
+					
+					echo json_encode($data);
 					}
 					
 				

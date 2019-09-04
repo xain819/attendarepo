@@ -137,9 +137,9 @@ $(document).ready(function(){
         ],
        
         select: true,
-        buttons: [
+       // buttons: [
             //{ extend: 'create', editor: editor },
-             { extend: 'edit',   editor: editor },
+            // { extend: 'edit',   editor: editor },
             // { extend: 'remove', editor: editor },
             // {
             //     extend: 'csv',

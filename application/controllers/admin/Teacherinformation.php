@@ -94,28 +94,15 @@
 			$this->load->view('layoutv2', $data);
 		}
 
-		function get_period(){
-			$today = date("Y-m-d");  
-			$now= new Datetime('now');
-			
-			$data['username']=$_SESSION['username'];
-			$q=$this->db->get('period')->result_array();
-			foreach($q as $v){
-				$start=new Datetime($v['PeriodStartTime']);
-				$end=new Datetime($v['PeriodEndTime']);
 
-				if($now >= $start && $now <= $end){
-					$data['period']=$v['Period'];
-				}
-			}
-			return $data['period'];
-		}
 
 		public function check_logs(){
-			$data['period']=$this->get_period();
+			$data['period']=$this->admin->get_period();
 	
 			//$data['type']=$this->input->post('id');
 			$data['teacher_id_number']=$_SESSION['username'];
+			//print_r($_SESSION);
+		
 			$result=$this->admin->check_hallpass_logs($data['teacher_id_number'],$data['period']);
 			echo json_encode($result);
 		}
