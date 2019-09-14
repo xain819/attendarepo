@@ -79,8 +79,8 @@ $db['default'] = array(
 	// 'username' => 'attenda',
 	// 'password' => 'VEEpr1aKcv7Xp2Wu',
     // 'database' => 'attendatrack',
-	'username' => 'attenda,',
-	'password' => '',
+	'username' => 'root,',
+	'password' => 'VEEpr1aKcv7Xp2Wu',
 	
 	'database' => 'attendatrack',
 	'dbdriver' => 'mysqli',
