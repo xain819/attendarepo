@@ -80,7 +80,7 @@ $db['default'] = array(
 	// 'password' => 'VEEpr1aKcv7Xp2Wu',
     // 'database' => 'attendatrack',
 	'username' => 'attenda,',
-	'password' => 'VEEpr1aKcv7Xp2Wu',
+	'password' => '',
 	
 	'database' => 'attendatrack',
 	'dbdriver' => 'mysqli',
