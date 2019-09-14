@@ -79,7 +79,7 @@ $db['default'] = array(
 	// 'username' => 'attenda',
 	// 'password' => 'VEEpr1aKcv7Xp2Wu',
     // 'database' => 'attendatrack',
-	'username' => 'root,',
+	'username' => 'attendatrack,',
 	'password' => 'VEEpr1aKcv7Xp2Wu',
 	
 	'database' => 'attendatrack',
