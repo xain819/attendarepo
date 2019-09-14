@@ -188,59 +188,83 @@
       }
 
 </style>
-<body class="hold-transition lockscreen" style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
+<body class="hold-transition lockscreen" style="background-color:#ffffff!important;margin:0 auto; padding:0px;">
 
-<section style="background-color:#00c0ef!important;margin:0 auto; padding:0px;">
+<div class='row' style='height: 100%; display: flex; justify-content: center; align-items: center;'>
 
-
-<div class="container bg-success bg-aqua"  >
-  <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="pull-left col-md-2" >
-        <h3>Room: <span id='location'></span> </h4>
-          <h4>Period: <span id='period_number'></span> </h4>
-        </div>  
-
-         <div class="pull-right col-md-2">
-        <br>
-        <h4 class="pull-right"> <a href="<?php echo base_url('Auth/logout');?>"><i class="fa fa-power-off bg-white"></i>LogOut</a></h4>
+   <div class="container bg-success bg-aqua"  style="padding-top:20px;" > 
+      <div class="col-md-2 pull-center ">
         </div>
- 
-   </div>
-   <div class=col-md-3>
-  </div>
+              <div class="col-md-`12` col-sm-12 col-xs-12">
+                    <div class="pull-left col-md-2" >
+                    <h3>Room: <span id='location'></span> </h4>
+                      <h4>Period: <span id='period_number'></span> </h4>
+          </div>  
+
+              <div class="pull-right col-md-2">
+              <br>
+              <h4 class="pull-right"> <a href="<?php echo base_url('Auth/logout');?>"><i class="fa fa-power-off bg-white"></i>LogOut</a></h4>
+              </div>
+      
+              <div class="col-md-2 pull-center ">
+        </div>
+       </div>
+
+
+
+
+   
+
+
     <div class="pull center col-md-12 col-sm-12 col-xs-12">
+    <div class=" col-md-12 col-sm-12 col-xs-12 pull-center ">
+    <br>  <br> 
+        </div>
         <div class="pull-center" >
-        
         <br>  <br>
+ 
         <span class="clock"></span>
         <br>  <br>
+ 
         </div>  
-        
+        <div class=" col-md-12 col-sm-12 col-xs-12 pull-center ">
+    <br>  <br> 
+        </div>
         <div class="form-group">
-        <div class="col-md-12">
+        <div class="col-md-3 pull-center ">
+        </div>
+
+       
         <div class="col-md-6 pull-center ">
 
               <FORM id='myform' >
               <input type="text" id="student_id" class="form-control" placeholder="Student ID"  value="" autofocus>
             
               </FORM>
+         
+   
               
   
           </div>
-      
+          <div class="col-md-3 pull-center ">
         </div>
-          
+    
         </div>
         
          <div class="pull-right col-md-2">
         <br>
         </div>
+
     </div>
-    <div class=col-md-3>
-    </div>
-</section>
-<section>
-<div class="container bg-success bg-aqua"  style="padding-bottom:0px;" >
+
+
+  
+
+
+<div class=" bg-success bg-aqua"  style="padding-top:50px;" >
+        <div class=" col-lg-12 cpull-center ">
+    <br>  <br> 
+        </div>
   <div class="row">
   <div class="col-md-3 col-sm-3 col-xs-12">
           <div class="info-box bg-aqua">
@@ -295,7 +319,8 @@
 
   </div>
 </div>
-</section>
+
+</div>
 
   
   

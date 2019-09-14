@@ -18,7 +18,8 @@
 			$data['username']=$_SESSION['username'];
 			//$result=$this->admin->get_terminal_hallpass($data['username']);
 			
-		
+		echo $this->security->get_csrf_token_name();
+			echo $this->security->get_csrf_hash();
 			$this->load->view('terminal/index',$data);
 
 		}
@@ -68,6 +69,7 @@
 		$data['hallpass']=$this->input->post('hallpass');
 		//$data['StudentScheduleID']=$_SESSION['StudentScheduleID'];                                                                                       
 		$result=$this->admin->record_student_hallpass($data);
+		
 		echo json_encode($result);
 		}
 		// function get_period(){

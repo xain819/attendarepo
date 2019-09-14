@@ -2,3 +2,7 @@
 $("#tags_1").tagsinput()
 $("#tags_2").tagsinput('items')
 $("#tags_3").tagsinput('items')
+$("#tags_4").tagsinput('items')
+$("#tags_5").tagsinput('items')
+$("#tags_6").tagsinput('items')
+

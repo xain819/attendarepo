@@ -34,6 +34,11 @@
 			$query=$this->db->query($sql);
 			return $query->result_array();
 		}
+		public function slider_periods($a){
+			$this->db->where('schedule_type',$a);
+			$q=$this->db->get('period')->result_array();
+			return $q;
+		}
 		function get_period_access()
 		{
 			$this->db->from('scheduletype');
@@ -166,6 +171,64 @@
 			$query=$this->db->query($sql,array($PeriodID));
 			return $query->result();
 		}
+
+		public function add_period($a){
+			$sql = "select id_name,master_value from master_control where id_name='pgt' or id_name='tt'";
+			$result=$this->db->query($sql)->result_array();
+
+			$this->db->where('schedule_type',$a['schedule_type']);
+			$this->db->where('Period',$a['period']);
+			$q=$this->db->get('period')->row_array();
+			if($q==null)
+			{
+				$this->db->set('schedule_type',$a['schedule_type']);
+				$this->db->set('Period',$a['period']);
+				$this->db->set('schedule_type',$a['schedule_type']);
+				$this->db->set('GracePeriod',$result[0]['master_value']);
+				$this->db->set('TransitionTime',$result[1]['master_value']);
+				$this->db->insert('period');
+			}
+
+			print_r($result);
+		}
+		public function del_period($a){
+			
+
+			$this->db->where('schedule_type',$a['schedule_type']);
+			$this->db->where('Period',$a['period']);
+			$this->db->delete('Period',$a['period']);
+	
+
+			print_r($result);
+		}
+
+		
+		public function edit_slider_period($a){
+		if($a['type']=='move'){
+
+		
+			$this->db->set('PeriodStartTime',$a['PeriodStartTime']);
+			$this->db->set('PeriodEndTime',$a['PeriodEndTime']);
+			$this->db->where('schedule_type',$a['schedule_type']);
+			$this->db->where('Period',$a['Period']);
+			$this->db->update('Period');
+		}
+		elseif ($a['type']=='left') {
+			$this->db->set('PeriodStartTime',$a['PeriodStartTime']);
+	
+			$this->db->where('schedule_type',$a['schedule_type']);
+			$this->db->where('Period',$a['Period']);
+			$this->db->update('Period');
+		}elseif($a['type']=='right')
+		{
+
+			$this->db->set('PeriodEndTime',$a['PeriodEndTime']);
+			$this->db->where('schedule_type',$a['schedule_type']);
+			$this->db->where('Period',$a['Period']);
+			$this->db->update('Period');
+		}
+	}
+		
 
 
 

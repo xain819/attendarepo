@@ -60,6 +60,12 @@
 			$data['view'] = 'admin/teacherinformation/attendance_log';
 			$this->load->view('layoutv2', $data);
 		}
+		
+		public function seat_map(){
+			$data['title'] = 'Teacher Information';
+			$data['view'] = 'admin/teacherinformation/seat_map';
+			$this->load->view('layoutv2', $data);
+		}
 		public function attendance_logs(){
 			$today = date("Y-m-d");  
 			$now= new Datetime('now');

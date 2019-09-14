@@ -75,13 +75,14 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'attenda',
+	'hostname' => '35.232.13.203',
+	// 'username' => 'attenda',
+	// 'password' => 'VEEpr1aKcv7Xp2Wu',
+    // 'database' => 'attendatrack',
+	'username' => 'attenda,',
 	'password' => 'VEEpr1aKcv7Xp2Wu',
-    'database' => 'attendatrack',
-	// 'username' => 'root',
-	// 'password' => '',
-	// 'database' => 'attendatrack',
+	
+	'database' => 'attendatrack',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

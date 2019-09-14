@@ -19,6 +19,82 @@
 			$this->load->view('admin/masterscheduler/index',$data);
 	
 		}	
+		public function slider_period()
+		{
+		
+			//$data=$this->Masterscheduler->slider_periods($this->input->post('data'));
+			$data=$this->Masterscheduler->get_all_periods();
+			echo json_encode($data);
+	
+		}	
+		public function add_period()
+		{
+			$data['schedule_type']=$this->input->post('data');
+			$p=(explode(' ', $this->input->post('period')));
+			
+            $results=$this->Masterscheduler->add_period($data);
+			echo json_encode($data);
+	
+		}	
+		public function del_period()
+		{
+			$data['schedule_type']=$this->input->post('data');
+			$p=(explode('_', $this->input->post('period')));
+
+
+			$results=$this->Masterscheduler->del_period($data);
+			echo json_encode($data);
+	
+		}	
+		public function edit_slider_period()
+		{
+			
+			$data['id']=$this->input->post('id');
+			$data['type']=$this->input->post('type');
+			$data['data']=$this->input->post('data');
+			
+		
+			if($data['type']=='move') // both start and stop time for period
+			{
+				$data_array['type']=$data['type'];
+				$period_start=explode(',',$data['data']);
+				$start=(explode(' ',$period_start[0]))[1];
+				$stop=(explode(' ',$period_start[1]))[1];
+				$data_array['schedule_type']=(explode('_',$data['id']))[0];
+				$data_array['Period']=(explode('_',$data['id']))[1];
+				$data_array['PeriodStartTime']=$start;
+				$data_array['PeriodEndTime']=$stop;
+				$this->Masterscheduler->edit_slider_period($data_array);
+
+			}
+			elseif ($data['type']=='left')
+			{$data_array['type']=$data['type'];
+				$period_start=explode(',',$data['data']);
+				$start=(explode(' ',$period_start[0]))[1];
+				$data_array['schedule_type']=(explode('_',$data['id']))[0];
+				$data_array['Period']=(explode('_',$data['id']))[1];
+				$data_array['PeriodStartTime']=$start;
+				$this->Masterscheduler->edit_slider_period($data_array);
+				print_r($data_array);
+
+			}
+			elseif ($data['type']=='right')
+			{$data_array['type']=$data['type'];
+				$period_stop=explode(',',$data['data']);
+				$stop=(explode(' ',$period_stop[0]))[1];
+				$data_array['schedule_type']=(explode('_',$data['id']))[0];
+				$data_array['Period']=(explode('_',$data['id']))[1];
+				$data_array['PeriodEndTime']=$stop;
+				$this->Masterscheduler->edit_slider_period($data_array);
+				print_r($data_array);
+
+			}
+
+
+
+			
+	
+		}	
 
 			//roles and permision style for period allocation 
 		public function access(){				   					   

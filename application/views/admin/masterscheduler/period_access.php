@@ -6,18 +6,104 @@
 	<link rel="stylesheet" href="<?= base_url() ?>public/plugins/colorpicker/bootstrap-colorpicker.min.css">
     <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
+    <link rel="stylesheet" href="<?=base_url()?>public/assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css">
 	<link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>" >
 	<link href="<?=base_url()?>public/assets/plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link href="<?=base_url()?>public/plugins/slider/timeslider.css" rel="stylesheet">
  <script src="<?=base_url()?>public/js/plugins-init/datatables.init.js"></script>
  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-  
+  <link rel="stylesheet" href="<?=base_url()?>public/assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css">
+
+ <script src="<?=base_url()?>public/plugins/slider/timeslider.js"></script>
 
 
     <!-- Main content -->
     <section class="content">
       <!-- Default box -->
       
-<div class=" card box-body" style='padding:20px;'>
+      <div class=" card box-body" style='padding:20px;'>
+      <div class="box col-12 card">
+<div id ='master_schedule' class='row' style="margin: 10px 10px;">
+
+  <div class="input-group col-2">
+      <div class="input-group-prepend">
+          <span class="input-group-text" style='font-size:12px;' id="inputGroupPrepend1">A DAY</span>
+      </div>
+      <input data-role="tagsinput" data-id="A" type="text" style='font-size:10px;height:10px;' value="Period 1,Period 2,Lunch,Period 3,Period 4" class="form-control" id="tags1" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+  </div>
+    <div  style='margin:5px 5px;postion:relavite;top:50px;'id="a_slider" class="time-slider col-9"></div>
+    </div>
+</div>
+
+<div class="box col-12 card">
+  <div class='row' style="margin: 10px 10px;">
+        <div style='margin:10px 5px;' class="input-group mb-10 col-2">
+              <div class="input-group-prepend">
+              <span class="input-group-text" style='font-size:12px;' id="inputGroupPrepend5">B DAY</span>
+              </div>
+        <input type="text"  data-id="B"  style='font-size:10px;height:10px;' value="Period 5,Period 6,Lunch,Period 7,Period 8" class="form-control" id="input" data-role="tagsinput">
+  </div>
+       <div style='margin:5px 5px;postion:relavite;top:50px;' id="b_slider" class="time-slider col-9"></div>
+	</div>
+</div>
+
+
+
+  <div class="box col-12 card">
+<div class='row' style="margin: 10px 10px;">
+    <div style='margin:10px 5px;' class="input-group mb-10 col-2">
+                                      <div class="input-group-prepend">
+          <span class="input-group-text" style='font-size:12px;' id="inputGroupPrepend3">C DAY</span>
+      </div>
+      <input data-id="C" type="text" style='font-size:10px;height:10px;' value="Period 1,Period 2,Period 3,Period 4,Lunch,Period 5,Period 6,Period 7,Period 8" class="form-control" id="tags_3" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+  </div>
+
+
+    <div style='margin:5px 5px;postion:relavite;top:50px;' id="c_slider" class="time-slider col-9"></div>
+	</div></div>
+
+  <div class="box col-12 card">
+<div class='row' style="margin: 10px 10px;">
+    <div style='margin:10px 5px;' class="input-group mb-10 col-2">
+                                      <div class="input-group-prepend">
+          <span class="input-group-text" style='font-size:12px;' id="inputGroupPrepend1">LATE START</span>
+      </div>
+      <input data-id="L" type="text" style='font-size:10px;height:10px;' value="Period 5,Period 6,Launch,Period 7,Period 8" class="form-control" id="tags_4" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+  </div>
+
+
+    <div style='margin:5px 5px;postion:relavite;top:50px;' id="d_slider" class="time-slider col-9"></div>
+	</div></div>
+
+  <div class="box col-12 card">
+  <div class='row' style="margin: 10px 10px;">
+        <div style='margin:10px 5px;' class="input-group mb-10 col-2">
+              <div class="input-group-prepend">
+              <span class="input-group-text" style='font-size:12px;' id="inputGroupPrepend5">PREP RALLY A-DAY</span>
+              </div>
+        <input data-id="A_P" type="text" style='font-size:10px;height:10px;' value="Period 1,Period 2,Launch ,Period 3,Period 4,Prep-Rally" class="form-control" id="tags_5" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+  </div>
+       <div style='margin:5px 5px;postion:relavite;top:50px;' id="e_slider" class="time-slider col-9"></div>
+	</div>
+</div>
+<div class="box col-12 card">
+  <div class='row' style="margin: 10px 10px;">
+        <div style='margin:10px 5px;' class="input-group mb-10 col-2">
+              <div class="input-group-prepend">
+              <span class="input-group-text" style='font-size:12px;' id="inputGroupPrepend5">PREP RALLY B-DAY</span>
+              </div>
+        <input  data-id="B_P" type="text" style='font-size:10px;height:10px;' value="Period 5,Period 6,Lunch,Period 7,Period 8,Prep-Rally" data-role="tagsinput" class="form-control" id="tags_6" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+  </div>
+       <div style='margin:5px 5px;postion:relavite;top:50px;' id="f_slider" class="time-slider col-9"></div>
+	</div>
+</div>
+
+
+  
+
+
+<!-- 
       <div class="box">
         <div class="box-header with-border">
          
@@ -53,7 +139,7 @@
 
             </div>      
           </div>
-        </div>
+        </div> -->
         <!-- /.box-body -->
         <div class="box-footer">
           Footer
@@ -73,6 +159,106 @@
     
     <!-- <script src="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script> -->
+
+    <script type="text/javascript">
+
+
+        const P1='P1';
+        var current_time = (new Date('2019-09-06 7:00:00')).getTime() + ((new Date('2019-09-06 7:00:00')).getTimezoneOffset() * 60 * 1000 * -1);
+		$(document).ready(function () {
+      
+      $('input').on('itemAdded', function(event) {
+      //   $.ajax({
+      //      url:base_url+"admin/masterscheduler/change_slider_period ",
+      //      type:"POST",
+      //      data:({[csrfName]: csrfHash,'data':'A'}),
+      //      dataType:'JSON',
+      //  }).done(function(data){});
+       console.log($(this).attr("data-id"));
+       $(this).attr("data-id");
+        
+          $.ajax({
+           url:base_url+"admin/masterscheduler/add_period ",
+           type:"POST",
+           data:({[csrfName]: csrfHash,'period':event.item,'data':$(this).attr("data-id")}),
+           dataType:'JSON',
+       }).done(function(data){});
+       ajax.reload($slider);
+      });
+
+      $('input').on('itemRemoved', function(event) {
+        
+        $.ajax({
+           url:base_url+"admin/masterscheduler/del_period ",
+           type:"POST",
+           data:({[csrfName]: csrfHash,'period':event.item,'data':$(this).attr("data-id")}),
+           dataType:'JSON',
+       }).done(function(data){});
+       ajax.reload($slider);
+      });
+ 
+
+      const slider=$.ajax({
+           url:base_url+"admin/masterscheduler/slider_period ",
+           type:"POST",
+           data:({[csrfName]: csrfHash,'data':'A'}),
+           dataType:'JSON',
+       }).done(function(data){
+     
+
+       let schedule_type=[];
+
+      
+       schedule_type['a']= data.filter(function(test){return test.schedule_type==='A';});
+       schedule_type['b']= data.filter(function(test){return test.schedule_type==='B';});
+       schedule_type['c']= data.filter(function(test){return test.schedule_type==='C';});
+       schedule_type['d']= data.filter(function(test){return test.schedule_type==='A_P';});
+       schedule_type['e']= data.filter(function(test){return test.schedule_type==='B_P';});
+       schedule_type['f']= data.filter(function(test){return test.schedule_type==='L';});
+       console.log(schedule_type);
+        Object.keys(schedule_type).forEach(key => {
+          console.log(key);        // the name of the current key.
+          console.log(schedule_type[key]); // the value of the current key.
+
+                var masterlist=schedule_type[key];
+                var data_events=[];
+                var d=[];
+                var a=`#${key}_slider`;
+                console.log(a);
+                masterlist.forEach(function(element){
+              
+                  d =
+                  {
+                                    '_id': `${element.schedule_type}_${element.Period}`,
+                                    '_period':`${element.Period}`,
+                                    'start': (new Date(`2019-09-06 ${element.PeriodStartTime}`)).getTime() + ((new Date(`2019-09-06 ${element.PeriodStartTime}`)).getTimezoneOffset() * 60 * 1000 * -1),
+                                    'stop': (new Date(`2019-09-06 ${element.PeriodEndTime}`)).getTime() + ((new Date(`2019-09-06 ${element.PeriodEndTime}`)).getTimezoneOffset() * 60 * 1000 * -1),
+                                    'style': {
+                                        'background-color': '#061283',
+                                    }
+                  }
+                  data_events.push(d);
+                  console.log(d);
+                    
+                  });
+                  console.log(a);
+                  $(`${a}`).TimeSlider({
+                  start_timestamp: current_time,
+                  timecell_enable_move: true,
+                   timecell_enable_resize: true,
+                  ruler_enable_move:false,
+                  graduation_step: 10,
+                  hours_per_ruler: 12,
+                  distance_between_gtitle:50,
+                  init_cells: data_events,
+                    
+                  });
+                });	   
+              });
+
+       
+		});
+	</script>
     <script>
       var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
           csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
@@ -282,19 +468,16 @@ $(document).ready(function(){
     
     </script>
     <script>
-  $(document).ready(function(){
-    $.ajax({
-           url:base_url+"admin/masterscheduler/get_all_periods",
-           type:"POST",
-           data:({[csrfName]: csrfHash}),
-           dataType:'JSON',
-       })
-       .done(function(data){
-        $('#test_events').html(data);
-       })
-    
-  });
-  </script>
+    	
+     
+ 
+        </script>
+
+
+
 
 <?php $this->load->view('admin/masterscheduler/add');?>
 <?php $this->load->view('admin/masterscheduler/edit');?>
+<script src="<?=base_url()?>public/assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+    <script src="<?=base_url()?>public/js/plugins-init/bootstrap-tagsinput-init.js"></script>
+
