@@ -31,7 +31,7 @@ $url = "http://".$_SERVER['HTTP_HOST']. str_replace(basename($_SERVER['SCRIPT_NA
 //$config['base_url'] = 'http://35.193.161.159/';
 
 //$config['base_url'] = 'http://localhost:9993/';
-$config['base_url'] = 'http://localhost:9993/attendatrack';
+$config['base_url'] = 'http://localhost/attendarepo';
 //$config['base_url'] = 'http://localhost/attendarepo';
 
 
