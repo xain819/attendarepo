@@ -39,59 +39,36 @@ class Admin_model extends CI_Model{
 
 		$this->db->where('start',$today);
 		$q=$this->db->get('scheduledate')->row_array();
-		print_r($q);
+
 	
-		$this->db->where('ScheduleType',$q['title']);
-		$p=$this->db->get('scheduletype')->row_array();
-		$period_list=explode("|",$p['PeriodAccess']);
+		$this->db->where('schedule_type',$q['title']);
+		$p=$this->db->get('period')->result_array();
+	
+	
+		// $this->db->where('')
+		// $period_list=$this->db->where('sechedule_type',$['title'])
 	
 		$now= new Datetime('now');
 		$data['username']=$_SESSION['username'];
 	
 		$data['period']='no period';
 
-		foreach($period_list as $v){
-
-			$sql= "SELECT * FROM `period` WHERE `Period`='$v'";
-			$result=$this->db->query($sql)->row_array();
+		foreach($p as $v){
 	
-			$start=new Datetime($result['PeriodStartTime']);
-			$end=new Datetime($result['PeriodEndTime']);
-		
+			$start=new Datetime($v['PeriodStartTime']);
+			$end=new Datetime($v['PeriodEndTime']);
+	
 		
 			if($now >= $start && $now <= $end){
-					$data['period']=$v;
+
+					$data['period']=$v['Period'];
 				
 					
 				}
 		
-			
-			
-			
+	
 		}
 		return $data['period'];
-	
-	
-		// echo "<pre>";
-	
-
-		// $sql= "SELECT * FROM `period` WHERE `Period` IN(1,2,4,5)";
-		// $result=$this->db->query($sql)->row_array();
-		// print_r($result);
-
-		// 	// $now= new Datetime('now');
-		// 	// $data['username']=$_SESSION['username'];
-		// 	// $q=$this->db->get('period')->result_array();
-		// 	// foreach($q as $v){
-		// 	// 	$start=new Datetime($v['PeriodStartTime']);
-		// 	// 	$end=new Datetime($v['PeriodEndTime']);
-		// 	// 	//$a=$start->format('H:i:s');
-				
-		// 	// 	if($now >= $start && $now <= $end){
-		// 	// 		$data['period']=$v['Period'];
-		// 	// 	}
-		// 	// }
-		// 	// return $data['period'];
 			
 	}
 
