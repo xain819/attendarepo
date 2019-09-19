@@ -387,9 +387,7 @@ $(document).ready(function(){
         data:({[csrfName]: csrfHash,data:dateString}),
         dataType:'JSON',
     }).done(function(data){
-     
-      console.log(data);
-      console.log('hi');
+
       
       const aa=data[0].HPLockStart.split(':');
       const bb=data[0].HPLockEnd.split(':');
@@ -413,8 +411,7 @@ $(document).ready(function(){
        const AvailableTime=a.toLocaleTimeString();
        const AvailableHPTime=b.toLocaleTimeString()
 
-       console.log(a.toLocaleTimeString());
-       console.log(a.toLocaleTimeString());
+   
      
          
       $('#TeacherName').html(teacher_name);
@@ -437,8 +434,7 @@ $(document).ready(function(){
         data:({[csrfName]: csrfHash}),
         dataType:'JSON',
     }).done(function(data){
-    console.log('hi');
-   
+
      var result=data;
      var hallpass=result; 
 
@@ -450,12 +446,17 @@ $(document).ready(function(){
        });
 
        nhp.forEach(function(element){
-       
+              
+        
+
+
       const HallPass=element.access;
       const status=element.is_active;
       const PassTypeID=element.PassTypeID;
 
-      if (status==='0'){
+
+
+      if (status==='0' ){
         var bg='bg-gray',a='<div class="info-box">',a2='';
       }
       else{
@@ -587,7 +588,7 @@ $(document).ready(function(){
         }
         else if(data['status'] === 'new_attendance'){
           const response=data['response'];
-          console.log(response);
+       
           var time='';
         
           const mm=response['GracePeriod'].split(':');
@@ -612,8 +613,7 @@ $(document).ready(function(){
                         var a=Math.trunc(f);
                         
                         var b=Math.abs(Math.trunc((f-a)*60));
-                        console.log (typeof(a));
-                        console.log(a);
+                     
                         if(b<=9){
                             time `(${Math.abs(a)}:0${b})`
                         }else{
@@ -631,18 +631,15 @@ $(document).ready(function(){
           
         }
         else if(data['status'] === 'show_hallpass'){
-          console.log('j');
+    
           $("#terminal_modal").modal("show");
           
 
           $("body").on("click",".btn-hallpass",function(e){
             e.preventDefault();
             $(this).data('id');
-            console.log($(this).data('data'));
-            
+       
    
-        
-
             $.ajax({
             url: base_url+"admin/terminal/get_student_student_hallpass",
             type: "POST",
@@ -650,31 +647,50 @@ $(document).ready(function(){
             data: ({[csrfName]: csrfHash,id:id,hallpass:$(this).data('id')}),}).done(function(data)
             {
             if(data['status']==='hallpass_updated')
-            {
-          const response=data['response'];
-          const time_swipe=new Date(response['DateCreated']);
-          const limit=response['TimeAllocated'].split(':');
-          var time_limit=time_swipe.getTime()+parseInt(limit[1])*60*1000+parseInt(limit[2])*1000;
-          const sec=limit[2].split('.');
+                    {
+                  const response=data['response'];
+                  const time_swipe=new Date(response['DateCreated']);
+                  const limit=response['TimeAllocated'].split(':');
+                  var time_limit=time_swipe.getTime()+parseInt(limit[1])*60*1000+parseInt(limit[2])*1000;
+                  const sec=limit[2].split('.');
 
-          const limit_string=new Date(time_limit).toLocaleTimeString();
- 
-          
-          // const mm=response['GracePeriod'].split(':');
-          // const tt=response['TransitionTime'].split(':');
-          // var status='';
-          // var type='';
-          // var start=new Date(`${response['AttendanceDate']} ${response['PeriodStartTime']}`).getTime()+parseInt(tt[1])*60*1000+parseInt(tt[2])*1000;
-          // var swipe=new Date(`${response['AttendanceDate']} ${response['AttendanceTime']}`).getTime();
+                  const limit_string=new Date(time_limit).toLocaleTimeString();
+        
+                  
+                swal({
+                    title:`${data['response']['hallpass']}`,
+                    timer: 5000,
+                    text:`Activated:${time_swipe.toLocaleTimeString()} 
+                    You Have ${limit[1]}:${sec[0]} Minutes
+                    Please swipe back on or before ${limit_string}
+                    Destination: ${data['location']}` ,
+                            
+                  });
+            }
+            else if(data['status']==='locked'){
+              const response=data['response'];
+             
+              if(data['type']==='start'){
+
               swal({
-            title:`${data['response']['hallpass']}`,
-            timer: 5000,
-            text:`Activated:${time_swipe.toLocaleTimeString()} 
-            You Have ${limit[1]}:${sec[0]} Minutes
-            Please swipe back on or before ${limit_string}
-            Destination: ${data['location']}` ,
-                    
-          });
+                    title:`Locked`,
+                    timer: 5000,
+                    text:`Locked: Will be available in ${response}.`,
+                            
+                  });
+
+              }
+              if(data['type']==='end'){
+
+                swal({
+                      title:`Locked`,
+                      timer: 5000,
+                      text:`hallpass: Will be available next period .`,
+                              
+                    });
+
+                }
+
             }
             
            

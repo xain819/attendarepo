@@ -20,7 +20,7 @@ class Admin_model extends CI_Model{
 
 	
 	public function master_control_status($a){
-		$this->db->select('is_active');
+	
 		$this->db->where('id_name',$a);
 		return ($this->db->get('master_control')->row_array());
 		
@@ -36,6 +36,14 @@ class Admin_model extends CI_Model{
 
 	}
 
+	public function check_hallpass_type($a){
+	
+		$this->db->where('hallpass',$a);
+		$this->db->select('PassTypeID');
+		$q=$this->db->get('hallpass')->row_array();
+		return $q;
+
+	}
 
 
 	public function general_master($a){
@@ -187,6 +195,8 @@ class Admin_model extends CI_Model{
 					$data['period']=$v['Period'];
 					$data['status']=$v['status'];
 					$data['PeriodID']=$v['PeriodID'];
+					$data['HPLockStart']=$v['HPLockStart'];
+					$data['HPLockEnd']=$v['HPLockEnd'];
 
 					$data['PeriodStartTime']=$v['PeriodStartTime'];
 					$data['PeriodEndTime']=$v['PeriodEndTime'];

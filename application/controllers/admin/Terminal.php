@@ -18,8 +18,7 @@
 			$data['username']=$_SESSION['username'];
 			//$result=$this->admin->get_terminal_hallpass($data['username']);
 			
-		echo $this->security->get_csrf_token_name();
-			echo $this->security->get_csrf_hash();
+	
 			$this->load->view('terminal/index',$data);
 
 		}
@@ -38,22 +37,8 @@
 			$data['teacher_id_number']=$_SESSION['teacher_id_number'];
 		
 			$result=$this->admin->get_terminal_hallpass($data['teacher_id_number']);
-			$q=$this->admin->master_control_status($a='hplt');   
-			$period=$this->admin->get_period_id();
-			 
-			//if master control is active check the time and push status to array for javascript processing
-			$data_array=[];
-			foreach($result as $v){
-				$v['master_control']=$q['is_active']; 
-				$v['today']=date("Y-m-d");  
-				$v['PeriodEndTime']=$period['PeriodEndTime'];;
-				$v['PeriodStartTime']=$period['PeriodStartTime'];
-				$data_array[]=$v;
 		
-			}
-			
-
-			echo json_encode($data_array);
+			echo json_encode($result);
 		
 		}
 		
@@ -82,11 +67,42 @@
 		public function get_student_student_hallpass(){
 		$data['student_id_number']=$this->input->post('id');
 		$data['hallpass']=$this->input->post('hallpass');
+
+		$pass_type=$this->admin->check_hallpass_type($a=$data['hallpass']);
+	
+
 		//$data['StudentScheduleID']=$_SESSION['StudentScheduleID'];  
-	                                                                               
-		$result=$this->admin->record_student_hallpass($data);
+
+
+		$q=$this->admin->master_control_status($a='hplt');  
+		$period=$this->admin->get_period_id();
+		$start_1   = date('H:i:s', strtotime($period['PeriodStartTime']));
+		$start_2 = date("H:i:s",strtotime($period['PeriodStartTime'])+(strtotime($period['HPLockStart'])-strtotime("00:00:00")));
+		$end_2 = date("H:i:s",strtotime($period['PeriodEndTime'])-(strtotime($period['HPLockEnd'])-strtotime("00:00:00")));
+		$end_1   = date('H:i:s', strtotime($period['PeriodEndTime']));
+		$now   = date('H:i:s');
+
+		if($now>$start_1 && $now<$start_2 && $pass_type['PassTypeID']==2 ){
 		
+			$result['status']='locked';
+			$result['response']=$start_2;
+			$result['type']='start';
+			echo json_encode($result);	
+		}
+		elseif($now<$end_1 && $now>$end_2  &&  $pass_type['PassTypeID']==2 ){
+			$result['status']='locked';
+			$result['response']=$start_2;
+			$result['type']='end';
+		echo json_encode($result);	
+
+		}
+		else{
+		$result=$this->admin->record_student_hallpass($data);
 		echo json_encode($result);
+
+		}
+                                                                      
+	
 		}
 		// function get_period(){
 			
@@ -123,10 +139,7 @@
 			$data['period']=$this->admin->get_period();
 		
 			$data['username']=$_SESSION['username'];
-		
-		    
-
-			 
+ 
 			if($data['username']=='R-101' || $data['username']=='R-103')
 			{
 				$result=$this->admin->get_student_secretary_access($data['id']);
@@ -143,15 +156,9 @@
 					else
 					{
 
-					
-						$q=$this->admin->master_control_status($a='hplt');
-					
 						$active_hallpass=$this->admin->check_if_hallpass_exist($attendance[0]['AttendanceID']);
 						$b=$this->admin->record_attendace($result['class_id']);
-						
-
-						
-				
+		
 						echo json_encode($b);
 
 					}	
