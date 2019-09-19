@@ -138,6 +138,74 @@ class Admin_model extends CI_Model{
 		return $data['period'];
 			
 	}
+	public function get_period_id(){
+		
+		$today = date("Y-m-d");  
+		$this->db->where('start',$today);
+		$q=$this->db->get('scheduledate')->row_array();
+		$this->db->where('schedule_type',$q['title']);
+		$p=$this->db->get('period')->result_array();
+		$now= new Datetime('now');
+		$data['username']=$_SESSION['username'];
+		$data['period']='no period';
+		foreach($p as $v){
+			$start=new Datetime($v['PeriodStartTime']);
+			$end=new Datetime($v['PeriodEndTime']);
+			
+
+			//check if there is hallpass mroe than the period end
+			// $this->db->where('is_active',1);
+			// $q=$this->db->get('attendance_hallpass')->result_array();
+			// foreach($q as $dc){
+			// 	print_r($dc);
+			// 	$start_time=date("H:m:s", strtotime($v['PeriodStartTime']));
+			// 	$end_time=date("H:m:s", strtotime($v['PeriodEndTime']));
+
+			// 	print_r($start_time);
+			// 	$date_created=new Datetime($dc['DateCreated']);
+			// 	$this->general->validate_swipe($dc['DateCreated'],$dc['ID'],$v['PeriodID'],$end);
+
+			// }
+		
+		
+			if($now >= $start && $now <= $end){
+
+					$this->db->where('status',1);
+					$this->db->select('Period');
+					$this->db->select('PeriodID');
+					$previous=$this->db->get('period')->row_array();
+					if($previous['Period']!=$v['Period'])
+					{
+						$this->db->where('PeriodID',$previous['PeriodID']);
+						$this->db->set('status',0);
+						$this->db->update('period');
+						$this->general->validate_swipe($previous['PeriodID']);
+						
+					
+					}
+
+					$data['period']=$v['Period'];
+					$data['status']=$v['status'];
+					$data['PeriodID']=$v['PeriodID'];
+
+					$data['PeriodStartTime']=$v['PeriodStartTime'];
+					$data['PeriodEndTime']=$v['PeriodEndTime'];
+					
+					$this->db->set('status',1);
+					$this->db->where('PeriodID',$data['PeriodID']);
+					$this->db->update('period');
+				
+				}
+		
+	
+		}
+
+		
+	
+
+		return $data;
+			
+	}
 
 	public function get_day_type(){
 		$today=date("Y-m-d");

@@ -38,8 +38,23 @@
 			$data['teacher_id_number']=$_SESSION['teacher_id_number'];
 		
 			$result=$this->admin->get_terminal_hallpass($data['teacher_id_number']);
-			echo json_encode($result);
+			$q=$this->admin->master_control_status($a='hplt');   
+			$period=$this->admin->get_period_id();
+			 
+			//if master control is active check the time and push status to array for javascript processing
+			$data_array=[];
+			foreach($result as $v){
+				$v['master_control']=$q['is_active']; 
+				$v['today']=date("Y-m-d");  
+				$v['PeriodEndTime']=$period['PeriodEndTime'];;
+				$v['PeriodStartTime']=$period['PeriodStartTime'];
+				$data_array[]=$v;
+		
+			}
+			
 
+			echo json_encode($data_array);
+		
 		}
 		
 		public function get_terminal_info()
@@ -51,23 +66,24 @@
 			$data['username']=$_SESSION['username'];
 	
 			$result=$this->admin->get_terminal_info($data['username'],$data['date'],$data['period']);
-		
-			
-			  $this->session->set_userdata('teacher_id_number', $result[0]['teacher_id_number']);
-			  $this->session->set_userdata('class_code', $result[0]['class_code']);
-			  $this->session->set_userdata('period_number', $data['period']);
+			$this->session->set_userdata('teacher_id_number', $result[0]['teacher_id_number']);
+			$this->session->set_userdata('class_code', $result[0]['class_code']);
+			$this->session->set_userdata('period_number', $data['period']);
 		
 			
 			echo json_encode($result);
+			
 		
 
 
 		
 		}
+
 		public function get_student_student_hallpass(){
 		$data['student_id_number']=$this->input->post('id');
 		$data['hallpass']=$this->input->post('hallpass');
-		//$data['StudentScheduleID']=$_SESSION['StudentScheduleID'];                                                                                       
+		//$data['StudentScheduleID']=$_SESSION['StudentScheduleID'];  
+	                                                                               
 		$result=$this->admin->record_student_hallpass($data);
 		
 		echo json_encode($result);
