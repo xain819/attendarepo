@@ -82,14 +82,14 @@
 		$end_1   = date('H:i:s', strtotime($period['PeriodEndTime']));
 		$now   = date('H:i:s');
 
-		if($now>$start_1 && $now<$start_2 && $pass_type['PassTypeID']==2 ){
+		if($now>$start_1 && $now<$start_2 && $pass_type['PassTypeID']==2 && $q['is_active']==1){
 		
 			$result['status']='locked';
 			$result['response']=$start_2;
 			$result['type']='start';
 			echo json_encode($result);	
 		}
-		elseif($now<$end_1 && $now>$end_2  &&  $pass_type['PassTypeID']==2 ){
+		elseif($now<$end_1 && $now>$end_2  &&  $pass_type['PassTypeID']==2  && $q['is_active']==1 ){
 			$result['status']='locked';
 			$result['response']=$start_2;
 			$result['type']='end';
