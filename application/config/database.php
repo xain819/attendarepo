@@ -84,6 +84,7 @@ $db['default'] = array(
 	
 	'database' => 'attendatrack',
 	'dbdriver' => 'mysqli',
+	//'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

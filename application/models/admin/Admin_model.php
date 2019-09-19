@@ -39,6 +39,7 @@ class Admin_model extends CI_Model{
 
 		$this->db->where('start',$today);
 		$q=$this->db->get('scheduledate')->row_array();
+		print_r($q);
 	
 		$this->db->where('ScheduleType',$q['title']);
 		$p=$this->db->get('scheduletype')->row_array();
@@ -60,6 +61,7 @@ class Admin_model extends CI_Model{
 		
 			if($now >= $start && $now <= $end){
 					$data['period']=$v;
+				
 					
 				}
 		
@@ -795,21 +797,21 @@ class Admin_model extends CI_Model{
 	{
 
 		$this->db->distinct();
-		$this->db->where('AttendanceDate',date("Y-m-d"));
+		//$this->db->where('AttendanceDate',date("Y-m-d"));
 		$this->db->where('teacher_id_number',$a);
-		$this->db->where('period_number',$b);
-		$this->db->where('date_time_ended','0000-00-00 00:00:00');
+		//$this->db->where('period_number',$b);
+		$this->db->where('is_active',1);
 		$result['active']=$this->db->get('vstudent_hallpass_logs')->result_array();
 
 
 		$this->db->distinct();
-		$this->db->where('AttendanceDate',date("Y-m-d"));
+		//$this->db->where('AttendanceDate',date("Y-m-d"));
 		$this->db->where('teacher_id_number',$a);
-		$this->db->where('period_number',$b);
-		$this->db->where('date_time_ended !=','0000-00-00 00:00:00');
+		//$this->db->where('period_number',$b);
+		$this->db->where('is_active',0);
 		$result['expired']=$this->db->get('vstudent_hallpass_logs')->result_array();
 		
-		//print_r($query);
+
 	
 		return $result;
 
