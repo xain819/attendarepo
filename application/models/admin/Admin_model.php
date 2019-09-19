@@ -1,6 +1,13 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_model extends CI_Model{
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('admin/dashboard_model', 'dashboard_model');
+		$this->load->model('dashboard_model');
+		$this->load->model('admin/General_model', 'general');
+		
+	}
 
 
 	public function edit_2whp($a,$b){
@@ -10,6 +17,26 @@ class Admin_model extends CI_Model{
 		$this->db->update('master_control');
 
 	}
+
+	
+	public function master_control_status($a){
+		$this->db->select('is_active');
+		$this->db->where('id_name',$a);
+		return ($this->db->get('master_control')->row_array());
+		
+
+	}
+	
+	public function edit_hallpass_swipe($a,$b){
+	
+		$this->db->where('ID',$a);
+		$this->db->set('date_time_ended',$b);
+		$this->db->update('attendance_hallpass');
+		return true;
+
+	}
+
+
 
 	public function general_master($a){
 		$this->db->select('is_active');
@@ -33,41 +60,81 @@ class Admin_model extends CI_Model{
 		return ($now > new Datetime($result['master_value'])) ? 'true':'false';
 
 	}
+
+	public function change_period(){
+		$this->db->where('status',1);
+		$this->db->select('Period');
+		$this->db->select('PeriodID');
+		$q=$this->db->get('period')->row_array();
+		$q['status']=1;
+		$this->admin->get_period();
+		if($q!=$this->admin->get_period()){
+			$q['status']=0;
+		};
+		return $q;
+	}
 	public function get_period(){
-
+		
 		$today = date("Y-m-d");  
-
 		$this->db->where('start',$today);
 		$q=$this->db->get('scheduledate')->row_array();
-
-	
 		$this->db->where('schedule_type',$q['title']);
 		$p=$this->db->get('period')->result_array();
-	
-	
-		// $this->db->where('')
-		// $period_list=$this->db->where('sechedule_type',$['title'])
-	
 		$now= new Datetime('now');
 		$data['username']=$_SESSION['username'];
-	
 		$data['period']='no period';
-
 		foreach($p as $v){
-	
 			$start=new Datetime($v['PeriodStartTime']);
 			$end=new Datetime($v['PeriodEndTime']);
-	
+			
+
+			//check if there is hallpass mroe than the period end
+			// $this->db->where('is_active',1);
+			// $q=$this->db->get('attendance_hallpass')->result_array();
+			// foreach($q as $dc){
+			// 	print_r($dc);
+			// 	$start_time=date("H:m:s", strtotime($v['PeriodStartTime']));
+			// 	$end_time=date("H:m:s", strtotime($v['PeriodEndTime']));
+
+			// 	print_r($start_time);
+			// 	$date_created=new Datetime($dc['DateCreated']);
+			// 	$this->general->validate_swipe($dc['DateCreated'],$dc['ID'],$v['PeriodID'],$end);
+
+			// }
+		
 		
 			if($now >= $start && $now <= $end){
 
-					$data['period']=$v['Period'];
-				
+					$this->db->where('status',1);
+					$this->db->select('Period');
+					$this->db->select('PeriodID');
+					$previous=$this->db->get('period')->row_array();
+					if($previous['Period']!=$v['Period'])
+					{
+						$this->db->where('PeriodID',$previous['PeriodID']);
+						$this->db->set('status',0);
+						$this->db->update('period');
+						$this->general->validate_swipe($previous['PeriodID']);
+						
 					
+					}
+
+					$data['period']=$v['Period'];
+					$data['status']=$v['status'];
+					$data['PeriodID']=$v['PeriodID'];
+
+					$this->db->set('status',1);
+					$this->db->where('PeriodID',$data['PeriodID']);
+					$this->db->update('period');
+				
 				}
 		
 	
 		}
+
+		
+	
+
 		return $data['period'];
 			
 	}

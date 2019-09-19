@@ -25,6 +25,26 @@
 			echo json_encode($result);
 
 		}
+		public function edit_hallpass()
+		{
+		$post=$this->input->post('data');
+		
+			foreach($post as $v){
+				
+				$result=$this->admin->master_control_status($a='hpso');
+				print_r($result);
+				if($result['is_active']==1){
+					print_r($v);
+					$this->admin->edit_hallpass_swipe($v['ID'],$v['date_time_ended']);
+
+				}
+				
+
+
+			}
+		
+
+		}
 		public function edit_attendance(){
 		$r['data']=$this->input->post('data');
 		

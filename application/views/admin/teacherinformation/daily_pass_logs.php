@@ -26,13 +26,13 @@ button.btn-space {
 <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
 
-<!-- <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script> -->
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 
 <div class=" card box-body" style='padding:20px;'>
 <div class=' col-xl-12 '>
@@ -149,29 +149,29 @@ $(document).ready(function() {
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
         ajax: {
-            url: base_url+"admin/academicsettings/check_classes",
+            url: base_url+"admin/teacherinformation/edit_hallpass",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
-            dataSrc: '',
+            dataSrc: 'expired',
             dataType:'JSON'
        },
-       
-        table: "#classes",
+       idSrc:  'ID',
+        table: "#expired",
         fields: [ 
-          
-            { label: "Class Code:",name: "class_code" },
-            { label: "Course Code:",name: "course_code" },
-            { label: "Class Type:",name: "class_type" },
-            { label: "Term:",name: "term" },
-            { label: "Schedule Type:",name: "schedule_type" },
-            { label: "Period:",name: "period_number" },
-            { label: "Grade Level:",name: "grade_level" },
-            { label: "Section:",name: "section" },
-            { label: "Location:",name: "location" },
-            { label: "Teacher ID:",name: "teacher_id_number" },
-            { label: "State ID:",name: "state_uid" },
-            { label: "Student Local ID:",name: "student_local_id" },
-
+            { label: "ID:",name: "ID" },
+            { label: "student_local_id:",name: "student_local_id" },
+   
+            {
+                label:     'date_time_ended:',
+                name:      'date_time_ended',
+                type:      'datetime',
+                def:       function () { return new Date(); },
+                format:    'MM-DD-YYYY h:mm A',
+                fieldInfo: 'US style m-d-y date input with 12 hour clock',
+                opts: {
+                    minutesIncrement: 5
+                }
+            }
             
         ]
         
@@ -247,32 +247,33 @@ $(document).ready(function() {
           
         ],
         select: true,
-        // buttons: [
-        //    // { extend: 'create', editor: editor },
-        //   //  { extend: 'edit',   editor: editor },
-        //     { extend: 'remove', editor: editor },
-        //     {
-        //         extend: 'csv',
-        //         text: 'Export CSV',
-        //         className: 'btn-space',
-        //         exportOptions: {
-        //             orthogonal: null
-        //         }
-        //     },
-        //     {
-        //         text: 'Import CSV',
-        //         action: function () {
-        //             uploadEditor.create( {
-        //                 title: 'CSV file import'
-        //             } );
-        //         }
-        //     },
-        //     {
-        //         extend: 'selectAll',
-        //         className: 'btn-space'
-        //     },
-        //     'selectNone',
-        // ]
+        buttons: [
+
+           // { extend: 'create', editor: editor },
+           { extend: 'edit',   editor: editor },
+            // { extend: 'remove', editor: editor },
+            // {
+            //     extend: 'csv',
+            //     text: 'Export CSV',
+            //     className: 'btn-space',
+            //     exportOptions: {
+            //         orthogonal: null
+            //     }
+            // },
+            // {
+            //     text: 'Import CSV',
+            //     action: function () {
+            //         uploadEditor.create( {
+            //             title: 'CSV file import'
+            //         } );
+            //     }
+            // },
+            // {
+            //     extend: 'selectAll',
+            //     className: 'btn-space'
+            // },
+            // 'selectNone',
+        ]
     });
 
     var a= $('#expired').DataTable( {
@@ -335,32 +336,32 @@ $(document).ready(function() {
           
         ],
         select: true,
-        // buttons: [
-        //    // { extend: 'create', editor: editor },
-        //   //  { extend: 'edit',   editor: editor },
-        //     { extend: 'remove', editor: editor },
-        //     {
-        //         extend: 'csv',
-        //         text: 'Export CSV',
-        //         className: 'btn-space',
-        //         exportOptions: {
-        //             orthogonal: null
-        //         }
-        //     },
-        //     {
-        //         text: 'Import CSV',
-        //         action: function () {
-        //             uploadEditor.create( {
-        //                 title: 'CSV file import'
-        //             } );
-        //         }
-        //     },
-        //     {
-        //         extend: 'selectAll',
-        //         className: 'btn-space'
-        //     },
-        //     'selectNone',
-        // ]
+        buttons: [
+           // { extend: 'create', editor: editor },
+          { extend: 'edit',   editor: editor },
+            // { extend: 'remove', editor: editor },
+            // {
+            //     extend: 'csv',
+            //     text: 'Export CSV',
+            //     className: 'btn-space',
+            //     exportOptions: {
+            //         orthogonal: null
+            //     }
+            // },
+            // {
+            //     text: 'Import CSV',
+            //     action: function () {
+            //         uploadEditor.create( {
+            //             title: 'CSV file import'
+            //         } );
+            //     }
+            // },
+            // {
+            //     extend: 'selectAll',
+            //     className: 'btn-space'
+            // },
+            // 'selectNone',
+        ]
     });
     // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
     var uploadEditor = new $.fn.dataTable.Editor( {

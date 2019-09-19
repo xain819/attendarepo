@@ -103,10 +103,12 @@
 		public function get_student_schedule(){
 
 			$data['id']=$this->input->post('id');
+
 			$data['period']=$this->admin->get_period();
+		
 			$data['username']=$_SESSION['username'];
 		
-		     
+		    
 
 			 
 			if($data['username']=='R-101' || $data['username']=='R-103')
@@ -124,8 +126,13 @@
 					}	
 					else
 					{
+
+					
+						$q=$this->admin->master_control_status($a='hplt');
+					
 						$active_hallpass=$this->admin->check_if_hallpass_exist($attendance[0]['AttendanceID']);
 						$b=$this->admin->record_attendace($result['class_id']);
+						
 
 						
 				
