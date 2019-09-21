@@ -95,7 +95,7 @@
 			$result['response']=$data['active_2way_hallpass'];
 			echo json_encode($result);
 		}
-		elseif($data['student_2way_count']>5 && $limit_status==1)
+		elseif($data['student_2way_count']>$limit && $limit_status==1)
 		{
 			$result['status']='Student Reached';
 			$result['response']=$limit;
