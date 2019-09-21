@@ -35,15 +35,25 @@ class Admin_model extends CI_Model{
 		return true;
 
 	}
-	public function get_hallpass_count($a,$b)
+	public function active_hallpass($a)
+	
 	{
-		echo ($a);
-		echo ($b);
+		
+		$today = date("Y-m-d");  
+		$sql="SELECT DISTINCT count(*) as 'count' FROM `attendance` a join `class_list` c on c.class_id=a.class_id 
+		join `attendance_hallpass` ah on ah.attendance_id=a.AttendanceID where c.location='{$_SESSION['username']}' and a.AttendanceDate='{$today}' and c.period_number={$a} and ah.is_active=1";
+		$q=$this->db->query($sql)->row_array();
+		return $q['count'];
+	}
+	public function get_hallpass_count($a,$b,$c,$d)
+	{
+	
 		$sql="SELECT COUNT(*) as `count` FROM `attendance` a join `class_list` c 
 		on c.class_id=a.class_id join `attendance_hallpass` ah
-		on ah.attendance_id=a.AttendanceID where c.student_local_id={$a} and ah.pass_type={$b}";
+		on ah.attendance_id=a.AttendanceID where c.student_local_id={$a} and ah.pass_type={$b} and a.AttendanceDate>='{$c}' and a.AttendanceDate<='{$d}'";
 		$q=$this->db->query($sql)->row_array();
-		print_r($q);
+		return $q['count'];
+
 		
 	}
 	public function school_settings($a)

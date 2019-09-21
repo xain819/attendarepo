@@ -70,21 +70,9 @@
 		$data['hallpass']=$this->input->post('hallpass');
 		$data['pass_type']=$this->admin->check_hallpass_type($data);
 		$data['period']=$this->admin->get_period();
+		$data['active_2way_hallpass']=$this->admin->active_hallpass($data['period']);
 		// get the number of 2 way hall pass
-		$data['2way_hallpass']=$this->admin->get_hallpass_count($data['student_id_number'],$b=2);
-
-		/*
-		1. Check if the number of Active 2 way hall pass per period is <=limit(3) : return 3 hallpass activated 
-		2. Check student used 2 way hallpass within the limit type (Semester) : Hallpass Limit Reached
-		3. 
-		*/
-
-
 	
-
-
-
-		//$this->admin->get_count_2way_hallpass();
 
 
 		$q=$this->admin->master_control_status($a='nql');
@@ -95,61 +83,69 @@
 		$limit_type=$q1[1];
 		$limit_status=$q['is_active'];
 		$s=$this->admin->school_settings($limit_type);
+	
 		$date_start=$s['start'];
 		$date_end=$s['end'];
+		$data['student_2way_count']=$this->admin->get_hallpass_count($data['student_id_number'],$b=2,$date_start,$date_end);
+
+
+		if($data['active_2way_hallpass']>=3 )
+		{
+			$result['status']='Limit Reached';
+			$result['response']=$data['active_2way_hallpass'];
+			echo json_encode($result);
+		}
+		elseif($data['student_2way_count']>5 && $limit_status==1)
+		{
+			$result['status']='Student Reached';
+			$result['response']=$limit;
+			$result['student_2way_count']=$data['student_2way_count'];
+			$result['type']=$limit_type;
+			$result['info']=$s;
+			echo json_encode($result);
+		}
+		else
+		{
+
+					 
+			$q=$this->admin->master_control_status($a='hplt');  
+			$period=$this->admin->get_period_id();
+			$start_1   = date('H:i:s', strtotime($period['PeriodStartTime']));
+			$start_2 = date("H:i:s",strtotime($period['PeriodStartTime'])+(strtotime($period['HPLockStart'])-strtotime("00:00:00")));
+			$end_2 = date("H:i:s",strtotime($period['PeriodEndTime'])-(strtotime($period['HPLockEnd'])-strtotime("00:00:00")));
+			$end_1   = date('H:i:s', strtotime($period['PeriodEndTime']));
+			$now   = date('H:i:s');
+
+			if($now>$start_1 && $now<$start_2 && $data['pass_type']==2 && $q['is_active']==1){
+				$result['status']='locked';
+				$result['response']=$start_2;
+				$result['type']='start';
+				echo json_encode($result);	
+			}
+			elseif($now<$end_1 && $now>$end_2  &&  $data['pass_type']==2  && $q['is_active']==1 ){
+				$result['status']='locked';
+				$result['response']=$start_2;
+				$result['type']='end';
+			echo json_encode($result);	
+			}
+			else
+			{
+			$result=$this->admin->record_student_hallpass($data);
+			echo json_encode($result);
+
+			}
+
+
+		}
 
 		// check the number 
 	
 		
 
-		 
-				$q=$this->admin->master_control_status($a='hplt');  
-				$period=$this->admin->get_period_id();
-				$start_1   = date('H:i:s', strtotime($period['PeriodStartTime']));
-				$start_2 = date("H:i:s",strtotime($period['PeriodStartTime'])+(strtotime($period['HPLockStart'])-strtotime("00:00:00")));
-				$end_2 = date("H:i:s",strtotime($period['PeriodEndTime'])-(strtotime($period['HPLockEnd'])-strtotime("00:00:00")));
-				$end_1   = date('H:i:s', strtotime($period['PeriodEndTime']));
-				$now   = date('H:i:s');
-
-				if($now>$start_1 && $now<$start_2 && $data['pass_type']==2 && $q['is_active']==1){
-					$result['status']='locked';
-					$result['response']=$start_2;
-					$result['type']='start';
-					echo json_encode($result);	
-				}
-				elseif($now<$end_1 && $now>$end_2  &&  $data['pass_type']==2  && $q['is_active']==1 ){
-					$result['status']='locked';
-					$result['response']=$start_2;
-					$result['type']='end';
-				echo json_encode($result);	
-				}
-				else
-				{
-				$result=$this->admin->record_student_hallpass($data);
-				echo json_encode($result);
-
-				}
                                                                       
 	
 		}
-		// function get_period(){
-			
-		
-		// 	$now= new Datetime('now');
-			
-		// 	$data['username']=$_SESSION['username'];
-		// 	$q=$this->db->get('period')->result_array();
-		// 	foreach($q as $v){
-		// 		$start=new Datetime($v['PeriodStartTime']);
-		// 		$end=new Datetime($v['PeriodEndTime']);
 
-		// 		if($now >= $start && $now <= $end){
-		// 			$data['period']=$v['Period'];
-		// 			return $data['period'];
-		// 		}
-		// 	}
-			
-		// }
 
 
 		 function student_arrival_check_in(){

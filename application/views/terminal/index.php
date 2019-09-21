@@ -667,7 +667,8 @@ $(document).ready(function(){
                             
                   });
             }
-            else if(data['status']==='locked'){
+            else if(data['status']==='locked')
+            {
               const response=data['response'];
              
               if(data['type']==='start'){
@@ -690,6 +691,36 @@ $(document).ready(function(){
                     });
 
                 }
+
+            }
+            else if(data['status']==='Limit Reached')
+            {
+              const response=data['response'];
+             
+  
+
+              swal({
+                    title:`Teacher Limit Reached`,
+                    timer: 5000,
+                    text:`Locked: There are ${response} Non Admin Hall Pass, Please wait.`,     
+                  });
+
+
+            }
+            else if(data['status']==='Student Reached')
+            {
+              const response=data['response'];
+              
+             
+              swal({
+                    title:`Student Limit Reached`,
+                    timer: 5000,
+                    text:`You have Reached ${response} Hall Pass for this 
+                    ${data.info.name}(${data.info.name_id})
+                    ${data.info.start} -  ${data.info.end}. 
+                    Please contact your teacher`,     
+                  });
+
 
             }
             
