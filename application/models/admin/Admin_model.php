@@ -35,13 +35,48 @@ class Admin_model extends CI_Model{
 		return true;
 
 	}
+	public function get_hallpass_count($a,$b)
+	{
+		echo ($a);
+		echo ($b);
+		$sql="SELECT COUNT(*) as `count` FROM `attendance` a join `class_list` c 
+		on c.class_id=a.class_id join `attendance_hallpass` ah
+		on ah.attendance_id=a.AttendanceID where c.student_local_id={$a} and ah.pass_type={$b}";
+		$q=$this->db->query($sql)->row_array();
+		print_r($q);
+		
+	}
+	public function school_settings($a)
+	{
+		$today = date("Y-m-d");  
+		$this->db->where('name',$a);
+		//$now= new Datetime('now');
+
+		$now=date("Y-m-d", strtotime($today));
+
+		$result=$this->db->get('school_settings')->result_array();
+
+		foreach($result as $v){
+			$start = date("Y-m-d", strtotime($v['start']));
+			$end = date("Y-m-d", strtotime($v['end']));
+			if($start<=$now && $now<=$end)
+			{
+			$data=$v;
+			}
+		
+		}
+
+		return $data;
+
+
+	}
 
 	public function check_hallpass_type($a){
 	
-		$this->db->where('hallpass',$a);
+		$this->db->where('hallpass',$a['hallpass']);
 		$this->db->select('PassTypeID');
 		$q=$this->db->get('hallpass')->row_array();
-		return $q;
+		return $q['PassTypeID'];
 
 	}
 
@@ -968,6 +1003,7 @@ class Admin_model extends CI_Model{
 
 	public function record_student_hallpass($a){
 	
+		
 		$this->db->where('attendance_id',$_SESSION['AttendanceID']);
 		$this->db->where('hallpass',$a['hallpass']);
 		$this->db->where('is_active',1);
@@ -981,6 +1017,10 @@ class Admin_model extends CI_Model{
 			'attendance_id'=>$_SESSION['AttendanceID'],
 			'is_active'=>1,
 			'date_time_ended'=>'',
+			'student_local_id'=>$a['student_id_number'],
+			'pass_type'=>$a['pass_type'],
+
+			
 			'hallpass'=>$a['hallpass']);
 			$this->db->insert('attendance_hallpass',$data_array);
 

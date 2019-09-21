@@ -27,8 +27,8 @@
 		public function get_master_data(){
 			$data['period']=$this->admin->get_period();
 			$data['type']=$this->admin->get_day_type();
-			$data['count']=$this->admin->get_day_count();
-
+			//$data['count']=$this->admin->get_day_count();
+			
 			echo json_encode($data);
 		}
 		

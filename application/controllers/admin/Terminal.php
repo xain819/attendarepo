@@ -51,6 +51,7 @@
 			$data['username']=$_SESSION['username'];
 	
 			$result=$this->admin->get_terminal_info($data['username'],$data['date'],$data['period']);
+
 			$this->session->set_userdata('teacher_id_number', $result[0]['teacher_id_number']);
 			$this->session->set_userdata('class_code', $result[0]['class_code']);
 			$this->session->set_userdata('period_number', $data['period']);
@@ -67,40 +68,67 @@
 		public function get_student_student_hallpass(){
 		$data['student_id_number']=$this->input->post('id');
 		$data['hallpass']=$this->input->post('hallpass');
+		$data['pass_type']=$this->admin->check_hallpass_type($data);
+		$data['period']=$this->admin->get_period();
+		// get the number of 2 way hall pass
+		$data['2way_hallpass']=$this->admin->get_hallpass_count($data['student_id_number'],$b=2);
 
-		$pass_type=$this->admin->check_hallpass_type($a=$data['hallpass']);
+		/*
+		1. Check if the number of Active 2 way hall pass per period is <=limit(3) : return 3 hallpass activated 
+		2. Check student used 2 way hallpass within the limit type (Semester) : Hallpass Limit Reached
+		3. 
+		*/
+
+
 	
 
-		//$data['StudentScheduleID']=$_SESSION['StudentScheduleID'];  
 
 
-		$q=$this->admin->master_control_status($a='hplt');  
-		$period=$this->admin->get_period_id();
-		$start_1   = date('H:i:s', strtotime($period['PeriodStartTime']));
-		$start_2 = date("H:i:s",strtotime($period['PeriodStartTime'])+(strtotime($period['HPLockStart'])-strtotime("00:00:00")));
-		$end_2 = date("H:i:s",strtotime($period['PeriodEndTime'])-(strtotime($period['HPLockEnd'])-strtotime("00:00:00")));
-		$end_1   = date('H:i:s', strtotime($period['PeriodEndTime']));
-		$now   = date('H:i:s');
+		//$this->admin->get_count_2way_hallpass();
 
-		if($now>$start_1 && $now<$start_2 && $pass_type['PassTypeID']==2 && $q['is_active']==1){
+
+		$q=$this->admin->master_control_status($a='nql');
+		$q1=explode(',',$q['value']);
+
+		// Check if limit status is active and get check which semester fall or marking period
+		$limit=$q1[0];
+		$limit_type=$q1[1];
+		$limit_status=$q['is_active'];
+		$s=$this->admin->school_settings($limit_type);
+		$date_start=$s['start'];
+		$date_end=$s['end'];
+
+		// check the number 
+	
 		
-			$result['status']='locked';
-			$result['response']=$start_2;
-			$result['type']='start';
-			echo json_encode($result);	
-		}
-		elseif($now<$end_1 && $now>$end_2  &&  $pass_type['PassTypeID']==2  && $q['is_active']==1 ){
-			$result['status']='locked';
-			$result['response']=$start_2;
-			$result['type']='end';
-		echo json_encode($result);	
 
-		}
-		else{
-		$result=$this->admin->record_student_hallpass($data);
-		echo json_encode($result);
+		 
+				$q=$this->admin->master_control_status($a='hplt');  
+				$period=$this->admin->get_period_id();
+				$start_1   = date('H:i:s', strtotime($period['PeriodStartTime']));
+				$start_2 = date("H:i:s",strtotime($period['PeriodStartTime'])+(strtotime($period['HPLockStart'])-strtotime("00:00:00")));
+				$end_2 = date("H:i:s",strtotime($period['PeriodEndTime'])-(strtotime($period['HPLockEnd'])-strtotime("00:00:00")));
+				$end_1   = date('H:i:s', strtotime($period['PeriodEndTime']));
+				$now   = date('H:i:s');
 
-		}
+				if($now>$start_1 && $now<$start_2 && $data['pass_type']==2 && $q['is_active']==1){
+					$result['status']='locked';
+					$result['response']=$start_2;
+					$result['type']='start';
+					echo json_encode($result);	
+				}
+				elseif($now<$end_1 && $now>$end_2  &&  $data['pass_type']==2  && $q['is_active']==1 ){
+					$result['status']='locked';
+					$result['response']=$start_2;
+					$result['type']='end';
+				echo json_encode($result);	
+				}
+				else
+				{
+				$result=$this->admin->record_student_hallpass($data);
+				echo json_encode($result);
+
+				}
                                                                       
 	
 		}
