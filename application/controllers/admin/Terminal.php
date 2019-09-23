@@ -89,32 +89,13 @@
 		$data['student_2way_count']=$this->admin->get_hallpass_count($data['student_id_number'],$b=2,$date_start,$date_end);
 
 
-		if($data['active_2way_hallpass']>=3 )
-		{
-			$result['status']='Limit Reached';
-			$result['response']=$data['active_2way_hallpass'];
-			echo json_encode($result);
-		}
-		elseif($data['student_2way_count']>$limit && $limit_status==1)
-		{
-			$result['status']='Student Reached';
-			$result['response']=$limit;
-			$result['student_2way_count']=$data['student_2way_count'];
-			$result['type']=$limit_type;
-			$result['info']=$s;
-			echo json_encode($result);
-		}
-		else
-		{
-
-					 
-			$q=$this->admin->master_control_status($a='hplt');  
-			$period=$this->admin->get_period_id();
-			$start_1   = date('H:i:s', strtotime($period['PeriodStartTime']));
-			$start_2 = date("H:i:s",strtotime($period['PeriodStartTime'])+(strtotime($period['HPLockStart'])-strtotime("00:00:00")));
-			$end_2 = date("H:i:s",strtotime($period['PeriodEndTime'])-(strtotime($period['HPLockEnd'])-strtotime("00:00:00")));
-			$end_1   = date('H:i:s', strtotime($period['PeriodEndTime']));
-			$now   = date('H:i:s');
+		$q=$this->admin->master_control_status($a='hplt');  
+		$period=$this->admin->get_period_id();
+		$start_1   = date('H:i:s', strtotime($period['PeriodStartTime']));
+		$start_2 = date("H:i:s",strtotime($period['PeriodStartTime'])+(strtotime($period['HPLockStart'])-strtotime("00:00:00")));
+		$end_2 = date("H:i:s",strtotime($period['PeriodEndTime'])-(strtotime($period['HPLockEnd'])-strtotime("00:00:00")));
+		$end_1   = date('H:i:s', strtotime($period['PeriodEndTime']));
+		$now   = date('H:i:s');
 
 			if($now>$start_1 && $now<$start_2 && $data['pass_type']==2 && $q['is_active']==1){
 				$result['status']='locked';
@@ -130,22 +111,32 @@
 			}
 			else
 			{
-			$result=$this->admin->record_student_hallpass($data);
-			echo json_encode($result);
+				if(($data['active_2way_hallpass']<=2 && $data['student_2way_count']<$limit) && $limit_status==1 ){
+					$result=$this->admin->record_student_hallpass($data);
+					echo json_encode($result);
+				}
+				elseif($data['active_2way_hallpass']>=3)
+				{
+					$result['status']='Limit Reached';
+					$result['response']=$data['active_2way_hallpass'];
+					echo json_encode($result);	
+				}
+				elseif($data['student_2way_count']>=$limit)
+				{
+					$result['status']='Student Reached';
+					$result['response']=$data['student_2way_count'];
+					$result['info']=$s;
+					echo json_encode($result);	
+				}
+
 
 			}
 
 
 		}
-
-		// check the number 
-	
 		
 
-                                                                      
 	
-		}
-
 
 
 		 function student_arrival_check_in(){
