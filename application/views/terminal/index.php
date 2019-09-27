@@ -397,7 +397,7 @@ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
       if(data[0].master_terminal==='0' ||data[0].is_active==='0' ){
         function moveItem(){
         swal({
-              title: `Terminal Locked`,
+              title: ` Locked`,
               text: `Please Contact Administrator`,
               type: "warning",
               showCancelButton: false,
@@ -434,22 +434,24 @@ $(document).ready(function(){
         console.log('null');}
         else if(data[0].is_drill==1 && data[0].is_active==1){
 
-function moveItem(){
-swal({
-      title: `${data[0].emergency_name}`,
-      text: `This is a Drill
-      ${data[0].notification}`,
-      type: "warning",
-      showCancelButton: false,
-      showConfirmButton: false,
-      timer: 30000000
-   });}
+        function moveItem(){
+          $("#student_id").prop("disabled", true);
+        swal({
+              title: `${data[0].emergency_name}`,
+              text: `This is a Drill
+              ${data[0].notification}`,
+              type: "warning",
+              showCancelButton: false,
+              showConfirmButton: false,
+              timer: 30000000
+          });}
 
-   setInterval(moveItem,100);
+          setInterval(moveItem,100);
 
 }
       else{
         function moveItem(){
+        $("#student_id").prop("disabled", true);
         swal({
               title: `${data[0].emergency_name}`,
               text: `${data[0].notification}`,
@@ -534,7 +536,7 @@ $(document).ready(function(){
         dataType:'JSON',
     }).done(function(data){
 
-     var result=data;
+     var result=data.info;
      var hallpass=result; 
 
      const ahp = hallpass.filter(function(test){
@@ -552,13 +554,18 @@ $(document).ready(function(){
       const HallPass=element.access;
       const status=element.is_active;
       const PassTypeID=element.PassTypeID;
-
+      console.log(data.master.master_hallpass);
 
 
       if (status==='0' ){
         var bg='bg-gray',a='<div class="info-box">',a2='';
       }
-      else{
+      else if(data.master.master_hallpass==='0' || data.master.hallpass_is_active==='0')
+      {
+        var bg='bg-gray',a='<div class="info-box">',a2='';
+      }
+      else
+      {
         var a=`<a href=""><div class="info-box btn-hallpass" data-type="${PassTypeID}" data-id="${HallPass}" id="${HallPass}">`,
             a2='</a>',bg='bg-aqua';
       }
@@ -592,6 +599,12 @@ $(document).ready(function(){
     
       if (status==='0'){
         var bg='bg-gray',a='<div class="info-box">',a2='';
+      }
+      else if(data.master.master_hallpass==0)
+      
+      {
+        var a=`<a href=""><div class="info-box btn-hallpass" data-id="${HallPass}" id="${HallPass}">`,
+            a2='</a>',bg='bg-aqua';
       }
       else{
         var a=`<a href=""><div class="info-box btn-hallpass" data-id="${HallPass}" id="${HallPass}">`,

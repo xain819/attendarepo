@@ -5,7 +5,7 @@
 			parent::__construct();
 			$this->load->library('rbac');
 			$this->load->model('admin/admin_model', 'admin');
-
+			$this->load->model('admin/controlpannel_model', 'control');
 		    $this->rbac->check_module_access();
 		}
 
@@ -20,6 +20,9 @@
 			$data['view'] = 'admin/controlpannel/index';
 			$data['period']=$this->admin->get_period();
 			$data['type']=$this->admin->get_day_type();
+		
+			$this->control->assign_terminal_username();
+
 			
 		
 			$this->load->view('layoutv2', $data);

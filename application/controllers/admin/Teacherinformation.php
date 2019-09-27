@@ -7,6 +7,7 @@
 			
 			$this->load->model('admin/admin_model');
 			$this->load->model('admin/admin_model', 'admin');
+			$this->load->model('admin/teacher_model', 'teacher');
 
 		    $this->rbac->check_module_access();
 		}
@@ -213,6 +214,8 @@
 			$this->update_teacher_hallpass();
 			$this->get_teacher_course();
 			$this->load->view('layoutv2', $data);
+			$this->teacher->assign_teacher_username();
+
 			
 			
 		}

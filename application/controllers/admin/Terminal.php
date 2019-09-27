@@ -48,7 +48,9 @@
 		{
 			$data['teacher_id_number']=$_SESSION['teacher_id_number'];
 		
-			$result=$this->admin->get_terminal_hallpass($data['teacher_id_number']);
+			$result['info']=$this->admin->get_terminal_hallpass($data['teacher_id_number']);
+			$result['master']=$this->admin->get_master_hallpass();
+
 		
 			echo json_encode($result);
 		

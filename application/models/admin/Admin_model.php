@@ -29,6 +29,7 @@ class Admin_model extends CI_Model{
 
 	}
 	public function control_pannel_change_status($a){
+
 	
 		if($a['id']=='drill'){
 			$this->db->set('is_drill',$a['status']);
@@ -42,6 +43,12 @@ class Admin_model extends CI_Model{
 		elseif($a['id']=='master_hallpass')
 		{
 			$this->db->set('master_hallpass',$a['status']);
+			$this->db->update('location');
+		}
+		elseif($a['name']=='hallpass')
+		{
+			$this->db->where('LocationID',$a['id']);
+			$this->db->set('halpass_is_active',$a['status']);
 			$this->db->update('location');
 		}
 		else{
@@ -96,6 +103,12 @@ class Admin_model extends CI_Model{
 		return $q['count'];
 
 		
+	}
+	public function get_master_hallpass()
+	{
+		$this->db->where('Location',$_SESSION['username']);
+		$q=$this->db->get('location')->row_array();
+		return $q;
 	}
 	public function school_settings($a)
 	{
