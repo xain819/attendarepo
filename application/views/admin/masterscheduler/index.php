@@ -586,7 +586,8 @@
         var month = datess.getMonth(); //Be careful! January is 0 not 1
         var year = datess.getFullYear();
 
-        var dateString =year  + "-" +(month + 1) + "-" + day;
+        var dateString =year  + "-" +(month + 1) + "-" + (day+1);
+        console.log(dateString);
  
         ///ito ngay sir ano output alert ( 2019-5-14) ok na -ngudpate na sa db then available na sa calendar gmana na
         

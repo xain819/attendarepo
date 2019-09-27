@@ -161,17 +161,30 @@ $(document).ready(function() {
             { label: "ID:",name: "ID" },
             { label: "student_local_id:",name: "student_local_id" },
    
-            {
-                label:     'date_time_ended:',
-                name:      'date_time_ended',
-                type:      'datetime',
-                def:       function () { return new Date(); },
-                format:    'MM-DD-YYYY h:mm A',
-                fieldInfo: 'US style m-d-y date input with 12 hour clock',
-                opts: {
-                    minutesIncrement: 5
-                }
-            }
+            // {
+            //     label:     'date_time_ended:',
+            //     name:      'date_time_ended',
+           
+            //     def:       function () { return new Date(); },
+            //     format: 'HH:mm:ss',
+            // fieldInfo: '24 hour clock format with seconds',
+            //     opts: {
+            //         minutesIncrement: 5
+            //     }
+            // },
+            { label: "date_time_ended:",name: "date_time_ended",
+            type:'datetime',
+            render:function(data){
+                 
+                    return `er`;
+            // def:function(){
+            //     return 'e';
+            },
+            format: 'HH:mm:ss',
+            fieldInfo: '24 hour clock format with seconds'
+            },
+     
+            
             
         ]
         

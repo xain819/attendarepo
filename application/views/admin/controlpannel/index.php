@@ -28,7 +28,7 @@
     <h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
      <button data-toggle="modal" data-target="#${id_name}" style='background-color:
     inherit;;border:none;' class="mt-0 mb- text-info">Terminal Master Switch</button>
-     <span class="pull-right">  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
+     <span class="pull-right">  <input id="master_terminal" data-id='master_terminal' type="checkbox" 
      class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
  
     </div></div></div></div></div>
@@ -41,7 +41,7 @@
     <h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
      <button data-toggle="modal" data-target="#${id_name}" style='background-color:
     inherit;;border:none;' class="mt-0 mb- text-info">Hall Pass Master Switch</button>
-     <span class="pull-right">  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
+     <span class="pull-right">  <input id="master_hallpass" data-id='master_hallpass' type="checkbox" 
      class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
 
     </div></div></div></div></div>
@@ -122,7 +122,7 @@
                               <h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
                               <button data-toggle="modal" data-target="#${id_name}" style='background-color:
                               inherit;;border:none;' class="mt-0 mb- text-info"><h4>Emergency Terminal</h4></button>
-                              <span class="pull-right">  <input id="emergencylist_check" data-id='${id}' type="checkbox" ${is_checked}
+                              <span class="pull-right">  <input id="emergencylist_check" data-id='${id}' data-name='ee'type="checkbox" ${is_checked}
                               class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
                               <p>Shutdown and Notification</p>
                               </div></div></div></div></div>
@@ -133,18 +133,23 @@
                                 <div class="card transparent-card">
                                     <div class="card-body p-0 location-table">
 
-                                        <div id='emergencylist' class="row">
                                         
 
                                             <div class="col-xl-12">
                                                 <div class="card mb-4">
                                                     <div class="card-body d-flex justify-content-between align-items-center p-3">
-                                                        <h6 class="item">Select Emergency Type</h6><br>
+                                                    <button data-toggle="modal" data-target="#${id_name}" style='background-color:
+                              inherit;;border:none;' class="mt-0 mb- text-info"><h4>Is this a Drill?</h4></button>
+                              
+                              <span class="pull-right">  <input id="drill" data-id='drill' data-id='drill'  type="checkbox" 
+                              class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
+                             
+                                                      
                                                         
                                                     </div>
                                                 </div>
                                             </div>
-                                    
+                                            <div id='emergencylist' class="row">
   
 
                                           </div>
@@ -163,21 +168,11 @@
     <script src="<?=base_url() ?>public/js/settings.js"></script>
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
-    
-    <script src="<?=base_url() ?>public/assets/plugins/d3v3/index.js"></script>
-    <script src="<?=base_url() ?>public/assets/plugins/topojson/topojson.min.js"></script>
-    <script src="<?=base_url() ?>public/assets/plugins/datamaps/datamaps.usa.min.js"></script>
-    <script src="<?=base_url() ?>public/assets/plugins/owl.carousel/dist/js/owl.carousel.min.js"></script>
 
-    <script src="<?=base_url() ?>public/assets/plugins/chart.js/Chart.bundle.min.js"></script>
     <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="<?=base_url() ?>public/js/dashboard/dashboard-20.js"></script>
+
     <script src="<?=base_url() ?>public/plugins/moment/moment.js"></script>
 
-
-
-
-    <script type="text/javascript" src="http://www.datejs.com/build/date.js"></script>
 
 
 <script>
@@ -224,14 +219,62 @@ $(document).ready(function(){
 </script>
 
 
+
+
     <script>
       var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
+   
 
-       
+$(document).ready(function(){
+    const a =$.ajax({
+        url:'<?php echo base_url(); ?>admin/controlpannel/change_status',
+        type:"POST",
+        data:({[csrfName]: csrfHash}),
+        dataType:'JSON',
+    }).done(function(data){
+   
+        if(data.drill===1){
+            $('#drill').attr('checked',true);  
+        } 
+        $('#drill').attr('checked',false);    
+
+    });
+});
+$(document).ready(function(){
+    const a =$.ajax({
+        url:'<?php echo base_url(); ?>admin/controlpannel/master',
+        type:"POST",
+        data:({[csrfName]: csrfHash}),
+        dataType:'JSON',
+    }).done(function(data)
+    {   
+        var check2=true;
+        var check1=true;
+        if(data.master_terminal==0){
+        check1=false; }
+        if(data.master_hallpass==0){
+        check2=false; }
+        
+
+        console.log(data.master_terminal); 
+        console.log(data.master_hallpass); 
+  
+        $('#master_terminal').attr('checked',check1);   
+        $('#master_hallpass').attr('checked',check2);
+     
+
+    });
+});
+
+
+  
       
 var ahp = $('#nhp').DataTable({
+
+  
+
     "searching": true,
     "bPaginate": false,
     "bLengthChange": false,
@@ -256,8 +299,8 @@ var ahp = $('#nhp').DataTable({
                     var is_checked='';
                     if (data.is_terminal_active==1){var is_checked="checked=''";}
                     return `
-                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}" type="checkbox" ${is_checked} 
-                    class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}" data-name='hallpass' type="checkbox" ${is_checked} 
+                    class="js-switch js-switch-1 js-switch-md"  data-size="small" />
                     `;
                 }
             }
@@ -290,8 +333,8 @@ var nhp = $('#ahp').DataTable({
                     var is_checked='';
                     if (data.is_hallpass_active==1){var is_checked="checked=''";}
                     return `
-                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}" type="checkbox" ${is_checked} 
-                    class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}"  data-name='terminal' type="checkbox" ${is_checked} 
+                    class="js-switch js-switch-1 js-switch-md" data-size="small" />
                     `;
                 }
             }
@@ -319,7 +362,9 @@ $("#emergencylist_check").click(function(){
 });
 
 $(document).ready(function(){
-    const a =$.ajax({
+
+
+    const e =$.ajax({
         url:'<?php echo base_url(); ?>admin/controlpannel/get_emergency_list',
         type:"POST",
         data:({[csrfName]: csrfHash}),
@@ -338,14 +383,14 @@ $(document).ready(function(){
     if (is_active==1){ var is_checked='checked=""';}
    
     
-    const mhl=`
+    var mhl=`
           <div class="col-xl-12 col-xxl-6 col-sm-6">
               <div class="card mb-2">
                   <div class="card-body p-3 d-flex justify-content-between align-items-center">
                       <h5 class="item">${emergency_name}</h5>
                       <div class="item">
                       
-                          <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}  class="js-switch js-switch-1 js-switch-md" data-size="small" />
+                          <input id="${id}" data-id='${id}' data-name='${emergency_name}' type="checkbox" ${is_checked}  class="js-switch js-switch-1 js-switch-md" data-size="small" />
                       </div>
                   </div>
               </div>
@@ -359,6 +404,66 @@ $(document).ready(function(){
             $("#emergencylist").append(mhl); 
     });	
 	});
+
+
+    
+    $("body").on("change",".js-switch",function(){
+    $("#emergencylist").empty();
+    console.log($(this).data('name'));
+    console.log($(this).is(':checked')==true?1:0);
+  
+	$.post('<?=base_url("admin/controlpannel/change_status")?>',
+	{
+        '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
+		id : $(this).data('id'),
+        status : $(this).is(':checked')==true?1:0,
+        name:$(this).data('name')
+	},
+	function(data){
+        
+        const e =$.ajax({
+        url:'<?php echo base_url(); ?>admin/controlpannel/get_emergency_list',
+        type:"POST",
+        data:({[csrfName]: csrfHash}),
+        dataType:'JSON',
+    }).done(function(data){
+    var result=data;
+    masterlist=result.info;
+    masterlist.forEach(function(element){
+    
+    const emergency_name=element.emergency_name;
+    const notification=element.notification;
+    const id=element.id;
+    const is_active=element.is_active;
+
+    var is_checked='';
+    if (is_active==1){ var is_checked='checked=""';}
+   
+    
+    var mhl=`
+          <div class="col-xl-12 col-xxl-6 col-sm-6">
+              <div class="card mb-2">
+                  <div class="card-body p-3 d-flex justify-content-between align-items-center">
+                      <h5 class="item">${emergency_name}</h5>
+                      <div class="item">
+                      
+                          <input id="${id}" data-id='${id}' data-name='${emergency_name}' type="checkbox" ${is_checked}  class="js-switch js-switch-1 js-switch-md" data-size="small" />
+                      </div>
+                  </div>
+              </div>
+          </div>  `
+    
+ 
+    var master_element = $("<div />");
+
+
+            master_element.html(mhl);
+            $("#emergencylist").append(mhl); 
+    });	
+	});
+		
+	});
+});
 });
 
 

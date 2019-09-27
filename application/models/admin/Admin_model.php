@@ -17,6 +17,45 @@ class Admin_model extends CI_Model{
 		$this->db->update('master_control');
 
 	}
+	public function get_terminal_status($a){
+	$this->db->where('location',$a);
+	return ($this->db->get('location')->result_array());
+
+
+	}
+	public function get_controlpannel_master(){
+		$q=$this->db->get('location')->row_array();
+		return $q;
+
+	}
+	public function control_pannel_change_status($a){
+	
+		if($a['id']=='drill'){
+			$this->db->set('is_drill',$a['status']);
+			$this->db->update('emergency');
+		}
+		elseif($a['id']=='master_terminal')
+		{
+			$this->db->set('master_terminal',$a['status']);
+			$this->db->update('location');
+		}
+		elseif($a['id']=='master_hallpass')
+		{
+			$this->db->set('master_hallpass',$a['status']);
+			$this->db->update('location');
+		}
+		else{
+		$this->db->set('is_active',0);
+		$this->db->update('emergency');
+		$this->db->set('is_active',$a['status']);
+		$this->db->where('id',$a['id']);
+		$this->db->update('emergency');
+		}
+	
+	return true;
+
+	}
+
 
 	
 	public function master_control_status($a){
@@ -28,9 +67,11 @@ class Admin_model extends CI_Model{
 	}
 	
 	public function edit_hallpass_swipe($a,$b){
+		$today = date("Y-m-d");  
+		$data_time_ended=$today.' '.$b;
 	
 		$this->db->where('ID',$a);
-		$this->db->set('date_time_ended',$b);
+		$this->db->set('date_time_ended',$data_time_ended);
 		$this->db->update('attendance_hallpass');
 		return true;
 
@@ -273,7 +314,7 @@ class Admin_model extends CI_Model{
 	public function get_day_count(){
 		$today=date("Y-m-d");
 		
-		$sql = "SELECT  count(DISTINCT  `start`) as 'count' FROM `vschedule_date` where `start` between '2019-07-01' AND '$today'";
+		$sql = "SELECT  count(DISTINCT  `start`) as 'count' FROM `scheduledate` where `start` between '2019-07-01' AND '$today'";
 		$q=$this->db->query($sql)->result_array();
 		return $q;
 		
@@ -925,13 +966,14 @@ class Admin_model extends CI_Model{
 		return $q;
 	}
 	// roster list with data on the hallpass
-	public function check_student_rosters_data($a){
-		
+	public function check_student_rosters_data($a,$b){
+	
+	
 		$this->db->distinct();
-		$this->db->where('term','S1');
+		$this->db->where('term',$b['name_id']);
 		//$this->db->where('start',date("Y-m-d"));
 		$this->db->where('teacher_id_number',$a);
-	    //$this->db->where('period_number',$b);
+		
 		$q=$this->db->get('vstudent_roster_list')->result_array();
 		return $q;
 	}
@@ -1011,6 +1053,58 @@ class Admin_model extends CI_Model{
 
 	}
 
+	public function quick_attendance($a,$b)
+	{
+	
+	  $now = new Datetime('now');
+	  $date=$now->format('y-m-d');
+	  $time=$now->format('H:i:s');
+	  $this->db->where('class_id',$a);
+	  $this->db->where('AttendanceDate',$date);
+	  $this->db->where('PeriodID',$b);
+	  $q=$this->db->get('attendance')->result_array();
+	  if($q==null){
+
+		$this->db->set('class_id',$a);
+		$this->db->set('AttendanceDate',$date);
+		$this->db->set('AttendanceTime',$time);
+		$this->db->set('PeriodID',$b);
+		$this->db->set('swipe_type',1);
+		$this->db->insert('attendance');
+	  }
+	
+	  
+	}
+	public function edit_attendance($a)
+
+	{
+
+		$now = new Datetime('now');
+		$date=$now->format('y-m-d');
+		$time=$now->format('H:i:s');
+		$this->db->set('class_id',$a['class_id']);
+		$this->db->set('AttendanceDate',$date);
+		$this->db->set('AttendanceTime',$a['AttendanceTime']);
+		$this->db->set('PeriodID',$a['period']);
+		$this->db->set('swipe_type',1);
+		$this->db->insert('attendance');
+	
+	
+	  
+	}
+	public function update_attendance($a)
+
+	{
+		print_r($a);
+		$this->db->set('AttendanceTime',$a['AttendanceTime']);
+		$this->db->set('teacher_overide',$a['teacher_overide']);
+		$this->db->where('AttendanceID',$a['AttendanceID']);
+		$this->db->update('attendance');
+		return true;
+	}
+
+
+
 	public function record_student_hallpass($a){
 	
 		
@@ -1032,6 +1126,7 @@ class Admin_model extends CI_Model{
 
 			
 			'hallpass'=>$a['hallpass']);
+			
 			$this->db->insert('attendance_hallpass',$data_array);
 
 	
@@ -1233,6 +1328,14 @@ class Admin_model extends CI_Model{
 		}
 
 	}
+
+	public function get_emergency_status(){
+		$this->db->where('is_active',1);
+		$q=$this->db->get('emergency');
+		return $q->result_array();
+
+	}
+
 
 	public function student_access($data){
 		

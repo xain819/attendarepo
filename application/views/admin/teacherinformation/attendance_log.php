@@ -16,6 +16,9 @@ button.btn-space {
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
 <link rel="stylesheet" href="<?php echo base_url('public/plugins/editor/css/editor.dataTables.min.css');?>">
+<link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
+  
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
@@ -28,6 +31,7 @@ button.btn-space {
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
 
 
+  <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
 <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
@@ -80,8 +84,7 @@ var editor;
 function selectColumns ( editor, csv, header ) {
     var selectEditor = new $.fn.dataTable.Editor();
     var fields = editor.order();
-    console.log(selectEditor);
- 
+
     for ( var i=0 ; i<fields.length ; i++ ) {
         var field = editor.field( fields[i] );
         
@@ -122,9 +125,14 @@ function selectColumns ( editor, csv, header ) {
     } );
 }
 
-$('#classes').on( 'click', 'tbody td:not(:first-child)', function (e) {
-        editor.inline( this );
-    } );
+// $('#classes').on( 'click', 'tbody td:not(:first-child)', function (e) {
+//         editor.inline( this );
+//     } );
+// $('#classes').on( 'click', 'tbody td:not(:first-child)', function (e) {
+//         editor.bubble( this );
+//     } );
+
+
 
  
 $(document).ready(function() {
@@ -135,34 +143,57 @@ $(document).ready(function() {
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: 'data',
-           
-            dataType:'JSON'
+            dataType:'JSON',
+            "success": function (data) {
+            
+            if(data.status==='not allowed')
+            {
+                
+                swal({
+                    title:'Not Allowed',
+                    timer: 5000,
+                    text: `Attendance Swipe Overide Not Allowed
+                    Please Contact Administrator
+                    `,
+                });
+
+         
+            }}
+            
        },
        idSrc:  'AttendanceID',
         table: "#classes",
         fields: [ 
 
+            
             { label: "Time In:",name: "AttendanceTime",
             type:'datetime',
             def:function(){
                 return new Date();
             },
+            
             format: 'HH:mm:ss',
             fieldInfo: '24 hour clock format with seconds'
-            
             },
-             { label: "Tardy:",name: "student_local_id"},
+            
+        
+
+            
+            { label: "class_id:",name: "class_id",
+                type:  "readonly",
+            },
+       
             // { label: "Time In:",name: "grade_level"},
             // { label: "Time In:",name: "last_name"},
             // { label: "Time In:",name: "first_name"},
-            // { label: "Status:",name: "AttendanceID",
-            // type:"select",
-            // options: [
-            //          { label: "Yes", value: "yes" },
-            //          { label: "No",  value: "no" },
-            //         ]
+            { label: "Excused Tardy?",name: "teacher_overide",
+            type:"select",
+            options: [
+                     { label: "Yes", value: "yes" },
+                     { label: "No",  value: "no" },
+                    ]
 
-            // },
+            },
 
             
         ]
@@ -171,7 +202,7 @@ $(document).ready(function() {
 
     var a= $('#classes').DataTable( {
         dom: 'Bfrtip',
-        "pageLength": 20,
+        "pageLength": 30,
         "colReorder": true,
         ajax: {
             url: base_url+"admin/teacherinformation/attendance_logs",
@@ -185,7 +216,17 @@ $(document).ready(function() {
         
         
       
-            { data: null, },
+       
+            { 
+                data: null,
+                render:function(data){
+                    var is_checked='';
+                    return `
+                    <input data-id="${data.class_id}" id="${data.class_id}" id="hp_${data.class_id}" type="checkbox" ${is_checked} 
+                    class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                    `;
+                }
+            },
             { data: 'AttendanceTime' },
             { data: null,
                  render:function(data){
@@ -216,8 +257,7 @@ $(document).ready(function() {
                         var a=Math.trunc(f);
                         
                         var b=Math.abs(Math.trunc((f-a)*60));
-                        console.log (typeof(a));
-                        console.log(a);
+               
                         if(b<=9){
                             return `(${Math.abs(a)}:0${b})`
                         }else{
@@ -254,7 +294,7 @@ $(document).ready(function() {
                     var start=new Date(`${data['AttendanceDate']} ${data['PeriodStartTime']}`).getTime()+parseInt(tt[1])*60*1000+parseInt(tt[2])*1000;
                     
                     var swipe=new Date(`${data['AttendanceDate']} ${data['AttendanceTime']}`).getTime();
-                    const letter_number=parseInt(data.appointment)+parseInt(data.emergency)+parseInt(data.other);
+                    const letter_number=parseInt(data.appointment)+parseInt(data.emergency)+parseInt(data.other)+parseInt(data.teacher_overide);
                     // var data_array=[
                     //        {name:'appointment',`${data.appointment}`}, 
                     //        {name:'emergency',`${data.emergency}`}, 
@@ -263,8 +303,9 @@ $(document).ready(function() {
                     // ];
                     data_array=[];
                     data_array['appointment']=data.appointment;
-                     data_array['emergency']=data.emergency;
+                    data_array['emergency']=data.emergency;
                     data_array['other']=data.other;
+                    data_array['teacher_overide']=data.teacher_overide;
 
              
                   
@@ -376,6 +417,25 @@ $(document).ready(function() {
     editor.on( 'create', function ( e, json, data ) {
     alert( 'New row added' );
     } );
+
+       
+    $("body").on("change",".tgl_checkbox",function(){
+ 
+	$.post('<?=base_url("admin/teacherinformation/quick_edit")?>',
+	{
+        '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
+		id : $(this).data('id'),
+        status : $(this).is(':checked')==true?1:0,
+        data: 'hallpass'
+	},
+	function(data){
+       
+        a.ajax.reload();
+		
+	});
+});
     
 });
+       
+
 </script>

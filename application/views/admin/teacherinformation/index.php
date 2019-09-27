@@ -84,9 +84,7 @@ button.btn-space {
           </div>
         </div></div>
         <!-- /.box-body -->
-        <div class="box-footer">
-          Footer
-        </div>
+
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
@@ -120,8 +118,8 @@ button.btn-space {
 
     
     
-    <!-- <script src="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script> -->
+    <script src="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <script>
       var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
           csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
@@ -130,7 +128,7 @@ button.btn-space {
 
     </script>
     
-        <?php $this->load->view('admin/teacherinformation/add');?>
+   <?php $this->load->view('admin/teacherinformation/add');?>
 <?php $this->load->view('admin/teacherinformation/edit');?>
 <?php $this->load->view('admin/terminalpannel/terminal_modal');?>
 <?php $this->load->view('admin/teacherinformation/hallpassfunction');?>

@@ -49,8 +49,8 @@
                                                 <div class="media pt-3 align-items-center pb-3">
                                                     <span class="mr-3 text-info"><i class="fas fa-calendar-week"></i></span>
                                                     <div class="media-body">
-                                                        <h4>4th</h4>
-                                                        <p>6th Week MP</p>
+                                                        <h4 id='marking'></h4>
+                                                        <p>Marking Period</p>
                                                     </div>
                                                 </div>
                                             </div>

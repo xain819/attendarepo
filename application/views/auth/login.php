@@ -11,6 +11,7 @@
            <!-- Custom CSS -->
           <link rel="stylesheet" href="<?= base_url() ?>public/dist/css/style.css">
            <!-- jQuery 2.2.3 -->
+           <link rel="manifest" href="<?=base_url() ?>manifest.json">
           <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
        
     </head>

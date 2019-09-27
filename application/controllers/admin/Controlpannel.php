@@ -18,17 +18,20 @@
 		public function index(){
 			$data['title'] = 'Control Pannel';
 			$data['view'] = 'admin/controlpannel/index';
-			// $data['period']=$this->admin->get_period();
-			// $data['type']=$this->admin->get_day_type();
+			$data['period']=$this->admin->get_period();
+			$data['type']=$this->admin->get_day_type();
+			
 		
 			$this->load->view('layoutv2', $data);
 		}
 
 		public function get_master_data(){
+
+			
 			$data['period']=$this->admin->get_period();
 			$data['type']=$this->admin->get_day_type();
-			//$data['count']=$this->admin->get_day_count();
-			
+			$data['count']=$this->admin->get_day_count();
+			$data['marking']=$this->admin->school_settings($a='Marking Period');
 			echo json_encode($data);
 		}
 		
@@ -36,6 +39,20 @@
 		
 			$data['info']=$this->admin->get_emergency_list();
 			echo json_encode($data);
+		}
+		public function master(){
+		
+			$data=$this->admin->get_controlpannel_master();
+			echo json_encode($data);
+		}
+		public function change_status(){
+			$data['id']=$this->input->post('id');
+			$data['status']=$this->input->post('status');
+			$data['name']=$this->input->post('name');
+			$result=$this->admin->control_pannel_change_status($data);
+			print_r($data);
+			
+			echo json_encode($result);
 		}
 	
 		public function manage_terminal()

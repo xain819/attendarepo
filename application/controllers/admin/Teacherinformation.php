@@ -20,19 +20,24 @@
 			$data['view'] = 'admin/teacherinformation/student_rosters';
 			//$this->load->view('layoutv2', $data);
 			$data['username']=$_SESSION['username'];
+			$data['type']=$this->admin->get_day_type();
+			$data['semester']=$this->admin->school_settings($a='semester');
+		
+		
 			$data['teacher_id_number']=$data['username'];
-			$result=$this->admin->check_student_rosters_data($data['teacher_id_number']);
+			$result=$this->admin->check_student_rosters_data($data['teacher_id_number'],$data['semester']);
 			echo json_encode($result);
 
 		}
 		public function edit_hallpass()
 		{
+		
 		$post=$this->input->post('data');
 		
 			foreach($post as $v){
 				
 				$result=$this->admin->master_control_status($a='hpso');
-				print_r($result);
+			
 				if($result['is_active']==1){
 					print_r($v);
 					$this->admin->edit_hallpass_swipe($v['ID'],$v['date_time_ended']);
@@ -46,33 +51,41 @@
 
 		}
 		public function edit_attendance(){
-		$r['data']=$this->input->post('data');
+	
+		$response=$this->input->post('data');
+		$data['period']=$this->admin->get_period();
+	
 		
-		$d['period']=$this->admin->get_period();
-		$d['start']=date("Y-m-d");
-		$d['username']=$_SESSION['username'];
-		$d['type']='manual';
-		$d['s1']='S1';
-		$d['student_local_id']=$r['data']['null']['student_local_id'];
-		$d['time']=$r['data']['null']['AttendanceTime'];
+		foreach($response as $key => $item) {
+			$data['AttendanceID']=$key;
+			$data['AttendanceTime']=$item['AttendanceTime'];
+			$data['class_id']=$item['class_id'];
+			$data['teacher_overide']=0;
+			if($item['teacher_overide']=='yes'){
+				$data['teacher_overide']=1;
+			}
+	
+		  }
 
-		$this->db->distinct();
-		$this->db->select('class_id');
-		$this->db->where('student_local_id',$d['student_local_id']);
-		$this->db->where('term',$d['s1']);
-		$this->db->where('teacher_id_number',$d['username']);
-		$this->db->where('start',$d['start']);
-		$q=$this->db->get('vstudent_roster')->result_array();
-		$a=$q[0]['class_id'];
-
-		$this->db->set('class_id',$a);
-		$this->db->set('AttendanceDate',$d['start']);
-		$this->db->set('AttendanceTime',$d['time']);
-		$this->db->set('PeriodID',$d['period']);
-		$this->db->set('swipe_type',1);
-		$this->db->insert('attendance');
-
-
+		$q=$this->admin->master_control_status($a='aso');
+		if($data['AttendanceID']=='null')
+		{
+			//if key is not not attendance then insert 1
+			$this->admin->edit_attendance($data);
+			$response['status']='added';
+			
+		}
+		elseif ($data['AttendanceID']!='null' && $q['is_active']==1) {
+			$this->admin->update_attendance($data);
+			$response['status']='updated';
+			
+		}
+		elseif($data['AttendanceID']!='null' && $q['is_active']==0){
+			$response['status']='not allowed';
+		
+		}
+		
+		echo json_encode($response);
 		}
 
 		public function attendance_log(){
@@ -118,6 +131,13 @@
 			$data['title'] = 'Teacher Information';
 			$data['view'] = 'admin/teacherinformation/daily_pass_logs';
 			$this->load->view('layoutv2', $data);
+		}
+		public function quick_edit(){
+			$data['period']=$this->admin->get_period();
+			$data['class_id']=$this->input->post('id');
+			$data['status']=$this->input->post('status');
+			$this->admin->quick_attendance($data['class_id'],$data['period']);
+			
 		}
 
 

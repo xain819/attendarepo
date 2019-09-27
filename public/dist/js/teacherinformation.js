@@ -162,7 +162,7 @@ $(document).ready(function(){
             //     className: 'btn-space'
             // },
             // 'selectNone',
-        ]
+        //]
     });
     $(document).on('click','#showaddteachermodal',function(){
        $.ajax({

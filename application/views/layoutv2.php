@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>public/assets/images/favicon.png">
    
     <!-- <link rel="stylesheet" href="<?= base_url() ?>public/bootstrap/css/bootstrap.min.css"> -->
+    <link rel="manifest" href="<?=base_url() ?>manifest.json">
     <script src="<?=base_url() ?>public/plugins/moment/moment.js"></script>
     <script src="https://kit.fontawesome.com/ba69dea6e4.js"></script>
 
@@ -867,7 +868,7 @@ $(document).ready(function(){
         data:({[csrfName]: csrfHash}),
         dataType:'JSON',
     }).done(function(data){
-  
+        var d=data.marking.name_id;
         a=data['type'][0]['title'];
         b=data['period'];
         c=data['count']['0']['count'];
@@ -875,6 +876,8 @@ $(document).ready(function(){
         $('#type').html(`${a}-Day`);
         $('#period').html(`${b}`);
         $('#count').html(`${c}`);
+        $('#marking').html(`${d[1]}th`);
+
         
     });
     setInterval(update, 1000);

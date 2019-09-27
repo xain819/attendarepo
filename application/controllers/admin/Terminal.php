@@ -22,6 +22,18 @@
 			$this->load->view('terminal/index',$data);
 
 		}
+
+		public function get_emergency(){
+			$q=$this->admin->get_emergency_status();
+			echo json_encode($q);
+
+		}
+		public function get_terminal_status(){
+			$data['username']=$_SESSION['username'];
+			$q=$this->admin->get_terminal_status($data['username']);
+			echo json_encode($q);
+
+		}
 		public function mot(){
 			//$data['title'] = 'General Settings';
 			$data['view'] = 'terminal/terminal_modal';
@@ -67,6 +79,8 @@
 
 		public function get_student_student_hallpass(){
 		$data['student_id_number']=$this->input->post('id');
+	
+		
 		$data['hallpass']=$this->input->post('hallpass');
 		$data['pass_type']=$this->admin->check_hallpass_type($data);
 		$data['period']=$this->admin->get_period();
@@ -110,15 +124,18 @@
 			echo json_encode($result);	
 			}
 			else
+
 			{
-				if(($data['active_2way_hallpass']<=2 && $data['student_2way_count']<$limit) && $limit_status==1 ){
+				
+				if($data['active_2way_hallpass']<=2 && $data['student_2way_count']<$limit && $limit_status==1 ){
 					$result=$this->admin->record_student_hallpass($data);
+					//$result['status']='rrr Reached';
 					echo json_encode($result);
 				}
 				elseif($data['active_2way_hallpass']>=3)
 				{
 					$result['status']='Limit Reached';
-					$result['response']=$data['active_2way_hallpass'];
+					$result['response']=$data['active_2way_hallpass'];   
 					echo json_encode($result);	
 				}
 				elseif($data['student_2way_count']>=$limit)
