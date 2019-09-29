@@ -74,16 +74,19 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
+
+
+	//'dsn'	=> 'mysql:unix_socket=/cloudsql/metasoft-prod:us-central1:pockeprincipal;dbname=attendatrack',
 	'hostname' => 'localhost',
-	'username' => 'attenda',
-	'password' => 'VEEpr1aKcv7Xp2Wu',
-    'database' => 'attendatrack',
-	// 'username' => 'root',
-	// 'password' => '',
+	// 'username' => 'attenda',
+	// 'password' => 'VEEpr1aKcv7Xp2Wu',
 	// 'database' => 'attendatrack',
-	'dbdriver' => 'mysqli',
 	//'dbdriver' => 'pdo',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'attendatrack',
+	'dbdriver' => 'mysqli',
+	
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

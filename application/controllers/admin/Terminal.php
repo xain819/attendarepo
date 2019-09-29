@@ -24,8 +24,14 @@
 		}
 
 		public function get_emergency(){
+			
 			$q=$this->admin->get_emergency_status();
-			echo json_encode($q);
+			$data['status']=true;
+			$data['response']=$q;
+			if($q==null){
+			$data['status']=false;	
+			}
+			echo json_encode($data);
 
 		}
 		public function get_terminal_status(){

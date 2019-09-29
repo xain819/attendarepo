@@ -1,7 +1,11 @@
 
 
 runtime: php72
-api_version: 1
+instance_class: F1
+automatic_scaling:
+  max_idle_instances: 1  # default value
+  min_pending_latency: automatic  # default value
+  max_pending_latency: 30ms
 
 
 handlers:
@@ -12,7 +16,7 @@ handlers:
   upload: public/(.*)
 
 - url: /
-  script: index.php
+  script: auto
 
 - url: /(.+)
-  script: index.php
+  script: auto

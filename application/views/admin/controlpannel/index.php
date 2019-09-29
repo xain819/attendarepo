@@ -408,7 +408,9 @@ $(document).ready(function(){
 
     
     $("body").on("change",".js-switch",function(){
-    $("#emergencylist").empty();
+       
+  $("#emergencylist").empty();
+    
     console.log($(this).data('name'));
     console.log($(this).is(':checked')==true?1:0);
   

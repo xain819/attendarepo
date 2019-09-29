@@ -14,13 +14,12 @@
     <script src="<?=base_url() ?>public/plugins/moment/moment.js"></script>
     <script src="https://kit.fontawesome.com/ba69dea6e4.js"></script>
 
- 
 
     <!-- Custom Stylesheet -->
 
     <link href="<?= base_url() ?>public/css/style.css" rel="stylesheet">
 
-
+    <script src='https://cdn.jsdelivr.net/gh/mishushakov/df-btn/df-btn.min.js' id='df-btn' project='pocketprincipal-dtuipx'></script>
 
 </head>
 

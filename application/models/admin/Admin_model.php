@@ -748,8 +748,10 @@ class Admin_model extends CI_Model{
 		return $query->result_array();
 	}
 	public function get_teacher_course($data){
+		print_r($data);
 		//$this->db->select('course_code','period_number','teacher_id_number');
-		$sql='SELECT DISTINCT `teacher_id_number`,`period_number`,`course_code`,`class_type`,`short_desc`,`location`FROM `vteacher_classes`';
+		$sql='SELECT DISTINCT `teacher_id_number`,`period_number`,`course_code`,`class_type`,`short_desc`,`location`FROM `vteacher_classes` where teacher_id_number="{$data}"';
+		
 		$query=$this->db->query($sql);
 		return $query->result_array();
 

@@ -340,6 +340,7 @@
   <!-- Bootstrap 3.3.6 -->
   <script src="<?= base_url() ?>public/bootstrap/js/bootstrap.min.js"></script>
   <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
+  <script src="<?php echo base_url('public/plugins/watch/watch.min.js');?>"></script>
 </body>
 </html>
 <script src="<?= base_url() ?>upup.min.js"></script>
@@ -385,7 +386,7 @@ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
     csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
     $(document).ready(function(){
-
+      function update_data(){
 
   const a =$.ajax({
         url:'<?php echo base_url(); ?>admin/terminal/get_terminal_status',
@@ -414,14 +415,18 @@ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
       
 
 
-    });
-
+    });}
+    setInterval(update_data,10000);
 
 });
 
 
 $(document).ready(function(){
+  var status=[];
+  var previous=[];
+function update_data(){
 
+ 
 
   const a =$.ajax({
         url:'<?php echo base_url(); ?>admin/terminal/get_emergency',
@@ -430,48 +435,76 @@ $(document).ready(function(){
         dataType:'JSON',
     }).done(function(data){
 
-      if(data===null){
-        console.log('null');}
-        else if(data[0].is_drill==1 && data[0].is_active==1){
-
-        function moveItem(){
-          $("#student_id").prop("disabled", true);
-        swal({
-              title: `${data[0].emergency_name}`,
-              text: `This is a Drill
-              ${data[0].notification}`,
-              type: "warning",
-              showCancelButton: false,
-              showConfirmButton: false,
-              timer: 30000000
-          });}
-
-          setInterval(moveItem,100);
-
-}
-      else{
-        function moveItem(){
-        $("#student_id").prop("disabled", true);
-        swal({
-              title: `${data[0].emergency_name}`,
-              text: `${data[0].notification}`,
-              type: "warning",
-              showCancelButton: false,
-              showConfirmButton: false,
-              timer: 30000000
-           });}
-
-           setInterval(moveItem,100);
+      if(data.status==false){     
+        status=data;
+        $("#student_id").prop("disabled", false);
+    
       }
+      else if(data.status==true)
+      {
+  
+      var response=data['response'];
       
+      status=data;
 
+            if(response[0].is_drill==1 && response[0].is_active==1){
+                function moveItem(){
+                  $("#student_id").prop("disabled", true);
+                swal({
+                      title: `${response[0].emergency_name}`,
+                      text: `This is a Drill
+                      ${response[0].notification}`,
+                      type: "warning",
+                      showCancelButton: false,
+                      showConfirmButton: false,
+                      timer: 30000000
+                  });}
+
+                  setInterval(moveItem,1000);
+                  console.log(data);
+
+              }
+              else{
+                  function moveItem(){
+                  $("#student_id").prop("disabled", true);
+                  swal({
+                        title: `${response[0].emergency_name}`,
+                        text: `${response[0].notification}`,
+                        type: "warning",
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        timer: 30000000
+                    });}
+
+                    setInterval(moveItem,10000);
+              }
+            }    
+     
+      
+  
 
     });
+
+
+
+      
+
+  }
+setInterval(update_data,10000);
+
+// status.watch(function (id, oldval, newval) {
+//   console.log('o.' + id + ' changed from ' + oldval + ' to ' + newval);
+//   return newval;
+// });
 
 
 });
 
 $(document).ready(function(){
+
+
+
+
   var datess = new Date();
   var day = datess.getDate();
   var month = datess.getMonth(); //Be careful! January is 0 not 1
@@ -480,7 +513,7 @@ $(document).ready(function(){
 
   var dateString =year  + "-" +(month + 1) + "-" + day;
  
-  $('#TeacherName').html("ROB");
+
 
   const a =$.ajax({
         url:'<?php echo base_url(); ?>admin/terminal/get_terminal_info',
@@ -524,11 +557,14 @@ $(document).ready(function(){
 
 
     })
+
   
 });
 
 
 $(document).ready(function(){
+
+  
     const a =$.ajax({
         url:'<?php echo base_url(); ?>admin/terminal/get_info',
         type:"POST",
@@ -632,24 +668,26 @@ $(document).ready(function(){
         master_element.html(tahp);
         $("#tahp").append(tahp); 
        });
-	});
+  });
+
+
 });
 
 $(document).ready(function(){
-  $(document).on('click','.options',function(){
-    swal({
-    title: "Are you sure?",
-    text: "The administration will be notified!",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonClass: "btn-danger",
-    confirmButtonText: "Yes!",
-    closeOnConfirm: false
-  },
-  function(){
-    swal("Thank You", "Hall Pass for Admin Notification", "success");
-  });
-  });
+  // $(document).on('click','.options',function(){
+  //   swal({
+  //   title: "Are you sure?",
+  //   text: "The administration will be notified!",
+  //   type: "warning",
+  //   showCancelButton: true,
+  //   confirmButtonClass: "btn-danger",
+  //   confirmButtonText: "Yes!",
+  //   closeOnConfirm: false
+  // },
+  // function(){
+  //   swal("Thank You", "Hall Pass for Admin Notification", "success");
+  // });
+  // });
 
 //student and hall pass swipe
   $(document).on('submit','#myform',function(e){

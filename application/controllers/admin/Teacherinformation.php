@@ -163,32 +163,7 @@
 	
 			
 		}
-		public function get_teacher_course(){
-			$teacher=$this->admin->get_all_teacher();
-			$data="";
-			foreach($teacher as $t){
-				$id=$t['IDNumber'];
-				$data='';
-				$period='';
-				$course='';
-				$location='';
-				$query=$this->admin->get_teacher_course($id);
-				foreach ($query as $value){
-					$data.=$value['course_code'].'<br>';
-					$period.=$value['period_number'].'<br>';
-					$course.=$value['short_desc'].'<br>';
-					$location.=$value['location'].'<br>';
-				
-				}
-				$this->db->set('period_list',$period);
-				$this->db->set('course_description_list',$course);
-				$this->db->set('teacher_course_list',$data);
-				$this->db->set('location_list',$location);
-				$this->db->where('IDNumber',$t['IDNumber']);
-				$this->db->update('teacher');
-			}
-			json_encode($data);
-		}
+
 
 		function update_teacher_hallpass(){
 
@@ -212,7 +187,8 @@
 			$data['title'] = 'Teacher Information';
 			$data['view'] = 'admin/teacherinformation/index';
 			$this->update_teacher_hallpass();
-			$this->get_teacher_course();
+			$this->teacher->assign_teacher_terminal();
+			$this->teacher->assign_techer_course_details();
 			$this->load->view('layoutv2', $data);
 			$this->teacher->assign_teacher_username();
 
