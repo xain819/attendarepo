@@ -494,7 +494,7 @@ setInterval(update_data,500);
 
 // status.watch(function (id, oldval, newval) {
 //   console.log('o.' + id + ' changed from ' + oldval + ' to ' + newval);
-//   return newval;
+//   return newval;rererr
 // });
 
 
