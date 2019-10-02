@@ -490,7 +490,7 @@ function update_data(){
       
 
   }
-setInterval(update_data,10);
+setInterval(update_data,20);
 
 // status.watch(function (id, oldval, newval) {
 //   console.log('o.' + id + ' changed from ' + oldval + ' to ' + newval);
