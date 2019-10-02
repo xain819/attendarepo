@@ -416,7 +416,7 @@ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
 
 
     });}
-    setInterval(update_data,2000);
+    setInterval(update_data,10);
 
 });
 
@@ -490,7 +490,7 @@ function update_data(){
       
 
   }
-setInterval(update_data,2000);
+setInterval(update_data,10);
 
 // status.watch(function (id, oldval, newval) {
 //   console.log('o.' + id + ' changed from ' + oldval + ' to ' + newval);
