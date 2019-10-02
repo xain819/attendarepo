@@ -137,7 +137,9 @@
             <form role="form" id="frm_time">
             <div class="form-group">
 
-               
+            <label for="hp_lock_start">Time</label>
+                        <input type="text" id='time_in' name="hallpasslimit" class="form-control" placeholder="Before Period:Minutes" required>
+                 
            
                 <div class="mb-3">
                                     <select class="select2-width-50" style="width: 100%">

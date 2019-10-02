@@ -355,12 +355,17 @@ $(document).ready(function(){
                     $("#hp_lock_end").val(element.hp_lock_end);  
                     $("#hp_lock_start").val(element.hp_lock_start);  
                 }
+                time_in
                 if(id_name=='nql'){
                     $("#nql-limit").val(element.value);
                     const aa=element.value.split(",");
                     console.log(aa);
                     $("#nql-limit").val(aa[0]);
                     $("#select-type").val(aa[1]);
+                }
+                if(id_name=='slac'){
+                    $("#time_in").val(element.master_value);
+               
                 }
                
                 

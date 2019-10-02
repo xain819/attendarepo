@@ -66,7 +66,7 @@
                                                     <tr>
                                                         
                                                         <th>Name</th>
-                                                        <th>Terminal Number</th>
+                                                        <th>ID Number</th>
                                                         <th>Status</th>
                                                     </tr>
                                                 </thead>
@@ -89,8 +89,8 @@
                                                     <thead>
                                                         <tr>
                                                     
-                                                        <th>name</th>
-                                                        <th>Terminal Number</th>
+                                                        <th>Name</th>
+                                                        <th>ID Number</th>
                                                         <th>Status</th>
                                                         </tr>
                                                     </thead>
@@ -273,6 +273,7 @@ $(document).ready(function(){
       
 var ahp = $('#nhp').DataTable({
 
+
   
 
     "searching": true,
@@ -286,20 +287,24 @@ var ahp = $('#nhp').DataTable({
             url:'<?php echo base_url(); ?>admin/controlpannel/get_terminal_status',
             dataType: 'json',
             type: 'POST',
-            data: ({[csrfName]: csrfHash,type:2}),
+            data: ({[csrfName]: csrfHash}),
             dataSrc:""
         },
         columns: [ 
     
-            { "data": "teacher_id_number"},
-            {"data":"location"},
+            { "data":null,
+                render:function(data){
+                    return `${data.FirstName} ${data.LastName}`;
+                }
+            },
+            {"data":"Location"},
          
             { "data":null,
                 render:function(data, type,row){
                     var is_checked='';
-                    if (data.is_terminal_active==1){var is_checked="checked=''";}
+                    if (data.hallpass_is_active==1){var is_checked="checked=''";}
                     return `
-                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}" data-name='hallpass' type="checkbox" ${is_checked} 
+                    <input data-id="${data.LocationID}" id="${data.LocationID}" id="hp_${data.LocationID}" data-name='hallpass' type="checkbox" ${is_checked} 
                     class="js-switch js-switch-1 js-switch-md"  data-size="small" />
                     `;
                 }
@@ -325,15 +330,19 @@ var nhp = $('#ahp').DataTable({
         },
         columns: [ 
     
-            { "data": "teacher_id_number"},
-            {"data":"location"},
+            { "data":null,
+                render:function(data){
+                    return `${data.FirstName} ${data.LastName}`;
+                }
+            },
+            {"data":"Location"},
         
             { "data":null,
                 render:function(data, type,row){
                     var is_checked='';
-                    if (data.is_hallpass_active==1){var is_checked="checked=''";}
+                    if (data.is_active==1){var is_checked="checked=''";}
                     return `
-                    <input data-id="${data.TeacherID}" id="${data.TeacherID}" id="hp_${data.TeacherID}"  data-name='terminal' type="checkbox" ${is_checked} 
+                    <input data-id="${data.LocationID}" id="${data.LocationID}" id="hp_${data.LocationID}"  data-name='terminal' type="checkbox" ${is_checked} 
                     class="js-switch js-switch-1 js-switch-md" data-size="small" />
                     `;
                 }
@@ -412,6 +421,7 @@ $(document).ready(function(){
   $("#emergencylist").empty();
     
     console.log($(this).data('name'));
+    console.log($(this).data('id'));
     console.log($(this).is(':checked')==true?1:0);
   
 	$.post('<?=base_url("admin/controlpannel/change_status")?>',

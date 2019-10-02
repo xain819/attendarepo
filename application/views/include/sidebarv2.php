@@ -70,8 +70,8 @@
                         <ul aria-expanded="false">
                             <li><a href="<?= base_url('admin/masterscheduler'); ?>">Manage Calendar</a>
                             </li>
-                            <li><a href="<?= base_url('admin/masterscheduler/access'); ?>">Manage Schedule Type</a>
-                            </li>
+                            <!-- <li><a href="<?= base_url('admin/masterscheduler/access'); ?>">Manage Schedule Type</a>
+                            </li> -->
                             <li><a href="<?= base_url('admin/masterscheduler/period_access'); ?>">Manage Period</a>
                             </li>
                             <!-- <li><a href="<?= base_url('admin/masterscheduler/students_schedule'); ?>">Student Class Schedule</a>
@@ -96,7 +96,7 @@
                  
                   
                     <?php if($this->rbac->check_module_permission('teacherinformation')): ?>  
-
+                    <?php if($this->rbac->disable_teacher_dashboard()): ?>  
                     <li class="nav-label">Teacher Dashboard</li>
 
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/attendance_log'); ?>" >
@@ -124,6 +124,7 @@
                     <i class="fas fa-question-circle"></i><span class="nav-text">Help and FAQ Setttings</span>
                         </a>
                     </li>
+                    <?php endif; ?>
                 <?php endif; ?>
 
                 <?php if($this->rbac->check_module_permission('secretary')): ?>  

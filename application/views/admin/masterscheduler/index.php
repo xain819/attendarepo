@@ -325,10 +325,12 @@
                 <div class="external-event bg-green">A</div>
                 <div class="external-event bg-yellow">B</div>
                 <div class="external-event bg-aqua">C</div>
-                <div class="external-event bg-light-blue">Regular Day</div>
-                <div class="external-event bg-red">Late Start</div>
-                <div class="external-event bg-teal">Exam Day</div>
-           
+                <div class="external-event bg-light-blue">Prep Rally A</div>
+                <div class="external-event bg-red">Prep Rally B</div>
+                <div class="external-event bg-teal">Late Start</div>
+                <div class="external-event bg-teal">Holiday</div>
+               
+                
 
 
                 
@@ -338,12 +340,12 @@
           </div>
 
           <div class="box ">
-            <div class="box-header with-border">
+            <!-- <div class="box-header with-border">
               <h3 class="box-title">Create New Schedule Type</h3>
-            </div>
+            </div> -->
             <div class="box-body">
-              <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
-                <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
+              <!-- <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                <button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>
                 <ul class="fc-color-picker" id="color-chooser">
                   <li><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
@@ -359,19 +361,19 @@
                   <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
                 </ul>
-              </div>
+              </div> -->
               <!-- /btn-group -->
-              <div class="input-group">
-                <input id="new-event" type="text" class="form-control" placeholder="Event Title"><br>
+              <!-- <div class="input-group">
+                <input id="new-event" type="text" class="form-control" placeholder="Event Title"><br> -->
                 
                 <!-- <div class="input-group-btn">
                   <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
                 </div> -->
                 <!-- /btn-group -->
-              </div>
+              <!-- </div>
               <div class="input-group-btn ">
                   <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
-                </div>
+                </div> -->
               <!-- /input-group -->
             </div>
           </div>
@@ -562,7 +564,7 @@
        //events:test_2,
       events:base_url+"admin/masterscheduler/get_events",
       //Random default events
-      editable: true,
+      editable: false,
       //defaultView: 'dayGridMonth',      
       droppable: true, // this allows things to be dropped onto the calendar !!!
       drop: function (date, allDay) { // this function is called when something is dropped

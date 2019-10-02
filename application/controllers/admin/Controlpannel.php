@@ -10,8 +10,30 @@
 		}
 
 		public function get_terminal_status(){
-			$q=$this->db->get('vterminal_master')->result_array();
+			$data['period']=$this->admin->get_period();
+			$q=$this->control->get_terminal_status($data['period']);
 			echo json_encode($q);
+
+		}
+		public function get_hallpass(){
+		
+			$q=$this->control->get_hallpass($a=1);
+			echo json_encode($q);
+
+		}
+
+		public function edit_hallpass(){
+		
+			$q=$this->control->get_hallpass($a=2);
+
+			$hallpass=$this->input->post('data');
+			print_r($hallpass);
+			$q=$this->control->import_hallpass($hallpass);
+	
+			// $data['import']=$this->admin->get_import_terminal();
+			// echo json_encode($data['import']);
+	
+			// echo json_encode($q);
 
 		}
 
@@ -22,6 +44,7 @@
 			$data['type']=$this->admin->get_day_type();
 		
 			$this->control->assign_terminal_username();
+			$this->control->assign_hallpass_username();
 
 			
 		
@@ -34,6 +57,7 @@
 			$data['period']=$this->admin->get_period();
 			$data['type']=$this->admin->get_day_type();
 			$data['count']=$this->admin->get_day_count();
+
 			$data['marking']=$this->admin->school_settings($a='Marking Period');
 			echo json_encode($data);
 		}
@@ -70,13 +94,26 @@
 			$data['title'] = 'Courses';
 			$data['view'] = 'admin/masterscheduler/students_schedule';
 			$terminal=$this->input->post('data');
-			$this->admin->import_terminal($terminal);
+	
+
+			$this->control->import_terminal($terminal);
 			$data['import']=$this->admin->get_import_terminal();
 			echo json_encode($data['import']);
 	
 		}
+		public function check_hallpass()
+		{
+			$data['title'] = 'Courses';
+			$data['view'] = 'admin/masterscheduler/students_schedule';
+			$hallpass=$this->input->post('data');
+			$q=$this->control->import_terminal($hallpass);
+			print_r($q);
+			// $data['import']=$this->admin->get_import_terminal();
+			// echo json_encode($data['import']);
+	
+		}
 		public function get_import_terminal(){
-			$data['import']=$this->admin->get_import_terminal();
+			$data['import']=$this->control->manage_terminal();
 			echo json_encode($data['import']);
 	
 		}

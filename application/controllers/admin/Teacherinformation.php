@@ -106,9 +106,9 @@
 			
 			$data['username']=$_SESSION['username'];
 			$data['period']=$this->admin->get_period();
-			
+			$data['schedule_type']=$this->admin->get_day_type();
 			$data['teacher_id_number']=$data['username'];
-			$result=$this->admin->check_student_if_enrolled($data['teacher_id_number'],$data['period'],$today);
+			$result=$this->admin->check_student_if_enrolled($data['teacher_id_number'],$data['period'],$data['schedule_type'][0]['title']);
 			$grace_checked=$this->admin->general_master($id_name='pgt');
 			
 			if($grace_checked['is_active']==1){
@@ -118,11 +118,11 @@
 					$result[$key] = $item;
 					
 				 }
-			echo json_encode($result);
+					echo json_encode($result);
 
 			}
 			else{
-			echo json_encode($result);
+					echo json_encode($result);
 			}
 		
 

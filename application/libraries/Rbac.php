@@ -32,6 +32,14 @@ class RBAC
 		else 
 		 	return 0;
 	}
+	function disable_teacher_dashboard()
+	{
+	
+		if($_SESSION['admin_role_id']==10) 
+			return 1;
+		else 
+		 	return 0;
+	}
 
 	//--------------------------------------------------------------	
 	function Check_operation_permission($operation)

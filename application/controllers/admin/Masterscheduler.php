@@ -172,6 +172,7 @@
 			$data['info']=$this->Masterscheduler->get_data_array();
 			$data['title'] = 'General Settings';
 			$data['view'] = 'admin/masterscheduler/index';
+			
 			$this->load->view('layoutv2', $data);
 		}
 
@@ -179,22 +180,26 @@
 		{
 			$data['view'] = 'admin/masterscheduler/period_access';
 			$this->load->view('layoutv2', $data);
+			$this->Masterscheduler->initialize_period();
 			echo json_encode($data);
 		}
 		public function add_scheduledate()
 		{
+			
 
 			$start=$this->input->post('start');
 			$title=$this->input->post('title');
+
+
 			$backgroundcolor=$this->input->post('backgroundColor');
 			$data=array(
 				'start'=>$start,
 				'title'=>$title,
 				'backgroundColor'=>$backgroundcolor
 			);
-			echo(gettype($backgroundcolor));
+		
 			$status=$this->Masterscheduler->add_scheduledate($data);
-			print_r($data);				
+				
 		}
 		public function delete_scheduledate(){
 			$scheduledateid=$this->input->post('data');

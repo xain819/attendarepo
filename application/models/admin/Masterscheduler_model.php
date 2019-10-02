@@ -1,6 +1,30 @@
 <?php
 	class Masterscheduler_model extends CI_Model{
 
+		public function initialize_period(){
+
+			$sql="SELECT DISTINCT period_number,schedule_type from class_list  
+			ORDER BY `class_list`.`schedule_type` ASC";
+			$query = $this->db->query($sql)->result_array();
+			
+			foreach($query as $v){
+			    $this->db->where('Period',$v['period_number']);
+				$this->db->where('schedule_type',$v['schedule_type']);
+				$q=$this->db->get('period')->result_array();
+				if($q==null){
+					$this->db->set('Period',$v['period_number']);
+					$this->db->set('schedule_type',$v['schedule_type']);
+					$this->db->insert('period');
+				}
+			
+
+
+			}
+			// $query = $this->db->get('period');
+			// return $result = $query->result_array();
+		}
+
+
 		public function get_all(){
 
 			//$this->db->where('is_admin', 0);

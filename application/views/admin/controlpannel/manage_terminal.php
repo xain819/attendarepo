@@ -34,21 +34,47 @@ button.btn-space {
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 
 
-<div class="card box-body" style='padding:20px;'>
-<table id="example" class="display" style="width:100%">
+<div class='row'>
+
+    <div class="col-xl-8  col-xxl-12">
+    <div class="card body "  style='padding:20px;'>
+    <h5 class="card-title">Terminal Room</h5>
+            <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                        <th> Location </th>
+                        <th> Group </th>
+                        <th> Name</th>
+                        <th> ID Number</th>
+                        <th> PIN </th>
+                
+
+                        </tr>
+                    </thead>
+            
+            </table>
+        </div>
+    </div>
+<div class="col-xl-4  col-xxl-12">
+<div class="card body"  style='padding:20px;'>
+<h5 class="card-title">Hall Pass</h5>
+<br>
+<table id="hallpass" class="display" style="width:100%">
         <thead>
             <tr>
-            <th> ID </th>
-            <th> NAME</th>
-            <th> PASSWORD </th>
-            <th> BUILDING NAME</th>
+            <th> Name</th>
+            <th> Location </th>
+  
+            <th> PIN </th>
+       
 
             </tr>
         </thead>
   
     </table>
 </div>
-
+</div>
+</div>
 
 <script type='text/javascript'>
  var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
@@ -107,22 +133,32 @@ $(document).ready(function() {
     // Regular editor for the table
     editor = new $.fn.dataTable.Editor( {
         ajax: {
-            url: base_url+"admin/controlpannel/check_terminal",
+            url: base_url+"admin/controlpannel/edit_hallpass",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
-      
-        table: "#example",
+       idSrc:  'HallPassID',
+        table: "#hallpass",
         fields: [ 
             {
-                label: "Room Number:",
-                name: "Location"
+                label: "ID",
+                name: "HallPassID",
+                type:    "hidden",
             },
             {
-                label: "Location Group:",
-                name: "LocationGroup"}
+                label: "Name:",
+                name: "HallPass",
+                type: "readonly",},
+            {
+                label: "Room Number:",
+                name: "location"
+            },
+                {
+                label: "PIN:",
+                name: "pin"},
+  
            
         
 
@@ -132,49 +168,55 @@ $(document).ready(function() {
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
-    var a= $('#example').DataTable( {
+    $('#hallpass').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this );
+    } );
+    var a= $('#hallpass').DataTable( {
         dom: 'Bfrtip',
         ajax: {
-            url: base_url+"admin/controlpannel/get_import_terminal",
+            url: base_url+"admin/controlpannel/get_hallpass",
             data:({ [csrfName]: csrfHash}),
             type:"POST",
             dataSrc: '',
             dataType:'JSON'
        },
         columns: [
-          
-            { data: 'Location' },
-            { data: 'LocationGroup' },
+            { data: 'HallPass' },
+            { data: 'location' },
+      
+
+            { data: 'pin' },
+            
 
 
           
         ],
         select: true,
         buttons: [
-            { extend: 'create', editor: editor },
+            // { extend: 'create', editor: editor },
             { extend: 'edit',   editor: editor },
-            { extend: 'remove', editor: editor },
-            {
-                extend: 'csv',
-                text: 'Export CSV',
-                className: 'btn-space',
-                exportOptions: {
-                    orthogonal: null
-                }
-            },
-            {
-                text: 'Import CSV',
-                action: function () {
-                    uploadEditor.create( {
-                        title: 'CSV file import'
-                    } );
-                }
-            },
-            {
-                extend: 'selectAll',
-                className: 'btn-space'
-            },
-            'selectNone',
+            // { extend: 'remove', editor: editor },
+            // {
+            //     extend: 'csv',
+            //     text: 'Export CSV',
+            //     className: 'btn-space',
+            //     exportOptions: {
+            //         orthogonal: null
+            //     }
+            // },
+            // {
+            //     text: 'Import CSV',
+            //     action: function () {
+            //         uploadEditor.create( {
+            //             title: 'CSV file import'
+            //         } );
+            //     }
+            // },
+            // {
+            //     extend: 'selectAll',
+            //     className: 'btn-space'
+            // },
+           //'selectNone',
         ]
     });
     // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
@@ -213,7 +255,143 @@ $(document).ready(function() {
     })
     editor.on( 'create', function ( e, json, data ) {
     alert( 'New row added' );
-} );
+});
+    
+});
+
+
+$(document).ready(function() {
+    // Regular editor for the table
+    editor = new $.fn.dataTable.Editor( {
+        ajax: {
+            url: base_url+"admin/controlpannel/check_terminal",
+            data:({ [csrfName]: csrfHash}),
+            type:"POST",
+            dataSrc: '',
+            dataType:'JSON'
+       },
+       idSrc:  'LocationID',
+        table: "#example",
+        fields: [ 
+            {
+                label: "ID",
+                name: "LocationID",
+                type:    "hidden",
+            },
+            {
+                label: "Room Number:",
+                name: "Location"
+            },
+            {
+                label: "Location Group:",
+                name: "LocationGroup"}
+           
+        
+
+        ]
+        
+    } );
+ 
+    //lumalabas nman na kaso may error na 403
+    //not allowed daw try ko sir.mag import felling ko sa 
+    var a= $('#example').DataTable( {
+        dom: 'Bfrtip',
+        ajax: {
+            url: base_url+"admin/controlpannel/get_import_terminal",
+            data:({ [csrfName]: csrfHash}),
+            type:"POST",
+            dataSrc: '',
+            dataType:'JSON'
+       },
+        columns: [
+          
+            { data: 'Location' },
+            { data: 'LocationGroup' },
+            { data: null,
+                
+                    render:function(data){
+                        let name=`${data.FirstName} ${data.LastName}`;
+                        if(data.FirstName==null){
+                        name=''
+                        }
+                        return`${name}`;
+                    }
+                
+            
+            
+             },
+            { data: 'IDNumber' },
+            { data: 'pin' },
+            
+
+
+          
+        ],
+        select: true,
+        buttons: [
+            { extend: 'create', editor: editor },
+            { extend: 'edit',   editor: editor },
+            { extend: 'remove', editor: editor },
+            // {
+            //     extend: 'csv',
+            //     text: 'Export CSV',
+            //     className: 'btn-space',
+            //     exportOptions: {
+            //         orthogonal: null
+            //     }
+            // },
+            // {
+            //     text: 'Import CSV',
+            //     action: function () {
+            //         uploadEditor.create( {
+            //             title: 'CSV file import'
+            //         } );
+            //     }
+            // },
+            // {
+            //     extend: 'selectAll',
+            //     className: 'btn-space'
+            // },
+           //'selectNone',
+        ]
+    });
+    // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
+    var uploadEditor = new $.fn.dataTable.Editor( {
+        fields: [ {
+            label: 'CSV file:',
+            name: 'csv',
+            type: 'upload',
+            ajax: function ( files ) {
+                // Ajax override of the upload so we can handle the file locally. Here we use Papa
+                // to parse the CSV.
+                Papa.parse(files[0], {
+                    header: true,
+                    skipEmptyLines: true,
+                    complete: function (results) {
+                        if ( results.errors.length ) {
+                            console.log( results );
+                            uploadEditor.field('csv').error( 'CSV parsing error: '+ results.errors[0].message );
+                        }
+                        else {
+                            uploadEditor.close();
+                          
+                            selectColumns( editor, results.data, results.meta.fields );
+                            console.log( results.data[0].Firstname );
+                            
+                          
+                        }
+                    }
+                });
+            }
+        } ]
+    } );
+    editor.on('postSubmit', function(event, data, action) {
+        
+     a.ajax.reload();
+    })
+    editor.on( 'create', function ( e, json, data ) {
+    alert( 'New row added' );
+});
     
 });
 </script>

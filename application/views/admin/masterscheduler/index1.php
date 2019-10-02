@@ -49,13 +49,13 @@
             <!-- /.box-body -->
           </div>
 
-          <div class="box box-solid">
+          <!-- <div class="box box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Create New Schedule Type</h3>
             </div>
             <div class="box-body">
               <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
-                <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
+                <button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>
                 <ul class="fc-color-picker" id="color-chooser">
                   <li><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
                   <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
@@ -72,19 +72,10 @@
                   <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
                 </ul>
               </div>
-              <!-- /btn-group -->
-              <div class="input-group">
-                <input id="new-event" type="text" class="form-control" placeholder="Event Title">
-
-                <div class="input-group-btn">
-                  <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
-                </div>
-                <!-- /btn-group -->
-              </div>
-              <!-- /input-group -->
-            </div>
+        
+            </div> 
           </div>
-        </div>
+        </div> -->
 
         <!-- /.col -->
         <div class="col-md-9">

@@ -19,10 +19,10 @@
 
 
     <!-- Main content -->
-    <section class="content">
+    <!-- <section class="content"> -->
       <!-- Default box -->
       
-      <div class=" card box-body" style='padding:20px;'>
+      <!-- <div class=" card box-body" style='padding:20px;'> -->
       <div class="box col-12 card">
 <div id ='master_schedule' class='row' style="margin: 10px 10px;">
 
@@ -30,9 +30,9 @@
       <div class="input-group-prepend">
           <span class="input-group-text" style='font-size:12px;' id="inputGroupPrepend1">A DAY</span>
       </div>
-      <input data-role="tagsinput" data-id="A" type="text" style='font-size:10px;height:10px;' value="Period 1,Period 2,Lunch,Period 3,Period 4" class="form-control" id="tags1" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+      <!-- <input data-role="tagsinput" data-id="A" type="text" style='font-size:10px;height:10px;' value="Period 1,Period 2,Lunch,Period 3,Period 4" class="form-control" id="tags1" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required=""> -->
   </div>
-    <div  style='margin:5px 5px;postion:relavite;top:50px;'id="a_slider" class="time-slider col-9"></div>
+    <div  style='margin:5px 5px;postion:relavite;top:10px;'id="a_slider" class="time-slider col-9"></div>
     </div>
 </div>
 
@@ -42,9 +42,9 @@
               <div class="input-group-prepend">
               <span class="input-group-text" style='font-size:12px;' id="inputGroupPrepend5">B DAY</span>
               </div>
-        <input type="text"  data-id="B"  style='font-size:10px;height:10px;' value="Period 5,Period 6,Lunch,Period 7,Period 8" class="form-control" id="input" data-role="tagsinput">
+        <!-- <input type="text"  data-id="B"  style='font-size:10px;height:10px;' value="Period 5,Period 6,Lunch,Period 7,Period 8" class="form-control" id="input" data-role="tagsinput"> -->
   </div>
-       <div style='margin:5px 5px;postion:relavite;top:50px;' id="b_slider" class="time-slider col-9"></div>
+       <div style='margin:5px 5px;postion:relavite;top:10px;' id="b_slider" class="time-slider col-9"></div>
 	</div>
 </div>
 
@@ -56,11 +56,11 @@
                                       <div class="input-group-prepend">
           <span class="input-group-text" style='font-size:12px;' id="inputGroupPrepend3">C DAY</span>
       </div>
-      <input data-id="C" type="text" style='font-size:10px;height:10px;' value="Period 1,Period 2,Period 3,Period 4,Lunch,Period 5,Period 6,Period 7,Period 8" class="form-control" id="tags_3" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+      <!-- <input data-id="C" type="text" style='font-size:10px;height:10px;' value="Period 1,Period 2,Period 3,Period 4,Lunch,Period 5,Period 6,Period 7,Period 8" class="form-control" id="tags_3" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required=""> -->
   </div>
 
 
-    <div style='margin:5px 5px;postion:relavite;top:50px;' id="c_slider" class="time-slider col-9"></div>
+    <div style='margin:5px 5px;postion:relavite;top:10px;' id="c_slider" class="time-slider col-9"></div>
 	</div></div>
 
   <div class="box col-12 card">
@@ -69,11 +69,11 @@
                                       <div class="input-group-prepend">
           <span class="input-group-text" style='font-size:12px;' id="inputGroupPrepend1">LATE START</span>
       </div>
-      <input data-id="L" type="text" style='font-size:10px;height:10px;' value="Period 5,Period 6,Launch,Period 7,Period 8" class="form-control" id="tags_4" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+      <!-- <input data-id="L" type="text" style='font-size:10px;height:10px;' value="Period 5,Period 6,Launch,Period 7,Period 8" class="form-control" id="tags_4" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required=""> -->
   </div>
 
 
-    <div style='margin:5px 5px;postion:relavite;top:50px;' id="d_slider" class="time-slider col-9"></div>
+    <div style='margin:5px 5px;postion:relavite;top:10px;' id="d_slider" class="time-slider col-9"></div>
 	</div></div>
 
   <div class="box col-12 card">
@@ -82,9 +82,9 @@
               <div class="input-group-prepend">
               <span class="input-group-text" style='font-size:12px;' id="inputGroupPrepend5">PREP RALLY A-DAY</span>
               </div>
-        <input data-id="A_P" type="text" style='font-size:10px;height:10px;' value="Period 1,Period 2,Launch ,Period 3,Period 4,Prep-Rally" class="form-control" id="tags_5" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+        <!-- <input data-id="A_P" type="text" style='font-size:10px;height:10px;' value="Period 1,Period 2,Launch ,Period 3,Period 4,Prep-Rally" class="form-control" id="tags_5" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required=""> -->
   </div>
-       <div style='margin:5px 5px;postion:relavite;top:50px;' id="e_slider" class="time-slider col-9"></div>
+       <div style='margin:5px 5px;postion:relavite;top:10px;' id="e_slider" class="time-slider col-9"></div>
 	</div>
 </div>
 <div class="box col-12 card">
@@ -93,11 +93,11 @@
               <div class="input-group-prepend">
               <span class="input-group-text" style='font-size:12px;' id="inputGroupPrepend5">PREP RALLY B-DAY</span>
               </div>
-        <input  data-id="B_P" type="text" style='font-size:10px;height:10px;' value="Period 5,Period 6,Lunch,Period 7,Period 8,Prep-Rally" data-role="tagsinput" class="form-control" id="tags_6" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+        <!-- <input  data-id="B_P" type="text" style='font-size:10px;height:10px;' value="Period 5,Period 6,Lunch,Period 7,Period 8,Prep-Rally" data-role="tagsinput" class="form-control" id="tags_6" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required=""> -->
   </div>
-       <div style='margin:5px 5px;postion:relavite;top:50px;' id="f_slider" class="time-slider col-9"></div>
+       <div style='margin:5px 5px;postion:relavite;top:10px;' id="f_slider" class="time-slider col-9"></div>
 	</div>
-</div>
+
 
 
   
@@ -140,14 +140,7 @@
             </div>      
           </div>
         </div> -->
-        <!-- /.box-body -->
-        <div class="box-footer">
-          Footer
-        </div>
-        <!-- /.box-footer-->
-      </div>
-      <!-- /.box --></div>
-    </section></div></div>
+       
     <!-- /.content -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -215,6 +208,7 @@
        schedule_type['d']= data.filter(function(test){return test.schedule_type==='A_P';});
        schedule_type['e']= data.filter(function(test){return test.schedule_type==='B_P';});
        schedule_type['f']= data.filter(function(test){return test.schedule_type==='L';});
+       
        console.log(schedule_type);
         Object.keys(schedule_type).forEach(key => {
           console.log(key);        // the name of the current key.

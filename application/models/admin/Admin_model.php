@@ -48,7 +48,13 @@ class Admin_model extends CI_Model{
 		elseif($a['name']=='hallpass')
 		{
 			$this->db->where('LocationID',$a['id']);
-			$this->db->set('halpass_is_active',$a['status']);
+			$this->db->set('hallpass_is_active',$a['status']);
+			$this->db->update('location');
+		}
+		elseif($a['name']=='terminal')
+		{
+			$this->db->where('LocationID',$a['id']);
+			$this->db->set('is_active',$a['status']);
 			$this->db->update('location');
 		}
 		else{
@@ -778,6 +784,8 @@ class Admin_model extends CI_Model{
 		}
 
 	}
+
+	//Create from users from import
 	
 	public function create_terminal_users(){
 	
@@ -840,11 +848,30 @@ class Admin_model extends CI_Model{
 	public function import_terminal($data){
 		
 		foreach ($data as $value) {
-			//echo($value);
-				$this->db->insert('location',$value);
+			if($count>=7)
+			{
+
 				
-		}//ako muna sir. may tetest lang ako
-		//haha nakita ko na sir ahha yung ito palaa (return ($this->db->affected_rows() != 1) ? false : true;) kaya nag stop yung loop
+			}
+			echo'<pre>';
+			print_r($value);
+			$this->db->where('LocationID',$value['LocationID']);
+			$q=$this->db->get('location')->row_array();
+			if($q!=null){
+				$this->db->where('LocationID',$value['LocationID']);
+				$this->db->set('Location',$value['Location']);
+				$this->db->set('LocationGroup',$value['LocationGroup']);
+				$this->db->update('location');
+			}			
+			//add date if not exist
+			else{
+				
+				$this->db->insert('location',$value);
+			}
+	
+				
+		}
+	
 	//	
 	}
 	public function import_section($data){
@@ -941,11 +968,13 @@ class Admin_model extends CI_Model{
 		$this->db->set('hall_pass_access',$data);
 		$this->db->update('student');
 	}
-	public function check_student_if_enrolled($a,$b){
-		
+	public function check_student_if_enrolled($a,$b,$c){
+	
 		$this->db->distinct();
+	
 		$this->db->where('term','S1');
 		$this->db->where('start',date("Y-m-d"));
+		$this->db->where('schedule_type',$c);
 		$this->db->where('teacher_id_number',$a);
 		$this->db->where('period_number',$b);
 	
@@ -1070,7 +1099,7 @@ class Admin_model extends CI_Model{
 
 	public function quick_attendance($a,$b)
 	{
-	
+	print_r($a);
 	  $now = new Datetime('now');
 	  $date=$now->format('y-m-d');
 	  $time=$now->format('H:i:s');
