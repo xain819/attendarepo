@@ -152,7 +152,8 @@
 			$data['title'] = 'General Settings';
 			$data['view'] = 'admin/masterscheduler/index1';
 			$this->load->view('layoutv2', $data);
-
+			$now= new Datetime('now');
+			print_r($now);
 		}
 
 		public function index(){
@@ -181,7 +182,9 @@
 			$data['view'] = 'admin/masterscheduler/period_access';
 			$this->load->view('layoutv2', $data);
 			$this->Masterscheduler->initialize_period();
+		
 			echo json_encode($data);
+
 		}
 		public function add_scheduledate()
 		{
