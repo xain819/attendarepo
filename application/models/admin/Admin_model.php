@@ -1031,8 +1031,7 @@ class Admin_model extends CI_Model{
 		// $this->db->where('student_local_id',$a);
 		// $this->db->where('period_number',$b);
 
-		$sql="SELECT DISTINCT
-		SELECT DISTINCT  `p`.`PeriodStartTime` AS `PeriodStartTime`, `p`.`PeriodEndTime` AS `PeriodEndTime`, `p`.`GracePeriod` AS `GracePeriod`,  `p`.`TransitionTime` AS `TransitionTime`,
+		$sql="SELECT DISTINCT  `p`.`PeriodStartTime` AS `PeriodStartTime`, `p`.`PeriodEndTime` AS `PeriodEndTime`, `p`.`GracePeriod` AS `GracePeriod`,  `p`.`TransitionTime` AS `TransitionTime`,
     `p`.`PeriodID` AS `PeriodID`,
     `a`.`DateCreated` AS `DateCreated`,
     `s`.`first_name` AS `first_name`,
