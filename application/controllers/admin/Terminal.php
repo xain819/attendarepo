@@ -76,7 +76,7 @@
 			$this->session->set_userdata('class_code', $result['response']['class_code']);
 			$this->session->set_userdata('period_number', $data['period']);
 		    $result['period']=$data['period'];
-		    $result['period']=$_SESSION['username'];
+		    $result['location']=$_SESSION['username'];
 			echo json_encode($result);
 			
 		
