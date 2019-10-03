@@ -224,44 +224,58 @@
     // });
 
 
-    // //bar chart
-    // var ctx = document.getElementById("barChart");
-    // ctx.height = 100;
-    // new Chart(ctx, {
-    //     type: 'bar',
-    //     data: {
-    //         labels: ["January", "February", "March", "April", "May", "June", "July"],
-    //         datasets: [
-    //             {
-    //                 label: "My First dataset",
-    //                 data: [65, 59, 80, 81, 56, 55, 40],
-    //                 borderColor: "#34C73B",
-    //                 borderWidth: "0",
-    //                 backgroundColor: "rgba(52, 199, 59, .4)"
-    //             },
-    //             {
-    //                 label: "My Second dataset",
-    //                 data: [28, 48, 40, 19, 86, 27, 90],
-    //                 borderColor: "#00A2FF",
-    //                 borderWidth: "0",
-    //                 backgroundColor: "rgba(0, 162, 255, .4)"
-    //             }
-    //         ]
-    //     },
-    //     options: {
-    //         scales: {
-    //             yAxes: [{
-    //                 ticks: {
-    //                     beginAtZero: true
-    //                 }
-    //             }],
-    //             xAxes: [{
-    //                 // Change here
-    //                 barPercentage: 0.2
-    //             }]
-    //         }
-    //     }
-    // });
+    //bar chart
+    var ctx = document.getElementById("barChart");
+    ctx.height = 50;
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "Period",
+                    data: null,
+                    render:function(){
+
+                        $.ajax({
+                            url:base_url+"admin/studentinformation/get_all_period ",
+                            type:"POST",
+                            data:({[csrfName]: csrfHash}),
+                            dataType:'JSON',
+                        })
+                        .done(function(data){
+                          console.log('hi');
+                        })
+
+                       return `[888, 59, 80, 81, 56, 55, 40]`;
+                    } ,
+                    borderColor: "#34C73B",
+                    borderWidth: "0",
+                    backgroundColor: "rgba(52, 199, 59, .4)"
+                },
+                {
+                    label: "My Second dataset",
+                    data: [28, 48, 40, 19, 86, 27, 90],
+                    borderColor: "#00A2FF",
+                    borderWidth: "0",
+                    backgroundColor: "rgba(0, 162, 255, .4)"
+                }
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    // Change here
+                    barPercentage: 0.2
+                }]
+            }
+        }
+    });
 
     // //radar chart
     // var ctx = document.getElementById("radarChart");
@@ -334,38 +348,38 @@
     // });
 
     //doughut chart
-    var ctx = document.getElementById("doughutChart");
-    ctx.height = 100;
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            datasets: [{
-                data: [45, 25, 20, 10],
-                backgroundColor: [
-                    "rgba(52, 199, 59, .9)",
-                    "rgba(52, 199, 59, .7)",
-                    "rgba(52, 199, 59, .5)",
-                    "rgba(52, 199, 59, .2)"
-                ],
-                hoverBackgroundColor: [
-                    "rgba(52, 199, 59, .9)",
-                    "rgba(52, 199, 59, .7)",
-                    "rgba(52, 199, 59, .5)",
-                    "rgba(52, 199, 59, .2)"
-                ]
+    // var ctx = document.getElementById("doughutChart");
+    // ctx.height = 100;
+    // new Chart(ctx, {
+    //     type: 'doughnut',
+    //     data: {
+    //         datasets: [{
+    //             data: [45, 25, 20, 10],
+    //             backgroundColor: [
+    //                 "rgba(52, 199, 59, .9)",
+    //                 "rgba(52, 199, 59, .7)",
+    //                 "rgba(52, 199, 59, .5)",
+    //                 "rgba(52, 199, 59, .2)"
+    //             ],
+    //             hoverBackgroundColor: [
+    //                 "rgba(52, 199, 59, .9)",
+    //                 "rgba(52, 199, 59, .7)",
+    //                 "rgba(52, 199, 59, .5)",
+    //                 "rgba(52, 199, 59, .2)"
+    //             ]
 
-            }],
-            labels: [
-                "Nurse",
-                "Water",
-                "Admin",
-                "Rest Room"
-            ]
-        },
-        options: {
-            responsive: true,
-        }
-    });
+    //         }],
+    //         labels: [
+    //             "Nurse",
+    //             "Water",
+    //             "Admin",
+    //             "Rest Room"
+    //         ]
+    //     },
+    //     options: {
+    //         responsive: true,
+    //     }
+    // });
 
     //polar chart
     // var ctx = document.getElementById("polarChart");

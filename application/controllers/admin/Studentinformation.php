@@ -5,7 +5,8 @@
 			parent::__construct();
 			$this->load->library('rbac');
 			$this->load->model('admin/admin_model', 'admin');
-
+			$this->load->model('admin/Dashboard_model', 'dashboard');
+			$this->load->model('admin/Student_model', 'student');
 		    $this->rbac->check_module_access();
 		}
 
@@ -17,6 +18,7 @@
 			echo json_encode($result);
 
 		}
+		
 
 		function update_student_hallpass(){
 
@@ -222,6 +224,104 @@
 
 	
 
+		}
+
+
+		/////////////analytics
+
+		public function get_all_period()
+		{
+			$result=$this->dashboard->get_all_period();
+			$data_array=[];
+			foreach ($result as $key => $value) {
+
+				$data_array[]=array(
+
+					'label'=> 'Period'." ".$value['Period'],
+                    'data'=> [28, 48, 40, 19, 86, 27, 90],
+                    'borderColor'=>  $value['color'],
+                    'borderWidth'=>  "0",
+                    'backgroundColor'=>  $value['color']
+
+
+				);
+
+
+			
+
+			}	
+			$response['response']=	$data_array;	
+		
+			echo json_encode($response);	
+		}
+		public function get_all_hallpass_analytics()
+		{
+			$id=$this->input->post('id');
+			$result=$this->dashboard->get_all_hallpass_analytics();
+			$this->manage_hallpass_status();
+			$data=[];
+			$data_count=[];
+			$response['response']=	$result;	
+			foreach ($result as $v){
+				$data[]=$v['HallPass'];
+				$data_ontime[]=$this->dashboard->get_hallpass_count($v['HallPass'],'On Time');
+				$data_tardy[]=$this->dashboard->get_hallpass_count($v['HallPass'],'Tardy');
+				$data_expired[]=$this->dashboard->get_hallpass_count($v['HallPass'],'Expired');
+			}
+
+	
+	
+			$string=implode($data,",");
+		
+			$response['response']=	$data;
+			$response['ontime']=$data_ontime;
+			$response['Tardy']=$data_tardy;
+			$response['Expired']=$data_expired;
+	
+			echo json_encode($response);	
+	
+		
+		}
+
+		public function manage_hallpass_status(){
+			$today = date("Y-m-d"); 
+			$now=date("Y-m-d", strtotime($today));
+
+			// $start_1   = date('H:i:s', strtotime($period['PeriodStartTime']));
+			// $start_2 = date("H:i:s",strtotime($period['PeriodStartTime'])+(strtotime($period['HPLockStart'])-strtotime("00:00:00")));
+			// $end_2 = date("H:i:s",strtotime($period['PeriodEndTime'])-(strtotime($period['HPLockEnd'])-strtotime("00:00:00")));
+			// $end_1   = date('H:i:s', strtotime($period['PeriodEndTime']));
+			// $now   = date('H:i:s');
+
+			$result=$this->dashboard->manage_hallpass_status();
+	
+			foreach($result as $v){
+			
+				$start_1   = date('H:i:s', strtotime($v['DateCreated']));
+				$limit = date("H:i:s",strtotime($v['DateCreated'])+(strtotime($v['TimeAllocated'])-strtotime("00:00:00")));
+				$swipe   = date('H:i:s', strtotime($v['date_time_ended']));
+				$end_1   = date('H:i:s', strtotime($v['PeriodEndTime']));
+				$negative_seat=strtotime($limit)-strtotime($swipe);
+				
+
+				if($negative_seat >=0){
+                  $data='On Time';
+				}
+				else{
+					if($swipe>=$end_1){
+						$data='Expired';
+					}
+					else{
+						$data='Tardy';
+					}
+				
+				}
+				
+				$this->student->update_hallpass_status($negative_seat,$data,$v['ID']);
+		
+
+			
+			}
 		}
 		
 

@@ -10,11 +10,247 @@
     <script src="<?=base_url() ?>public/js/settings.js"></script>
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
 
 
+
+<!--             
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card stat-widget-five">
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="icon mr-3 bg-success">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="media-body text-right">
+                                        <h2 class="mt-0 mb-2 text-success">15310</h2><span class="text-pale-sky">Total Sales</span>
+                                    </div>
+                                </div>
+                                <div class="bottom-text mt-0">
+                                    <p class="m-0">$30,820</p>
+                                    <span><i class="fa fa-caret-up"></i> 35.45%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card stat-widget-five">
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="icon mr-3 bg-info">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                    <div class="media-body text-right">
+                                        <h2 class="mt-0 mb-2 text-info">984</h2><span class="text-pale-sky">New Orders</span>
+                                    </div>
+                                </div>
+                                <div class="bottom-text mt-0">
+                                    <p class="m-0">$30,820</p>
+                                    <span><i class="fa fa-caret-up"></i> 35.45%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="card stat-widget-progress">
+                            <div class="card-body">
+                                <h5 class="text-pale-sky">Total Receivable: $12,570</h5>
+                                <div class="progress mb-4 mt-3">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 40%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="d-flex justify-content-between flex-wrap">
+                                            <div class="item">
+                                                <h5 class="text-warning">Current</h5>
+                                                <h5 class="mb-0 text-pale-sky">$2840</h5>
+                                            </div>
+                                            <div class="item">
+                                                <h5 class="d-inline-block text-warning">Override</h5>
+                                                <span>(15-30 days)</span>
+                                                <h5 class="mb-0 text-pale-sky">$2840</h5>
+                                            </div>
+                                            <div class="item">
+                                                <span>Above 30 days</span>
+                                                <h5 class="mb-0 text-pale-sky">$2840</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-xl-9">
+                        <div class="card">
+                      
+<div id="container" style="width:100%; height: 400px; margin: 0 auto"></div>
+                        </div>
+                    </div>
+                    
+            
+                </div>
+             
+            </div>
+            <!-- #/ container -->
   
+    <!-- <div class='row'>
+      <div class="col-sm-12 col-xxl-3 col-xl-3">
+      <div class="card stat-widget-five">
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="icon mr-3 bg-info">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                    <div class="media-body text-right">
+                                        <h2 class="mt-0 mb-2 text-info">984</h2><span class="text-pale-sky">New Orders</span>
+                                    </div>
+                                </div>
+                                <div class="bottom-text mt-0">
+                                    <p class="m-0">$30,820</p>
+                                    <span><i class="fa fa-caret-up"></i> 35.45%</span>
+                                </div>
+                            </div>
+                        </div>
+
+      <div class="col-sm-6 col-lg-12 col-xl-12 col-xxl-12">
+                                <div class="card">
+                                    <div class="card-body widget-school-stat bg-5 rounded">
+                                        <div class="text">
+                                            <h2  id="hallpass">&#36;</h2>
+                                            <p>Total Hallpass </p>
+                                        </div>
+                                        <div class="icon">
+                                            <span><i class="fa fa-money"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+      </div>
+      <div class="col-sm-12 col-xxl-9 col-xl-9">
+                 
+      <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Team</h4>
+                                <canvas id="barChart"></canvas>
+                            </div>
+                        </div>
+                 
+                      
+      </div> </div>   
+</div> -->
+    <script src="<?= base_url() ?>public/assets/plugins/chart.js/Chart.bundle.min.js"></script>
+  <script>
+  
+$(document).ready(function(){
+  var data_array;
+  
+  const a=$.ajax({
+                            url:base_url+"admin/studentinformation/get_all_hallpass_analytics ",
+                            type:"POST",
+                            data:({[csrfName]: csrfHash}),
+                            dataType:'JSON',
+                            async: false
+                        })
+                        .done(function(data){
+                          period_list=data.response
+                          data_array=data
+                          
+                        });
 
 
+Highcharts.chart('container', {
+  title: {
+    text: 'HallPass'
+  },
+  xAxis: {
+    categories: period_list,
+  },
+  labels: {
+    items: [{
+      html: 'Student Data',
+      style: {
+        left: '50px',
+        top: '18px',
+        color: ( // theme
+          Highcharts.defaultOptions.title.style &&
+          Highcharts.defaultOptions.title.style.color
+        ) || 'black'
+      }
+    }]
+  },
+  series: [{
+    type: 'column',
+    name: 'On Time',
+    data: data_array.ontime.map(Number)
+  }, {
+    type: 'column',
+    name: 'Tardy',
+    data: data_array.Tardy.map(Number)
+  }, {
+    type: 'column',
+    name: 'Expired',
+    data: data_array.Expired.map(Number)
+
+  }, {
+    type: 'pie',
+    name: 'Total consumption',
+    data: [{
+      name: 'On Time',
+      y: 13,
+      color: Highcharts.getOptions().colors[0] // Jane's color
+    }, {
+      name: 'Tardy',
+      y: 23,
+      color: Highcharts.getOptions().colors[1] // Tardy's color
+    }, {
+      name: 'Expired',
+      y: 19,
+      color: Highcharts.getOptions().colors[2] // Expired's color
+    }],
+    center: [100, 80],
+    size: 100,
+    showInLegend: false,
+    dataLabels: {
+      enabled: false
+    }
+  }]
+});
+
+
+// var ctx = document.getElementById("barChart");
+//     ctx.height = 100;
+//     new Chart(ctx, {
+//         type: 'bar',
+//         data: {
+//             labels: ["January", "February", "March", "April", "May", "June", "July"],
+//             datasets:period_list,
+//         },
+//         options: {
+//             scales: {
+//                 yAxes: [{
+//                     ticks: {
+//                         beginAtZero: true
+//                     }
+//                 }],
+//                 xAxes: [{
+//                     // Change here
+//                     barPercentage: 0.3
+//                 }]
+//             }
+//         }
+//     });
+
+
+
+  });
+  </script>
     
 
     <!-- Main content -->
@@ -62,6 +298,9 @@
         <!-- /.box-body -->
         <div class="box-footer">
           Footer
+                 
+                      
+                    </div>
         </div>
         <!-- /.box-footer-->
       </div>
@@ -90,9 +329,16 @@
           base_url='<?php echo base_url(); ?>';
     </script>
 
-    
+
 
     <script src="<?php echo base_url('public/dist/js/studentinformation.js');?>"></script>
 
 <?php $this->load->view('admin/studentinformation/add');?>
 <?php $this->load->view('admin/studentinformation/edit');?>
+
+<script>
+// Create the chart
+
+
+</script>
+
