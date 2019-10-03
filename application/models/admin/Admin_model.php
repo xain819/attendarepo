@@ -1032,62 +1032,39 @@ class Admin_model extends CI_Model{
 		// $this->db->where('period_number',$b);
 
 		$sql="SELECT DISTINCT
-		`p`.`PeriodStartTime` AS `PeriodStartTime`,
-		`p`.`PeriodEndTime` AS `PeriodEndTime`,
-		`p`.`GracePeriod` AS `GracePeriod`,
-		`p`.`TransitionTime` AS `TransitionTime`,
-		`p`.`PeriodID` AS `PeriodID`,
-		`a`.`DateCreated` AS `DateCreated`,
-		`s`.`first_name` AS `first_name`,
-		`s`.`last_name` AS `last_name`,
-		`cl`.`grade_level` AS `grade_level`,
-		`cl`.`class_id` AS `class_id`,
-		`cl`.`schedule_type` AS `schedule_type`,
-		`cl`.`period_number` AS `period_number`,
-		`sc`.`ScheduleDateID` AS `ScheduleDateID`,
-		`sc`.`start` AS `start`,
-		`cl`.`teacher_id_number` AS `teacher_id_number`,
-		`cl`.`student_local_id` AS `student_local_id`,
-		`a`.`AttendanceID` AS `AttendanceID`,
-		`a`.`attendance_time_mot` AS `attendance_time_mot`,
-		`a`.`AttendanceDate` AS `AttendanceDate`,
-		`a`.`AttendanceTime` AS `AttendanceTime`,
-		`a`.`appointment` AS `appointment`,
-		`a`.`emergency` AS `emergency`,
-		`a`.`teacher_overide` AS `teacher_overide`,
-		`a`.`other` AS `other`,
-		`a`.`swipe_type` AS `swipe_type`,
-		`cl`.`term` AS `term`,
-		`cl`.`location` AS `location`,
-		`cl`.`section` AS `section`
-	FROM
-		(
-			(
-				(
-					(
-						`attenda`.`scheduledate` `sc`
-					JOIN `attenda`.`class_list` `cl`
-					ON
-						(`sc`.`title` = `cl`.`schedule_type`)
-					)
-				JOIN `attenda`.`student_table` `s`
-				ON
-					(
-						`s`.`student_local_id` = `cl`.`student_local_id`
-					)
-				)
-			LEFT JOIN `attenda`.`attendance` `a`
-			ON
-				(
-					`a`.`class_id` = `cl`.`class_id` AND `a`.`AttendanceDate` = `sc`.`start` AND `cl`.`period_number` = `a`.`PeriodID`
-				)
-			)
-		JOIN `attenda`.`period` `p`
-		ON
-			(
-				`p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `cl`.`schedule_type`
-			)
-		)
+		SELECT DISTINCT  `p`.`PeriodStartTime` AS `PeriodStartTime`, `p`.`PeriodEndTime` AS `PeriodEndTime`, `p`.`GracePeriod` AS `GracePeriod`,  `p`.`TransitionTime` AS `TransitionTime`,
+    `p`.`PeriodID` AS `PeriodID`,
+    `a`.`DateCreated` AS `DateCreated`,
+    `s`.`first_name` AS `first_name`,
+    `s`.`last_name` AS `last_name`,
+    `cl`.`grade_level` AS `grade_level`,
+    `cl`.`class_id` AS `class_id`,
+    `cl`.`schedule_type` AS `schedule_type`,
+    `cl`.`period_number` AS `period_number`,
+    `sc`.`ScheduleDateID` AS `ScheduleDateID`,
+    `sc`.`start` AS `start`,
+    `cl`.`teacher_id_number` AS `teacher_id_number`,
+    `cl`.`student_local_id` AS `student_local_id`,
+    `a`.`AttendanceID` AS `AttendanceID`,
+    `a`.`attendance_time_mot` AS `attendance_time_mot`,
+    `a`.`AttendanceDate` AS `AttendanceDate`,
+    `a`.`AttendanceTime` AS `AttendanceTime`,
+    `a`.`appointment` AS `appointment`,
+    `a`.`emergency` AS `emergency`,
+    `a`.`teacher_overide` AS `teacher_overide`,
+    `a`.`other` AS `other`,
+    `a`.`swipe_type` AS `swipe_type`,
+    `cl`.`term` AS `term`,
+    `cl`.`location` AS `location`,
+    `cl`.`section` AS `section`
+    
+    
+FROM
+
+scheduledate sc join class_list cl on sc.title=cl.schedule_type 
+join student_table s on s.student_local_id=cl.student_local_id
+left join attendance a on `a`.`class_id` = `cl`.`class_id` AND `a`.`AttendanceDate` = `sc`.`start` AND `cl`.`period_number` = `a`.`PeriodID`
+join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `cl`.`schedule_type`
 	WHERE
 		`cl`.`student_local_id` = '{$a}' AND `cl`.`term` = 'S1' and`sc`.`start`='{$today}' AND `p`.`Period`='{$b}' ";
 
