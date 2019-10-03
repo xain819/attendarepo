@@ -296,7 +296,8 @@ $(document).ready(function() {
     });
         
 }
-setInterval(update,1500);
+setInterval(update,10000);
+
     var a= $('#expired').DataTable( {
         dom: 'Bfrtip',
         "pageLength": 5,
