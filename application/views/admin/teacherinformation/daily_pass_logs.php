@@ -191,7 +191,7 @@ $(document).ready(function() {
     } );
 
 
-    function update(){
+ 
 
 
 
@@ -385,8 +385,7 @@ $(document).ready(function() {
         ]
     });
 
-}
-setInterval(update,10000);
+
     // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
     var uploadEditor = new $.fn.dataTable.Editor( {
         fields: [ {
