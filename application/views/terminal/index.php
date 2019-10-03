@@ -549,8 +549,8 @@ $(document).ready(function(){
      
          
       $('#TeacherName').html(teacher_name);
-      $('#period_number').html(data[0].period_number);
-      $('#location').html(data[0].location);
+      $('#period_number').html(data.period);
+      $('#location').html(data.username);
       $('#SubjectName').html(data[0].course_description);
     $('#AvailableTime').html(`${AvailableTime}`);
     $('#AvailableHPTime').html(`${AvailableHPTime}`);
