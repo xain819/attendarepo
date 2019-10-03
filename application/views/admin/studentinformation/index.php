@@ -163,8 +163,9 @@ $(document).ready(function(){
                           data_array=data
                           
                         });
-
-
+function myFunc(total, num) {
+  return total + num;
+}
 Highcharts.chart('container', {
   title: {
     text: 'HallPass'
@@ -203,15 +204,15 @@ Highcharts.chart('container', {
     name: 'Total consumption',
     data: [{
       name: 'On Time',
-      y: 13,
+      y: data_array.ontime.map(Number).reduce(myFunc),
       color: Highcharts.getOptions().colors[0] // Jane's color
     }, {
       name: 'Tardy',
-      y: 23,
+      y: data_array.Tardy.map(Number).reduce(myFunc),
       color: Highcharts.getOptions().colors[1] // Tardy's color
     }, {
       name: 'Expired',
-      y: 19,
+      y: data_array.Expired.map(Number).reduce(myFunc),
       color: Highcharts.getOptions().colors[2] // Expired's color
     }],
     center: [100, 80],
