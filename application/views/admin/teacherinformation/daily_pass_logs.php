@@ -189,6 +189,12 @@ $(document).ready(function() {
         ]
         
     } );
+
+
+    function update(){
+
+
+
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
@@ -288,7 +294,9 @@ $(document).ready(function() {
             // 'selectNone',
         ]
     });
-
+        
+}
+setInterval(update,1500);
     var a= $('#expired').DataTable( {
         dom: 'Bfrtip',
         "pageLength": 5,
