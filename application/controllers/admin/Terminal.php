@@ -140,7 +140,7 @@
 					//$result['status']='rrr Reached';
 					echo json_encode($result);
 				}
-				elseif($data['active_2way_hallpass']>=3)
+				elseif($data['active_2way_hallpass']>=3 && $data['pass_type']==2)
 				{
 					$result['status']='Limit Reached';
 					$result['response']=$data['active_2way_hallpass'];   
