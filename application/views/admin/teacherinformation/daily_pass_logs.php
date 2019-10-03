@@ -295,8 +295,7 @@ $(document).ready(function() {
         ]
     });
         
-}
-setInterval(update,10000);
+
 
     var a= $('#expired').DataTable( {
         dom: 'Bfrtip',
@@ -385,6 +384,9 @@ setInterval(update,10000);
             // 'selectNone',
         ]
     });
+
+}
+setInterval(update,10000);
     // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
     var uploadEditor = new $.fn.dataTable.Editor( {
         fields: [ {
