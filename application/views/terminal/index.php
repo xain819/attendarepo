@@ -523,17 +523,17 @@ $(document).ready(function(){
     }).done(function(data){
       var response=data.response;
       
-      const aa=response[0].HPLockStart.split(':');
-      const bb=response[0].HPLockEnd.split(':');
+      const aa=response.HPLockStart.split(':');
+      const bb=response.HPLockEnd.split(':');
 
 
 
 
 
-       const teacher_name=`${response[0].FirstName} ${response[0].LastName}`;
+       const teacher_name=`${response.FirstName} ${response.LastName}`;
   
-       var dt=new Date(`${response[0]['start']} ${response[0]['PeriodStartTime']}`);
-       var dt1=new Date(`${response[0]['start']} ${response[0]['PeriodEndTime']}`);
+       var dt=new Date(`${response['start']} ${response['PeriodStartTime']}`);
+       var dt1=new Date(`${response['start']} ${response['PeriodEndTime']}`);
   
        var a=dt.setMinutes(dt.getMinutes() + parseInt(aa[1]));
        var a=dt.setSeconds(dt.getSeconds() + parseInt(aa[2]));
@@ -551,7 +551,7 @@ $(document).ready(function(){
       $('#TeacherName').html(teacher_name);
       $('#period_number').html(data.period);
       $('#location').html(data.username);
-      $('#SubjectName').html(response[0].course_description);
+      $('#SubjectName').html(response.course_description);
     $('#AvailableTime').html(`${AvailableTime}`);
     $('#AvailableHPTime').html(`${AvailableHPTime}`);
 

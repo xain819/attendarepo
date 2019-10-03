@@ -570,7 +570,7 @@ class Admin_model extends CI_Model{
 		$query=$this->db->get('vschedule_date');
 		
 		
-		return $query->result_array();
+		return $query->row_array();
 	}
 	public function get_terminal_hallpass($data){
 	
