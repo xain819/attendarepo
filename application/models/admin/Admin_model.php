@@ -1065,7 +1065,7 @@ join student_table s on s.student_local_id=cl.student_local_id
 left join attendance a on `a`.`class_id` = `cl`.`class_id` AND `a`.`AttendanceDate` = `sc`.`start` AND `cl`.`period_number` = `a`.`PeriodID`
 join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `cl`.`schedule_type`
 	WHERE
-		`cl`.`student_local_id` = '{$a}' AND `cl`.`term` = 'S1' and`sc`.`start`='{$today}' AND `p`.`Period`='{$b}' ";
+		`cl`.`student_local_id` = '{$a}' AND `cl`.`term` = 'S1' and`sc`.`start`='{$today}' AND `p`.`Period`='{$b}' and `cl`.`location`={$_SESSION['username]},";
 
 		$query=$this->db->query($sql)->result_array();
 
