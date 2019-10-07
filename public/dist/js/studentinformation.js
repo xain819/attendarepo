@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    
     console.log(base_url);
     function selectColumns ( editor, csv, header ) {
         var selectEditor = new $.fn.dataTable.Editor();
@@ -341,3 +343,5 @@ $(document).ready(function(){
     }
    //    student_DataTable.ajax.reload();get_department_option
 });
+
+

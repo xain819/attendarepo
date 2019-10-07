@@ -10,74 +10,87 @@
     <script src="<?=base_url() ?>public/js/settings.js"></script>
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/drilldown.js"></script>
 
 
 
-<!--             
-                <div class="row">
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card stat-widget-five">
-                            <div class="card-body">
-                                <div class="media">
-                                    <div class="icon mr-3 bg-success">
-                                        <i class="fa fa-shopping-cart"></i>
+<div class="row">
+
+                    <div class="col-xl-3 col-xxl-6 col-lg-6">
+                        <div class="card widget-wallet-status py-4">
+                            <div class="card-body border-bottom upper-part">
+                              
+                                <div class="row d-flex justify-content-between mb-4">
+                                <div class="col-lg-4 pl-xl-0">
+                                  
+                                                       <div class="media  document">
+                                  <img class="mr-4" src="<?=base_url() ?>public/assets/images/users/profile.jpg" alt="">
+                    
+                            </div>
+                             
                                     </div>
-                                    <div class="media-body text-right">
-                                        <h2 class="mt-0 mb-2 text-success">15310</h2><span class="text-pale-sky">Total Sales</span>
+                                    <div class="col-lg-8 pl-xl-0">
+                                        <h3 class="text-primary m-0"> <span>George Canales-Ardon</span></h3>
+                                        <p class="m-0 text-pale-sky">Student ID : 2026825</p>
+                                    
+                              
+                                        <div class="progress mt-4">
+                                            <div class="progress-bar bg-primary" style="width: 60%; height:6px;" role="progressbar"><span class="sr-only">60% Complete</span>
+                                            </div>
+                                        </div>
                                     </div>
+                              
+                                  
+                               
+                                    <!-- <h5>This month <span class="text-lgreen ml-2"><i class="fa fa-angle-down mr-1"></i>1309</span></h5> -->
                                 </div>
-                                <div class="bottom-text mt-0">
-                                    <p class="m-0">$30,820</p>
-                                    <span><i class="fa fa-caret-up"></i> 35.45%</span>
+                           
+                                
+                                <div class="chart my-5">   
+
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card stat-widget-five">
-                            <div class="card-body">
-                                <div class="media">
-                                    <div class="icon mr-3 bg-info">
-                                        <i class="fa fa-usd"></i>
+                            <div class="card-body bottom-part mb-3">
+                                <div class="row py-2 m-0">
+                                    <div class="col-lg-6 pl-xl-0">
+                                        <h2 id="aadmin" class="text-primary m-0"> <span>0</span></h2>
+                                        <p class="m-0 text-pale-sky">Admin</p>
+                               
+                                        <div class="progress mt-4">
+                                            <div class="progress-bar bg-primary" style="width: 60%; height:6px;" role="progressbar"><span class="sr-only">60% Complete</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="media-body text-right">
-                                        <h2 class="mt-0 mb-2 text-info">984</h2><span class="text-pale-sky">New Orders</span>
+                                    
+                                    <div class="col-lg-6 pr-xl-0">
+                                        <h2 id="non_admin"class="text-lgreen m-0"></h2>
+                                        <p class="m-0 text-pale-sky">Non Admin</p>
+                                 
+                                        <div class="progress mt-4">
+                                            <div class="progress-bar bg-lgreen" style="width: 60%; height:6px;" role="progressbar"><span class="sr-only">60% Complete</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="bottom-text mt-0">
-                                    <p class="m-0">$30,820</p>
-                                    <span><i class="fa fa-caret-up"></i> 35.45%</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-12">
-                        <div class="card stat-widget-progress">
-                            <div class="card-body">
-                                <h5 class="text-pale-sky">Total Receivable: $12,570</h5>
-                                <div class="progress mb-4 mt-3">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 40%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="d-flex justify-content-between flex-wrap">
-                                            <div class="item">
-                                                <h5 class="text-warning">Current</h5>
-                                                <h5 class="mb-0 text-pale-sky">$2840</h5>
+
+                            <div class="card-body bottom-part mb-3">
+                                <div class="row py-2 m-0">
+                                    <div class="col-lg-6 pl-xl-0">
+                                        <h2 id="over" class="text-primary m-0"> <span>(0)</span></h2>
+                                        <p class="m-0 text-pale">Overswipe</p>
+                                    
+                                        <div class="progress mt-4">
+                                            <div class="progress-bar bg-primary" style="width: 60%; height:6px;" role="progressbar"><span class="sr-only">60% Complete</span>
                                             </div>
-                                            <div class="item">
-                                                <h5 class="d-inline-block text-warning">Override</h5>
-                                                <span>(15-30 days)</span>
-                                                <h5 class="mb-0 text-pale-sky">$2840</h5>
-                                            </div>
-                                            <div class="item">
-                                                <span>Above 30 days</span>
-                                                <h5 class="mb-0 text-pale-sky">$2840</h5>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-6 pr-xl-0">
+                                        <h2  id="total" class="text-lgreen m-0">31</h2>
+                                        <p class="m-0 text-pale-sky">Total Hallpass</p>
+                                     
+                                        <div class="progress mt-4">
+                                            <div class="progress-bar bg-lgreen" style="width: 60%; height:6px;" role="progressbar"><span class="sr-only">60% Complete</span>
                                             </div>
                                         </div>
                                     </div>
@@ -85,21 +98,57 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
-                <div class="row">
-                    <div class="col-xl-9">
+
+                    <div class="col-xl-9 col-xxl-6 col-lg-6">
                         <div class="card">
-                      
-<div id="container" style="width:100%; height: 400px; margin: 0 auto"></div>
+                            <div class="card-body">
+                         
+                                <div class="d-flex justify-content-between">
+                                 
+                                    <ul id='period_subject' class="lw-transaction">
+                                    <li> Period</li>
+                                    <li> Subject</li>
+                         
+                                    </ul>
+                                    <ul id='selector' class="lw-transaction pull-left" >
+                                   
+                                        <li> Week</li>
+                                        <li> Month</li>
+                                        <li> Marking Period</li>
+                                        <li> Term</li>
+                                        <li> Custom</li>
+                                    </ul>
+                                    <ul id='back' class="lw-transaction" >
+                                   
+                                    <button type="button" class="btn btn-ft btn-rounded btn-outline-info">Back</button>
+                              
+                                  </ul>
+                                    
+                                    
+                                </div>
+                                <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div>
+                                <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                        
+                                <canvas id="barChart" height="600" width="170" class="chartjs-render-monitor" style="display: block; height: 71px; width: 213px;"></canvas>
+                            </div>
+                  
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                </div>
+
+               
                     
             
-                </div>
-             
-            </div>
-            <!-- #/ container -->
+                    
   
+            <!-- #/ container -->
+      
     <!-- <div class='row'>
       <div class="col-sm-12 col-xxl-3 col-xl-3">
       <div class="card stat-widget-five">
@@ -145,11 +194,16 @@
                       
       </div> </div>   
 </div> -->
+
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
     <script src="<?= base_url() ?>public/assets/plugins/chart.js/Chart.bundle.min.js"></script>
   <script>
   
 $(document).ready(function(){
-  var data_array;
+
+
+
+  var data_array,dataresponse,data_1,period_labels,data2;
   
   const a=$.ajax({
                             url:base_url+"admin/studentinformation/get_all_hallpass_analytics ",
@@ -160,95 +214,127 @@ $(document).ready(function(){
                         })
                         .done(function(data){
                           period_list=data.response
-                          data_array=data
+                          data_array=data.datasets
                           
+                          dataresponse=data
                         });
-function myFunc(total, num) {
-  return total + num;
-}
-Highcharts.chart('container', {
-  title: {
-    text: 'HallPass'
-  },
-  xAxis: {
-    categories: period_list,
-  },
-  labels: {
-    items: [{
-      html: 'Student Data',
-      style: {
-        left: '50px',
-        top: '18px',
-        color: ( // theme
-          Highcharts.defaultOptions.title.style &&
-          Highcharts.defaultOptions.title.style.color
-        ) || 'black'
-      }
-    }]
-  },
-  series: [{
-    type: 'column',
-    name: 'On Time',
-    data: data_array.ontime.map(Number)
-  }, {
-    type: 'column',
-    name: 'Tardy',
-    data: data_array.Tardy.map(Number)
-  }, {
-    type: 'column',
-    name: 'Expired',
-    data: data_array.Expired.map(Number)
+var limit=dataresponse.limit;       
+console.log(limit);
+$("#back").hide();
+$("#period_subject").hide();
+ $('#non_admin').html(`${dataresponse.non_admin.toString()} / ${limit}` );
+ $('#over').html(`(${dataresponse.over})` );
+ $('#aadmin').html(dataresponse.admin);
+ $('#total').html(parseInt(dataresponse.admin)+parseInt(dataresponse.non_admin));
 
-  }, {
-    type: 'pie',
-    name: 'Total consumption',
-    data: [{
-      name: 'On Time',
-      y: data_array.ontime.map(Number).reduce(myFunc),
-      color: Highcharts.getOptions().colors[0] // Jane's color
-    }, {
-      name: 'Tardy',
-      y: data_array.Tardy.map(Number).reduce(myFunc),
-      color: Highcharts.getOptions().colors[1] // Tardy's color
-    }, {
-      name: 'Expired',
-      y: data_array.Expired.map(Number).reduce(myFunc),
-      color: Highcharts.getOptions().colors[2] // Expired's color
-    }],
-    center: [100, 80],
-    size: 100,
-    showInLegend: false,
-    dataLabels: {
-      enabled: false
-    }
-  }]
+console.log(data_array);
+data_sample= {
+            labels: ["Sun", "Mon", "Tu", "Wed", "Th", "Fri", "Sat"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    data: [40, 55, 75, 81, 56, 55, 40],
+                    borderColor: "rgba(52, 199, 59, .9)",
+                    borderWidth: "0",
+                    backgroundColor: "rgba(52, 199, 59, .5)"
+                }
+            ]
+        };
+data_1=dataresponse.period;
+data_0={
+            labels: period_list,
+            datasets:data_array,
+             
+        };
+
+var ctx = document.getElementById("barChart");
+    ctx.height = 50;
+
+    var myNewChart=new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: period_list,
+            datasets:data_array,
+             
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    // Change here
+                    barPercentage: .7
+                }]
+            },
+            title: {
+            display: true,
+            text: 'Hallpass '
+        },
+        
+        }
+    });
+
+    ctx.onclick = function(evt) {
+    
+      var activePoints = myNewChart.getElementAtEvent(evt);
+    
+      $.ajax({
+                            url:base_url+"admin/studentinformation/drill_down ",
+                            type:"POST",
+                            data:({[csrfName]: csrfHash,'hallpass':activePoints[0]._model.label,
+                                'type':activePoints[0]._model.datasetLabel
+                            }),
+                            dataType:'JSON',
+                            async: false
+                        })
+                        .done(function(data){
+                            data2=data;
+                            myNewChart.data=data2;
+             myNewChart.update();
+          $("#selector").hide();
+          $("#back").show();
+          $("#period_subject").show();   
+                            
+                        });
+        
+      
+ 
+    //   if (activePoints[0]!=null) {
+    //     var chartData = activePoints[0]['_chart'].config.data;
+    //      var idx = activePoints[0]['_index'];
+    //      var label = chartData.labels[idx];
+    //      var value = chartData.datasets[0].data[idx];
+ 
+    //     //   myNewChart.data=data_1;
+    //     //   myNewChart.update();
+    //     console.log(idx);
+    //     console.log(label);
+    //     console.log(value);
+    //       $("#selector").hide();
+    //       $("#back").show();
+    //       $("#period_subject").show();
+    //    }
+   
+
+
+     
+
+ };
+
+
+$( "#back" ).click(function() {
+  $("#back").hide();
+  $("#selector").show();
+     
+          $("#period_subject").hide();   
+  myNewChart.data=data_0;
+  myNewChart.update();
+
+
 });
-
-
-// var ctx = document.getElementById("barChart");
-//     ctx.height = 100;
-//     new Chart(ctx, {
-//         type: 'bar',
-//         data: {
-//             labels: ["January", "February", "March", "April", "May", "June", "July"],
-//             datasets:period_list,
-//         },
-//         options: {
-//             scales: {
-//                 yAxes: [{
-//                     ticks: {
-//                         beginAtZero: true
-//                     }
-//                 }],
-//                 xAxes: [{
-//                     // Change here
-//                     barPercentage: 0.3
-//                 }]
-//             }
-//         }
-//     });
-
-
 
   });
   </script>
@@ -336,10 +422,5 @@ Highcharts.chart('container', {
 
 <?php $this->load->view('admin/studentinformation/add');?>
 <?php $this->load->view('admin/studentinformation/edit');?>
-
-<script>
-// Create the chart
-
-
-</script>
+<script src="<?= base_url() ?>public/assets/plugins/chart.js/Chart.bundle.min.js"></script>
 

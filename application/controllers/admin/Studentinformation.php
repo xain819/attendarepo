@@ -254,34 +254,139 @@
 		
 			echo json_encode($response);	
 		}
+		public function drill_down(){	
+		
+			$result=$this->dashboard->get_all_period();
+			$period_array=[];
+			foreach ($result as $key => $value) {
+		
+				if(strlen($value['Period'])>=3){
+				$period_array[]=$value['Period'];	
+				}else{
+				$period_array[]='Period'." ".$value['Period'];}
+
+				$dataset[]=$this->dashboard->get_period_status_count($value['Period'],$b=$this->input->post('type'),$c=$this->input->post('hallpass'));
+			 }	
+			
+			 $data_array[]=array(
+
+				'label'=>$this->input->post('hallpass'),
+				'data'=> $dataset,
+				'borderColor'=>  '#e30826',
+				'borderWidth'=>  "0",
+				'backgroundColor'=>  '#e30826'
+
+
+			);
+			
+			$data_sample=array(
+			
+
+				'labels'=>$period_array,
+				'datasets'=> $data_array
+			);
+
+		
+			 echo json_encode($data_sample);	
+
+		}
 		public function get_all_hallpass_analytics()
 		{
 			$id=$this->input->post('id');
 			$result=$this->dashboard->get_all_hallpass_analytics();
+			$response['non_admin']=$this->dashboard->get_count_hallpass($a=2);
+			$response['admin']=$this->dashboard->get_count_hallpass($a=1);
+			$response['limit']=($this->dashboard->limit())[0];
+			$response['over']=0;
+			if($response['non_admin']>$response['limit']){
+				$response['over']=$response['limit']-$response['non_admin'];
+			}
 			$this->manage_hallpass_status();
 			$data=[];
 			$data_count=[];
 			$response['response']=	$result;	
 			foreach ($result as $v){
+            
+				
 				$data[]=$v['HallPass'];
+				
 				$data_ontime[]=$this->dashboard->get_hallpass_count($v['HallPass'],'On Time');
 				$data_tardy[]=$this->dashboard->get_hallpass_count($v['HallPass'],'Tardy');
 				$data_expired[]=$this->dashboard->get_hallpass_count($v['HallPass'],'Expired');
-			}
-
+		
 	
+			}
+		
+			$data_array[]=array(
+
+				'label'=>'Tardy',
+				'data'=> $data_tardy,
+				'borderColor'=>  '#e30826',
+				'borderWidth'=>  "0",
+				'backgroundColor'=>  '#e30826'
+
+
+			);
+			$data_array[]=array(
+
+				'label'=>'Expired',
+				'data'=> $data_expired,
+				'borderColor'=>  '#07bbd7',
+				'borderWidth'=>  "0",
+				'backgroundColor'=>  '#07bbd7'
+
+
+			);
+			$data_array[]=array(
+
+				'label'=>'On Time',
+				'data'=> $data_ontime,
+				'borderColor'=>  '#40815a',
+				'borderWidth'=>  "0",
+				'backgroundColor'=>  '#40815a'
+
+
+			);
+	
+
+
 	
 			$string=implode($data,",");
 		
 			$response['response']=	$data;
+			
 			$response['ontime']=$data_ontime;
 			$response['Tardy']=$data_tardy;
 			$response['Expired']=$data_expired;
-	
+			$response['datasets']=$data_array;
+
+			$result1=$this->dashboard->get_all_period();
+			$period_array=[];
+		
+
+			foreach ($result1 as $key => $value) {
+			
+				$period_array[]='Period'." ".$value['Period'];
+
+			
+			 }	
+			 $response['period_array']=$period_array;
+	        // $response['period']=$data_array1[0];
 			echo json_encode($response);	
 	
 		
 		}
+		public function get_dashboard_student(){
+			$result=$this->dashboard->manage_hallpass_status();
+			echo json_encode($result);
+	
+		}
+
+
+
+
+
+
 
 		public function manage_hallpass_status(){
 			$today = date("Y-m-d"); 

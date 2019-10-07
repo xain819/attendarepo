@@ -37,7 +37,7 @@
 		public function get_all_hallpass_analytics (){
 			$this->db->Distinct();
 			$this->db->select("HallPass");
-			
+			$this->db->select("color");
 			$q=$this->db->get('hallpass')->result_array();
 			return $q;
 		
@@ -51,9 +51,27 @@
 		}
 		public function get_all_hallpass (){
 			$sql="SELECT count( DISTINCT ID )as `count` FROM `attendance_hallpass`";
+
 			$q=$this->db->query($sql)->row_array();
 		
 			return $q['count'];
+		
+		}
+	
+		public function get_count_hallpass ($a){
+			$sql="SELECT count( DISTINCT ID )as `count` FROM `attendance_hallpass` where pass_type='{$a}'";
+
+			$q=$this->db->query($sql)->row_array();
+		
+			return $q['count'];
+		
+		}
+		public function limit (){
+			$sql="SELECT  value  FROM `master_control` where id_name='nql'";
+			$q=$this->db->query($sql)->row_array();
+			$a=explode(',',$q['value']);
+		
+			return $a;
 		
 		}
 		public function get_all_class (){
@@ -70,8 +88,29 @@
 			return $q['count'];
 		
 		}
+		public function get_period_status_count ($a,$b,$c){
+		
+			$sql="SELECT count(a.ID) as count, cl.course_code,a.status_type,p.PeriodStartTime,p.PeriodEndTime,s.title,
+			at.AttendanceDate,a.is_active,a.type,a.pass_type,a.ID,a.attendance_id,a.hallpass,
+			at.PeriodID,a.date_time_ended,a.DateCreated,h.TimeAllocated,a.student_local_id
+			 FROM attendance_hallpass a join hallpass h on h.HallPass=a.hallpass join attendance 
+			 at on a.attendance_id=at.AttendanceID join scheduledate s on s.start=at.AttendanceDate
+			  join period p on p.Period=at.PeriodID and p.schedule_type=s.title join class_list cl 
+			  on cl.class_id=at.class_id where  a.is_active=0 and p.Period='{$a}'and  a.hallpass='{$c}' and a.status_type='{$b}' ";
+				$q=$this->db->query($sql)->row_array();
+
+				return $q['count'];
+			
+			}
 		public function manage_hallpass_status (){
-			$sql="SELECT p.PeriodStartTime,p.PeriodEndTime,s.title,at.AttendanceDate,a.is_active,a.type,a.pass_type,a.ID,a.attendance_id,a.hallpass,at.PeriodID, a.date_time_ended,a.DateCreated,h.TimeAllocated,a.student_local_id FROM attendance_hallpass a join hallpass h on h.HallPass=a.hallpass join attendance at on a.attendance_id=at.AttendanceID join scheduledate s on s.start=at.AttendanceDate join period p on p.Period=at.PeriodID and p.schedule_type=s.title where a.is_active=0";
+			$sql="SELECT  cl.course_code,a.status_type,p.PeriodStartTime,p.PeriodEndTime,
+			s.title,at.AttendanceDate,a.is_active,a.type,a.pass_type,a.ID,a.attendance_id,
+			a.hallpass,at.PeriodID,a.date_time_ended,a.DateCreated,h.TimeAllocated,a.student_local_id FROM
+			attendance_hallpass a join hallpass h on h.HallPass=a.hallpass join
+			attendance at on a.attendance_id=at.AttendanceID join scheduledate s on 
+			s.start=at.AttendanceDate join period p on p.Period=at.PeriodID and p.schedule_type=s.title join class_list cl on cl.class_id=at.class_id
+			
+			where a.is_active=0 ";
 			$q=$this->db->query($sql)->result_array();
 		
 			return $q;

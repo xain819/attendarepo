@@ -88,7 +88,10 @@ button.btn-space {
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
+    
     </section>
+
+    
     <div class="modal modal-default" id='teacher-modal-primary'>
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
