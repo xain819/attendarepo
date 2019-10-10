@@ -13,6 +13,7 @@
     <link rel="manifest" href="<?=base_url() ?>manifest.json">
     <script src="<?=base_url() ?>public/plugins/moment/moment.js"></script>
     <script src="https://kit.fontawesome.com/ba69dea6e4.js"></script>
+    <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
 
 
     <!-- Custom Stylesheet -->

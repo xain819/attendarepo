@@ -83,7 +83,7 @@
                                 <div class="card">
                                     <div class="card-body widget-school-stat bg-6 rounded">
                                         <div class="text">
-                                            <h2>&#36;5847</h2>
+                                            <h2  id="neg"   >&#36;5847</h2>
                                             <p>Negative Seat Time</p>
                                         </div>
                                         <div class="icon">
@@ -119,12 +119,14 @@
         Scripts
     ***********************************-->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
     <script>
      var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
         csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
         base_url='<?php echo base_url(); ?>';
 
 $(document).ready(function(){
+    
 
     $.ajax({
         url:'<?php echo base_url(); ?>admin/dashboard/info',
@@ -133,13 +135,25 @@ $(document).ready(function(){
         dataType:'JSON',
     }).done(function(data){
   
-      
+        function timeConvert(n) {
+        var num = n;
+        
+        var hours = (num / 60);
+        var rhours = Math.floor(hours);
+        var minutes = (hours - rhours) * 60;
+        var rminutes = Math.round(minutes);
+        return rhours + " hours";
+        }
+
+      var a=timeConvert(data.negative);
+     
         console.log(data);
         $('#students').html(data.student);
         $('#class').html(data.class);
         $('#teacher').html(data.teacher);
         $('#hallpass').html(data.hallpass);
         $('#attendance').html(data.attendance);
+        $('#neg').html(a);
 
         
     });

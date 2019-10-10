@@ -124,7 +124,7 @@ $(document).ready(function(){
             { 
                 data: null,
                 render:function(data){
-                    return `<button value='${data.StudentID}' class="btn btn-xs btn-warning showeditstudentmodal">
+                    return `<button value='${data.student_local_id}' data-student='${data.student_local_id}' class="btn btn-dash btn-xs btn-warning ">
                     <i class="fa fa-television"></i></button>`
                 }
             }
@@ -250,7 +250,7 @@ $(document).ready(function(){
             $('#edit-StudentID').val(data.student_info[0].StudentID);
 
         })
-        $('#edit-student-modal-primary').modal('show');
+   
     })
     $(document).on('click','#addstudent',function(){ 
         console.log(get_form_values("#add-student-form-id"))

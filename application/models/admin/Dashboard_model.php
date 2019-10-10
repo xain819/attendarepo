@@ -59,8 +59,15 @@
 		}
 	
 		public function get_count_hallpass ($a){
-			$sql="SELECT count( DISTINCT ID )as `count` FROM `attendance_hallpass` where pass_type='{$a}'";
+			if($_SESSION['v_student_local_data']==''){
+				$sql="SELECT count( DISTINCT ID )as `count` FROM `attendance_hallpass` where pass_type='{$a}' 
+				and DateCreated>='{$_SESSION['start_d']}' and DateCreated<='{$_SESSION['end_d']}'";
+			}else{
+				$sql="SELECT count( DISTINCT ID )as `count` FROM `attendance_hallpass` where pass_type='{$a}' and student_local_id={$_SESSION['v_student_local_data']}
+				and DateCreated>='{$_SESSION['start_d']}' and DateCreated<='{$_SESSION['end_d']}'";
 
+			}
+		
 			$q=$this->db->query($sql)->row_array();
 		
 			return $q['count'];
@@ -81,22 +88,52 @@
 			return $q['count'];
 		
 		}
+
 		public function get_hallpass_count ($a,$b){
-		$sql="SELECT count( id )as `count` FROM `attendance_hallpass` where hallpass='{$a}' and status_type='{$b}'";
-			$q=$this->db->query($sql)->row_array();
+			if($_SESSION['v_student_local_data']==''){
+				$sql="SELECT count( id )as `count` FROM `attendance_hallpass` where hallpass='{$a}' and status_type='{$b}' 
+				and DateCreated>='{$_SESSION['start_d']}' and DateCreated<='{$_SESSION['end_d']}'";
+		
+			}else{
+				$sql="SELECT count( id )as `count` FROM `attendance_hallpass` where hallpass='{$a}' and status_type='{$b}' and student_local_id='{$_SESSION['v_student_local_data']}'
+				and DateCreated>='{$_SESSION['start_d']}' and DateCreated<='{$_SESSION['end_d']}'  ";
+		
+			}
+		$q=$this->db->query($sql)->row_array();
 		
 			return $q['count'];
 		
 		}
+		public function get_student_name($a){
+			$this->db->Distinct();
+			$this->db->select('first_name');
+			$this->db->select('last_name');
+			$this->db->where('student_local_id',$a);
+			$q=$this->db->get('student_table')->row_array();
+
+			return $q;
+
+		}
+
 		public function get_period_status_count ($a,$b,$c){
 		
+			if($_SESSION['v_student_local_data']==''){
 			$sql="SELECT count(a.ID) as count, cl.course_code,a.status_type,p.PeriodStartTime,p.PeriodEndTime,s.title,
 			at.AttendanceDate,a.is_active,a.type,a.pass_type,a.ID,a.attendance_id,a.hallpass,
 			at.PeriodID,a.date_time_ended,a.DateCreated,h.TimeAllocated,a.student_local_id
 			 FROM attendance_hallpass a join hallpass h on h.HallPass=a.hallpass join attendance 
 			 at on a.attendance_id=at.AttendanceID join scheduledate s on s.start=at.AttendanceDate
 			  join period p on p.Period=at.PeriodID and p.schedule_type=s.title join class_list cl 
-			  on cl.class_id=at.class_id where  a.is_active=0 and p.Period='{$a}'and  a.hallpass='{$c}' and a.status_type='{$b}' ";
+			  on cl.class_id=at.class_id where  a.is_active=0 and p.Period='{$a}'and  a.hallpass='{$c}' and a.status_type='{$b}' ";}
+			  else{
+				$sql="SELECT count(a.ID) as count, cl.course_code,a.status_type,p.PeriodStartTime,p.PeriodEndTime,s.title,
+				at.AttendanceDate,a.is_active,a.type,a.pass_type,a.ID,a.attendance_id,a.hallpass,
+				at.PeriodID,a.date_time_ended,a.DateCreated,h.TimeAllocated,a.student_local_id
+				 FROM attendance_hallpass a join hallpass h on h.HallPass=a.hallpass join attendance 
+				 at on a.attendance_id=at.AttendanceID join scheduledate s on s.start=at.AttendanceDate
+				  join period p on p.Period=at.PeriodID and p.schedule_type=s.title join class_list cl 
+				  on cl.class_id=at.class_id where  a.is_active=0 and p.Period='{$a}'and  a.hallpass='{$c}' and a.status_type='{$b}' and a.student_local_id='{$_SESSION['v_student_local_data']}' ";
+			  }
 				$q=$this->db->query($sql)->row_array();
 
 				return $q['count'];
@@ -115,6 +152,15 @@
 		
 			return $q;
 		
+		}
+
+
+		public function neg_seat()
+		{
+			$sql="SELECT sum(negative_seat_time) as SUM from attendance_hallpass";
+			$q=$this->db->query($sql)->row_array();
+			return $q['SUM'];
+
 		}
 
 	

@@ -114,6 +114,10 @@
 			$data['view'] = 'admin/studentinformation/index';
 			$this->update_student_hallpass();
 			$this->load->view('layoutv2', $data);
+			$this->session->set_userdata('v_student_local_data','');
+			$this->session->set_userdata('v_last_name','Select');	
+				$this->session->set_userdata('v_first_name','Student');	
+	
 		}
 		public function get_all_student(){
 			$data=$this->admin->get_all_student();
@@ -291,8 +295,30 @@
 
 		}
 		public function get_all_hallpass_analytics()
-		{
-			$id=$this->input->post('id');
+
+		{   
+			$end=$this->input->post('end');
+		    $id=$this->input->post('student');
+			$start=$this->input->post('start');
+			$type=$this->input->post('type');
+			$response['name']="Name";
+	
+			if($id[0]==2){
+				$this->session->set_userdata('v_student_local_data', $id);	
+				$this->session->set_userdata('v_last_name', $id);	
+				$this->session->set_userdata('v_first_name', $id);	
+				$name=$this->dashboard->get_student_name($id);
+
+				$this->session->set_userdata('v_last_name', $name['first_name']);	
+				$this->session->set_userdata('v_first_name', $name['last_name']);	
+		
+
+			}
+			$response['id']=$_SESSION['v_student_local_data'];
+			$response['name']=$_SESSION['v_first_name']." ".$_SESSION['v_last_name'];
+					
+			$this->session->set_userdata('start_d', $start);
+			$this->session->set_userdata('end_d', $end);
 			$result=$this->dashboard->get_all_hallpass_analytics();
 			$response['non_admin']=$this->dashboard->get_count_hallpass($a=2);
 			$response['admin']=$this->dashboard->get_count_hallpass($a=1);
@@ -359,6 +385,7 @@
 			$response['Tardy']=$data_tardy;
 			$response['Expired']=$data_expired;
 			$response['datasets']=$data_array;
+		
 
 			$result1=$this->dashboard->get_all_period();
 			$period_array=[];

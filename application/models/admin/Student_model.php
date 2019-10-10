@@ -10,6 +10,12 @@
 
 
 		}
+		public function negative_seat_time($a)
+		{
+			$this->db->where('student_local_id',$a);
+			$q=$this->db->get('attendance_hallpass')->row_array();
+			
+		}
 	}
 
 ?>

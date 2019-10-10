@@ -38,6 +38,7 @@
 			$data['attendance'] = $this->dashboard_model->get_all_attendance();
 			$data['hallpass'] = $this->dashboard_model->get_all_hallpass();
 			$data['class'] = $this->dashboard_model->get_all_class();
+			$data['negative']=$this->dashboard_model->neg_seat();
 			
 			
 			

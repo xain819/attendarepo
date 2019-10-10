@@ -17,6 +17,14 @@
 			$this->load->view('layoutv2', $data);
 			
 		}
+		public function settings(){
+
+			//$this->rbac->check_operation_access();
+			$data['title'] = 'General Settings';
+			$data['view'] = 'admin/generalsettings/settings';
+			$this->load->view('layoutv2', $data);
+			
+		}
 		public function get_all_hallpass()
 		{
 		$type=$this->input->post('type');
