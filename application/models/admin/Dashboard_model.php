@@ -126,7 +126,7 @@
 			  join period p on p.Period=at.PeriodID and p.schedule_type=s.title join class_list cl 
 			  on cl.class_id=at.class_id where  a.is_active=0 and p.Period='{$a}'and  a.hallpass='{$c}' and a.status_type='{$b}' ";}
 			  else{
-				$sql="SELECT count(a.ID) as count, a.status_type,p.PeriodStartTime,p.PeriodEndTime,s.title,
+				$sql="SELECT count(a.ID) as count, cl.course_code,a.status_type,p.PeriodStartTime,p.PeriodEndTime,s.title,
 				at.AttendanceDate,a.is_active,a.type,a.pass_type,a.ID,a.attendance_id,a.hallpass,
 				at.PeriodID,a.date_time_ended,a.DateCreated,h.TimeAllocated,a.student_local_id
 				 FROM attendance_hallpass a join hallpass h on h.HallPass=a.hallpass join attendance 
