@@ -108,9 +108,17 @@
 			}
 			
 		}
+		public function set_session_teacher_id(){
+			$this->db->select('TeacherID');
+			$this->db->where('IDNumber',$_SESSION['username']);
+			$q=$this->db->get('teacher')->row_array();
+	
+			$this->session->set_userdata('TeacherID',$q['TeacherID']);
 
+		}
 		public function assign_teacher_username()
 		{
+			
 			$sql="select DISTINCT  c.teacher_id_number,t.FirstName,t.LastName,c.location,a.username,a.password from class_list c left join admin a on a.username=c.teacher_id_number left join teacher t on t.IDNumber=c.teacher_id_number";
 			$result=$this->db->query($sql)->result_array();
 		
@@ -140,6 +148,37 @@
 				}
 
 			}
+		}
+
+
+		
+		public function class_access()
+
+		{
+			$sql="SELECT DISTINCT cl.period_number,t.FirstName,t.LastName,t.IDNumber,co.course_description,cl.class_code_1
+			 from class_list cl left join courses co on co.course_code =cl.course_code join teacher t on t.IDNumber = cl.teacher_id_number join period p on p.Period=cl.period_number";
+			$q=$this->db->query($sql)->result_array();
+		
+			foreach($q as $v){
+				$this->db->select('class_code');
+				$this->db->where('class_code',$v['class_code_1']);
+				$qq=$this->db->get('teacher_class')->result_array();
+				if($qq==null){
+				
+					$this->db->set('teacher_id_number',$v['IDNumber']);
+					$this->db->set('period_number',$v['period_number']);
+					$this->db->set('class_code',$v['class_code_1']);
+					$this->db->insert('teacher_class');
+				}
+			}
+
+
+		}
+		public function get_teacher_access()
+		{
+			$sql="SELECT DISTINCT tc.class_code,co.course_description,cl.location,t.FirstName,t.LastName,tc.class_code,tc.teacher_id_number,tc.2hp_limit,tc.limit_type,tc.overide_is_active,tc.excess_non_admin_hp,tc.period_number,tc.is_active,tc.id FROM teacher_class tc join class_list cl on cl.class_code_1=tc.class_code join teacher t on t.IDNumber=tc.teacher_id_number join courses co on co.course_code=cl.course_code and co.course_type =cl.class_type where t.IDNumber='{$_SESSION['username']}'";
+			$q=$this->db->query($sql)->result_array();
+			return $q;
 		}
 	}
 

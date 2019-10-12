@@ -191,7 +191,9 @@
 			$this->teacher->assign_techer_course_details();
 			$this->load->view('layoutv2', $data);
 			$this->teacher->assign_teacher_username();
-
+			$this->teacher->set_session_teacher_id();
+		
+	
 			
 			
 		}
@@ -199,6 +201,7 @@
 	
 			$teacherid=$this->input->post('data');
 			$data['teacher_id']=$teacherid;
+
 		
 			$data['ahp']=$this->admin->get_terminal_access($teacherid,1);
 			$data['nhp']=$this->admin->get_terminal_access($teacherid,2);
@@ -264,7 +267,22 @@
 			echo json_encode($response);
 		}
 		//teacher end
+		public function settings(){
+			$data['title'] = 'Teacher Information';
+			$data['view'] = 'admin/teacherinformation/teacher_settings';
+			$this->set_teacher_class();
+			$this->load->view('layoutv2', $data);
+		}
+		function set_teacher_class()
+		{
+			$this->teacher->class_access();
 
+		}
+		public function get_teacher_class(){
+	
+			$response['teacher_class']=$this->teacher->get_teacher_access();
+			echo json_encode($response);
+		}
 		
 		
 	}

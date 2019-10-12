@@ -112,7 +112,7 @@
                     <i class="fas fa-users"></i><span class="nav-text">Student Rosters</span>
                         </a>
                     </li>
-                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/teacher_settings'); ?>" >
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/teacherinformation/settings'); ?>" >
                     <i class="fas fa-chalkboard-teacher"></i><span class="nav-text">Teacher Setttings</span>
                         </a>
                     </li>

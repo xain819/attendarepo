@@ -46,7 +46,7 @@ button.btn-space {
      
            
            
-                <th>Time IN
+                <th>Time IN</th>
                 <th>Time Tardy</th>
                 <th>Student ID</th>
                 <th>Grade</th>

@@ -161,6 +161,8 @@
 			$q=$this->db->query($sql)->row_array();
 			return $q['SUM'];
 
+			
+
 		}
 
 	
