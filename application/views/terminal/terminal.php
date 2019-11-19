@@ -493,6 +493,8 @@ $(document).ready(function(){
             text:'',
            });
         }
+
+        
         else{
           console.log(data);
           $("#terminal_modal").modal("show");

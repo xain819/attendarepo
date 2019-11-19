@@ -220,6 +220,8 @@
 					$is_first=count($this->admin->check_if_attendance_exist($result[0]['class_id']));
 					$is_late=$this->admin->student_arrival_check_in();
 					$is_student_arrival_checkin=$this->admin->general_master('slac');
+					$is_student_need_lunch=$this->admin->general_master('slc');
+
 				
 			
 					if($is_late=='true' && $is_first==0 && $is_student_arrival_checkin['is_active']==1) {
@@ -228,8 +230,8 @@
 					}
 					else{
 					$data=$this->admin->record_attendace($result[0]['class_id']);
-				
-					
+					$data['is_lunch']=$is_student_need_lunch;
+					$data['is_first']=$is_first;
 					echo json_encode($data);
 					}
 					
