@@ -702,6 +702,7 @@ $(document).ready(function(){
      
       data: ({[csrfName]: csrfHash,id:id}),
       }).done(function (data){
+        
         if(data=='not_enrolled'){
   
           swal({
@@ -743,6 +744,9 @@ $(document).ready(function(){
                
           if(data['is_first']==0){
             console.log('ji');
+
+            setTimeout(function() {
+            //your code to be executed after 1 second
             swal({
               title: "Lunch?",
               text: "Do you need a School lunch today?",
@@ -754,8 +758,8 @@ $(document).ready(function(){
               closeOnConfirm: false,
               closeOnCancel: false
             });
-
-          }
+          }, 10000);
+          } 
      
           const response=data['response'];
        

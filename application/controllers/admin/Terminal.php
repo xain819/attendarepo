@@ -230,8 +230,9 @@
 					}
 					else{
 					$data=$this->admin->record_attendace($result[0]['class_id']);
-					$data['is_lunch']=$is_student_need_lunch;
-					$data['is_first']=$is_first;
+					// $data['is_lunch']=$is_student_need_lunch;
+					// $data['is_first']=$is_first;
+			
 					echo json_encode($data);
 					}
 					
