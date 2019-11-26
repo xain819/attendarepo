@@ -85,7 +85,7 @@ $db['default'] = array(
 	// 'username' => 'root',
 	// 'password' => '',
 	// 'database' => 'attendatrack',
-	// 'dbdriver' => 'mysqli',
+	'dbdriver' => 'mysqli',
 	
 	'dbprefix' => '',
 	'pconnect' => FALSE,
