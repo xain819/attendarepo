@@ -708,7 +708,8 @@ $(document).ready(function(){
           swal({
             text:'You are Not Enrolled in this Class!',
             timer: 5000,
-            title:`${data.result.first_name} ${data.result.last_name}`
+            title:`${data.result.first_name} ${data.result.last_name}`,
+            type:'error'
             
            });
            $("#student_id").val('');
@@ -898,6 +899,7 @@ $(document).ready(function(){
                           swal({
                                 title:`Student Limit Reached`,
                                 timer: 5000,
+                                
                                 text:`You have Reached ${response} Hall Pass for this 
                                 ${data.info.name}(${data.info.name_id})
                                 ${data.info.start} -  ${data.info.end}. 
