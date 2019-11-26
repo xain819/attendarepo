@@ -1030,6 +1030,7 @@ class Admin_model extends CI_Model{
 		// $this->db->where('start',date("Y-m-d"));
 		// $this->db->where('student_local_id',$a);
 		// $this->db->where('period_number',$b);
+		
 
 		$sql="SELECT DISTINCT  `p`.`PeriodStartTime` AS `PeriodStartTime`, `p`.`PeriodEndTime` AS `PeriodEndTime`, `p`.`GracePeriod` AS `GracePeriod`,  `p`.`TransitionTime` AS `TransitionTime`,
     `p`.`PeriodID` AS `PeriodID`,
@@ -1066,10 +1067,24 @@ left join attendance a on `a`.`class_id` = `cl`.`class_id` AND `a`.`AttendanceDa
 join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `cl`.`schedule_type`
 	WHERE
 		`cl`.`student_local_id` = '{$a}' AND `cl`.`term` = 'S1' and`sc`.`start`='{$today}' AND `p`.`Period`='{$b}' and `cl`.`location`='{$_SESSION['username']}'";
+        $query['status']='enrolled';
+		$query['result']=$this->db->query($sql)->result_array();
 
-		$query=$this->db->query($sql)->result_array();
+		
 
-		return $query;
+		if($query['result']==null){
+		$this->db->distinct();
+		$this->db->select('first_name'); 
+		$this->db->select('last_name'); 	
+		$this->db->where('student_local_id',$a);
+		$q['result']=$this->db->get('student_table')->row_array();
+		$q['status']='not_enrolled';
+		return $q;
+		}
+		else{return $query;}
+		
+
+		
 		
 	}
 	public function get_student_secretary_access($a){

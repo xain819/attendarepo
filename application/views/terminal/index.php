@@ -703,12 +703,13 @@ $(document).ready(function(){
       data: ({[csrfName]: csrfHash,id:id}),
       }).done(function (data){
         
-        if(data=='not_enrolled'){
+        if(data['status']=='not_enrolled'){
   
           swal({
-            title:'Not Enrolled in this Class',
+            text:'You are Not Enrolled in this Class!',
             timer: 5000,
-            text:'',
+            title:`${data.result.first_name} ${data.result.last_name}`
+            
            });
            $("#student_id").val('');
          

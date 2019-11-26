@@ -213,11 +213,11 @@
 			{
 			
 				$result=$this->admin->get_student_class_access($data['id'],$data['period']);
-				if($result==null){
-					echo json_encode('not_enrolled');
+				if($result['status']=='not_enrolled'){
+					echo json_encode($result);
 				}else{
 					//validate of the student is late and need to go to admin and first scan
-					$is_first=count($this->admin->check_if_attendance_exist($result[0]['class_id']));
+					$is_first=count($this->admin->check_if_attendance_exist($result['result'][0]['class_id']));
 					$is_late=$this->admin->student_arrival_check_in();
 					$is_student_arrival_checkin=$this->admin->general_master('slac');
 					$is_student_need_lunch=$this->admin->general_master('slc');
@@ -229,7 +229,7 @@
 						
 					}
 					else{
-					$data=$this->admin->record_attendace($result[0]['class_id']);
+					$data=$this->admin->record_attendace($result['result'][0]['class_id']);
 					// $data['is_lunch']=$is_student_need_lunch;
 					// $data['is_first']=$is_first;
 			
