@@ -406,7 +406,7 @@ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
               timer: 30000000
            });}
 
-           setInterval(moveItem,1000000);
+           setInterval(moveItem,1000);
       
 
       }
@@ -416,7 +416,7 @@ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
 
 
     });}
-    setInterval(update_data,1500000);
+    setInterval(update_data,1500);
 
 });
 
@@ -457,10 +457,10 @@ function update_data(){
                       type: "warning",
                       showCancelButton: false,
                       showConfirmButton: false,
-                      timer: 30000000
+                      timer: 1000
                   });}
 
-                  setInterval(moveItem,1500000);
+                  setInterval(moveItem,1500);
                   console.log(data);
 
               }
@@ -476,7 +476,7 @@ function update_data(){
                         timer: 30000000
                     });}
 
-                    setInterval(moveItem,100000);
+                    setInterval(moveItem,1000);
               }
             }    
      
@@ -490,7 +490,7 @@ function update_data(){
       
 
   }
-setInterval(update_data,1500000);
+setInterval(update_data,1500);
 
 // status.watch(function (id, oldval, newval) {
 //   console.log('o.' + id + ' changed from ' + oldval + ' to ' + newval);
@@ -774,17 +774,22 @@ $(document).ready(function(){
           var start=new Date(`${response['AttendanceDate']} ${response['PeriodStartTime']}`).getTime()+parseInt(tt[1])*60*1000+parseInt(tt[2])*1000;
           var swipe=new Date(`${response['AttendanceDate']} ${response['AttendanceTime']}`).getTime();
           var grace=start + parseInt(mm[1])*60*1000+ parseInt(mm[2])*1000;
+          var message='';
           var f=(grace-swipe)/(1000*60);
                     if (swipe<=start && response.AttendanceTime!=''){
                         status= 'On Time';
+                        message=`"Welcome to class! You are ON TIME." (individual and school announcements will appear on the terminal)`;
                         type='success';
                     }else if(swipe>=start && swipe<=grace)
                     {
                       status= 'Grace';
+                      message=`"Welcome to class! You just made it!" (individual and school announcements will appear on the terminal)`;
                       type='success';
+                      
                     }
                     else{
                       status= 'Late';
+                      message=`"Welcome to class! You are LATE" (individual and school announcements will appear on the terminal)`;
                       type='warning'
                         var a=Math.trunc(f);
                         
@@ -799,7 +804,7 @@ $(document).ready(function(){
                     swal({
             title:`${status}`,
             timer: 5000,
-            text:`You are ${status} : ${time}`,
+            text:`${message}`,
             type:`${type}`,
            });
 
@@ -860,7 +865,7 @@ $(document).ready(function(){
                             swal({
                                   title:`Locked`,
                                   timer: 5000,
-                                  text:`Locked: Will be available in ${response}.`,
+                                  text:`"No Pass! Hallpass will be available in ${response}.`,
                                           
                                 });
 
@@ -870,7 +875,7 @@ $(document).ready(function(){
                                 swal({
                                       title:`Locked`,
                                       timer: 5000,
-                                      text:`hallpass: Will be available next period .`,
+                                      text:`"No Pass!" Hallpass is available next period"`,
                                               
                                     });
 
