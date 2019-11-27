@@ -800,7 +800,7 @@ $(document).ready(function(){
                   
                     swal({
             title:`${status}`,
-            timer: 1500,
+            timer: 700,
             text:`You are ${status} : ${time}`,
             type:`${type}`,
            });
