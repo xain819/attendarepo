@@ -782,7 +782,7 @@ $(document).ready(function(){
                     }else if(swipe>=start && swipe<=grace)
                     {
                       status= 'Grace';
-                      message=`"Welcome to class! You just made it!" (individual and school announcements will appear on the terminal)';
+                      message="Welcome to class! You just made it!" (individual and school announcements will appear on the terminal)';
                       type='success';
                       
                     }
