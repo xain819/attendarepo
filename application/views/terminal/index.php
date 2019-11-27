@@ -406,7 +406,7 @@ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
               timer: 30000000
            });}
 
-           setInterval(moveItem,1000);
+           setInterval(moveItem,1000000);
       
 
       }
@@ -416,7 +416,7 @@ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
 
 
     });}
-    setInterval(update_data,1500);
+    setInterval(update_data,1500000);
 
 });
 
@@ -457,10 +457,10 @@ function update_data(){
                       type: "warning",
                       showCancelButton: false,
                       showConfirmButton: false,
-                      timer: 1000
+                      timer: 30000000
                   });}
 
-                  setInterval(moveItem,1500);
+                  setInterval(moveItem,1500000);
                   console.log(data);
 
               }
@@ -476,7 +476,7 @@ function update_data(){
                         timer: 30000000
                     });}
 
-                    setInterval(moveItem,1000);
+                    setInterval(moveItem,100000);
               }
             }    
      
@@ -490,7 +490,7 @@ function update_data(){
       
 
   }
-setInterval(update_data,1500);
+setInterval(update_data,1500000);
 
 // status.watch(function (id, oldval, newval) {
 //   console.log('o.' + id + ' changed from ' + oldval + ' to ' + newval);
@@ -778,12 +778,11 @@ $(document).ready(function(){
           var f=(grace-swipe)/(1000*60);
                     if (swipe<=start && response.AttendanceTime!=''){
                         status= 'On Time';
-                        message=`"Welcome to class! You are ON TIME." (individual and school announcements will appear on the terminal)`;
                         type='success';
                     }else if(swipe>=start && swipe<=grace)
                     {
                       status= 'Grace';
-                      message=`"Welcome to class! You just made it!" (individual and school announcements will appear on the terminal)`;
+                      message=`"Welcome to class! You just made it!" (individual and school announcements will appear on the terminal)';
                       type='success';
                       
                     }
@@ -804,7 +803,7 @@ $(document).ready(function(){
                     swal({
             title:`${status}`,
             timer: 5000,
-            text:`${message}`,
+            text:`You are ${status} : ${time}`,
             type:`${type}`,
            });
 
