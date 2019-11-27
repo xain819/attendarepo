@@ -104,7 +104,7 @@ class Admin_model extends CI_Model{
 	
 		$sql="SELECT COUNT(*) as `count` FROM `attendance` a join `class_list` c 
 		on c.class_id=a.class_id join `attendance_hallpass` ah
-		on ah.attendance_id=a.AttendanceID where c.student_local_id={$a} and ah.pass_type={$b} and a.AttendanceDate>='{$c}' and a.AttendanceDate<='{$d}'";
+		on ah.attendance_id=a.AttendanceID where c.student_local_id='{$a}' and ah.pass_type={$b} and a.AttendanceDate>='{$c}' and a.AttendanceDate<='{$d}'";
 		$q=$this->db->query($sql)->row_array();
 		return $q['count'];
 
