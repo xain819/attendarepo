@@ -15,7 +15,12 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url() ?>public/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
+    <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
+    <link rel="stylesheet" href="<?= base_url() ?>public/plugins/flipclock/flipclock.css">
   <link rel="manifest" href="<?=base_url() ?>manifest.json">
+  <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <script src="<?= base_url() ?>public/plugins/flipclock/flipclock.min.js"></script>
+	
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -221,15 +226,21 @@
     <div class="pull center col-md-12 col-sm-12 col-xs-12">
     <div class=" col-md-12 col-sm-12 col-xs-12 pull-center ">
     <br>  <br> 
-        </div>
-        <div class="pull-center" >
+    </div>
+ 
+
+        <div class="col-md-12 col-sm-12 col-xs-12 pull-center" >
         <br>  <br>
  
-        <span class="clock"></span>
+        <span class="clock1 pull-center" style='text-align:center;width:auto;display:inline-block;'></span>
+   
         <br>  <br>
  
         </div>  
-        <div class=" col-md-12 col-sm-12 col-xs-12 pull-center ">
+
+
+
+    <div class=" col-md-12 col-sm-12 col-xs-12 pull-center ">
     <br>  <br> 
         </div>
         <div class="form-group">
@@ -777,16 +788,16 @@ $(document).ready(function(){
           var message='';
           var f=(grace-swipe)/(1000*60);
                     if (swipe<=start && response.AttendanceTime!=''){
-                        status= 'On Time';
+                        status= `"Welcome to class! You are ON TIME." (individual and school announcements will appear on the terminal)`;
                         type='success';
                     }else if(swipe>=start && swipe<=grace)
                     {
-                      status= 'Grace';
+                      status= `"Welcome to class! You just made it!" (individual and school announcements will appear on the terminal)`;
                       type='success';
                       
                     }
                     else{
-                      status= 'Late';
+                      status= `"Welcome to class! You are LATE" (individual and school announcements will appear on the terminal)`;
                       type='warning'
                         var a=Math.trunc(f);
                         
@@ -932,24 +943,24 @@ $(document).ready(function(){
   })
 
 
-  //   csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
-  //   csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
-  // $.ajax({
-  //   url: base_url+"admin/Terminal/test",
-  //   type: "POST",
-  //   dataType: "json",
-  //   data: ({[csrfName]: csrfHash}),
-  // })
-  // .done(function (data) {
+    csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+    csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+  $.ajax({
+    url: base_url+"admin/Terminal/test",
+    type: "POST",
+    dataType: "json",
+    data: ({[csrfName]: csrfHash}),
+  })
+  .done(function (data) {
  
 
-  //     $("#terminal_alert_modal").modal('show');
-  //     $("#TimeIn").text(timee);
-  //    $('#TeacherName').html(data.Teacher);
-  //   $('#SubjectName').html(data.Subject);
-  //   $('#AvailableTime').html(data.AvailableUntil);
-  //   $('#AvailableHPTime').html(data.HallPassLock);
-  // })
+      $("#terminal_alert_modal").modal('show');
+      $("#TimeIn").text(timee);
+     $('#TeacherName').html(data.Teacher);
+    $('#SubjectName').html(data.Subject);
+    $('#AvailableTime').html(data.AvailableUntil);
+    $('#AvailableHPTime').html(data.HallPassLock);
+  })
   
 
 
@@ -1028,3 +1039,15 @@ $(document).ready(function(){
   }
 })
 </script>
+
+
+<script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <script src="<?= base_url() ?>public/plugins/flipclock/flipclock.min.js"></script>
+	
+<script type="text/javascript">
+	var clock = $('.clock1').FlipClock({
+		clockFace: 'TwelveHourClock'
+	});
+</script>
+
+1

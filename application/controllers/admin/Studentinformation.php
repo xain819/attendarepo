@@ -439,7 +439,7 @@
 				if($negative_seat >=0){
                   $data='On Time';
 				}
-				else{
+				else{	
 					if($swipe>=$end_1){
 						$data='Expired';
 					}
