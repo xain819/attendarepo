@@ -236,9 +236,9 @@
 					if($data['status']=='updated'){
 						$a=$this->admin->get_hallpass_allocated($data['response']['hallpass']);
 						$start_1   = date('H:i:s', strtotime($a['TimeAllocated']));
-						 $hallpass_end_time = date("H:i:s",strtotime($period['PeriodStartTime'])+(strtotime($a)-strtotime("00:00:00")));
+						// $hallpass_end_time = date("H:i:s",strtotime($period['PeriodStartTime'])+(strtotime($a)-strtotime("00:00:00")));
 						// $end_2 = date("H:i:s",strtotime($period['PeriodEndTime'])-(strtotime($period['HPLockEnd'])-strtotime("00:00:00")));
-						print_r($start_1);
+				
 						
 					}
 					
