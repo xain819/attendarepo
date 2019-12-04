@@ -5,12 +5,30 @@
         <div class="modal-content">
             <div class="modal-header">
     
-            
-                <button type="button" class="btn btn-outline-primary-lg pull-center" data-dismiss="modal" aria-label="Cancel"><span aria-hidden="true">Cancel</span></button>
+           
+                <button onClick="window.location.reload();" type="button" class="btn btn-outline-primary-lg pull-center" data-dismiss="modal" aria-label="Cancel"><span aria-hidden="true">Cancel</span></button>
                 <!-- <h4 class="modal-title">Attenda Track</h4> -->
             </div>
             <div class="modal-body">
+                
                 <div class="container-fluid" style="padding:20px;">
+                <div class="col-md-12 col-sm-12 col-xs-12"> 
+                    <h4><span id='student_name'><span><h4>
+                    </br>
+                    </br>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12"> 
+                        SCHOOL WIDE ANNOUNCEMENT
+                    </br>
+                    </br>
+                    </br>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12"> 
+                    INDIVIDUAL ANNOUNCEMENT
+                    </br>
+                    </br>
+                    </br>
+                    </div>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                     <h4> Administrative Hall Pass</h2>
                         <div id='tahp' class="row">

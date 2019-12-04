@@ -18,9 +18,8 @@
     <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
     <link rel="stylesheet" href="<?= base_url() ?>public/plugins/flipclock/flipclock.css">
   <link rel="manifest" href="<?=base_url() ?>manifest.json">
-  <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
+
   <script src="<?= base_url() ?>public/plugins/flipclock/flipclock.min.js"></script>
-	
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -204,7 +203,8 @@
         </div>
               <div class="col-md-`12` col-sm-12 col-xs-12">
                     <div class="pull-left col-md-2" >
-                    <h3>Room: <span id='location'></span> </h4>
+                    <h3>Room: <span id='room'></span> </h3>
+                    
                       <h4>Period: <span id='period_number'></span> </h4>
           </div>  
 
@@ -378,6 +378,7 @@ var timee;
 <?php }
 ?>
 
+
 document.querySelector('#myform').onsubmit = function(e){
   e.preventDefault();
   function Studentid(){
@@ -414,10 +415,10 @@ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
               type: "warning",
               showCancelButton: false,
               showConfirmButton: false,
-              timer: 30000000
+              timer: 3000
            });}
 
-           setInterval(moveItem,1000000);
+           setInterval(moveItem,1000);
       
 
       }
@@ -427,12 +428,16 @@ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
 
 
     });}
-    setInterval(update_data,1500000);
+    setInterval(update_data,50000);
 
 });
 
 
 $(document).ready(function(){
+
+//   $("#terminal_modal").on('hidden.bs.modal', function () {
+//   location.reload();
+// });
   var status=[];
   var previous=[];
 function update_data(){
@@ -459,7 +464,11 @@ function update_data(){
       status=data;
 
             if(response[0].is_drill==1 && response[0].is_active==1){
+              function refresh(){
+                location.reload();}
+              
                 function moveItem(){
+               
                   $("#student_id").prop("disabled", true);
                 swal({
                       title: `${response[0].emergency_name}`,
@@ -468,15 +477,20 @@ function update_data(){
                       type: "warning",
                       showCancelButton: false,
                       showConfirmButton: false,
-                      timer: 30000000
+                      timer: 700
                   });}
 
-                  setInterval(moveItem,1500000);
-                  console.log(data);
+                  setInterval(moveItem,2000);
+                  function refresh(){
+                location.reload();}
+                  
+                  setInterval(refresh,20000);
+                  
 
               }
               else{
                   function moveItem(){
+                
                   $("#student_id").prop("disabled", true);
                   swal({
                         title: `${response[0].emergency_name}`,
@@ -484,10 +498,11 @@ function update_data(){
                         type: "warning",
                         showCancelButton: false,
                         showConfirmButton: false,
-                        timer: 30000000
+                        timer: 700
                     });}
 
-                    setInterval(moveItem,100000);
+                    setInterval(moveItem,2000);
+                    setInterval(refresh,20000);
               }
             }    
      
@@ -501,7 +516,7 @@ function update_data(){
       
 
   }
-setInterval(update_data,1500000);
+setInterval(update_data,100000);
 
 // status.watch(function (id, oldval, newval) {
 //   console.log('o.' + id + ' changed from ' + oldval + ' to ' + newval);
@@ -561,12 +576,13 @@ $(document).ready(function(){
          
       $('#TeacherName').html(teacher_name);
       $('#period_number').html(data.period);
-      $('#location').html(data.username);
+      $('#room').html(data.location);
+  
       $('#SubjectName').html(response.course_description);
     $('#AvailableTime').html(`${AvailableTime}`);
     $('#AvailableHPTime').html(`${AvailableHPTime}`);
 
-
+console.log(data.username);
     })
 
   
@@ -684,6 +700,7 @@ $(document).ready(function(){
 
 });
 
+
 $(document).ready(function(){
   // $(document).on('click','.options',function(){
   //   swal({
@@ -726,11 +743,13 @@ $(document).ready(function(){
            $("#student_id").val('');
          
           
-        }else if(data=='updated'){
+        }else if(data.status==='updated'){
+          console.log(data.response);
+  
           swal({
-            title:'Hallpass Ontime',
+            title:` ${data.response.ID} 'Hallpass Ontime'`,
             timer: 5000,
-            text:'You are on time ',
+            text:`${data['response'][0]}`,
            });
            $("#student_id").val('');
            
@@ -811,7 +830,7 @@ $(document).ready(function(){
                   
                     swal({
             title:`${status}`,
-            timer: 700,
+            timer: 1500,
             text:`You are ${status} : ${time}`,
             type:`${type}`,
            });
@@ -821,9 +840,15 @@ $(document).ready(function(){
           
         }
         else if(data['status'] === 'show_hallpass'){
+          var student_name=`${data.student.first_name} ${data.student.last_name}`
     
-
+          $('#student_name').html(student_name);
+ 
+       
           $("#terminal_modal").modal("show");
+          setTimeout(() => {
+            location.reload();
+          }, 60000);
           var id=$("#student_id").val();
 
          // $('body').unbind('click').bind('.btn-hallpass', function (e) {
@@ -855,11 +880,12 @@ $(document).ready(function(){
                           
                           swal({
                               title:`${data['response']['hallpass']}`,
-                              timer: 5000,
+                       
                               text:`Activated:${time_swipe.toLocaleTimeString()} 
                               You Have ${limit[1]}:${sec[0]} Minutes
                               Please swipe back on or before ${limit_string}
                               Destination: ${data['location']}` ,
+                              timer: 5000,
                                       
                             });
                           
@@ -945,23 +971,7 @@ $(document).ready(function(){
 
     csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
     csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
-  $.ajax({
-    url: base_url+"admin/Terminal/test",
-    type: "POST",
-    dataType: "json",
-    data: ({[csrfName]: csrfHash}),
-  })
-  .done(function (data) {
  
-
-      $("#terminal_alert_modal").modal('show');
-      $("#TimeIn").text(timee);
-     $('#TeacherName').html(data.Teacher);
-    $('#SubjectName').html(data.Subject);
-    $('#AvailableTime').html(data.AvailableUntil);
-    $('#AvailableHPTime').html(data.HallPassLock);
-  })
-  
 
 
   var Clock = (function(){
@@ -1040,8 +1050,6 @@ $(document).ready(function(){
 })
 </script>
 
-
-<script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
   <script src="<?= base_url() ?>public/plugins/flipclock/flipclock.min.js"></script>
 	
 <script type="text/javascript">

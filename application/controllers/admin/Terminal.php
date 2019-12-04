@@ -197,12 +197,13 @@
 					{
 
 						$active_hallpass=$this->admin->check_if_hallpass_exist($attendance[0]['AttendanceID']);
-						$b=$this->admin->record_attendace($result['class_id']);
+						$response=$this->admin->record_attendace($result['class_id'],$data['id']);
 		
-						echo json_encode($b);
+						echo json_encode($response);
 
 					}	
 					
+
 
 				}
 
@@ -221,6 +222,7 @@
 					$is_late=$this->admin->student_arrival_check_in();
 					$is_student_arrival_checkin=$this->admin->general_master('slac');
 					$is_student_need_lunch=$this->admin->general_master('slc');
+				
 
 				
 			
@@ -229,10 +231,21 @@
 						
 					}
 					else{
-					$data=$this->admin->record_attendace($result['result'][0]['class_id']);
+					$data=$this->admin->record_attendace($result['result'][0]['class_id'],$data['id']);
+
+					if($data['status']=='updated'){
+						$a=$this->admin->get_hallpass_allocated($data['response']['hallpass']);
+						$start_1   = date('H:i:s', strtotime($a['TimeAllocated']));
+						 $hallpass_end_time = date("H:i:s",strtotime($period['PeriodStartTime'])+(strtotime($a)-strtotime("00:00:00")));
+						// $end_2 = date("H:i:s",strtotime($period['PeriodEndTime'])-(strtotime($period['HPLockEnd'])-strtotime("00:00:00")));
+						print_r($start_1);
+						
+					}
+					
 					// $data['is_lunch']=$is_student_need_lunch;
 					// $data['is_first']=$is_first;
-			
+				
+						
 					echo json_encode($data);
 					}
 					

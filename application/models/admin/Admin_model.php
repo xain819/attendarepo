@@ -1212,12 +1212,18 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 
 		//check if ther is an active hallpass if 
 		$q=$this->db->get('attendance_hallpass')->result_array();
+		$now=new Datetime('now');
+		
 		if($q==null)
 		{
+
+			
 		$data_array=array(
 			'attendance_id'=>$_SESSION['AttendanceID'],
 			'is_active'=>1,
 			'date_time_ended'=>'',
+			'DateCreated'=>$now->format("Y-m-d H:i:s"),
+	
 			'student_local_id'=>$a['student_id_number'],
 			'pass_type'=>$a['pass_type'],
 
@@ -1319,7 +1325,7 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 
 	}
 	
-	public function record_attendace($a){
+	public function record_attendace($a,$b){
 
 		
 		$now = new Datetime('now');
@@ -1377,10 +1383,17 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 			$this->db->select('HallPass');
 			$this->db->where('hallpass',$result['hallpass']);
 			$location=$this->db->get('hallpass')->row_array();
+
+			$this->db->distinct();
+			$this->db->select('first_name');
+			$this->db->select('last_name');
+			$this->db->where('student_local_id',$b);
+			$student= $this->db->get('student_table')->row_array();
 		
 			if($result==null){
 				$response['response']=true;
 				$response['status']='show_hallpass';
+				$response['student']=$student;
 				//attendance is available and show hallpass
 				
 				return $response  ;
@@ -1409,12 +1422,18 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 				$this->db->where('attendance_id',$q[0]['AttendanceID']);
 				$this->db->where('is_active',1);
 				$this->db->update('attendance_hallpass');
-				
-				return 'updated';
+
+				$this->db->where('attendance_id',$q[0]['AttendanceID']);
+				$data['response']=$this->db->get('attendance_hallpass')->row_array();
+
+		
+				$data['status']='updated';
+				return $data;
 				//$this->db->set('date_time_ended',$result[0])
 
 			}
 			else{
+				$data['status']='incorrect_room';
 				$data['text']='Proceed';
 				$data['title']=$location['HallPass'];
 				$data['room']=$location['location'];
@@ -1482,6 +1501,14 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 		}
 		
 	}
+	public function get_hallpass_allocated($a){
+		$this->db->select('TimeAllocated');
+		$this->db->where('hallpass',$a);
+		return $this->db->get('hallpass')->row_array();
+
+		
+	}
+
 	
 
 	public function teacher_access($data){
