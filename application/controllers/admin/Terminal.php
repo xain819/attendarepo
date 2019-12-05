@@ -233,20 +233,16 @@
 					else{
 					$data=$this->admin->record_attendace($result['result'][0]['class_id'],$data['id']);
 
-					if($data['status']=='updated'){
-						$a=$this->admin->get_hallpass_allocated($data['response']['hallpass']);
-						$start_1   = date('H:i:s', strtotime($a['TimeAllocated']));
-						// $hallpass_end_time = date("H:i:s",strtotime($period['PeriodStartTime'])+(strtotime($a)-strtotime("00:00:00")));
-						// $end_2 = date("H:i:s",strtotime($period['PeriodEndTime'])-(strtotime($period['HPLockEnd'])-strtotime("00:00:00")));
 				
-						
-					}
+						echo json_encode($data);
+
+					
 					
 					// $data['is_lunch']=$is_student_need_lunch;
 					// $data['is_first']=$is_first;
 				
 						
-					echo json_encode($data);
+		
 					}
 					
 				

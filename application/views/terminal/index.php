@@ -516,7 +516,7 @@ function update_data(){
       
 
   }
-setInterval(update_data,100000);
+setInterval(update_data,2000);
 
 // status.watch(function (id, oldval, newval) {
 //   console.log('o.' + id + ' changed from ' + oldval + ' to ' + newval);
@@ -744,15 +744,46 @@ $(document).ready(function(){
          
           
         }else if(data.status==='updated'){
-          console.log(data.response);
-  
+          console.log(data);
+          // const response=data['response'];
+          //                 const time_swipe=new Date(response['DateCreated']);
+          //                 const limit=response['TimeAllocated'].split(':');
+          //                 var time_limit=time_swipe.getTime()+parseInt(limit[1])*60*1000+parseInt(limit[2])*1000;
+          //                 const sec=limit[2].split('.');
+          const date_created=new Date(data.response.DateCreated);
+          const date_ended=new Date(data.response.date_time_ended);
+          const difference= date_ended-date_created;
+          const tt=(data.time_limit).split(':');
+          var hallpass_limit=date_created.getTime()+parseInt(tt[1])*60*1000+parseInt(tt[2])*1000;
+          const a=(hallpass_limit-date_ended.getTime())/(60*1000);
+     
+               
+          if(a<0)
+          {
+            
           swal({
-            title:` ${data.response.ID} 'Hallpass Ontime'`,
-            timer: 5000,
-            text:`${data['response'][0]}`,
+            title:`Hallpass Swipe`,
+            timer: 2000,
+            text:`"Wecome back! You are ${a} "LATE"`,
+           });
+           $("#student_id").val('');
+
+          }
+          else{
+            
+          swal({
+            title:`Hallpass Swipe'`,
+            timer: 2000,
+            text:`"Wecome back! Thank you for checking in ON TIME"`,
            });
            $("#student_id").val('');
            
+        
+
+          }
+           
+ 
+
         }
         else if(data=='late'){
           swal({

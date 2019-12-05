@@ -1243,6 +1243,8 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 			$response['response']=$this->db->get('vstudent_hallpass_logs')->row_array();
 			$response['status']='hallpass_updated';
 
+
+
 			$this->db->select('location');
 			$this->db->where('HallPass',$a['hallpass']);
 			$q=$this->db->get('hallpass')->row_array();
@@ -1414,20 +1416,33 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 				return 'updated';
 				//$this->db->set('date_time_ended',$result[0])
 			}elseif($location['location']==''){
+
+
+
 				$now =new DateTime('now');
 				$time_end=$now->format("Y-m-d H:i:s");
-				//print_r($now->date);
+				$this->db->select('ID');
+				$this->db->where('attendance_id',$q[0]['AttendanceID']);
+				$this->db->where('is_active',1);
+				$previous=$this->db->get('attendance_hallpass')->row_array();
 				$this->db->set('is_active',0);
 				$this->db->set('date_time_ended',$time_end);
 				$this->db->where('attendance_id',$q[0]['AttendanceID']);
 				$this->db->where('is_active',1);
 				$this->db->update('attendance_hallpass');
 
-				$this->db->where('attendance_id',$q[0]['AttendanceID']);
+				$this->db->where('ID',$previous['ID']);
+				$q=$this->db->get('attendance_hallpass')->row_array();
 				$data['response']=$this->db->get('attendance_hallpass')->row_array();
 
-		
+				$this->db->where('hallpass',$q['hallpass']);
+				$time_limit=$this->db->get('hallpass')->row_array();
+				// $difference=$q['DateCreated']-$q['date_time_ended'];
+
+				$data['response']=$q;
 				$data['status']='updated';
+				$data['time_limit']=$time_limit['TimeAllocated'];
+
 				return $data;
 				//$this->db->set('date_time_ended',$result[0])
 
