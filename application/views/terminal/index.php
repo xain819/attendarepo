@@ -841,12 +841,14 @@ $(document).ready(function(){
      
       data: ({[csrfName]: csrfHash,id:id}),
       }).done(function (data){
+    
         
-        if(data['status']=='not_enrolled'){
+        if(data['status']=='not_enrolled' && data['result'] !=null){
   
           swal({
             text:'You are Not Enrolled in this Class!',
             timer: 5000,
+          
             title:`${data.result.first_name} ${data.result.last_name}`,
             type:'error'
             
@@ -854,7 +856,21 @@ $(document).ready(function(){
            $("#student_id").val('');
          
           
-        }else if(data.status==='updated'){
+        }
+        else if(data['status']=='not_enrolled' && data['result'] === null){
+          const student_id=$("#student_id").val();
+          swal({
+            text:'You are Not Enrolled in this School!',
+            timer: 5000,
+            title:`${student_id}`,
+            type:'error'
+            
+           });
+           $("#student_id").val('');
+
+        }
+
+        else if(data.status==='updated'){
           console.log(data);
           // const response=data['response'];
           //                 const time_swipe=new Date(response['DateCreated']);
