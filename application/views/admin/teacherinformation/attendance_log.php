@@ -156,9 +156,22 @@ $(document).ready(function() {
                     Please Contact Administrator
                     `,
                 });
+            }
+            if(data.status==='updated')
+            {
+                
+                swal({
+                    title:'Updated',
+                    timer: 5000,
+                    text: `Attendance Updated`,
+                });
+            }
 
-         
-            }}
+
+                     
+            
+            }
+
             
        },
        idSrc:  'AttendanceID',
@@ -172,15 +185,17 @@ $(document).ready(function() {
                 return new Date();
             },
             
-            format: 'HH:mm:ss',
-            fieldInfo: '24 hour clock format with seconds'
+      
+                type:  'datetime',
+                format: 'h:mm A',
+                fieldInfo: '12 hour clock format'
             },
-            
+           
         
-
-            
+          
             { label: "class_id:",name: "class_id",
-                type:  "readonly",
+                type:  "hidden",
+
             },
        
             // { label: "Time In:",name: "grade_level"},

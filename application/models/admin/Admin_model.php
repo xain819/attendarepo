@@ -1192,14 +1192,20 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 	public function update_attendance($a)
 
 	{
-		print_r($a);
+
 		$this->db->set('AttendanceTime',$a['AttendanceTime']);
 		$this->db->set('teacher_overide',$a['teacher_overide']);
 		$this->db->where('AttendanceID',$a['AttendanceID']);
 		$this->db->update('attendance');
 		return true;
 	}
-
+	public function get_school_wide(){
+		$this->db->where('is_active',1);
+		$this->db->where('student_local_id','all');
+		$q=$this->db->get('announcement')->result_array();
+	
+		return $q;
+	}
 
 
 	public function record_student_hallpass($a){
@@ -1391,11 +1397,19 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 			$this->db->select('last_name');
 			$this->db->where('student_local_id',$b);
 			$student= $this->db->get('student_table')->row_array();
+
+			$this->db->where('is_active',1);
+			$this->db->where('student_local_id',$b);
+			$announcement= $this->db->get('announcement')->result_array();
+
+
+			
 		
 			if($result==null){
 				$response['response']=true;
 				$response['status']='show_hallpass';
 				$response['student']=$student;
+				$response['announcement']=$announcement;
 				//attendance is available and show hallpass
 				
 				return $response  ;

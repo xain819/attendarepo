@@ -22,6 +22,14 @@
 			$this->load->view('terminal/index',$data);
 
 		}
+		public function get_announcement(){
+			$response['school_wide']=$this->admin->get_school_wide();
+
+			echo json_encode ($response);
+					
+		}
+
+	
 
 		public function get_emergency(){
 			
@@ -175,6 +183,7 @@
 		public function get_student_schedule(){
 
 			$data['id']=$this->input->post('id');
+			
 
 			$data['period']=$this->admin->get_period();
 		

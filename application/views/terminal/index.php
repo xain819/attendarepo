@@ -15,10 +15,11 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url() ?>public/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
-    <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
+
     <link rel="stylesheet" href="<?= base_url() ?>public/plugins/flipclock/flipclock.css">
   <link rel="manifest" href="<?=base_url() ?>manifest.json">
 
+  <script src="https://kit.fontawesome.com/0ec2218b2c.js" crossorigin="anonymous"></script>
   <script src="<?= base_url() ?>public/plugins/flipclock/flipclock.min.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -31,6 +32,55 @@
 
 
 <style>
+
+.scroll-slow {
+ height: 50px;	
+ overflow: hidden;
+ position: relative;
+ background: #0c0ef;
+ font-size:22px;
+ color: white;
+ border: none;
+}
+.scroll-slow p {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 20px;
+
+ text-align: center;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);	
+ transform:translateX(100%);
+ /* Apply animation to this element */	
+ -moz-animation: scroll-slow 25s linear infinite;
+ -webkit-animation: scroll-slow 25s linear infinite;
+ animation: scroll-slow 25s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll-slow {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes scroll-slow {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes scroll-slow {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Browser bug fix */
+ -webkit-transform: translateX(100%); /* Browser bug fix */
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-100%); /* Browser bug fix */
+ -webkit-transform: translateX(-100%); /* Browser bug fix */
+ transform: translateX(-100%); 
+ }
+}
+
 
     
       html,body {
@@ -198,7 +248,13 @@
 
 <div class='row' style='height: 100%; display: flex; justify-content: center; align-items: center;'>
 
+
+
    <div class="container bg-success bg-aqua"  style="padding-top:20px;" > 
+   <div class=" scroll-slow col-md-12 col-sm-12 col-xs-12 pull-center ">
+   </br>
+   <p>Quote of the Day: "Hire character. Train skill." -Peter Schutz</p>
+   </div>
       <div class="col-md-2 pull-center ">
         </div>
               <div class="col-md-`12` col-sm-12 col-xs-12">
@@ -329,6 +385,15 @@
           </div>
         <!-- /.info-box -->
       </div>
+      <div class=" info-box bg-aqua col-md-12 col-sm-12 col-xs-12">
+         <h4>SCHOOL WIDE ANNOUCEMENT</h4>
+   
+         <div id='annoucement' class='row'></div>
+          
+        <!-- /.info-box -->
+      </div>
+     
+
 
   </div>
 </div>
@@ -350,8 +415,9 @@
   <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
   <!-- Bootstrap 3.3.6 -->
   <script src="<?= base_url() ?>public/bootstrap/js/bootstrap.min.js"></script>
-  <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="<?php echo base_url('public/plugins/watch/watch.min.js');?>"></script>
+
 </body>
 </html>
 <script src="<?= base_url() ?>upup.min.js"></script>
@@ -397,6 +463,8 @@ var base_url="<?php echo base_url();?>";
 var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
     csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
+
+
     $(document).ready(function(){
       function update_data(){
 
@@ -412,7 +480,7 @@ var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
         swal({
               title: ` Locked`,
               text: `Please Contact Administrator`,
-              type: "warning",
+              icon: "warning",
               showCancelButton: false,
               showConfirmButton: false,
               timer: 3000
@@ -526,6 +594,9 @@ setInterval(update_data,2000);
 
 });
 
+
+
+
 $(document).ready(function(){
 
 
@@ -587,6 +658,46 @@ console.log(data.username);
 
   
 });
+
+$(document).ready(function(){
+  const a =$.ajax({
+        url:'<?php echo base_url(); ?>admin/terminal/get_announcement',
+        type:"POST",
+        data:({[csrfName]: csrfHash}),
+        dataType:'JSON',
+    }).done(function(data){
+
+     const test=data.school_wide;
+  
+      test.forEach(function(element){
+        console.log(element)
+
+    
+
+      
+          let tahp=`<div class="col-md-6 col-sm-6 col-xs-12">
+
+          <div class="info-box bg-aqua">
+        <span class="info-box-text-sm hallpass_type">${element.Announcement}</span></br>
+ 
+        <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+        </div>`;
+
+
+        var master_element = $("<div />");
+
+        master_element.html(tahp);
+        $("#annoucement").append(tahp); 
+      });
+
+    });
+    
+
+});
+
+
 
 
 $(document).ready(function(){
@@ -774,8 +885,10 @@ $(document).ready(function(){
           swal({
             title:`Hallpass Swipe'`,
             timer: 2000,
+            inputPlaceholder: 'Enter here',
             text:`"Wecome back! Thank you for checking in ON TIME"`,
            });
+           
            $("#student_id").val('');
            
         
@@ -874,22 +987,75 @@ $(document).ready(function(){
           var student_name=`${data.student.first_name} ${data.student.last_name}`
     
           $('#student_name').html(student_name);
- 
+          const ind_annoucement=data.announcement;
+
+  
+          ind_annoucement.forEach(function(element){
+              console.log(element)
+
+          
+
+            
+                let tahp=`<div class="col-md-6 col-sm-12 col-xs-12">
+
+              
+              <span class="info-box-text-sm hallpass_type">${element.Announcement}</span></br>
+      
+        
+           
+              </div>`;
+
+
+              var master_element = $("<div />");
+
+              master_element.html(tahp);
+              $("#individual").append(tahp); 
+            });
+
+
+
+
+
+
+
+
+        
        
           $("#terminal_modal").modal("show");
           setTimeout(() => {
             location.reload();
-          }, 60000);
+          }, 600000);
           var id=$("#student_id").val();
 
          // $('body').unbind('click').bind('.btn-hallpass', function (e) {
          $("body").one("click",".btn-hallpass",function(e){
             e.preventDefault();
+
+
             $(this).data('id');
             console.log( $(this).data('id'));
-            console.log(id);
-       
-       
+            const hallpass_type= $(this).data('id');
+            if(hallpass_type=='OTHER')
+                  {
+ 
+                    swal({
+                      title:'rere',
+                      
+                      icon:"warning",
+              text: 'Search for a movie. e.g. "La La Land".',
+              content: '<h3>Alcool <input type="checkbox" id="alcool"  /></h3><p/>' +
+                '<h3>Cigarro <input type="checkbox" id="cigarro"  /></h3>',
+              button: {
+    
+    text: "Search!",
+    closeModal: false,
+  },
+});
+
+                  }
+        else{
+
+        
 
       $.ajax({
             url: base_url+"admin/terminal/get_student_student_hallpass",
@@ -988,7 +1154,7 @@ $(document).ready(function(){
                       })
                  
                   
-
+        }//end of else switch
 
           });
         }
