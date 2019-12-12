@@ -860,9 +860,9 @@ $(document).ready(function(){
         else if(data['status']=='not_enrolled' && data['result'] === null){
           const student_id=$("#student_id").val();
           swal({
-            text:'You are Not Enrolled in this School!',
+            text:'You are Not Enrolled in this School !',
             timer: 5000,
-            title:`${student_id}`,
+            title:`${student_id}`, 
             type:'error'
             
            });
