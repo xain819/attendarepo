@@ -16,6 +16,7 @@
 		}
 
 		public function index(){
+			
 			$data['all_users'] = $this->dashboard_model->get_all_users();
 			$data['active_users'] = $this->dashboard_model->get_active_users();
 			$data['deactive_users'] = $this->dashboard_model->get_deactive_users();

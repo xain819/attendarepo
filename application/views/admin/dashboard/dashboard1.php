@@ -136,13 +136,18 @@ $(document).ready(function(){
     }).done(function(data){
   
         function timeConvert(n) {
-        var num = n;
-        
-        var hours = (num / 60);
-        var rhours = Math.floor(hours);
-        var minutes = (hours - rhours) * 60;
-        var rminutes = Math.round(minutes);
-        return rhours + " hours";
+            var seconds=Math.abs(n)
+            var numdays = Math.floor(seconds / 86400);
+
+            var numhours = Math.floor((seconds % 86400) / 3600);
+
+            var numminutes = Math.floor(((seconds % 86400) % 3600) / 60);
+
+            var numseconds = ((seconds % 86400) % 3600) % 60;
+
+            return numdays +" " + numhours+ ":" + numminutes + ":" + numseconds;
+
+
         }
 
       var a=timeConvert(data.negative);
