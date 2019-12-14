@@ -857,6 +857,20 @@ $(document).ready(function(){
          
           
         }
+       else if(data['status']=='welcome to class'){
+  
+            swal({
+              text:'Welcome to Class!',
+              timer: 5000,
+            
+              title:`${data.student.first_name} ${data.student.last_name}`,
+              type:'error'
+              
+            });
+            $("#student_id").val('');
+          
+            
+          }
         else if(data['status']=='not_enrolled' && data['result'] === null){
           const student_id=$("#student_id").val();
           swal({
@@ -1051,23 +1065,113 @@ $(document).ready(function(){
             $(this).data('id');
             console.log( $(this).data('id'));
             const hallpass_type= $(this).data('id');
-            if(hallpass_type=='OTHER')
+            if(hallpass_type=='Other')
                   {
- 
-                    swal({
-                      title:'rere',
-                      
-                      icon:"warning",
-              text: 'Search for a movie. e.g. "La La Land".',
-              content: '<h3>Alcool <input type="checkbox" id="alcool"  /></h3><p/>' +
-                '<h3>Cigarro <input type="checkbox" id="cigarro"  /></h3>',
-              button: {
-    
-    text: "Search!",
-    closeModal: false,
-  },
-});
 
+                    $(document).off('focusin.modal');
+              swal("Write something here:", {
+              content: "input",
+              })
+              .then((value) => {
+                
+                        $.ajax({
+                        url: base_url+"admin/terminal/get_student_student_hallpass",
+                        type: "POST",
+                        dataType: "json",
+                  
+                        data: ({[csrfName]: csrfHash,id:id,hallpass:value}),}).done(function(data)
+                        {
+                        if(data['status']==='hallpass_updated')
+                        {
+                              const response=data['response'];
+                              const time_swipe=new Date(response['DateCreated']);
+                              const limit=response['TimeAllocated'].split(':');
+                              var time_limit=time_swipe.getTime()+parseInt(limit[1])*60*1000+parseInt(limit[2])*1000;
+                              const sec=limit[2].split('.');
+
+                              const limit_string=new Date(time_limit).toLocaleTimeString();
+                    
+                              
+                              swal({
+                                  title:`${data['response']['hallpass']}`,
+                          
+                                  text:`Activated:${time_swipe.toLocaleTimeString()} 
+                                  You Have ${limit[1]}:${sec[0]} Minutes
+                                  Please swipe back on or before ${limit_string}
+                                  Destination: ${data['location']}` ,
+                                  timer: 5000,
+                                          
+                                });
+                              
+                        }
+                        else if(data['status']==='locked')
+                        {
+                                const response=data['response'];
+                              
+                                if(data['type']==='start'){
+
+                                swal({
+                                      title:`Locked`,
+                                      timer: 5000,
+                                      text:`"No Pass! Hallpass will be available in ${response}.`,
+                                              
+                                    });
+
+                                      }
+                                  if(data['type']==='end'){
+
+                                    swal({
+                                          title:`Locked`,
+                                          timer: 5000,
+                                          text:`"No Pass!" Hallpass is available next period"`,
+                                                  
+                                        });
+
+                                    }
+
+                        }
+                      else if(data['status']==='Limit Reached')
+                      {
+                        const response=data['response'];
+                      
+            
+
+                        swal({
+                              title:`Teacher Limit Reached`,
+                              timer: 5000,
+                              text:`Locked: There are ${response} Non Admin Hall Pass, Please wait.`,     
+                            });
+                       
+
+                      }
+                      else if(data['status']==='Student Reached')
+                        {
+                          const response=data['response'];
+                          
+                        
+                          swal({
+                                title:`Student Limit Reached`,
+                                timer: 5000,
+                                
+                                text:`You have Reached ${response} Hall Pass for this 
+                                ${data.info.name}(${data.info.name_id})
+                                ${data.info.start} -  ${data.info.end}. 
+                                Please contact your teacher`,     
+                              });
+
+                        }
+            
+           
+    
+        
+                     $("#student_id").val('');
+                        $("#terminal_modal").modal("hide");
+                      $("#student_id").val('');
+                     
+                      })
+              });
+ 
+                   
                   }
         else{
 
@@ -1143,6 +1247,7 @@ $(document).ready(function(){
                        
 
                       }
+                      
                       else if(data['status']==='Student Reached')
                         {
                           const response=data['response'];

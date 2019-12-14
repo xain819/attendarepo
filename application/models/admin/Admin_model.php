@@ -1371,12 +1371,22 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 
 		return $response;
 		}
-		elseif ($q[0]['class_id']!=null && $q[0]['attendance_time_mot']!=null) {
+		elseif ($q[0]['class_id']!=null && $q[0]['attendance_time_mot']!=null && $q[0]['AttendanceTime']==null ) {
 			 $this->db->set('AttendanceTime',$time);
 			 $this->db->where('AttendanceID',$q[0]['AttendanceID']);
 			 $this->db->update('attendance');
-			 return 'welcome to class';
+
+
+			 $this->db->distinct();
+			 $this->db->select('first_name');
+			 $this->db->select('last_name');
+			 $this->db->where('student_local_id',$b);
+			 $student= $this->db->get('student_table')->row_array();
+			 $response['student']=$student;
+			 $response['status']='welcome to class';
+			 return $response;
 		}
+
 		else{
 
 			//attendance available then check attendance hallpass

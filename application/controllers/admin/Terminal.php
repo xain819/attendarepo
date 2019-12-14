@@ -189,7 +189,7 @@
 		
 			$data['username']=$_SESSION['username'];
  
-			if($data['username']=='R-101' || $data['username']=='R-103')
+			if($data['username']=='R-101' || $data['username']=='R-103' )
 			{
 				$result=$this->admin->get_student_secretary_access($data['id']);
 				if($result==null){

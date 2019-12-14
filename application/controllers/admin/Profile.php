@@ -27,7 +27,7 @@ class Profile extends MY_Controller {
 			$data['admin'] = $this->admin_model->get_user_detail();
 			$data['title'] = 'Admin Profile';
 			$data['view'] = 'admin/profile/index';
-			$this->load->view('layout', $data);
+			$this->load->view('layoutv2', $data);
 		}
 	}
 
@@ -58,7 +58,7 @@ class Profile extends MY_Controller {
 			$data['user'] = $this->admin_model->get_user_detail();
 			$data['title'] = 'Change Password';
 			$data['view'] = 'admin/profile/change_pwd';
-			$this->load->view('layout', $data);
+			$this->load->view('layoutv2', $data);
 		}
 	}
 }

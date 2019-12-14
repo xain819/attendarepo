@@ -21,6 +21,8 @@
                         <ul aria-expanded="false">
 
                             <li id="admin"><a href="<?= base_url('admin/admin'); ?>">Admin List</a></li>
+                            <li id="admin"><a href="<?= base_url('admin/admin/add'); ?>">Add Admin</a></li>
+           
                             <li id=""><a href="<?= base_url('admin/profile'); ?>">Admin Profile</a></li>
                             <li id=""><a href="<?= base_url('admin/profile/change_pwd'); ?>">Change Password</a></li>
                         </ul>
