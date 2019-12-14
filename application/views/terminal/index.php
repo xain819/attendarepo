@@ -773,6 +773,7 @@ $(document).ready(function(){
       ahp.forEach(function(element){
       const HallPass=element.access;
       const status=element.is_active;
+
     
       if (status==='0'){
         var bg='bg-gray',a='<div class="info-box">',a2='';
@@ -780,11 +781,11 @@ $(document).ready(function(){
       else if(data.master.master_hallpass==0)
       
       {
-        var a=`<a href=""><div class="info-box btn-hallpass" data-id="${HallPass}" id="${HallPass}">`,
+        var a=`<a href=""><div class="info-box btn-hallpass" data-type="${element.PassTypeID}" data-id="${HallPass}" id="${HallPass}">`,
             a2='</a>',bg='bg-aqua';
       }
       else{
-        var a=`<a href=""><div class="info-box btn-hallpass" data-id="${HallPass}" id="${HallPass}">`,
+        var a=`<a href=""><div class="info-box btn-hallpass" data-type="${element.PassTypeID}" data-id="${HallPass}" id="${HallPass}">`,
             a2='</a>',bg='bg-aqua';
       }
         
@@ -1069,163 +1070,136 @@ $(document).ready(function(){
             $(this).data('id');
             console.log( $(this).data('id'));
             const hallpass_type= $(this).data('id');
+            const typeid=$(this).data('type');
         if(hallpass_type=='Other')
         {
               $(document).off('focusin.modal');
-  //             Swal.fire({
-  //             title: '<strong>HTML <u>example</u></strong>',
-  //             icon: 'info',
-  //             html:
-  //               `  <select name="cars">
-  //   <option value="volvo">Volvo</option>
-  //   <option value="saab">Saab</option>
-  //   <option value="fiat">Fiat</option>
-  //   <option value="audi">Audi</option>
-  // </select>`,
-  //             showCloseButton: true,
-  //             showCancelButton: true,
-  //             focusConfirm: false,
-  //             confirmButtonText:
-  //               '<i class="fa fa-thumbs-up"></i> Great!',
-  //             confirmButtonAriaLabel: 'Thumbs up, great!',
-  //             cancelButtonText:
-  //               '<i class="fa fa-thumbs-down"></i>',
-  //             cancelButtonAriaLabel: 'Thumbs down'
-  //           })
-  var value;
-    const select = document.createElement('select');
-    select.className = 'select-custom'
-    
-    // for (let index = 0; index < data.length; index++) {
-    //   const element = data[index]['location'];
-      
-    // }
-      $.ajax({
-      url: base_url+'admin/terminal/get_other_hallpass',
-      dataType: 'json',
-      type: 'POST',          
-      data: ({[csrfName]: csrfHash,})
-      })
-      .done(function (data) { 
-        for (let index = 0; index < data.length; index++) {
-          const element = data[index]['location'];
-          window['option'+index] = document.createElement('option');
-          window['option'+index].innerHTML =element;
-          window['option'+index].value = element;
-          select.appendChild(window['option'+index]);
-        }
-      })
-    
 
-    select.onchange = function selectChanged(e) {
-      value = e.target.value
-    }
+              var value;
+              const select = document.createElement('select');
+              select.className = 'select-custom'
 
-
-
-              swal("Enter the Hallpass name here", {
-                  content: {
-                element: select,
-              }
-              })
-              .then(function(value) {
-                      value=$(".select-custom").val();
-                        $.ajax({
-                        url: base_url+"admin/terminal/get_student_student_hallpass",
-                        type: "POST",
-                        dataType: "json",
-                  
-                        data: ({[csrfName]: csrfHash,id:id,hallpass:value}),}).done(function(data)
-                        {
-                        if(data['status']==='hallpass_updated')
-                        {
-                              const response=data['response'];
-                              const time_swipe=new Date(response['DateCreated']);
-                              const limit=response['TimeAllocated'].split(':');
-                              var time_limit=time_swipe.getTime()+parseInt(limit[1])*60*1000+parseInt(limit[2])*1000;
-                              const sec=limit[2].split('.');
-
-                              const limit_string=new Date(time_limit).toLocaleTimeString();
+                $.ajax({
+                url: base_url+'admin/terminal/get_other_hallpass',
+                dataType: 'json',
+                type: 'POST',          
+                data: ({[csrfName]: csrfHash})
+                })
+                .done(function (data) { 
+                  for (let index = 0; index < data.length; index++) {
+                    const element = data[index]['location'];
+                    window['option'+index] = document.createElement('option');
+                    window['option'+index].innerHTML =element;
+                    window['option'+index].value = element;
+                    select.appendChild(window['option'+index]);
+                  }
+                })
+                select.onchange = function selectChanged(e) {
+                  value = e.target.value
+                }
+                swal("Enter the Hallpass name here", {
+                    content: {
+                  element: select,
+                }
+                })
+                .then(function(value) {
+                        value=$(".select-custom").val();
+                          $.ajax({
+                          url: base_url+"admin/terminal/get_student_student_hallpass",
+                          type: "POST",
+                          dataType: "json",
                     
-                              
-                              swal({
-                                  title:`${data['response']['hallpass']}`,
-                          
-                                  text:`Activated:${time_swipe.toLocaleTimeString()} 
-                                  You Have ${limit[1]}:${sec[0]} Minutes
-                                  Please swipe back on or before ${limit_string}
-                                  Destination: ${data['location']}` ,
-                                  timer: 5000,
-                                          
-                                });
-                              
-                        }
-                        else if(data['status']==='locked')
-                        {
+                          data: ({[csrfName]: csrfHash,id:id,hallpass:value,type:typeid}),}).done(function(data)
+                          {
+                          if(data['status']==='hallpass_updated')
+                          {
                                 const response=data['response'];
-                              
-                                if(data['type']==='start'){
+                                const time_swipe=new Date(response['DateCreated']);
+                                const limit=response['TimeAllocated'].split(':');
+                                var time_limit=time_swipe.getTime()+parseInt(limit[1])*60*1000+parseInt(limit[2])*1000;
+                                const sec=limit[2].split('.');
 
+                                const limit_string=new Date(time_limit).toLocaleTimeString();
+                      
+                                
                                 swal({
-                                      title:`Locked`,
-                                      timer: 5000,
-                                      text:`"No Pass! Hallpass will be available in ${response}.`,
-                                              
-                                    });
+                                    title:`${data['response']['hallpass']}`,
+                            
+                                    text:`Activated:${time_swipe.toLocaleTimeString()} 
+                                    You Have ${limit[1]}:${sec[0]} Minutes
+                                    Please swipe back on or before ${limit_string}
+                                    Destination: ${data['location']}` ,
+                                    timer: 5000,
+                                            
+                                  });
+                                
+                          }
+                          else if(data['status']==='locked')
+                          {
+                                  const response=data['response'];
+                                
+                                  if(data['type']==='start'){
+
+                                  swal({
+                                        title:`Locked`,
+                                        timer: 5000,
+                                        text:`"No Pass! Hallpass will be available in ${response}.`,
+                                                
+                                      });
+
+                                        }
+                                    if(data['type']==='end'){
+
+                                      swal({
+                                            title:`Locked`,
+                                            timer: 5000,
+                                            text:`"No Pass!" Hallpass is available next period"`,
+                                                    
+                                          });
 
                                       }
-                                  if(data['type']==='end'){
 
-                                    swal({
-                                          title:`Locked`,
-                                          timer: 5000,
-                                          text:`"No Pass!" Hallpass is available next period"`,
-                                                  
-                                        });
-
-                                    }
-
-                        }
-                      else if(data['status']==='Limit Reached')
-                      {
-                        const response=data['response'];
-                      
-            
-
-                        swal({
-                              title:`Teacher Limit Reached`,
-                              timer: 5000,
-                              text:`Locked: There are ${response} Non Admin Hall Pass, Please wait.`,     
-                            });
-                       
-
-                      }
-                      else if(data['status']==='Student Reached')
+                          }
+                        else if(data['status']==='Limit Reached')
                         {
                           const response=data['response'];
-                          
                         
+              
+
                           swal({
-                                title:`Student Limit Reached`,
+                                title:`Teacher Limit Reached`,
                                 timer: 5000,
-                                
-                                text:`You have Reached ${response} Hall Pass for this 
-                                ${data.info.name}(${data.info.name_id})
-                                ${data.info.start} -  ${data.info.end}. 
-                                Please contact your teacher`,     
+                                text:`Locked: There are ${response} Non Admin Hall Pass, Please wait.`,     
                               });
+                        
 
                         }
+                        else if(data['status']==='Student Reached')
+                          {
+                            const response=data['response'];
+                            
+                          
+                            swal({
+                                  title:`Student Limit Reached`,
+                                  timer: 5000,
+                                  
+                                  text:`You have Reached ${response} Hall Pass for this 
+                                  ${data.info.name}(${data.info.name_id})
+                                  ${data.info.start} -  ${data.info.end}. 
+                                  Please contact your teacher`,     
+                                });
+
+                          }
+              
             
-           
-    
-        
-                     $("#student_id").val('');
-                        $("#terminal_modal").modal("hide");
+      
+          
                       $("#student_id").val('');
-                     
-                      })
-              });
+                          $("#terminal_modal").modal("hide");
+                        $("#student_id").val('');
+                      
+                        })
+                });
         }
         else{
 

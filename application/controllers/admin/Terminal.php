@@ -100,10 +100,13 @@
 		}
 		public function get_student_student_hallpass(){
 				$data['student_id_number']=$this->input->post('id');
-			
+
 				
 				$data['hallpass']=$this->input->post('hallpass');
 				$data['pass_type']=$this->admin->check_hallpass_type($data);
+				if(empty($data['pass_type'])){
+					$data['pass_type']=$this->input->post('type');
+				}
 				$data['period']=$this->admin->get_period();
 				$data['active_2way_hallpass']=$this->admin->active_hallpass($data['period']);
 				// get the number of 2 way hall pass
