@@ -147,6 +147,12 @@ class Admin_model extends CI_Model{
 		$this->db->select('PassTypeID');
 		$q=$this->db->get('hallpass')->row_array();
 		return $q['PassTypeID'];
+		if($q['PassTypeID']){
+			
+		}else{
+			$sql='SELECT DISTINCT teacher_id_number,b.FirstName,b.LastName from class_list as a INNER JOIN teacher as b ON a.teacher_id_number=b.IDNumber WHERE';
+		}
+		
 
 	}
 

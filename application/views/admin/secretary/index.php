@@ -346,25 +346,25 @@ $(document).ready(function() {
                         var mot_time = new Date(data.DateCreated).getTime();
                         var end_time= new Date(p_end).getTime();
                         var start_time= new Date(p_start).getTime();
-                        var seat_time=(end_time-start_time)/(1000*60);
+                        var seat_time=(end_time-start_time)/(1000*60);  // 1minute
                       
-                        var missed_period=(class_swipe-start_time)-5*60*1000;
+                        var missed_period=(class_swipe-start_time)-5*60*1000; // 
                      
-
+//kapag late pumasok maglogin sa sec
                         var allowed_time =parseInt('5')*60*1000;
+                        console.log(allowed_time)
                         if(data.appointment==='1' || data.emergency==='1'|| data.other==='1' ) {
                            
                             missed_period=0;
                  
                         }
-             
-
 
                         var s=((mot_time+allowed_time)-class_swipe-missed_period)/(1000*60);
 
                         if (s >=0 && data.AttendanceTime!='' ){
                             var result='--';}
                         else if(s<0 && s>=-1*seat_time){
+
                             var result=s;
                         } 
                         else{
@@ -374,12 +374,13 @@ $(document).ready(function() {
                             }
                             else{   
                           
-                            var result=-seat_time;
+                                var result=-seat_time;
                              }  
                         }
 
-
-                return `${result}`
+                       console.log(Math.abs(result)+'seattime')
+                     console.log(moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")+'hr') 
+                return `-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
             }},
 
             
