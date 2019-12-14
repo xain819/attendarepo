@@ -409,6 +409,7 @@
   <?php $this->load->view($view);?>
   
   <?php $this->load->view($view1);?>
+  
   <!-- /.center -->
 
   <!-- jQuery 2.2.3 -->
@@ -419,6 +420,7 @@
   <script src="<?php echo base_url('public/plugins/watch/watch.min.js');?>"></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="<?php echo base_url('public/plugins/moment/moment.js')?>"></script>
   <!-- <script src="<?php echo base_url('public/assets/sweetalert.min.js');?>"></script> -->
 
 </body>
@@ -887,15 +889,15 @@ $(document).ready(function(){
           const tt=(data.time_limit).split(':');
           var hallpass_limit=date_created.getTime()+parseInt(tt[1])*60*1000+parseInt(tt[2])*1000;
           const a=(hallpass_limit-date_ended.getTime())/(60*1000);
-     
-               
+         
+          console.log(moment("1900-01-01 00:00:00").add(Math.abs(a), 'minutes').format("HH:mm:ss")+'hr') 
           if(a<0)
           {
             
           swal({
             title:`Hallpass Swipe`,
-            timer: 2000,
-            text:`"Wecome back! You are ${a} "LATE"`,
+            timer: 5000,
+            text:`"Welcome back! You are -${moment("1900-01-01 00:00:00").add(Math.abs(a), 'minutes').format("HH:mm:ss")+' hr'} "LATE"`,
            });
            $("#student_id").val('');
 
@@ -994,7 +996,7 @@ $(document).ready(function(){
                   
                     swal({
             title:`${status}`,
-            timer: 1500,
+            timer: 5000,
             text:`You are ${status} : ${time}`,
             type:`${type}`,
            });
