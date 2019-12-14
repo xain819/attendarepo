@@ -417,6 +417,7 @@
   <script src="<?= base_url() ?>public/bootstrap/js/bootstrap.min.js"></script>
   <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
   <script src="<?php echo base_url('public/plugins/watch/watch.min.js');?>"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- <script src="<?php echo base_url('public/assets/sweetalert.min.js');?>"></script> -->
 
@@ -1057,10 +1058,64 @@ $(document).ready(function(){
         if(hallpass_type=='Other')
         {
               $(document).off('focusin.modal');
+  //             Swal.fire({
+  //             title: '<strong>HTML <u>example</u></strong>',
+  //             icon: 'info',
+  //             html:
+  //               `  <select name="cars">
+  //   <option value="volvo">Volvo</option>
+  //   <option value="saab">Saab</option>
+  //   <option value="fiat">Fiat</option>
+  //   <option value="audi">Audi</option>
+  // </select>`,
+  //             showCloseButton: true,
+  //             showCancelButton: true,
+  //             focusConfirm: false,
+  //             confirmButtonText:
+  //               '<i class="fa fa-thumbs-up"></i> Great!',
+  //             confirmButtonAriaLabel: 'Thumbs up, great!',
+  //             cancelButtonText:
+  //               '<i class="fa fa-thumbs-down"></i>',
+  //             cancelButtonAriaLabel: 'Thumbs down'
+  //           })
+  var value;
+    const select = document.createElement('select');
+    select.className = 'select-custom'
+    
+    // for (let index = 0; index < data.length; index++) {
+    //   const element = data[index]['location'];
+      
+    // }
+      $.ajax({
+      url: base_url+'admin/terminal/get_other_hallpass',
+      dataType: 'json',
+      type: 'POST',          
+      data: ({[csrfName]: csrfHash,})
+      })
+      .done(function (data) { 
+        for (let index = 0; index < data.length; index++) {
+          const element = data[index]['location'];
+          window['option'+index] = document.createElement('option');
+          window['option'+index].innerHTML =element;
+          window['option'+index].value = element;
+          select.appendChild(window['option'+index]);
+        }
+      })
+    
+
+    select.onchange = function selectChanged(e) {
+      value = e.target.value
+    }
+
+
+
               swal("Enter the Hallpass name here", {
-              content: "input",
+                  content: {
+                element: select,
+              }
               })
-              .then((value) => {
+              .then(function(value) {
+                      value=$(".select-custom").val();
                         $.ajax({
                         url: base_url+"admin/terminal/get_student_student_hallpass",
                         type: "POST",

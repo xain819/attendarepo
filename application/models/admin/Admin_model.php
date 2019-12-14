@@ -146,11 +146,16 @@ class Admin_model extends CI_Model{
 		$this->db->where('hallpass',$a['hallpass']);
 		$this->db->select('PassTypeID');
 		$q=$this->db->get('hallpass')->row_array();
-		return $q['PassTypeID'];
+		
 		if($q['PassTypeID']){
-			
+			return $q['PassTypeID'];
 		}else{
-			$sql='SELECT DISTINCT teacher_id_number,b.FirstName,b.LastName from class_list as a INNER JOIN teacher as b ON a.teacher_id_number=b.IDNumber WHERE';
+			$sql='SELECT DISTINCT teacher_id_number,b.FirstName,b.LastName,a.location,c.LocationID from class_list as a 
+			INNER JOIN teacher as b ON a.teacher_id_number=b.IDNumber INNER JOIN location as c on a.location=c.Location
+			WHERE a.location=?';
+			$query=$this->db->query($sql,array($a['hallpass']))->row_array();
+			return $query['LocationID'];
+		
 		}
 		
 

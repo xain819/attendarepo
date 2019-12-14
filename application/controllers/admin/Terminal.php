@@ -92,13 +92,17 @@
 
 		
 		}
-
+		public function get_other_hallpass(){
+			$sql='SELECT DISTINCT teacher_id_number,b.FirstName,b.LastName,a.location from class_list as a 
+			INNER JOIN teacher as b ON a.teacher_id_number=b.IDNumber';
+			$query=$this->db->query($sql)->result();
+			echo json_encode($query);
+		}
 		public function get_student_student_hallpass(){
 				$data['student_id_number']=$this->input->post('id');
 			
 				
 				$data['hallpass']=$this->input->post('hallpass');
-			
 				$data['pass_type']=$this->admin->check_hallpass_type($data);
 				$data['period']=$this->admin->get_period();
 				$data['active_2way_hallpass']=$this->admin->active_hallpass($data['period']);
