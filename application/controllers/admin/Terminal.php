@@ -170,7 +170,6 @@
 							echo json_encode($result);	
 						}
 
-
 					}
 
 
@@ -212,19 +211,14 @@
 					}	
 					else
 					{
-
 						$active_hallpass=$this->admin->check_if_hallpass_exist($attendance[0]['AttendanceID']);
 						$response=$this->admin->record_attendace($result['class_id'],$data['id']);
 		
 						echo json_encode($response);
 
 					}	
-					
-
 
 				}
-
-				
 				
 			}
 			else
