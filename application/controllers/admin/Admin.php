@@ -14,6 +14,7 @@ class Admin extends CI_Controller
 	//-----------------------------------------------------		
 	function index($type='')
 	{
+		
 		$this->session->set_userdata('filter_type',$type);
 		$this->session->set_userdata('filter_keyword','');
 		$this->session->set_userdata('filter_status','');
