@@ -48,8 +48,8 @@ button.btn-space {
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 
-<div class="row">
-                    <div class="col-xl-3 col-md-6">
+<div class="row teacherlist">
+                    <!-- <div class="col-xl-3 col-md-6">
                         <div class="card user-card2">
                             <div class="card-body">
                                 <div class="text-center">
@@ -83,8 +83,8 @@ button.btn-space {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
+                    </div> -->
+                    <!-- <div class="col-xl-3 col-md-6">
                         <div class="card user-card2">
                             <div class="card-body">
                                 <div class="text-center">
@@ -189,7 +189,7 @@ button.btn-space {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
     <!-- Main content -->
@@ -277,6 +277,7 @@ button.btn-space {
 <?php $this->load->view('admin/teacherinformation/edit');?>
 <?php $this->load->view('admin/terminalpannel/terminal_modal');?>
 <?php $this->load->view('admin/teacherinformation/hallpassfunction');?>
+<?php $this->load->view('admin/teacherinformation/details');?>
 
 
     <script src="<?php echo base_url('public/dist/js/teacherinformation.js');?>"></script>

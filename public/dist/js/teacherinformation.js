@@ -78,7 +78,79 @@ function teacher_hallpass(teacherid){
 
 
 $(document).ready(function(){
+
+
+    //display teacher list
+
+    
+    
     console.log(base_url);
+    $.ajax({
+        url:base_url+"admin/teacherinformation/get_all_teacher ",
+        type:"POST",
+        data:({[csrfName]: csrfHash}),
+        dataType:'JSON',
+    })
+    .done(function(data){
+        console.log(data)
+        for (let index = 0; index < data.length; index++) {
+            const FullName = data[index]['LastName']+', '+data[index]['FirstName'];
+            const Department= data[index]['Department'];
+            const IDNumber=data[index]['IDNumber'];
+            const TeacherID=data[index]['TeacherID'];
+            const CourseList=data[index]['course_description_list'];
+            const PeriodList=data[index]['period_list'];
+            const LocationList=data[index]['location_list'];
+            const BirthDate=data[index]['BirthDate'];
+           $('.teacherlist').append(
+            `<div class="col-xl-3 col-md-6">
+            <div class="card ">
+                <div class="card-body">
+                    <div class="text-center">
+                        <div class="circle-style mb-3">
+                            <img class="img-fluid rounded-circle" src="${base_url}/public/assets/images/users/4.jpg" alt="">
+                        </div>
+                        <h4>${FullName}</h4>
+                        <h5 class="text-muted">${IDNumber}</h5>
+                        <h5 class="mt-5 mb-3 text-primary text-center">${Department}</h5>
+                        <!----<div class="row justify-content-center mb-5">
+                        //     <div class="col-lg-8">
+                        //         <div class="progress">
+                        //             <div class="progress-bar" style="width: 67%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        //         </div>
+                        //     </div>
+                        // </div>---->
+                        <div class="row justify-content-center m-b-10">
+                        
+                       
+                            <div class="col"><button value='${TeacherID}' class="btn btn-xs btn-success teachermodal"><i class="fa fa-television"></i></button></a>
+                            </div>
+                            <div class="col"><button value='${TeacherID}' class="btn btn-xs btn-warning showeditteachermodal"><i class="fa fa-fw fa-pencil"></i></button>
+                            </div>
+                          
+                            <div class="col"> <button value='${TeacherID}' class="btn btn-xs btn-danger delete_teacher">Delete</i></button>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col">
+                            BrithDate: ${BirthDate}
+                           
+                            </div>
+                            <div class="col">
+                            Gender: ${BirthDate}
+                           
+                            </div>
+                        </div><button value='${TeacherID}' class="btn btn-outline-primary showdetails"></i>
+                            Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>`
+
+           ) ;
+        }
+       
+    })
     var Teacher_DataTable = $('#Teacher_DataTable').DataTable({
         responsive: true,
         "bAutoWidth": true,
@@ -237,6 +309,38 @@ $(document).ready(function(){
             $('#edit-TeacherID').val(data.teacher_info[0].TeacherID);
         })
         $('#edit-teacher-modal-primary').modal('show');
+    })
+    $(document).on('click','.showdetails',function(){
+        teacherid=$(this).val();
+        $.ajax({
+            url:base_url+"admin/teacherinformation/get_teacher_byteacherid ",
+            type:"POST",
+            data:({[csrfName]: csrfHash,data:teacherid}),
+            dataType:'JSON',
+        })
+        .done(function(data){
+            console.log(data['teacher_info'][0]['course_description_list'])
+           $('.mydetails').html(`
+                    <div class="row justify-content-center">
+                           
+                            <div class="col-lg-4">
+                                <b>Location</b>
+                                <p class="my-3">${data['teacher_info'][0]['course_description_list']}</p>
+                            </div>
+                            
+                            <div class="col-lg-4">
+                            <b>PeriodList</b>
+                                <p class="my-3">${data['teacher_info'][0]['period_list']}</p>
+                            </div>
+                           
+                            <div class="col-lg-4">
+                            <b>LocationList</b>
+                                <p class="my-3">${data['teacher_info'][0]['location_list']}</p>
+                            </div>
+                        </div>
+           `)
+        })
+        $('#details-teacher-modal-primary').modal('show');
     })
     $(document).on('click','#addteacher',function(){ 
         manage_teacher('add-new-teacher',get_form_values("#add-teacher-form-id"));

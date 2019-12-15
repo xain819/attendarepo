@@ -221,6 +221,7 @@ if (typeof jQuery === 'undefined') {
 
     TimeSlider.prototype.ms_to_next_step = function(timestamp, step) {
         var remainder = timestamp % step;
+  
         return remainder ? step - remainder : 0;
     };
 

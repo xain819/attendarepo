@@ -30,7 +30,7 @@
                     </div>
                     <div class="form-group">
                         <label >BirthDate</label>
-                        <input type="date" class="form-control"id="edit-BirthDate" name=teacher[BirthDate] placeholder="BirthDate">
+                        <input type="date" class="form-control" id="edit-BirthDate" name=teacher[BirthDate] placeholder="BirthDate">
                     </div>
                     <div class="form-group">
                         <label >Contact Number</label>

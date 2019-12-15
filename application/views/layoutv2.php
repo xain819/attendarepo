@@ -174,7 +174,7 @@
                         </li>
                         <li class="icons">
                             <a href="javascript:void(0)" class="log-user">
-                                <img src="../../public/assets/images/avatar/1.jpg" alt=""> <span>George Martin</span>  <i class="fa fa-caret-down f-s-14" aria-hidden="true"></i>
+                                <img src="../../public/assets/images/avatar/1.jpg" alt=""> <span><?php echo $this->FullName;?></span>  <i class="fa fa-caret-down f-s-14" aria-hidden="true"></i>
                             </a>
                             <div class="drop-down dropdown-profile animated bounceInDown">
                                 <div class="dropdown-content-body">
