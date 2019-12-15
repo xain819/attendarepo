@@ -81,8 +81,6 @@ $(document).ready(function(){
 
 
     //display teacher list
-
-    
     
     console.log(base_url);
     $.ajax({

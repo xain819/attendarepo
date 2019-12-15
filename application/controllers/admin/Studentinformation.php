@@ -300,10 +300,11 @@
 			$end=$this->input->post('end');
 		    $id=$this->input->post('student');
 			$start=$this->input->post('start');
+			echo ($id);
 			$type=$this->input->post('type');
 			$response['name']="Name";
 	
-			if($id[0]==2){
+			if($id!=null){
 				$this->session->set_userdata('v_student_local_data', $id);	
 				$this->session->set_userdata('v_last_name', $id);	
 				$this->session->set_userdata('v_first_name', $id);	
