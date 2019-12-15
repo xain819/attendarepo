@@ -102,7 +102,7 @@
 
   
 
-
+<?php $this->load->view('admin/masterscheduler/editslider.php');?>
 <!-- 
       <div class="box">
         <div class="box-header with-border">
@@ -190,8 +190,8 @@
        ajax.reload($slider);
       });
  
-
-      const slider=$.ajax({
+      function slider(){
+        $.ajax({
            url:base_url+"admin/masterscheduler/slider_period ",
            type:"POST",
            data:({[csrfName]: csrfHash,'data':'A'}),
@@ -223,7 +223,9 @@
               
                   d =
                   {
+                                    
                                     '_id': `${element.schedule_type}_${element.Period}`,
+                                    '_scheduletype':`${element.schedule_type}`,
                                     '_period':`${element.Period}`,
                                     'start': (new Date(`2019-09-06 ${element.PeriodStartTime}`)).getTime() + ((new Date(`2019-09-06 ${element.PeriodStartTime}`)).getTimezoneOffset() * 60 * 1000 * -1),
                                     'stop': (new Date(`2019-09-06 ${element.PeriodEndTime}`)).getTime() + ((new Date(`2019-09-06 ${element.PeriodEndTime}`)).getTimezoneOffset() * 60 * 1000 * -1),
@@ -239,18 +241,76 @@
                   $(`${a}`).TimeSlider({
                   start_timestamp: current_time,
                   timecell_enable_move: true,
-                   timecell_enable_resize: true,
-                  ruler_enable_move:false,
-                  graduation_step: 10,
+                  timecell_enable_resize: false,
+                  ruler_enable_move:true,
+                  update_timestamp_interval:1000,
+                  graduation_step: 1,
                   hours_per_ruler: 12,
-                  distance_between_gtitle:50,
+                  distance_between_gtitle:100,
                   init_cells: data_events,
+                  on_change_timecell_callback:function(id,start,stop){
+                    $('#editslider').val( id);
+                    $('#edit-period-modal-primary').modal('show')
                     
+                    // start=new Date(start)
+                    // stop=new Date(stop)
+                    // alert(id+': Start'+start+' Stop:'+stop)
+                  },
+              
                   });
+
                 });	   
               });
+      }
+      slider()
 
-       
+              $(document).on('click','#editslider',function(){
+                // var datetime = new Date(start);
+                //     d_start= (
+                //         ('0' + datetime.getUTCHours().toString()).substr(-2) + ':' +
+                //         ('0' + datetime.getUTCMinutes().toString()).substr(-2) + ':' +
+                //         ('0' + datetime.getUTCSeconds().toString()).substr(-2) 
+                //     )
+                //     var datetime = new Date(stop);
+                //     d_stop= (
+                //         ('0' + datetime.getUTCHours().toString()).substr(-2) + ':' +
+                //         ('0' + datetime.getUTCMinutes().toString()).substr(-2) + ':' +
+                //         ('0' + datetime.getUTCSeconds().toString()).substr(-2) 
+                //     )
+                    id=$('#editslider').val()
+                    d_start=$('#edit-sliderStartTime').val()
+                    d_stop=$('#edit-sliderEndTime').val()
+
+                    console.log(id);
+                   
+                    $.ajax({
+                      url:base_url+"admin/masterscheduler/edit_slider_period ",
+                      type:"POST",
+                      data:({[csrfName]: csrfHash,'id':id,'type':'bykugan','start':`${d_start}`,'stop':`${d_stop}`}),
+                      dataType:'JSON',
+                    })
+                    .done(function(data){
+                      window.location.reload(true); 
+                    })
+                    
+                // PeriodID=$(this).val();
+                // console.log(PeriodID);
+                
+                // $.ajax({
+                //     url:base_url+"admin/masterscheduler/get_period_by_id",
+                //     type:"POST",
+                //     data:({[csrfName]: csrfHash,data:PeriodID}),
+                //     dataType:'JSON',
+                // })
+                // .done(function(data){
+                //   $("#edit-period-modal-primary").modal("show");
+                //     $("#edit-Period").val(data.period_info[0].Period);
+                //     $('#edit-PeriodStartTime').val(data.period_info[0].PeriodStartTime);
+                //     $('#edit-PeriodEndTime').val(data.period_info[0].PeriodEndTime);
+                //     $('#edit-PeriodID').val(data.period_info[0].PeriodID);
+
+                // })
+              })
 		});
 	</script>
     <script>

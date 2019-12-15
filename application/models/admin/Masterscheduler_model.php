@@ -228,7 +228,7 @@
 
 		
 		public function edit_slider_period($a){
-		if($a['type']=='move'){
+		if($a['type']=='move' ||$a['type']=='bykugan' ){
 
 		
 			$this->db->set('PeriodStartTime',$a['PeriodStartTime']);
@@ -251,6 +251,7 @@
 			$this->db->where('Period',$a['Period']);
 			$this->db->update('Period');
 		}
+
 	}
 		
 

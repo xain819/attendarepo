@@ -53,17 +53,37 @@
 			$data['type']=$this->input->post('type');
 			$data['data']=$this->input->post('data');
 			
-		
-			if($data['type']=='move') // both start and stop time for period
+			//bykugan
+			if($data['type']=='bykugan') // both start and stop time for period
 			{
+
 				$data_array['type']=$data['type'];
 				$period_start=explode(',',$data['data']);
-				$start=(explode(' ',$period_start[0]))[1];
-				$stop=(explode(' ',$period_start[1]))[1];
+				$start=$this->input->post('start');
+				$stop=$this->input->post('stop');
+			
 				$data_array['schedule_type']=(explode('_',$data['id']))[0];
 				$data_array['Period']=(explode('_',$data['id']))[1];
 				$data_array['PeriodStartTime']=$start;
 				$data_array['PeriodEndTime']=$stop;
+				
+				$this->Masterscheduler->edit_slider_period($data_array);
+				echo json_encode('success');
+			}
+			elseif($data['type']=='move') // both start and stop time for period
+			{
+
+				$data_array['type']=$data['type'];
+				$period_start=explode(',',$data['data']);
+				$start=(explode(' ',$period_start[0]))[1];
+				$stop=(explode(' ',$period_start[1]))[1];
+			
+				$data_array['schedule_type']=(explode('_',$data['id']))[0];
+				$data_array['Period']=(explode('_',$data['id']))[1];
+				$data_array['PeriodStartTime']=$start;
+				$data_array['PeriodEndTime']=$stop;
+
+			
 				$this->Masterscheduler->edit_slider_period($data_array);
 
 			}
