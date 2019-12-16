@@ -162,7 +162,7 @@
 
 
               
-                <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/settings'); ?>" >
+                <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/academicsettings/schoolsettings'); ?>" >
                 <i class="fas fa-cog"></i><span class="nav-text">School Settings</span>
                         </a>
                        

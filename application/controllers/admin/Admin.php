@@ -23,6 +23,10 @@ class Admin extends My_Controller
 		$data['view']='admin/admin/index';
 		$this->load->view('layoutv2',$data);
 	}
+	public function admin_settings(){
+		$data['view']='admin/schoolsetting/index';
+		$this->load->view('layoutv2',$data);
+	}
 	
 	public function settings()
 	{

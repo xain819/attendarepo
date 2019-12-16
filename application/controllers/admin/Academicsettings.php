@@ -21,6 +21,37 @@ class Academicsettings extends My_Controller
 	
 	
 	}
+	public function get_schoolsettings_id(){
+		//echo $this->input->post('id');
+		echo json_encode($this->db->query('SELECT * FROM school_settings WHERE id=?',array($this->input->post('id')))->row_array());
+		//echo json_encode($this->db->get('school_settings',array('id'=>$this->input->post('id')))->row_array());
+	}
+	public function schoolsettings(){
+		$data['view'] = 'admin/academicsettings/schoolsettings';
+		$this->load->view('layoutv2', $data);
+	}
+	public function check_schoolsettings(){
+		
+		echo json_encode($this->db->get('school_settings')->result());
+	}
+	public function insert_schoolsettings(){
+		$data['start']=$this->input->post('start');
+		$data['end']=$this->input->post('end');
+		$data['name']=$this->input->post('name');
+		$data['name_id']=$this->input->post('nameid');
+		$this->db->insert('school_settings',$data);
+		echo json_encode('success');
+	}
+	public function edit_schoolsettings(){
+		$data['start']=$this->input->post('start');
+		$data['end']=$this->input->post('end');
+		$data['name']=$this->input->post('name');
+		$data['name_id']=$this->input->post('nameid');
+		$id=$this->input->post('id');
+		$this->db->where('id', $id);
+		$this->db->update('school_settings', $data);
+		echo json_encode('success');
+	}
 	function gleek()
 	{
 		
