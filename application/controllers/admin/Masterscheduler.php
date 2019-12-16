@@ -239,13 +239,15 @@
 			$scheduletypee='';
 				$result=$this->Masterscheduler->get_all_scheduletype();
 				$scheduletypee.='
-				<div id="external-events">
+					<div id="external-events">
+					
 				';
 				foreach($result as $value){
 					$scheduletypee.= '<div class="external-event '.$value['backgroundColor'].'">'.$value['ScheduleType'].'</div>';
 				}
 				$scheduletypee.=' </div>';
-				
+
+			
 			echo json_encode($scheduletypee);
 		}
 
