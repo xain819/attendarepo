@@ -235,12 +235,12 @@ button.btn-space {
     </section>
 
     
-    <div class="modal modal-default" id='teacher-modal-primary'>
+    <div class="modal fade bd-example-modal-lg" id='teacher-modal-primary'>
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
             
               <div class="modal-body">
-              <?php $this->load->view('admin/terminalpannel/teacher_terminal');?>
+              <?php //$this->load->view('admin/terminalpannel/teacher_terminal');?>
                   
               </div>
               

@@ -17,297 +17,293 @@
 <link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
 <style>
   .bg-red,
-.bg-yellow,
-.bg-aqua,
-.bg-blue,
-.bg-light-blue,
-.bg-green,
-.bg-navy,
-.bg-teal,
-.bg-olive,
-.bg-lime,
-.bg-orange,
-.bg-fuchsia,
-.bg-purple,
-.bg-maroon,
-.bg-black,
-.bg-red-active,
-.bg-yellow-active,
-.bg-aqua-active,
-.bg-blue-active,
-.bg-light-blue-active,
-.bg-green-active,
-.bg-navy-active,
-.bg-teal-active,
-.bg-olive-active,
-.bg-lime-active,
-.bg-orange-active,
-.bg-fuchsia-active,
-.bg-purple-active,
-.bg-maroon-active,
-.bg-black-active,
-.callout.callout-danger,
-.callout.callout-warning,
-.callout.callout-info,
-.callout.callout-success,
-.alert-success,
-.alert-danger,
-.alert-error,
-.alert-warning,
-.alert-info,
-.label-danger,
-.label-info,
-.label-warning,
-.label-primary,
-.label-success,
-.modal-primary .modal-body,
-.modal-primary .modal-header,
-.modal-primary .modal-footer,
-.modal-warning .modal-body,
-.modal-warning .modal-header,
-.modal-warning .modal-footer,
-.modal-info .modal-body,
-.modal-info .modal-header,
-.modal-info .modal-footer,
-.modal-success .modal-body,
-.modal-success .modal-header,
-.modal-success .modal-footer,
-.modal-danger .modal-body,
-.modal-danger .modal-header,
-.modal-danger .modal-footer {
-  color: #fff !important;
-}
-.bg-gray {
-  color: #000;
-  background-color: #d2d6de !important;
-}
-.bg-gray-light {
-  background-color: #f7f7f7;
-}
-.bg-black {
-  background-color: #111111 !important;
-}
-.bg-red,
-.callout.callout-danger,
-.alert-danger,
-.alert-error,
-.label-danger,
-.modal-danger .modal-body {
-  background-color: #dd4b39 !important;
-}
-.bg-yellow,
-.callout.callout-warning,
-.alert-warning,
-.label-warning,
-.modal-warning .modal-body {
-  background-color: #f39c12 !important;
-}
-.bg-aqua,
-.callout.callout-info,
-.alert-info,
-.label-info,
-.modal-info .modal-body {
-  background-color: #00c0ef !important;
-}
-.bg-blue {
-  background-color: #0073b7 !important;
-}
-.bg-light-blue,
-.label-primary,
-.modal-primary .modal-body {
-  background-color: #3c8dbc !important;
-}
-.bg-green,
-.callout.callout-success,
-.alert-success,
-.label-success,
-.modal-success .modal-body {
-  background-color: #00a65a !important;
-}
-.bg-navy {
-  background-color: #001f3f !important;
-}
-.bg-teal {
-  background-color: #39cccc !important;
-}
-.bg-olive {
-  background-color: #3d9970 !important;
-}
-.bg-lime {
-  background-color: #01ff70 !important;
-}
-.bg-orange {
-  background-color: #ff851b !important;
-}
-.bg-fuchsia {
-  background-color: #f012be !important;
-}
-.bg-purple {
-  background-color: #605ca8 !important;
-}
-.bg-maroon {
-  background-color: #d81b60 !important;
-}
-.bg-gray-active {
-  color: #000;
-  background-color: #b5bbc8 !important;
-}
-.bg-black-active {
-  background-color: #000000 !important;
-}
-.bg-red-active,
-.modal-danger .modal-header,
-.modal-danger .modal-footer {
-  background-color: #d33724 !important;
-}
-.bg-yellow-active,
-.modal-warning .modal-header,
-.modal-warning .modal-footer {
-  background-color: #db8b0b !important;
-}
-.bg-aqua-active,
-.modal-info .modal-header,
-.modal-info .modal-footer {
-  background-color: #00a7d0 !important;
-}
-.bg-blue-active {
-  background-color: #005384 !important;
-}
-.bg-light-blue-active,
-.modal-primary .modal-header,
-.modal-primary .modal-footer {
-  background-color: #357ca5 !important;
-}
-.bg-green-active,
-.modal-success .modal-header,
-.modal-success .modal-footer {
-  background-color: #008d4c !important;
-}
-.bg-navy-active {
-  background-color: #001a35 !important;
-}
-.bg-teal-active {
-  background-color: #30bbbb !important;
-}
-.bg-olive-active {
-  background-color: #368763 !important;
-}
-.bg-lime-active {
-  background-color: #00e765 !important;
-}
-.bg-orange-active {
-  background-color: #ff7701 !important;
-}
-.bg-fuchsia-active {
-  background-color: #db0ead !important;
-}
-.bg-purple-active {
-  background-color: #555299 !important;
-}
-.bg-maroon-active {
-  background-color: #ca195a !important;
-}
-[class^="bg-"].disabled {
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-}
-  
-.fc-color-picker {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.fc-color-picker > li {
-  float: left;
-  font-size: 30px;
-  margin-right: 5px;
-  line-height: 30px;
-}
-.fc-color-picker > li .fa {
-  -webkit-transition: -webkit-transform linear 0.3s;
-  -moz-transition: -moz-transform linear 0.3s;
-  -o-transition: -o-transform linear 0.3s;
-  transition: transform linear 0.3s;
-}
-.fc-color-picker > li .fa:hover {
-  -webkit-transform: rotate(30deg);
-  -ms-transform: rotate(30deg);
-  -o-transform: rotate(30deg);
-  transform: rotate(30deg);
-}
-#add-new-event {
-  -webkit-transition: all linear 0.3s;
-  -o-transition: all linear 0.3s;
-  transition: all linear 0.3s;
-}
-.external-event {
-  padding: 5px 10px;
-  font-weight: bold;
-  margin-bottom: 4px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  cursor: move;
-}
-.external-event:hover {
-  box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.2);
-}
-  .text-red {
-  color: #dd4b39 !important;
-}
-.text-yellow {
-  color: #f39c12 !important;
-}
-.text-aqua {
-  color: #00c0ef !important;
-}
-.text-blue {
-  color: #0073b7 !important;
-}
-.text-black {
-  color: #111111 !important;
-}
-.text-light-blue {
-  color: #3c8dbc !important;
-}
-.text-green {
-  color: #00a65a !important;
-}
-.text-gray {
-  color: #d2d6de !important;
-}
-.text-navy {
-  color: #001f3f !important;
-}
-.text-teal {
-  color: #39cccc !important;
-}
-.text-olive {
-  color: #3d9970 !important;
-}
-.text-lime {
-  color: #01ff70 !important;
-}
-.text-orange {
-  color: #ff851b !important;
-}
-.text-fuchsia {
-  color: #f012be !important;
-}
-.text-purple {
-  color: #605ca8 !important;
-}
-.text-maroon {
-  color: #d81b60 !important;
-}
-.link-muted {
-  color: #7a869d;
-}
+  .bg-yellow,
+  .bg-aqua,
+  .bg-blue,
+  .bg-light-blue,
+  .bg-green,
+  .bg-navy,
+  .bg-teal,
+  .bg-olive,
+  .bg-lime,
+  .bg-orange,
+  .bg-fuchsia,
+  .bg-purple,
+  .bg-maroon,
+  .bg-black,
+  .bg-red-active,
+  .bg-yellow-active,
+  .bg-aqua-active,
+  .bg-blue-active,
+  .bg-light-blue-active,
+  .bg-green-active,
+  .bg-navy-active,
+  .bg-teal-active,
+  .bg-olive-active,
+  .bg-lime-active,
+  .bg-orange-active,
+  .bg-fuchsia-active,
+  .bg-purple-active,
+  .bg-maroon-active,
+  .bg-black-active,
+  .callout.callout-danger,
+  .callout.callout-warning,
+  .callout.callout-info,
+  .callout.callout-success,
+  .alert-success,
+  .alert-danger,
+  .alert-error,
+  .alert-warning,
+  .alert-info,
+  .label-danger,
+  .label-info,
+  .label-warning,
+  .label-primary,
+  .label-success,
+  .modal-primary .modal-body,
+  .modal-primary .modal-header,
+  .modal-primary .modal-footer,
+  .modal-warning .modal-body,
+  .modal-warning .modal-header,
+  .modal-warning .modal-footer,
+  .modal-info .modal-body,
+  .modal-info .modal-header,
+  .modal-info .modal-footer,
+  .modal-success .modal-body,
+  .modal-success .modal-header,
+  .modal-success .modal-footer,
+  .modal-danger .modal-body,
+  .modal-danger .modal-header,
+  .modal-danger .modal-footer {
+    color: #fff !important;
+  }
+  .bg-gray {
+    color: #000;
+    background-color: #d2d6de !important;
+  }
+  .bg-gray-light {
+    background-color: #f7f7f7;
+  }
+  .bg-black {
+    background-color: #111111 !important;
+  }
+  .bg-red,
+  .callout.callout-danger,
+  .alert-danger,
+  .alert-error,
+  .label-danger,
+  .modal-danger .modal-body {
+    background-color: #dd4b39 !important;
+  }
+  .bg-yellow,
+  .callout.callout-warning,
+  .alert-warning,
+  .label-warning,
+  .modal-warning .modal-body {
+    background-color: #f39c12 !important;
+  }
+  .bg-aqua,
+  .callout.callout-info,
+  .alert-info,
+  .label-info,
+  .modal-info .modal-body {
+    background-color: #00c0ef !important;
+  }
+  .bg-blue {
+    background-color: #0073b7 !important;
+  }
+  .bg-light-blue,
+  .label-primary,
+  .modal-primary .modal-body {
+    background-color: #3c8dbc !important;
+  }
+  .bg-green,
+  .callout.callout-success,
+  .alert-success,
+  .label-success,
+  .modal-success .modal-body {
+    background-color: #00a65a !important;
+  }
+  .bg-navy {
+    background-color: #001f3f !important;
+  }
+  .bg-teal {
+    background-color: #39cccc !important;
+  }
+  .bg-olive {
+    background-color: #3d9970 !important;
+  }
+  .bg-lime {
+    background-color: #01ff70 !important;
+  }
+  .bg-orange {
+    background-color: #ff851b !important;
+  }
+  .bg-fuchsia {
+    background-color: #f012be !important;
+  }
+  .bg-purple {
+    background-color: #605ca8 !important;
+  }
+  .bg-maroon {
+    background-color: #d81b60 !important;
+  }
+  .bg-gray-active {
+    color: #000;
+    background-color: #b5bbc8 !important;
+  }
+  .bg-black-active {
+    background-color: #000000 !important;
+  }
+  .bg-red-active,
+  .modal-danger .modal-header,
+  .modal-danger .modal-footer {
+    background-color: #d33724 !important;
+  }
+  .bg-yellow-active,
+  .modal-warning .modal-header,
+  .modal-warning .modal-footer {
+    background-color: #db8b0b !important;
+  }
+  .bg-aqua-active,
+  .modal-info .modal-header,
+  .modal-info .modal-footer {
+    background-color: #00a7d0 !important;
+  }
+  .bg-blue-active {
+    background-color: #005384 !important;
+  }
+  .bg-light-blue-active,
+  .modal-primary .modal-header,
+  .modal-primary .modal-footer {
+    background-color: #357ca5 !important;
+  }
+  .bg-green-active,
+  .modal-success .modal-header,
+  .modal-success .modal-footer {
+    background-color: #008d4c !important;
+  }
+  .bg-navy-active {
+    background-color: #001a35 !important;
+  }
+  .bg-teal-active {
+    background-color: #30bbbb !important;
+  }
+  .bg-olive-active {
+    background-color: #368763 !important;
+  }
+  .bg-lime-active {
+    background-color: #00e765 !important;
+  }
+  .bg-orange-active {
+    background-color: #ff7701 !important;
+  }
+  .bg-fuchsia-active {
+    background-color: #db0ead !important;
+  }
+  .bg-purple-active {
+    background-color: #555299 !important;
+  }
+  .bg-maroon-active {
+    background-color: #ca195a !important;
+  }
+  [class^="bg-"].disabled {
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+  }
+    
+  .fc-color-picker {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .fc-color-picker > li {
+    float: left;
+    font-size: 30px;
+    margin-right: 5px;
+    line-height: 30px;
+  }
+  .fc-color-picker > li .fa {
+    -webkit-transition: -webkit-transform linear 0.3s;
+    -moz-transition: -moz-transform linear 0.3s;
+    -o-transition: -o-transform linear 0.3s;
+    transition: transform linear 0.3s;
+  }
+  .fc-color-picker > li .fa:hover {
+    -webkit-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    transform: rotate(30deg);
+  }
+  #add-new-event {
+    -webkit-transition: all linear 0.3s;
+    -o-transition: all linear 0.3s;
+    transition: all linear 0.3s;
+  }
+  .external-event {
+    padding: 5px 10px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    cursor: move;
+  }
+  .external-event:hover {
+    box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.2);
+  }
+    .text-red {
+    color: #dd4b39 !important;
+  }
+  .text-yellow {
+    color: #f39c12 !important;
+  }
+  .text-aqua {
+    color: #00c0ef !important;
+  }
+  .text-blue {
+    color: #0073b7 !important;
+  }
+  .text-black {
+    color: #111111 !important;
+  }
+  .text-light-blue {
+    color: #3c8dbc !important;
+  }
+  .text-green {
+    color: #00a65a !important;
+  }
+  .text-gray {
+    color: #d2d6de !important;
+  }
+  .text-navy {
+    color: #001f3f !important;
+  }
+  .text-teal {
+    color: #39cccc !important;
+  }
+  .text-olive {
+    color: #3d9970 !important;
+  }
+  .text-lime {
+    color: #01ff70 !important;
+  }
+  .text-orange {
+    color: #ff851b !important;
+  }
+  .text-fuchsia {
+    color: #f012be !important;
+  }
+  .text-purple {
+    color: #605ca8 !important;
+  }
+  .text-maroon {
+    color: #d81b60 !important;
+  }
+  .link-muted {
+    color: #7a869d;
+  }
 </style>
-
-
-
-
 
     <!-- Main content -->
     <div class=" card box-body" style='padding:20px;'>
@@ -330,9 +326,7 @@
                 <div class="external-event bg-teal">Late Start</div>
                 <div class="external-event bg-teal">Holiday</div>
                
-                
-
-
+      
                 
               </div> 
             </div>
@@ -344,6 +338,28 @@
               <h3 class="box-title">Create New Schedule Type</h3>
             </div> -->
             <div class="box-body">
+            <h4>New Schedule</h4>
+            Title:
+            <input class="form-control form-white" id="scheduletypetitle" type="text">
+            Color:
+            <select class="form-control form-white" id="scheduletypecolor">
+                <option value=""></option>
+                <option value="bg-aqua">bg-aqua</option>
+                <option value="bg-blue">bg-blue</option>
+                <option value="bg-light">bg-light</option>
+                <option value="bg-teal">bg-teal</option>
+                <option value="bg-yellow">bg-yellow</option>
+                <option value="bg-orange">bg-orange</option>
+                <option value="bg-green">bg-green</option>
+                <option value="bg-lime">bg-lime</option>
+                <option value="bg-red">bg-red</option>
+                <option value="bg-purple">bg-purple</option>
+                <option value="bg-fuchsia">bg-fuchsia</option>
+                <option value="bg-muted">bg-muted</option>
+                <option value="bg-navy">bg-navy</option>
+            </select>
+            <button class="btn btn-sm btn-green " id="add">Add</button>
+            
               <!-- <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
                 <button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>
                 <ul class="fc-color-picker" id="color-chooser">
@@ -681,48 +697,12 @@
       //Add color effect to button
       $('#add-new-event').css({"background-color": currColor, "border-color": currColor});
     });
+ 
     $("#add-new-event").click(function (e) {
       e.preventDefault();
       //Get value and make sure it is not null
-      var val = $("#new-event").val();
-      if (val.length == 0) {
-        return;
-      }
-      swal({
-            title: "Are you sure?",
-            text: "You will not be able to recover this imaginary file!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel plx!",
-            closeOnConfirm: false,
-            closeOnCancel: false,
-            showLoaderOnConfirm: true
-          },
-          function(isConfirm) {
-            if (isConfirm) {
-                $.ajax({
-                    url:base_url+"admin/masterscheduler/managescheduletype",
-                    type:"POST",
-                    data:({[csrfName]: csrfHash,type:'add',data:new_event,color:currColor}),
-                    dataType:'JSON',
-                })
-                .done(function(data){
-                    if(data===true){
-                        swal("Success!", "Successfully Added", "success");
-                        location.reload(); 
-                      
-
-                    }else{
-                        swal("Failed","Error Adding Please Contact your system Administrator",'error');
-                    }
-                })
-             
-            } else {
-              swal("Cancelled", "Your imaginary file is safe :)", "error");
-            }
-          });
+  
+    
 
       //Create events
       var event = $("<div />");
@@ -748,18 +728,61 @@
 
 <script>
   //scheduletype
-  // $(document).ready(function(){
-  //   $.ajax({
-  //          url:base_url+"admin/masterscheduler/scheduletype",
-  //          type:"POST",
-  //          data:({[csrfName]: csrfHash}),
-  //          dataType:'JSON',
-  //      })
-  //      .done(function(data){
-  //       $('#external-events').html(data);
-  //      })
+  $(document).ready(function(){
+    $(document).on('click','#add',function(){
+      title= $("#scheduletypetitle").val();
+     color= $("#scheduletypecolor").val();
+      swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+          },
+          function(isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    url:base_url+"admin/masterscheduler/managescheduletype",
+                    type:"POST",
+                    data:({[csrfName]: csrfHash,type:'add',data:title,color:color}),
+                    dataType:'JSON',
+                })
+                .done(function(data){
+                    if(data===true){
+                        swal("Success!", "Successfully Added", "success");
+                        location.reload(); 
+                      
+
+                    }else{
+                        swal("Failed","Error Adding Please Contact your system Administrator",'error');
+                    }
+                })
+             
+            } else {
+              swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+          });
+    })
+    $.ajax({
+           url:base_url+"admin/masterscheduler/scheduletype",
+           type:"POST",
+           data:({[csrfName]: csrfHash}),
+           dataType:'JSON',
+       })
+       .done(function(data){
+        $('#external-events').html(data);
+        $('.external-event').draggable({
+                zIndex: 999,
+                revert: true,      // will cause the event to go back to its
+                revertDuration: 0  });
+       })
     
-  // });
+  });
   
 </script>
 <script>

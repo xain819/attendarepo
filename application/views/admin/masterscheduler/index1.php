@@ -34,6 +34,7 @@
               <!-- the events -->
           
               <div id="external-events">
+              
                 <div class="external-event bg-green">A Day</div>
                 <div class="external-event bg-yellow">B Day</div>
                 <div class="external-event bg-aqua">C Day</div>
