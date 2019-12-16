@@ -195,7 +195,7 @@
 
 		public function insert_student(){
 			$data_student=$this->input->post('data');
-			print_r($data_student);
+		
 			$this->admin->import_csv_student($data_student);
 			$data=$this->admin->get_all_student();
 			echo json_encode($data);
@@ -300,7 +300,7 @@
 			$end=$this->input->post('end');
 		    $id=$this->input->post('student');
 			$start=$this->input->post('start');
-			echo ($id);
+	
 			$type=$this->input->post('type');
 			$response['name']="Name";
 	

@@ -63,7 +63,7 @@
 				$sql="SELECT count( DISTINCT ID )as `count` FROM `attendance_hallpass` where pass_type='{$a}' 
 				and DateCreated>='{$_SESSION['start_d']}' and DateCreated<='{$_SESSION['end_d']}'";
 			}else{
-				$sql="SELECT count( DISTINCT ID )as `count` FROM `attendance_hallpass` where pass_type='{$a}' and student_local_id={$_SESSION['v_student_local_data']}
+				$sql="SELECT count( DISTINCT ID )as `count` FROM `attendance_hallpass` where pass_type='{$a}' and student_local_id='{$_SESSION['v_student_local_data']}'
 				and DateCreated>='{$_SESSION['start_d']}' and DateCreated<='{$_SESSION['end_d']}'";
 
 			}
