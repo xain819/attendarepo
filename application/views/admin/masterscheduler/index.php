@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/fullcalendar/fullcalendar.print.css" media="print">
   <link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
   <link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/owl.carousel/dist/css/owl.carousel.min.css">
-<link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
-<link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
+  <link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
+  <link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
 <style>
   .bg-red,
   .bg-yellow,
@@ -344,20 +344,21 @@
             Color:
             <select class="form-control form-white" id="scheduletypecolor">
                 <option value=""></option>
-                <option value="bg-aqua">bg-aqua</option>
-                <option value="bg-blue">bg-blue</option>
-                <option value="bg-light">bg-light</option>
-                <option value="bg-teal">bg-teal</option>
-                <option value="bg-yellow">bg-yellow</option>
-                <option value="bg-orange">bg-orange</option>
-                <option value="bg-green">bg-green</option>
-                <option value="bg-lime">bg-lime</option>
-                <option value="bg-red">bg-red</option>
-                <option value="bg-purple">bg-purple</option>
-                <option value="bg-fuchsia">bg-fuchsia</option>
-                <option value="bg-muted">bg-muted</option>
-                <option value="bg-navy">bg-navy</option>
+                <option class="bg-aqua" value="bg-aqua">bg-aqua</option>
+                <option class="bg-blue" value="bg-blue">bg-blue</option>
+                <option class="bg-light" value="bg-light">bg-light</option>
+                <option class="bg-teal" value="bg-teal">bg-teal</option>
+                <option class="bg-yellowvalue="bg-yellow">bg-yellow</option>
+                <option class="bg-orange" value="bg-orange">bg-orange</option>
+                <option class="bg-green" value="bg-green">bg-green</option>
+                <option class="bg-lime" value="bg-lime">bg-lime</option>
+                <option class="bg-red" value="bg-red">bg-red</option>
+                <option class="bg-purple" value="bg-purple">bg-purple</option>
+                <option class="bg-fuchsia" value="bg-fuchsia">bg-fuchsia</option>
+                <option class="bg-muted" value="bg-muted">bg-muted</option>
+                <option class="bg-navy" value="bg-navy">bg-navy</option>
             </select>
+            
             <button class="btn btn-sm btn-green " id="add">Add</button>
             
               <!-- <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
@@ -781,6 +782,7 @@
                 revert: true,      // will cause the event to go back to its
                 revertDuration: 0  });
        })
+       $('#calendar').fullCalendar( 'refetchEvents' );
     
   });
   
