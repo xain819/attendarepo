@@ -863,6 +863,20 @@ $(document).ready(function(){
          
           
         }
+       else if(data['status']=='welcome to class'){
+  
+            swal({
+              text:'Welcome to Class!',
+              timer: 5000,
+            
+              title:`${data.student.first_name} ${data.student.last_name}`,
+              type:'error'
+              
+            });
+            $("#student_id").val('');
+          
+            
+          }
         else if(data['status']=='not_enrolled' && data['result'] === null){
           const student_id=$("#student_id").val();
           swal({
@@ -1263,6 +1277,7 @@ $(document).ready(function(){
                        
 
                       }
+                      
                       else if(data['status']==='Student Reached')
                         {
                           const response=data['response'];

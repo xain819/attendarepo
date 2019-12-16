@@ -1,18 +1,18 @@
+
+<link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/owl.carousel/dist/css/owl.carousel.min.css">
+<link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
+<link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
+<script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
+    <script src="<?=base_url() ?>public/js/settings.js"></script>
+    <script src="<?=base_url() ?>public/js/gleek.js"></script>
+    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+
+
 <section class="content">
+
   <div class="row">
-    <div class="col-md-12">
-      <div class="box box-body">
-        <div class="col-md-6">
-          <h4><i class="fa fa-pencil"></i> &nbsp; Edit Admin</h4>
-        </div>
-        <div class="col-md-6 text-right">
-          <a href="<?= base_url('admin/admin'); ?>" class="btn btn-success"><i class="fa fa-list"></i> Admin List</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
+    <div class="card col-md-12">
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">Edit Admin</h3>

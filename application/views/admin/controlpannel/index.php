@@ -6,91 +6,89 @@
     <script src="<?=base_url() ?>public/js/settings.js"></script>
     <script src="<?=base_url() ?>public/js/gleek.js"></script>
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
-    
 
-                <div class="row">
-                    
 
-              
-                </div>
-                <div class="row">
-                    <div class="col-xl-9  col-xxl-12">
-                  
-
-                        <div class="card">
-                            <div class="card-header d-flex justify-content-between">
-                            <div class="col-xl-6 col-sm-6">
   
-    <div class="card-body">
-    <div class="stat-widget-two">
-    <div class="media">
-    <div class="media-body">
-    <h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
-     <button data-toggle="modal" data-target="#${id_name}" style='background-color:
-    inherit;;border:none;' class="mt-0 mb- text-info">Terminal Master Switch</button>
-     <span class="pull-right">  <input id="master_terminal" data-id='master_terminal' type="checkbox" 
-     class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
- 
-    </div></div></div></div></div>
-    <div class="col-xl-6 col-sm-6">
 
-    <div class="card-body">
-    <div class="stat-widget-two">
-    <div class="media">
-    <div class="media-body">
-    <h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
-     <button data-toggle="modal" data-target="#${id_name}" style='background-color:
-    inherit;;border:none;' class="mt-0 mb- text-info">Hall Pass Master Switch</button>
-     <span class="pull-right">  <input id="master_hallpass" data-id='master_hallpass' type="checkbox" 
-     class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
 
-    </div></div></div></div></div>
-                             
-                            </div>
-                           
 
+                <div class="row">
+                    <div class="row col-xl-9  col-xxl-12">
+                            <div class=" col-xl-6 col-sm-6">
+                                
+                            <div class="card">
+                            <div class="bootstrap-popover  pull-right">
+                            <a tabindex="0" class="btn  pull-right far fa-question-circle" role="button" data-toggle="popover" data-trigger="focus" title="Description" 
+                            data-content="Master switch to turn ON/OFF all terminals"></a></div>
                             <div class="card-body">
+                            <div class="stat-widget-two">
+                            <div class="media">
+                            <div class="media-body">
+                            <h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
+                            <button data-toggle="modal" data-target="#${id_name}" style='background-color:
+                            inherit;;border:none;' class="mt-0 mb- text-info">Terminal Master Switch</button>
+                            <span class="pull-right">  <input id="master_terminal" data-id='master_terminal' type="checkbox" 
+                            class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
+                        
+                            </div></div></div></div></div></div>
+                            <div class=" col-xl-6 col-sm-6">
+                            <div class="card">
+                            <div class="bootstrap-popover  pull-right">
+                            <a tabindex="0" class="btn  pull-right far fa-question-circle" role="button" data-toggle="popover" data-trigger="focus" title="Description" 
+                            data-content="Master switch to turn ON/OFF all Hall Passes"></a></div>
+                            <div class="card-body">
+                            <div class="stat-widget-two">
+                            <div class="media">
+                            <div class="media-body">
+                            <h5 class="mt-0 mb- text-info"><ion-icon name="apps"></ion-icon>
+                            <button data-toggle="modal" data-target="#${id_name}" style='background-color:
+                            inherit;;border:none;' class="mt-0 mb- text-info">Hall Pass Master Switch</button>
+                            <span class="pull-right">  <input id="master_hallpass" data-id='master_hallpass' type="checkbox" 
+                            class="js-switch js-switch-1 js-switch-md" data-size="small" /></span></h5>
 
-                            <div class='row' id="hallpass_list_item">
-                           <div class="col-xl-6">
-                                <div class="card transparent-card ">
-                                <div class="card-header pb-0">
-                                            <h5 class="card-title mb-3">Lock Terminal</h5>
-                                        
-                                        </div>
-                                   
-                                    <div class="card-body p-0">
-                                        <div class="table-responsive">
-                                            <table id="ahp" class="table trading-activity table-padded table-responsive-fix">
+                            </div></div></div></div></div></div>
+                            <div class=" col-xl-6 col-sm-6">
+                            <div class="card">
+                            <div class="bootstrap-popover  pull-right">
+                            <a tabindex="0" class="btn  pull-right far fa-question-circle" role="button" data-toggle="popover" data-trigger="focus" title="Description" 
+                            data-content="Turns off selected terminals. User can search by staff name, room #, or terminal #. When entered results are presented by staff last name, room# then terminal #. To turn on and reactivate the terminal simply press the 'red minus' icon. To add another location press the 'blue plus' icon."></a></div>
+                                
+                            <div class="card-body">
+                            <h5 class="card-title mb-3">Lock Terminal</h5>
+                            <div class="stat-widget-two">
+                            <div class="media">
+                            <div class="media-body">
+                            <table id="ahp" class="table trading-activity table-padded table-responsive-fix">
                                                 <thead>
                                                     <tr>
                                                         
                                                         <th>Name</th>
-                                                        <th>ID Number</th>
+                                                        <th>Room Number</th>
                                                         <th>Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="table_ahp1">
                                                 </tbody>
                                             </table>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div> 
-                            <div class="col-xl-6">
-                                    <div class="card transparent-card ">
-                                        <div class="card-header pb-0">
-                                            <h5 class="card-title mb-3">Lock Hall Passes</h5>
-                                        
-                                        </div>
-                                        <div class="card-body p-0">
-                                            <div class="table-responsive">
-                                                <table id='nhp' class="table trading-activity table-padded table-responsive-fix">
+
+                            </div></div></div></div></div></div>
+                            <div class=" col-xl-6 col-sm-6">
+                            <div class="card">
+                            <div class="bootstrap-popover  pull-right">
+                            <a tabindex="0" class="btn  pull-right far fa-question-circle" role="button" data-toggle="popover" data-trigger="focus" title="Description" 
+                            data-content="Turns off the hall passes of the selected terminals. User can search by staff name, room #, or terminal #. When entered results are presented by staff last name, room# then terminal #. To unlock 
+                            the Hall Passes simply press the 'red minus' icon. To add another location press the 'blue plus' icon."></a></div>
+                            <div class="card-body">
+                            <h5 class="card-title mb-3">Lock Hallpass</h5>
+                            <div class="stat-widget-two">
+                            <div class="media">
+                            <div class="media-body">
+                            <table id='nhp' class="table trading-activity table-padded table-responsive-fix">
                                                     <thead>
                                                         <tr>
                                                     
                                                         <th>Name</th>
-                                                        <th>ID Number</th>
+                                                        <th>Room Number</th>
                                                         <th>Status</th>
                                                         </tr>
                                                     </thead>
@@ -98,16 +96,19 @@
                                                     </tbody>
                                                    
                                                 </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                  
-                            </div>
-                            </div>
+
+                            </div></div></div></div></div></div>
+                                          
+                     
+                
+                           
+
+                          
+                         
+                        </div>
                         
-                        </div></div>
-                    
-                    </div>
+                 
+                
                     <div class="col-xl-3  col-xxl-12">
 
 
@@ -115,6 +116,12 @@
                           <div class="col-xl-12 col-xxl-12">
                          
                               <div class="card">
+                              <div class="bootstrap-popover  pull-right">
+                            <a tabindex="0" class="btn  pull-right far fa-question-circle" role="button" data-toggle="popover" data-trigger="focus" title="Description" 
+                            data-content="In the event of an emergency or drill the administrator will switch to 'ON' which will automatically LOCK OUT all Hall Passes and Attendance Swipes. 
+                            The Admin user then selects the type of emergency/drill and whether or not this is a drill.
+                             Depending on the emergency/drill selected a pop-up message notificaiton will be sent to all Terminals.
+                             Some preselected emergency labels and notifications are included here and can be edited by Admin"></a></div>
                               <div class="card-body">
                               <div class="stat-widget-two">
                               <div class="media">
