@@ -443,10 +443,13 @@ class Admin_model extends CI_Model{
 	} 
 	function change_access_status()
 	{		
+		
 		$this->db->set('is_active',$this->input->post('status'));
 		$this->db->where('id',$this->input->post('id'));
 		$this->db->update('vterminal_access');
+
 	} 
+
 	function change_terminal_status()
 	{		
 		$this->db->set('IsEnabled',$this->input->post('status'));
