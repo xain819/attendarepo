@@ -10,7 +10,7 @@
                         <form>
                             <div class="form-group">
                                 <label class="text-label">Start</label>
-                                <input type="text" id="start-edit" name="text" class="form-control"  required="">
+                                <input type="date" id="start-edit" name="text" class="form-control"  required="">
                             </div>
                             <div class="form-group">
                                 <label class="text-label">Name</label>
@@ -18,7 +18,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="text-label">End</label>
-                                <input type="text" id="end-edit" name="text" class="form-control" " required="">
+                                <input type="date" id="end-edit" name="text" class="form-control" " required="">
                             </div>
                             <div class="form-group">
                                 <label class="text-label">Name ID</label>
