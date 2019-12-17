@@ -138,6 +138,7 @@ $(document).ready(function(){
                             Gender: ${BirthDate}
                            
                             </div>---->
+                            <br/>
                         </div><button value='${TeacherID}' class="btn btn-outline-primary showdetails"></i>
                             Details</button>
                     </div>
