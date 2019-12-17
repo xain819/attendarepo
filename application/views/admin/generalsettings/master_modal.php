@@ -3,7 +3,7 @@
 <!-- Modal for period grace period -->
 
 <!-- Modal -->
-<div class="modal" id="pgt">
+<div class="modal fade bd-example-modal-lg " id="pgt">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -34,7 +34,7 @@
 <!-- Modal for -->
 
 <!-- Modal -->
-<div class="modal" id="Hall">
+<div class="modal fade bd-example-modal-lg " id="Hall">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -64,7 +64,7 @@
 <!-- Modal for -->
 
 <!-- Modal -->
-<div class="modal" id="nql">
+<div class="modal fade bd-example-modal-lg " id="nql">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -95,7 +95,7 @@
     </div>
 </div>
 </div>
-<div class="modal" id="hplt">
+<div class="modal fade bd-example-modal-lg " id="hplt">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -125,7 +125,7 @@
     </div>
 </div>
 </div>
-<div class="modal" id="slac">
+<div class="modal fade bd-example-modal-lg " id="slac">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -165,7 +165,7 @@
     </div>
 </div>
 </div>
-<div class="modal" id="ano">
+<div class="modal fade bd-example-modal-lg " id="ano">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -191,7 +191,7 @@
     </div>
 </div>
 </div>
-<div class="modal" id="tl">
+<div class="modal fade bd-example-modal-lg " id="tl">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -217,7 +217,7 @@
     </div>
 </div>
 </div>
-<div class="modal" id="oc">
+<div class="modal fade bd-example-modal-lg " id="oc">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

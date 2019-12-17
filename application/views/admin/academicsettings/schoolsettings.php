@@ -56,7 +56,7 @@ button.btn-space {
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">System Settings</h4>
-            <button class="btn btn-xs btn-success show-add-systemsetting-modal">Add</button>
+            <button class="btn btn-xs btn-success " id="show-add-systemsetting-modal">Add</button>
             <h4>Add Your School Name Here</h4>
             <div class="card-content">
                 <table id="systemsettings" class="display" style="width:100%">
@@ -103,7 +103,7 @@ $(document).ready(function() {
             {
                 data:null,'title':'Action',
                 render:function(data){
-                    return `<button value=${data.SettingID} class="btn btn-xs btn-warning show-edit-systemsetting-modal">Edit</button>`;
+                    return `  <button id="show-edit-systemsetting-modal" value=${data.SettingID} class="btn btn-xs btn-warning ">Edit</button>`;
                 }
             }
 
@@ -204,7 +204,7 @@ $(document).ready(function() {
 
 ///////////////////////SYSTEM SETTING//////////////////////////////
 
-    $(document).on('click','.show-edit-systemsetting-modal',function(){
+    $(document).on('click','#show-edit-systemsetting-modal',function(){
         id=$(this).val()
         $.ajax({
         url:base_url+"admin/academicsettings/get_systemsettingby_id ",
@@ -219,12 +219,8 @@ $(document).ready(function() {
         })
         $('#edit-systemsetting-modal-primary').modal('show');
     })
-  
-    $(document).on('click','.show-add-systemsetting-modal',function(){
-
-        $('#add-systemsetting-modal-primary').modal('show');    
-    })
     var btnClick = function(e){
+        console.log(e.currentTarget)
         if(e.currentTarget.id=='add-systemsetting-btn'){
             SettingName=$("#settingname-add").val()
             SettingValue=$("#settingvalue-add").val()
@@ -254,11 +250,14 @@ $(document).ready(function() {
                 $('#edit-systemsetting-modal-primary').modal('hide');
             })
         }
-      
-      
+        else if(e.currentTarget.id=='show-add-systemsetting-modal'){
+            $('#add-systemsetting-modal-primary').modal('show');    
+        }
+     
     }
     $('#add-systemsetting-btn').on('click',btnClick);
     $('#edit-systemsetting-btn').on('click',btnClick);
+    $('#show-add-systemsetting-modal').on('click',btnClick);
 
 });
 </script>
