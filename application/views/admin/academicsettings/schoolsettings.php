@@ -224,8 +224,8 @@ $(document).ready(function() {
 
         $('#add-systemsetting-modal-primary').modal('show');    
     })
-
-    $(document).on('click','#add-systemsetting-btn',function(){
+    var btnClick = function(e){
+        if(e.currentTarget.id=='add-systemsetting-btn'){
             SettingName=$("#settingname-add").val()
             SettingValue=$("#settingvalue-add").val()
             $.ajax({
@@ -238,9 +238,8 @@ $(document).ready(function() {
                 b.ajax.reload();
                 $('#add-systemsetting-modal-primary').modal('hide');    
             })
-
-    })
-    $(document).on('click','#edit-systemsetting-btn',function(){
+        }
+        else if(e.currentTarget.id=='edit-systemsetting-btn'){
             SettingName=$("#settingname-edit").val()
             SettingValue=$("#settingvalue-edit").val()
 
@@ -254,8 +253,12 @@ $(document).ready(function() {
                 b.ajax.reload();
                 $('#edit-systemsetting-modal-primary').modal('hide');
             })
-
-    })
+        }
+      
+      
+    }
+    $('#add-systemsetting-btn').on('click',btnClick);
+    $('#edit-systemsetting-btn').on('click',btnClick);
 
 });
 </script>
