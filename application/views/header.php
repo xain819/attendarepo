@@ -1,7 +1,7 @@
 <div class="card">
                             <div class="card-body monthly-weather-report">
                                 <div class="d-sm-flex d-block justify-content-between mb-4">
-                                    <h4 class="card-title">Harvard School</h4>
+                                    <h4 class="card-title"><?php if($this->SchoolName){echo $this->SchoolName;}else{ echo "No SchoolName Assigned";}?></h4>
                                     
                                 </div>
                                 <div class="row weather-report-container justify-content-between">

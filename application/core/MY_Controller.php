@@ -3,6 +3,8 @@
 	{
 		public $username;
 		public $FullName;
+		public $SchoolName;
+
 		function __construct()
 		{
 			parent::__construct();
@@ -12,7 +14,7 @@
 			}
 			$this->username=$this->session->userdata('username');
 			$this->FullName=$this->db->query('SELECT CONCAT(LastName,", ",FirstName) as FullName FROM admin WHERE admin_id=?',array($this->session->userdata('admin_id')))->result_array()[0]['FullName'];
-
+			$this->SchoolName=$this->db->query('SELECT VALUE FROM Setting WHERE Setting =?',array('SchoolName'))->row_array()['VALUE'];
 		}
 
 	}

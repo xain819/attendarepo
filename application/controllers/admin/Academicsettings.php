@@ -20,6 +20,30 @@ class Academicsettings extends My_Controller
 		$this->load->view('layoutv2', $data);
 	
 	
+
+	}
+	public function get_systemsettingby_id(){
+		//echo $this->input->post('id');
+		echo json_encode($this->db->query('SELECT * FROM setting WHERE SettingID=?',array($this->input->post('id')))->row_array());
+		//echo json_encode($this->db->get('school_settings',array('id'=>$this->input->post('id')))->row_array());
+	}
+	public function edit_systemsetting(){
+		$data['Setting']=$this->input->post('SettingName');
+		$data['Value']=$this->input->post('SettingValue');
+		$id=$this->input->post('id');
+		$this->db->where('SettingID', $id);
+		$this->db->update('setting', $data);
+		echo json_encode('success');
+	}
+	public function insert_systemsetting(){
+		$data['Setting']=$this->input->post('SettingName');
+		$data['Value']=$this->input->post('SettingValue');
+		$this->db->insert('setting',$data);
+		echo json_encode('success');
+
+	}
+	public function get_systemsettings(){
+		echo json_encode($this->db->query('SELECT * FROM `setting` WHERE Setting NOT IN("Terminal_Master_Switch","HP_Master_Switch") ')->result());
 	}
 	public function get_schoolsettings_id(){
 		//echo $this->input->post('id');

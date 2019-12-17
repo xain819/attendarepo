@@ -77,7 +77,7 @@ $db['default'] = array(
 
 
 	//'dsn'	=> 'mysql:unix_socket=/cloudsql/metasoft-prod:us-central1:pockeprincipal;dbname=attendatrack',
-	'hostname' => 'localhost',
+	//'hostname' => 'localhost',
 	// 'username' => 'attenda',
 	// 'password' => 'VEEpr1aKcv7Xp2Wu',
 	// 'database' => 'attendatrack',

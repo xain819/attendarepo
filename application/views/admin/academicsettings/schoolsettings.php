@@ -51,6 +51,27 @@ button.btn-space {
         </div>
     </div>
 </div>
+
+<div class=' col-md-12'>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">System Settings</h4>
+            <button class="btn btn-xs btn-success show-add-systemsetting-modal">Add</button>
+            <h4>Add Your School Name Here</h4>
+            <div class="card-content">
+                <table id="systemsettings" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+            
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $this->load->view('admin/academicsettings/edit-systemsetting');?>
+<?php $this->load->view('admin/academicsettings/add-systemsetting');?>
 <?php $this->load->view('admin/academicsettings/editschoolsettings');?>
 <?php $this->load->view('admin/academicsettings/addschoosettings');?>
 
@@ -67,6 +88,31 @@ $(document).ready(function() {
  
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
+    var b= $('#systemsettings').DataTable( {
+        
+        ajax: {
+            url: base_url+"admin/academicsettings/get_systemsettings",
+            data:({ [csrfName]: csrfHash}),
+            type:"POST",
+            dataSrc: '',
+            dataType:'JSON'
+       },
+        columns: [
+            { data: 'Setting','title':'SettingName' },
+            { data: 'Value','title':'SettingValue' },
+            {
+                data:null,'title':'Action',
+                render:function(data){
+                    return `<button value=${data.SettingID} class="btn btn-xs btn-warning show-edit-systemsetting-modal">Edit</button>`;
+                }
+            }
+
+
+          
+        ],
+        select: true,
+    
+    });
     var a= $('#schoolsettings').DataTable( {
         
         ajax: {
@@ -155,5 +201,61 @@ $(document).ready(function() {
             })
 
     })
+
+///////////////////////SYSTEM SETTING//////////////////////////////
+
+    $(document).on('click','.show-edit-systemsetting-modal',function(){
+        id=$(this).val()
+        $.ajax({
+        url:base_url+"admin/academicsettings/get_systemsettingby_id ",
+        type:"POST",
+        data:({[csrfName]: csrfHash,id:id}),
+        dataType:'JSON',
+        })
+        .done(function(data){
+            $("#settingname-edit").val(data['Setting'])
+            $("#settingvalue-edit").val(data['Value'])
+            b.ajax.reload();
+        })
+        $('#edit-systemsetting-modal-primary').modal('show');
+    })
+  
+    $(document).on('click','.show-add-systemsetting-modal',function(){
+
+        $('#add-systemsetting-modal-primary').modal('show');    
+    })
+
+    $(document).on('click','#add-systemsetting-btn',function(){
+            SettingName=$("#settingname-add").val()
+            SettingValue=$("#settingvalue-add").val()
+            $.ajax({
+            url:base_url+"admin/academicsettings/insert_systemsetting ",
+            type:"POST",
+            data:({[csrfName]: csrfHash,SettingName:SettingName,SettingValue:SettingValue}),
+            dataType:'JSON',
+            })
+            .done(function(data){
+                b.ajax.reload();
+                $('#add-systemsetting-modal-primary').modal('hide');    
+            })
+
+    })
+    $(document).on('click','#edit-systemsetting-btn',function(){
+            SettingName=$("#settingname-edit").val()
+            SettingValue=$("#settingvalue-edit").val()
+
+            $.ajax({
+            url:base_url+"admin/academicsettings/edit_systemsetting ",
+            type:"POST",
+            data:({[csrfName]: csrfHash,id:id,SettingName:SettingName,SettingValue:SettingValue}),
+            dataType:'JSON',
+            })
+            .done(function(data){
+                b.ajax.reload();
+                $('#edit-systemsetting-modal-primary').modal('hide');
+            })
+
+    })
+
 });
 </script>
