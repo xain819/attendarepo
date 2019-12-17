@@ -1,4 +1,4 @@
-<div class="modal  bd-example-modal-lg " id="ahpf" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg " id="ahpf" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content"  style="background-color:#f3f6f9;" >
                 <div class="modal-header">
