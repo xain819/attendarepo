@@ -22,6 +22,19 @@
 			$this->load->view('terminal/index',$data);
 
 		}
+			
+		public function index_2(){
+			//$data['title'] = 'General Settings';
+			$data['view'] = 'terminal/terminal_modal';
+			$data['view1'] = 'terminal/alertmodal';
+			$data['username']=$_SESSION['username'];
+			//$result=$this->admin->get_terminal_hallpass($data['username']);
+			
+	
+			$this->load->view('terminal/index_2',$data);
+
+		}
+
 		public function get_announcement(){
 			$response['school_wide']=$this->admin->get_school_wide();
 

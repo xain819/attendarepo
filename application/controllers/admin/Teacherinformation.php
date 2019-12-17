@@ -16,6 +16,16 @@
 			$data['view'] = 'admin/teacherinformation/student_rosters';
 			$this->load->view('layoutv2', $data);
 		}
+		public function help(){
+			$data['title'] = 'Teacher Information';
+			$data['view'] = 'admin/teacherinformation/help';
+			$this->load->view('layoutv2', $data);
+		}
+		public function reports(){
+			$data['title'] = 'Teacher Information';
+			$data['view'] = 'admin/teacherinformation/reports';
+			$this->load->view('layoutv2', $data);
+		}
 		public function student_rosters(){
 			$data['title'] = 'Teacher Information';
 			$data['view'] = 'admin/teacherinformation/student_rosters';
