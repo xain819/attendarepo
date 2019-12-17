@@ -27,6 +27,22 @@
 			echo json_encode($data);
 	
 		}	
+		public function insert_period(){
+			
+
+
+			$data['PeriodStartTime']=$this->input->post('start');
+			$data['PeriodEndTime']=$this->input->post('stop');
+			$data['schedule_type']=$this->input->post('data');
+			$data['Period']=$this->input->post('period');
+			$data['GracePeriod']='00:06:00'	;
+			$data['TransitionTime']='00:05:00';
+			$data['HPLockStart']='00:10:00';
+			$data['HPLockEnd']='00:10:00';
+			$this->db->insert('period',$data);
+
+			echo json_encode('success');
+		}
 		public function add_period()
 		{
 			$data['schedule_type']=$this->input->post('data');

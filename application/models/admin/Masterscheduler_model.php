@@ -54,7 +54,7 @@
 			return $query->result_array();
 		}
 		public function get_all_periods(){
-			$sql='SELECT * FROM `period`';
+			$sql='SELECT * FROM `period` as a RIGHT JOIN scheduletype as b on a.schedule_type=b.ScheduleType';
 			$query=$this->db->query($sql);
 			return $query->result_array();
 		}
@@ -230,7 +230,7 @@
 		public function edit_slider_period($a){
 		if($a['type']=='move' ||$a['type']=='bykugan' ){
 
-		
+			
 			$this->db->set('PeriodStartTime',$a['PeriodStartTime']);
 			$this->db->set('PeriodEndTime',$a['PeriodEndTime']);
 			$this->db->where('schedule_type',$a['schedule_type']);
