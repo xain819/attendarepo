@@ -6,6 +6,7 @@ class RBAC
 	{
 		$this->obj =& get_instance();
 		$this->obj->module_access = $this->obj->session->userdata('module_access');
+		
 	}
 
 	//----------------------------------------------------------------
@@ -16,11 +17,12 @@ class RBAC
 		$query=$this->obj->db->get();
 
 		$data=array();
+	
 		foreach($query->result_array() as $v)
 		{
 			$data[$v['module']][$v['operation']] = '';
 		}
-		
+		print_r($data);
 		$this->obj->session->set_userdata('module_access',$data);
 	} 	
 
@@ -44,6 +46,7 @@ class RBAC
 	//--------------------------------------------------------------	
 	function Check_operation_permission($operation)
 	{
+		
 		if(isset($this->obj->module_access[$this->obj->uri->segment(2)][$operation])) 
 			return 1;
 		else 
