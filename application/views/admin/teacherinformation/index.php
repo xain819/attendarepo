@@ -193,10 +193,10 @@ button.btn-space {
                 </div>
 
     <!-- Main content -->
-    <section class="content">
+    <!-- <section class="content"> -->
       <!-- Default box -->
 
-      <div class=" card box-body" style='padding:20px;'>
+      <!-- <div class=" card box-body" style='padding:20px;'>
         <div class="box-body">
           <div style="width: 100%;">
             <div class="table-responsive">
@@ -225,14 +225,14 @@ button.btn-space {
               </table>
             </div>      
           </div>
-        </div></div>
+        </div></div> -->
         <!-- /.box-body -->
 
         <!-- /.box-footer-->
-      </div>
+      <!-- </div> -->
       <!-- /.box -->
-    
-    </section>
+<!--     
+    </section> -->
 
     
     <div class="modal fade bd-example-modal-lg" id='teacher-modal-primary'>

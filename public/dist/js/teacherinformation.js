@@ -130,14 +130,15 @@ $(document).ready(function(){
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col">
+                           <!--- <div class="col">
                             BrithDate: ${BirthDate}
                            
                             </div>
                             <div class="col">
                             Gender: ${BirthDate}
                            
-                            </div>
+                            </div>---->
+                            <br/>
                         </div><button value='${TeacherID}' class="btn btn-outline-primary showdetails"></i>
                             Details</button>
                     </div>

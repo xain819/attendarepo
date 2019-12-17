@@ -10,7 +10,7 @@
             <form>
                 <div class="form-group">
                     <label class="text-label">SettingName</label>
-                    <input type="text" id="settingname-edit" name="text" class="form-control" " required="">
+                    <input type="text" id="settingname-edit" disabled name="text"  class="form-control" " required="">
                 </div>
                 <div class="form-group">
                     <label class="text-label">Setting Value</label>

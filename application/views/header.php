@@ -1,27 +1,60 @@
 <div class="card">
                             <div class="card-body monthly-weather-report">
                                 <div class="d-sm-flex d-block justify-content-between mb-4">
-                                    <h4 class="card-title"><?php if($this->SchoolName){echo $this->SchoolName;}else{ echo "No SchoolName Assigned";}?></h4>
-                                    
+                                    <h4 class="card-title"><?php if($this->SchoolName){echo $this->SchoolName;}else{ echo "Not Yet Added in the database";}?></h4>
+                                   
+                                   
                                 </div>
                                 <div class="row weather-report-container justify-content-between">
                                     <div class="col-xl-4 col-md-5">
-                                        <div class="tempareture-box-2 d-flex justify-content-sm-center justify-content-between mb-4 mb-sm-0">
-                                            <div class="tempareture-box-icon">
-                                            <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <div class="tempareture-box-content text-center ml-4">
-                                                <div class="temp-top">
-                                                    <span id='type'>None</span>
-                                                </div>
-                                                <div class="temp-bottom">
-                                               <!-- <button type="button" class="btn btn-warning btn-ft">Change Type</button> -->
-                                                 
-
-                                             
-                                                </div>
+                                        <div class="media-body">
+                                            <h4 >Email</h4>
+                                            <p>
+                                                <?php  
+                                                    if($this->Email){
+                                                        echo $this->Email;
+                                                    }else{
+                                                        echo 'Not Yet Added in the database';
+                                                    }
+                                                ?>
+                                            </p>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 >Address</h4>
+                                            <p>
+                                            
+                                            <?php  
+                                
+                                                if($this->Address){
+                                                    echo $this->Address;
+                                                }else{
+                                                    echo 'Not Yet Added in the database';
+                                                }
+                                            
+                                            ?>
+                                            </p>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 >PhoneNumber</h4>
+                                            <p><?php  
                                                 
-                                            </div>
+                                                if($this->PhoneNumber){
+                                                    echo $this->PhoneNumber;
+                                                }else{
+                                                    echo 'Not Yet Added in the database';
+                                                }
+                                            
+                                            ?></p>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 >Web Site</h4>
+                                            <p> <?php 
+                                            if($this->WebSite){
+                                                echo $this->WebSite;
+                                                }else{
+                                                    echo 'Not Yet Added in the database';
+                                                }
+                                            ?></p>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
