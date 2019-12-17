@@ -113,7 +113,7 @@
 		}
 		public function get_student_student_hallpass(){
 				$data['student_id_number']=$this->input->post('id');
-
+				$teacherlimit=$this->db->query("SELECT value FROM master_control WHERE master_name='Teacher Limit'")->row_array()['value'];
 				
 				$data['hallpass']=$this->input->post('hallpass');
 				$data['pass_type']=$this->admin->check_hallpass_type($data);
@@ -169,7 +169,7 @@
 							//$result['status']='rrr Reached';
 							echo json_encode($result);
 						}
-						elseif($data['active_2way_hallpass']>=3 && $data['pass_type']==2)
+						elseif($data['active_2way_hallpass']>=$teacherlimit && $data['pass_type']==2)
 						{
 							$result['status']='Limit Reached';
 							$result['response']=$data['active_2way_hallpass'];   
@@ -262,8 +262,8 @@
 
 					
 					
-					// $data['is_lunch']=$is_student_need_lunch;
-					// $data['is_first']=$is_first;
+						// $data['is_lunch']=$is_student_need_lunch;
+						// $data['is_first']=$is_first;
 				
 						
 		
