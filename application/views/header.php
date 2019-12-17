@@ -47,7 +47,7 @@
                                             ?></p>
                                         </div>
                                         <div class="media-body">
-                                            <h4 id="day">Web Site</h4>
+                                            <h4 >Web Site</h4>
                                             <p> <?php 
                                             if($this->WebSite){
                                                 echo $this->WebSite;
