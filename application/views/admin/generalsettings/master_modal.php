@@ -204,14 +204,31 @@
                     <div class="form-group">
                         <input type="text" id='addteacherlimit' name="addteacherlimit" class="form-control" placeholder="Enter Teacher Limit">
                     </div>
-                 
                 </form>
-
-
-
             </div>
             <div class="modal-footer">
                     <button type="button " class='btn-nql btn btn-sm btn-primary' id='teacher-limit'  class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg " id="tt">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">TransitionTime </h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form role="form" id="ttimeform">
+                    <div class="form-group">
+                        <input type="text" id='addtransitiontime' name="addtransitiontime" class="form-control" placeholder="Enter Transition Time">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                    <button type="button " class='btn-nql btn btn-sm btn-primary' id='transition-time'  class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

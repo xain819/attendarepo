@@ -33,6 +33,12 @@
 			$this->db->update('master_control',$data);
 			echo json_encode('success');
 		}
+		public function insert_transitiontime(){
+			$data['value']=$this->input->post('data');
+			$this->db->where('id',11);
+			$this->db->update('master_control',$data);
+			echo json_encode('success');
+		}
 		public function insert_period(){
 			
 
