@@ -30,8 +30,6 @@
 
   
 
-<?php $this->load->view('admin/masterscheduler/editslider.php');?>
-<?php $this->load->view('admin/masterscheduler/add-period.php');?>
 
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
@@ -172,8 +170,7 @@ $(document).ready(function () {
     </script>
 
 
-<?php //$this->load->view('admin/masterscheduler/add');?>
-<?php //$this->load->view('admin/masterscheduler/edit');?>
+
 <script src="<?=base_url()?>public/assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
     <script src="<?=base_url()?>public/js/plugins-init/bootstrap-tagsinput-init.js"></script>
 

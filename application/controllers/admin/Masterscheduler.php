@@ -214,8 +214,8 @@
 		public function period_access()
 		{
 			$data['view'] = 'admin/masterscheduler/period_access';
-			$this->load->view('layoutv2', $data);
-			$this->Masterscheduler->initialize_period();
+		
+		//	$this->Masterscheduler->initialize_period();
 		
 			echo json_encode($data);
 
