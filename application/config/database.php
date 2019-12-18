@@ -76,16 +76,16 @@ $query_builder = TRUE;
 $db['default'] = array(
 
 
-	'dsn'	=> 'mysql:unix_socket=/cloudsql/metasoft-prod:us-central1:pockeprincipal;dbname=attendatrack',
-	//'hostname' => 'localhost',
-	 'username' => 'attenda',
-	 'password' => 'VEEpr1aKcv7Xp2Wu',
-	 'database' => 'attendatrack',
-	'dbdriver' => 'pdo',
+	//'dsn'	=> 'mysql:unix_socket=/cloudsql/metasoft-prod:us-central1:pockeprincipal;dbname=attendatrack',
+	 'hostname' => 'localhost',
+	// 'username' => 'attenda',
+	// 'password' => 'VEEpr1aKcv7Xp2Wu',
+	// 'database' => 'attendatrack',
+	//'dbdriver' => 'pdo',
 	'username' => 'root',
 	'password' => '',
 	'database' => 'attendatrack',
-	//'dbdriver' => 'mysqli',
+	'dbdriver' => 'mysqli',
 	
 	'dbprefix' => '',
 	'pconnect' => FALSE,

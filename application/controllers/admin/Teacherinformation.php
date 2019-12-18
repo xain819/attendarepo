@@ -50,7 +50,7 @@
 				$result=$this->admin->master_control_status($a='hpso');
 			
 				if($result['is_active']==1){
-					print_r($v);
+					
 					$this->admin->edit_hallpass_swipe($v['ID'],$v['date_time_ended']);
 
 				}
