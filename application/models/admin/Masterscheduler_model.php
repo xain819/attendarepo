@@ -213,7 +213,7 @@
 				$this->db->insert('period');
 			}
 
-			print_r($result);
+	
 		}
 		public function del_period($a){
 			
@@ -223,7 +223,7 @@
 			$this->db->delete('Period',$a['period']);
 	
 
-			print_r($result);
+	
 		}
 
 		
