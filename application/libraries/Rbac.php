@@ -22,7 +22,6 @@ class RBAC
 		{
 			$data[$v['module']][$v['operation']] = '';
 		}
-		print_r($data);
 		$this->obj->session->set_userdata('module_access',$data);
 	} 	
 

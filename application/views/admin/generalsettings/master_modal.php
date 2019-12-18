@@ -211,7 +211,7 @@
 
             </div>
             <div class="modal-footer">
-                    <button type="button" class='btn-nql' id='btn-nql'  class="btn btn-primary">Save changes</button>
+                    <button type="button" class='btn-nql' id='teacher-limit'  class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

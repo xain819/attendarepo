@@ -75,9 +75,30 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
-
+$(document).on('click','#teacher-limit',function(){
+    $limit=$('#addteacherlimit').val()
+    swal({
+            text: 'Click Update to continue',
+            button: {
+                text: "Update",
+                closeModal: false,
+            },
+            })
+            .then((value) => {
+                $.ajax({
+                url:base_url+"admin/masterscheduler/insert_teacherlimit ",
+                type:"POST",
+                data:({[csrfName]: csrfHash,data:$limit}),
+                dataType:'JSON',
+                })
+                .done(function(data){
+                    return swal("Successfully Updated");
+                })
+        })
+        
+})
 
 var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
