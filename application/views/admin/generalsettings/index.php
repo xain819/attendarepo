@@ -48,7 +48,7 @@
     <!-- <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
  
  <script src="<?=base_url()?>public/js/plugins-init/datatables.init.js"></script>
-  <!-- -->
+   -->
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"> -->
 <link rel="stylesheet" href="<?php echo base_url('public/plugins/editor/css/editor.dataTables.min.css');?>">
@@ -80,23 +80,31 @@
 $(document).on('click','#teacher-limit',function(){
     $limit=$('#addteacherlimit').val()
     swal({
-            text: 'Click Update to continue',
-            button: {
-                text: "Update",
-                closeModal: false,
-            },
-            })
-            .then((value) => {
-                $.ajax({
+        title: "Are you sure?",
+        text: "",
+        icon: "warning",
+        buttons: true,
+        dangerMode: false,
+        })
+        .then((isConfirm) => {
+        if (isConfirm) {
+            console.log(isConfirm)
+            $.ajax({
                 url:base_url+"admin/masterscheduler/insert_teacherlimit ",
                 type:"POST",
                 data:({[csrfName]: csrfHash,data:$limit}),
                 dataType:'JSON',
                 })
                 .done(function(data){
-                    return swal("Successfully Updated");
+                    swal("Successfully Updated", {
+                    icon: "success",
+                    });
                 })
-        })
+        } else {
+            console.log(isConfirm)
+            swal("Cancelled");
+        }
+        });
         
 })
 
