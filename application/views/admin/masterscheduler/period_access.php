@@ -97,12 +97,12 @@ $(document).ready(function () {
                       'style': {
                           'background-color': '#061283',
                       }
-                  },
-                  
+                  }
+                  data_events.push(d);
               }
             }
             console.log(d)
-            data_events.push(d);
+            
             $(`${a}`).TimeSlider({
                 start_timestamp: current_time,
                 timecell_enable_move: true,
