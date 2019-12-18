@@ -293,7 +293,7 @@
       var start = moment().subtract(29, 'days');
       var end = moment();
       var id='';
-    
+     
     const a=$.ajax({
                               url:base_url+"admin/studentinformation/get_all_hallpass_analytics ",
                               type:"POST",

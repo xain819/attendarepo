@@ -117,7 +117,7 @@
 				$data_array['Period']=(explode('_',$data['id']))[1];
 				$data_array['PeriodStartTime']=$start;
 				$this->Masterscheduler->edit_slider_period($data_array);
-				print_r($data_array);
+			
 
 			}
 			elseif ($data['type']=='right')
@@ -128,8 +128,7 @@
 				$data_array['Period']=(explode('_',$data['id']))[1];
 				$data_array['PeriodEndTime']=$stop;
 				$this->Masterscheduler->edit_slider_period($data_array);
-				print_r($data_array);
-
+		
 			}
 
 
@@ -153,10 +152,10 @@
 			{
 				$ScheduleType=$this->input->post('module');
 				$data= $this->Masterscheduler->get_period_access_by_type($ScheduleType);
-				echo $data['PeriodAccess'];
+		
 				$new_data=$data['PeriodAccess'].'|'.$this->input->post('period');
-				echo $data['PeriodAccess'];
-				print_r($new_data);
+			
+		
 				$this->db->set('PeriodAccess',$new_data);
 				$this->db->where('ScheduleType',$ScheduleType);
 				$this->db->update('scheduletype');
@@ -169,8 +168,7 @@
 				$new_data=$data['PeriodAccess'];
 				$period_remove=$this->input->post('period');
 				$exploded=explode($period_remove.'|',$new_data);
-				print_r($exploded[0]);
-				echo gettype($exploded[0]);
+		
 				$text='';
 				foreach($exploded as $ex){
 					$text=$text.$ex;
@@ -195,7 +193,7 @@
 			$data['view'] = 'admin/masterscheduler/index1';
 			$this->load->view('layoutv2', $data);
 			$now= new Datetime('now');
-			print_r($now);
+
 		}
 
 		public function index(){

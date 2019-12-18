@@ -443,10 +443,13 @@ class Admin_model extends CI_Model{
 	} 
 	function change_access_status()
 	{		
+		
 		$this->db->set('is_active',$this->input->post('status'));
 		$this->db->where('id',$this->input->post('id'));
 		$this->db->update('vterminal_access');
+
 	} 
+
 	function change_terminal_status()
 	{		
 		$this->db->set('IsEnabled',$this->input->post('status'));
@@ -528,7 +531,7 @@ class Admin_model extends CI_Model{
 					$this->db->insert('student_table',$student_array);
 					$this->db->insert('parent_table',$parent_array);
 			}
-		print_r($data);
+
 		}
 	
 
@@ -577,6 +580,8 @@ class Admin_model extends CI_Model{
 	
 		$this->db->where('IDNumber',$data);
 		$query=$this->db->get('vterminal_access');
+
+		
 
 	
 		return $query->result_array();
@@ -756,7 +761,7 @@ class Admin_model extends CI_Model{
 		return $query->result_array();
 	}
 	public function get_teacher_course($data){
-		print_r($data);
+
 		//$this->db->select('course_code','period_number','teacher_id_number');
 		$sql='SELECT DISTINCT `teacher_id_number`,`period_number`,`course_code`,`class_type`,`short_desc`,`location`FROM `vteacher_classes` where teacher_id_number="{$data}"';
 		
@@ -856,7 +861,7 @@ class Admin_model extends CI_Model{
 				
 			}
 			echo'<pre>';
-			print_r($value);
+	
 			$this->db->where('LocationID',$value['LocationID']);
 			$q=$this->db->get('location')->row_array();
 			if($q!=null){
@@ -1153,7 +1158,7 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 
 	public function quick_attendance($a,$b)
 	{
-	print_r($a);
+
 	  $now = new Datetime('now');
 	  $date=$now->format('y-m-d');
 	  $time=$now->format('H:i:s');

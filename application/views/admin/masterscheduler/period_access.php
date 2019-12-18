@@ -62,6 +62,7 @@ $(document).ready(function () {
         for (let index = 0; index < arr.length; index++) {
           var data_events=[];
            const element = arr[index];
+           console.log(element)
            var a=`#${element}_slider`;
            $('#abc').append(`
             <div class="box col-12 card scheduletypee">
@@ -79,6 +80,9 @@ $(document).ready(function () {
             d={}
             for (let index = 0; index < data.length; index++) {
               const elemente = data[index];
+              
+
+          
             
               if(elemente['schedule_type']==element)
               {
