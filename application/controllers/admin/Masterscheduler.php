@@ -221,7 +221,7 @@
 		{
 			$data['view'] = 'admin/masterscheduler/period_access';
 		
-		//	$this->Masterscheduler->initialize_period();
+			$this->Masterscheduler->initialize_period();
 		
 			echo json_encode($data);
 
