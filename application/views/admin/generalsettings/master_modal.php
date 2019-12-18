@@ -22,7 +22,7 @@
 
             </div>
             <div class="modal-footer">
-                    <button type="button" class='btn-pgt' id='btn-pgt'  class="btn btn-primary">Save changes</button>
+                    <button type="button"  id='btn-pgt'  class=" btn-pgt btn btn-sm btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -89,7 +89,7 @@
 
             </div>
             <div class="modal-footer">
-                    <button type="button" class='btn-2whp' id='btn-2whp'  class="btn btn-primary">Save changes</button>
+                    <button type="button"  id='btn-2whp'  class=" btn-2whp btn btn-sm btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -119,7 +119,7 @@
 
             </div>
             <div class="modal-footer">
-                    <button type="button" class='btn-hplt' id='btn-hplt' class="btn btn-primary">Save changes</button>
+                    <button type="button"  id='btn-hplt' class=" btn-hplt btn btn-sm btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -159,7 +159,7 @@
 
             </div>
             <div class="modal-footer">
-                    <button type="button" class='btn-nql' id='btn-nql'  class="btn btn-primary">Save changes</button>
+                    <button type="button"  id='btn-nql'  class=" btn-nql btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -185,7 +185,7 @@
 
             </div>
             <div class="modal-footer">
-                    <button type="button" class='btn-nql' id='btn-nql'  class="btn btn-primary">Save changes</button>
+                    <button type="button"  id='btn-nql'  class=" btn-nql btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -211,7 +211,7 @@
 
             </div>
             <div class="modal-footer">
-                    <button type="button" class='btn-nql' id='btn-nql'  class="btn btn-primary">Save changes</button>
+                    <button type="button " class='btn-nql btn btn-sm btn-primary' id='teacher-limit'  class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -237,7 +237,7 @@
 
             </div>
             <div class="modal-footer">
-                    <button type="button" class='btn-nql' id='btn-nql'  class="btn btn-primary">Save changes</button>
+                    <button type="button" class='btn-nql' id='btn-nql'  class="btn btn-sm btn-primary">Save changes</button>
             </div>
         </div>
     </div>

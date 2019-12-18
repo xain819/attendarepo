@@ -27,6 +27,12 @@
 			echo json_encode($data);
 	
 		}	
+		public function insert_teacherlimit(){
+			$data['value']=$this->input->post('data');
+			$this->db->where('id',15);
+			$this->db->update('master_control',$data);
+			echo json_encode('success');
+		}
 		public function insert_period(){
 			
 
