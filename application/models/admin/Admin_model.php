@@ -125,7 +125,7 @@ class Admin_model extends CI_Model{
 		$now=date("Y-m-d", strtotime($today));
 
 		$result=$this->db->get('school_settings')->result_array();
-
+		$data='';
 		foreach($result as $v){
 			$start = date("Y-m-d", strtotime($v['start']));
 			$end = date("Y-m-d", strtotime($v['end']));
@@ -1028,7 +1028,7 @@ class Admin_model extends CI_Model{
 	// roster list with data on the hallpass
 	public function check_student_rosters_data($a,$b){
 	
-	
+		
 		$this->db->distinct();
 		$this->db->where('term',$b['name_id']);
 		//$this->db->where('start',date("Y-m-d"));

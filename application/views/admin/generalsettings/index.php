@@ -107,6 +107,36 @@ $(document).on('click','#teacher-limit',function(){
         });
         
 })
+$(document).on('click','#transition-time',function(){
+    $tt=$('#addtransitiontime').val()
+    swal({
+        title: "Are you sure?",
+        text: "",
+        icon: "warning",
+        buttons: true,
+        dangerMode: false,
+        })
+        .then((isConfirm) => {
+        if (isConfirm) {
+            console.log(isConfirm)
+            $.ajax({
+                url:base_url+"admin/masterscheduler/insert_transitiontime ",
+                type:"POST",
+                data:({[csrfName]: csrfHash,data:$tt}),
+                dataType:'JSON',
+                })
+                .done(function(data){
+                    swal("Successfully Updated", {
+                    icon: "success",
+                    });
+                })
+        } else {
+            console.log(isConfirm)
+            swal("Cancelled");
+        }
+        });
+        
+})
 
 var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -419,7 +449,7 @@ $(document).ready(function(){
                                                 <h6 class="mt-0 mb- text-info"><i class="${icon} fa-2x" style='padding-right:20px;'></i>
                                             
                                                 <button data-toggle="modal" data-target="#${id_name}" style='background-color:
-                                                inherit;;border:none;' class="mt-0 mb- text-info">${master_name}</button>
+                                                inherit;;border:none;' value=${id} class="mt-0 mb- text-info">${master_name}</button>
                                                 <span class="pull-right" >  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
                                                 class="js-switch js-switch-1 js-switch-md" data-size="small" style="margin:10px;"/></span></h6 >
                                     
