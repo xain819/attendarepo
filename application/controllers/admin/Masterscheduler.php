@@ -27,12 +27,6 @@
 			echo json_encode($data);
 	
 		}	
-		public function insert_teacherlimit(){
-			$data['value']=$this->input->post('data');
-			$this->db->where('id',15);
-			$this->db->update('master_control',$data);
-			echo json_encode('success');
-		}
 		public function insert_period(){
 			
 
@@ -220,7 +214,7 @@
 		public function period_access()
 		{
 			$data['view'] = 'admin/masterscheduler/period_access';
-		
+			$this->load->view('layoutv2', $data);
 			$this->Masterscheduler->initialize_period();
 		
 			echo json_encode($data);

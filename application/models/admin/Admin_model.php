@@ -997,7 +997,16 @@ class Admin_model extends CI_Model{
 		$this->db->distinct();
 		$this->db->where('AttendanceDate',date("Y-m-d"));
 		$this->db->where('attendance_time_mot !=','');
+	
 		$result=$this->db->get('vmot')->result_array();
+
+			// $sql="SELECT DISTINCT ca.attendance_time_mot,a.AttendanceDate,a.AttendanceTime,a.appointment,a.emergency,
+		// a.other,a.DateCreated,a.comments,s.first_name,s.last_name,s.student_local_id,c.grade_level,c.period_number,
+		// p.PeriodStartTime,p.PeriodEndTime from attendance a join class_list c on c.class_id=a.class_id join student_table s on
+		//  c.student_local_id-s.student_local_id join period p on p.Period=c.period_number
+		//   where a.AttendanceDate='2019-12-18' and c.schedule_type='B' and a.attendance_time_mot !=','";
+		// $result=$this->db->query($sql)->result_array();
+
 
 
 

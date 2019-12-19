@@ -258,13 +258,14 @@
 					$data=$this->admin->record_attendace($result['result'][0]['class_id'],$data['id']);
 
 				
-						echo json_encode($data);
+						//echo json_encode($data);
 
 					
 					
-						// $data['is_lunch']=$is_student_need_lunch;
-						// $data['is_first']=$is_first;
-				
+						//  $data['is_lunch']=$is_student_need_lunch;
+						//  $data['is_first']=$is_first;
+						//  print_r($data);
+						 echo json_encode($data);
 						
 		
 					}
