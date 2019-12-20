@@ -1339,9 +1339,9 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 		$date=$now->format('y-m-d');
 		$time=$now->format('H:i:s');
 
-		$this->db->where('class_id',$a);
+		//$this->db->where('class_id',$a);
 		$this->db->where('AttendanceDate',$date);
-		$this->db->where('PeriodID',$_SESSION['period_number']);
+		//$this->db->where('PeriodID',$_SESSION['period_number']);
 		$q=$this->db->get('attendance')->result_array();
 		return $q;
 
