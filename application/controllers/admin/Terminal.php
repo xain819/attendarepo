@@ -71,6 +71,16 @@
 			$this->load->view('terminal/mot',$data);
 
 		}
+		public function index2(){
+			//$data['title'] = 'General Settings';
+			$data['view'] = 'terminal/terminal_modal';
+			$data['view1'] = 'terminal/alertmodal';
+			$data['username']=$_SESSION['username'];
+			//$result=$this->admin->get_terminal_hallpass($data['username']);
+		
+			$this->load->view('terminal/index2',$data);
+
+		}
 		public function get_info()
 		{
 		

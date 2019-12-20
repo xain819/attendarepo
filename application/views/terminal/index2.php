@@ -96,19 +96,10 @@
                              <div class="row grid">
                           
                           <div class="col-lg-6">
-                              <div class="grid-col">
-                                <div class='card-body'>
-                                <h2 class="text-center"><i class="fas fa-school"></i> Main Office</h2>
-                                <h5 class="text-center"><i class="fas fa-school"></i> Class Pass</h5>
-                                <h5 class="text-center"><i class="fas fa-school"></i> 5 Minutes<h5>
-</br>
-
-                                </div>
-                              </div>
+                              <div class="grid-col">.Col-lg-12</div>
                           </div>
                           <div class="col-lg-6">
                               <div class="grid-col">
-
                               <h4 class="text-center"><i class="fas fa-school"></i> Custom Pass</h4>
 
                               <form class="mt-5 mb-5">
