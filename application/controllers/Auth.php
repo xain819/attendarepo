@@ -54,10 +54,13 @@ class Auth extends CI_Controller {
 						{
 							$this->session->set_userdata($admin_data);
 						$this->rbac->set_access_in_session(); // set access in session
-							if ($result['username'=='R-101']){
+							if ($this->session->userdata('username')=='R-101'){
 								redirect(base_url('admin/terminal/mot'), 'refresh');
-						}
-							else{	redirect(base_url('admin/terminal'), 'refresh');}
+							}
+							else{	
+								
+								redirect(base_url('admin/terminal'), 'refresh');
+							}
 						
 						}
 						elseif($admin_data['admin_role_id']==10){
