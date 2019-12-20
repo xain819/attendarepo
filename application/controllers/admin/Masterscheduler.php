@@ -229,7 +229,7 @@
 			$this->load->view('layoutv2', $data);
 			$this->Masterscheduler->initialize_period();
 		
-			echo json_encode($data);
+			//echo json_encode($data);
 
 		}
 		public function add_scheduledate()
