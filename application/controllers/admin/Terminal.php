@@ -200,7 +200,15 @@
 
 
 		}
-
+		public function update_attendance(){
+			$data = array(
+				'lunch' => $this->input->post('IsLunch'),
+				
+			);
+			$this->db->where('AttendanceID', $this->input->post('AttendanceID'));
+			$this->db->update('attendance', $data);
+			echo json_encode('success');
+		}
 		public function get_student_schedule(){
 
 			$data['id']=$this->input->post('id');
@@ -263,8 +271,8 @@
 
 					
 					
-						//  $data['is_lunch']=$is_student_need_lunch;
-						//  $data['is_first']=$is_first;
+						 $data['is_lunch']=$is_student_need_lunch;
+						 $data['is_first']=$is_first;
 						//  print_r($data);
 						 echo json_encode($data);
 						

@@ -1382,7 +1382,7 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 				$this->db->set('AttendanceTime',$time);
 				$this->db->set('PeriodID',$_SESSION['period_number']);
 				$this->db->insert('attendance');
-
+				$response['attendanceid']=$this->db->insert_id();
 				$this->db->where('class_id',$a);
 				$this->db->where('AttendanceDate',$date);
 				$this->db->where('PeriodID',$_SESSION['period_number']);

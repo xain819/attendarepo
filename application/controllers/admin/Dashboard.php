@@ -17,6 +17,8 @@
 
 		public function index(){
 			
+
+			$data['totallunch']=$this->db->query("SELECT COUNT(lunch) as total FROM `attendance` WHERE lunch =1")->row_array();
 			$data['all_users'] = $this->dashboard_model->get_all_users();
 			$data['active_users'] = $this->dashboard_model->get_active_users();
 			$data['deactive_users'] = $this->dashboard_model->get_deactive_users();

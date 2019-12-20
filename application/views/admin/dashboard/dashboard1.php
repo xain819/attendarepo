@@ -98,8 +98,9 @@
                     <div class="col-xl-7 col-lg-12 col-xxl-12">
                     <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Team</h4>
-                                <canvas id="doughutChart"></canvas>
+                                <h4 class="card-title">Lunch</h4>
+                                <h1>Total student to take lunch: <?php echo $totallunch['total']?></h1>   
+                                <!-- <canvas id="doughutChart"></canvas> -->
                             </div>
                         </div>
                  
