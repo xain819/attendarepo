@@ -309,7 +309,7 @@ $(document).ready(function() {
                 var eop=0;
                
                 if (now>period_end && data.AttendanceTime==''){
-                   eop = 1;
+                   eop = 1;  
                 }
                
                 if(letter_number<=0 && eop!=1 ) {
