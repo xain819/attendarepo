@@ -25,13 +25,10 @@
       
       </div>
       <!-- <div class=" card box-body" style='padding:20px;'> -->
-      
 
 
-  
-
-<?php $this->load->view('admin/masterscheduler/editslider.php');?>
-<?php $this->load->view('admin/masterscheduler/add-period.php');?>
+    <?php $this->load->view('admin/masterscheduler/editslider');?>
+    <?php $this->load->view('admin/masterscheduler/add-period');?>
 
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
@@ -62,6 +59,7 @@ $(document).ready(function () {
         for (let index = 0; index < arr.length; index++) {
           var data_events=[];
            const element = arr[index];
+           console.log(element)
            var a=`#${element}_slider`;
            $('#abc').append(`
             <div class="box col-12 card scheduletypee">
@@ -79,6 +77,9 @@ $(document).ready(function () {
             d={}
             for (let index = 0; index < data.length; index++) {
               const elemente = data[index];
+              
+
+          
             
               if(elemente['schedule_type']==element)
               {
@@ -94,10 +95,10 @@ $(document).ready(function () {
                           'background-color': '#061283',
                       }
                   }
+                  data_events.push(d);
               }
             }
-            console.log(d)
-            data_events.push(d);
+            
             $(`${a}`).TimeSlider({
                 start_timestamp: current_time,
                 timecell_enable_move: true,
@@ -167,8 +168,7 @@ $(document).ready(function () {
     </script>
 
 
-<?php //$this->load->view('admin/masterscheduler/add');?>
-<?php //$this->load->view('admin/masterscheduler/edit');?>
+
 <script src="<?=base_url()?>public/assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
     <script src="<?=base_url()?>public/js/plugins-init/bootstrap-tagsinput-init.js"></script>
 

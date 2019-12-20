@@ -22,7 +22,7 @@
 			$this->load->view('terminal/index',$data);
 
 		}
-			
+	
 		public function index_2(){
 			//$data['title'] = 'General Settings';
 			$data['view'] = 'terminal/terminal_modal';
@@ -73,8 +73,9 @@
 		}
 		public function get_info()
 		{
-			$data['teacher_id_number']=$_SESSION['teacher_id_number'];
 		
+			$data['teacher_id_number']=$_SESSION['teacher_id_number'];
+			
 			$result['info']=$this->admin->get_terminal_hallpass($data['teacher_id_number']);
 			$result['master']=$this->admin->get_master_hallpass();
 
@@ -199,7 +200,15 @@
 
 
 		}
-
+		public function update_attendance(){
+			$data = array(
+				'lunch' => $this->input->post('IsLunch'),
+				
+			);
+			$this->db->where('AttendanceID', $this->input->post('AttendanceID'));
+			$this->db->update('attendance', $data);
+			echo json_encode('success');
+		}
 		public function get_student_schedule(){
 
 			$data['id']=$this->input->post('id');
@@ -258,13 +267,14 @@
 					$data=$this->admin->record_attendace($result['result'][0]['class_id'],$data['id']);
 
 				
-						echo json_encode($data);
+						//echo json_encode($data);
 
 					
 					
-						// $data['is_lunch']=$is_student_need_lunch;
-						// $data['is_first']=$is_first;
-				
+						 $data['is_lunch']=$is_student_need_lunch;
+						 $data['is_first']=$is_first;
+						//  print_r($data);
+						 echo json_encode($data);
 						
 		
 					}

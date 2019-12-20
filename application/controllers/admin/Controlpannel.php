@@ -27,7 +27,7 @@
 			$q=$this->control->get_hallpass($a=2);
 
 			$hallpass=$this->input->post('data');
-			print_r($hallpass);
+	
 			$q=$this->control->import_hallpass($hallpass);
 	
 			// $data['import']=$this->admin->get_import_terminal();
@@ -77,7 +77,7 @@
 			$data['status']=$this->input->post('status');
 			$data['name']=$this->input->post('name');
 			$result=$this->admin->control_pannel_change_status($data);
-			print_r($data);
+	
 			
 			echo json_encode($result);
 		}
@@ -107,7 +107,7 @@
 			$data['view'] = 'admin/masterscheduler/students_schedule';
 			$hallpass=$this->input->post('data');
 			$q=$this->control->import_terminal($hallpass);
-			print_r($q);
+	
 			// $data['import']=$this->admin->get_import_terminal();
 			// echo json_encode($data['import']);
 	

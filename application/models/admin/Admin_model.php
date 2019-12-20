@@ -125,7 +125,7 @@ class Admin_model extends CI_Model{
 		$now=date("Y-m-d", strtotime($today));
 
 		$result=$this->db->get('school_settings')->result_array();
-
+		$data='';
 		foreach($result as $v){
 			$start = date("Y-m-d", strtotime($v['start']));
 			$end = date("Y-m-d", strtotime($v['end']));
@@ -187,6 +187,13 @@ class Admin_model extends CI_Model{
 			$q['status']=0;
 		};
 		return $q;
+	}
+	public function get_schedule_type(){
+		$this->db->select('title');
+		$this->db->where('start',date("Y-m-d"));
+		$result=$this->db->get('scheduledate')->row_array();
+
+		return $result['title'];
 	}
 	public function get_period(){
 		
@@ -443,10 +450,13 @@ class Admin_model extends CI_Model{
 	} 
 	function change_access_status()
 	{		
+		
 		$this->db->set('is_active',$this->input->post('status'));
 		$this->db->where('id',$this->input->post('id'));
 		$this->db->update('vterminal_access');
+
 	} 
+
 	function change_terminal_status()
 	{		
 		$this->db->set('IsEnabled',$this->input->post('status'));
@@ -528,7 +538,7 @@ class Admin_model extends CI_Model{
 					$this->db->insert('student_table',$student_array);
 					$this->db->insert('parent_table',$parent_array);
 			}
-		print_r($data);
+
 		}
 	
 
@@ -577,6 +587,8 @@ class Admin_model extends CI_Model{
 	
 		$this->db->where('IDNumber',$data);
 		$query=$this->db->get('vterminal_access');
+
+		
 
 	
 		return $query->result_array();
@@ -756,7 +768,7 @@ class Admin_model extends CI_Model{
 		return $query->result_array();
 	}
 	public function get_teacher_course($data){
-		print_r($data);
+
 		//$this->db->select('course_code','period_number','teacher_id_number');
 		$sql='SELECT DISTINCT `teacher_id_number`,`period_number`,`course_code`,`class_type`,`short_desc`,`location`FROM `vteacher_classes` where teacher_id_number="{$data}"';
 		
@@ -856,7 +868,7 @@ class Admin_model extends CI_Model{
 				
 			}
 			echo'<pre>';
-			print_r($value);
+	
 			$this->db->where('LocationID',$value['LocationID']);
 			$q=$this->db->get('location')->row_array();
 			if($q!=null){
@@ -988,19 +1000,31 @@ class Admin_model extends CI_Model{
 	public function check_student_mot($a){
 	
 	
+		$today=date("Y-m-d");
+		// $this->db->distinct();
+		// $this->db->where('AttendanceDate',date("Y-m-d"));
+		// $this->db->where('attendance_time_mot !=','');
+	
+		// $result=$this->db->get('vmot')->result_array();
 
-		$this->db->distinct();
-		$this->db->where('AttendanceDate',date("Y-m-d"));
-		$this->db->where('attendance_time_mot !=','');
-		$result=$this->db->get('vmot')->result_array();
+		$sql="Select DISTINCT a.AttendanceID,a.comments,a.appointment,a.other,a.emergency,s.first_name,s.last_name,cl.term,cl.grade_level,a.PeriodID,a.AttendanceTime,a.attendance_time_mot,cl.student_local_id,
+		p.PeriodStartTime,p.PeriodEndTime,a.DateCreated,a.AttendanceID,a.AttendanceDate from attendance a  join class_list cl on cl.class_id=a.class_id 
+		 right join student_table s on s.student_local_id=cl.student_local_id join period p on (p.Period=a.PeriodID and p.schedule_type=cl.schedule_type)
+		 where a.AttendanceDate='{$today}'";
+		$result=$this->db->query($sql)->result_array();
 
-
-
+			// $sql="SELECT DISTINCT ca.attendance_time_mot,a.AttendanceDate,a.AttendanceTime,a.appointment,a.emergency,
+		// a.other,a.DateCreated,a.comments,s.first_name,s.last_name,s.student_local_id,c.grade_level,c.period_number,
+		// p.PeriodStartTime,p.PeriodEndTime from attendance a join class_list c on c.class_id=a.class_id join student_table s on
+		//  c.student_local_id-s.student_local_id join period p on p.Period=c.period_number
+		//   where a.AttendanceDate='2019-12-18' and c.schedule_type='B' and a.attendance_time_mot !=','";
+		// $result=$this->db->query($sql)->result_array();
 
 		return $result;
 	
 		
 	}
+
 	public function check_student_rosters($a,$b){
 	
 		$this->db->distinct();
@@ -1014,7 +1038,7 @@ class Admin_model extends CI_Model{
 	// roster list with data on the hallpass
 	public function check_student_rosters_data($a,$b){
 	
-	
+		
 		$this->db->distinct();
 		$this->db->where('term',$b['name_id']);
 		//$this->db->where('start',date("Y-m-d"));
@@ -1153,7 +1177,7 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 
 	public function quick_attendance($a,$b)
 	{
-	print_r($a);
+
 	  $now = new Datetime('now');
 	  $date=$now->format('y-m-d');
 	  $time=$now->format('H:i:s');
@@ -1358,7 +1382,7 @@ join period p on `p`.`Period` = `cl`.`period_number` AND `p`.`schedule_type` = `
 				$this->db->set('AttendanceTime',$time);
 				$this->db->set('PeriodID',$_SESSION['period_number']);
 				$this->db->insert('attendance');
-
+				$response['attendanceid']=$this->db->insert_id();
 				$this->db->where('class_id',$a);
 				$this->db->where('AttendanceDate',$date);
 				$this->db->where('PeriodID',$_SESSION['period_number']);

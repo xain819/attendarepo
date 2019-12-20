@@ -965,22 +965,35 @@ $(document).ready(function(){
         else if(data['status'] === 'new_attendance'){
                
           if(data['is_first']==0){
-            console.log('ji');
 
             setTimeout(function() {
-            //your code to be executed after 1 second
-            swal({
-              title: "Lunch?",
-              text: "Do you need a School lunch today?",
-      
-              showCancelButton: true,
-              confirmButtonColor: '#DD6B55',
-              confirmButtonText: 'Yes',
-              cancelButtonText: "No",
-              closeOnConfirm: false,
-              closeOnCancel: false
-            });
-          }, 10000);
+                //your code to be executed after 1 second
+                swal({
+                  title: "Lunch?",
+                  text: "Do you need a School lunch today?",
+                  icon: "info",
+                  buttons: true,
+                  dangerMode: true,
+                })
+                .then((willDelete) => {
+                  if (willDelete) {
+                    $.ajax({
+                        url: base_url+'admin/terminal/update_attendance',
+                        dataType: 'json',
+                        type: 'POST',          
+                        data: ({[csrfName]: csrfHash,AttendanceID:data['attendanceid'],IsLunch:1})
+                        })
+                        .done(function (data) { 
+                          swal("success", {
+                            icon: "success",
+                          });
+                      })
+                    
+                  } else {
+                    swal("Cancelled");
+                  }
+                });
+            }, 1000);
           } 
      
           const response=data['response'];

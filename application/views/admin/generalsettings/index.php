@@ -48,7 +48,7 @@
     <!-- <script src="<?=base_url() ?>public/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
  
  <script src="<?=base_url()?>public/js/plugins-init/datatables.init.js"></script>
-  <!-- -->
+   -->
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"> -->
 <link rel="stylesheet" href="<?php echo base_url('public/plugins/editor/css/editor.dataTables.min.css');?>">
@@ -75,9 +75,68 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
-
+$(document).on('click','#teacher-limit',function(){
+    $limit=$('#addteacherlimit').val()
+    swal({
+        title: "Are you sure?",
+        text: "",
+        icon: "warning",
+        buttons: true,
+        dangerMode: false,
+        })
+        .then((isConfirm) => {
+        if (isConfirm) {
+            console.log(isConfirm)
+            $.ajax({
+                url:base_url+"admin/masterscheduler/insert_teacherlimit ",
+                type:"POST",
+                data:({[csrfName]: csrfHash,data:$limit}),
+                dataType:'JSON',
+                })
+                .done(function(data){
+                    swal("Successfully Updated", {
+                    icon: "success",
+                    });
+                })
+        } else {
+            console.log(isConfirm)
+            swal("Cancelled");
+        }
+        });
+        
+})
+$(document).on('click','#transition-time',function(){
+    $tt=$('#addtransitiontime').val()
+    swal({
+        title: "Are you sure?",
+        text: "",
+        icon: "warning",
+        buttons: true,
+        dangerMode: false,
+        })
+        .then((isConfirm) => {
+        if (isConfirm) {
+            console.log(isConfirm)
+            $.ajax({
+                url:base_url+"admin/masterscheduler/insert_transitiontime ",
+                type:"POST",
+                data:({[csrfName]: csrfHash,data:$tt}),
+                dataType:'JSON',
+                })
+                .done(function(data){
+                    swal("Successfully Updated", {
+                    icon: "success",
+                    });
+                })
+        } else {
+            console.log(isConfirm)
+            swal("Cancelled");
+        }
+        });
+        
+})
 
 var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -390,7 +449,7 @@ $(document).ready(function(){
                                                 <h6 class="mt-0 mb- text-info"><i class="${icon} fa-2x" style='padding-right:20px;'></i>
                                             
                                                 <button data-toggle="modal" data-target="#${id_name}" style='background-color:
-                                                inherit;;border:none;' class="mt-0 mb- text-info">${master_name}</button>
+                                                inherit;;border:none;' value=${id} class="mt-0 mb- text-info">${master_name}</button>
                                                 <span class="pull-right" >  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
                                                 class="js-switch js-switch-1 js-switch-md" data-size="small" style="margin:10px;"/></span></h6 >
                                     

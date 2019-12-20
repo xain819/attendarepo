@@ -61,13 +61,13 @@ button.btn-space {
                 <th>Class Swipe</th>
                 <th>MOP Pass</th>
                 <th>Period Excused Tardy</th>
-                <th>Period Excused Tardy</th>
+                <th>Period UnExcused Tardy</th>
                 <th>Period Negative Seat Time</th>
                 <th>Appointment</th>
                 <th>Emergency</th>
                 <th>Other</th>
-                <th>Period Excused</th>
-                <th>Period Unexcused</th>
+                <th>Period Excused Absent</th>
+                <th>Period Unexcused Absent</th>
                 <th>Comments</th>
              
 
@@ -216,7 +216,7 @@ $(document).ready(function() {
             { data: 'student_local_id' },
             { data: 'grade_level' },
             { data: 'attendance_time_mot' },
-            { data: 'period_number' },
+            { data: 'PeriodID' },
      
             { data: null,
             render:function(data){
@@ -290,9 +290,10 @@ $(document).ready(function() {
  
                 if(letter_number>=1 && is_late>=0 && eop==0) {
                            
-                        return data.period_number;
+                        return data.PeriodID;
     
-                       }
+                }
+                
                else{ return '--';}
             } },
             { data: null,
@@ -308,17 +309,21 @@ $(document).ready(function() {
                 var eop=0;
                
                 if (now>period_end && data.AttendanceTime==''){
-                   eop = 1;
+                   eop = 1;  
                 }
                
-                if(letter_number<=0 && eop!=1) {
+                if(letter_number<=0 && eop!=1 ) {
 
                         
-                           return data.period_number;
+                           return data.PeriodID;
     
                        }
                 else if(eop==1){
                     return '--';
+
+                }
+                 else if(is_late<0){
+                    return data.PeriodID;
 
                 }
             

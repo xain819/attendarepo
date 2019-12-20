@@ -31,9 +31,10 @@
 			$data['view'] = 'admin/teacherinformation/student_rosters';
 			//$this->load->view('layoutv2', $data);
 			$data['username']=$_SESSION['username'];
+			
 			$data['type']=$this->admin->get_day_type();
 			$data['semester']=$this->admin->school_settings($a='semester');
-		
+			
 		
 			$data['teacher_id_number']=$data['username'];
 			$result=$this->admin->check_student_rosters_data($data['teacher_id_number'],$data['semester']);
@@ -50,7 +51,7 @@
 				$result=$this->admin->master_control_status($a='hpso');
 			
 				if($result['is_active']==1){
-					print_r($v);
+					
 					$this->admin->edit_hallpass_swipe($v['ID'],$v['date_time_ended']);
 
 				}
