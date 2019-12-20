@@ -868,7 +868,6 @@ $(document).ready(function(){
         data:({[csrfName]: csrfHash}),
         dataType:'JSON',
     }).done(function(data){
-
         var d=data.marking.name_id;
         a=data['type'][0]['title'];
         b=data['period'];
