@@ -870,7 +870,7 @@ $(document).ready(function(){
     }).done(function(data){
 
         var d=data.marking.name_id;
-      //  a=data['type'][0]['title'];
+        a=data['type'][0]['title'];
         b=data['period'];
         c=data['count']['0']['count'];
         console.log(c);

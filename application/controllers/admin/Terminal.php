@@ -22,7 +22,7 @@
 			$this->load->view('terminal/index',$data);
 
 		}
-			
+	
 		public function index_2(){
 			//$data['title'] = 'General Settings';
 			$data['view'] = 'terminal/terminal_modal';
