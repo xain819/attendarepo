@@ -288,7 +288,7 @@ $(document).ready(function() {
                    eop = 1;
                 }
  
-                if(letter_number>=1 && is_late>=0 && eop==0) {
+                if(letter_number>=1 && eop==0) {
                            
                         return data.PeriodID;
     
