@@ -343,7 +343,7 @@ $(document).ready(function() {
             {data: null,
                 render:function(data){
                 
-
+                            var AttendanceID=data.AttendanceID
                             var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
                             var p_end=`${data.AttendanceDate} ${data.PeriodEndTime}`;
                             var p_start=`${data.AttendanceDate} ${data.PeriodStartTime}`;
@@ -390,8 +390,18 @@ $(document).ready(function() {
                                 }  
                             }
 
-                        console.log(Math.abs(result)+'seattime')
-                        console.log(moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")+'hr') 
+                        // console.log(Math.abs(result)+'seattime')
+                        // console.log(moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")+'hr')
+                            value=`-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
+                    $.ajax({
+                    url: base_url+"admin/secretary/updateattendancenegative",
+                    type: "POST",
+                    dataType: "json",
+                    
+                    data: ({[csrfName]: csrfHash,id:AttendanceID,data:value}),
+                    }).done(function (data){
+                        
+                    }) 
                     return `-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
                 }
             },//Period Negative Seat Time            

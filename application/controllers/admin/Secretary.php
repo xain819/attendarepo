@@ -15,6 +15,16 @@
 			$data['view'] = 'admin/teacherinformation/student_rosters';
 			$this->load->view('layoutv2', $data);
 		}
+		public function updateattendancenegative(){
+			$data = array(
+				'negative_seat_time' => $this->input->post('data')
+			);
+		
+			$this->db->where('AttendanceID', $this->input->post('id'));
+			$this->db->update('attendance', $data);
+			echo json_encode('success');
+	
+		}
 		public function student_rosters(){
 			$data['title'] = 'Teacher Information';
 			$data['view'] = 'admin/teacherinformation/student_rosters';
