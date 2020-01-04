@@ -259,7 +259,7 @@ $(document).ready(function() {
                     if(eop==1){
                         //mot-attendance
                         var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
-                        var p_end=`${data.AttendanceDate} ${data.attendance_time_mot}`;
+                        var p_end=`${data.AttendanceDate} ${data.PeriodEndTime}`;
                         var moptime=`${data.AttendanceDate} 00:05:00`;
                         if(data.attendance_time_mot==null){
                             return `00:05:00`;
