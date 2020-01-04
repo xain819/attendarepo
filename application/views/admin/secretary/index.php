@@ -236,12 +236,21 @@ $(document).ready(function() {
                 var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
                // const ti=new Date(data.DateCreated).getTime();
                const now=new Date().getTime();
+               
+               
+                const noww=moment(data.AttendanceTime).add(5,'minutes').format('HH:mm:ss');
+                console.log(data.AttendanceTime+'aaaaa')
+                //var d = moment.duration(data.AttendanceDate.diff(start));
+                //console.log(moment(noww).add(5, 'minutes')+"ssss")
                 const period_end=new Date(`${data.AttendanceDate} ${data.PeriodEndTime}`).getTime();
                 let eop=0;
                 if (now>period_end && data.AttendanceTime==''){
                    eop = 1;
                 }
                 
+
+
+
                 var class_swipe=new Date(st).getTime();
                 
                 const mot_time = (new Date(data.DateCreated).getTime()+5*60*1000)- class_swipe;
@@ -288,7 +297,7 @@ $(document).ready(function() {
                    eop = 1;
                 }
  
-                if(letter_number>=1 && eop==0) {
+                if(letter_number>=1 && is_late>=0 && eop==0) {
                            
                         return data.PeriodID;
     
