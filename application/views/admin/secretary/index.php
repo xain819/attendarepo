@@ -225,7 +225,7 @@ $(document).ready(function() {
 
                     var period_end=new Date(st);
                     if (now>period_end && data.AttendanceTime==''){
-                        return 'EOP';
+                        return 'EOP'+data.PeriodID;
                     }
                     else{return data.AttendanceTime}
 
@@ -235,8 +235,8 @@ $(document).ready(function() {
             { data: null,
                 render:function(data){
                     var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
-                // const ti=new Date(data.DateCreated).getTime();
-                const now=new Date().getTime();
+                    // const ti=new Date(data.DateCreated).getTime();
+                    const now=new Date().getTime();
                     const period_end=new Date(`${data.AttendanceDate} ${data.PeriodEndTime}`).getTime();
                     let eop=0;
                     if (now>period_end && data.AttendanceTime==''){
@@ -258,17 +258,33 @@ $(document).ready(function() {
                     }
                     if(eop==1){
                         return '--:--';
-                    }   
-                    else if (mot_time<0 & eop==0){
+                    }else{
+                        //mot-attendance
+                        var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
+                        var p_end=`${data.AttendanceDate} ${data.attendance_time_mot}`;
+                        var moptime=`${data.AttendanceDate} 00:05:00`;
+                        if(data.attendance_time_mot==null){
+                            return `00:05:00`;
+                        }else{
+                           
+                            var value = moment.utc(moment(st, "HH:mm:ss").diff(moment(p_end, "HH:mm:ss"))).format("HH:mm:ss")
+                            var a=`${data.AttendanceDate} ${value}`
+                            total= moment.utc(moment(moptime, "HH:mm:ss").diff(moment(a, "HH:mm:ss"))).format("HH:mm:ss")
+                            return `${total}`;
+                        }
+                       
+
+                    }
+                    // else if (mot_time<0 & eop==0){
                     
-                        const mot_pass=secondsToHms(Math.abs(mot_time)/(1000));
-                        return  `-${mot_pass}`;
+                    //     const mot_pass=secondsToHms(Math.abs(mot_time)/(1000));
+                    //     return  `-${mot_pass}`;
                         
-                    }
-                    else{
-                        const mot_pass=secondsToHms(mot_time/(1000));
-                        return mot_pass;
-                    }
+                    // }
+                    // else{
+                    //     const mot_pass=secondsToHms(mot_time/(1000));
+                    //     return mot_pass;
+                    // }
 
                         
                 
@@ -342,67 +358,114 @@ $(document).ready(function() {
             },//Period Unexcused Tardy
             {data: null,
                 render:function(data){
-                
-                            var AttendanceID=data.AttendanceID
-                            var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
-                            var p_end=`${data.AttendanceDate} ${data.PeriodEndTime}`;
-                            var p_start=`${data.AttendanceDate} ${data.PeriodStartTime}`;
+
+                    // parse time using 24-hour clock and use UTC to prevent DST issues
+                    var a='';
+                    if(data.AttendanceTime==''){
+                        a= moment.utc(data.attendance_time_mot, "HH:mm:ss");
+                    }else{
+                        a= moment.utc(data.AttendanceTime, "HH:mm:ss");
+                    }
+                    var start = moment.utc(data.PeriodStartTime, "HH:mm:ss");
+                    var end =a;
+
+                    // account for crossing over to midnight the next day
+                    if (end.isBefore(start)) end.add(1, 'day');
+
+                    // calculate the duration
+                    var d = moment.duration(end.diff(start));
+
+             
+
+                    // format a string result
+                    var s = moment.utc(+d).format('H:mm:ss');
+                    return `-${s}`;
+
+                //     const endTime = moment(data.AttendanceTime, 'HH:mm:ss')
+                //     const startTime = moment(data.PeriodStartTime, 'HH:mm:ss')
+                //     var st='';
+                //     var p_end=`${data.AttendanceDate} ${data.PeriodEndTime}`;
+                //     var p_start=`${data.AttendanceDate} ${data.PeriodStartTime}`;
+                //     if(data.AttendanceTime==''){
+                //         st=`${data.AttendanceDate} ${data.attendance_time_mot}`;
+                //     }else{
+                //         st=`${data.AttendanceDate} ${data.AttendanceTime}`;
+                //     }
                     
-                            var now= new Date();
+                //     var value=''
+                //    // if(st>p_start){
+                //         value= moment.utc(moment(st, "HH:mm:ss").diff(moment(p_start, "HH:mm:ss"))).format("HH:mm:ss")
+                //    // }else{
+                //         //value= moment.utc(moment(p_start, "HH:mm:ss").diff(moment(st, "HH:mm:ss"))).format("HH:mm:ss")
+                //    // }
+                    
+                   
+                    
+                //     return `${st} - ${p_start}`;
+                    //CHECK IF CLASS SWIPE IS EOP
+            
 
-                            var period_end=new Date(st);
+
+                         //  var AttendanceID=data.AttendanceID
+                        //     var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
+                        //     var p_end=`${data.AttendanceDate} ${data.PeriodEndTime}`;
+                        //     var p_start=`${data.AttendanceDate} ${data.PeriodStartTime}`;
+                    
+                        //     var now= new Date();
+
+                        //     var period_end=new Date(st);
                 
                         
-                            var class_swipe=new Date(st).getTime();
+                        //     var class_swipe=new Date(st).getTime();
 
-                            var mot_time = new Date(data.DateCreated).getTime();
-                            var end_time= new Date(p_end).getTime();
-                            var start_time= new Date(p_start).getTime();
-                            var seat_time=(end_time-start_time)/(1000*60);  // 1minute
+                        //     var mot_time = new Date(data.DateCreated).getTime();
+                        //     var end_time= new Date(p_end).getTime();
+                        //     var start_time= new Date(p_start).getTime();
+                        //     var seat_time=(end_time-start_time)/(1000*60);  // 1minute
                         
-                            var missed_period=(class_swipe-start_time)-5*60*1000; // 
+                        //     var missed_period=(class_swipe-start_time)-5*60*1000; // 
                         
-                            //kapag late pumasok maglogin sa sec
-                            var allowed_time =parseInt('5')*60*1000;
-                            console.log(allowed_time)
-                            if(data.appointment==='1' || data.emergency==='1'|| data.other==='1' ) {
+                        //     //kapag late pumasok maglogin sa sec
+                        //     var allowed_time =parseInt('5')*60*1000;
+                        //     console.log(allowed_time)
+                        //     if(data.appointment==='1' || data.emergency==='1'|| data.other==='1' ) {
                             
-                                missed_period=0;
+                        //         missed_period=0;
                     
-                            }
+                        //     }
 
-                            var s=((mot_time+allowed_time)-class_swipe-missed_period)/(1000*60);
+                        //     var s=((mot_time+allowed_time)-class_swipe-missed_period)/(1000*60);
 
-                            if (s >=0 && data.AttendanceTime!='' ){
-                                var result='--';}
-                            else if(s<0 && s>=-1*seat_time){
+                        //     if (s >=0 && data.AttendanceTime!='' ){
+                        //         var result='--';}
+                        //     else if(s<0 && s>=-1*seat_time){
 
-                                var result=s;
-                            } 
-                            else{
+                        //         var result=s;
+                        //     } 
+                        //     else{
                         
-                                if (now>period_end && data.AttendanceTime==''){
-                                    var result=-seat_time;
-                                }
-                                else{   
+                        //         if (now>period_end && data.AttendanceTime==''){
+                        //             var result=-seat_time;
+                        //         }
+                        //         else{   
                             
-                                    var result=-seat_time;
-                                }  
-                            }
+                        //             var result=-seat_time;
+                        //         }  
+                        //     }
 
                         // console.log(Math.abs(result)+'seattime')
                         // console.log(moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")+'hr')
-                            value=`-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
-                    $.ajax({
-                    url: base_url+"admin/secretary/updateattendancenegative",
-                    type: "POST",
-                    dataType: "json",
+                        //     value=`-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
+                    // $.ajax({
+                    // url: base_url+"admin/secretary/updateattendancenegative",
+                    // type: "POST",
+                    // dataType: "json",
                     
-                    data: ({[csrfName]: csrfHash,id:AttendanceID,data:value}),
-                    }).done(function (data){
+                    // data: ({[csrfName]: csrfHash,id:AttendanceID,data:value}),
+                    // }).done(function (data){
                         
-                    }) 
-                    return `-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
+                    // }) 
+                   // return `-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
                 }
             },//Period Negative Seat Time            
             { "data":null,

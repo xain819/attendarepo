@@ -1007,10 +1007,14 @@ class Admin_model extends CI_Model{
 	
 		// $result=$this->db->get('vmot')->result_array();
 
-		$sql="Select DISTINCT a.AttendanceID,a.comments,a.appointment,a.other,a.emergency,s.first_name,s.last_name,cl.term,cl.grade_level,a.PeriodID,a.AttendanceTime,a.attendance_time_mot,cl.student_local_id,
+		// $sql="Select DISTINCT a.AttendanceID,a.comments,a.appointment,a.other,a.emergency,s.first_name,s.last_name,cl.term,cl.grade_level,a.PeriodID,a.AttendanceTime,a.attendance_time_mot,cl.student_local_id,
+		// p.PeriodStartTime,p.PeriodEndTime,a.DateCreated,a.AttendanceID,a.AttendanceDate from attendance a  join class_list cl on cl.class_id=a.class_id 
+		//  right join student_table s on s.student_local_id=cl.student_local_id join period p on (p.Period=a.PeriodID and p.schedule_type=cl.schedule_type)
+		//  where a.AttendanceDate='{$today}'";
+			$sql="Select DISTINCT a.AttendanceID,a.comments,a.appointment,a.other,a.emergency,s.first_name,s.last_name,cl.term,cl.grade_level,a.PeriodID,a.AttendanceTime,a.attendance_time_mot,cl.student_local_id,
 		p.PeriodStartTime,p.PeriodEndTime,a.DateCreated,a.AttendanceID,a.AttendanceDate from attendance a  join class_list cl on cl.class_id=a.class_id 
 		 right join student_table s on s.student_local_id=cl.student_local_id join period p on (p.Period=a.PeriodID and p.schedule_type=cl.schedule_type)
-		 where a.AttendanceDate='{$today}'";
+		";
 		$result=$this->db->query($sql)->result_array();
 
 			// $sql="SELECT DISTINCT ca.attendance_time_mot,a.AttendanceDate,a.AttendanceTime,a.appointment,a.emergency,
