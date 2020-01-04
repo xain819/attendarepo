@@ -395,7 +395,17 @@ $(document).ready(function() {
 
                     // format a string result
                     var value = moment.utc(+d).format('H:mm:ss');
+                    $.ajax({
+                    url: base_url+"admin/secretary/updateattendancenegative",
+                    type: "POST",
+                    dataType: "json",
+                    
+                    data: ({[csrfName]: csrfHash,id:AttendanceID,data:`-${value}`}),
+                    }).done(function (data){
+                        
+                    }) 
                     return `-${value}`;
+                   
 
                 //     const endTime = moment(data.AttendanceTime, 'HH:mm:ss')
                 //     const startTime = moment(data.PeriodStartTime, 'HH:mm:ss')
@@ -472,15 +482,15 @@ $(document).ready(function() {
                         // console.log(Math.abs(result)+'seattime')
                         // console.log(moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")+'hr')
                         //     value=`-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
-                    $.ajax({
-                    url: base_url+"admin/secretary/updateattendancenegative",
-                    type: "POST",
-                    dataType: "json",
+                    // $.ajax({
+                    // url: base_url+"admin/secretary/updateattendancenegative",
+                    // type: "POST",
+                    // dataType: "json",
                     
-                    data: ({[csrfName]: csrfHash,id:AttendanceID,data:value}),
-                    }).done(function (data){
+                    // data: ({[csrfName]: csrfHash,id:AttendanceID,data:value}),
+                    // }).done(function (data){
                         
-                    }) 
+                    // }) 
                    // return `-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
                 }
             },//Period Negative Seat Time            
