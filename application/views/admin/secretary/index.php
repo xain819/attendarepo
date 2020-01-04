@@ -219,185 +219,192 @@ $(document).ready(function() {
             { data: 'PeriodID' },
      
             { data: null,
-            render:function(data){
-                var st=`${data.AttendanceDate} ${data.PeriodEndTime}`;
-                var now= new Date();
+                render:function(data){
+                    var st=`${data.AttendanceDate} ${data.PeriodEndTime}`;
+                    var now= new Date();
 
-                var period_end=new Date(st);
-                if (now>period_end && data.AttendanceTime==''){
-                    return 'EOP';
-                }
-                else{return data.AttendanceTime}
+                    var period_end=new Date(st);
+                    if (now>period_end && data.AttendanceTime==''){
+                        return 'EOP';
+                    }
+                    else{return data.AttendanceTime}
 
-            
-            } },
-            { data: null,
-            render:function(data){
-                var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
-               // const ti=new Date(data.DateCreated).getTime();
-               const now=new Date().getTime();
-               
-               
-                const noww=moment(data.AttendanceTime).add(5,'minutes').format('HH:mm:ss');
-                console.log(data.AttendanceTime+'aaaaa')
-                //var d = moment.duration(data.AttendanceDate.diff(start));
-                //console.log(moment(noww).add(5, 'minutes')+"ssss")
-                const period_end=new Date(`${data.AttendanceDate} ${data.PeriodEndTime}`).getTime();
-                let eop=0;
-                if (now>period_end && data.AttendanceTime==''){
-                   eop = 1;
-                }
                 
-
-
-
-                var class_swipe=new Date(st).getTime();
-                
-                const mot_time = (new Date(data.DateCreated).getTime()+5*60*1000)- class_swipe;
-               
-                function secondsToHms(d) {
-                    d = Number(d);
-
-                    var h = Math.floor(d / 3600);
-                    var m = Math.floor(d % 3600 / 60);
-                    var s = Math.floor(d % 3600 % 60);
-
-                    return ('0' + h).slice(-2) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
-                 }
-                 if(eop==1){
-                    return '--:--';
-                 }   
-                 else if (mot_time<0 & eop==0){
-                   
-                    const mot_pass=secondsToHms(Math.abs(mot_time)/(1000));
-                    return  `-${mot_pass}`;
-                    
-                }
-                else{
-                    const mot_pass=secondsToHms(mot_time/(1000));
-                    return mot_pass;
-                }
-
-                    
-             
-            } },
-
-            
+                } 
+            },//Class Swipe
             { data: null,
-
-            render:function(data){
-                const allowed_time=new Date(`${data.DateCreated}`).getTime()+(5*60000);
-                const swipe_time=new Date(`${data.AttendanceDate} ${data.AttendanceTime}`).getTime();
-                const is_late=allowed_time-swipe_time;
-                const letter_number=parseInt(data.appointment)+parseInt(data.emergency)+parseInt(data.other);
+                render:function(data){
+                    var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
+                // const ti=new Date(data.DateCreated).getTime();
                 const now=new Date().getTime();
-                const period_end=new Date(`${data.AttendanceDate} ${data.PeriodEndTime}`).getTime();
-                let eop=0;
-                if (now>period_end && data.AttendanceTime==''){
-                   eop = 1;
-                }
- 
-                if(letter_number>=1 && is_late>=0 && eop==0) {
-                           
-                        return data.PeriodID;
-    
-                }
+                    const period_end=new Date(`${data.AttendanceDate} ${data.PeriodEndTime}`).getTime();
+                    let eop=0;
+                    if (now>period_end && data.AttendanceTime==''){
+                    eop = 1;
+                    }
+                    
+                    var class_swipe=new Date(st).getTime();
+                    
+                    const mot_time = (new Date(data.DateCreated).getTime()+5*60*1000)- class_swipe;
                 
-               else{ return '--';}
-            } },
-            { data: null,
-            render:function(data){
-                
-               
-                const allowed_time=new Date(`${data.DateCreated}`).getTime()+5*60000;
-                const swipe_time=new Date(`${data.AttendanceDate} ${data.AttendanceTime}`).getTime();
-                const letter_number=parseInt(data.appointment)+parseInt(data.emergency)+parseInt(data.other);
-                const is_late=swipe_time-allowed_time;
-                    const now=new Date().getTime();
-                 const period_end=new Date(`${data.AttendanceDate} ${data.PeriodEndTime}`).getTime();
-                var eop=0;
-               
-                if (now>period_end && data.AttendanceTime==''){
-                   eop = 1;  
-                }
-               
-                if(letter_number<=0 && eop!=1 ) {
+                    function secondsToHms(d) {
+                        d = Number(d);
+
+                        var h = Math.floor(d / 3600);
+                        var m = Math.floor(d % 3600 / 60);
+                        var s = Math.floor(d % 3600 % 60);
+
+                        return ('0' + h).slice(-2) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
+                    }
+                    if(eop==1){
+                        return '--:--';
+                    }   
+                    else if (mot_time<0 & eop==0){
+                    
+                        const mot_pass=secondsToHms(Math.abs(mot_time)/(1000));
+                        return  `-${mot_pass}`;
+                        
+                    }
+                    else{
+                        const mot_pass=secondsToHms(mot_time/(1000));
+                        return mot_pass;
+                    }
 
                         
-                           return data.PeriodID;
-    
-                       }
-                else if(eop==1){
-                    return '--';
-
-                }
-                 else if(is_late<0){
-                    return data.PeriodID;
-
-                }
-            
-
-         
-                       else{ return '--';}
-             
                 
-            } },
-            {data: null,
-                 render:function(data){
-               
-
-                        var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
-                        var p_end=`${data.AttendanceDate} ${data.PeriodEndTime}`;
-                        var p_start=`${data.AttendanceDate} ${data.PeriodStartTime}`;
-                  
-                        var now= new Date();
-
-                        var period_end=new Date(st);
-              
+                } 
+            },//MOP
+            { data: null,
+                render:function(data){
+                    const allowed_time=new Date(`${data.DateCreated}`).getTime()+(5*60000);
+                    const swipe_time=new Date(`${data.AttendanceDate} ${data.AttendanceTime}`).getTime();
+                    const is_late=allowed_time-swipe_time;
+                    const letter_number=parseInt(data.appointment)+parseInt(data.emergency)+parseInt(data.other);
+                    const now=new Date().getTime();
+                    const period_end=new Date(`${data.AttendanceDate} ${data.PeriodEndTime}`).getTime();
+                    let eop=0;
+                    if (now>period_end && data.AttendanceTime==''){
+                    eop = 1;
+                    }
+    
+                    if(letter_number>=1 && eop==0) {
+                            
+                            return data.PeriodID;
+        
+                    }
                     
-                        var class_swipe=new Date(st).getTime();
-
-                        var mot_time = new Date(data.DateCreated).getTime();
-                        var end_time= new Date(p_end).getTime();
-                        var start_time= new Date(p_start).getTime();
-                        var seat_time=(end_time-start_time)/(1000*60);  // 1minute
-                      
-                        var missed_period=(class_swipe-start_time)-5*60*1000; // 
-                     
-//kapag late pumasok maglogin sa sec
-                        var allowed_time =parseInt('5')*60*1000;
-                        console.log(allowed_time)
-                        if(data.appointment==='1' || data.emergency==='1'|| data.other==='1' ) {
-                           
-                            missed_period=0;
-                 
-                        }
-
-                        var s=((mot_time+allowed_time)-class_swipe-missed_period)/(1000*60);
-
-                        if (s >=0 && data.AttendanceTime!='' ){
-                            var result='--';}
-                        else if(s<0 && s>=-1*seat_time){
-
-                            var result=s;
-                        } 
-                        else{
+                else{ return '--';}
+                } 
+            },//Period Excused Tardy
+            { data: null,
+                render:function(data){
                     
-                            if (now>period_end && data.AttendanceTime==''){
-                                var result=-seat_time;
-                            }
-                            else{   
-                          
-                                var result=-seat_time;
-                             }  
+                
+                    const allowed_time=new Date(`${data.DateCreated}`).getTime()+5*60000;
+                    const swipe_time=new Date(`${data.AttendanceDate} ${data.AttendanceTime}`).getTime();
+                    const letter_number=parseInt(data.appointment)+parseInt(data.emergency)+parseInt(data.other);
+                    const is_late=swipe_time-allowed_time;
+                        const now=new Date().getTime();
+                    const period_end=new Date(`${data.AttendanceDate} ${data.PeriodEndTime}`).getTime();
+                    var eop=0;
+
+                    if(letter_number<=0){
+                        if (now>period_end && data.AttendanceTime==''){
+                        eop = 1;  
                         }
+                    
+                        if(letter_number<=0 && eop!=1 ) {
 
-                       console.log(Math.abs(result)+'seattime')
-                     console.log(moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")+'hr') 
-                return `-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
-            }},
-
+                                //return '1';
+                            return data.PeriodID;
             
+                            }
+                        else if(eop==1){
+                            return '--';
+
+                        }
+                        else if(is_late<0){
+                            //return '2';
+                            return data.PeriodID;
+
+                        }
+                    
+
+                
+                            else{ return '--';}
+                    }else{
+                        return '--';
+                    }
+                    
+                
+                    
+                } 
+            },//Period Unexcused Tardy
+            {data: null,
+                render:function(data){
+                
+                            var AttendanceID=data.AttendanceID
+                            var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
+                            var p_end=`${data.AttendanceDate} ${data.PeriodEndTime}`;
+                            var p_start=`${data.AttendanceDate} ${data.PeriodStartTime}`;
+                    
+                            var now= new Date();
+
+                            var period_end=new Date(st);
+                
+                        
+                            var class_swipe=new Date(st).getTime();
+
+                            var mot_time = new Date(data.DateCreated).getTime();
+                            var end_time= new Date(p_end).getTime();
+                            var start_time= new Date(p_start).getTime();
+                            var seat_time=(end_time-start_time)/(1000*60);  // 1minute
+                        
+                            var missed_period=(class_swipe-start_time)-5*60*1000; // 
+                        
+                            //kapag late pumasok maglogin sa sec
+                            var allowed_time =parseInt('5')*60*1000;
+                            console.log(allowed_time)
+                            if(data.appointment==='1' || data.emergency==='1'|| data.other==='1' ) {
+                            
+                                missed_period=0;
+                    
+                            }
+
+                            var s=((mot_time+allowed_time)-class_swipe-missed_period)/(1000*60);
+
+                            if (s >=0 && data.AttendanceTime!='' ){
+                                var result='--';}
+                            else if(s<0 && s>=-1*seat_time){
+
+                                var result=s;
+                            } 
+                            else{
+                        
+                                if (now>period_end && data.AttendanceTime==''){
+                                    var result=-seat_time;
+                                }
+                                else{   
+                            
+                                    var result=-seat_time;
+                                }  
+                            }
+
+                        // console.log(Math.abs(result)+'seattime')
+                        // console.log(moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")+'hr')
+                            value=`-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
+                    $.ajax({
+                    url: base_url+"admin/secretary/updateattendancenegative",
+                    type: "POST",
+                    dataType: "json",
+                    
+                    data: ({[csrfName]: csrfHash,id:AttendanceID,data:value}),
+                    }).done(function (data){
+                        
+                    }) 
+                    return `-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
+                }
+            },//Period Negative Seat Time            
             { "data":null,
                 render:function(data, type,row){
                     var is_checked='';
@@ -407,7 +414,7 @@ $(document).ready(function() {
                     class="tgl tgl-ios tgl_checkbox" data-size="small" />
                     `;
                 }
-            },
+            },//Appointment
             { "data":null,
                 render:function(data, type,row){
                     var is_checked='';
@@ -417,7 +424,7 @@ $(document).ready(function() {
                     class="tgl tgl-ios tgl_checkbox" data-size="small" />
                     `;
                 }
-            },
+            },//Emergency
             { "data":null,
                 render:function(data, type,row){
                     var is_checked='';
@@ -427,22 +434,21 @@ $(document).ready(function() {
                     class="tgl tgl-ios tgl_checkbox" data-size="small" />
                     `;
                 }
-            },
-   
-         
-            
+            },//Other
             { data: null,
-            render:function(data){
-              
-              
-                return 'period_excused'
-            } },
+                render:function(data){
+                
+                
+                    return 'period_excused'
+                } 
+            },//Period Excused Absent
             { data: null,
-            render:function(data){
-              
-              
-                return 'period_unexcused'
-            } },
+                render:function(data){
+                
+                
+                    return 'period_unexcused'
+                }
+            },//Period excused
 
             { data: 'comments' }
           
