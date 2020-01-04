@@ -39,7 +39,7 @@ button.btn-space {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script> -->
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <div class=" card box-body" style='padding:20px;'>
 <div class=' col-xl-12 table-responsive' style="padding:20px;">
@@ -190,6 +190,7 @@ $(document).ready(function() {
 
     } );
     var ad='tst';
+    var aa='';
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
     var a= $('#classes').DataTable( {
@@ -539,16 +540,19 @@ $(document).ready(function() {
             },//Other
             { data: null,
                 render:function(data){
-                
+                   
+                   return `<button  value=${data.student_local_id} class="displayexcused btn btn-sm btn-warning">view</button>`;
+                 
+                    //console.log(aa)
                 //    const letter_number=parseInt(data.appointment)+parseInt(data.emergency)+parseInt(data.other);
-                    return ad;
+                  
                 } 
             },//Period Excused Absent
             { data: null,
                 render:function(data){
                 
                 
-                    return 'period_unexcused'
+                    return `<button  value=${data.student_local_id} class="displayunexcused btn btn-sm btn-warning">view</button>`;
                 }
             },//Period excused
 
@@ -635,6 +639,33 @@ $(document).ready(function() {
     alert( 'New row added' );
 } );
     
-});
 
+$(document).on('click','.displayexcused',function(){
+    id=$(this).val();
+        $.ajax({
+            url: base_url+"admin/secretary/get_period_excused_tardy",
+            type: "POST",
+            dataType: "json",
+            data: ({[csrfName]: csrfHash,id:id}),
+        })
+        .done(function (data) {
+            swal(data);
+        })
+        
+    })
+
+$(document).on('click','.displayunexcused',function(){
+    id=$(this).val();
+        $.ajax({
+            url: base_url+"admin/secretary/get_period_unexcused_tardy",
+            type: "POST",
+            dataType: "json",
+            data: ({[csrfName]: csrfHash,id:id}),
+        })
+        .done(function (data) {
+            swal(data);
+        })
+        
+})
+});
 </script>

@@ -25,6 +25,46 @@
 			echo json_encode('success');
 	
 		}
+		public function get_period_excused_tardy(){
+			
+			$sql="SELECT * FROM `class_list` as a LEFT JOIN attendance as b ON a.class_id=b.class_id where student_local_id=?";
+			$query=$this->db->query($sql,array($this->input->post('id')));
+			$period=[];
+			foreach ($query->result() as  $value) {
+				$period[]=$value->period_number;
+			}
+			$myperiod='';
+			$count=0;
+			foreach (array_unique($period) as  $value) {
+				if($count==0){
+					$myperiod.=$value;
+				}else{
+					$myperiod.=', '.$value;
+				}
+				$count++;
+			}
+			 echo json_encode($myperiod);
+		}
+		public function get_period_unexcused_tardy(){
+			
+			$sql="SELECT * FROM `class_list` as a LEFT JOIN attendance as b ON a.class_id=b.class_id where student_local_id=?";
+			$query=$this->db->query($sql,array($this->input->post('id')));
+			$period=[];
+			foreach ($query->result() as  $value) {
+				$period[]=$value->period_number;
+			}
+			$myperiod='';
+			$count=0;
+			foreach (array_unique($period) as  $value) {
+				if($count==0){
+					$myperiod.=$value;
+				}else{
+					$myperiod.=', '.$value;
+				}
+				$count++;
+			}
+			 echo json_encode($myperiod);
+		}
 		public function student_rosters(){
 			$data['title'] = 'Teacher Information';
 			$data['view'] = 'admin/teacherinformation/student_rosters';
