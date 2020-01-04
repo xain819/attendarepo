@@ -189,6 +189,7 @@ $(document).ready(function() {
         console.log( editor.inline( this ));
 
     } );
+    var ad='tst';
     //lumalabas nman na kaso may error na 403
     //not allowed daw try ko sir.mag import felling ko sa 
     var a= $('#classes').DataTable( {
@@ -261,6 +262,7 @@ $(document).ready(function() {
                         var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
                         var p_end=`${data.AttendanceDate} ${data.PeriodEndTime}`;
                         var moptime=`${data.AttendanceDate} 00:05:00`;
+                        var isneg='';
                         if(data.PeriodEndTime==null){
                             return `00:05:00`;
                         }else{
@@ -268,8 +270,13 @@ $(document).ready(function() {
                             var value = moment.utc(moment(p_end, "HH:mm:ss").diff(moment(st, "HH:mm:ss"))).format("HH:mm:ss")
 
                             var a=`${data.AttendanceDate} ${value}`
+                            if(a>moptime){
+                                isneg='-'
+                            }else{
+                                isneg='+'
+                            }
                             total= moment.utc(moment(a, "HH:mm:ss").diff(moment(moptime, "HH:mm:ss"))).format("HH:mm:ss")
-                            return `-${total} `;
+                            return `${isneg}${total} `;
                         }
                        // return '--:--';
                     }else{
@@ -282,10 +289,16 @@ $(document).ready(function() {
                         }else{
                            
                             var value = moment.utc(moment(st, "HH:mm:ss").diff(moment(p_end, "HH:mm:ss"))).format("HH:mm:ss")
-
+                            var isneg='';
                             var a=`${data.AttendanceDate} ${value}`
+                            if(a> moptime){
+                                isneg='-'
+                            }else{
+                                isneg='+'
+                            }
+
                             total= moment.utc(moment(moptime, "HH:mm:ss").diff(moment(a, "HH:mm:ss"))).format("HH:mm:ss")
-                            return `+${total}`;
+                            return `${isneg}${total}`;
                         }
                        
 
@@ -527,8 +540,8 @@ $(document).ready(function() {
             { data: null,
                 render:function(data){
                 
-                
-                    return 'period_excused'
+                //    const letter_number=parseInt(data.appointment)+parseInt(data.emergency)+parseInt(data.other);
+                    return ad;
                 } 
             },//Period Excused Absent
             { data: null,
