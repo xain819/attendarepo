@@ -261,11 +261,11 @@ $(document).ready(function() {
                         var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
                         var p_end=`${data.AttendanceDate} ${data.PeriodEndTime}`;
                         var moptime=`${data.AttendanceDate} 00:05:00`;
-                        if(data.attendance_time_mot==null){
+                        if(data.PeriodEndTime==null){
                             return `00:05:00`;
                         }else{
                            
-                            var value = moment.utc(moment(st, "HH:mm:ss").diff(moment(p_end, "HH:mm:ss"))).format("HH:mm:ss")
+                            var value = moment.utc(moment(p_end, "HH:mm:ss").diff(moment(st, "HH:mm:ss"))).format("HH:mm:ss")
 
                             var a=`${data.AttendanceDate} ${value}`
                             total= moment.utc(moment(a, "HH:mm:ss").diff(moment(moptime, "HH:mm:ss"))).format("HH:mm:ss")
