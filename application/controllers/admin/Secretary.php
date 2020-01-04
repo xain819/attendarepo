@@ -27,11 +27,13 @@
 		}
 		public function get_period_excused_tardy(){
 			
-			$sql="SELECT * FROM `class_list` as a LEFT JOIN attendance as b ON a.class_id=b.class_id where student_local_id=?";
+			$sql="SELECT * FROM `class_list` as a LEFT JOIN attendance as b ON a.class_id=b.class_id where student_local_id=? AND (b.appointment =1 OR b.emergency=1 OR b.other=1 )";
 			$query=$this->db->query($sql,array($this->input->post('id')));
 			$period=[];
 			foreach ($query->result() as  $value) {
+
 				$period[]=$value->period_number;
+
 			}
 			$myperiod='';
 			$count=0;
@@ -47,7 +49,7 @@
 		}
 		public function get_period_unexcused_tardy(){
 			
-			$sql="SELECT * FROM `class_list` as a LEFT JOIN attendance as b ON a.class_id=b.class_id where student_local_id=?";
+			$sql="SELECT * FROM `class_list` as a LEFT JOIN attendance as b ON a.class_id=b.class_id where student_local_id=? AND (b.appointment =0 OR b.emergency=0 OR b.other=0 )";
 			$query=$this->db->query($sql,array($this->input->post('id')));
 			$period=[];
 			foreach ($query->result() as  $value) {

@@ -551,8 +551,9 @@ $(document).ready(function() {
             { data: null,
                 render:function(data){
                 
-                
+                    
                     return `<button  value=${data.student_local_id} class="displayunexcused btn btn-sm btn-warning">view</button>`;
+                   // document.getElementsByClassName("displayunexcused").click(); 
                 }
             },//Period excused
 
@@ -649,7 +650,7 @@ $(document).on('click','.displayexcused',function(){
             data: ({[csrfName]: csrfHash,id:id}),
         })
         .done(function (data) {
-            swal(data);
+            swal('Excused '+'  ('+data+')');
         })
         
     })
@@ -663,7 +664,7 @@ $(document).on('click','.displayunexcused',function(){
             data: ({[csrfName]: csrfHash,id:id}),
         })
         .done(function (data) {
-            swal(data);
+            swal('Unexcused '+'  ('+data+')');
         })
         
 })
