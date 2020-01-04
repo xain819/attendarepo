@@ -247,17 +247,31 @@ $(document).ready(function() {
                     
                     const mot_time = (new Date(data.DateCreated).getTime()+5*60*1000)- class_swipe;
                 
-                    function secondsToHms(d) {
-                        d = Number(d);
+                    // function secondsToHms(d) {
+                    //     d = Number(d);
 
-                        var h = Math.floor(d / 3600);
-                        var m = Math.floor(d % 3600 / 60);
-                        var s = Math.floor(d % 3600 % 60);
+                    //     var h = Math.floor(d / 3600);
+                    //     var m = Math.floor(d % 3600 / 60);
+                    //     var s = Math.floor(d % 3600 % 60);
 
-                        return ('0' + h).slice(-2) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
-                    }
+                    //     return ('0' + h).slice(-2) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
+                    // }
                     if(eop==1){
-                        return '--:--';
+                        //mot-attendance
+                        var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
+                        var p_end=`${data.AttendanceDate} ${data.attendance_time_mot}`;
+                        var moptime=`${data.AttendanceDate} 00:05:00`;
+                        if(data.attendance_time_mot==null){
+                            return `00:05:00`;
+                        }else{
+                           
+                            var value = moment.utc(moment(st, "HH:mm:ss").diff(moment(p_end, "HH:mm:ss"))).format("HH:mm:ss")
+
+                            var a=`${data.AttendanceDate} ${value}`
+                            total= moment.utc(moment(a, "HH:mm:ss").diff(moment(moptime, "HH:mm:ss"))).format("HH:mm:ss")
+                            return `-${total} `;
+                        }
+                       // return '--:--';
                     }else{
                         //mot-attendance
                         var st=`${data.AttendanceDate} ${data.AttendanceTime}`;
@@ -268,9 +282,10 @@ $(document).ready(function() {
                         }else{
                            
                             var value = moment.utc(moment(st, "HH:mm:ss").diff(moment(p_end, "HH:mm:ss"))).format("HH:mm:ss")
+
                             var a=`${data.AttendanceDate} ${value}`
                             total= moment.utc(moment(moptime, "HH:mm:ss").diff(moment(a, "HH:mm:ss"))).format("HH:mm:ss")
-                            return `${total}`;
+                            return `+${total}`;
                         }
                        
 
@@ -361,6 +376,7 @@ $(document).ready(function() {
 
                     // parse time using 24-hour clock and use UTC to prevent DST issues
                     var a='';
+                    var AttendanceID=data.AttendanceID;
                     if(data.AttendanceTime==''){
                         a= moment.utc(data.attendance_time_mot, "HH:mm:ss");
                     }else{
@@ -378,8 +394,8 @@ $(document).ready(function() {
              
 
                     // format a string result
-                    var s = moment.utc(+d).format('H:mm:ss');
-                    return `-${s}`;
+                    var value = moment.utc(+d).format('H:mm:ss');
+                    return `-${value}`;
 
                 //     const endTime = moment(data.AttendanceTime, 'HH:mm:ss')
                 //     const startTime = moment(data.PeriodStartTime, 'HH:mm:ss')
@@ -456,15 +472,15 @@ $(document).ready(function() {
                         // console.log(Math.abs(result)+'seattime')
                         // console.log(moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")+'hr')
                         //     value=`-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
-                    // $.ajax({
-                    // url: base_url+"admin/secretary/updateattendancenegative",
-                    // type: "POST",
-                    // dataType: "json",
+                    $.ajax({
+                    url: base_url+"admin/secretary/updateattendancenegative",
+                    type: "POST",
+                    dataType: "json",
                     
-                    // data: ({[csrfName]: csrfHash,id:AttendanceID,data:value}),
-                    // }).done(function (data){
+                    data: ({[csrfName]: csrfHash,id:AttendanceID,data:value}),
+                    }).done(function (data){
                         
-                    // }) 
+                    }) 
                    // return `-${moment("1900-01-01 00:00:00").add(Math.abs(result), 'minutes').format("HH:mm:ss")}`
                 }
             },//Period Negative Seat Time            
