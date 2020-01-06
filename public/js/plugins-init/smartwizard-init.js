@@ -15,10 +15,17 @@
             $("#next-btn").removeClass('disabled');
         }
     });
-
+    function getformvalues($dataform){
+        var inputarray=[];
+        data=$($dataform).serializeArray();
+        $.each(data, function(i, field){
+         inputarray[i]= field.value ;
+        });
+        return inputarray;
+    }
     // Toolbar extra buttons
     var btnFinish = $('<button></button>').text('Finish').addClass('btn btn-info').on('click', function(){
-         alert('Thanks for submiting!'); 
+        
     });
     var btnCancel = $('<button></button>').text('Cancel').addClass('btn btn-danger').on('click', function(){
          $('#smartwizard1').smartWizard("reset"); 
@@ -32,7 +39,7 @@
         showStepURLhash: true,
         toolbarSettings: {
             toolbarButtonPosition: 'end',
-            toolbarExtraButtons: [btnFinish, btnCancel]
+            toolbarExtraButtons: ''
         }
     });
 

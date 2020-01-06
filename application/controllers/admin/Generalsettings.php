@@ -184,7 +184,39 @@
 				
 			echo json_encode($scheduletypee);
 		}
+	public function insert_schoolsettings(){
+		$this->db->insert('school_settings',$this->input->post('data'));
+		echo json_encode('success');
+	}
+	public function update_system_setting(){
 	
+		$data=($this->input->post('data'));
+		$this->update_setting($data['SchoolName'],'SchoolName');
+		$this->update_setting($data['Email'],'Email');
+		$this->update_setting($data['PhoneNumber'],'PhoneNumber');
+		$this->update_setting($data['Address'],'Address');
+		
+		echo json_encode('success');
+		
+		
+	}
+	public function update_setting($data,$setting){
+		$sql="Update setting Set Value=? WHERE Setting=?";
+		$query=$this->db->query($sql,array($data,$setting));
+	
+	}
+	public function get_setting(){
+		$data['SchoolName']=$this->get_systemsetting_by_setting_name('SchoolName')['Value'];
+		$data['Email']=$this->get_systemsetting_by_setting_name('Email')['Value'];
+		$data['PhoneNumber']=$this->get_systemsetting_by_setting_name('PhoneNumber')['Value'];
+		$data['Address']=$this->get_systemsetting_by_setting_name('Address')['Value'];
+		echo json_encode($data);
+	}
+	public function get_systemsetting_by_setting_name($name){
+		$sql="SELECT * FROM setting WHERE Setting=? ";
+		$query=$this->db->query($sql,array($name));
+		return $query->row_array();
+	}
 		
 	}
 
