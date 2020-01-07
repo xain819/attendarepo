@@ -348,7 +348,7 @@
                 <option class="bg-blue" value="bg-blue">bg-blue</option>
                 <option class="bg-light" value="bg-light">bg-light</option>
                 <option class="bg-teal" value="bg-teal">bg-teal</option>
-                <option class="bg-yellowvalue="bg-yellow">bg-yellow</option>
+                <option class="bg-yellowvalue" value="bg-yellow">bg-yellow</option>
                 <option class="bg-orange" value="bg-orange">bg-orange</option>
                 <option class="bg-green" value="bg-green">bg-green</option>
                 <option class="bg-lime" value="bg-lime">bg-lime</option>

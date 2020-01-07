@@ -17,7 +17,7 @@
     </div>
   </div>
 
-   <div class="box">
+  <div class="box">
     <div class="box-header">
     </div>
     <!-- /.box-header -->

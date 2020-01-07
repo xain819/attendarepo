@@ -217,6 +217,11 @@
 		$query=$this->db->query($sql,array($name));
 		return $query->row_array();
 	}
+	public function get_scheduletype(){
+		$sql="SELECT * FROM scheduletype ";
+		$query=$this->db->query($sql)->result();
+		echo json_encode($query);
+	}
 		
 	}
 

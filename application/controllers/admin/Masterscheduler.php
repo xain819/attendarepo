@@ -369,6 +369,18 @@
 			echo json_encode($data['import']);
 	
 		}
+		public function get_period(){
+			echo json_encode($this->db->query("SELECT * FROM period")->result());
+		}
+		public function delete_period(){
+			$sql='DELETE FROM period WHERE PeriodID=?';
+			$this->db->query($sql,array($this->input->post('data')));
+			echo json_encode(true);
+		}
+		public function add__period(){
+			$this->db->insert('period',$this->input->post('data'));
+			echo json_encode(true);
+		}
 
 		
 	}
