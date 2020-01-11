@@ -5,12 +5,17 @@
 
     // Step show event
     $("#smartwizard1").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
-        //alert("You are on step "+stepNumber+" now");
+        res =  window.location.href.split("/");
+        checkstep=( '#'+res[6].split('#')[1]);
+      
         if(stepPosition === 'first'){
             $("#prev-btn").addClass('disabled');
         }else if(stepPosition === 'final'){
+           // alert("You are on step "+stepPosition+" now");
+           
             $("#next-btn").addClass('disabled');
         }else{
+           
             $("#prev-btn").removeClass('disabled');
             $("#next-btn").removeClass('disabled');
         }
@@ -52,12 +57,14 @@
 
     $("#prev-btn").on("click", function() {
         // Navigate previous
+       
         $('#smartwizard1').smartWizard("prev");
         return true;
     });
 
     $("#next-btn").on("click", function() {
-        // Navigate next
+        // Navigate nextme
+      
         $('#smartwizard1').smartWizard("next");
         return true;
     });

@@ -414,6 +414,19 @@
                                             </div>
                                         </div>
                                     </li>
+                                    <li><a href="#step-7">07</a>
+                                        <div class="form-wizard-content">
+                                            <div class="form-wizard-content-upper">
+                                                <img src="../../assets/images/avatar/10.png" alt="">
+                                                <h4>General Setting</h4>
+                                                <p>Setup your general Settings here</p>
+                                            </div>
+                                            <div class="form-wizard-content-bottom">
+                                                <h4>(+1)408-657-9007</h4>
+                                                <a href="mailto:support@pocketprincipal.com">support@pocketprincipal.com</a>
+                                            </div>
+                                        </div>
+                                    </li>
                                 </ul>
                                 <!-- </div> -->
                                 <div id="abc" class="form-wizard-right">
@@ -604,30 +617,389 @@
 
                                     </div>
                                     <div id="step-6" class="">
-                                    <div class="card box-body" style='padding:20px;'>
+                                        <div class="card box-body" style='padding:20px;'>
 
-                                    <table id="example" class="display" style="width:100%">
-                                            <thead>
-                                                <tr>
+                                        <table id="example" class="display" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                            
+                                                        <th>ID</th>
+                                                        <th>COURSE GROUP</th>
+                                                        <th>COURSE CODE</th>
+
+                                                        <th>SHORT DESCRIPTION</th>
+                                                        <th>COURSE DESCRIPTION</th>
+                                                        <th>GRADE LEVEL</th>
+                                                        <th>CREDITS</th>
+                                                        <th>CREDITS</th>
+                                                    
+                                            
+                                                    
+                                                    </tr>
+                                                </thead>
                                         
-                                                    <th>ID</th>
-                                                    <th>COURSE GROUP</th>
-                                                    <th>COURSE CODE</th>
+                                            </table>
+                                        </div> 
 
-                                                    <th>SHORT DESCRIPTION</th>
-                                                    <th>COURSE DESCRIPTION</th>
-                                                    <th>GRADE LEVEL</th>
-                                                    <th>CREDITS</th>
-                                                    <th>CREDITS</th>
-                                                
-                                          
-                                                
-                                                </tr>
-                                            </thead>
-                                      
-                                        </table>
-                                    </div> 
+                                    </div>
+                                    <div id="step-7" class="">
+                                        <div id='master_list' class="row">
+                                        </div>
+                                        <div class="modal fade bd-example-modal-lg " id="ahpf" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content"  style="background-color:#f3f6f9;" >
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Hallpass Settings</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body " >
+                                                        <div class='row' id="hallpass_list_item">
+                                                            <div class="col-xl-6">
+                                                                <div class="card transparent-card ">
+                                                                    <div class="card-header pb-0">
+                                                                        <h5 class="card-title mb-3">Administrative Hall Pass</h5>
+                                                                    </div>
+                                                                    <div class="card-body p-0">
+                                                                        <div class="table-responsive">
+                                                                            <table id="ahp" class="table trading-activity table-padded table-responsive-fix">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>action</th>
+                                                                                        <th>AHP Type</th>
+                                                                                        <th>Time Allocated</th>
+                                                                                        <th>Status</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody id="table_ahp1">
 
+                                                                                    
+                                                                                
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                            <div class="col-xl-6">
+                                                                <div class="card transparent-card ">
+                                                                    <div class="card-header pb-0">
+                                                                        <h5 class="card-title mb-3">Non Administrative Hall Pass</h5>
+                                                                    
+                                                                    </div>
+                                                                    <div class="card-body p-0">
+                                                                        <div class="table-responsive">
+                                                                            <table id='nhp' class="table trading-activity table-padded table-responsive-fix">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                    <th>action</th>
+                                                                                    <th>AHP Type</th>
+                                                                                    <th>Time Allocated</th>
+                                                                                    <th>Status</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody id='table_nhp1'>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicModal">Add Hall Pass</button>
+                                                            <!-- Modal -->
+                                                            <div class="modal"   id="basicModal">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title">Add Hall Pass</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                        <form role="form" id="add_hallpass_form_id">
+                                                                            <div class="form-group">
+                                                                                <input type="text" id='hallpassname' name="hallpassname" class="form-control" placeholder="hall pass name" >
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <input type="text" id='hallpasstime' name="hallpasstime" class="form-control" placeholder="minutes" >
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <select id="hallpasstype">
+                                                                                    <option value="1">Administrative</option>
+                                                                                    <option value="2">None Administrative</option>
+                                                                                </select>
+                                                                            </div>       
+                                                                        </form>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class='add_hallpass' id='add_hallpass' class="btn btn-primary">Save changes</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bootstrap-modal">
+
+                                            <!-- Modal for period grace period -->
+
+                                            <!-- Modal -->
+                                            <div class="modal fade bd-example-modal-lg " id="pgt">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Enter Period Time</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        <form role="form" id="frm_time">
+                                                                <div class="form-group">
+                                                                    <input type="text" id='gracetime' name="gracetime" class="form-control" value='5' placeholder="Minutes" required>
+                                                                </div>
+                                                            </form>
+
+
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                                <button type="button"  id='btn-pgt'  class=" btn-pgt btn btn-sm btn-primary">Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bootstrap-modal">
+
+                                            <!-- Modal for -->
+
+                                            <!-- Modal -->
+                                            <div class="modal fade bd-example-modal-lg " id="Hall">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Enter Period Time</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        <form role="form" id="frm_time">
+                                                                <div class="form-group">
+                                                                    <input type="text" id='gracetime' name="gracetime" class="form-control" placeholder="Minutes" required>
+                                                                </div>
+                                                            </form>
+
+
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                                <button type="button" class='btn-pgt' id='btn-pgt'  class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bootstrap-modal">
+
+                                            <!-- Modal for -->
+
+                                            <!-- Modal -->
+                                            <div class="modal fade bd-example-modal-lg " id="nql">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Enter Passes Per Student</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        <form role="form" id="frm_2whp">
+                                                                <div class="form-group">
+                                                                    <input type="text" id='nql-limit' name="nql" class="form-control" placeholder="Number" required>
+                                                                </div>
+                                                                <select class="select2-width-50" id='select-type' style="width: 100%">
+                                                            
+                                                                        <option value="Day">Day </option>
+                                                                <option value="Week">Week</option>
+                                                                <option value="Marking Period">Marking Period</option>
+                                                                <option value="Semester">Semester</option>
+                                                                </select>
+                                                            </form>
+
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                                <button type="button"  id='btn-2whp'  class=" btn-2whp btn btn-sm btn-primary">Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade bd-example-modal-lg " id="hplt">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Hall Pass Lock Time</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <form role="form" id="frm_time">
+                                                            <div class="form-group">
+                                                            <label for="hp_lock_start">Before Start</label>
+                                                                <input type="text" id='hp_lock_start' name="hallpasslimit" class="form-control" placeholder="Before Period:Minutes" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                            <label for="hp_lock_end">Before End</label>
+                                                                <input type="text" id='hp_lock_end' name="hallpasslimit" class="form-control" placeholder="After Period:Minutes" required>
+                                                            </div>
+                                                        </form>
+
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                            <button type="button"  id='btn-hplt' class=" btn-hplt btn btn-sm btn-primary">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade bd-example-modal-lg " id="slac">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Hall Pass Lock Time</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <form role="form" id="frm_time">
+                                                    <div class="form-group">
+
+                                                    <label for="hp_lock_start">Time</label>
+                                                                <input type="text" id='time_in' name="hallpasslimit" class="form-control" placeholder="Before Period:Minutes" required>
+                                                        
+                                                
+                                                        <div class="mb-3">
+                                                                            <select class="select2-width-50" style="width: 100%">
+                                                                            <option value="1">Main Office</option>
+                                                            <option value="2">Current Class</option>
+                                                            <option value="2">Other</option>
+                                                                            </select>
+                                                                        </div>
+                                                    
+
+                                                    
+                                                
+                                                        </form>
+                                                        </div>     
+
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                            <button type="button"  id='btn-nql'  class=" btn-nql btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade bd-example-modal-lg " id="ano">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Additional NHP Override</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <form role="form" id="frm_time">
+                                                            <div class="form-group">
+                                                                <input type="text" id='AddHP' name="AddHP" class="form-control" placeholder="Enter Additional Limit">
+                                                            </div>
+                                                        
+                                                        </form>
+
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                            <button type="button"  id='btn-nql'  class=" btn-nql btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade bd-example-modal-lg " id="tl">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Teacher Limit</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <form role="form" id="frm_time">
+                                                            <div class="form-group">
+                                                                <input type="text" id='addteacherlimit' name="addteacherlimit" class="form-control" placeholder="Enter Teacher Limit">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                            <button type="button " class='btn-nql btn btn-sm btn-primary' id='teacher-limit'  class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade bd-example-modal-lg " id="tt">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">TransitionTime </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <form role="form" id="ttimeform">
+                                                            <div class="form-group">
+                                                                <input type="text" id='addtransitiontime' name="addtransitiontime" class="form-control" placeholder="Enter Transition Time">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                            <button type="button " class='btn-nql btn btn-sm btn-primary' id='transition-time'  class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade bd-example-modal-lg " id="oc">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Other Contoller</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <form role="form" id="frm_time">
+                                                            <div class="form-group">
+                                                                <input type="text" id='AddHP' name="AddHP" class="form-control" placeholder="Enter Additional Limit">
+                                                            </div>
+                                                        
+                                                        </form>
+
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                            <button type="button" class='btn-nql' id='btn-nql'  class="btn btn-sm btn-primary">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- // -->
                                 </div>
@@ -642,14 +1014,14 @@
    
 
 
-            <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
-    <script src="<?=base_url() ?>public/js/custom.min.js"></script>
-    <script src="<?=base_url() ?>public/js/settings.js"></script>
-    <script src="<?=base_url() ?>public/js/gleek.js"></script>
-    <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
-    <script src="<?=base_url() ?>public/dist/js/filterDropDown.min.js"></script>
-    <script src="<?=base_url() ?>public/plugins/yadcf/jquery.dataTables.yadcf.js"></script>
+<script src="<?=base_url() ?>public/js/custom.min.js"></script>
+<script src="<?=base_url() ?>public/js/settings.js"></script>
+<script src="<?=base_url() ?>public/js/gleek.js"></script>
+<script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
+<script src="<?=base_url() ?>public/dist/js/filterDropDown.min.js"></script>
+<script src="<?=base_url() ?>public/plugins/yadcf/jquery.dataTables.yadcf.js"></script>
 
 
 
@@ -680,671 +1052,1152 @@
 
 
 <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
-    <script src="<?=base_url() ?>public/assets/plugins/smartwizard/dist/js/jquery.smartWizard.min.js"></script>
-    <script src="<?=base_url() ?>public/js/plugins-init/smartwizard-init.js"></script>
+<script src="<?=base_url() ?>public/assets/plugins/smartwizard/dist/js/jquery.smartWizard.min.js"></script>
+<script src="<?=base_url() ?>public/js/plugins-init/smartwizard-init.js"></script>
 
-<!-- /////////COURSE/////////// -->
-<script type='text/javascript'>
 
- var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+<script>
+    // res =  window.location.href.split("/");
+    // checkstep=( '#'+res[6].split('#')[1]);
+    
+    var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
         csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
         base_url='<?php echo base_url(); ?>';
-var editor;
+    var editor;
 
-function selectColumns ( editor, csv, header ) {
-    var selectEditor = new $.fn.dataTable.Editor();
-    var fields = editor.order();
-    console.log(selectEditor);
- 
-    for ( var i=0 ; i<fields.length ; i++ ) {
-        var field = editor.field( fields[i] );
-        
- 
-        selectEditor.add( {
-            label: field.label(),
-            name: field.name(),
-            type: 'select',
-            options: header,
-            def: header[i]
-        } );
+    function selectColumns ( editor, csv, header ) {
+        var selectEditor = new $.fn.dataTable.Editor();
+        var fields = editor.order();
+        console.log(selectEditor);
     
-    }
- 
-    selectEditor.create({
-        title: 'Map CSV fields',
-        buttons: 'Import '+csv.length+' records',
-        message: 'Select the CSV column you want to use the data from for each field.'
-    });
- 
-    selectEditor.on('submitComplete', function (e, json, data, action) {
-        // Use the host Editor instance to show a multi-row create form allowing the user to submit the data.
-        editor.create( csv.length, {
-            title: 'Confirm import',
-            buttons: 'Submit',
-            message: 'Click the <i>Submit</i> button to confirm the import of '+csv.length+' rows of data. Optionally, override the value for a field to set a common value by clicking on the field below.'
-        } );
- 
         for ( var i=0 ; i<fields.length ; i++ ) {
             var field = editor.field( fields[i] );
-            var mapped = data[ field.name() ];
- 
-            for ( var j=0 ; j<csv.length ; j++ ) {
-                field.multiSet( j, csv[j][mapped] );
-            }
-        }
-     //   a.ajax.reload();
-    } );
-}
-
- 
-$(document).ready(function() {
-    // Regular editor for the table
-    base_url='<?php echo base_url(); ?>';
-    editor = new $.fn.dataTable.Editor( {
-        ajax: {
-            url: base_url+"admin/academicsettings/check_courses",
-            data:({ [csrfName]: csrfHash}),
-            type:"POST",
-            dataSrc: '',
-            dataType:'JSON'
-       },
-      
-        table: "#example",
-        fields: [ 
-            {
-                label: "ID:",
-                name: "id"
-            },
-            {
-                label: "Course Group:",
-                name: "course_group"
-            },
-            {
-                label: "Course Code:",
-                name: "course_code"
-            },
-            {
-                label: "Short Description:",
-                name: "short_desc"
-            },
-            {
-                label: "Course Description:",
-                name: "course_description"
-            },
-            {
-                label: "Grade Leve:",
-                name: "teacher_name"
-            },
-            {
-                label: "Grade Level:",
-                name: "grade_level"
-            },
-            {
-                label: "Credits:",
-                name: "credits"
-            }
-        
-
-        ]
-        
-    } );
- 
-    //lumalabas nman na kaso may error na 403
-    //not allowed daw try ko sir.mag import felling ko sa 
-    var a= $('#example').DataTable( {
-        dom: 'Bfrtip',
-        ajax: {
-            url: base_url+"admin/academicsettings/get_import_courses",
-            data:({ [csrfName]: csrfHash}),
-            type:"POST",
-            dataSrc: '',
-            dataType:'JSON'
-       },
-        columns: [
-            { data: 'id' },
-            { data: 'course_group' },
-            { data: 'course_code' },
-            { data: 'short_desc' },
-
-            { data: 'course_description' },
-            { data: 'grade_level' },
-            { data: 'credits' },
-            { data:null},
             
-            
-         
-
-          
-        ],
-        select: true,
-        buttons: [
-            { extend: 'create', editor: editor },
-            { extend: 'edit',   editor: editor },
-            { extend: 'remove', editor: editor },
-            {
-                extend: 'csv',
-                text: 'Export CSV',
-                className: 'btn-space',
-                exportOptions: {
-                    orthogonal: null
-                }
-            },
-            {
-                text: 'Import CSV',
-                action: function () {
-                    uploadEditor.create( {
-                        title: 'CSV file import'
-                    } );
-                }
-            },
-            {
-                extend: 'selectAll',
-                className: 'btn-space'
-            },
-            'selectNone',
-        ]
-    });
-    // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
-    var uploadEditor = new $.fn.dataTable.Editor( {
-        fields: [ {
-            label: 'CSV file:',
-            name: 'csv',
-            type: 'upload',
-            ajax: function ( files ) {
-                // Ajax override of the upload so we can handle the file locally. Here we use Papa
-                // to parse the CSV.
-                Papa.parse(files[0], {
-                    header: true,
-                    skipEmptyLines: true,
-                    complete: function (results) {
-                        if ( results.errors.length ) {
-                            console.log( results );
-                            uploadEditor.field('csv').error( 'CSV parsing error: '+ results.errors[0].message );
-                        }
-                        else {
-                            uploadEditor.close();
-                          
-                            selectColumns( editor, results.data, results.meta.fields );
-                            console.log( results.data[0].Firstname );
-                            
-                          
-                        }
-                    }
-                });
-            }
-        } ]
-    } );
-    editor.on('postSubmit', function(event, data, action) {
-        
-     a.ajax.reload();
-    })
-    editor.on( 'create', function ( e, json, data ) {
-    alert( 'New row added' );
-} );
     
-});
-</script>
-
-<!-- /////////Classes//////// -->
-    <script type='text/javascript'>
- var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
-        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
+            selectEditor.add( {
+                label: field.label(),
+                name: field.name(),
+                type: 'select',
+                options: header,
+                def: header[i]
+            } );
+        
+        }
+    
+        selectEditor.create({
+            title: 'Map CSV fields',
+            buttons: 'Import '+csv.length+' records',
+            message: 'Select the CSV column you want to use the data from for each field.'
+        });
+    
+        selectEditor.on('submitComplete', function (e, json, data, action) {
+            // Use the host Editor instance to show a multi-row create form allowing the user to submit the data.
+            editor.create( csv.length, {
+                title: 'Confirm import',
+                buttons: 'Submit',
+                message: 'Click the <i>Submit</i> button to confirm the import of '+csv.length+' rows of data. Optionally, override the value for a field to set a common value by clicking on the field below.'
+            } );
+    
+            for ( var i=0 ; i<fields.length ; i++ ) {
+                var field = editor.field( fields[i] );
+                var mapped = data[ field.name() ];
+    
+                for ( var j=0 ; j<csv.length ; j++ ) {
+                    field.multiSet( j, csv[j][mapped] );
+                }
+            }
+        //   a.ajax.reload();
+        } );
+    }
+    $(document).ready(function() {
+        // Regular editor for the table
         base_url='<?php echo base_url(); ?>';
+        editor = new $.fn.dataTable.Editor( {
+            ajax: {
+                url: base_url+"admin/academicsettings/check_courses",
+                data:({ [csrfName]: csrfHash}),
+                type:"POST",
+                dataSrc: '',
+                dataType:'JSON'
+        },
         
-var editor;
+            table: "#example",
+            fields: [ 
+                {
+                    label: "ID:",
+                    name: "id"
+                },
+                {
+                    label: "Course Group:",
+                    name: "course_group"
+                },
+                {
+                    label: "Course Code:",
+                    name: "course_code"
+                },
+                {
+                    label: "Short Description:",
+                    name: "short_desc"
+                },
+                {
+                    label: "Course Description:",
+                    name: "course_description"
+                },
+                {
+                    label: "Grade Leve:",
+                    name: "teacher_name"
+                },
+                {
+                    label: "Grade Level:",
+                    name: "grade_level"
+                },
+                {
+                    label: "Credits:",
+                    name: "credits"
+                }
+            
 
-function selectColumns ( editor, csv, header ) {
-    var selectEditor = new $.fn.dataTable.Editor();
-    var fields = editor.order();
-    console.log(selectEditor);
- 
-    for ( var i=0 ; i<fields.length ; i++ ) {
-        var field = editor.field( fields[i] );
-        
- 
-        selectEditor.add( {
-            label: field.label(),
-            name: field.name(),
-            type: 'select',
-            options: header,
-            def: header[i]
+            ]
+            
         } );
     
-    }
- 
-    selectEditor.create({
-        title: 'Map CSV fields',
-        buttons: 'Import '+csv.length+' records',
-        message: 'Select the CSV column you want to use the data from for each field.'
-    });
- 
-    selectEditor.on('submitComplete', function (e, json, data, action) {
-        // Use the host Editor instance to show a multi-row create form allowing the user to submit the data.
-        editor.create( csv.length, {
-            title: 'Confirm import',
-            buttons: 'Submit',
-            message: 'Click the <i>Submit</i> button to confirm the import of '+csv.length+' rows of data. Optionally, override the value for a field to set a common value by clicking on the field below.'
-        } );
- 
-        for ( var i=0 ; i<fields.length ; i++ ) {
-            var field = editor.field( fields[i] );
-            var mapped = data[ field.name() ];
- 
-            for ( var j=0 ; j<csv.length ; j++ ) {
-                field.multiSet( j, csv[j][mapped] );
-            }
-        }
-     //   a.ajax.reload();
-    } );
-}
+        //lumalabas nman na kaso may error na 403
+        //not allowed daw try ko sir.mag import felling ko sa 
+        var a= $('#example').DataTable( {
+            dom: 'Bfrtip',
+            ajax: {
+                url: base_url+"admin/academicsettings/get_import_courses",
+                data:({ [csrfName]: csrfHash}),
+                type:"POST",
+                dataSrc: '',
+                dataType:'JSON'
+        },
+            columns: [
+                { data: 'id' },
+                { data: 'course_group' },
+                { data: 'course_code' },
+                { data: 'short_desc' },
 
-
- 
-$(document).ready(function() {
-    // Regular editor for the table
-    editor = new $.fn.dataTable.Editor( {
-        ajax: {
-            url: base_url+"admin/academicsettings/check_classes",
-            data:({ [csrfName]: csrfHash}),
-            type:"POST",
-            dataSrc: '',
-            dataType:'JSON'
-       },
-       
-        table: "#classes",
-        fields: [ 
-          
-            { label: "Class Code:",name: "class_code" },
-            { label: "Course Code:",name: "course_code" },
-            { label: "Class Type:",name: "class_type" },
-            { label: "Term:",name: "term" },
-            { label: "Schedule Type:",name: "schedule_type" },
-            { label: "Period:",name: "period_number" },
-            { label: "Grade Level:",name: "grade_level" },
-            { label: "Section:",name: "section" },
-            { label: "Location:",name: "location" },
-            { label: "Teacher ID:",name: "teacher_id_number" },
-            { label: "State ID:",name: "state_uid" },
-            { label: "Student Local ID:",name: "student_local_id" },
+                { data: 'course_description' },
+                { data: 'grade_level' },
+                { data: 'credits' },
+                { data:null},
+                
+                
+            
 
             
-        ]
-        
-    } );
- 
-    //lumalabas nman na kaso may error na 403
-    //not allowed daw try ko sir.mag import felling ko sa 
-    var a= $('#classes').DataTable( {
-        dom: 'Bfrtip',
-        ajax: {
-            url: base_url+"admin/academicsettings/get_import_classes",
-            data:({ [csrfName]: csrfHash}),
-            type:"POST",
-            dataSrc: '',
-            dataType:'JSON'
-       },
-        columns: [
-        
-           
-            { data: 'class_code' },
-            { data: 'course_code' },
-            { data: 'class_type' },
-            { data: 'term' },
-            { data: 'schedule_type' },
-            { data: 'period_number' },
-            { data: 'grade_level' },
-            { data: 'section' },
-            { data: 'location' },
-            { data: 'teacher_id_number' },
-
-            { data: 'student_local_id' },
-           
-        
-
-          
-        ],
-        select: true,
-        buttons: [
-            { extend: 'create', editor: editor },
-            { extend: 'edit',   editor: editor },
-            { extend: 'remove', editor: editor },
-            {
-                extend: 'csv',
-                text: 'Export CSV',
-                className: 'btn-space',
-                exportOptions: {
-                    orthogonal: null
-                }
-            },
-            {
-                text: 'Import CSV',
-                action: function () {
-                    uploadEditor.create( {
-                        title: 'CSV file import'
-                    } );
-                }
-            },
-            {
-                extend: 'selectAll',
-                className: 'btn-space'
-            },
-            'selectNone',
-        ]
-    });
-    // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
-    var uploadEditor = new $.fn.dataTable.Editor( {
-        fields: [ {
-            label: 'CSV file:',
-            name: 'csv',
-            type: 'upload',
-            ajax: function ( files ) {
-                // Ajax override of the upload so we can handle the file locally. Here we use Papa
-                // to parse the CSV.
-                Papa.parse(files[0], {
-                    header: true,
-                    skipEmptyLines: true,
-                    complete: function (results) {
-                        if ( results.errors.length ) {
-                            console.log( results );
-                            uploadEditor.field('csv').error( 'CSV parsing error: '+ results.errors[0].message );
-                        }
-                        else {
-                            uploadEditor.close();
-                          
-                            selectColumns( editor, results.data, results.meta.fields );
-                            console.log( results.data[0].Firstname );
-                            
-                          
-                        }
+            ],
+            select: true,
+            buttons: [
+                { extend: 'create', editor: editor },
+                { extend: 'edit',   editor: editor },
+                { extend: 'remove', editor: editor },
+                {
+                    extend: 'csv',
+                    text: 'Export CSV',
+                    className: 'btn-space',
+                    exportOptions: {
+                        orthogonal: null
                     }
-                });
-            }
-        } ]
-    } );
-    editor.on('postSubmit', function(event, data, action) {
+                },
+                {
+                    text: 'Import CSV',
+                    action: function () {
+                        uploadEditor.create( {
+                            title: 'CSV file import'
+                        } );
+                    }
+                },
+                {
+                    extend: 'selectAll',
+                    className: 'btn-space'
+                },
+                'selectNone',
+            ]
+        });
+        // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
+        var uploadEditor = new $.fn.dataTable.Editor( {
+            fields: [ {
+                label: 'CSV file:',
+                name: 'csv',
+                type: 'upload',
+                ajax: function ( files ) {
+                    // Ajax override of the upload so we can handle the file locally. Here we use Papa
+                    // to parse the CSV.
+                    Papa.parse(files[0], {
+                        header: true,
+                        skipEmptyLines: true,
+                        complete: function (results) {
+                            if ( results.errors.length ) {
+                                console.log( results );
+                                uploadEditor.field('csv').error( 'CSV parsing error: '+ results.errors[0].message );
+                            }
+                            else {
+                                uploadEditor.close();
+                            
+                                selectColumns( editor, results.data, results.meta.fields );
+                                console.log( results.data[0].Firstname );
+                                
+                            
+                            }
+                        }
+                    });
+                }
+            } ]
+        } );
+        editor.on('postSubmit', function(event, data, action) {
+            
+        a.ajax.reload();
+        })
+        editor.on( 'create', function ( e, json, data ) {
+            alert( 'New row added' );
+        } );
         
-     a.ajax.reload();
-    })
-    editor.on( 'create', function ( e, json, data ) {
-    alert( 'New row added' );
-} );
-});
-</script>
-
-
-    <script>
-   
-    $(document).ready(function(){
+    });
+    var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+            csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>',
+            base_url='<?php echo base_url(); ?>';
+    var editor;
+    function selectColumns ( editor, csv, header ) {
+        var selectEditor = new $.fn.dataTable.Editor();
+        var fields = editor.order();
+        console.log(selectEditor);
     
-        var base_url="<?php echo base_url();?>";
-        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
-        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
-        $.ajax({
-                url:'<?php echo base_url(); ?>admin/generalsettings/get_setting',
-                type:"POST",
-                data:({[csrfName]: csrfHash}),
-                dataType:'JSON',
-            }).done(function(data){
-                 $("#system-school-name").val(data.SchoolName);
-                $("#system-email").val(data.Email);
-                $("#system-phone-number").val(data.PhoneNumber);
-                $("#system-address").val(data.Address);
-          
+        for ( var i=0 ; i<fields.length ; i++ ) {
+            var field = editor.field( fields[i] );
+            
+    
+            selectEditor.add( {
+                label: field.label(),
+                name: field.name(),
+                type: 'select',
+                options: header,
+                def: header[i]
+            } );
+        
+        }
+    
+        selectEditor.create({
+            title: 'Map CSV fields',
+            buttons: 'Import '+csv.length+' records',
+            message: 'Select the CSV column you want to use the data from for each field.'
+        });
+    
+        selectEditor.on('submitComplete', function (e, json, data, action) {
+            // Use the host Editor instance to show a multi-row create form allowing the user to submit the data.
+            editor.create( csv.length, {
+                title: 'Confirm import',
+                buttons: 'Submit',
+                message: 'Click the <i>Submit</i> button to confirm the import of '+csv.length+' rows of data. Optionally, override the value for a field to set a common value by clicking on the field below.'
+            } );
+    
+            for ( var i=0 ; i<fields.length ; i++ ) {
+                var field = editor.field( fields[i] );
+                var mapped = data[ field.name() ];
+    
+                for ( var j=0 ; j<csv.length ; j++ ) {
+                    field.multiSet( j, csv[j][mapped] );
+                }
+            }
+        //   a.ajax.reload();
+        } );
+    }
 
-            })
-        $(document).on('click','#update-school-settings',function(){
-            data={}
-            data['name']=$("#school-settings-name").val()
-            data['start']=$("#school-settings-start").val() 
-            data['end']=$("#school-settings-end").val()
-            data['name_id']=$("#school-settings-name-id").val()
-            console.log(data)
-            $.ajax({
-                url:'<?php echo base_url(); ?>admin/generalsettings/insert_schoolsettings',
-                type:"POST",
-                data:({[csrfName]: csrfHash,data:data}),
-                dataType:'JSON',
-            }).done(function(data){
+    //if(checkstep=="#step-6"){
+        function selectColumns ( editor, csv, header ) {
+            var selectEditor = new $.fn.dataTable.Editor();
+            var fields = editor.order();
+            console.log(selectEditor);
+        
+            for ( var i=0 ; i<fields.length ; i++ ) {
+                var field = editor.field( fields[i] );
+                
+        
+                selectEditor.add( {
+                    label: field.label(),
+                    name: field.name(),
+                    type: 'select',
+                    options: header,
+                    def: header[i]
+                } );
+            
+            }
+        
+            selectEditor.create({
+                title: 'Map CSV fields',
+                buttons: 'Import '+csv.length+' records',
+                message: 'Select the CSV column you want to use the data from for each field.'
+            });
+        
+            selectEditor.on('submitComplete', function (e, json, data, action) {
+                // Use the host Editor instance to show a multi-row create form allowing the user to submit the data.
+                editor.create( csv.length, {
+                    title: 'Confirm import',
+                    buttons: 'Submit',
+                    message: 'Click the <i>Submit</i> button to confirm the import of '+csv.length+' rows of data. Optionally, override the value for a field to set a common value by clicking on the field below.'
+                } );
+        
+                for ( var i=0 ; i<fields.length ; i++ ) {
+                    var field = editor.field( fields[i] );
+                    var mapped = data[ field.name() ];
+        
+                    for ( var j=0 ; j<csv.length ; j++ ) {
+                        field.multiSet( j, csv[j][mapped] );
+                    }
+                }
+            //   a.ajax.reload();
+            } );
+        }
+        $(document).ready(function() {
+            // Regular editor for the table
+            editor = new $.fn.dataTable.Editor( {
+                ajax: {
+                    url: base_url+"admin/academicsettings/check_classes",
+                    data:({ [csrfName]: csrfHash}),
+                    type:"POST",
+                    dataSrc: '',
+                    dataType:'JSON'
+            },
+            
+                table: "#classes",
+                fields: [ 
+                
+                    { label: "Class Code:",name: "class_code" },
+                    { label: "Course Code:",name: "course_code" },
+                    { label: "Class Type:",name: "class_type" },
+                    { label: "Term:",name: "term" },
+                    { label: "Schedule Type:",name: "schedule_type" },
+                    { label: "Period:",name: "period_number" },
+                    { label: "Grade Level:",name: "grade_level" },
+                    { label: "Section:",name: "section" },
+                    { label: "Location:",name: "location" },
+                    { label: "Teacher ID:",name: "teacher_id_number" },
+                    { label: "State ID:",name: "state_uid" },
+                    { label: "Student Local ID:",name: "student_local_id" },
 
-            })
-
-            //console.log(getformvalues("#eeee"));
-        })
-        $(document).on('click','#update-system-setting',function(){
-            data={}
-            data['SchoolName']=$("#system-school-name").val();
-            data['Email']=$("#system-email").val();
-            data['PhoneNumber']=$("#system-phone-number").val();
-            data['Address']=$("#system-address").val();
-            $.ajax({
-                url:'<?php echo base_url(); ?>admin/generalsettings/update_system_setting',
-                type:"POST",
-                data:({[csrfName]: csrfHash,data:data}),
-                dataType:'JSON',
-            }).done(function(data){
-               
-          
-
-            })
-            console.log(data);
-            // $.ajax({
-            //     url:'<?php echo base_url(); ?>admin/generalsettings/update_system_setting',
-            //     type:"POST",
-            //     data:({[csrfName]: csrfHash,data:data}),
-            //     dataType:'JSON',
-            // }).done(function(data){
-
-            // })
-                //alert('abc');
-            //console.log(getformvalues("#eeee"));
-        })
-        var access_datatable=$('#scheduletype_datatable').DataTable({
-				ajax: {
-                    url:'<?php echo base_url(); ?>admin/generalsettings/get_scheduletype',
-					dataType: 'json',
-					type: 'POST',
-                    data:({[csrfName]: csrfHash}),
-					dataSrc:""
-				},
-				columns: [
-					//{ "data": "ModulePageID", "title":"ModulePageID"},
-					{ "data": "ScheduleType","title":"ScheduleType" },
-					// { "data": "PeriodAccess","title":"PeriodAccess" },
-					{ "data": null,"title":"Color",
                     
-                        render:function(data){
-                            return ` <button type="button" class="btn ${data.backgroundColor}"> <button>`;
+                ]
+                
+            } );
+        
+            //lumalabas nman na kaso may error na 403
+            //not allowed daw try ko sir.mag import felling ko sa 
+            var a= $('#classes').DataTable( {
+                dom: 'Bfrtip',
+                ajax: {
+                    url: base_url+"admin/academicsettings/get_import_classes",
+                    data:({ [csrfName]: csrfHash}),
+                    type:"POST",
+                    dataSrc: '',
+                    dataType:'JSON'
+            },
+                columns: [
+                
+                
+                    { data: 'class_code' },
+                    { data: 'course_code' },
+                    { data: 'class_type' },
+                    { data: 'term' },
+                    { data: 'schedule_type' },
+                    { data: 'period_number' },
+                    { data: 'grade_level' },
+                    { data: 'section' },
+                    { data: 'location' },
+                    { data: 'teacher_id_number' },
+
+                    { data: 'student_local_id' },
+                
+                
+
+                
+                ],
+                select: true,
+                buttons: [
+                    { extend: 'create', editor: editor },
+                    { extend: 'edit',   editor: editor },
+                    { extend: 'remove', editor: editor },
+                    {
+                        extend: 'csv',
+                        text: 'Export CSV',
+                        className: 'btn-space',
+                        exportOptions: {
+                            orthogonal: null
                         }
                     },
-					{ "data": null,"title":"Action",
-                    
-                        render:function(data){
-                            return ` <button type="button" value="${data.ScheduleTypeID}" id="delete_schedule_type" class="btn btn-xs btn-danger ">Delete <button>`;
+                    {
+                        text: 'Import CSV',
+                        action: function () {
+                            uploadEditor.create( {
+                                title: 'CSV file import'
+                            } );
                         }
+                    },
+                    {
+                        extend: 'selectAll',
+                        className: 'btn-space'
+                    },
+                    'selectNone',
+                ]
+            });
+            // Upload Editor - triggered from the import button. Used only for uploading a file to the browser
+            var uploadEditor = new $.fn.dataTable.Editor( {
+                fields: [ {
+                    label: 'CSV file:',
+                    name: 'csv',
+                    type: 'upload',
+                    ajax: function ( files ) {
+                        // Ajax override of the upload so we can handle the file locally. Here we use Papa
+                        // to parse the CSV.
+                        Papa.parse(files[0], {
+                            header: true,
+                            skipEmptyLines: true,
+                            complete: function (results) {
+                                if ( results.errors.length ) {
+                                    console.log( results );
+                                    uploadEditor.field('csv').error( 'CSV parsing error: '+ results.errors[0].message );
+                                }
+                                else {
+                                    uploadEditor.close();
+                                
+                                    selectColumns( editor, results.data, results.meta.fields );
+                                    console.log( results.data[0].Firstname );
+                                    
+                                
+                                }
+                            }
+                        });
                     }
-
-					
-				],
-				destroy: true,
-			})
-        $(document).on('click','#update-scheduletyp-setting',function(){
-            title= $("#scheduletypetitle").val();
-            color= $("#scheduletypecolor").val();
-            swal({
-                title: "Are you sure?",
-                text: "",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-danger",
-                confirmButtonText: "Yes, save it!",
-                cancelButtonText: "No, cancel plx!",
-                closeOnConfirm: false,
-                closeOnCancel: false,
-                showLoaderOnConfirm: true
-            },
-            function(isConfirm) {
-                if (isConfirm) {
-                    $.ajax({
-                        url:base_url+"admin/masterscheduler/managescheduletype",
-                        type:"POST",
-                        data:({[csrfName]: csrfHash,type:'add',data:title,color:color}),
-                        dataType:'JSON',
-                    })
-                    .done(function(data){
-                        if(data===true){
-                            swal("Success!", "Successfully Added", "success");
-                            access_datatable.ajax.reload();
-                        }else{
-                            swal("Failed","Error Adding Please Contact your system Administrator",'error');
-                        }
-                    })
+                } ]
+            } );
+            editor.on('postSubmit', function(event, data, action) {
                 
-                } else {
-                swal("Cancelled", "Your imaginary file is safe :)", "error");
-                }
-            });
-        })
-      
-        $(document).on('click','#delete_schedule_type',function(){
-            id=$(this).val();
-            swal({
-                title: "Are you sure?",
-                text: "",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-danger",
-                confirmButtonText: "Yes, delete it!",
-                cancelButtonText: "No, cancel plx!",
-                closeOnConfirm: false,
-                closeOnCancel: false,
-                showLoaderOnConfirm: true
-            },
-            function(isConfirm) {
-                if (isConfirm) {
+            a.ajax.reload();
+            })
+            editor.on( 'create', function ( e, json, data ) {
+            alert( 'New row added' );
+            } );
+            
+        });
+    //}
+    // step 1, 2,3 ,4
+    $(document).ready(function(){
+        var base_url="<?php echo base_url();?>";
+            //if(checkstep=="#step-2"){ 
+                $(document).on('click','#update-system-setting',function(){
+                    data={}
+                    data['SchoolName']=$("#system-school-name").val();
+                    data['Email']=$("#system-email").val();
+                    data['PhoneNumber']=$("#system-phone-number").val();
+                    data['Address']=$("#system-address").val();
                     $.ajax({
-                        url:base_url+"admin/masterscheduler/managescheduletype",
-                        type:"POST",
-                        data:({[csrfName]: csrfHash,type:"delete",data:id}),
-                        dataType:'JSON',
-                    })
-                    .done(function(data){
-                        if(data===true){
-                            swal("Success!", "Successfully Deleted", "success");
-                            access_datatable.ajax.reload();
-                        }else{
-                            swal("Failed","Error Adding Please Contact your system Administrator",'error');
-                        }
-                    })
-                
-                } else {
-                swal("Cancelled", "Your imaginary file is safe :)", "error");
-                }
-            });
-        })
-        
-        var period_datatable=$('#period_datatable').DataTable({
-				ajax: {
-                    url:'<?php echo base_url(); ?>admin/masterscheduler/get_period',
-					dataType: 'json',
-					type: 'POST',
-                    data:({[csrfName]: csrfHash}),
-					dataSrc:""
-				},
-				columns: [
-					//{ "data": "ModulePageID", "title":"ModulePageID"},
-                    
-					{ "data": "Period","title":"Period" },
-					{ "data": "PeriodStartTime","title":"PeriodStartTime" },
-					{ "data": "PeriodEndTime","title":"PeriodEndTime" },
-					// { "data": "PeriodAccess","title":"PeriodAccess" },
-					
-					{ "data": null,"title":"Action",
-                    
-                        render:function(data){
-                            return ` <button type="button" value="${data.PeriodID}" id="delete_period" class="btn btn-xs btn-danger ">Delete <button>`;
-                        }
-                    }
-
-					
-				],
-				destroy: true,
-		})
-        $(document).on('click','#delete_period',function(){
-            id=$(this).val();
-            swal({
-                title: "Are you sure?",
-                text: "",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-danger",
-                confirmButtonText: "Yes, delete it!",
-                cancelButtonText: "No, cancel plx!",
-                closeOnConfirm: false,
-                closeOnCancel: false,
-                showLoaderOnConfirm: true
-            },
-            function(isConfirm) {
-                if (isConfirm) {
-                    $.ajax({
-                        url:base_url+"admin/masterscheduler/delete_period",
-                        type:"POST",
-                        data:({[csrfName]: csrfHash,data:id}),
-                        dataType:'JSON',
-                    })
-                    .done(function(data){
-                        if(data===true){
-                            swal("Success!", "Successfully Deleted", "success");
-                            period_datatable.ajax.reload();
-                        }else{
-                            swal("Failed","Error Adding Please Contact your system Administrator",'error');
-                        }
-                    })
-                
-                } else {
-                swal("Cancelled", "Your imaginary file is safe :)", "error");
-                }
-            });
-        })
-        $(document).on('click','#update-period',function(){
-            data={}
-            data['PeriodStartTime']=$("#add-sliderStartTime").val();
-            data['PeriodEndTime']=$("#add-sliderEndTime").val();
-            data['Period']=$("#add-Period").val();
-            swal({
-                title: "Are you sure?",
-                text: "",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-danger",
-                confirmButtonText: "Yes, delete it!",
-                cancelButtonText: "No, cancel plx!",
-                closeOnConfirm: false,
-                closeOnCancel: false,
-                showLoaderOnConfirm: true
-            },
-            function(isConfirm) {
-                if (isConfirm) {
-                    $.ajax({
-                        url:'<?php echo base_url(); ?>admin/masterscheduler/add__period',
+                        url:'<?php echo base_url(); ?>admin/generalsettings/update_system_setting',
                         type:"POST",
                         data:({[csrfName]: csrfHash,data:data}),
                         dataType:'JSON',
                     }).done(function(data){
-                        if(data===true){
-                            swal("Success!", "Successfully updated", "success");
-                            period_datatable.ajax.reload();
-                        }else{
-                            swal("Failed","Error Adding Please Contact your system Administrator",'error');
-                        }
-                    })
+                    
                 
+
+                    })
+                })
+                $.ajax({
+                    url:'<?php echo base_url(); ?>admin/generalsettings/get_setting',
+                    type:"POST",
+                    data:({[csrfName]: csrfHash}),
+                    dataType:'JSON',
+                }).done(function(data){
+                    $("#system-school-name").val(data.SchoolName);
+                    $("#system-email").val(data.Email);
+                    $("#system-phone-number").val(data.PhoneNumber);
+                    $("#system-address").val(data.Address);
+            
+
+                })
+            //}
+           // if(checkstep=="#step-1"){
+                $(document).on('click','#update-school-settings',function(){
+                    data={}
+                    data['name']=$("#school-settings-name").val()
+                    data['start']=$("#school-settings-start").val() 
+                    data['end']=$("#school-settings-end").val()
+                    data['name_id']=$("#school-settings-name-id").val()
+                    console.log(data)
+                    $.ajax({
+                        url:'<?php echo base_url(); ?>admin/generalsettings/insert_schoolsettings',
+                        type:"POST",
+                        data:({[csrfName]: csrfHash,data:data}),
+                        dataType:'JSON',
+                    }).done(function(data){
+
+                    })
+
+                    //console.log(getformvalues("#eeee"));
+                })
+           // }
+            //if(checkstep=="#step-3"){
+               
+                var access_datatable=$('#scheduletype_datatable').DataTable({
+                        ajax: {
+                            url:'<?php echo base_url(); ?>admin/generalsettings/get_scheduletype',
+                            dataType: 'json',
+                            type: 'POST',
+                            data:({[csrfName]: csrfHash}),
+                            dataSrc:""
+                        },
+                        columns: [
+                            //{ "data": "ModulePageID", "title":"ModulePageID"},
+                            { "data": "ScheduleType","title":"ScheduleType" },
+                            // { "data": "PeriodAccess","title":"PeriodAccess" },
+                            { "data": null,"title":"Color",
+                            
+                                render:function(data){
+                                    return ` <button type="button" class="btn ${data.backgroundColor}"> <button>`;
+                                }
+                            },
+                            { "data": null,"title":"Action",
+                            
+                                render:function(data){
+                                    return ` <button type="button" value="${data.ScheduleTypeID}" class="delete_schedule_type btn btn-xs btn-danger ">Delete <button>`;
+                                }
+                            }
+
+                            
+                        ],
+                        destroy: true,
+                    })
+                $(document).on('click','#update-scheduletyp-setting',function(){
+                    title= $("#scheduletypetitle").val();
+                    color= $("#scheduletypecolor").val();
+                    swal({
+                        title: "Are you sure?",
+                        text: "",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Yes, save it!",
+                        cancelButtonText: "No, cancel plx!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false,
+                        showLoaderOnConfirm: true
+                    },
+                    function(isConfirm) {
+                        if (isConfirm) {
+                            $.ajax({
+                                url:base_url+"admin/masterscheduler/managescheduletype",
+                                type:"POST",
+                                data:({[csrfName]: csrfHash,type:'add',data:title,color:color}),
+                                dataType:'JSON',
+                            })
+                            .done(function(data){
+                                if(data===true){
+                                    swal("Success!", "Successfully Added", "success");
+                                    access_datatable.ajax.reload();
+                                }else{
+                                    swal("Failed","Error Adding Please Contact your system Administrator",'error');
+                                }
+                            })
+                        
+                        } else {
+                        swal("Cancelled", "Your imaginary file is safe :)", "error");
+                        }
+                    });
+                })
+                $(document).on('click','.delete_schedule_type',function(){
+                    id=$(this).val();
+                    swal({
+                        title: "Are you sure?",
+                        text: "",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Yes, delete it!",
+                        cancelButtonText: "No, cancel plx!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false,
+                        showLoaderOnConfirm: true
+                    },
+                    function(isConfirm) {
+                        if (isConfirm) {
+                            $.ajax({
+                                url:base_url+"admin/masterscheduler/managescheduletype",
+                                type:"POST",
+                                data:({[csrfName]: csrfHash,type:"delete",data:id}),
+                                dataType:'JSON',
+                            })
+                            .done(function(data){
+                                if(data===true){
+                                    swal("Success!", "Successfully Deleted", "success");
+                                    access_datatable.ajax.reload();
+                                }else{
+                                    swal("Failed","Error Adding Please Contact your system Administrator",'error');
+                                }
+                            })
+                        
+                        } else {
+                        swal("Cancelled", "Your imaginary file is safe :)", "error");
+                        }
+                    });
+                })
+            //}
+            //if(checkstep=="#step-4"){
+                var period_datatable=$('#period_datatable').DataTable({
+                        ajax: {
+                            url:'<?php echo base_url(); ?>admin/masterscheduler/get_period',
+                            dataType: 'json',
+                            type: 'POST',
+                            data:({[csrfName]: csrfHash}),
+                            dataSrc:""
+                        },
+                        columns: [
+                            //{ "data": "ModulePageID", "title":"ModulePageID"},
+                            
+                            { "data": "Period","title":"Period" },
+                            { "data": "PeriodStartTime","title":"PeriodStartTime" },
+                            { "data": "PeriodEndTime","title":"PeriodEndTime" },
+                            // { "data": "PeriodAccess","title":"PeriodAccess" },
+                            
+                            { "data": null,"title":"Action",
+                            
+                                render:function(data){
+                                    return ` <button type="button" value="${data.PeriodID}"  class="delete_period btn btn-xs btn-danger ">Delete <button>`;
+                                }
+                            }
+
+                            
+                        ],
+                        destroy: true,
+                })
+                $(document).on('click','.delete_period',function(){
+                    id=$(this).val();
+                    swal({
+                        title: "Are you sure?",
+                        text: "",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Yes, delete it!",
+                        cancelButtonText: "No, cancel plx!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false,
+                        showLoaderOnConfirm: true
+                    },
+                    function(isConfirm) {
+                        if (isConfirm) {
+                            $.ajax({
+                                url:base_url+"admin/masterscheduler/delete_period",
+                                type:"POST",
+                                data:({[csrfName]: csrfHash,data:id}),
+                                dataType:'JSON',
+                            })
+                            .done(function(data){
+                                if(data===true){
+                                    swal("Success!", "Successfully Deleted", "success");
+                                    period_datatable.ajax.reload();
+                                }else{
+                                    swal("Failed","Error Adding Please Contact your system Administrator",'error');
+                                }
+                            })
+                        
+                        } else {
+                        swal("Cancelled", "Your imaginary file is safe :)", "error");
+                        }
+                    });
+                })
+                $(document).on('click','#update-period',function(){
+                    data={}
+                    data['PeriodStartTime']=$("#add-sliderStartTime").val();
+                    data['PeriodEndTime']=$("#add-sliderEndTime").val();
+                    data['Period']=$("#add-Period").val();
+                    swal({
+                        title: "Are you sure?",
+                        text: "",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Yes, delete it!",
+                        cancelButtonText: "No, cancel plx!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false,
+                        showLoaderOnConfirm: true
+                    },
+                    function(isConfirm) {
+                        if (isConfirm) {
+                            $.ajax({
+                                url:'<?php echo base_url(); ?>admin/masterscheduler/add__period',
+                                type:"POST",
+                                data:({[csrfName]: csrfHash,data:data}),
+                                dataType:'JSON',
+                            }).done(function(data){
+                                if(data===true){
+                                    swal("Success!", "Successfully updated", "success");
+                                    period_datatable.ajax.reload();
+                                }else{
+                                    swal("Failed","Error Adding Please Contact your system Administrator",'error');
+                                }
+                            })
+                        
+                        } else {
+                        swal("Cancelled", "Your  file is safe :)", "error");
+                        }
+                    });
+                    
+                })
+            //}
+    })
+    //if(checkstep=="#step-7"){
+        $(document).on('click','#teacher-limit',function(){
+            $limit=$('#addteacherlimit').val()
+            swal({
+                title: "Are you sure?",
+                text: "",
+                icon: "warning",
+                buttons: true,
+                dangerMode: false,
+                })
+                .then((isConfirm) => {
+                if (isConfirm) {
+                    console.log(isConfirm)
+                    $.ajax({
+                        url:base_url+"admin/masterscheduler/insert_teacherlimit ",
+                        type:"POST",
+                        data:({[csrfName]: csrfHash,data:$limit}),
+                        dataType:'JSON',
+                        })
+                        .done(function(data){
+                            swal("Successfully Updated", {
+                            icon: "success",
+                            });
+                        })
                 } else {
-                swal("Cancelled", "Your  file is safe :)", "error");
+                    console.log(isConfirm)
+                    swal("Cancelled");
+                }
+                });
+                
+        })
+        $(document).on('click','#transition-time',function(){
+            $tt=$('#addtransitiontime').val()
+            swal({
+                title: "Are you sure?",
+                text: "",
+                icon: "warning",
+                buttons: true,
+                dangerMode: false,
+            })
+            .then((isConfirm) => {
+                if (isConfirm) {
+                    console.log(isConfirm)
+                    $.ajax({
+                        url:base_url+"admin/masterscheduler/insert_transitiontime ",
+                        type:"POST",
+                        data:({[csrfName]: csrfHash,data:$tt}),
+                        dataType:'JSON',
+                        })
+                        .done(function(data){
+                            swal("Successfully Updated", {
+                            icon: "success",
+                            });
+                        })
+                } else {
+                    console.log(isConfirm)
+                    swal("Cancelled");
                 }
             });
-            
         })
+       
+        editor = new $.fn.dataTable.Editor( {
+            dom: 'Bfrtip',
+            "pageLength": 20,
+            "colReorder": true,
+            
+            ajax: {
+                url:'<?php echo base_url(); ?>admin/generalsettings/edit_hallpass',
+                data: ({[csrfName]: csrfHash,type:1}),
+                type:"POST",
+                dataSrc:"info",
+                dataType:'JSON'
+            },
+            idSrc:  'HallPassID',
+            table: "#nhp",
+            
+            fields: [ 
+            
+                { label: "TimeAllocated:",name: "TimeAllocated" },
+        
+        
+        
+
+                
+            ]
+        
+        } );
+        editor1 = new $.fn.dataTable.Editor( {
+            dom: 'Bfrtip',
+            "pageLength": 20,
+            "colReorder": true,
+            
+            ajax: {
+                url:'<?php echo base_url(); ?>admin/generalsettings/edit_hallpass',
+                data: ({[csrfName]: csrfHash,type:2}),
+                type:"POST",
+                dataSrc:"info",
+                dataType:'JSON'
+            },
+            idSrc:  'HallPassID',
+                table: "#ahp",
+                
+                fields: [ 
+                
+                    { label: "TimeAllocated:",name: "TimeAllocated" },
+            
+            
+            
+
+                    
+                ]
+            
+        } );
+        $('#nhp').on( 'click', 'tbody td:not(:first-child)', function (e) {
+            editor.inline( this );
+        
+
+        } );
+        $('#ahp').on( 'click', 'tbody td:not(:first-child)', function (e) {
+            editor1.inline( this );
+        
+        
+        } );
+        var nhp = $('#nhp').DataTable({
+            "searching": false,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            
+            ajax: {
+                    url:'<?php echo base_url(); ?>admin/generalsettings/get_all_hallpass',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: ({[csrfName]: csrfHash,type:2}),
+                    dataSrc:"info"
+                },
+                idSrc:  'HallPassID',
+                columns: [ 
+                    { "data": null,
+                        render: function ( data, type, row ) {
+                            if(data.PassTypeID==="2"){
+                                return `  <button value='${data.HallPassID}'  class="delete_row btn btn-xs btn-danger  " type="button" >
+                                        <i class="fa fa-times" aria-hidden="true"></i> 
+                                </button>`;
+                            }else{
+                                return null;
+                            }
+                        } 
+                    },
+                
+                    { "data": "HallPass"},
+                    {"data":"TimeAllocated"},
+                    { "data":null,
+                        render:function(data, type,row){
+                            var is_checked='';
+                            if (data.is_active==1){var is_checked="checked=''";}
+                            return `
+                            <input data-id="${data.HallPassID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${is_checked} 
+                            class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                            `;
+                        }
+                    }
+                    
+                ],
+                select: true,
+                buttons: [
+                    // { extend: 'create', editor: editor },
+                { extend: 'edit',   editor: editor },
+                    // { extend: 'remove', editor: editor },
+                    // {
+                    //     extend: 'csv',
+                    //     text: 'Export CSV',
+                    //     className: 'btn-space',
+                    //     exportOptions: {
+                    //         orthogonal: null
+                    //     }
+                    // },
+                    // {
+                    //     text: 'Import CSV',
+                    //     action: function () {
+                    //         uploadEditor.create( {
+                    //             title: 'CSV file import'
+                    //         } );
+                    //     }
+                    // },
+                    // {
+                    //     extend: 'selectAll',
+                    //     className: 'btn-space'
+                    // },
+                    // 'selectNone',
+                ]
+        });
+        var ahp = $('#ahp').DataTable({
+            "searching": false,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            
+            ajax: {
+                    url:'<?php echo base_url(); ?>admin/generalsettings/get_all_hallpass',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: ({[csrfName]: csrfHash,type:1}),
+                    dataSrc:"info"
+                },
+                columns: [ 
+                    { "data": null,
+                        render: function ( data, type, row ) {
+                            if(data.PassTypeID==="1"){
+                                return `  <button value='${data.HallPassID}'  class="delete_row btn btn-xs btn-danger  " type="button" >
+                                        <i class="fa fa-times" aria-hidden="true"></i> 
+                                </button>`;
+                            }else{
+                                return null;
+                            }
+                        } 
+                    },
+                    { "data": "HallPass"},
+                    {"data":"TimeAllocated"},
+                    { "data":null,
+                        render:function(data, type,row){
+                            var is_checked='';
+                            if (data.is_active==1){var is_checked="checked=''";}
+                            console.log(is_checked);
+                            return `
+                            <input data-id="${data.HallPassID}" id="${data.HallPassID}" id="hp_${data.HallPassID}" type="checkbox" ${is_checked} 
+                            class="tgl tgl-ios tgl_checkbox" data-size="small" />
+                            `;
+                        }
+                    }
+                    
+                ]
+        });
+        $(document).ready(function(){
+                editor.on('postSubmit', function(event, data, action) {
+                    
+                nhp.ajax.reload();
+            });
+            editor1.on('postSubmit', function(event, data, action) {
+            
+                ahp.ajax.reload();
+            });
+            
+        });
+        $("body").on("change",".tgl_checkbox",function(){
+            console.log($(this).data('id'));
+
+            $.post('<?=base_url("admin/generalsettings/change_status")?>',
+            {
+                '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
+                id : $(this).data('id'),
+                status : $(this).is(':checked')==true?1:0,
+                data: 'hallpass'
+            
+                
+            },
+            function(data){
+            
+            
+                
+            });
+        });
+        $(document).ready(function(){
+            const a =$.ajax({
+                url:'<?php echo base_url(); ?>admin/generalsettings/get_master_list',
+                type:"POST",
+                data:({[csrfName]: csrfHash}),
+                dataType:'JSON',
+            }).done(function(data){
+            var result=data;
+            masterlist=result.info;
+                    masterlist.forEach(function(element){
+            
+                        const master_name=element.master_name;
+
+                        const is_active=element.is_active;
+                        const id=element.id;
+                        const id_name=element.id_name;
+                        const icon=element.icon;
+                        const value=element.value;
+                    
+                        var is_checked='';
+                        if (is_active==1){ var is_checked='checked=""';}
+                        $('[data-toggle="popover"]').popover();
+                        if(master_name=='Period Grace Time'){
+                            $("#gracetime").val(element.master_value);  
+                        }
+                        if(id_name=='hplt'){
+                            $("#hp_lock_end").val(element.hp_lock_end);  
+                            $("#hp_lock_start").val(element.hp_lock_start);  
+                        }
+                        if(id_name=='nql'){
+                            $("#nql-limit").val(element.value);
+                            const aa=element.value.split(",");
+                            console.log(aa);
+                            $("#nql-limit").val(aa[0]);
+                            $("#select-type").val(aa[1]);
+                        }
+                        if(id_name=='slac'){
+                            $("#time_in").val(element.master_value);
+                    
+                        }
+                    
+                        
+                        
+                        
+                        
+                        const mhl=`<div class="col-xl-4 col-sm-4">
+                        <div class="card">
+                        <div class="bootstrap-popover  pull-right"><a tabindex="0" class="btn  pull-right far fa-question-circle" role="button" data-toggle="popover" data-trigger="focus" title="Description" 
+                                data-content="${element.description}"></a></div>
+                        
+                                
+                                <div class="card-body" style='padding-top:5px;' >
+                            
+                    
+                                
+                                        <div class="media">
+                                                <div class="media-body">
+                                        
+                                            
+
+                                                        <h6 class="mt-0 mb- text-info"><i class="${icon} fa-2x" style='padding-right:20px;'></i>
+                                                    
+                                                        <button data-toggle="modal" data-target="#${id_name}" style='background-color:
+                                                        inherit;;border:none;' value=${id} class="mt-0 mb- text-info">${master_name}</button>
+                                                        <span class="pull-right" >  <input id="${id}" data-id='${id}' type="checkbox" ${is_checked}
+                                                        class="js-switch js-switch-1 js-switch-md" data-size="small" style="margin:10px;"/></span></h6 >
+                                            
+                                                </div>    
+                                        </div>
+                            
+                                </div>
+                            </div>
+                        </div>`
+                        
+                    
+                        var master_element = $("<div />");
+
+                        master_element.html(mhl);
+                        $('[data-toggle="popover"]').popover();
+                        if(master_name!='no'){
+                        $("#master_list").append(mhl);   }
+                    });	
 
 
-    })
-    </script>
+            });
+            $('[data-toggle="popover"]').popover();
+        
+        });
+        $("body").on("change",".js-switch",function(){
+            console.log($(this).data('id'));
+            $.post('<?=base_url("admin/generalsettings/change_status")?>',
+            {
+                '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
+                id : $(this).data('id'),
+                status : $(this).is(':checked')==true?1:0,
+                data:'master'
+            },
+            function(data){
+                
+            });
+        });
+        $(document).on('click','.delete_row',function(){
+            id=$(this).val();
+            console.log(id);
+            $.ajax({
+                url:'<?php echo base_url(); ?>admin/generalsettings/delete_hallpass',
+                type:"POST",
+                data:({[csrfName]: csrfHash,type:'delete-row',data:id}),
+                dataType:'JSON',
+            }).done(function(data){
+                ahp.ajax.reload();
+                nhp.ajax.reload();
+            })
+
+        });
+
+        $(document).on('click','.add_hallpass',function(){
+            id=$(this).val();
+            const name = $("#hallpassname").val();
+            const time= $("#hallpasstime").val();
+            const type= $("#hallpasstype").val();
+            console.log(name,time,type);
+            $.ajax({
+                url:'<?php echo base_url(); ?>admin/generalsettings/add_hallpass',
+                type:"POST",
+                data:({[csrfName]: csrfHash,name:name,time:time,type:type}),
+                dataType:'JSON',
+            }).done(function(data){        
+                ahp.ajax.reload();
+                nhp.ajax.reload();
+            })
+
+        });
+        $(document).on('click','.btn-pgt',function(){
+            const gracetime = $("#gracetime").val();
+            console.log(gracetime);
+            $.ajax({
+                url:'<?php echo base_url(); ?>admin/generalsettings/edit_pgt',
+                type:"POST",
+                data:({[csrfName]: csrfHash,name:name,gracetime:gracetime}),
+                dataType:'JSON',
+            }).done(function(data){
+            
+                
+            })
+
+        });
+
+        $(document).on('click','.btn-hplt',function(){
+            const start = $("#hp_lock_start").val();
+            const end = $("#hp_lock_end").val();
+        
+
+            console.log(start);
+            console.log(end);
+            $.ajax({
+                url:'<?php echo base_url(); ?>admin/generalsettings/edit_hplt',
+                type:"POST",
+                data:({[csrfName]: csrfHash,name:name,start:start,end:end}),
+                dataType:'JSON',
+            }).done(function(data){
+            
+                
+            })
+
+        });
+        $(document).on('click','.btn-2whp',function(){
+            const a = $("#nql-limit").val();
+            const b = $("#select-type").val();
+        
+        
+            $.ajax({
+                url:'<?php echo base_url(); ?>admin/generalsettings/edit_2whp',
+                type:"POST",
+                data:({[csrfName]: csrfHash,limit:a,type:b}),
+                dataType:'JSON',
+            }).done(function(data){
+            
+                
+            })
+
+        });
+    //}
+</script>
+
+
+
+
+
+

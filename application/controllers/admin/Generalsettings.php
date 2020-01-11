@@ -17,6 +17,7 @@
 			$this->load->view('layoutv2', $data);
 			
 		}
+		
 		public function settings(){
 
 			//$this->rbac->check_operation_access();
