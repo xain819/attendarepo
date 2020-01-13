@@ -9,11 +9,11 @@
         <div class="modal-body mydetails">
                         <form>
                             <div class="form-group">
-                                <label class="text-label">SettingName</label>
+                                <label class="text-label">Type</label>
                                 <input type="text" id="settingname-add" name="text" class="form-control" " required="">
                             </div>
                             <div class="form-group">
-                                <label class="text-label">Setting Value</label>
+                                <label class="text-label">Details</label>
                                 <input type="text" id="settingvalue-add" name="text" class="form-control"  required="">
                             </div>
                             

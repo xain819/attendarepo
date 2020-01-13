@@ -312,7 +312,7 @@
         <div class="col-md-3">
           <div class="box box-solid" style='padding-top:100px;'>
             <div class="box-header with-border">
-              <h4 class="box-title">Schedule Type</h4>
+              <h4 class="box-title">Calendar Type</h4>
             </div>
             <div class="box-body" id="scheduletype">
               <!-- the events -->
@@ -338,7 +338,7 @@
               <h3 class="box-title">Create New Schedule Type</h3>
             </div> -->
             <div class="box-body">
-            <h4>New Schedule</h4>
+            <h4>Add New Calendar Type</h4>
             Title:
             <input class="form-control form-white" id="scheduletypetitle" type="text">
             Color:

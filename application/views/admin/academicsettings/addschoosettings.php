@@ -9,19 +9,19 @@
               <div class="modal-body mydetails">
                             <form>
                             <div class="form-group">
-                                <label class="text-label">Start</label>
+                                <label class="text-label">Date Start</label>
                                 <input type="text" id="start" name="text" class="form-control"  required="">
                             </div>
                             <div class="form-group">
-                                <label class="text-label">Name</label>
+                                <label class="text-label">Academic Term</label>
                                 <input type="text" id="name" name="text" class="form-control" required="">
                             </div>
                             <div class="form-group">
-                                <label class="text-label">End</label>
+                                <label class="text-label">Date End</label>
                                 <input type="text" id="end" name="text" class="form-control" " required="">
                             </div>
                             <div class="form-group">
-                                <label class="text-label">Name ID</label>
+                                <label class="text-label">Shortcode</label>
                                 <input type="text" id="nameid" name="text" class="form-control"  required="">
                             </div>
                             
