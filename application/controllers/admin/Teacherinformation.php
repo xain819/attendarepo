@@ -111,6 +111,18 @@
 			$data['view'] = 'admin/teacherinformation/seat_map';
 			$this->load->view('layoutv2', $data);
 		}
+		public function get_current_period(){
+			$time=date("H:i:s");
+			$query=$this->db->query("SELECT * FROM `period` WHERE PeriodStartTime = ? ",array($time))->result();
+			$iscurrentperiod='';
+			if($query){
+				echo json_encode($this->db->query("SELECT * FROM `period` WHERE PeriodStartTime < ? order by PeriodStartTime desc LIMIT 1",array($time))->result());
+			}else{
+				echo json_encode(null);
+			}
+			
+			
+		}
 		public function attendance_logs(){
 			$today = date("Y-m-d");  
 			$now= new Datetime('now');
@@ -119,7 +131,9 @@
 			$data['period']=$this->admin->get_period();
 			$data['schedule_type']=$this->admin->get_day_type();
 			$data['teacher_id_number']=$data['username'];
+			//print_r($data);
 			$result=$this->admin->check_student_if_enrolled($data['teacher_id_number'],$data['period'],$data['schedule_type'][0]['title']);
+			print_r($result);
 			$grace_checked=$this->admin->general_master($id_name='pgt');
 			
 			if($grace_checked['is_active']==1){

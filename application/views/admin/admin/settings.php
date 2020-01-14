@@ -476,6 +476,9 @@
                                             </div> -->
                                             <button id="update-school-settings" type="button" class="btn btn-sm btn-warning pull-right">Update</button>
                                         </div>
+                                        <table id="school_setting" class="table table-bordered table-striped" width="100%">
+                                                
+                                        </table>
                                     </div>
                                     <div id="step-2">
                                         <h4 class="card-title mb-5">System Settings</h4>
@@ -587,7 +590,7 @@
                                     <div id="step-5" class="">
                                       <div class=" card box-body" style='padding:20px;'>
                                       <div class=' card col-xl-12 '>
-                                      <table id="classes" class="display" style="width:100%">
+                                        <table id="classes" class="display" style="width:100%">
                                               <thead>
                                                   <tr>
 
@@ -612,7 +615,8 @@
                                                   </tr>
                                               </thead>
                                         
-                                          </table></div>
+                                        </table>
+                                        </div>
                                         </div>
 
                                     </div>
@@ -1483,6 +1487,8 @@
     // step 1, 2,3 ,4
     $(document).ready(function(){
         var base_url="<?php echo base_url();?>";
+
+
             //if(checkstep=="#step-2"){ 
                 $(document).on('click','#update-system-setting',function(){
                     data={}
@@ -1534,6 +1540,35 @@
 
                     //console.log(getformvalues("#eeee"));
                 })
+                var school_setting=$('#school_setting').DataTable({
+                        ajax: {
+                            url:'<?php echo base_url(); ?>admin/admin/get_schoolsettings',
+                            dataType: 'json',
+                            type: 'POST',
+                            data:({[csrfName]: csrfHash}),
+                            dataSrc:""
+                        },
+                        columns: [
+                            //{ "data": "ModulePageID", "title":"ModulePageID"},
+                            
+                            { "data": "Start","title":"Start" },
+                            { "data": "end","title":"End" },
+                            { "data": "name","title":"Name" },
+                            { "data": "name_id","title":"Name ID" },
+                            // { "data": "PeriodAccess","title":"PeriodAccess" },
+                            
+                            // { "data": null,"title":"Action",
+                            
+                            //     render:function(data){
+                            //         return ` <button type="button" value="${data.PeriodID}"  class="delete_period btn btn-xs btn-danger ">Delete <button>`;
+                            //     }
+                            // }
+
+                            
+                        ],
+                        destroy: true,
+                })
+                
            // }
             //if(checkstep=="#step-3"){
                

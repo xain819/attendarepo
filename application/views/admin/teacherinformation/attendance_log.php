@@ -30,8 +30,9 @@ button.btn-space {
 <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
 
-
-  <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
+<!-- 
+  <script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script> -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
@@ -112,7 +113,7 @@ function selectColumns ( editor, csv, header ) {
             buttons: 'Submit',
             message: 'Click the <i>Submit</i> button to confirm the import of '+csv.length+' rows of data. Optionally, override the value for a field to set a common value by clicking on the field below.'
         } );
- 
+        
         for ( var i=0 ; i<fields.length ; i++ ) {
             var field = editor.field( fields[i] );
             var mapped = data[ field.name() ];
@@ -450,6 +451,39 @@ $(document).ready(function() {
 	});
 });
     
+
+
+    setInterval(function()
+    {
+        $.ajax({
+        url:'<?php echo base_url(); ?>admin/teacherinformation/get_current_period',
+        type:"POST",
+        data:({[csrfName]: csrfHash}),
+        dataType:'JSON',
+        }).done(function(data){
+            if(data==null){
+                
+            }else{
+                swal({
+                        title: `Validate Attendance in Period ${data[0].Period} ?`,
+                        text: " ",
+                        icon: "info",
+                        buttons: true,
+                        dangerMode: false,
+                        })
+                        .then((willDelete) => {
+                        if (willDelete) {
+                            swal("Success", {
+                            icon: "success",
+                            });
+                        } else {
+                            swal("Cancelled");
+                        }
+                        });
+            }
+        })
+    }, 1000); 
+
 });
        
 

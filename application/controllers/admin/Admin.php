@@ -34,6 +34,9 @@ class Admin extends My_Controller
 		$data['view']='admin/admin/settings';
 		$this->load->view('layoutv2',$data);
 	}
+	public function get_schoolsettings(){
+		echo json_encode($this->db->get('school_settings'));
+	}
 	//---------------------------------------------------------
 	function filterdata()
 	{
