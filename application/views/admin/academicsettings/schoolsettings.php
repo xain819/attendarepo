@@ -98,7 +98,7 @@ $(document).ready(function() {
             dataType:'JSON'
        },
         columns: [
-            { data: 'Setting','title':'SettingName' },
+            { data: 'Setting','title':'Type' },
             { data: 'Value','title':'SettingValue' },
             {
                 data:null,'title':'Action',
@@ -124,9 +124,9 @@ $(document).ready(function() {
        },
         columns: [
             { data: 'start','title':'Start' },
-            { data: 'name','title':'Name' },
+            { data: 'name','title':'Type' },
             { data: 'end','title':'End' },
-            { data: 'name_id','title':'Name ID' },
+            { data: 'name_id','title':'TypeID' },
             {
                 data:null,'title':'Action',
                 render:function(data){
