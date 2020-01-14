@@ -43,6 +43,7 @@ button.btn-space {
                 <table id="schoolsettings" class="display" style="width:100%">
                         <thead>
                             <tr>
+                    
                             </tr>
                         </thead>
             
@@ -57,7 +58,7 @@ button.btn-space {
         <div class="card-body">
             <h4 class="card-title">System Settings</h4>
             <button class="btn btn-xs btn-success " id="show-add-systemsetting-modal">Add</button>
-            <h4>Add Your School Name Here</h4>
+            <!-- <h4>Add Your School Name Here</h4> -->
             <div class="card-content">
                 <table id="systemsettings" class="display" style="width:100%">
                         <thead>
@@ -98,23 +99,19 @@ $(document).ready(function() {
             dataType:'JSON'
        },
         columns: [
-            { data: 'Setting','title':'SettingName' },
-            { data: 'Value','title':'SettingValue' },
+            { data: 'Setting','title':'Type' },
+            { data: 'Value','title':'Details' },
             {
                 data:null,'title':'Action',
                 render:function(data){
                     return `  <button id="show-edit-systemsetting-modal" value=${data.SettingID} class="btn btn-xs btn-warning ">Edit</button>`;
                 }
             }
-
-
-          
         ],
         select: true,
     
     });
     var a= $('#schoolsettings').DataTable( {
-        
         ajax: {
             url: base_url+"admin/academicsettings/check_schoolsettings",
             data:({ [csrfName]: csrfHash}),
@@ -123,19 +120,16 @@ $(document).ready(function() {
             dataType:'JSON'
        },
         columns: [
-            { data: 'start','title':'Start' },
-            { data: 'name','title':'Name' },
-            { data: 'end','title':'End' },
-            { data: 'name_id','title':'Name ID' },
+            { data: 'start','title':'DateStart' },
+            { data: 'name','title':'Academic Term' },
+            { data: 'end','title':'DateEnd' },
+            { data: 'name_id','title':'Shortcode' },
             {
                 data:null,'title':'Action',
                 render:function(data){
                     return `<button value=${data.id} class="btn btn-xs btn-warning edit-schoolsetting">Edit</button>`;
                 }
             }
-
-
-          
         ],
         select: true,
     

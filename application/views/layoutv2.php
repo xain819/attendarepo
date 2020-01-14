@@ -13,6 +13,8 @@
     <link rel="manifest" href="<?=base_url() ?>manifest.json">
     <script src="<?=base_url() ?>public/plugins/moment/moment.js"></script>
     <script src="https://kit.fontawesome.com/ba69dea6e4.js"></script>
+    <link href="<?= base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet">
     <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
 
 
