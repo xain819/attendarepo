@@ -58,7 +58,7 @@ button.btn-space {
         <div class="card-body">
             <h4 class="card-title">System Settings</h4>
             <button class="btn btn-xs btn-success " id="show-add-systemsetting-modal">Add</button>
-            <h4>Add Your School Name Here</h4>
+            <!-- <h4>Add Your School Name Here</h4> -->
             <div class="card-content">
                 <table id="systemsettings" class="display" style="width:100%">
                         <thead>
@@ -99,7 +99,7 @@ $(document).ready(function() {
             dataType:'JSON'
        },
         columns: [
-            { data: 'Setting','title':'SettingName' },
+            { data: 'Setting','title':'Type' },
             { data: 'Value','title':'SettingValue' },
             {
                 data:null,'title':'Action',
@@ -125,9 +125,9 @@ $(document).ready(function() {
        },
         columns: [
             { data: 'start','title':'Start' },
-            { data: 'name','title':'Name' },
+            { data: 'name','title':'Type' },
             { data: 'end','title':'End' },
-            { data: 'name_id','title':'Name ID' },
+            { data: 'name_id','title':'TypeID' },
             {
                 data:null,'title':'Action',
                 render:function(data){
