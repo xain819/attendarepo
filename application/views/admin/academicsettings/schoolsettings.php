@@ -124,10 +124,10 @@ $(document).ready(function() {
             dataType:'JSON'
        },
         columns: [
-            { data: 'start','title':'Start' },
-            { data: 'name','title':'Type' },
-            { data: 'end','title':'End' },
-            { data: 'name_id','title':'TypeID' },
+            { data: 'start','title':'DateStart' },
+            { data: 'name','title':'Academic Term' },
+            { data: 'end','title':'DateEnd' },
+            { data: 'name_id','title':'Shortcode' },
             {
                 data:null,'title':'Action',
                 render:function(data){
