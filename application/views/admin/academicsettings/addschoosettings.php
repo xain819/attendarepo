@@ -14,11 +14,18 @@
                             </div>
                             <div class="form-group">
                                 <label class="text-label">Academic Term</label>
-                                <input type="text" id="name" name="text" class="form-control" required="">
+                                <select class="form-control" id="name" name="name" >
+                                    <option value="week">week</option>
+                                    <option value="quarter">quarter</option>
+                                    <option value="Semester">Semester</option>
+                                    <option value="period">period</option>
+                                    <option value="Marking">Marking</option>
+                                </select>
+                                <!-- <input type="text" id="name" name="text" class="form-control" required=""> -->
                             </div>
                             <div class="form-group">
                                 <label class="text-label">Date End</label>
-                                <input type="text" id="end" name="text" class="form-control" " required="">
+                                <input type="text" id="end" name="text" class="form-control"  required="">
                             </div>
                             <div class="form-group">
                                 <label class="text-label">Shortcode</label>
