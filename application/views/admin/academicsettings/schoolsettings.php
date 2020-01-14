@@ -134,9 +134,6 @@ $(document).ready(function() {
                     return `<button value=${data.id} class="btn btn-xs btn-warning edit-schoolsetting">Edit</button>`;
                 }
             }
-
-
-          
         ],
         select: true,
     
