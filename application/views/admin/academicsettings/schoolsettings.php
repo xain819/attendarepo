@@ -43,6 +43,7 @@ button.btn-space {
                 <table id="schoolsettings" class="display" style="width:100%">
                         <thead>
                             <tr>
+                    
                             </tr>
                         </thead>
             
