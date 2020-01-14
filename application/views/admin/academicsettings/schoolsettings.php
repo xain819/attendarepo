@@ -100,22 +100,18 @@ $(document).ready(function() {
        },
         columns: [
             { data: 'Setting','title':'Type' },
-            { data: 'Value','title':'SettingValue' },
+            { data: 'Value','title':'Details' },
             {
                 data:null,'title':'Action',
                 render:function(data){
                     return `  <button id="show-edit-systemsetting-modal" value=${data.SettingID} class="btn btn-xs btn-warning ">Edit</button>`;
                 }
             }
-
-
-          
         ],
         select: true,
     
     });
     var a= $('#schoolsettings').DataTable( {
-        
         ajax: {
             url: base_url+"admin/academicsettings/check_schoolsettings",
             data:({ [csrfName]: csrfHash}),
