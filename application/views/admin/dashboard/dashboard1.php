@@ -92,6 +92,19 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-6 col-lg-4 col-xl-6 col-xxl-4">
+                                <div class="card">
+                                    <div class="card-body widget-school-stat bg-6 rounded">
+                                        <div class="text">
+                                            <h2  id="neg"   >&#36;<?php echo $totallunch['total']?></h2>
+                                            <p>Negative Seat Time</p>
+                                        </div>
+                                        <div class="icon">
+                                            <span><i class="fa fa-university"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                    
                     </div>
