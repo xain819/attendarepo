@@ -34,9 +34,19 @@
         
                     <?php if($this->rbac->check_module_permission('admin')): ?>  
 
-                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/generalsettings'); ?>">
-                    <i class="fas fa-cog"></i><span class="nav-text">General Setting</span>
-                       </a>
+                       
+                    <li class="mega-menu mega-menu-lg">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="fas fa-cog"></i><span class="nav-text">General Setting</span><span class="badge bg-dpink text-white nav-badge"></span>
+                        </a>
+                        <ul aria-expanded="false">
+
+                            <li id="admin"><a href="<?= base_url('admin/generalsettings'); ?>">Terminal Controller</a></li>
+        
+                            <li id=""><a href="<?= base_url('admin/academicsettings/schoolsettings'); ?>">School Settings</a></li>
+                        </ul>
+                    </li>
+
 
                     <li class="mega-menu mega-menu-lg">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -60,6 +70,7 @@
                         </a>
                       
                     </li>
+
                     <?php endif; ?>
                   
 
@@ -156,7 +167,7 @@
 
 
                 <?php endif; ?>
-                <?php if($this->rbac->check_module_permission('admin')): ?>  
+                <!-- <?php if($this->rbac->check_module_permission('admin')): ?>  
 
                 <li class="nav-label">System Settings</li>
 
@@ -173,7 +184,7 @@
 
 
 
-                <?php endif; ?>
+                <?php endif; ?> -->
 
 
             
