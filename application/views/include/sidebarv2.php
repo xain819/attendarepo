@@ -59,7 +59,7 @@
                             <li id=""><a href="<?= base_url('admin/controlpannel/manage_terminal'); ?>">Manage Terminal</a></li>
                         </ul>
                     </li>
-
+                    <li class="nav-label">Teacher & Student </li>
                     <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/studentinformation'); ?>" >
                     <i class="fas fa-user-cog"></i><span class="nav-text">Student Information</span>
                         </a>
@@ -108,6 +108,7 @@
                     <?php endif; ?>
                  
                   
+         
                     <?php if($this->rbac->check_module_permission('teacherinformation')): ?>  
                     <?php if($this->rbac->disable_teacher_dashboard()): ?>  
                     <li class="nav-label">Teacher Dashboard</li>
