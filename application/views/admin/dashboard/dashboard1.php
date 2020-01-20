@@ -96,8 +96,8 @@
                                 <div class="card">
                                     <div class="card-body widget-school-stat bg-6 rounded">
                                         <div class="text">
-                                            <h2  id="neg"   >&#36;<?php echo $totallunch['total']?></h2>
-                                            <p>Negative Seat Time</p>
+                                            <h2  id="neg"   ><?php echo $totallunch['total']?></h2>
+                                            <p>Total student to take lunch:</p>
                                         </div>
                                         <div class="icon">
                                             <span><i class="fa fa-university"></i></span>
@@ -108,17 +108,7 @@
                         </div>
                    
                     </div>
-                    <div class="col-xl-7 col-lg-12 col-xxl-12">
-                    <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Lunch</h4>
-                                <h1>Total student to take lunch: <?php echo $totallunch['total']?></h1>   
-                                <!-- <canvas id="doughutChart"></canvas> -->
-                            </div>
-                        </div>
-                 
-                      
-                    </div>
+                   
                 </div>
 
              
