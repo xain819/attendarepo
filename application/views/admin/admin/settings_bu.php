@@ -123,6 +123,13 @@
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="form-group">
+                                                    <label class="text-label">School Logo*</label>
+                                                   <input type="file" class="form-control" id="validationDefaultUsername9" aria-describedby="inputGroupPrepend2">
+                                                </div>
+                                            
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
                                                     <label class="text-label">School Email Address*</label>
                                                     <div class="input-group">
                                                         <input type="email" class="form-control border-right-0" id="" aria-describedby="inputGroupPrepend2" placeholder="cellophane@gmail.com" required>

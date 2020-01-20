@@ -433,7 +433,7 @@ $(document).ready(function(){
                 
                 const mhl=`<div class="col-xl-4 col-sm-4">
                 <div class="card">
-                <div class="bootstrap-popover  pull-right"><a tabindex="0" class="btn  pull-right far fa-question-circle" role="button" data-toggle="popover" data-trigger="focus" title="Description" 
+                <div class="bootstrap-popover  pull-right"><a tabindex="0" class="btn  pull-right far fa-question-circle" role="button" data-toggle="popover" data-trigger="focus" title="What's This?" 
                         data-content="${element.description}"></a></div>
                 
                         
