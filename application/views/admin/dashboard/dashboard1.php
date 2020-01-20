@@ -12,7 +12,7 @@
     
 
                 <div class="row">
-                    <div class="col-lg-12 col-xxl-12 col-xl-12">
+                    <div class="col-lg-12 col-xxl-12 col-xl-8">
                         <div class="row">
                             <div class="col-sm-6 col-lg-4 col-xl-6 col-xxl-4">
                                 <div class="card">
