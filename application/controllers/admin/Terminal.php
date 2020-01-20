@@ -9,18 +9,39 @@
 			
 			
 		}
+		public function insert_attendance(){
+			//print_r($this->input->post('test'));
+			$this->db->insert('attendance', $this->input->post('test'));
+		}
+		public function get_hallpass(){
+			echo json_encode($this->db->query('SELECT * FROM hallpass where PassTypeID=1')->result());
 
-		
+		}
+		public function manageterminal(){
+			$data['hallpass']=($this->db->query('SELECT * FROM hallpass where PassTypeID=1')->result());
+			$data['studentinfo']=$this->db->query("SELECT * FROM student_table WHERE student_local_id=? ",array($this->input->post('StudentID')))->result();
+			echo json_encode($data);
+		}
+		public function get_period(){
+			$time=date('H:i:s');
+			$data=$this->db->query('SELECT * FROM period WHERE ? BETWEEN PeriodStartTime AND PeriodEndTime ',array($time))->result();
+			echo json_encode($data);
+		}
+		public function mot2(){
+			//$data['title'] = 'General Settings';
+			$data['view'] = 'terminal/terminal_modal';
+			$data['view1'] = 'terminal/alertmodal';
+			$data['username']=$_SESSION['username'];
+			//$result=$this->admin->get_terminal_hallpass($data['username']);
+			$this->load->view('terminal/mot2',$data);
+		}
 		public function index(){
 			//$data['title'] = 'General Settings';
 			$data['view'] = 'terminal/terminal_modal';
 			$data['view1'] = 'terminal/alertmodal';
 			$data['username']=$_SESSION['username'];
 			//$result=$this->admin->get_terminal_hallpass($data['username']);
-			
-	
 			$this->load->view('terminal/index',$data);
-
 		}
 	
 		public function index_2(){
@@ -29,8 +50,7 @@
 			$data['view1'] = 'terminal/alertmodal';
 			$data['username']=$_SESSION['username'];
 			//$result=$this->admin->get_terminal_hallpass($data['username']);
-			
-	
+
 			$this->load->view('terminal/index_2',$data);
 
 		}

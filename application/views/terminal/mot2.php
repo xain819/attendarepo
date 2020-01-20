@@ -87,168 +87,165 @@
  transform: translateX(-100%); 
  }
 }
+        html,body {
+            padding:0;
+            margin:0;
+            background:#fffff;
+            text-align:center;
+        
+        }
 
+        body {
+            padding-top:3em;
+        }
 
-    
-      html,body {
-        padding:0;
-        margin:0;
-        background:#fffff;
-        text-align:center;
-       
-      }
+        h1,
+        h2 {
+            margin-bottom:3rem;
+            font-family:sans-serif;
+            color:#666;
+        }
 
-      body {
-        padding-top:3em;
-      }
+        h2 {
+            margin-top:2em;
+        }
 
-      h1,
-      h2 {
-        margin-bottom:3rem;
-        font-family:sans-serif;
-        color:#666;
-      }
+        .clock {
+            position:relative;
+            font-family:monaco,consolas,"courier new",monospace;
+            font-size:3.86rem;
+            line-height:1.375;
+        }
 
-      h2 {
-        margin-top:2em;
-      }
+        .clock:before,
+        .clock:after {
+            position:absolute;
+            top:0;
+            bottom:0;
+            content:':';
+            z-index:2;
+            line-height:1.15;
+            color:#333;
+        }
 
-      .clock {
-        position:relative;
-        font-family:monaco,consolas,"courier new",monospace;
-        font-size:3.86rem;
-        line-height:1.375;
-      }
+        .clock:before {
+            left:2.325em;
+        }
 
-      .clock:before,
-      .clock:after {
-        position:absolute;
-        top:0;
-        bottom:0;
-        content:':';
-        z-index:2;
-        line-height:1.15;
-        color:#333;
-      }
+        .clock:after {
+            right:2.325em;
+        }
 
-      .clock:before {
-        left:2.325em;
-      }
+        .clock span {
+            position:relative;
+            display:inline-block;
+            padding:0 .25em;
+            margin:0 .06125em;
+            z-index:1;
 
-      .clock:after {
-        right:2.325em;
-      }
+            -webkit-transform:perspective(750);
+            -moz-transform:perspective(750);
+            -ms-transform:perspective(750);
+            transform:perspective(750);
 
-      .clock span {
-        position:relative;
-        display:inline-block;
-        padding:0 .25em;
-        margin:0 .06125em;
-        z-index:1;
+            -webkit-transform-style:preserve-3d;
+            -moz-transform-style:preserve-3d;
+            -ms-transform-style:preserve-3d;
+            transform-style:preserve-3d;
+        }
 
-        -webkit-transform:perspective(750);
-        -moz-transform:perspective(750);
-        -ms-transform:perspective(750);
-        transform:perspective(750);
+        .clock span:first-child {
+            margin-left:0;
+        }
 
-        -webkit-transform-style:preserve-3d;
-        -moz-transform-style:preserve-3d;
-        -ms-transform-style:preserve-3d;
-        transform-style:preserve-3d;
-      }
+        .clock span:last-child {
+            margin-right:0;
+        }
 
-      .clock span:first-child {
-        margin-left:0;
-      }
+        .clock span:nth-child(2),
+        .clock span:nth-child(4) {
+            margin-right:.3em;
+        }
 
-      .clock span:last-child {
-        margin-right:0;
-      }
+        .clock span:nth-child(3),
+        .clock span:nth-child(5) {
+            margin-left:.3em;
+        }
 
-      .clock span:nth-child(2),
-      .clock span:nth-child(4) {
-        margin-right:.3em;
-      }
+        .clock span:before,
+        .clock span:after {
+            position:absolute;
+            left:0;
+            top:0;
+            right:0;
+            bottom:0;
+            color:#eee;
+            text-shadow:0 1px 0 #fff;
+            background:#333;
+            border-radius:.125em;
+            outline:1px solid transparent; /* fix jagged edges in ff */
 
-      .clock span:nth-child(3),
-      .clock span:nth-child(5) {
-        margin-left:.3em;
-      }
+            -webkit-backface-visibility:hidden;
+            -moz-backface-visibility:hidden;
+            -ms-backface-visibility:hidden;
+            backface-visibility:hidden;
 
-      .clock span:before,
-      .clock span:after {
-        position:absolute;
-        left:0;
-        top:0;
-        right:0;
-        bottom:0;
-        color:#eee;
-        text-shadow:0 1px 0 #fff;
-        background:#333;
-        border-radius:.125em;
-        outline:1px solid transparent; /* fix jagged edges in ff */
+            -webkit-transition:-webkit-transform .75s, opacity .75s;
+            -moz-transition:-moz-transform .75s, opacity .75s;
+            -ms-transition:-ms-transform .75s, opacity .75s;
+            transition:transform .75s, opacity .75s;
+        }
 
-        -webkit-backface-visibility:hidden;
-        -moz-backface-visibility:hidden;
-        -ms-backface-visibility:hidden;
-        backface-visibility:hidden;
+        .clock span:before {
+            opacity:1;
+            z-index:1;
+            content:attr(data-old);
 
-        -webkit-transition:-webkit-transform .75s, opacity .75s;
-        -moz-transition:-moz-transform .75s, opacity .75s;
-        -ms-transition:-ms-transform .75s, opacity .75s;
-        transition:transform .75s, opacity .75s;
-      }
+            -webkit-transform-origin:0 0;
+            -moz-transform-origin:0 0;
+            -ms-transform-origin:0 0;
+            transform-origin:0 0;
 
-      .clock span:before {
-        opacity:1;
-        z-index:1;
-        content:attr(data-old);
+            -webkit-transform:translate3d(0,0,0) rotateX(0);
+            -moz-transform:translate3d(0,0,0) rotateX(0);
+            -ms-transform:translate3d(0,0,0) rotateX(0);
+            transform:translate3d(0,0,0) rotateX(0);
+        }
 
-        -webkit-transform-origin:0 0;
-        -moz-transform-origin:0 0;
-        -ms-transform-origin:0 0;
-        transform-origin:0 0;
+        .clock span:after {
+            opacity:0;
+            z-index:2;
+            content:attr(data-now);
 
-        -webkit-transform:translate3d(0,0,0) rotateX(0);
-        -moz-transform:translate3d(0,0,0) rotateX(0);
-        -ms-transform:translate3d(0,0,0) rotateX(0);
-        transform:translate3d(0,0,0) rotateX(0);
-      }
+            -webkit-transform-origin:0 100%;
+            -moz-transform-origin:0 100%;
+            -ms-transform-origin:0 100%;
+            transform-origin:0 100%;
 
-      .clock span:after {
-        opacity:0;
-        z-index:2;
-        content:attr(data-now);
+            -webkit-transform:translate3d(0,-102.5%,0) rotateX(90deg);
+            -moz-transform:translate3d(0,-102.5%,0) rotateX(90deg);
+            -ms-transform:translate3d(0,-102.5%,0) rotateX(90deg);
+            transform:translate3d(0,-102.5%,0) rotateX(90deg);
+        }
 
-        -webkit-transform-origin:0 100%;
-        -moz-transform-origin:0 100%;
-        -ms-transform-origin:0 100%;
-        transform-origin:0 100%;
+        .clock .flip:before {
+            opacity:0;
+            -webkit-transform:translate3d(0,102.5%,0) rotateX(-90deg);
+            -moz-transform:translate3d(0,102.5%,0) rotateX(-90deg);
+            -ms-transform:translate3d(0,102.5%,0) rotateX(-90deg);
+            transform:translate3d(0,102.5%,0) rotateX(-90deg);
+        }
 
-        -webkit-transform:translate3d(0,-102.5%,0) rotateX(90deg);
-        -moz-transform:translate3d(0,-102.5%,0) rotateX(90deg);
-        -ms-transform:translate3d(0,-102.5%,0) rotateX(90deg);
-        transform:translate3d(0,-102.5%,0) rotateX(90deg);
-      }
-
-      .clock .flip:before {
-        opacity:0;
-        -webkit-transform:translate3d(0,102.5%,0) rotateX(-90deg);
-        -moz-transform:translate3d(0,102.5%,0) rotateX(-90deg);
-        -ms-transform:translate3d(0,102.5%,0) rotateX(-90deg);
-        transform:translate3d(0,102.5%,0) rotateX(-90deg);
-      }
-
-      .clock .flip:after {
-        opacity:1;
-        -webkit-transform:translate3d(0,0,0) rotateX(0);
-        -moz-transform:translate3d(0,0,0) rotateX(0);
-        -ms-transform:translate3d(0,0,0) rotateX(0);
-        transform:translate3d(0,0,0) rotateX(0);
-      }
-      .icon-terminal{
-        font-size:24px;
-      }
+        .clock .flip:after {
+            opacity:1;
+            -webkit-transform:translate3d(0,0,0) rotateX(0);
+            -moz-transform:translate3d(0,0,0) rotateX(0);
+            -ms-transform:translate3d(0,0,0) rotateX(0);
+            transform:translate3d(0,0,0) rotateX(0);
+        }
+        .icon-terminal{
+            font-size:24px;
+        }
 
 </style>
 <body class="hold-transition lockscreen" style="background-color:#ffffff!important;margin:0 auto; padding:0px;">
@@ -258,157 +255,126 @@
 
 
    <div class="container bg-success bg-aqua"  style="padding-top:20px;" > 
-   <div class=" scroll-slow col-md-12 col-sm-12 col-xs-12 pull-center ">
-   </br>
-   <p>Quote of the Day: "Hire character. Train skill." -Peter Schutz</p>
-   </div>
-      <div class="col-md-2 pull-center ">
+        <div class=" scroll-slow col-md-12 col-sm-12 col-xs-12 pull-center ">
+            </br>
+            <p>Quote of the Day: "Hire character. Train skill." -Peter Schutz</p>
         </div>
-              <div class="col-md-`12` col-sm-12 col-xs-12">
-                    <div class="pull-left col-md-2" >
-                    <h3>Room: <span id='room'></span> </h3>
-                    
-                      <h4>Period: <span id='period_number'></span> </h4>
-          </div>  
-
-              <div class="pull-right col-md-2">
-              <br>
-              <h4 class="pull-right"> <a href="<?php echo base_url('Auth/logout');?>"><i class="fa fa-power-off bg-white"></i>LogOut</a></h4>
-              </div>
-      
-              <div class="col-md-2 pull-center ">
+        <div class="col-md-2 pull-center ">
         </div>
-       </div>
-
-
-
-
-   
-
-
-    <div class="pull center col-md-12 col-sm-12 col-xs-12">
-    <div class=" col-md-12 col-sm-12 col-xs-12 pull-center ">
-    <br>  <br> 
-    </div>
- 
-
-        <div class="col-md-12 col-sm-12 col-xs-12 pull-center" >
-        <br>  <br>
- 
-        <span class="clock1 pull-center" style='text-align:center;width:auto;display:inline-block;'></span>
-   
-        <br>  <br>
- 
-        </div>  
-
-
-
-    <div class=" col-md-12 col-sm-12 col-xs-12 pull-center ">
-    <br>  <br> 
+        <div class="col-md-`12` col-sm-12 col-xs-12">
+            <div class="pull-left col-md-2" >
+                <h3>Room: <span id='room'></span> </h3>
+                <h4>Period: <span id='period_number'></span> </h4>
+            </div>  
+            <div class="pull-right col-md-2">
+                <br>
+                <h4 class="pull-right"> <a href="<?php echo base_url('Auth/logout');?>"><i class="fa fa-power-off bg-white"></i>LogOut</a></h4>
+            </div>
+            <div class="col-md-2 pull-center ">
+            </div>
         </div>
-        <div class="form-group">
-        <div class="col-md-3 pull-center ">
-        </div>
+        <div class="pull center col-md-12 col-sm-12 col-xs-12">
+            <div class=" col-md-12 col-sm-12 col-xs-12 pull-center ">
+                <br>  <br> 
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 pull-center" >
+                <br>  <br>
 
-       
-        <div class="col-md-6 pull-center ">
+                <span class="clock1 pull-center" style='text-align:center;width:auto;display:inline-block;'></span>
 
-              <FORM id='myform' >
-              <input type="text" id="student_id" class="form-control" placeholder="Student ID"  value="" autofocus>
-            
-              </FORM>
-         
-   
-              
-  
-          </div>
-          <div class="col-md-3 pull-center ">
-        </div>
-    
-        </div>
+                <br>  <br>
+
+            </div>  
+            <div class=" col-md-12 col-sm-12 col-xs-12 pull-center ">
+                <br>  <br> 
+            </div>
+            <div class="form-group">
+                <div class="col-md-3 pull-center ">
+                </div>
+                <div class="col-md-6 pull-center ">
+                    <FORM id='myform' >
+                        <input type="text" id="student_id" class="form-control" placeholder="Student ID"  value="" autofocus>
+                    </FORM>
+                </div>
+                <div class="col-md-3 pull-center ">
+                </div>
         
-         <div class="pull-right col-md-2">
-        <br>
+            </div>
+            <div class="pull-right col-md-2">
+                <br>
+            </div>
         </div>
+        <div class=" bg-success bg-aqua"  style="padding-top:50px;" >
 
+
+
+                <div class=" col-lg-12 cpull-center ">
+            <br>  <br> 
+                </div>
+        <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="info-box bg-aqua">
+                        <span class="info-box-icon bg-aqua"><i  style='font-size:24px;' class="fa fa-user"></i></span>
+                    <div class="info-box-content bg-aqua">
+                        <br>
+                        <span class="info-box-text-sm bg-aqua" style='font-size:10px;'>Teacher</span>
+                        <span class="info-box-number bg-aqua" style='font-size:10px;' id="TeacherName"></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="info-box bg-aqua">
+                    <span class="info-box-icon bg-aqua"><i style='font-size:24px;' class="fa fa-calendar-minus-o"></i></span>
+                    <div class="info-box-content">
+                    <br>
+                        <span class="info-box-text-sm" style='font-size:10px;'>Subject</span>
+                        <span class="info-box-number" style='font-size:10px;' id="SubjectName"></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="info-box bg-aqua fa-xs">
+                    <span class="info-box-icon bg-aqua"><i style='font-size:24px;'  class="fa fa-unlock-alt icon-terminal"></i></span>
+                    <div class="info-box-content">
+                    <br>
+                        <span class="info-box-text-sm" style='font-size:10px;' >Available</span>
+                        <span class="info-box-number"  style='font-size:10px;'  id="AvailableTime"></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="info-box bg-aqua">
+                    <span class="info-box-icon bg-aqua"><i  style='font-size:24px;' class="fa fa-lock icon-terminal"></i></span>
+                    <div class="info-box-content">
+                    <br>
+                        <span class="info-box-text-sm"  style='font-size:10px;'  >Locked</span>
+                        <span class="info-box-number"  style='font-size:10px;'  id="AvailableHPTime"></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <div class=" info-box bg-aqua col-md-12 col-sm-12 col-xs-12">
+                <h4>SCHOOL WIDE ANNOUCEMENT</h4>
+        
+                <div id='annoucement' class='row'></div>
+                
+                <!-- /.info-box -->
+            </div>
+            
+
+
+        </div>
+        </div>
     </div>
-
-
-  
-
-
-<div class=" bg-success bg-aqua"  style="padding-top:50px;" >
-
-
-
-        <div class=" col-lg-12 cpull-center ">
-    <br>  <br> 
-        </div>
-  <div class="row">
-  <div class="col-md-3 col-sm-3 col-xs-12">
-          <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i  style='font-size:24px;' class="fa fa-user"></i></span>
-              <div class="info-box-content bg-aqua">
-                  <br>
-                  <span class="info-box-text-sm bg-aqua" style='font-size:10px;'>Teacher</span>
-                  <span class="info-box-number bg-aqua" style='font-size:10px;' id="TeacherName"></span>
-              </div>
-              <!-- /.info-box-content -->
-          </div>
-        <!-- /.info-box -->
-      </div>
-
-      <div class="col-md-3 col-sm-3 col-xs-12">
-          <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i style='font-size:24px;' class="fa fa-calendar-minus-o"></i></span>
-              <div class="info-box-content">
-              <br>
-                  <span class="info-box-text-sm" style='font-size:10px;'>Subject</span>
-                  <span class="info-box-number" style='font-size:10px;' id="SubjectName"></span>
-              </div>
-              <!-- /.info-box-content -->
-          </div>
-        <!-- /.info-box -->
-      </div>
-    
-      <div class="col-md-3 col-sm-3 col-xs-12">
-          <div class="info-box bg-aqua fa-xs">
-              <span class="info-box-icon bg-aqua"><i style='font-size:24px;'  class="fa fa-unlock-alt icon-terminal"></i></span>
-              <div class="info-box-content">
-              <br>
-                  <span class="info-box-text-sm" style='font-size:10px;' >Available</span>
-                  <span class="info-box-number"  style='font-size:10px;'  id="AvailableTime"></span>
-              </div>
-              <!-- /.info-box-content -->
-          </div>
-        <!-- /.info-box -->
-      </div>
-      <div class="col-md-3 col-sm-3 col-xs-12">
-          <div class="info-box bg-aqua">
-              <span class="info-box-icon bg-aqua"><i  style='font-size:24px;' class="fa fa-lock icon-terminal"></i></span>
-              <div class="info-box-content">
-              <br>
-                  <span class="info-box-text-sm"  style='font-size:10px;'  >Locked</span>
-                  <span class="info-box-number"  style='font-size:10px;'  id="AvailableHPTime"></span>
-              </div>
-              <!-- /.info-box-content -->
-          </div>
-        <!-- /.info-box -->
-      </div>
-      <div class=" info-box bg-aqua col-md-12 col-sm-12 col-xs-12">
-         <h4>SCHOOL WIDE ANNOUCEMENT</h4>
-   
-         <div id='annoucement' class='row'></div>
-          
-        <!-- /.info-box -->
-      </div>
-     
-
-
-  </div>
-</div>
-
-</div>
 
   
   
@@ -476,108 +442,74 @@ e.returnValue = false;
 
 var base_url="<?php echo base_url();?>";
 var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
-    csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+$(document).ready(function(){
+    function update_data(){
 
+            const a =$.ajax({
+                url:'<?php echo base_url(); ?>admin/terminal/get_terminal_status',
+                type:"POST",
+                data:({[csrfName]: csrfHash}),
+                dataType:'JSON',
+            }).done(function(data){
 
-
-    $(document).ready(function(){
-      function update_data(){
-
-  const a =$.ajax({
-        url:'<?php echo base_url(); ?>admin/terminal/get_terminal_status',
-        type:"POST",
-        data:({[csrfName]: csrfHash}),
-        dataType:'JSON',
-    }).done(function(data){
-
-      if(data[0].master_terminal==='0' ||data[0].is_active==='0' ){
-        function moveItem(){
-        swal({
-              title: ` Locked`,
-              text: `Please Contact Administrator`,
-              icon: "warning",
-              showCancelButton: false,
-              showConfirmButton: false,
-              timer: 3000
-           });}
-
-           setInterval(moveItem,1000);
-      
-
-      }
-  
-  
-      
-
-
-    });}
+            if(data[0].master_terminal==='0' ||data[0].is_active==='0' ){
+                function moveItem(){
+                swal({
+                    title: ` Locked`,
+                    text: `Please Contact Administrator`,
+                    icon: "warning",
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    timer: 3000
+                });}
+                setInterval(moveItem,1000);
+            }
+        });
+    }
     setInterval(update_data,50000);
-
 });
-
-
 $(document).ready(function(){
 
-//   $("#terminal_modal").on('hidden.bs.modal', function () {
-//   location.reload();
-// });
-  var status=[];
-  var previous=[];
-function update_data(){
+    //   $("#terminal_modal").on('hidden.bs.modal', function () {
+    //   location.reload();
+    // });
+    var status=[];
+    var previous=[];
+    function update_data(){
 
- 
-
-  const a =$.ajax({
-        url:'<?php echo base_url(); ?>admin/terminal/get_emergency',
-        type:"POST",
-        data:({[csrfName]: csrfHash}),
-        dataType:'JSON',
-    }).done(function(data){
-
-      if(data.status==false){     
-        status=data;
-        $("#student_id").prop("disabled", false);
     
-      }
-      else if(data.status==true)
-      {
-  
-      var response=data['response'];
-      
-      status=data;
 
-            if(response[0].is_drill==1 && response[0].is_active==1){
-              function refresh(){
-                location.reload();}
-              
-                function moveItem(){
-               
-                  $("#student_id").prop("disabled", true);
-                swal({
-                      title: `${response[0].emergency_name}`,
-                      text: `This is a Drill
-                      ${response[0].notification}`,
-                      type: "warning",
-                      showCancelButton: false,
-                      showConfirmButton: false,
-                      timer: 700
-                  });}
+    const a =$.ajax({
+            url:'<?php echo base_url(); ?>admin/terminal/get_emergency',
+            type:"POST",
+            data:({[csrfName]: csrfHash}),
+            dataType:'JSON',
+        }).done(function(data){
 
-                  setInterval(moveItem,2000);
-                  function refresh(){
-                location.reload();}
-                  
-                  setInterval(refresh,20000);
-                  
+        if(data.status==false){     
+            status=data;
+            $("#student_id").prop("disabled", false);
+        
+        }
+        else if(data.status==true)
+        {
+    
+        var response=data['response'];
+        
+        status=data;
 
-              }
-              else{
-                  function moveItem(){
+                if(response[0].is_drill==1 && response[0].is_active==1){
+                function refresh(){
+                    location.reload();}
                 
-                  $("#student_id").prop("disabled", true);
-                  swal({
+                    function moveItem(){
+                
+                    $("#student_id").prop("disabled", true);
+                    swal({
                         title: `${response[0].emergency_name}`,
-                        text: `${response[0].notification}`,
+                        text: `This is a Drill
+                        ${response[0].notification}`,
                         type: "warning",
                         showCancelButton: false,
                         showConfirmButton: false,
@@ -585,33 +517,50 @@ function update_data(){
                     });}
 
                     setInterval(moveItem,2000);
+                    function refresh(){
+                    location.reload();}
+                    
                     setInterval(refresh,20000);
-              }
-            }    
-     
-      
-  
+                    
 
-    });
+                }
+                else{
+                    function moveItem(){
+                    
+                    $("#student_id").prop("disabled", true);
+                    swal({
+                            title: `${response[0].emergency_name}`,
+                            text: `${response[0].notification}`,
+                            type: "warning",
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                            timer: 700
+                        });}
+
+                        setInterval(moveItem,2000);
+                        setInterval(refresh,20000);
+                }
+                }    
+        
+        
+    
+
+        });
 
 
 
-      
+        
 
-  }
-setInterval(update_data,2000);
+    }
+    setInterval(update_data,2000);
 
-// status.watch(function (id, oldval, newval) {
-//   console.log('o.' + id + ' changed from ' + oldval + ' to ' + newval);
-//   return newval;rererr
-// });
+    // status.watch(function (id, oldval, newval) {
+    //   console.log('o.' + id + ' changed from ' + oldval + ' to ' + newval);
+    //   return newval;rererr
+    // });
 
 
 });
-
-
-
-
 $(document).ready(function(){
 
 
@@ -668,12 +617,11 @@ $(document).ready(function(){
     $('#AvailableTime').html(`${AvailableTime}`);
     $('#AvailableHPTime').html(`${AvailableHPTime}`);
 
-console.log(data.username);
+    console.log(data.username);
     })
 
   
 });
-
 $(document).ready(function(){
   const a =$.ajax({
         url:'<?php echo base_url(); ?>admin/terminal/get_announcement',
@@ -711,123 +659,95 @@ $(document).ready(function(){
     
 
 });
-
-
-
-
 $(document).ready(function(){
-
-  
     const a =$.ajax({
         url:'<?php echo base_url(); ?>admin/terminal/get_info',
         type:"POST",
         data:({[csrfName]: csrfHash}),
         dataType:'JSON',
-    }).done(function(data){
+        }).done(function(data){
 
-     var result=data.info;
-     var hallpass=result; 
+            var result=data.info;
+            var hallpass=result; 
+            const ahp = hallpass.filter(function(test){
+                return test.PassTypeID==='1';
+            });
+            const nhp = hallpass.filter(function(test){
+            return test.PassTypeID==='2';
+            });
+            nhp.forEach(function(element){
+            const HallPass=element.access;
+            const status=element.is_active;
+            const PassTypeID=element.PassTypeID;
+            console.log(data.master.master_hallpass);
+            if (status==='0' ){
+                var bg='bg-gray',a='<div class="info-box">',a2='';
+            }
+            else if(data.master.master_hallpass==='0' || data.master.hallpass_is_active==='0')
+            {
+                var bg='bg-gray',a='<div class="info-box">',a2='';
+            }
+            else
+            {
+                var a=`<a href=""><div class="info-box btn-hallpass" data-type="${PassTypeID}" data-id="${HallPass}" id="${HallPass}">`,
+                    a2='</a>',bg='bg-aqua';
+            }
+            let tnhp=`<div class="col-md-6 col-sm-6 col-xs-12">
 
-     const ahp = hallpass.filter(function(test){
-         return test.PassTypeID==='1';
+                                        ${a}
+                                        <span class="info-box-icon ${bg}"><i class="${element.icon}"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text-sm hallpass_type">${HallPass}</span>
+                                            <span class="info-box-number">${element.time_limit} Minutes</span>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                        </div>${a2}
+                                        <!-- /.info-box -->
+                                    </div>`;
+
+
+            var master_element = $("<div />");
+            master_element.html(tnhp);
+            $("#tnhp").append(tnhp); 
+            });
+            ahp.forEach(function(element){
+            const HallPass=element.access;
+            const status=element.is_active;
+            if (status==='0'){
+                var bg='bg-gray',a='<div class="info-box">',a2='';
+            }
+            else if(data.master.master_hallpass==0)
+            {
+                var a=`<a href=""><div class="info-box btn-hallpass" data-type="${element.PassTypeID}" data-id="${HallPass}" id="${HallPass}">`,
+                    a2='</a>',bg='bg-aqua';
+            }
+            else{
+                var a=`<a href=""><div class="info-box btn-hallpass" data-type="${element.PassTypeID}" data-id="${HallPass}" id="${HallPass}">`,
+                    a2='</a>',bg='bg-aqua';
+            }
+            let tahp=`<div class="col-md-6 col-sm-6 col-xs-12">
+
+                        ${a}
+                        <span class="info-box-icon ${bg}"><i class="${element.icon}"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm hallpass_type">${HallPass}</span>
+                            <span class="info-box-number">${element.time_limit} Minutes</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                        </div>${a2}
+                        <!-- /.info-box -->
+                        </div>`;
+
+
+            var master_element = $("<div />");
+            master_element.html(tahp);
+            $("#tahp").append(tahp);
+
        });
-     const nhp = hallpass.filter(function(test){
-         return test.PassTypeID==='2';
-       });
-
-       nhp.forEach(function(element){
-              
-        
-
-
-      const HallPass=element.access;
-      const status=element.is_active;
-      const PassTypeID=element.PassTypeID;
-      console.log(data.master.master_hallpass);
-
-
-      if (status==='0' ){
-        var bg='bg-gray',a='<div class="info-box">',a2='';
-      }
-      else if(data.master.master_hallpass==='0' || data.master.hallpass_is_active==='0')
-      {
-        var bg='bg-gray',a='<div class="info-box">',a2='';
-      }
-      else
-      {
-        var a=`<a href=""><div class="info-box btn-hallpass" data-type="${PassTypeID}" data-id="${HallPass}" id="${HallPass}">`,
-            a2='</a>',bg='bg-aqua';
-      }
-
-      
-
-   
-       let tnhp=`<div class="col-md-6 col-sm-6 col-xs-12">
-
-                                ${a}
-                                <span class="info-box-icon ${bg}"><i class="${element.icon}"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text-sm hallpass_type">${HallPass}</span>
-                                    <span class="info-box-number">${element.time_limit} Minutes</span>
-                                </div>
-                                <!-- /.info-box-content -->
-                                </div>${a2}
-                                <!-- /.info-box -->
-                            </div>`;
-
-
-       var master_element = $("<div />");
-
-        master_element.html(tnhp);
-        $("#tnhp").append(tnhp); 
-       });
-      
-      ahp.forEach(function(element){
-      const HallPass=element.access;
-      const status=element.is_active;
-
-    
-      if (status==='0'){
-        var bg='bg-gray',a='<div class="info-box">',a2='';
-      }
-      else if(data.master.master_hallpass==0)
-      
-      {
-        var a=`<a href=""><div class="info-box btn-hallpass" data-type="${element.PassTypeID}" data-id="${HallPass}" id="${HallPass}">`,
-            a2='</a>',bg='bg-aqua';
-      }
-      else{
-        var a=`<a href=""><div class="info-box btn-hallpass" data-type="${element.PassTypeID}" data-id="${HallPass}" id="${HallPass}">`,
-            a2='</a>',bg='bg-aqua';
-      }
-        
-        
-
-       let tahp=`<div class="col-md-6 col-sm-6 col-xs-12">
-
-                  ${a}
-                  <span class="info-box-icon ${bg}"><i class="${element.icon}"></i></span>
-                  <div class="info-box-content">
-                      <span class="info-box-text-sm hallpass_type">${HallPass}</span>
-                      <span class="info-box-number">${element.time_limit} Minutes</span>
-                  </div>
-                  <!-- /.info-box-content -->
-                  </div>${a2}
-                  <!-- /.info-box -->
-                  </div>`;
-
-
-       var master_element = $("<div />");
-
-        master_element.html(tahp);
-        $("#tahp").append(tahp); 
-       });
-  });
+    });
 
 
 });
-
-
 $(document).ready(function(){
   // $(document).on('click','.options',function(){
   //   swal({
@@ -845,7 +765,7 @@ $(document).ready(function(){
   // });
 
 //student and hall pass swipe
-  $(document).on('submit','#myform',function(e){
+$(document).on('submit','#myform',function(e){
     if( $("#student_id").val()){
       const id=$("#student_id").val();
       e.preventDefault();
@@ -1338,13 +1258,8 @@ $(document).ready(function(){
       //location.reload();
     }
   })
-
-
-    csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
-    csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
- 
-
-
+csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
   var Clock = (function(){
 
   var exports = function(element) {
