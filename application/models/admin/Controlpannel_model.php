@@ -76,33 +76,33 @@
 		}
 
 		// initialize and assign admin location if not exisst.
-		public function assign_hallpass_username()
-		{
-			$sql="select DISTINCT  h.location,a.username,a.password from hallpass h left join admin a on a.username=h.location where h.PassTypeID=1";
-			$result=$this->db->query($sql)->result_array();
+		// public function assign_hallpass_username()
+		// {
+		// 	$sql="select DISTINCT  h.location,a.username,a.password from hallpass h left join admin a on a.username=h.location where h.PassTypeID=1";
+		// 	$result=$this->db->query($sql)->result_array();
 		
-			foreach($result as $v){
-				if($v['username']==null){
+		// 	foreach($result as $v){
+		// 		if($v['username']==null){
 					
-					$data = array(
-						'username' => $v['location'],
+		// 			$data = array(
+		// 				'username' => $v['location'],
 					
 				
-						'admin_role_id' => 9, // By default i putt role is 2 for registraiton
-						'password' =>  password_hash($v['location'], PASSWORD_BCRYPT),
-						'is_active' => 1,
-						'is_verify' => 1,
-						'token' => md5(rand(0,1000)),    
-						'last_ip' => '',
-						'created_at' => date('Y-m-d : h:m:s'),
-						'updated_at' => date('Y-m-d : h:m:s'),
-					);
-				$this->db->insert('admin',$data);
+		// 				'admin_role_id' => 9, // By default i putt role is 2 for registraiton
+		// 				'password' =>  password_hash($v['location'], PASSWORD_BCRYPT),
+		// 				'is_active' => 1,
+		// 				'is_verify' => 1,
+		// 				'token' => md5(rand(0,1000)),    
+		// 				'last_ip' => '',
+		// 				'created_at' => date('Y-m-d : h:m:s'),
+		// 				'updated_at' => date('Y-m-d : h:m:s'),
+		// 			);
+		// 		$this->db->insert('admin',$data);
 			
-				}
+		// 		}
 
-			}
-		}
+		// 	}
+		// }
 		
 
 		public function manage_terminal(){

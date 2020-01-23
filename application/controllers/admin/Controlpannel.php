@@ -44,7 +44,7 @@
 			$data['type']=$this->admin->get_day_type();
 		
 			$this->control->assign_terminal_username();
-			$this->control->assign_hallpass_username();
+			// $this->control->assign_hallpass_username();
 
 			
 		
