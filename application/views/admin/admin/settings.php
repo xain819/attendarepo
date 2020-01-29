@@ -298,15 +298,15 @@
 
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
-<link rel="stylesheet" href="<?php echo base_url('public/plugins/editor/css/editor.dataTables.min.css');?>">
-<link rel="stylesheet" href="<?php echo base_url('public/plugins/yadcf/jquery.dataTables.yadcf.css');?>">
+<link rel="stylesheet" href="<?php echo base_url('public/plugins/editor/css/editor.dataTables.min.css'); ?>">
+<link rel="stylesheet" href="<?php echo base_url('public/plugins/yadcf/jquery.dataTables.yadcf.css'); ?>">
 
-<link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css');?>">
+<link rel="stylesheet" href="<?php echo base_url('public/dist/css/sweetalert.css'); ?>">
 
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url('public/plugins/editor/js/dataTables.editor.min.js');?>"></script>
+<script src="<?php echo base_url('public/plugins/editor/js/dataTables.editor.min.js'); ?>"></script>
 
-<script src="<?php echo base_url('public/plugins/papaparse/papaparse.min.js');?>"></script>
+<script src="<?php echo base_url('public/plugins/papaparse/papaparse.min.js'); ?>"></script>
 
 <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
@@ -339,7 +339,7 @@
                                     <li><a  href="#step-1">01</a>
                                         <div class="form-wizard-content">
                                             <div class="form-wizard-content-upper">
-                                                <img src="<?php echo base_url()?>/public/assets/images/avatar/7.png" alt="">
+                                                <img src="<?php echo base_url() ?>/public/assets/images/avatar/7.png" alt="">
                                                 <h4>School Settings</h4>
                                                 <!-- <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings heart.</p> -->
                                             </div>
@@ -434,20 +434,16 @@
                                     <div id="step-1">
                                         <h4 class="card-title mb-5">School Settings</h4>
                                         <div id="eeee" class="row">
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <label class="text-label">Name</label>
-                                                    <input type="text" id="school-settings-name" name="school-settings-name" class="form-control" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label class="text-label">Start</label>
-                                                    <input type="text" id="school-settings-start" name="school-settings-start" class="form-control"  >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
+                                          <div class="col-lg-4">
+                                              <div class="form-group">
+                                                  <label class="text-label">Name</label>
+                                                  <input type="text" id="school-settings-name" name="school-settings-name" class="form-control" >
+                                              </div>
+                                              <div class="form-group">
+                                                  <label class="text-label">Start</label>
+                                                  <input type="text" id="school-settings-start" name="school-settings-start" class="form-control"  >
+                                              </div>
+                                                 <div class="form-group">
                                                     <label class="text-label">End</label>
                                                     <div class="input-group">
                                                         <input type="text" id="school-settings-end" class="form-control border-right-0" name="school-settings-end" >
@@ -456,8 +452,6 @@
                                                         </div> -->
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label class="text-label">Name_ID</label>
                                                     <div class="input-group">
@@ -467,61 +461,82 @@
                                                         </div> -->
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!-- <div class="col-lg-12">
+                                                <button id="update-school-settings" type="button" class="btn btn-sm btn-warning pull-right">Update</button>
+                                          </div>
+
+                                          <div class="col-lg-8">
+                                            <table id="school_setting" class="table table-bordered table-striped" width="100%">
+                                                    
+                                            </table>
+                                          </div>
+                                           <!-- <div class="col-lg-4">
+                                               
+                                            </div> -->
+                                        </div>
+                                        <!-- <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label class="text-label">Where are you from*</label>
                                                     <input type="text" name="place" class="form-control" required>
                                                 </div>
                                             </div> -->
-                                            <button id="update-school-settings" type="button" class="btn btn-sm btn-warning pull-right">Update</button>
-                                        </div>
-                                        <table id="school_setting" class="table table-bordered table-striped" width="100%">
-                                                
-                                        </table>
                                     </div>
                                     <div id="step-2">
                                         <h4 class="card-title mb-5">System Settings</h4>
-                                        <div class="row">
+                                        <div class="row text-center">
+                                   
+
                                             <div class="col-lg-12">
-                                                <div class="form-group">
+                                              <div class="form-row justify-content-center">
+                                                <div class="form-group col-md-6">
                                                     <label class="text-label">School Name</label>
-                                                    <input type="text" id="system-school-name"  class="form-control" >
+                                                    <input type="text" id="system-school-name" class="form-control" style="text-align:center">
                                                 </div>
+                                              </div>
                                             </div>
+
+
                                             <div class="col-lg-12">
-                                                <div class="form-group">
+                                              <div class="form-row justify-content-center">
+                                                <div class="form-group col-md-6">
                                                     <label class="text-label">School Email Address*</label>
                                                     <div class="input-group">
-                                                        <input type="email" class="form-control border-right-0" id="system-email"  >
+                                                        <input type="email" class="form-control" id="system-email" style="text-align:center" >
                                                         <!-- <div class="input-group-append">
                                                             <span class="input-group-text bg-transparent" id="inputGroupPrepend2"> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
                                                         </div> -->
                                                     </div>
                                                 </div>
+                                              </div>
                                             </div>
                                             <div class="col-lg-12">
-                                                <div class="form-group">
+                                              <div class="form-row justify-content-center">
+                                                <div class="form-group col-md-6">
                                                     <label class="text-label">School Phone Number*</label>
                                                     <div class="input-group">
-                                                        <input type="text"  id="system-phone-number" class="form-control border-right-0">
+                                                        <input type="text"  id="system-phone-number" class="form-control" style="text-align:center">
                                                         <!-- <div class="input-group-append">
                                                             <span class="input-group-text bg-transparent" id="inputGroupPrepend2"> <i class="fa fa-phone" aria-hidden="true"></i> </span>
                                                         </div> -->
                                                     </div>
                                                 </div>
+                                              </div>
                                             </div>
                                             <div class="col-lg-12">
-                                                <div class="form-group">
+                                              <div class="form-row justify-content-center">
+                                                <div class="form-group col-md-6">
                                                     <label class="text-label">School Address*</label>
                                                     <div class="input-group">
-                                                        <input type="text"  id="system-address" class="form-control border-right-0">
+                                                        <input type="text"  id="system-address" class="form-control" style="text-align:center">
                                                         <!-- <div class="input-group-append">
                                                             <span class="input-group-text bg-transparent" id="inputGroupPrepend2"> <i class="fa fa-phone" aria-hidden="true"></i> </span>
                                                         </div> -->
                                                     </div>
                                                 </div>
+                                              </div>
                                             </div>
+                                            <div class="col-lg-7">
+                                               <button id="update-system-setting" type="button" class="btn btn-sm btn-warning pull-right">Update</button>
+                                             </div>
                                             <!-- <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label class="text-label">Your position in Company*</label>
@@ -529,74 +544,77 @@
                                                 </div>
                                             </div> -->
                                         </div>
-                                        <button id="update-system-setting" type="button" class="btn btn-sm btn-warning pull-right">Update</button>
+                                     
                                     </div>
                                     <div id="step-3">
                                         <!-- <div class="row"> -->
+                                      
                                                 <h4>New ScheduleType</h4>
-                                                Title:
-                                                <input class="form-control form-white" id="scheduletypetitle" type="text">
-                                                Color:
-                                        
-                                                <select class="form-control form-white" id="scheduletypecolor">
-                                                    <option value=""></option>
-                                                    <option class="bg-aqua" value="bg-aqua">bg-aqua</option>
-                                                    <option class="bg-blue" value="bg-blue">bg-blue</option>
-                                                    <option class="bg-light" value="bg-light">bg-light</option>
-                                                    <option class="bg-teal" value="bg-teal">bg-teal</option>
-                                                    <option class="bg-yellowvalue" value="bg-yellow">bg-yellow</option>
-                                                    <option class="bg-orange" value="bg-orange">bg-orange</option>
-                                                    <option class="bg-green" value="bg-green">bg-green</option>
-                                                    <option class="bg-lime" value="bg-lime">bg-lime</option>
-                                                    <option class="bg-red" value="bg-red">bg-red</option>
-                                                    <option class="bg-purple" value="bg-purple">bg-purple</option>
-                                                    <option class="bg-fuchsia" value="bg-fuchsia">bg-fuchsia</option>
-                                                    <option class="bg-muted" value="bg-muted">bg-muted</option>
-                                                    <option class="bg-navy" value="bg-navy">bg-navy</option>
-                                                </select>
-                                                <button id="update-scheduletyp-setting" type="button" class="btn btn-sm btn-warning pull-right">Update</button>
-                                                <br>
-                                                <br>
-                                                <br>
-                                                <table id="scheduletype_datatable" class="table table-bordered table-striped" width="100%">
+                                                <div class="row">
+                                                  <div class="col-lg-3">
+                                                    Title:
+                                                    <input class="form-control form-white" id="scheduletypetitle" type="text">
+                                                    Color:
+                                                    <select class="form-control form-white" id="scheduletypecolor">
+                                                        <option value=""></option>
+                                                        <option class="bg-aqua" value="bg-aqua">bg-aqua</option>
+                                                        <option class="bg-blue" value="bg-blue">bg-blue</option>
+                                                        <option class="bg-light" value="bg-light">bg-light</option>
+                                                        <option class="bg-teal" value="bg-teal">bg-teal</option>
+                                                        <option class="bg-yellowvalue" value="bg-yellow">bg-yellow</option>
+                                                        <option class="bg-orange" value="bg-orange">bg-orange</option>
+                                                        <option class="bg-green" value="bg-green">bg-green</option>
+                                                        <option class="bg-lime" value="bg-lime">bg-lime</option>
+                                                        <option class="bg-red" value="bg-red">bg-red</option>
+                                                        <option class="bg-purple" value="bg-purple">bg-purple</option>
+                                                        <option class="bg-fuchsia" value="bg-fuchsia">bg-fuchsia</option>
+                                                        <option class="bg-muted" value="bg-muted">bg-muted</option>
+                                                        <option class="bg-navy" value="bg-navy">bg-navy</option>
+                                                    </select><br><br>
+                                                     <button id="update-scheduletyp-setting" type="button" class="btn btn-sm btn-warning pull-right">Update</button>
+                                                  </div>
+                                                  <div class="col-lg-9">
+                                                    <table id="scheduletype_datatable" class="table table-bordered table-striped" width="100%"></table>
+                                                  </div>
+                                                </div>
                                                 
-                                                </table>
+                                                
                                             <!-- </div> -->
                                         <!-- </div> -->
                                        
                                     </div>
                                     <!-- //  -->
                                     <div id="step-4" class="">
-                                        <div class="form-group">
-                                            <label >Start Time</label>
-                                            <input type="text" id='add-sliderStartTime' class="form-control"   placeholder="PeriodStartTime">
-                                        </div>
-                                        <div class="form-group">
-                                            <label >End Time</label>
-                                            <input type="text" id='add-sliderEndTime' class="form-control"   placeholder="PeriodEndTime">
-                                        </div>
-                                        <div class="form-group">
-                                            <label >Period</label>
-                                            <input type="text" id='add-Period' class="form-control"   placeholder="Period">
-                                        </div>
-                                        <button id="update-period" type="button" class="btn btn-sm btn-warning pull-right">Update</button>
-                                            <br>
-                                            <br>
-                                            <br>
-                                        <table id="period_datatable" class="table table-bordered table-striped" width="100%">
-                                                
-                                        </table>
+                                      <div class="row">
+                                          <div class="col-lg-3">
+                                              <div class="form-group">
+                                                  <label >Start Time</label>
+                                                  <input type="text" id='add-sliderStartTime' class="form-control"   placeholder="PeriodStartTime">
+                                              </div>
+                                              <div class="form-group">
+                                                  <label >End Time</label>
+                                                  <input type="text" id='add-sliderEndTime' class="form-control"   placeholder="PeriodEndTime">
+                                              </div>
+                                              <div class="form-group">
+                                                  <label >Period</label>
+                                                  <input type="text" id='add-Period' class="form-control"   placeholder="Period">
+                                              </div>
+                                              <button id="update-period" type="button" class="btn btn-sm btn-warning pull-right">Update</button>
+                                            
+                                            </div>
+                                            <div class="col-lg-9">
+                                              <table id="period_datatable" class="table table-bordered table-striped" width="100%"></table>
+                                            </div>
+                                      </div>
                                     </div>
+
+
                                     <div id="step-5" class="">
                                       <div class=" card box-body" style='padding:20px;'>
-                                      <div class=' card col-xl-12 '>
+                                      <!-- <div class=' card col-xl-12 '> -->
                                         <table id="classes" class="display" style="width:100%">
                                               <thead>
                                                   <tr>
-
-                                                        
-                                          
-                                                
                                                   <th>Class Code</th>
                                                       <th>Course Code</th>
                                                       <th>Type</th>
@@ -608,16 +626,11 @@
                                                       <th>Location</th>
                                                       <th>TeacherID</th>
                                                       <th>StudentID</th>
-                                                    
-                                              
-                                                        
-                                                  
                                                   </tr>
                                               </thead>
-                                        
                                         </table>
-                                        </div>
-                                        </div>
+                                      <!-- </div> -->
+                                      </div>
 
                                     </div>
                                     <div id="step-6" class="">
@@ -1031,15 +1044,15 @@
 
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
-<link rel="stylesheet" href="<?php echo base_url('public/plugins/editor/css/editor.dataTables.min.css');?>">
-<link rel="stylesheet" href="<?php echo base_url('public/plugins/yadcf/jquery.dataTables.yadcf.css');?>">
+<link rel="stylesheet" href="<?php echo base_url('public/plugins/editor/css/editor.dataTables.min.css'); ?>">
+<link rel="stylesheet" href="<?php echo base_url('public/plugins/yadcf/jquery.dataTables.yadcf.css'); ?>">
 
 
 
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url('public/plugins/editor/js/dataTables.editor.min.js');?>"></script>
+<script src="<?php echo base_url('public/plugins/editor/js/dataTables.editor.min.js'); ?>"></script>
 
-<script src="<?php echo base_url('public/plugins/papaparse/papaparse.min.js');?>"></script>
+<script src="<?php echo base_url('public/plugins/papaparse/papaparse.min.js'); ?>"></script>
 
 <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
@@ -1055,7 +1068,7 @@
 
 
 
-<script src="<?php echo base_url('public/dist/js/sweetalert.min.js');?>"></script>
+<script src="<?php echo base_url('public/dist/js/sweetalert.min.js'); ?>"></script>
 <script src="<?=base_url() ?>public/assets/plugins/smartwizard/dist/js/jquery.smartWizard.min.js"></script>
 <script src="<?=base_url() ?>public/js/plugins-init/smartwizard-init.js"></script>
 
@@ -1486,7 +1499,7 @@
     //}
     // step 1, 2,3 ,4
     $(document).ready(function(){
-        var base_url="<?php echo base_url();?>";
+        var base_url="<?php echo base_url(); ?>";
 
 
             //if(checkstep=="#step-2"){ 
@@ -2031,7 +2044,7 @@
         $("body").on("change",".tgl_checkbox",function(){
             console.log($(this).data('id'));
 
-            $.post('<?=base_url("admin/generalsettings/change_status")?>',
+            $.post('<?=base_url("admin/generalsettings/change_status") ?>',
             {
                 '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
                 id : $(this).data('id'),
@@ -2127,7 +2140,7 @@
                         $('[data-toggle="popover"]').popover();
                         if(master_name!='no'){
                         $("#master_list").append(mhl);   }
-                    });	
+                    }); 
 
 
             });
@@ -2136,7 +2149,7 @@
         });
         $("body").on("change",".js-switch",function(){
             console.log($(this).data('id'));
-            $.post('<?=base_url("admin/generalsettings/change_status")?>',
+            $.post('<?=base_url("admin/generalsettings/change_status") ?>',
             {
                 '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
                 id : $(this).data('id'),
