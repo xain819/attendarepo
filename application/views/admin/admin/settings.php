@@ -505,7 +505,7 @@
                                 <div class="form-group">
                                     <label class="text-label">End</label>
                                     <div class="input-group">
-                                        <input type="text" id="school-settings-end" class="form-control border-right-0"
+                                        <input type="text" id="school-settings-end" class="form-control"
                                                name="school-settings-end">
                                         <!-- <div class="input-group-append">
                                             <span class="input-group-text bg-transparent" id="inputGroupPrepend2"> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
@@ -516,7 +516,7 @@
                                     <label class="text-label">Name_ID</label>
                                     <div class="input-group">
                                         <input type="text" id="school-settings-name-id" name="school-settings-name-id"
-                                               class="form-control border-right-0">
+                                               class="form-control">
                                         <!-- <div class="input-group-append">
                                             <span class="input-group-text bg-transparent" id="inputGroupPrepend2"> <i class="fa fa-phone" aria-hidden="true"></i> </span>
                                         </div> -->
@@ -640,9 +640,7 @@
                                     <option class="bg-muted" value="bg-muted">bg-muted</option>
                                     <option class="bg-navy" value="bg-navy">bg-navy</option>
                                 </select><br><br>
-                                <button id="update-scheduletyp-setting" type="button"
-                                        class="btn btn-sm btn-warning pull-right">Update
-                                </button>
+                                <button id="update-scheduletyp-setting" type="button" class="btn btn-sm btn-warning pull-right">Update</button>
                             </div>
                             <div class="col-lg-9">
                                 <table id="scheduletype_datatable" class="table table-bordered table-striped"
