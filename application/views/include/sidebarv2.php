@@ -34,10 +34,27 @@
         
                     <?php if($this->rbac->check_module_permission('admin')): ?>  
 
+
+                        <li class="nav-label">Terminal Settings</li>
+           
+
                        
                     <li class="mega-menu mega-menu-lg">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="fas fa-cog"></i><span class="nav-text">General Setting</span><span class="badge bg-dpink text-white nav-badge"></span>
+                        <i class="fas fa-cog"></i><span class="nav-text">General Settings</span><span class="badge bg-dpink text-white nav-badge"></span>
+                        </a>
+                        <ul aria-expanded="false">
+
+                            <li id="admin"><a href="<?= base_url('admin/generalsettings'); ?>">Terminal Controller</a></li>
+        
+                            <li id=""><a href="<?= base_url('admin/academicsettings/schoolsettings'); ?>">School Settings</a></li>
+                        </ul>
+                    </li>
+
+                         
+                    <li class="mega-menu mega-menu-lg">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="fas fa-cog"></i><span class="nav-text">Terminal Options</span><span class="badge bg-dpink text-white nav-badge"></span>
                         </a>
                         <ul aria-expanded="false">
 
@@ -75,22 +92,17 @@
                   
 
                    
-
+s
                     <?php if($this->rbac->check_module_permission('admin')): ?>  
 
-                    <li class="nav-label">Master Scheduler</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="fas fa-calendar-alt"></i> <span class="nav-text">Manage Schedule</span><span class="badge bg-lgreen text-white nav-badge"></span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="<?= base_url('admin/masterscheduler'); ?>">Manage Calendar</a>
-                            </li>
-                            <!-- <li><a href="<?= base_url('admin/masterscheduler/access'); ?>">Manage Schedule Type</a>
-                            </li> -->
-                            <li><a href="<?= base_url('admin/masterscheduler/period_access'); ?>">Manage Period</a>
-                            </li>
-                            <!-- <li><a href="<?= base_url('admin/masterscheduler/students_schedule'); ?>">Student Class Schedule</a>
-                            </li> -->
-                        </ul>
-                    </li>
+                    <li class="nav-label">Master Calendar</li>
+
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/masterscheduler'); ?>"><i class="fas fa-calendar-alt"></i><span class="nav-text">Manage Calendar</span><span class="badge badge-success nav-badge"></span></a>
+                     
+                    <li class="mega-menu mega-menu-sm"><a class="has-arrow" href="<?= base_url('admin/masterscheduler/period_access'); ?>"><i class="fas fa-tachometer-alt"></i><span class="nav-text">Period Master</span><span class="badge badge-success nav-badge"></span></a>
+                     
+
+            
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="fas fa-school"></i><span class="nav-text">Academic Settings</span><span class="badge bg-lgreen text-white nav-badge"></span></a>
                         <ul aria-expanded="false">
                             <li><a href="<?= base_url('admin/academicsettings/section'); ?>">Section</a>
