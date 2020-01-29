@@ -838,7 +838,7 @@ var datetime = null,
         datenow=null;
 
 var update = function () {
-    date = moment(new Date())
+    date = moment(new Date().toLocaleString("en-US", {timeZone: "America/New_York"}));
     datetime.html(date.format(' h:mm:ss a'));
     //d.html(date.format('dddd'));
     datenow.html(date.format('MMMM Do YYYY'));

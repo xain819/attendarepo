@@ -1,8 +1,18 @@
  <!-- Datatable style -->
-<link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.css">  
+<!-- <link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.css">  
+<link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.css">  
 <link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/owl.carousel/dist/css/owl.carousel.min.css">
 <link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
 <link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
+<script src="<?=base_url() ?>public/js/custom.min.js"></script>
+<script src="<?=base_url() ?>public/js/settings.js"></script>
+<script src="<?=base_url() ?>public/js/gleek.js"></script>
+<script src="<?=base_url() ?>public/js/styleSwitcher.js"></script> -->
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
 <script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
     <script src="<?=base_url() ?>public/js/custom.min.js"></script>
     <script src="<?=base_url() ?>public/js/settings.js"></script>
@@ -10,11 +20,12 @@
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
 
 
-<div class="row">
+
+<!-- <div class='row'> -->
 
 
 <div class="datalist">
-    <table id="example1" class="table table-bordered table-hover">
+    <table id="example99" class="display compact">
         <thead>
             <tr>
             
@@ -38,14 +49,14 @@
             <tr>
             
                 <td>
-					<h4 class="m0 mb5"><?=$row['firstname']?> <?=$row['lastname']?></h4>
+                    <h4 class="m0 mb5"><?=$row['firstname']?> <?=$row['lastname']?></h4>
                     <small class="text-muted"><?=$row['admin_role_title']?></small>
                 </td>
                 <td>
                     <?=$row['username']?>
                 </td> 
                 <td>
-					<?=$row['email']?>
+                    <?=$row['email']?>
                 </td>
                 <td>
                     <button class="btn btn-xs btn-success"><?=$row['admin_role_title']?></button>
@@ -72,10 +83,15 @@
 
 
 <!-- DataTables -->
-<script src="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- <script src="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url() ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script> -->
+
+
 <script>
+$.noConflict();
   $(function () {
-    $("#example1").DataTable();
+    $("#example99").DataTable({
+        "order": [[ 0, "desc" ]]
+    });
   });
 </script> 

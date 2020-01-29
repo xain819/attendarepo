@@ -1,8 +1,4 @@
-
- <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css"><link rel="stylesheet" href="<?=base_url() ?>public/assets/plugins/owl.carousel/dist/css/owl.carousel.min.css">
-<link href="<?=base_url() ?>public/assets/plugins/innoto-switchery/dist/switchery.min.css" rel="stylesheet"/>
-<link href="<?=base_url() ?>public/css/style.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="<?=base_url() ?>public/assets/plugins/common/common.min.js"></script>
     <script src="<?=base_url() ?>public/js/custom.min.js"></script>
     <script src="<?=base_url() ?>public/js/settings.js"></script>
@@ -10,6 +6,25 @@
     <script src="<?=base_url() ?>public/js/styleSwitcher.js"></script>
 
 
+<link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="<?php echo base_url('public/plugins/editor/css/editor.dataTables.min.css');?>">
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url('public/plugins/editor/js/dataTables.editor.min.js');?>"></script>
+
+<script src="<?php echo base_url('public/plugins/papaparse/papaparse.min.js');?>"></script>
+
+<link rel="stylesheet" href=" https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+<script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 
 
     <div class=" card box-body" style='padding:20px;'>
