@@ -29,7 +29,6 @@
 
 <div class=" card box-body" style='padding:20px;'>
     <div class="box-body">
-
         <!-- Load Admin list (json request)-->
         <div class="data_container"></div>
 

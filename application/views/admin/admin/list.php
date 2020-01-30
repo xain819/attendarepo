@@ -67,7 +67,7 @@
                     type='checkbox' <?php echo ($row['is_active'] == 1)? "checked" : ""; ?> />
                     <label class='tgl-btn' for='cb_<?=$row['admin_id']?>'></label>
                 </td>
-
+a
            
                 <td>
                     <a href="<?php echo site_url("admin/admin/edit/".$row['admin_id']); ?>" class="btn btn-warning btn-xs mr5" >
