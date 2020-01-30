@@ -140,7 +140,8 @@ $(document).ready(function () {
               dataType:'JSON',
             })
             .done(function(data){
-              window.location.reload(true); 
+              // window.location.reload(true); //deprecated
+                location.reload();
         })
       })
       $(document).on('click','#editslider',function(){
@@ -158,7 +159,8 @@ $(document).ready(function () {
               dataType:'JSON',
             })
             .done(function(data){
-              window.location.reload(true); 
+              // window.location.reload(true); //deprecated
+                location.reload();
             })
       })
 
